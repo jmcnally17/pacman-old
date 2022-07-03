@@ -1,0 +1,10 @@
+footer {
+  padding: 5px;
+  margin-top: auto;
+}
+
+.footer-text {
+  font-size: 10pt;
+  color: aqua;
+  padding: 6px;
+}
