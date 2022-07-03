@@ -2,16 +2,20 @@ body {
   background-color: black;
 }
 
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 h1,
 label {
   color: yellow;
 }
 
-.App {
-  text-align: center;
-}
-
 .title-pic {
+  margin: auto;
   width: 65%;
 }
 
@@ -37,8 +41,8 @@ label {
 }
 
 footer {
-  background-color: blue;
   padding: 5px;
+  margin-top: auto;
 }
 
 .footer-text {
