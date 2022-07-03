@@ -5,7 +5,7 @@ import "./home.css";
 export default function Home() {
   return (
     <div className="home">
-      <h1>Welcome to Pacman!</h1>
+      <h1>Welcome to Pac-Man!</h1>
       <img className="title-pic" src={pic} />
       <div className="register">
         <label className="label" htmlFor="name-input">

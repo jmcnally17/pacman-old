@@ -1,6 +1,6 @@
-# Pacman
+# Pac-Man
 
-This is an attempt at making Pacman using React.
+This is an attempt at making Pac-Man using React.
 
 Click [here](https://pacman-clone.herokuapp.com/) to play!
 
