@@ -1,10 +1,10 @@
 import React from "react";
 import pic from "./title-pic.jpg";
-import "./home.css";
+import "./main.css";
 
-export default function Home() {
+export default function Main() {
   return (
-    <div className="home">
+    <div className="main">
       <h1>Welcome to Pac-Man!</h1>
       <img className="title-pic" src={pic} />
       <div className="register">
