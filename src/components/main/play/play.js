@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./play.css";
+import makeCanvas from "./makeCanvas";
 
 export default function Play() {
+  useEffect(() => {
+    makeCanvas();
+  }, []);
+
   return (
     <div>
       <h1>Let&apos;s Play!</h1>
-      <div className="map">This is where the game will be</div>
+      <canvas id="board" className="board" width="440" height="520"></canvas>
     </div>
   );
 }

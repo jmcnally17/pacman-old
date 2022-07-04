@@ -1,7 +1,4 @@
-.map {
-  max-width: 600px;
-  height: 580px;
+.board {
   margin: auto;
   border: 2px solid white;
-  color: white;
 }
