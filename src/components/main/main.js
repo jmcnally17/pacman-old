@@ -9,7 +9,6 @@ export default function Main() {
 
   const handleName = ({ target }) => {
     setName(target.value);
-    console.log(name);
   };
 
   const handleSubmit = () => {
