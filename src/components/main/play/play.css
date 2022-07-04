@@ -1,0 +1,7 @@
+.map {
+  max-width: 600px;
+  height: 580px;
+  margin: auto;
+  border: 2px solid white;
+  color: white;
+}
