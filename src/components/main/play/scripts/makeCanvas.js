@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-const Boundary = require("./boundary");
-const PacMan = require("./pacman");
+const Boundary = require("../models/boundary");
+const PacMan = require("../models/pacman");
 
 const length = 40;
 const map = [
