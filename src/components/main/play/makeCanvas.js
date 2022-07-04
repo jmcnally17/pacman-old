@@ -42,6 +42,10 @@ const makeCanvas = () => {
       x: (3 * length) / 2,
       y: (3 * length) / 2,
     },
+    velocity: {
+      x: 0,
+      y: 0,
+    },
   });
   pacman.draw(ctx);
 };
