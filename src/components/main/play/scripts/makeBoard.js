@@ -2,7 +2,7 @@
 const Boundary = require("../models/boundary");
 const PacMan = require("../models/pacman");
 const changeDirection = require("./changeDirection");
-const hitBoundary = require("./hitBoundary");
+const hitBoundaryConditional = require("./hitBoundaryConditional");
 const move = require("./move");
 
 const length = 40;
@@ -53,15 +53,22 @@ let lastKeyPressed = {
   key: "",
 };
 
-const makeCanvas = () => {
-  requestAnimationFrame(makeCanvas);
+const makeBoard = () => {
+  requestAnimationFrame(makeBoard);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, board.clientWidth, board.clientHeight);
 
   boundaries.forEach((boundary) => {
     boundary.draw(ctx);
-    if (hitBoundary(pacman, boundary)) {
+    if (
+      hitBoundaryConditional(pacman, boundary, {
+        velocity: {
+          x: pacman.velocity.x,
+          y: pacman.velocity.y,
+        },
+      })
+    ) {
       pacman.velocity.x = 0;
       pacman.velocity.y = 0;
     }
@@ -73,4 +80,4 @@ const makeCanvas = () => {
   pacman.update(ctx);
 };
 
-module.exports = makeCanvas;
+module.exports = makeBoard;

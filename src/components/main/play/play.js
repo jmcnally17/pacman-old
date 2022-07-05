@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import "./play.css";
-import makeCanvas from "./scripts/makeCanvas";
+import makeBoard from "./scripts/makeBoard";
 
 export default function Play() {
   useEffect(() => {
-    makeCanvas();
+    makeBoard();
   }, []);
 
   return (
