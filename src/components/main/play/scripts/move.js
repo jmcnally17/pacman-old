@@ -1,23 +1,19 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
-const move = (pacman) => {
+const move = (lastKeyPressed) => {
   window.addEventListener("keydown", ({ key }) => {
     switch (key) {
       case "ArrowUp":
-        pacman.velocity.y = -5;
-        pacman.velocity.x = 0;
+        lastKeyPressed.key = "up";
         break;
       case "ArrowLeft":
-        pacman.velocity.x = -5;
-        pacman.velocity.y = 0;
+        lastKeyPressed.key = "left";
         break;
       case "ArrowRight":
-        pacman.velocity.x = 5;
-        pacman.velocity.y = 0;
+        lastKeyPressed.key = "right";
         break;
       case "ArrowDown":
-        pacman.velocity.y = 5;
-        pacman.velocity.x = 0;
+        lastKeyPressed.key = "down";
     }
   });
 };
