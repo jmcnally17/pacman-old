@@ -47,6 +47,21 @@ const makeCanvas = () => {
           },
         });
         boundary.draw(ctx);
+
+        if (
+          pacman.position.y - pacman.radius + pacman.velocity.y <=
+            boundary.position.y + boundary.height &&
+          pacman.position.y + pacman.radius + pacman.velocity.y >=
+            boundary.position.y &&
+          pacman.position.x + pacman.radius + pacman.velocity.x >=
+            boundary.position.x &&
+          pacman.position.x - pacman.radius + pacman.velocity.x <=
+            boundary.position.x + boundary.width
+        ) {
+          console.log("we are colliding");
+          pacman.velocity.x = 0;
+          pacman.velocity.y = 0;
+        }
       }
     });
   });
