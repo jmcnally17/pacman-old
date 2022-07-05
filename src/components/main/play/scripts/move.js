@@ -1,14 +1,19 @@
+/* eslint-disable indent */
 /* eslint-disable no-undef */
-const move = () => {
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowUp") {
-      console.log("up is registering");
-    } else if (event.key === "ArrowLeft") {
-      console.log("left is registering");
-    } else if (event.key === "ArrowRight") {
-      console.log("right is registering");
-    } else if (event.key === "ArrowDown") {
-      console.log("down is registering");
+const move = (pacman) => {
+  window.addEventListener("keydown", ({ key }) => {
+    switch (key) {
+      case "ArrowUp":
+        pacman.velocity.y = -5;
+        break;
+      case "ArrowLeft":
+        pacman.velocity.x = -5;
+        break;
+      case "ArrowRight":
+        pacman.velocity.x = 5;
+        break;
+      case "ArrowDown":
+        pacman.velocity.y = 5;
     }
   });
 };

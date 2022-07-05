@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import "./play.css";
 import makeCanvas from "./scripts/makeCanvas";
-import move from "./scripts/move";
 
 export default function Play() {
   useEffect(() => {
     makeCanvas();
-  }, []);
-
-  useEffect(() => {
-    move();
   }, []);
 
   return (

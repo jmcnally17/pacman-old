@@ -13,6 +13,12 @@ class PacMan {
     ctx.fill();
     ctx.closePath();
   }
+
+  update(ctx) {
+    this.draw(ctx);
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+  }
 }
 
 module.exports = PacMan;
