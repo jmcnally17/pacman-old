@@ -58,7 +58,6 @@ const makeCanvas = () => {
           pacman.position.x - pacman.radius + pacman.velocity.x <=
             boundary.position.x + boundary.width
         ) {
-          console.log("we are colliding");
           pacman.velocity.x = 0;
           pacman.velocity.y = 0;
         }
