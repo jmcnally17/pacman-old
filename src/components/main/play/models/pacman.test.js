@@ -17,6 +17,7 @@ describe(PacMan, () => {
 
   it("always has a radius of 15", () => {
     expect(pacman.radius).toBe(15);
+    console.log("test");
   });
 
   it("has a position that is passed in on instantiation", () => {
