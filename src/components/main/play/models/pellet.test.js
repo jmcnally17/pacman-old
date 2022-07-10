@@ -15,8 +15,17 @@ describe(Pellet, () => {
     expect(pellet.radius).toBe(3);
   });
 
+  it("hasBeenEaten has a default value of false upon initialisation", () => {
+    expect(pellet.hasBeenEaten).toBe(false);
+  });
+
   it("has a position that is passed in", () => {
     expect(pellet.position.x).toBe(50);
     expect(pellet.position.y).toBe(100);
+  });
+
+  it("changeEatenState can change the pellet to being eaten", () => {
+    pellet.changeEatenState(true);
+    expect(pellet.hasBeenEaten).toBe(true);
   });
 });

@@ -6,8 +6,8 @@ class Pellet {
     this.hasBeenEaten = false;
   }
 
-  becomeEaten() {
-    this.hasBeenEaten = true;
+  changeEatenState(bool) {
+    this.hasBeenEaten = bool;
   }
 
   draw(ctx) {

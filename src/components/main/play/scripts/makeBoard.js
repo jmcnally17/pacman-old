@@ -97,7 +97,7 @@ const makeBoard = () => {
       pellet.position.x === pacman.position.x &&
       pellet.position.y === pacman.position.y
     ) {
-      pellet.becomeEaten();
+      pellet.changeEatenState(true);
     }
   });
 
