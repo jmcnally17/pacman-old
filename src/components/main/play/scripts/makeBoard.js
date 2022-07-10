@@ -63,6 +63,8 @@ let lastKeyPressed = {
   key: "",
 };
 
+let score = 0;
+
 const makeBoard = () => {
   requestAnimationFrame(makeBoard);
   const board = document.querySelector("#board");
@@ -91,13 +93,16 @@ const makeBoard = () => {
       count++;
     }
     if (count === pellets.length) {
-      window.alert("Congratulations, you win!");
+      window.alert(`Congratulations, you win!\nYou scored ${score} points!`);
     }
     if (
       pellet.position.x === pacman.position.x &&
-      pellet.position.y === pacman.position.y
+      pellet.position.y === pacman.position.y &&
+      !pellet.hasBeenEaten
     ) {
       pellet.changeEatenState(true);
+      score += 10;
+      console.log(score);
     }
   });
 
