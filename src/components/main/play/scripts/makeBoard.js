@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const Boundary = require("../models/boundary");
 const PacMan = require("../models/pacman");
+const Pellet = require("../models/pellet");
 const changeDirection = require("./changeDirection");
 const hitBoundaryConditional = require("./hitBoundaryConditional");
 const move = require("./move");
@@ -23,6 +24,7 @@ const map = [
 ];
 
 let boundaries = [];
+let pellets = [];
 
 map.forEach((row, i) => {
   row.forEach((element, j) => {
@@ -34,6 +36,14 @@ map.forEach((row, i) => {
         },
       });
       boundaries.push(boundary);
+    } else if (element === " ") {
+      const pellet = new Pellet({
+        position: {
+          x: (length * (2 * j + 1)) / 2,
+          y: (length * (2 * i + 1)) / 2,
+        },
+      });
+      pellets.push(pellet);
     }
   });
 });
@@ -72,6 +82,9 @@ const makeBoard = () => {
       pacman.velocity.x = 0;
       pacman.velocity.y = 0;
     }
+  });
+  pellets.forEach((pellet) => {
+    pellet.draw(ctx);
   });
 
   changeDirection(lastKeyPressed, pacman, boundaries);
