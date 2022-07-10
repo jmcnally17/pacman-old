@@ -3,6 +3,11 @@ class Pellet {
   constructor({ position }) {
     this.position = position;
     this.radius = 3;
+    this.hasBeenEaten = false;
+  }
+
+  becomeEaten() {
+    this.hasBeenEaten = true;
   }
 
   draw(ctx) {

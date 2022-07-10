@@ -83,8 +83,22 @@ const makeBoard = () => {
       pacman.velocity.y = 0;
     }
   });
+  let count = 0;
   pellets.forEach((pellet) => {
-    pellet.draw(ctx);
+    if (!pellet.hasBeenEaten) {
+      pellet.draw(ctx);
+    } else {
+      count++;
+    }
+    if (count === pellets.length) {
+      window.alert("Congratulations, you win!");
+    }
+    if (
+      pellet.position.x === pacman.position.x &&
+      pellet.position.y === pacman.position.y
+    ) {
+      pellet.becomeEaten();
+    }
   });
 
   changeDirection(lastKeyPressed, pacman, boundaries);
