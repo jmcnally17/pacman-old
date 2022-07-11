@@ -10,6 +10,7 @@ export default function Play() {
   return (
     <div>
       <h1>Let&apos;s Play!</h1>
+      <p className="score" id="score"></p>
       <canvas id="board" className="board" width="440" height="520"></canvas>
     </div>
   );
