@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 const Boundary = require("../models/boundary");
+const Ghost = require("../models/ghost");
 const PacMan = require("../models/pacman");
 const Pellet = require("../models/pellet");
 const changeDirection = require("./changeDirection");
@@ -66,6 +67,42 @@ let lastKeyPressed = {
 
 let score = 0;
 
+let ghosts = [
+  new Ghost({
+    position: {
+      x: 380,
+      y: 60,
+    },
+    velocity: {
+      x: 0,
+      y: 0,
+    },
+    colour: "red",
+  }),
+  new Ghost({
+    position: {
+      x: 60,
+      y: 460,
+    },
+    velocity: {
+      x: 0,
+      y: 0,
+    },
+    colour: "pink",
+  }),
+  new Ghost({
+    position: {
+      x: 380,
+      y: 460,
+    },
+    velocity: {
+      x: 0,
+      y: 0,
+    },
+    colour: "cyan",
+  }),
+];
+
 const makeBoard = () => {
   requestAnimationFrame(makeBoard);
   const board = document.querySelector("#board");
@@ -104,6 +141,10 @@ const makeBoard = () => {
       pellet.changeEatenState(true);
       score += 10;
     }
+  });
+
+  ghosts.forEach((ghost) => {
+    ghost.update(ctx);
   });
 
   changeDirection(lastKeyPressed, pacman, boundaries);
