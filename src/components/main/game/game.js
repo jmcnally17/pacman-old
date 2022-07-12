@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import "./play.css";
+import "./game.css";
 import makeBoard from "./scripts/makeBoard";
 
-export default function Play() {
+export default function Game() {
   useEffect(() => {
     makeBoard();
   }, []);
