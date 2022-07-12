@@ -37,4 +37,8 @@ describe(Ghost, () => {
   it("has a colour that is passed in on instantiation", () => {
     expect(ghost.colour).toBe("red");
   });
+
+  it("has an array of previous collisions that is empty upon initialisation", () => {
+    expect(ghost.prevCollisions).toEqual([]);
+  });
 });

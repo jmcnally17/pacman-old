@@ -5,6 +5,7 @@ class Ghost {
     this.velocity = velocity;
     this.radius = 15;
     this.colour = colour;
+    this.prevCollisions = [];
   }
 
   draw(ctx) {
