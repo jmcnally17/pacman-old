@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const Pellet = require("../models/pellet");
 
-const makePellets = (map) => {
+const makePellets = (map, length) => {
   const pellets = [];
   map.forEach((row, i) => {
     row.forEach((element, j) => {

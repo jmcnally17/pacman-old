@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const Boundary = require("../models/boundary");
 
-const makeBoundaries = (map) => {
+const makeBoundaries = (map, length) => {
   const boundaries = [];
   map.forEach((row, i) => {
     row.forEach((element, j) => {

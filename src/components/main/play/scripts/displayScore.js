@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-const trackScore = (score) => {
+const displayScore = (score) => {
   const scoreEl = document.querySelector("#score");
-  scoreEl.innerText = `Score: ${score}`;
+  scoreEl.innerText = `Score: ${score.points}`;
 };
 
-module.exports = trackScore;
+module.exports = displayScore;
