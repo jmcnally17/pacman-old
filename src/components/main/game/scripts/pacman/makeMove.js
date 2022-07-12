@@ -2,18 +2,14 @@
 /* eslint-disable no-undef */
 const makeMove = (lastKeyPressed) => {
   window.addEventListener("keydown", ({ key }) => {
-    switch (key) {
-      case "ArrowUp":
-        lastKeyPressed.key = "up";
-        break;
-      case "ArrowLeft":
-        lastKeyPressed.key = "left";
-        break;
-      case "ArrowRight":
-        lastKeyPressed.key = "right";
-        break;
-      case "ArrowDown":
-        lastKeyPressed.key = "down";
+    if (key === "ArrowUp") {
+      lastKeyPressed.key = "up";
+    } else if (key === "ArrowLeft") {
+      lastKeyPressed.key = "left";
+    } else if (key === "ArrowRight") {
+      lastKeyPressed.key = "right";
+    } else if (key === "ArrowDown") {
+      lastKeyPressed.key = "down";
     }
   });
 };

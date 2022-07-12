@@ -7,7 +7,9 @@ const implementGhosts = (ghosts, boundaries, ctx) => {
     const collisions = [];
     ghost.update(ctx);
     updateCollisions(boundaries, collisions, ghost);
-    changeGhostDirection(ghost, collisions);
+    if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
+      changeGhostDirection(ghost, collisions);
+    }
   });
 };
 
