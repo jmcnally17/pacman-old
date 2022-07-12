@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const PacMan = require("../models/pacman");
+const PacMan = require("../../models/pacman");
 
 const makePacman = (length) => {
   const pacman = new PacMan({

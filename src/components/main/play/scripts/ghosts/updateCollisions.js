@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const hitBoundaryConditional = require("../hitBoundaryConditional");
+const hitBoundaryConditional = require("../boundaries/hitBoundaryConditional");
 
 const updateCollisions = (boundaries, collisions, ghost) => {
   boundaries.forEach((boundary) => {

@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable no-undef */
-const move = (lastKeyPressed) => {
+const makeMove = (lastKeyPressed) => {
   window.addEventListener("keydown", ({ key }) => {
     switch (key) {
       case "ArrowUp":
@@ -18,4 +18,4 @@ const move = (lastKeyPressed) => {
   });
 };
 
-module.exports = move;
+module.exports = makeMove;

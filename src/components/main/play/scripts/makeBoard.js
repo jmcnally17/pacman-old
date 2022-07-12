@@ -1,17 +1,13 @@
 /* eslint-disable no-undef */
-const changeDirection = require("./changeDirection");
-const checkWinCondition = require("./checkWinCondition");
 const displayScore = require("./displayScore");
-const drawBoundaries = require("./drawBoundaries");
-const drawPellets = require("./drawPellets");
-const eatPellet = require("./eatPellet");
-const ghostMovement = require("./ghostMovement/ghostMovement");
-const makeBoundaries = require("./makeBoundaries");
-const makeGhosts = require("./makeGhosts");
-const makePacman = require("./makePacman");
-const makePellets = require("./makePellets");
-const move = require("./move");
-const stopPacmanCollision = require("./stopPacmanCollision");
+const implementGhosts = require("./ghosts/implementGhosts");
+const makeBoundaries = require("./boundaries/makeBoundaries");
+const makeGhosts = require("./ghosts/makeGhosts");
+const makePacman = require("./pacman/makePacman");
+const makePellets = require("./pellets/makePellets");
+const implementBoundaries = require("./boundaries/implementBoundaries");
+const implementPellets = require("./pellets/implementPellets");
+const implementPacman = require("./pacman/implementPacman");
 
 const length = 40;
 const map = [
@@ -48,15 +44,10 @@ const makeBoard = () => {
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, board.clientWidth, board.clientHeight);
 
-  drawBoundaries(boundaries, ctx);
-  stopPacmanCollision(boundaries, pacman);
-  drawPellets(pellets, ctx);
-  checkWinCondition(pellets, score);
-  eatPellet(pellets, pacman, score);
-  ghostMovement(ghosts, boundaries, ctx);
-  move(lastKeyPressed);
-  changeDirection(lastKeyPressed, pacman, boundaries);
-  pacman.update(ctx);
+  implementBoundaries(boundaries, ctx, pacman);
+  implementPellets(pellets, ctx, pacman, score);
+  implementGhosts(ghosts, boundaries, ctx);
+  implementPacman(lastKeyPressed, pacman, boundaries, ctx);
   displayScore(score);
 };
 

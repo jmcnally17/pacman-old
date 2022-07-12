@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const Ghost = require("../models/ghost");
+const Ghost = require("../../models/ghost");
 
 const makeGhosts = () => {
   const ghosts = [

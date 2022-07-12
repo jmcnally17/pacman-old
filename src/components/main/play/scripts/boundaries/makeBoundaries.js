@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const Boundary = require("../models/boundary");
+const Boundary = require("../../models/boundary");
 
 const makeBoundaries = (map, length) => {
   const boundaries = [];

@@ -2,7 +2,7 @@
 const changeGhostDirection = require("./changeGhostDirection");
 const updateCollisions = require("./updateCollisions");
 
-const ghostMovement = (ghosts, boundaries, ctx) => {
+const implementGhosts = (ghosts, boundaries, ctx) => {
   ghosts.forEach((ghost) => {
     const collisions = [];
     ghost.update(ctx);
@@ -11,4 +11,4 @@ const ghostMovement = (ghosts, boundaries, ctx) => {
   });
 };
 
-module.exports = ghostMovement;
+module.exports = implementGhosts;

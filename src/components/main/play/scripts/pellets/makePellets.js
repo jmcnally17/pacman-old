@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const Pellet = require("../models/pellet");
+const Pellet = require("../../models/pellet");
 
 const makePellets = (map, length) => {
   const pellets = [];
