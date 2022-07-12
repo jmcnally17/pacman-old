@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const changeDirection = require("./changeDirection");
 const makeMove = require("./makeMove");
 
