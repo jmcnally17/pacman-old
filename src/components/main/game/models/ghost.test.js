@@ -24,14 +24,28 @@ describe(Ghost, () => {
     expect(ghost.radius).toBe(15);
   });
 
-  it("has a position that is passed in on instantiation", () => {
+  it("has an original position that is passed in on instantiation", () => {
+    expect(ghost.originalPosition).toEqual({
+      x: 20,
+      y: 20,
+    });
+  });
+
+  it("has a current position that intially starts off equal to the original position", () => {
     expect(ghost.position).toEqual({
       x: 20,
       y: 20,
     });
   });
 
-  it("has a velocity that is passed in on instantiation", () => {
+  it("has an original velocity that is passed in on instantiation", () => {
+    expect(ghost.originalVelocity).toEqual({
+      x: 7.5,
+      y: 2.5,
+    });
+  });
+
+  it("has a current velocity that initally starts off equal to the original velocity", () => {
     expect(ghost.velocity).toEqual({
       x: 7.5,
       y: 2.5,
@@ -57,5 +71,23 @@ describe(Ghost, () => {
   it("changeScaredState can change isScared to true when called", () => {
     ghost.changeScaredState();
     expect(ghost.isScared).toBe(true);
+  });
+
+  it("reset changes the ghosts position and velocity back to their original values, as well as emptying the previous collisions array", () => {
+    ghost.position.x += 20;
+    ghost.position.y += 20;
+    ghost.velocity.x += 5;
+    ghost.velocity.y += 10;
+    ghost.prevCollisions.push("up");
+    ghost.reset();
+    expect(ghost.position).toEqual({
+      x: 20,
+      y: 20,
+    });
+    expect(ghost.velocity).toEqual({
+      x: 7.5,
+      y: 2.5,
+    });
+    expect(ghost.prevCollisions).toEqual([]);
   });
 });

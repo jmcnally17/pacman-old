@@ -2,8 +2,10 @@
 class Ghost {
   static speed = 2.5;
   constructor({ position, velocity, colour }) {
-    this.position = position;
-    this.velocity = velocity;
+    this.originalPosition = position;
+    this.position = { ...this.originalPosition };
+    this.originalVelocity = velocity;
+    this.velocity = { ...this.originalVelocity };
     this.radius = 15;
     this.colour = colour;
     this.prevCollisions = [];
@@ -27,6 +29,12 @@ class Ghost {
 
   changeScaredState() {
     this.isScared = this.isScared ? false : true;
+  }
+
+  reset() {
+    this.position = { ...this.originalPosition };
+    this.velocity = { ...this.originalVelocity };
+    this.prevCollisions = [];
   }
 }
 

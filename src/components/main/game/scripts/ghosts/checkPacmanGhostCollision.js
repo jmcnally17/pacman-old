@@ -11,10 +11,7 @@ const checkPacmanGhostCollision = (ghost, pacman, score, animationId) => {
       console.log(`Game Over!\nYou scored ${score.points} points.`);
     } else {
       score.points += 200;
-      ghost.position.x = 380;
-      ghost.position.y = 60;
-      ghost.velocity.x = 0;
-      ghost.velocity.y = ghost.speed;
+      ghost.reset();
     }
   }
 };
