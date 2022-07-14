@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 const PacMan = require("../../models/pacman");
 
-const makePacman = (length) => {
+const makePacman = () => {
   const pacman = new PacMan({
     position: {
-      x: (3 * length) / 2,
-      y: (3 * length) / 2,
+      x: 60,
+      y: 60,
     },
     velocity: {
       x: 0,

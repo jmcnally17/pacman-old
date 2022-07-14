@@ -1,8 +1,16 @@
 /* eslint-disable no-undef */
 const changeGhostDirection = require("./changeGhostDirection");
+const checkGameOver = require("./checkGameOver");
 const updateCollisions = require("./updateCollisions");
 
-const implementGhosts = (ghosts, boundaries, ctx) => {
+const implementGhosts = (
+  ghosts,
+  boundaries,
+  ctx,
+  pacman,
+  score,
+  animationId
+) => {
   ghosts.forEach((ghost) => {
     const collisions = [];
     ghost.update(ctx);
@@ -10,6 +18,7 @@ const implementGhosts = (ghosts, boundaries, ctx) => {
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
       changeGhostDirection(ghost, collisions);
     }
+    checkGameOver(ghost, pacman, score, animationId);
   });
 };
 

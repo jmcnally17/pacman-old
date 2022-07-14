@@ -29,7 +29,7 @@ const map = [
 const boundaries = makeBoundaries(map, length);
 const pellets = makePellets(map, length);
 const ghosts = makeGhosts();
-const pacman = makePacman(length);
+const pacman = makePacman();
 
 let score = {
   points: 0,
@@ -39,15 +39,16 @@ const lastKeyPressed = {
   key: "",
 };
 
+let animationId;
 const makeBoard = () => {
-  requestAnimationFrame(makeBoard);
+  animationId = requestAnimationFrame(makeBoard);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, board.clientWidth, board.clientHeight);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, score);
-  implementGhosts(ghosts, boundaries, ctx);
+  implementPellets(pellets, ctx, pacman, score, animationId);
+  implementGhosts(ghosts, boundaries, ctx, pacman, score, animationId);
   implementPacman(lastKeyPressed, pacman, boundaries, ctx);
   displayScore(score);
 };
