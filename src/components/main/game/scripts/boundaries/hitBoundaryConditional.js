@@ -1,14 +1,15 @@
 /* eslint-disable no-undef */
 const hitBoundaryConditional = (character, boundary, { velocity }) => {
+  const padding = boundary.width / 2 - character.radius - 1;
   if (
     character.position.y - character.radius + velocity.y <=
-      boundary.position.y + boundary.height &&
+      boundary.position.y + boundary.height + padding &&
     character.position.y + character.radius + velocity.y >=
-      boundary.position.y &&
+      boundary.position.y - padding &&
     character.position.x + character.radius + velocity.x >=
-      boundary.position.x &&
+      boundary.position.x - padding &&
     character.position.x - character.radius + velocity.x <=
-      boundary.position.x + boundary.width
+      boundary.position.x + boundary.width + padding
   ) {
     return true;
   } else {

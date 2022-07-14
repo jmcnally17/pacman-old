@@ -1,11 +1,13 @@
 /* eslint-disable no-undef */
 class Ghost {
+  static speed = 2.5;
   constructor({ position, velocity, colour }) {
     this.position = position;
     this.velocity = velocity;
     this.radius = 15;
     this.colour = colour;
     this.prevCollisions = [];
+    this.speed = 2.5;
   }
 
   draw(ctx) {

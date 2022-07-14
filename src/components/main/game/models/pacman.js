@@ -4,6 +4,7 @@ class PacMan {
     this.position = position;
     this.velocity = velocity;
     this.radius = 15;
+    this.speed = 5;
   }
 
   draw(ctx) {

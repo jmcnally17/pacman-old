@@ -6,27 +6,27 @@ const changeDirection = (lastKeyPressed, pacman, boundaries) => {
     checkDirectionChange(pacman, boundaries, {
       velocity: {
         x: 0,
-        y: -5,
+        y: -pacman.speed,
       },
     });
   } else if (lastKeyPressed.key === "down") {
     checkDirectionChange(pacman, boundaries, {
       velocity: {
         x: 0,
-        y: 5,
+        y: pacman.speed,
       },
     });
   } else if (lastKeyPressed.key === "right") {
     checkDirectionChange(pacman, boundaries, {
       velocity: {
-        x: 5,
+        x: pacman.speed,
         y: 0,
       },
     });
   } else if (lastKeyPressed.key === "left") {
     checkDirectionChange(pacman, boundaries, {
       velocity: {
-        x: -5,
+        x: -pacman.speed,
         y: 0,
       },
     });

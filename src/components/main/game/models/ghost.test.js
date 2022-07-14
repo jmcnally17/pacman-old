@@ -16,6 +16,10 @@ describe(Ghost, () => {
     });
   });
 
+  it("has a static speed class variable", () => {
+    expect(Ghost.speed).toBe(2.5);
+  });
+
   it("always has a radius of 15", () => {
     expect(ghost.radius).toBe(15);
   });
@@ -40,5 +44,9 @@ describe(Ghost, () => {
 
   it("has an array of previous collisions that is empty upon initialisation", () => {
     expect(ghost.prevCollisions).toEqual([]);
+  });
+
+  it("has a constant speed instance variable", () => {
+    expect(ghost.speed).toBe(2.5);
   });
 });

@@ -32,4 +32,8 @@ describe(PacMan, () => {
       y: 2.5,
     });
   });
+
+  it("has a constant speed instance variable", () => {
+    expect(pacman.speed).toBe(5);
+  });
 });

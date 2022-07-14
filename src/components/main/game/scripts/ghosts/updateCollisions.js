@@ -8,7 +8,7 @@ const updateCollisions = (boundaries, collisions, ghost) => {
       hitBoundaryConditional(ghost, boundary, {
         velocity: {
           x: 0,
-          y: 5,
+          y: ghost.speed,
         },
       })
     ) {
@@ -17,7 +17,7 @@ const updateCollisions = (boundaries, collisions, ghost) => {
       !collisions.includes("right") &&
       hitBoundaryConditional(ghost, boundary, {
         velocity: {
-          x: 5,
+          x: ghost.speed,
           y: 0,
         },
       })
@@ -27,7 +27,7 @@ const updateCollisions = (boundaries, collisions, ghost) => {
       !collisions.includes("left") &&
       hitBoundaryConditional(ghost, boundary, {
         velocity: {
-          x: -5,
+          x: -ghost.speed,
           y: 0,
         },
       })
@@ -38,7 +38,7 @@ const updateCollisions = (boundaries, collisions, ghost) => {
       hitBoundaryConditional(ghost, boundary, {
         velocity: {
           x: 0,
-          y: -5,
+          y: -ghost.speed,
         },
       })
     ) {

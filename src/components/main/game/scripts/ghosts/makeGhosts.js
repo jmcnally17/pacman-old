@@ -10,7 +10,7 @@ const makeGhosts = () => {
       },
       velocity: {
         x: 0,
-        y: 5,
+        y: Ghost.speed,
       },
       colour: "red",
     }),
@@ -21,7 +21,7 @@ const makeGhosts = () => {
       },
       velocity: {
         x: 0,
-        y: -5,
+        y: -Ghost.speed,
       },
       colour: "pink",
     }),
@@ -31,7 +31,7 @@ const makeGhosts = () => {
         y: 460,
       },
       velocity: {
-        x: -5,
+        x: -Ghost.speed,
         y: 0,
       },
       colour: "cyan",
