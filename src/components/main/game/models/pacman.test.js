@@ -36,4 +36,12 @@ describe(PacMan, () => {
   it("has a constant speed instance variable", () => {
     expect(pacman.speed).toBe(5);
   });
+
+  it("has an initial angle at which its mouth is open", () => {
+    expect(pacman.radians).toEqual(Math.PI / 4);
+  });
+
+  it("has a rate at which the angle of the mouth increase and decreases over time", () => {
+    expect(pacman.openRate).toEqual(Math.PI / 48);
+  });
 });

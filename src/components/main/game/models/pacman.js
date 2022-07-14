@@ -5,11 +5,20 @@ class PacMan {
     this.velocity = velocity;
     this.radius = 15;
     this.speed = 5;
+    this.radians = Math.PI / 4;
+    this.openRate = Math.PI / 48;
   }
 
   draw(ctx) {
     ctx.beginPath();
-    ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+    ctx.arc(
+      this.position.x,
+      this.position.y,
+      this.radius,
+      this.radians,
+      Math.PI * 2 - this.radians
+    );
+    ctx.lineTo(this.position.x, this.position.y);
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
@@ -19,6 +28,10 @@ class PacMan {
     this.draw(ctx);
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
+    if (this.radians < Math.PI / 48 || this.radians > Math.PI / 4) {
+      this.openRate = -this.openRate;
+    }
+    this.radians += this.openRate;
   }
 }
 
