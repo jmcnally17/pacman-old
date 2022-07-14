@@ -12,7 +12,7 @@ describe(PowerUp, () => {
   });
 
   it("always has the same radius", () => {
-    expect(powerUp.radius).toBe(7);
+    expect(powerUp.radius).toBe(8);
   });
 
   it("hasBeenEaten has a default value of false upon initialisation", () => {

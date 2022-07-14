@@ -1,10 +1,12 @@
 /* eslint-disable no-undef */
 const makeBoundaries = require("./boundaries/makeBoundaries");
 const makePellets = require("./pellets/makePellets");
+const makePowerUps = require("./powerUps/makePowerUps");
 const makeGhosts = require("./ghosts/makeGhosts");
 const makePacman = require("./pacman/makePacman");
 const implementBoundaries = require("./boundaries/implementBoundaries");
 const implementPellets = require("./pellets/implementPellets");
+const implementPowerUps = require("./powerUps/implementPowerUps");
 const implementGhosts = require("./ghosts/implementGhosts");
 const implementPacman = require("./pacman/implementPacman");
 const displayScore = require("./displayScore");
@@ -12,7 +14,7 @@ const displayScore = require("./displayScore");
 const length = 40;
 const map = [
   ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
-  ["-", ".", ".", ".", ".", ".", ".", ".", ".", ".", "-"],
+  ["-", " ", ".", ".", ".", ".", ".", ".", ".", "o", "-"],
   ["-", ".", "-", ".", "-", "-", "-", ".", "-", ".", "-"],
   ["-", ".", ".", ".", ".", "-", ".", ".", ".", ".", "-"],
   ["-", ".", "-", "-", ".", ".", ".", "-", "-", ".", "-"],
@@ -22,12 +24,13 @@ const map = [
   ["-", ".", "-", "-", ".", ".", ".", "-", "-", ".", "-"],
   ["-", ".", ".", ".", ".", "-", ".", ".", ".", ".", "-"],
   ["-", ".", "-", ".", "-", "-", "-", ".", "-", ".", "-"],
-  ["-", ".", ".", ".", ".", ".", ".", ".", ".", ".", "-"],
+  ["-", "o", ".", ".", ".", ".", ".", ".", ".", "o", "-"],
   ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
 ];
 
 const boundaries = makeBoundaries(map, length);
 const pellets = makePellets(map, length);
+const powerUps = makePowerUps(map, length);
 const ghosts = makeGhosts();
 const pacman = makePacman();
 
@@ -48,6 +51,7 @@ const makeBoard = () => {
 
   implementBoundaries(boundaries, ctx, pacman);
   implementPellets(pellets, ctx, pacman, score, animationId);
+  implementPowerUps(powerUps, ctx);
   implementGhosts(ghosts, boundaries, ctx, pacman, score, animationId);
   implementPacman(lastKeyPressed, pacman, boundaries, ctx);
   displayScore(score);
