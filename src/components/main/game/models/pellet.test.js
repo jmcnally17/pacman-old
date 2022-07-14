@@ -12,7 +12,7 @@ describe(Pellet, () => {
   });
 
   it("always has the same radius", () => {
-    expect(pellet.radius).toBe(3);
+    expect(pellet.radius).toBe(2);
   });
 
   it("hasBeenEaten has a default value of false upon initialisation", () => {

@@ -49,4 +49,13 @@ describe(Ghost, () => {
   it("has a constant speed instance variable", () => {
     expect(ghost.speed).toBe(2.5);
   });
+
+  it("has a state of being scared initially set to false", () => {
+    expect(ghost.isScared).toBe(false);
+  });
+
+  it("changeScaredState can change isScared to true when called", () => {
+    ghost.changeScaredState();
+    expect(ghost.isScared).toBe(true);
+  });
 });

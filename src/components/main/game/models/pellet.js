@@ -2,7 +2,7 @@
 class Pellet {
   constructor({ position }) {
     this.position = position;
-    this.radius = 3;
+    this.radius = 2;
     this.hasBeenEaten = false;
   }
 

@@ -2,7 +2,7 @@
 class PowerUp {
   constructor({ position }) {
     this.position = position;
-    this.radius = 8;
+    this.radius = 7;
     this.hasBeenEaten = false;
   }
 
