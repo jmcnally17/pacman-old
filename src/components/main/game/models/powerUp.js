@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-class Pellet {
+class PowerUp {
   constructor({ position }) {
     this.position = position;
-    this.radius = 3;
+    this.radius = 7;
     this.hasBeenEaten = false;
   }
 
@@ -23,4 +23,4 @@ class Pellet {
   }
 }
 
-module.exports = Pellet;
+module.exports = PowerUp;

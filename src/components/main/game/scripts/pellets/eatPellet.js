@@ -5,7 +5,7 @@ const eatPellet = (pellet, pacman, score) => {
     pellet.position.y === pacman.position.y &&
     !pellet.hasBeenEaten
   ) {
-    pellet.changeEatenState(true);
+    pellet.changeEatenState();
     score.points += 10;
   }
 };

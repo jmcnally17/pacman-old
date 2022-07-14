@@ -25,7 +25,7 @@ describe(Pellet, () => {
   });
 
   it("changeEatenState can change the pellet to being eaten", () => {
-    pellet.changeEatenState(true);
+    pellet.changeEatenState();
     expect(pellet.hasBeenEaten).toBe(true);
   });
 });
