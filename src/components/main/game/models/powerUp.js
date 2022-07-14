@@ -7,11 +7,7 @@ class PowerUp {
   }
 
   changeEatenState() {
-    if (this.hasBeenEaten === false) {
-      this.hasBeenEaten = true;
-    } else {
-      this.hasBeenEaten = false;
-    }
+    this.hasBeenEaten = this.hasBeenEaten ? false : true;
   }
 
   draw(ctx) {

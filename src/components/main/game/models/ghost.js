@@ -26,11 +26,7 @@ class Ghost {
   }
 
   changeScaredState() {
-    if (this.isScared === false) {
-      this.isScared = true;
-    } else {
-      this.isScared = false;
-    }
+    this.isScared = this.isScared ? false : true;
   }
 }
 
