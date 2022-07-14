@@ -28,6 +28,14 @@ class PacMan {
     this.draw(ctx);
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
+    if (this.velocity.x !== 0 || this.velocity.y !== 0) {
+      this.chomp();
+    } else {
+      this.radians = Math.PI / 4;
+    }
+  }
+
+  chomp() {
     if (this.radians < Math.PI / 48 || this.radians > Math.PI / 4) {
       this.openRate = -this.openRate;
     }
