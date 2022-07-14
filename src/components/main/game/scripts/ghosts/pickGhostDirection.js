@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const changeGhostDirection = (ghost, collisions) => {
+const pickGhostDirection = (ghost, collisions) => {
   if (ghost.velocity.x > 0) ghost.prevCollisions.push("right");
   else if (ghost.velocity.x < 0) ghost.prevCollisions.push("left");
   else if (ghost.velocity.y > 0) ghost.prevCollisions.push("down");
@@ -25,4 +25,4 @@ const changeGhostDirection = (ghost, collisions) => {
   }
   ghost.prevCollisions = [];
 };
-module.exports = changeGhostDirection;
+module.exports = pickGhostDirection;

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const changeGhostDirection = require("./changeGhostDirection");
+const pickGhostDirection = require("./pickGhostDirection");
 const checkPacmanGhostCollision = require("./checkPacmanGhostCollision");
 const updateCollisions = require("./updateCollisions");
 
@@ -16,7 +16,7 @@ const implementGhosts = (
     ghost.update(ctx);
     updateCollisions(boundaries, collisions, ghost);
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
-      changeGhostDirection(ghost, collisions);
+      pickGhostDirection(ghost, collisions);
     }
     checkPacmanGhostCollision(ghost, pacman, score, animationId);
   });
