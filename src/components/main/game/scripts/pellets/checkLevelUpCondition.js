@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+const resetAfterLevelUp = require("./resetAfterLevelUp");
+
 const checkLevelUpCondition = (
   pellets,
   pacman,
@@ -12,17 +14,7 @@ const checkLevelUpCondition = (
       count++;
     }
     if (count === pellets.length) {
-      pacman.reset();
-      lastKeyPressed.key = "";
-      ghosts.forEach((ghost) => {
-        ghost.reset();
-      });
-      pellets.forEach((pellet) => {
-        pellet.changeEatenState();
-      });
-      powerUps.forEach((powerUp) => {
-        if (powerUp.hasBeenEaten) powerUp.changeEatenState();
-      });
+      resetAfterLevelUp(pacman, lastKeyPressed, ghosts, pellets, powerUps);
       console.log("Next level");
     }
   });
