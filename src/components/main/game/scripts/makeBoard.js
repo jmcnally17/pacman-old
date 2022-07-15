@@ -10,6 +10,7 @@ const implementPowerUps = require("./powerUps/implementPowerUps");
 const implementGhosts = require("./ghosts/implementGhosts");
 const implementPacman = require("./pacman/implementPacman");
 const displayScore = require("./displayScore");
+const displayLives = require("./displayLives");
 
 const length = 40;
 const map = [
@@ -63,6 +64,7 @@ const makeBoard = () => {
   );
   implementPacman(lastKeyPressed, pacman, boundaries, ctx);
   displayScore(score);
+  displayLives(pacman);
 };
 
 module.exports = makeBoard;

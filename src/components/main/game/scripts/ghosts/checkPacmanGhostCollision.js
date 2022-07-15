@@ -1,4 +1,7 @@
 /* eslint-disable no-undef */
+const endGame = require("./endGame");
+const resetAfterDeath = require("./resetAfterDeath");
+
 const checkPacmanGhostCollision = (
   ghost,
   pacman,
@@ -15,16 +18,10 @@ const checkPacmanGhostCollision = (
   ) {
     if (!ghost.isScared) {
       if (pacman.lives <= 0) {
-        cancelAnimationFrame(animationId);
-        console.log(`Game Over!\nYou scored ${score.points} points.`);
+        endGame(animationId, score);
       } else {
         pacman.loseLife();
-        pacman.reset();
-        lastKeyPressed.key = "";
-        ghosts.forEach((ghost) => {
-          ghost.reset();
-        });
-        console.log(pacman.lives);
+        resetAfterDeath(pacman, lastKeyPressed, ghosts);
       }
     } else {
       score.points += 200;

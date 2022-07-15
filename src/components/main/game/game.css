@@ -3,6 +3,17 @@
   border: 2px solid white;
 }
 
+.gameInfo {
+  width: 200px;
+  margin: auto;
+}
+
 .score {
   color: white;
+  float: left;
+}
+
+.lives {
+  color: white;
+  float: right;
 }
