@@ -1,14 +1,22 @@
 /* eslint-disable no-undef */
-const checkWinCondition = require("./checkWinCondition");
+const checkLevelUpCondition = require("./checkLevelUpCondition");
 const drawPellet = require("./drawPellet");
 const eatPellet = require("./eatPellet");
 
-const implementPellets = (pellets, ctx, pacman, score, animationId) => {
+const implementPellets = (
+  pellets,
+  ctx,
+  pacman,
+  score,
+  lastKeyPressed,
+  ghosts,
+  powerUps
+) => {
   pellets.forEach((pellet) => {
     drawPellet(pellet, ctx);
     eatPellet(pellet, pacman, score);
   });
-  checkWinCondition(pellets, score, animationId);
+  checkLevelUpCondition(pellets, pacman, lastKeyPressed, ghosts, powerUps);
 };
 
 module.exports = implementPellets;

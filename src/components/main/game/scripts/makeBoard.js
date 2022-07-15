@@ -50,7 +50,15 @@ const makeBoard = () => {
   ctx.clearRect(0, 0, board.clientWidth, board.clientHeight);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, score, animationId);
+  implementPellets(
+    pellets,
+    ctx,
+    pacman,
+    score,
+    lastKeyPressed,
+    ghosts,
+    powerUps
+  );
   implementPowerUps(powerUps, ctx, pacman, score, ghosts);
   implementGhosts(
     ghosts,
