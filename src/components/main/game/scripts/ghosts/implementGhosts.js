@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-const pickGhostDirection = require("./pickGhostDirection");
-const checkPacmanGhostCollision = require("./checkPacmanGhostCollision");
-const updateCollisions = require("./updateCollisions");
+const pickGhostDirection = require("./movement/pickGhostDirection");
+const checkPacmanGhostCollision = require("./collisions/checkPacmanGhostCollision");
+const updateCollisions = require("./movement/updateCollisions");
 
 const implementGhosts = (
   ghosts,
@@ -19,8 +19,15 @@ const implementGhosts = (
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
       pickGhostDirection(ghost, collisions);
     }
+    checkPacmanGhostCollision(
+      ghost,
+      pacman,
+      score,
+      animationId,
+      lastKeyPressed,
+      ghosts
+    );
   });
-  checkPacmanGhostCollision(ghosts, pacman, score, animationId, lastKeyPressed);
 };
 
 module.exports = implementGhosts;
