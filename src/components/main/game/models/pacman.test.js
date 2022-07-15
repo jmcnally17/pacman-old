@@ -48,4 +48,13 @@ describe(PacMan, () => {
   it("has a rotation variable that decides which way PacMan is facing", () => {
     expect(pacman.rotation).toBe(0);
   });
+
+  it("starts off with three lives upon initialisation", () => {
+    expect(pacman.lives).toBe(3);
+  });
+
+  it("loseLife decreases this.lives by 1", () => {
+    pacman.loseLife();
+    expect(pacman.lives).toBe(2);
+  });
 });

@@ -8,6 +8,7 @@ class PacMan {
     this.radians = Math.PI / 4;
     this.openRate = Math.PI / 48;
     this.rotation = 0;
+    this.lives = 3;
   }
 
   draw(ctx) {
@@ -54,6 +55,10 @@ class PacMan {
     else if (this.velocity.x < 0) this.rotation = Math.PI;
     else if (this.velocity.y > 0) this.rotation = Math.PI / 2;
     else if (this.velocity.y < 0) this.rotation = (Math.PI * 3) / 2;
+  }
+
+  loseLife() {
+    this.lives--;
   }
 }
 
