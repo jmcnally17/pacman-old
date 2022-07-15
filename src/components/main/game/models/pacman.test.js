@@ -5,8 +5,8 @@ describe(PacMan, () => {
   beforeEach(() => {
     pacman = new PacMan({
       position: {
-        x: 20,
-        y: 20,
+        x: 60,
+        y: 60,
       },
       velocity: {
         x: 7.5,
@@ -21,8 +21,8 @@ describe(PacMan, () => {
 
   it("has a position that is passed in on instantiation", () => {
     expect(pacman.position).toEqual({
-      x: 20,
-      y: 20,
+      x: 60,
+      y: 60,
     });
   });
 
@@ -56,5 +56,21 @@ describe(PacMan, () => {
   it("loseLife decreases this.lives by 1", () => {
     pacman.loseLife();
     expect(pacman.lives).toBe(2);
+  });
+
+  it("reset puts PacMan back into starting position and changes velocity to 0 when called", () => {
+    pacman.position.x += 20;
+    pacman.position.y += 20;
+    pacman.velocity.x += 5;
+    pacman.velocity.y += 10;
+    pacman.reset();
+    expect(pacman.position).toEqual({
+      x: 60,
+      y: 60,
+    });
+    expect(pacman.velocity).toEqual({
+      x: 0,
+      y: 0,
+    });
   });
 });

@@ -3,14 +3,7 @@ const pickGhostDirection = require("./pickGhostDirection");
 const checkPacmanGhostCollision = require("./checkPacmanGhostCollision");
 const updateCollisions = require("./updateCollisions");
 
-const implementGhosts = (
-  ghosts,
-  boundaries,
-  ctx,
-  pacman,
-  score,
-  animationId
-) => {
+const implementGhosts = (ghosts, boundaries, ctx, pacman, score) => {
   ghosts.forEach((ghost) => {
     const collisions = [];
     ghost.update(ctx);
@@ -18,7 +11,7 @@ const implementGhosts = (
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
       pickGhostDirection(ghost, collisions);
     }
-    checkPacmanGhostCollision(ghost, pacman, score, animationId);
+    checkPacmanGhostCollision(ghost, pacman, score);
   });
 };
 

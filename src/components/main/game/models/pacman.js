@@ -60,6 +60,13 @@ class PacMan {
   loseLife() {
     this.lives--;
   }
+
+  reset() {
+    this.position.x = 60;
+    this.position.y = 60;
+    this.velocity.x = 0;
+    this.velocity.y = 0;
+  }
 }
 
 module.exports = PacMan;

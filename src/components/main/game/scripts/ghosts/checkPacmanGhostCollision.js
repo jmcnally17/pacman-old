@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const checkPacmanGhostCollision = (ghost, pacman, score, animationId) => {
+const checkPacmanGhostCollision = (ghost, pacman, score) => {
   if (
     ghost.position.y - ghost.radius <= pacman.position.y &&
     ghost.position.y + ghost.radius >= pacman.position.y &&
@@ -7,8 +7,8 @@ const checkPacmanGhostCollision = (ghost, pacman, score, animationId) => {
     ghost.position.x - ghost.radius <= pacman.position.x
   ) {
     if (!ghost.isScared) {
-      cancelAnimationFrame(animationId);
-      console.log(`Game Over!\nYou scored ${score.points} points.`);
+      pacman.loseLife();
+      console.log(pacman.lives);
     } else {
       score.points += 200;
       ghost.reset();
