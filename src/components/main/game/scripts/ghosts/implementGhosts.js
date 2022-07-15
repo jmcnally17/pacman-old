@@ -19,15 +19,8 @@ const implementGhosts = (
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
       pickGhostDirection(ghost, collisions);
     }
-    checkPacmanGhostCollision(
-      ghost,
-      pacman,
-      score,
-      ghosts,
-      animationId,
-      lastKeyPressed
-    );
   });
+  checkPacmanGhostCollision(ghosts, pacman, score, animationId, lastKeyPressed);
 };
 
 module.exports = implementGhosts;

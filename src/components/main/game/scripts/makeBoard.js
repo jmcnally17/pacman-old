@@ -35,7 +35,7 @@ const powerUps = makePowerUps(map, length);
 const ghosts = makeGhosts();
 const pacman = makePacman();
 
-let score = {
+const score = {
   points: 0,
 };
 
@@ -43,9 +43,8 @@ const lastKeyPressed = {
   key: "",
 };
 
-let animationId;
 const makeBoard = () => {
-  animationId = requestAnimationFrame(makeBoard);
+  let animationId = requestAnimationFrame(makeBoard);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, board.clientWidth, board.clientHeight);

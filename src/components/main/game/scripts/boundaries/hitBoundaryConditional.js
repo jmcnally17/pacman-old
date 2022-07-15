@@ -12,9 +12,8 @@ const hitBoundaryConditional = (character, boundary, { velocity }) => {
       boundary.position.x + boundary.width + padding
   ) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 };
 
 module.exports = hitBoundaryConditional;
