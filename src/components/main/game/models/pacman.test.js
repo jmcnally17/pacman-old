@@ -44,4 +44,8 @@ describe(PacMan, () => {
   it("has a rate at which the angle of the mouth increase and decreases over time", () => {
     expect(pacman.openRate).toEqual(Math.PI / 48);
   });
+
+  it("has a rotation variable that decides which way PacMan is facing", () => {
+    expect(pacman.rotation).toBe(0);
+  });
 });
