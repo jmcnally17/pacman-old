@@ -8,7 +8,7 @@ class PacMan {
     this.radians = Math.PI / 4;
     this.openRate = Math.PI / 48;
     this.rotation = 0;
-    this.lives = 3;
+    this.lives = 2;
   }
 
   draw(ctx) {
@@ -66,6 +66,7 @@ class PacMan {
     this.position.y = 60;
     this.velocity.x = 0;
     this.velocity.y = 0;
+    this.rotation = 0;
   }
 }
 

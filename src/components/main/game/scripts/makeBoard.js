@@ -52,8 +52,16 @@ const makeBoard = () => {
   implementBoundaries(boundaries, ctx, pacman);
   implementPellets(pellets, ctx, pacman, score, animationId);
   implementPowerUps(powerUps, ctx, pacman, score, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, pacman, score);
-  implementPacman(lastKeyPressed, pacman, boundaries, ctx, animationId, score);
+  implementGhosts(
+    ghosts,
+    boundaries,
+    ctx,
+    pacman,
+    score,
+    animationId,
+    lastKeyPressed
+  );
+  implementPacman(lastKeyPressed, pacman, boundaries, ctx);
   displayScore(score);
 };
 

@@ -49,13 +49,13 @@ describe(PacMan, () => {
     expect(pacman.rotation).toBe(0);
   });
 
-  it("starts off with three lives upon initialisation", () => {
-    expect(pacman.lives).toBe(3);
+  it("starts off with 2 lives upon initialisation", () => {
+    expect(pacman.lives).toBe(2);
   });
 
   it("loseLife decreases this.lives by 1", () => {
     pacman.loseLife();
-    expect(pacman.lives).toBe(2);
+    expect(pacman.lives).toBe(1);
   });
 
   it("reset puts PacMan back into starting position and changes velocity to 0 when called", () => {
@@ -63,6 +63,7 @@ describe(PacMan, () => {
     pacman.position.y += 20;
     pacman.velocity.x += 5;
     pacman.velocity.y += 10;
+    this.rotation += Math.PI;
     pacman.reset();
     expect(pacman.position).toEqual({
       x: 60,
@@ -72,5 +73,6 @@ describe(PacMan, () => {
       x: 0,
       y: 0,
     });
+    expect(pacman.rotation).toBe(0);
   });
 });

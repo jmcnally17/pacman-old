@@ -2,18 +2,7 @@
 const changeDirection = require("./changeDirection");
 const makeMove = require("./makeMove");
 
-const implementPacman = (
-  lastKeyPressed,
-  pacman,
-  boundaries,
-  ctx,
-  animationId,
-  score
-) => {
-  if (pacman.lives <= 0) {
-    cancelAnimationFrame(animationId);
-    console.log(`Game Over!\nYou scored ${score.points} points.`);
-  }
+const implementPacman = (lastKeyPressed, pacman, boundaries, ctx) => {
   makeMove(lastKeyPressed);
   changeDirection(lastKeyPressed, pacman, boundaries);
   pacman.update(ctx);
