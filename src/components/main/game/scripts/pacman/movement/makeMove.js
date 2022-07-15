@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 /* eslint-disable no-undef */
 const makeMove = (lastKeyPressed) => {
   window.addEventListener("keydown", ({ key }) => {

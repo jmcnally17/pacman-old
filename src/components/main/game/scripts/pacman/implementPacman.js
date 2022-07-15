@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-const changeDirection = require("./changeDirection");
-const makeMove = require("./makeMove");
+const changeDirection = require("./movement/changeDirection");
+const makeMove = require("./movement/makeMove");
 
 const implementPacman = (lastKeyPressed, pacman, boundaries, ctx) => {
   makeMove(lastKeyPressed);
