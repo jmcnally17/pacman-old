@@ -21,7 +21,7 @@ export default function Main() {
   };
 
   useEffect(() => {
-    fetch(url)
+    fetch(`${url}/backend`)
       .then((response) => response.text())
       .then((data) => setBackend(data));
   }, []);
@@ -39,7 +39,7 @@ export default function Main() {
     <div className="main" id="main">
       <div id="login">
         <h1>Welcome to Pac-Man!</h1>
-        <img className="title-pic" src={pic} />
+        <img className="title-pic" src={pic} alt="" />
         <div className="register">
           <label className="label" htmlFor="name-input">
             Enter your name:
