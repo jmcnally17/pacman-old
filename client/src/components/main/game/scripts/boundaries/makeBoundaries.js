@@ -1,7 +1,7 @@
 const Boundary = require("../../models/boundary");
 const makeTunnelBoundaries = require("./makeTunnelBoundaries");
 
-const makeBoundaries = (map, length) => {
+export default function makeBoundaries(map, length) {
   const boundaries = [];
   map.forEach((row, i) => {
     row.forEach((element, j) => {
@@ -19,6 +19,4 @@ const makeBoundaries = (map, length) => {
   });
 
   return boundaries;
-};
-
-module.exports = makeBoundaries;
+}

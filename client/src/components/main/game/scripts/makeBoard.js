@@ -1,4 +1,4 @@
-const makeBoundaries = require("./boundaries/makeBoundaries");
+import makeBoundaries from "./boundaries/makeBoundaries";
 const makePellets = require("./pellets/makePellets");
 const makePowerUps = require("./powerUps/makePowerUps");
 const makeGhosts = require("./ghosts/makeGhosts");
@@ -65,7 +65,7 @@ const level = {
   number: 1,
 };
 
-const makeBoard = () => {
+export default function makeBoard () {
   let animationId = requestAnimationFrame(makeBoard);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
@@ -80,5 +80,3 @@ const makeBoard = () => {
   displayLives(pacman);
   displayLevel(level);
 };
-
-module.exports = makeBoard;
