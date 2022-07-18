@@ -2,6 +2,7 @@
 const pickGhostDirection = require("./movement/pickGhostDirection");
 const checkPacmanGhostCollision = require("./collisions/checkPacmanGhostCollision");
 const updateCollisions = require("./movement/updateCollisions");
+const implementTunnel = require("../implementTunnel");
 
 const implementGhosts = (
   ghosts,
@@ -15,6 +16,7 @@ const implementGhosts = (
   ghosts.forEach((ghost) => {
     const collisions = [];
     ghost.update(ctx);
+    implementTunnel(ghost);
     updateCollisions(boundaries, collisions, ghost);
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
       pickGhostDirection(ghost, collisions);
