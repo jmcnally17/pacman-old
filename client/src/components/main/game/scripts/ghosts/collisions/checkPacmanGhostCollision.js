@@ -1,14 +1,14 @@
-const collisionConditional = require("./collisionConditional");
-const dealWithCollision = require("./dealWithCollision");
+import collisionConditional from "./collisionConditional";
+import dealWithCollision from "./dealWithCollision";
 
-const checkPacmanGhostCollision = (
+export default function checkPacmanGhostCollision(
   ghost,
   pacman,
   score,
   animationId,
   lastKeyPressed,
   ghosts
-) => {
+) {
   if (collisionConditional(ghost, pacman)) {
     dealWithCollision(
       ghost,
@@ -19,6 +19,4 @@ const checkPacmanGhostCollision = (
       ghosts
     );
   }
-};
-
-module.exports = checkPacmanGhostCollision;
+}

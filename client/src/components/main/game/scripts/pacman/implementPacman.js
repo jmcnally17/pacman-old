@@ -1,12 +1,15 @@
-const implementTunnel = require("../implementTunnel");
-const changeDirection = require("./movement/changeDirection");
-const makeMove = require("./movement/makeMove");
+import implementTunnel from "../implementTunnel";
+import changeDirection from "./movement/changeDirection";
+import makeMove from "./movement/makeMove";
 
-const implementPacman = (lastKeyPressed, pacman, boundaries, ctx) => {
+export default function implementPacman(
+  lastKeyPressed,
+  pacman,
+  boundaries,
+  ctx
+) {
   makeMove(lastKeyPressed);
   changeDirection(lastKeyPressed, pacman, boundaries);
   pacman.update(ctx);
   implementTunnel(pacman);
-};
-
-module.exports = implementPacman;
+}

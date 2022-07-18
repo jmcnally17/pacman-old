@@ -1,8 +1,8 @@
-const checkLevelUpCondition = require("./checkLevelUpCondition");
-const drawPellet = require("./drawPellet");
-const eatPellet = require("./eatPellet");
+import checkLevelUpCondition from "./checkLevelUpCondition";
+import drawPellet from "./drawPellet";
+import eatPellet from "./eatPellet";
 
-const implementPellets = (
+export default function implementPellets(
   pellets,
   ctx,
   pacman,
@@ -11,7 +11,7 @@ const implementPellets = (
   ghosts,
   powerUps,
   level
-) => {
+) {
   pellets.forEach((pellet) => {
     drawPellet(pellet, ctx);
     eatPellet(pellet, pacman, score);
@@ -24,6 +24,4 @@ const implementPellets = (
     powerUps,
     level
   );
-};
-
-module.exports = implementPellets;
+}

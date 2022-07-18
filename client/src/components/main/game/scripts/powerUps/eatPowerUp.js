@@ -1,6 +1,6 @@
-const scareGhost = require("./scareGhost");
+import scareGhost from "./scareGhost";
 
-const eatPowerUp = (powerUp, pacman, score, ghosts) => {
+export default function eatPowerUp(powerUp, pacman, score, ghosts) {
   if (
     powerUp.position.x === pacman.position.x &&
     powerUp.position.y === pacman.position.y &&
@@ -12,6 +12,4 @@ const eatPowerUp = (powerUp, pacman, score, ghosts) => {
       if (!ghost.isScared) scareGhost(ghost);
     });
   }
-};
-
-module.exports = eatPowerUp;
+}

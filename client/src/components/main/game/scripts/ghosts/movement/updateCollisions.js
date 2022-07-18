@@ -1,6 +1,6 @@
-const hitBoundaryConditional = require("../../boundaries/hitBoundaryConditional");
+import hitBoundaryConditional from "../../boundaries/hitBoundaryConditional";
 
-const updateCollisions = (boundaries, collisions, ghost) => {
+export default function updateCollisions(boundaries, collisions, ghost) {
   boundaries.forEach((boundary) => {
     if (
       !collisions.includes("down") &&
@@ -47,6 +47,4 @@ const updateCollisions = (boundaries, collisions, ghost) => {
   if (collisions.length > ghost.prevCollisions) {
     ghost.prevCollisions = collisions;
   }
-};
-
-module.exports = updateCollisions;
+}

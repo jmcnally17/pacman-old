@@ -1,13 +1,13 @@
-const resetAfterLevelUp = require("./resetAfterLevelUp");
+import resetAfterLevelUp from "./resetAfterLevelUp";
 
-const checkLevelUpCondition = (
+export default function checkLevelUpCondition(
   pellets,
   pacman,
   lastKeyPressed,
   ghosts,
   powerUps,
   level
-) => {
+) {
   let count = 0;
   pellets.forEach((pellet) => {
     if (pellet.hasBeenEaten) {
@@ -18,6 +18,4 @@ const checkLevelUpCondition = (
       level.number++;
     }
   });
-};
-
-module.exports = checkLevelUpCondition;
+}

@@ -1,4 +1,4 @@
-const makeMove = (lastKeyPressed) => {
+export default function makeMove(lastKeyPressed) {
   window.addEventListener("keydown", ({ key }) => {
     if (key === "ArrowUp") {
       lastKeyPressed.key = "up";
@@ -10,6 +10,4 @@ const makeMove = (lastKeyPressed) => {
       lastKeyPressed.key = "down";
     }
   });
-};
-
-module.exports = makeMove;
+}

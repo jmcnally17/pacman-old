@@ -1,9 +1,9 @@
-const pickGhostDirection = require("./movement/pickGhostDirection");
-const checkPacmanGhostCollision = require("./collisions/checkPacmanGhostCollision");
-const updateCollisions = require("./movement/updateCollisions");
-const implementTunnel = require("../implementTunnel");
+import pickGhostDirection from "./movement/pickGhostDirection";
+import checkPacmanGhostCollision from "./collisions/checkPacmanGhostCollision";
+import updateCollisions from "./movement/updateCollisions";
+import implementTunnel from "../implementTunnel";
 
-const implementGhosts = (
+export default function implementGhosts(
   ghosts,
   boundaries,
   ctx,
@@ -11,7 +11,7 @@ const implementGhosts = (
   score,
   animationId,
   lastKeyPressed
-) => {
+) {
   ghosts.forEach((ghost) => {
     const collisions = [];
     ghost.update(ctx);
@@ -29,6 +29,4 @@ const implementGhosts = (
       ghosts
     );
   });
-};
-
-module.exports = implementGhosts;
+}

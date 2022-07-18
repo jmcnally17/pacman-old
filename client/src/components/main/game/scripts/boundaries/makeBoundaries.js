@@ -1,5 +1,5 @@
-const Boundary = require("../../models/boundary");
-const makeTunnelBoundaries = require("./makeTunnelBoundaries");
+import Boundary from "../../models/boundary";
+import makeTunnelBoundaries from "./makeTunnelBoundaries";
 
 export default function makeBoundaries(map, length) {
   const boundaries = [];

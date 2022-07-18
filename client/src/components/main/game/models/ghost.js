@@ -1,4 +1,4 @@
-class Ghost {
+export default class Ghost {
   static speed = 2.5;
   constructor({ position, velocity, colour }) {
     this.originalPosition = position;
@@ -37,5 +37,3 @@ class Ghost {
     this.prevCollisions = [];
   }
 }
-
-module.exports = Ghost;

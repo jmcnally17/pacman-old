@@ -1,6 +1,6 @@
-const Ghost = require("../../models/ghost");
+import Ghost from "../../models/ghost";
 
-const makeGhosts = () => {
+export default function makeGhosts() {
   const ghosts = [
     new Ghost({
       position: {
@@ -48,6 +48,4 @@ const makeGhosts = () => {
     }),
   ];
   return ghosts;
-};
-
-module.exports = makeGhosts;
+}

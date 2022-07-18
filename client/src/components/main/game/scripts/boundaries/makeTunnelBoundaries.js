@@ -1,6 +1,6 @@
-const Boundary = require("../../models/boundary");
+import Boundary from "../../models/boundary";
 
-const makeTunnelBoundaries = (boundaries) => {
+export default function makeTunnelBoundaries(boundaries) {
   const tunnelBoundaryOne = new Boundary({
     position: {
       x: -20,
@@ -31,6 +31,4 @@ const makeTunnelBoundaries = (boundaries) => {
     tunnelBoundaryThree,
     tunnelBoundaryFour
   );
-};
-
-module.exports = makeTunnelBoundaries;
+}

@@ -1,7 +1,5 @@
-const drawPellet = (pellet, ctx) => {
+export default function drawPellet(pellet, ctx) {
   if (!pellet.hasBeenEaten) {
     pellet.draw(ctx);
   }
-};
-
-module.exports = drawPellet;
+}

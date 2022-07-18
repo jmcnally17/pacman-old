@@ -1,10 +1,10 @@
-const resetAfterLevelUp = (
+export default function resetAfterLevelUp(
   pacman,
   lastKeyPressed,
   ghosts,
   pellets,
   powerUps
-) => {
+) {
   pacman.reset();
   lastKeyPressed.key = "";
   ghosts.forEach((ghost) => {
@@ -18,6 +18,4 @@ const resetAfterLevelUp = (
   powerUps.forEach((powerUp) => {
     if (powerUp.hasBeenEaten) powerUp.changeEatenState();
   });
-};
-
-module.exports = resetAfterLevelUp;
+}

@@ -1,4 +1,4 @@
-class PacMan {
+export default class PacMan {
   constructor({ position, velocity }) {
     this.position = position;
     this.velocity = velocity;
@@ -68,5 +68,3 @@ class PacMan {
     this.rotation = 0;
   }
 }
-
-module.exports = PacMan;

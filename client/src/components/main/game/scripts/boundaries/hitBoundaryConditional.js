@@ -1,4 +1,8 @@
-const hitBoundaryConditional = (character, boundary, { velocity }) => {
+export default function hitBoundaryConditional(
+  character,
+  boundary,
+  { velocity }
+) {
   const padding = boundary.width / 2 - character.radius - 1;
   if (
     character.position.y - character.radius + velocity.y <=
@@ -13,6 +17,4 @@ const hitBoundaryConditional = (character, boundary, { velocity }) => {
     return true;
   }
   return false;
-};
-
-module.exports = hitBoundaryConditional;
+}

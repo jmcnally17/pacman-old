@@ -1,6 +1,6 @@
-const checkDirectionChange = require("./checkDirectionChange");
+import checkDirectionChange from "./checkDirectionChange";
 
-const changeDirection = (lastKeyPressed, pacman, boundaries) => {
+export default function changeDirection(lastKeyPressed, pacman, boundaries) {
   if (lastKeyPressed.key === "up") {
     checkDirectionChange(pacman, boundaries, {
       velocity: {
@@ -30,6 +30,4 @@ const changeDirection = (lastKeyPressed, pacman, boundaries) => {
       },
     });
   }
-};
-
-module.exports = changeDirection;
+}

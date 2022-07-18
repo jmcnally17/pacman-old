@@ -1,4 +1,4 @@
-class Pellet {
+export default class Pellet {
   constructor({ position }) {
     this.position = position;
     this.radius = 2;
@@ -17,5 +17,3 @@ class Pellet {
     ctx.closePath();
   }
 }
-
-module.exports = Pellet;

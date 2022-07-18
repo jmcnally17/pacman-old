@@ -1,4 +1,4 @@
-const pickGhostDirection = (ghost, collisions) => {
+export default function pickGhostDirection(ghost, collisions) {
   if (ghost.velocity.x > 0) ghost.prevCollisions.push("right");
   else if (ghost.velocity.x < 0) ghost.prevCollisions.push("left");
   else if (ghost.velocity.y > 0) ghost.prevCollisions.push("down");
@@ -23,5 +23,4 @@ const pickGhostDirection = (ghost, collisions) => {
     ghost.velocity.y = 0;
   }
   ghost.prevCollisions = [];
-};
-module.exports = pickGhostDirection;
+}

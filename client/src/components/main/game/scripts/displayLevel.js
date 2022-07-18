@@ -1,6 +1,4 @@
-const displayLevel = (level) => {
+export default function displayLevel(level) {
   const levelEl = document.querySelector("#level");
   levelEl.innerText = `Level: ${level.number}`;
-};
-
-module.exports = displayLevel;
+}

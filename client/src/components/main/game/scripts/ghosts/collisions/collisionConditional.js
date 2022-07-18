@@ -1,4 +1,4 @@
-const collisionConditional = (ghost, pacman) => {
+export default function collisionConditional(ghost, pacman) {
   if (
     ghost.position.y - ghost.radius <= pacman.position.y &&
     ghost.position.y + ghost.radius >= pacman.position.y &&
@@ -8,6 +8,4 @@ const collisionConditional = (ghost, pacman) => {
     return true;
   }
   return false;
-};
-
-module.exports = collisionConditional;
+}

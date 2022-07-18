@@ -1,6 +1,6 @@
-const hitBoundaryConditional = require("../../boundaries/hitBoundaryConditional");
+import hitBoundaryConditional from "../../boundaries/hitBoundaryConditional";
 
-const checkDirectionChange = (pacman, boundaries, { velocity }) => {
+export default function checkDirectionChange(pacman, boundaries, { velocity }) {
   let count = 0;
   for (let i = 0; i < boundaries.length; i++) {
     if (hitBoundaryConditional(pacman, boundaries[i], { velocity })) {
@@ -11,6 +11,4 @@ const checkDirectionChange = (pacman, boundaries, { velocity }) => {
     pacman.velocity.x = velocity.x;
     pacman.velocity.y = velocity.y;
   }
-};
-
-module.exports = checkDirectionChange;
+}

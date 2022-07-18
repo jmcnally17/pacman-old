@@ -1,6 +1,6 @@
-const hitBoundaryConditional = require("./hitBoundaryConditional");
+import hitBoundaryConditional from "./hitBoundaryConditional";
 
-const stopPacmanCollision = (boundary, pacman) => {
+export default function stopPacmanCollision(boundary, pacman) {
   if (
     hitBoundaryConditional(pacman, boundary, {
       velocity: {
@@ -12,6 +12,4 @@ const stopPacmanCollision = (boundary, pacman) => {
     pacman.velocity.x = 0;
     pacman.velocity.y = 0;
   }
-};
-
-module.exports = stopPacmanCollision;
+}

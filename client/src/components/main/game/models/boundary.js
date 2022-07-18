@@ -1,4 +1,4 @@
-class Boundary {
+export default class Boundary {
   constructor({ position }) {
     this.position = position;
     this.width = 20;
@@ -10,5 +10,3 @@ class Boundary {
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 }
-
-module.exports = Boundary;

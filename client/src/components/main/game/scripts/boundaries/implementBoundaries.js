@@ -1,10 +1,8 @@
-const stopPacmanCollision = require("./stopPacmanCollision");
+import stopPacmanCollision from "./stopPacmanCollision";
 
-const implementBoundaries = (boundaries, ctx, pacman) => {
+export default function implementBoundaries(boundaries, ctx, pacman) {
   boundaries.forEach((boundary) => {
     boundary.draw(ctx);
     stopPacmanCollision(boundary, pacman);
   });
-};
-
-module.exports = implementBoundaries;
+}

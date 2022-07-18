@@ -1,6 +1,6 @@
-const Pellet = require("../../models/pellet");
+import Pellet from "../../models/pellet";
 
-const makePellets = (map, length) => {
+export default function makePellets(map, length) {
   const pellets = [];
   map.forEach((row, i) => {
     row.forEach((element, j) => {
@@ -16,6 +16,4 @@ const makePellets = (map, length) => {
     });
   });
   return pellets;
-};
-
-module.exports = makePellets;
+}

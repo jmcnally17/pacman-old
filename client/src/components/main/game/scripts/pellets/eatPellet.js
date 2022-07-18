@@ -1,4 +1,4 @@
-const eatPellet = (pellet, pacman, score) => {
+export default function eatPellet(pellet, pacman, score) {
   if (
     pellet.position.x === pacman.position.x &&
     pellet.position.y === pacman.position.y &&
@@ -7,6 +7,4 @@ const eatPellet = (pellet, pacman, score) => {
     pellet.changeEatenState();
     score.points += 10;
   }
-};
-
-module.exports = eatPellet;
+}

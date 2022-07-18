@@ -1,6 +1,6 @@
-const PowerUp = require("../../models/powerUp");
+import PowerUp from "../../models/powerUp";
 
-const makePowerUps = (map, length) => {
+export default function makePowerUps(map, length) {
   const powerUps = [];
   map.forEach((row, i) => {
     row.forEach((element, j) => {
@@ -16,6 +16,4 @@ const makePowerUps = (map, length) => {
     });
   });
   return powerUps;
-};
-
-module.exports = makePowerUps;
+}

@@ -1,4 +1,4 @@
-class PowerUp {
+export default class PowerUp {
   constructor({ position }) {
     this.position = position;
     this.radius = 7;
@@ -17,5 +17,3 @@ class PowerUp {
     ctx.closePath();
   }
 }
-
-module.exports = PowerUp;

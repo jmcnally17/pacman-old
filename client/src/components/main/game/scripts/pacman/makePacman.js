@@ -1,6 +1,6 @@
-const PacMan = require("../../models/pacman");
+import PacMan from "../../models/pacman";
 
-const makePacman = () => {
+export default function makePacman() {
   const pacman = new PacMan({
     position: {
       x: 290,
@@ -12,6 +12,4 @@ const makePacman = () => {
     },
   });
   return pacman;
-};
-
-module.exports = makePacman;
+}
