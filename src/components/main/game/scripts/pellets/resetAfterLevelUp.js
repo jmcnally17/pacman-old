@@ -10,6 +10,8 @@ const resetAfterLevelUp = (
   lastKeyPressed.key = "";
   ghosts.forEach((ghost) => {
     ghost.reset();
+    if (ghost.isScared) ghost.changeScaredState();
+    clearTimeout(ghost.scaredTimeout);
   });
   pellets.forEach((pellet) => {
     pellet.changeEatenState();

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const scareGhost = (ghost) => {
   ghost.changeScaredState();
-  setTimeout(() => {
+  ghost.scaredTimeout = setTimeout(() => {
     ghost.changeScaredState();
   }, 5000);
 };
