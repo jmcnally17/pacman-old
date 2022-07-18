@@ -10,13 +10,21 @@ const implementPellets = (
   score,
   lastKeyPressed,
   ghosts,
-  powerUps
+  powerUps,
+  level
 ) => {
   pellets.forEach((pellet) => {
     drawPellet(pellet, ctx);
     eatPellet(pellet, pacman, score);
   });
-  checkLevelUpCondition(pellets, pacman, lastKeyPressed, ghosts, powerUps);
+  checkLevelUpCondition(
+    pellets,
+    pacman,
+    lastKeyPressed,
+    ghosts,
+    powerUps,
+    level
+  );
 };
 
 module.exports = implementPellets;

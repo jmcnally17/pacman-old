@@ -11,6 +11,7 @@ const implementGhosts = require("./ghosts/implementGhosts");
 const implementPacman = require("./pacman/implementPacman");
 const displayScore = require("./displayScore");
 const displayLives = require("./displayLives");
+const displayLevel = require("./displayLevel");
 
 const length = 40;
 const map = [
@@ -43,6 +44,10 @@ const lastKeyPressed = {
   key: "",
 };
 
+const level = {
+  number: 1,
+};
+
 const makeBoard = () => {
   let animationId = requestAnimationFrame(makeBoard);
   const board = document.querySelector("#board");
@@ -57,7 +62,8 @@ const makeBoard = () => {
     score,
     lastKeyPressed,
     ghosts,
-    powerUps
+    powerUps,
+    level
   );
   implementPowerUps(powerUps, ctx, pacman, score, ghosts);
   implementGhosts(
@@ -72,6 +78,7 @@ const makeBoard = () => {
   implementPacman(lastKeyPressed, pacman, boundaries, ctx);
   displayScore(score);
   displayLives(pacman);
+  displayLevel(level);
 };
 
 module.exports = makeBoard;

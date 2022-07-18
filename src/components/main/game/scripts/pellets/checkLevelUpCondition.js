@@ -6,7 +6,8 @@ const checkLevelUpCondition = (
   pacman,
   lastKeyPressed,
   ghosts,
-  powerUps
+  powerUps,
+  level
 ) => {
   let count = 0;
   pellets.forEach((pellet) => {
@@ -15,7 +16,7 @@ const checkLevelUpCondition = (
     }
     if (count === pellets.length) {
       resetAfterLevelUp(pacman, lastKeyPressed, ghosts, pellets, powerUps);
-      console.log("Next level");
+      level.number++;
     }
   });
 };
