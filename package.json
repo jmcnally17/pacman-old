@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "build": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
