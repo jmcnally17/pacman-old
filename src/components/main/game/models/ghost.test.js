@@ -68,6 +68,10 @@ describe(Ghost, () => {
     expect(ghost.isScared).toBe(false);
   });
 
+  it("has a scared timeout variable which is null upon initialisation", () => {
+    expect(ghost.scaredTimeout).toBe(null);
+  });
+
   it("changeScaredState can change isScared to true when called", () => {
     ghost.changeScaredState();
     expect(ghost.isScared).toBe(true);

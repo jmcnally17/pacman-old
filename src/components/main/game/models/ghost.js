@@ -11,6 +11,7 @@ class Ghost {
     this.prevCollisions = [];
     this.speed = 2.5;
     this.isScared = false;
+    this.scaredTimeout = null;
   }
 
   draw(ctx) {
