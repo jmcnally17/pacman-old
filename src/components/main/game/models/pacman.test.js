@@ -5,8 +5,8 @@ describe(PacMan, () => {
   beforeEach(() => {
     pacman = new PacMan({
       position: {
-        x: 60,
-        y: 60,
+        x: 290,
+        y: 470,
       },
       velocity: {
         x: 7.5,
@@ -21,8 +21,8 @@ describe(PacMan, () => {
 
   it("has a position that is passed in on instantiation", () => {
     expect(pacman.position).toEqual({
-      x: 60,
-      y: 60,
+      x: 290,
+      y: 470,
     });
   });
 
@@ -34,7 +34,7 @@ describe(PacMan, () => {
   });
 
   it("has a constant speed instance variable", () => {
-    expect(pacman.speed).toBe(5);
+    expect(pacman.speed).toBe(2.5);
   });
 
   it("has an initial angle at which its mouth is open", () => {
@@ -66,8 +66,8 @@ describe(PacMan, () => {
     this.rotation += Math.PI;
     pacman.reset();
     expect(pacman.position).toEqual({
-      x: 60,
-      y: 60,
+      x: 290,
+      y: 470,
     });
     expect(pacman.velocity).toEqual({
       x: 0,
