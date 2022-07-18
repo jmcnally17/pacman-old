@@ -4,7 +4,7 @@ class PacMan {
     this.position = position;
     this.velocity = velocity;
     this.radius = 15;
-    this.speed = 5;
+    this.speed = 2.5;
     this.radians = Math.PI / 4;
     this.openRate = Math.PI / 48;
     this.rotation = 0;
@@ -62,8 +62,8 @@ class PacMan {
   }
 
   reset() {
-    this.position.x = 60;
-    this.position.y = 60;
+    this.position.x = 290;
+    this.position.y = 470;
     this.velocity.x = 0;
     this.velocity.y = 0;
     this.rotation = 0;

@@ -4,8 +4,8 @@ const PacMan = require("../../models/pacman");
 const makePacman = () => {
   const pacman = new PacMan({
     position: {
-      x: 60,
-      y: 60,
+      x: 290,
+      y: 470,
     },
     velocity: {
       x: 0,

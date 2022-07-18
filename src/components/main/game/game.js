@@ -17,7 +17,7 @@ export default function Game() {
           <div className="lives" id="lives"></div>
         </div>
       </div>
-      <canvas id="board" className="board" width="440" height="520"></canvas>
+      <canvas id="board" className="board" width="560" height="620"></canvas>
     </div>
   );
 }

@@ -5,19 +5,19 @@ const makeGhosts = () => {
   const ghosts = [
     new Ghost({
       position: {
-        x: 380,
-        y: 60,
+        x: 250,
+        y: 230,
       },
       velocity: {
         x: 0,
-        y: Ghost.speed,
+        y: -Ghost.speed,
       },
       colour: "red",
     }),
     new Ghost({
       position: {
-        x: 60,
-        y: 460,
+        x: 310,
+        y: 230,
       },
       velocity: {
         x: 0,
@@ -27,14 +27,25 @@ const makeGhosts = () => {
     }),
     new Ghost({
       position: {
-        x: 380,
-        y: 460,
+        x: 190,
+        y: 290,
       },
       velocity: {
         x: -Ghost.speed,
         y: 0,
       },
       colour: "cyan",
+    }),
+    new Ghost({
+      position: {
+        x: 370,
+        y: 290,
+      },
+      velocity: {
+        x: Ghost.speed,
+        y: 0,
+      },
+      colour: "orange",
     }),
   ];
   return ghosts;

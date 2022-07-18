@@ -2,8 +2,8 @@
 class Boundary {
   constructor({ position }) {
     this.position = position;
-    this.width = 40;
-    this.height = 40;
+    this.width = 20;
+    this.height = 20;
   }
 
   draw(ctx) {
