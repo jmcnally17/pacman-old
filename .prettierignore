@@ -1,2 +1,2 @@
 .github
-src/components/main/game/scripts/makeBoard.js
+client/src/components/main/game/scripts/makeBoard.js
