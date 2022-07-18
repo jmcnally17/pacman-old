@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 const Boundary = require("../../models/boundary");
+const makeTunnelBoundaries = require("./makeTunnelBoundaries");
 
 const makeBoundaries = (map, length) => {
   const boundaries = [];
@@ -15,7 +16,9 @@ const makeBoundaries = (map, length) => {
         boundaries.push(boundary);
       }
     });
+    makeTunnelBoundaries(boundaries);
   });
+
   return boundaries;
 };
 
