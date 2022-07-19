@@ -5,7 +5,6 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 
-const indexRouter = require("./routes/index");
 const scoresRouter = require("./routes/scores");
 
 const app = express();
@@ -25,7 +24,6 @@ app.use(
   })
 );
 
-app.use("/backend", indexRouter);
 app.use("/backend/scores", scoresRouter);
 
 app.get("*", (req, res) => {
