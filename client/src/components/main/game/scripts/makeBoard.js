@@ -89,7 +89,7 @@ export default function makeBoard (name, mainEl) {
   implementBoundaries(boundaries, ctx, pacman);
   implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level);
   implementPowerUps(powerUps, ctx, pacman, score, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl);
+  implementGhosts(ghosts, boundaries, ctx, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level);
   implementPacman(lastKeyPressed, pacman, boundaries, ctx);
   displayScore(score);
   displayLives(pacman);

@@ -8,7 +8,10 @@ export default function dealWithCollision(
   lastKeyPressed,
   ghosts,
   name,
-  mainEl
+  mainEl,
+  pellets,
+  powerUps,
+  level
 ) {
   if (!ghost.isScared) {
     ghostAttack(
@@ -18,7 +21,10 @@ export default function dealWithCollision(
       lastKeyPressed,
       ghosts,
       name,
-      mainEl
+      mainEl,
+      pellets,
+      powerUps,
+      level
     );
   } else {
     score.points += 200;

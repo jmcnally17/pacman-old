@@ -12,7 +12,10 @@ export default function implementGhosts(
   animationId,
   lastKeyPressed,
   name,
-  mainEl
+  mainEl,
+  pellets,
+  powerUps,
+  level
 ) {
   ghosts.forEach((ghost) => {
     const collisions = [];
@@ -30,7 +33,10 @@ export default function implementGhosts(
       lastKeyPressed,
       ghosts,
       name,
-      mainEl
+      mainEl,
+      pellets,
+      powerUps,
+      level
     );
   });
 }

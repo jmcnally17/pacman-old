@@ -9,7 +9,10 @@ export default function checkPacmanGhostCollision(
   lastKeyPressed,
   ghosts,
   name,
-  mainEl
+  mainEl,
+  pellets,
+  powerUps,
+  level
 ) {
   if (collisionConditional(ghost, pacman)) {
     dealWithCollision(
@@ -20,7 +23,10 @@ export default function checkPacmanGhostCollision(
       lastKeyPressed,
       ghosts,
       name,
-      mainEl
+      mainEl,
+      pellets,
+      powerUps,
+      level
     );
   }
 }
