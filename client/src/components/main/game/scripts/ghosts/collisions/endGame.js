@@ -1,7 +1,8 @@
 import saveScore from "./saveScore";
+import Leaderboard from "../../../../leaderboard/leaderboard";
 
-export default function endGame(animationId, score, name) {
+export default function endGame(animationId, score, name, mainEl) {
   cancelAnimationFrame(animationId);
-  console.log(`Game Over!\nYou scored ${score.points} points.`);
   saveScore(score, name);
+  mainEl.render(<Leaderboard points={score.points} />);
 }

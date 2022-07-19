@@ -69,11 +69,16 @@ const player = {
   name: "",
 }
 
+const reactRoot = {
+  mainEl: null,
+}
+
 let count = 0;
 
-export default function makeBoard (name) {
+export default function makeBoard (name, mainEl) {
   if (count === 0) {
     player.name = name;
+    reactRoot.mainEl = mainEl;
     count ++;
   }
   let animationId = requestAnimationFrame(makeBoard);
@@ -84,7 +89,7 @@ export default function makeBoard (name) {
   implementBoundaries(boundaries, ctx, pacman);
   implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level);
   implementPowerUps(powerUps, ctx, pacman, score, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, pacman, score, animationId, lastKeyPressed, player.name);
+  implementGhosts(ghosts, boundaries, ctx, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl);
   implementPacman(lastKeyPressed, pacman, boundaries, ctx);
   displayScore(score);
   displayLives(pacman);

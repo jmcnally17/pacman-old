@@ -7,10 +7,19 @@ export default function dealWithCollision(
   score,
   lastKeyPressed,
   ghosts,
-  name
+  name,
+  mainEl
 ) {
   if (!ghost.isScared) {
-    ghostAttack(pacman, animationId, score, lastKeyPressed, ghosts, name);
+    ghostAttack(
+      pacman,
+      animationId,
+      score,
+      lastKeyPressed,
+      ghosts,
+      name,
+      mainEl
+    );
   } else {
     score.points += 200;
     ghost.reset();

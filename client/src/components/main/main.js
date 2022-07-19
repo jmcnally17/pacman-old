@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import pic from "./title-pic.jpg";
 import "./main.css";
 import Game from "./game/game";
-import { useEffect } from "react";
 
 export default function Main() {
   const [name, setName] = useState("");
@@ -27,7 +26,7 @@ export default function Main() {
       window.alert("Name must be 15 characters or shorter");
     } else {
       const mainEl = ReactDOM.createRoot(document.getElementById("main"));
-      mainEl.render(<Game name={name} />);
+      mainEl.render(<Game name={name} mainEl={mainEl} />);
     }
   };
 

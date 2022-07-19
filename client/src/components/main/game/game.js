@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import "./game.css";
 import makeBoard from "./scripts/makeBoard";
 
-export default function Game({ name }) {
+export default function Game({ name, mainEl }) {
   useEffect(() => {
-    makeBoard(name);
-  }, [name]);
+    makeBoard(name, mainEl);
+  }, [name, mainEl]);
 
   return (
     <div>

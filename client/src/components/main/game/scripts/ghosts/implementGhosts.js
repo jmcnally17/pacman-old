@@ -11,7 +11,8 @@ export default function implementGhosts(
   score,
   animationId,
   lastKeyPressed,
-  name
+  name,
+  mainEl
 ) {
   ghosts.forEach((ghost) => {
     const collisions = [];
@@ -28,7 +29,8 @@ export default function implementGhosts(
       animationId,
       lastKeyPressed,
       ghosts,
-      name
+      name,
+      mainEl
     );
   });
 }

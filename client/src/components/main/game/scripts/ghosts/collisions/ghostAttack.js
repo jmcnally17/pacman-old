@@ -7,10 +7,11 @@ export default function ghostAttack(
   score,
   lastKeyPressed,
   ghosts,
-  name
+  name,
+  mainEl
 ) {
   if (pacman.lives <= 0) {
-    endGame(animationId, score, name);
+    endGame(animationId, score, name, mainEl);
   } else {
     pacman.loseLife();
     resetAfterDeath(pacman, lastKeyPressed, ghosts);
