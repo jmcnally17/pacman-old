@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "test:client": "cd client && CI=true npm test",
     "test:client:coverage": "cd client && CI=true npm test -- --coverage",
     "test": "npm run test:client",
@@ -16,9 +16,11 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "mongoose": "^6.4.5",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "jest": "^28.1.2"
+    "jest": "^28.1.2",
+    "nodemon": "^2.0.19"
   }
 }

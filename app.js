@@ -3,18 +3,26 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var cors = require("cors");
 
 var indexRouter = require("./routes/index");
 
 var app = express();
 
+var url = process.env.REACT_APP_URL || "http://localhost:3000";
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-
 app.use(express.static(path.resolve(__dirname, "./client/build")));
+
+app.use(
+  cors({
+    origin: url,
+    credentials: true,
+  })
+);
 
 app.use("/backend", indexRouter);
 
