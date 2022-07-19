@@ -5,26 +5,20 @@ import "./main.css";
 import Game from "./game/game";
 import { useEffect } from "react";
 
-let url;
-if (process.env.REACT_APP_URL) {
-  url = process.env.REACT_APP_URL;
-} else {
-  url = "http://localhost:9000";
-}
-
 export default function Main() {
   const [name, setName] = useState("");
-  const [backend, setBackend] = useState("");
+
+  useEffect(() => {
+    window.addEventListener("keydown", (event) => {
+      if (["ArrowUp", "ArrowDown"].includes(event.code)) {
+        event.preventDefault();
+      }
+    });
+  }, []);
 
   const handleName = ({ target }) => {
     setName(target.value);
   };
-
-  useEffect(() => {
-    fetch(`${url}/backend`)
-      .then((response) => response.text())
-      .then((data) => setBackend(data));
-  }, []);
 
   const handleSubmit = () => {
     if (name === "") {
@@ -56,7 +50,6 @@ export default function Main() {
           </button>
         </div>
       </div>
-      <p className="backend">{backend}</p>
     </div>
   );
 }
