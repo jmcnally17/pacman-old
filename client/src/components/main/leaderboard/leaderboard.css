@@ -1,3 +1,25 @@
 h4 {
   color: white;
 }
+
+.buttons {
+  margin: auto;
+  width: 250px;
+  background-color: blue;
+}
+
+.playAgain {
+  float: left;
+}
+
+.changePlayer {
+  float: right;
+}
+
+button {
+  font-size: 12pt;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 3px;
+  cursor: pointer;
+}

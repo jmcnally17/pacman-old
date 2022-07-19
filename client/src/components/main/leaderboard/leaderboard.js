@@ -15,8 +15,14 @@ export default function Leaderboard({ score, mainEl, name }) {
     <div className="leaderboard">
       <h1>Game Over</h1>
       <h4>You scored {score.points} points</h4>
-      <button onClick={handlePlayAgain}>Play Again</button>
-      <button onClick={handleChangePlayer}>Change Player</button>
+      <div className="buttons">
+        <button className="playAgain" onClick={handlePlayAgain}>
+          Play Again
+        </button>
+        <button className="changePlayer" onClick={handleChangePlayer}>
+          Change Player
+        </button>
+      </div>
     </div>
   );
 }
