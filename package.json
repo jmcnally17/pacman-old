@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "test:unit": "jest spec",
     "test:unit:coverage": "jest spec --coverage",
     "test:client": "cd client && CI=true npm test",
