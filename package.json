@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "start-dev": "nodemon ./bin/www",
     "test:unit": "jest spec",
     "test:unit:coverage": "jest spec --coverage",
     "test:client": "cd client && CI=true npm test",
