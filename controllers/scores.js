@@ -8,8 +8,10 @@ const ScoresController = {
         if (err) {
           throw err;
         }
+        const sorted = scores.sort((a, b) => b.points - a.points);
+        const topTen = sorted.slice(0, 10);
         res.json({
-          scores: scores,
+          scores: topTen,
         });
       });
   },
