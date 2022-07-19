@@ -23,6 +23,8 @@ export default function Main() {
   const handleSubmit = () => {
     if (name === "") {
       window.alert("You must enter a name");
+    } else if (name.length > 15) {
+      window.alert("Name must be 15 characters or shorter");
     } else {
       const mainEl = ReactDOM.createRoot(document.getElementById("main"));
       mainEl.render(<Game name={name} />);
