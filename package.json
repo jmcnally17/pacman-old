@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
+    "test:unit": "jest spec",
+    "test:unit:coverage": "jest spec --coverage",
     "test:client": "cd client && CI=true npm test",
     "test:client:coverage": "cd client && CI=true npm test -- --coverage",
-    "test": "npm run test:client",
-    "test:coverage": "npm run test:client:coverage",
+    "test": "npm run test:unit && npm run test:client",
+    "test:coverage": "npm run test:unit:coverage && npm run test:client:coverage",
     "build": "cd client && npm install && npm run build"
   },
   "dependencies": {
