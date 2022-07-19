@@ -1,15 +1,16 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var cors = require("cors");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const cors = require("cors");
 
-var indexRouter = require("./routes/index");
+const indexRouter = require("./routes/index");
+const scoresRouter = require("./routes/scores");
 
-var app = express();
+const app = express();
 
-var url = process.env.REACT_APP_URL || "http://localhost:3000";
+const url = process.env.REACT_APP_URL || "http://localhost:3000";
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -25,6 +26,7 @@ app.use(
 );
 
 app.use("/backend", indexRouter);
+app.use("/backend/scores", scoresRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
