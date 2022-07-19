@@ -7,7 +7,8 @@ export default function checkPacmanGhostCollision(
   score,
   animationId,
   lastKeyPressed,
-  ghosts
+  ghosts,
+  name
 ) {
   if (collisionConditional(ghost, pacman)) {
     dealWithCollision(
@@ -16,7 +17,8 @@ export default function checkPacmanGhostCollision(
       animationId,
       score,
       lastKeyPressed,
-      ghosts
+      ghosts,
+      name
     );
   }
 }

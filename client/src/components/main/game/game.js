@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import "./game.css";
 import makeBoard from "./scripts/makeBoard";
 
-export default function Game() {
+export default function Game({ name }) {
   useEffect(() => {
-    makeBoard();
-  }, []);
+    makeBoard(name);
+  }, [name]);
 
   return (
     <div>
-      <h1>Let&apos;s Play!</h1>
+      <h1>Let&apos;s Play {name}!</h1>
       <div className="table">
         <div className="gameInfo">
           <div className="score" id="score"></div>

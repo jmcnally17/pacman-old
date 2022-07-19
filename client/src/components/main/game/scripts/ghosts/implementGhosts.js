@@ -10,7 +10,8 @@ export default function implementGhosts(
   pacman,
   score,
   animationId,
-  lastKeyPressed
+  lastKeyPressed,
+  name
 ) {
   ghosts.forEach((ghost) => {
     const collisions = [];
@@ -26,7 +27,8 @@ export default function implementGhosts(
       score,
       animationId,
       lastKeyPressed,
-      ghosts
+      ghosts,
+      name
     );
   });
 }

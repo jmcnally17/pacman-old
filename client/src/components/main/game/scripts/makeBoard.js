@@ -65,7 +65,17 @@ const level = {
   number: 1,
 };
 
-export default function makeBoard () {
+const player = {
+  name: "",
+}
+
+let count = 0;
+
+export default function makeBoard (name) {
+  if (count === 0) {
+    player.name = name;
+    count ++;
+  }
   let animationId = requestAnimationFrame(makeBoard);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
@@ -74,7 +84,7 @@ export default function makeBoard () {
   implementBoundaries(boundaries, ctx, pacman);
   implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level);
   implementPowerUps(powerUps, ctx, pacman, score, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, pacman, score, animationId, lastKeyPressed);
+  implementGhosts(ghosts, boundaries, ctx, pacman, score, animationId, lastKeyPressed, player.name);
   implementPacman(lastKeyPressed, pacman, boundaries, ctx);
   displayScore(score);
   displayLives(pacman);

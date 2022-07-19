@@ -31,7 +31,7 @@ export default function Main() {
       window.alert("You must enter a name");
     } else {
       const mainEl = ReactDOM.createRoot(document.getElementById("main"));
-      mainEl.render(<Game />);
+      mainEl.render(<Game name={name} />);
     }
   };
 
