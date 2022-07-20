@@ -6,13 +6,15 @@ h4 {
   margin: auto;
   background-color: rgb(15, 15, 70);
   margin-bottom: 20px;
-  font-size: 20pt;
+  font-size: 14pt;
   border-collapse: collapse;
 }
 
 th,
 td {
   padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 tr:nth-child(odd) {
@@ -29,7 +31,7 @@ tr:nth-child(odd) {
 .nameHeader,
 .name {
   text-align: left;
-  width: 250px;
+  width: 300px;
 }
 
 .rankHeader,
