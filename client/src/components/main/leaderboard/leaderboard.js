@@ -15,7 +15,16 @@ export default function Leaderboard({ score, mainEl, name }) {
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setScores(data.scores));
+      .then((data) => {
+        while (data.scores.length < 10) {
+          data.scores.push({
+            name: "--",
+            points: "--",
+          });
+        }
+        return data.scores;
+      })
+      .then((scores) => setScores(scores));
   }, []);
 
   const handlePlayAgain = () => {
