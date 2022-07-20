@@ -1,6 +1,6 @@
 import "./leaderboard.css";
 import Game from "../game/game";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 let url;
 if (process.env.REACT_APP_URL) {
@@ -10,10 +10,12 @@ if (process.env.REACT_APP_URL) {
 }
 
 export default function Leaderboard({ score, mainEl, name }) {
+  const [scores, setScores] = useState([]);
+
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
-      .then((data) => console.log(data.scores));
+      .then((data) => setScores(data.scores));
   }, []);
 
   const handlePlayAgain = () => {
@@ -29,6 +31,24 @@ export default function Leaderboard({ score, mainEl, name }) {
     <div className="leaderboard">
       <h1>Game Over</h1>
       <h4>You scored {score.points} points</h4>
+      <table className="list">
+        <tbody>
+          <tr>
+            <th className="rankHeader">Rank</th>
+            <th className="nameHeader">Name</th>
+            <th className="scoreHeader">Score</th>
+          </tr>
+          {scores.map((score, index) => {
+            return (
+              <tr className="entry" key={index}>
+                <td className="rank">{index + 1}</td>
+                <td className="name">{score.name}</td>
+                <td className="points">{score.points}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
       <div className="buttons">
         <button className="playAgain" onClick={handlePlayAgain}>
           Play Again

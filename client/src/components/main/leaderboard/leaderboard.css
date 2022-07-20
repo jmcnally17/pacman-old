@@ -2,10 +2,48 @@ h4 {
   color: white;
 }
 
+.list {
+  margin: auto;
+  background-color: rgb(15, 15, 70);
+  margin-bottom: 20px;
+  font-size: 20pt;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 5px;
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(41, 34, 101);
+}
+
+.rankHeader,
+.nameHeader,
+.scoreHeader {
+  background-color: rgb(30, 53, 92);
+  color: white;
+}
+
+.nameHeader,
+.name {
+  text-align: left;
+  width: 250px;
+}
+
+.rankHeader,
+.rank {
+  padding-right: 50px;
+}
+
+.entry {
+  color: yellow;
+}
+
 .buttons {
   margin: auto;
-  width: 250px;
-  background-color: blue;
+  width: 400px;
 }
 
 .playAgain {
@@ -17,9 +55,9 @@ h4 {
 }
 
 button {
-  font-size: 12pt;
+  font-size: 16pt;
   border: 2px solid #ccc;
   border-radius: 4px;
-  padding: 3px;
+  padding: 4px;
   cursor: pointer;
 }
