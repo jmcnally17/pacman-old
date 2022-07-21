@@ -13,7 +13,7 @@ export default function makeTunnelBoundaries(boundaries) {
   });
   const tunnelBoundaryTwo = new Boundary({
     position: {
-      x: -10,
+      x: -20,
       y: 300,
     },
     image: image,
