@@ -4,7 +4,7 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 
 Click the live version [here](https://pacman-clone.herokuapp.com/) to play!
 
-Tech and Tools Used:
+### Tech Used:
 
 - [Miro](https://miro.com/index/) for planning the layout (Board can be found [here](https://miro.com/app/board/uXjVOo0XLMk=/?share_link_id=344912241548))
 - [Trello](https://trello.com/) for monitoring feature progress
@@ -18,6 +18,12 @@ Tech and Tools Used:
 - [Pexels Draw](https://apps.apple.com/us/app/pexels-draw/id1320744895?mt=12) for creating the boundary images and ghost sprites
 - [HTML Canvas](https://www.w3schools.com/html/html5_canvas.asp) for a container for the graphics
 - [GitHub](https://github.com/) for storing the code and running Continuous Integreation (CI) in GitHub Actions
+
+## Getting Started
+
+## Rules
+
+## Features Pending
 
 ## Getting Started with Create React App
 
