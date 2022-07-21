@@ -2,6 +2,7 @@ import pickGhostDirection from "./movement/pickGhostDirection";
 import checkPacmanGhostCollision from "./collisions/checkPacmanGhostCollision";
 import updateCollisions from "./movement/updateCollisions";
 import implementTunnel from "../implementTunnel";
+import assingSprite from "./assignSprite";
 
 export default function implementGhosts(
   ghosts,
@@ -18,6 +19,7 @@ export default function implementGhosts(
   level
 ) {
   ghosts.forEach((ghost) => {
+    assingSprite(ghost);
     const collisions = [];
     ghost.update(ctx);
     implementTunnel(ghost);
