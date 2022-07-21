@@ -13,7 +13,6 @@ describe(PacMan, () => {
         y: 2.5,
       },
     });
-    expect(pacman.radius).toBe(15);
     expect(pacman.position).toEqual({
       x: 290,
       y: 470,
@@ -22,6 +21,7 @@ describe(PacMan, () => {
       x: 7.5,
       y: 2.5,
     });
+    expect(pacman.radius).toBe(7.5);
     expect(pacman.speed).toBe(2.5);
     expect(pacman.radians).toEqual(Math.PI / 4);
     expect(pacman.openRate).toEqual(Math.PI / 48);
