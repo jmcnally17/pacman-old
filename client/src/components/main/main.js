@@ -9,7 +9,9 @@ export default function Main() {
 
   useEffect(() => {
     window.addEventListener("keydown", (event) => {
-      if (["ArrowUp", "ArrowDown"].includes(event.code)) {
+      if (
+        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.code)
+      ) {
         event.preventDefault();
       }
     });
