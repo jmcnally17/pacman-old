@@ -2,7 +2,7 @@ export default class PacMan {
   constructor({ position, velocity }) {
     this.position = position;
     this.velocity = velocity;
-    this.radius = 15;
+    this.radius = 7.5;
     this.speed = 2.5;
     this.radians = Math.PI / 4;
     this.openRate = Math.PI / 48;
@@ -19,7 +19,7 @@ export default class PacMan {
     ctx.arc(
       this.position.x,
       this.position.y,
-      this.radius,
+      this.radius * 2,
       this.radians,
       Math.PI * 2 - this.radians
     );

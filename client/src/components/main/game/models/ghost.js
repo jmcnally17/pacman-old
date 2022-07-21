@@ -5,7 +5,7 @@ export default class Ghost {
     this.position = { ...this.originalPosition };
     this.originalVelocity = velocity;
     this.velocity = { ...this.originalVelocity };
-    this.radius = 15;
+    this.radius = 7.5;
     this.colour = colour;
     this.prevCollisions = [];
     this.speed = 2.5;
