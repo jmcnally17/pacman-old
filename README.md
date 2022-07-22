@@ -1,6 +1,6 @@
 # Pac-Man <img src="./client/public/images/redGhostRight.png"> <img src="./client/public/images/pinkGhostRight.png"> <img src="./client/public/images/cyanGhostRight.png"> <img src="./client/public/images/orangeGhostRight.png">
 
-This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the Heroku URL and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to collect as many pellets as they can while avoiding the ghosts that roam the board. This project connects to a MongoDB Atlas database which saves the players score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can see how well they did.
+This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This project connects to a MongoDB Atlas database which saves the players score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can see how well they did.
 
 [<img src="./pacmanPlayButton.jpg">](https://pacman-clone.herokuapp.com/)
 
@@ -59,15 +59,19 @@ Then, start MongoDB by using:
 brew services start mongodb-community@5.0
 ```
 
+### How To Use
+
 Now, you can clone this repository:
 
 ```
 git clone https://github.com/jmcnally17/pacman
 ```
 
-Both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively.
+Finally, both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively.
 
-### How to Use
+Now, you should be all setup and ready to use the app.
+
+Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit `localhost:3000` in your browser to play the game.
 
 ## Rules
 
