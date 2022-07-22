@@ -19,15 +19,61 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 - [HTML Canvas](https://www.w3schools.com/html/html5_canvas.asp) for a container for the graphics
 - [GitHub](https://github.com/) for storing the code and running Continuous Integreation (CI) in GitHub Actions
 
+Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses) YouTube channel for the tutorial which helped with most of the game mechanics present. Link to the tutorial video can be found [here](https://youtu.be/5IMXpp3rohQ).
+
 ## Running Locally
 
-### Setup
+This app can be run on your localhost. However, a number of frameworks need to be installed which requires some setup to do:
+
+### Getting Started
+
+Both frontend and backend servers are run using Node.js, which is installed using NVM - Node Version Manager. So if you haven't already, open your terminal and install NVM using:
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+
+Now, your ~/.zshrc file will need reloading:
+
+```
+source ~/.zshrc
+```
+
+Next, you can install and start using node by running:
+
+```
+nvm install node
+nvm use node
+```
+
+`nvm use node` will use the latest stable version. MongoDB will need to be installed as it is the database that stores all the scores. You can do so by using Homebrew (which can be installed using the instructions [here](https://brew.sh/)):
+
+```
+brew tap mongodb/brew
+brew install mongodb-community@5.0
+```
+
+Then, start MongoDB by using:
+
+```
+brew services start mongodb-community@5.0
+```
+
+Now, you can clone this repository:
+
+```
+git clone https://github.com/jmcnally17/pacman
+```
+
+Both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively.
 
 ### How to Use
 
 ## Rules
 
 ## Features Pending
+
+## Issues
 
 ## Getting Started with Create React App
 
