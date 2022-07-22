@@ -77,7 +77,19 @@ Both backend and frontend servers must be running simultaneously so open two sep
 
 ## Features Pending
 
+- Change the ghost movement mechanics to hunt Pac-Man rather than having random movement
+- Modify the scoring when a scared ghost is attacked by Pac-Man by increasing each successive hit on a ghost by 200 per power up
+- Add some animations such as Pac-Man death, colliding with a scared ghost, and levelling up
+- Add appropriate audio files to the game
+- Add buttons to the page for mobile users who don't have arrow keys to move
+- (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and React
+
 ## Issues
+
+There are two minor bugs with the app:
+
+- The ghosts can flicker when their sprites change due to them changing direction. This bug is much more prevalent in the live version on Heroku and is a lot less noticeable when running locally
+- When the game ends, sometimes the players score does not immediately appear on the leaderboard even though it is saved to the database. This may be due to the POST request to save the score slightly lagging and not completing before the scores are pulled from the database onto the leaderboard
 
 ## Getting Started with Create React App
 
