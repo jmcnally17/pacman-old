@@ -21,6 +21,16 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 
 Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses) YouTube channel for the tutorial which helped with most of the game mechanics present. Link to the tutorial video can be found [here](https://youtu.be/5IMXpp3rohQ).
 
+## Contents
+
+- [Gameplay](#gameplay)
+  - [Rules](#rules)
+- [Running Locally](#running-locally)
+  - [Getting Started](#getting-started)
+  - [How To Use](#how-to-use)
+- [Issues](#issues)
+- [Features Pending](#features-pending)
+
 ## Gameplay
 
 The player can use the directional keys to move Pac-Man within the boundaries around the board while the ghosts move randomly.
@@ -90,6 +100,13 @@ Now, you should be all setup and ready to use the app.
 
 Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit [http://localhost:3000](http://localhost:3000) in your browser to play the game.
 
+## Issues
+
+There are two minor bugs with the app:
+
+- The ghosts can flicker when their sprites change due to them changing direction. This bug is much more prevalent in the live version on Heroku and is a lot less noticeable when running locally
+- When the game ends, sometimes the players score does not immediately appear on the leaderboard even though it is saved to the database. This may be due to the POST request to save the score slightly lagging and not completing before the scores are pulled from the database onto the leaderboard
+
 ## Features Pending
 
 - Change the ghost movement mechanics to hunt Pac-Man rather than having random movement
@@ -98,13 +115,6 @@ Both backend and frontend servers must be running simultaneously so open two sep
 - Add appropriate audio files to the game
 - Add buttons to the page for mobile users who don't have arrow keys to move
 - (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and React
-
-## Issues
-
-There are two minor bugs with the app:
-
-- The ghosts can flicker when their sprites change due to them changing direction. This bug is much more prevalent in the live version on Heroku and is a lot less noticeable when running locally
-- When the game ends, sometimes the players score does not immediately appear on the leaderboard even though it is saved to the database. This may be due to the POST request to save the score slightly lagging and not completing before the scores are pulled from the database onto the leaderboard
 
 ## Create React App and Express Application Generator
 
