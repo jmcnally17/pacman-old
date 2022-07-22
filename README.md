@@ -25,6 +25,17 @@ Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses
 
 ### Rules
 
+- Pac-Man starts off with 2 lives
+- Eating one pellet is worth 10 points
+- Eating every pellet completes the current level
+- After completing a level, the board is reset to its original configuration, except for Pac-Man's lives and the players score
+- Collecting one power up is worth 50 points
+- Collecting a power up scares all unscared ghosts for 5 seconds
+- Collecting a power up has no effect on scared ghosts
+- Colliding with a scared ghost is worth 200 points and resets the ghosts position
+- Colliding with a ghost that is not scared decreases Pac-Man's lives by 1 and resets character positions on the board
+- Colliding with a ghost that is not scared with no lives left ends the game
+
 ## Running Locally
 
 This app can be run on your localhost. However, a number of frameworks need to be installed which requires some setup to do:
