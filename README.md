@@ -21,7 +21,9 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 
 Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses) YouTube channel for the tutorial which helped with most of the game mechanics present. Link to the tutorial video can be found [here](https://youtu.be/5IMXpp3rohQ).
 
-## Rules
+## Game Mechanics
+
+### Rules
 
 ## Running Locally
 
