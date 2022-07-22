@@ -21,11 +21,13 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 
 Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses) YouTube channel for the tutorial which helped with most of the game mechanics present. Link to the tutorial video can be found [here](https://youtu.be/5IMXpp3rohQ).
 
-## Game Mechanics
+## Gameplay
+
+The player can use the directional keys to move Pac-Man within the boundaries around the board while the ghosts move randomly.
 
 ### Rules
 
-- Pac-Man starts off with 2 lives
+- Pac-Man starts off with 2 extra lives
 - Eating one pellet is worth 10 points
 - Eating every pellet completes the current level
 - After completing a level, the board is reset to its original configuration, except for Pac-Man's lives and the players score
@@ -34,7 +36,7 @@ Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses
 - Collecting a power up has no effect on scared ghosts
 - Colliding with a scared ghost is worth 200 points and resets the ghosts position
 - Colliding with a ghost that is not scared decreases Pac-Man's lives by 1 and resets character positions on the board
-- Colliding with a ghost that is not scared with no lives left ends the game
+- Colliding with a ghost that is not scared with no extra lives left ends the game
 
 ## Running Locally
 
