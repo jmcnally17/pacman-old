@@ -11,12 +11,12 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 - [Mongoose](https://mongoosejs.com/docs/) for Object Data Modelling (ODM)
 - [Express](https://expressjs.com/) for setting up a backend server
 - [React](https://reactjs.org/) for frontend development
-- [Node.js](https://nodejs.org/en/) for the backend runtime environment
+- [Node.js](https://nodejs.org/en/) for the server runtime environment
 - [MongoDB Atlas](https://www.mongodb.com/atlas/database) to store the database
 - [Jest](https://jestjs.io/) for testing
 - [Heroku](https://www.heroku.com/) for deployment
 - [Pexels Draw](https://apps.apple.com/us/app/pexels-draw/id1320744895?mt=12) for creating the boundary images and ghost sprites
-- [HTML Canvas](https://www.w3schools.com/html/html5_canvas.asp) for a container for the graphics
+- [HTML Canvas](https://www.w3schools.com/html/html5_canvas.asp) as a container for the graphics
 - [GitHub](https://github.com/) for storing the code and running Continuous Integreation (CI) in GitHub Actions
 
 Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses) YouTube channel for the tutorial which helped with most of the game mechanics present. Link to the tutorial video can be found [here](https://youtu.be/5IMXpp3rohQ).
@@ -31,9 +31,9 @@ The player can use the directional keys to move Pac-Man within the boundaries ar
 - Eating one pellet is worth 10 points
 - Eating every pellet completes the current level
 - After completing a level, the board is reset to its original configuration, except for Pac-Man's lives and the players score
-- Collecting one power up is worth 50 points
-- Collecting a power up scares all unscared ghosts for 5 seconds
-- Collecting a power up has no effect on scared ghosts
+- Eating one power up is worth 50 points
+- Eating a power up scares all unscared ghosts for 5 seconds
+- Eating a power up has no effect on scared ghosts
 - Colliding with a scared ghost is worth 200 points and resets the ghosts position
 - Colliding with a ghost that is not scared decreases Pac-Man's lives by 1 and resets character positions on the board
 - Colliding with a ghost that is not scared with no extra lives left ends the game
@@ -84,9 +84,7 @@ Now, you can clone this repository:
 git clone https://github.com/jmcnally17/pacman
 ```
 
-Finally, both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively.
-
-Now, you should be all setup and ready to use the app.
+Both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively.
 
 Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit [http://localhost:3000](http://localhost:3000) in your browser to play the game.
 
