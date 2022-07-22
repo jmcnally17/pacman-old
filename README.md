@@ -4,7 +4,7 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 
 [<img src="./pacmanPlayButton.jpg">](https://pacman-clone.herokuapp.com/)
 
-### Technologies Used:
+### Technologies Used
 
 - [Miro](https://miro.com/index/) for planning the layout (Board can be found [here](https://miro.com/app/board/uXjVOo0XLMk=/?share_link_id=344912241548))
 - [Trello](https://trello.com/) for monitoring feature progress
@@ -20,16 +20,6 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 - [GitHub](https://github.com/) for storing the code and running Continuous Integreation (CI) in GitHub Actions
 
 Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses) YouTube channel for the tutorial which helped with most of the game mechanics present. Link to the tutorial video can be found [here](https://youtu.be/5IMXpp3rohQ).
-
-## Contents
-
-- [Gameplay](#gameplay)
-  - [Rules](#rules)
-- [Running Locally](#running-locally)
-  - [Getting Started](#getting-started)
-  - [How To Use](#how-to-use)
-- [Issues](#issues)
-- [Features Pending](#features-pending)
 
 ## Gameplay
 
