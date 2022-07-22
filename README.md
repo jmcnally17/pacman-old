@@ -71,7 +71,7 @@ Finally, both the backend and frontend dependencies must be installed by running
 
 Now, you should be all setup and ready to use the app.
 
-Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit `localhost:3000` in your browser to play the game.
+Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit [http://localhost:3000](http://localhost:3000) in your browser to play the game.
 
 ## Rules
 
