@@ -91,6 +91,6 @@ There are two minor bugs with the app:
 - The ghosts can flicker when their sprites change due to them changing direction. This bug is much more prevalent in the live version on Heroku and is a lot less noticeable when running locally
 - When the game ends, sometimes the players score does not immediately appear on the leaderboard even though it is saved to the database. This may be due to the POST request to save the score slightly lagging and not completing before the scores are pulled from the database onto the leaderboard
 
-## Getting Started with Create React App
+## Getting Started with Create React App and Express Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Express Application Generator](https://expressjs.com/en/starter/generator.html).
