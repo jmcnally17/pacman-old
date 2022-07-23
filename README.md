@@ -1,6 +1,6 @@
 # Pac-Man <img src="./client/public/images/redGhostRight.png"> <img src="./client/public/images/pinkGhostRight.png"> <img src="./client/public/images/cyanGhostRight.png"> <img src="./client/public/images/orangeGhostRight.png">
 
-This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This project connects to a MongoDB Atlas database which saves the players score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can see how well they did.
+This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a MongoDB Atlas database which saves the players score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can see how well they did.
 
 [<img src="./pacmanPlayButton.jpg">](https://pacman-clone.herokuapp.com/)
 
