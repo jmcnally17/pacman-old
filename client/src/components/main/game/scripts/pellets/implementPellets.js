@@ -1,5 +1,4 @@
 import checkLevelUpCondition from "./checkLevelUpCondition";
-import drawPellet from "./drawPellet";
 import eatPellet from "./eatPellet";
 
 export default function implementPellets(
@@ -13,7 +12,7 @@ export default function implementPellets(
   level
 ) {
   pellets.forEach((pellet) => {
-    drawPellet(pellet, ctx);
+    if (!pellet.hasBeenEaten) pellet.draw(ctx);
     eatPellet(pellet, pacman, score);
   });
   checkLevelUpCondition(
