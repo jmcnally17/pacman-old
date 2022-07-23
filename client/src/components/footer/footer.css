@@ -3,6 +3,10 @@ footer {
   margin-top: auto;
 }
 
+a {
+  color: orange;
+}
+
 .footer-text {
   font-size: 10pt;
   color: aqua;

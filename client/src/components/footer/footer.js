@@ -5,9 +5,10 @@ export default function Footer() {
   return (
     <footer>
       <p className="footer-text">
-        Please don&apos;t threaten to sue me Bandai Namco. I&apos;m making this
-        for my portfolio. No money is being made from this project. Don&apos;t
-        be like Nintendo.
+        This project was created by{" "}
+        <a href="https://github.com/jmcnally17">Joe McNally</a> and stored on{" "}
+        <a href="https://github.com/jmcnally17/pacman">GitHub</a>. A big thank
+        you to Namco for creating Pac-Man in 1980.
       </p>
     </footer>
   );
