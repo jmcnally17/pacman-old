@@ -73,8 +73,7 @@ export default function makeBoundaries(map, length) {
         boundaries.push(boundary);
       }
     });
-    makeTunnelBoundaries(boundaries);
   });
-
+  makeTunnelBoundaries(boundaries);
   return boundaries;
 }
