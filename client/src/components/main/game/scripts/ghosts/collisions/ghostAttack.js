@@ -11,10 +11,12 @@ export default function ghostAttack(
   mainEl,
   pellets,
   powerUps,
-  level
+  level,
+  callbackOne = endGame,
+  callbackTwo = resetAfterDeath
 ) {
   if (pacman.lives <= 0) {
-    endGame(
+    callbackOne(
       animationId,
       score,
       name,
@@ -28,6 +30,6 @@ export default function ghostAttack(
     );
   } else {
     pacman.loseLife();
-    resetAfterDeath(pacman, lastKeyPressed, ghosts);
+    callbackTwo(pacman, lastKeyPressed, ghosts);
   }
 }
