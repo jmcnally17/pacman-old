@@ -6,7 +6,8 @@ export default function checkLevelUpCondition(
   lastKeyPressed,
   ghosts,
   powerUps,
-  level
+  level,
+  callback = resetAfterLevelUp
 ) {
   let count = 0;
   pellets.forEach((pellet) => {
@@ -14,7 +15,7 @@ export default function checkLevelUpCondition(
       count++;
     }
     if (count === pellets.length) {
-      resetAfterLevelUp(pacman, lastKeyPressed, ghosts, pellets, powerUps);
+      callback(pacman, lastKeyPressed, ghosts, pellets, powerUps);
       level.number++;
     }
   });
