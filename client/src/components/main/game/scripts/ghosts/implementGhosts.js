@@ -16,18 +16,23 @@ export default function implementGhosts(
   mainEl,
   pellets,
   powerUps,
-  level
+  level,
+  callbackOne = assignSprite,
+  callbackTwo = implementTunnel,
+  callbackThree = updateCollisions,
+  callbackFour = pickGhostDirection,
+  callbackFive = checkPacmanGhostCollision
 ) {
   ghosts.forEach((ghost) => {
-    assignSprite(ghost);
+    callbackOne(ghost);
     const collisions = [];
     ghost.update(ctx);
-    implementTunnel(ghost);
-    updateCollisions(boundaries, collisions, ghost);
+    callbackTwo(ghost);
+    callbackThree(boundaries, collisions, ghost);
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
-      pickGhostDirection(ghost, collisions);
+      callbackFour(ghost, collisions);
     }
-    checkPacmanGhostCollision(
+    callbackFive(
       ghost,
       pacman,
       score,
