@@ -9,18 +9,13 @@ export default function implementPellets(
   lastKeyPressed,
   ghosts,
   powerUps,
-  level
+  level,
+  callbackOne = eatPellet,
+  callbackTwo = checkLevelUpCondition
 ) {
   pellets.forEach((pellet) => {
     if (!pellet.hasBeenEaten) pellet.draw(ctx);
-    eatPellet(pellet, pacman, score);
+    callbackOne(pellet, pacman, score);
   });
-  checkLevelUpCondition(
-    pellets,
-    pacman,
-    lastKeyPressed,
-    ghosts,
-    powerUps,
-    level
-  );
+  callbackTwo(pellets, pacman, lastKeyPressed, ghosts, powerUps, level);
 }

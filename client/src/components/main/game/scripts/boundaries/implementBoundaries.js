@@ -1,8 +1,13 @@
 import stopPacmanCollision from "./stopPacmanCollision";
 
-export default function implementBoundaries(boundaries, ctx, pacman) {
+export default function implementBoundaries(
+  boundaries,
+  ctx,
+  pacman,
+  callback = stopPacmanCollision
+) {
   boundaries.forEach((boundary) => {
     boundary.draw(ctx);
-    stopPacmanCollision(boundary, pacman);
+    callback(boundary, pacman);
   });
 }
