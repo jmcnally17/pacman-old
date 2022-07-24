@@ -52,6 +52,7 @@ const pellets = makePellets(map, length);
 const powerUps = makePowerUps(map, length);
 const ghosts = makeGhosts();
 const pacman = makePacman();
+
 const score = {
   points: 0,
 };
@@ -70,7 +71,7 @@ const reactRoot = {
 
 let count = 0;
 
-export default function makeBoard (name, mainEl) {
+export default function makeBoard(name, mainEl) {
   if (count === 0) {
     player.name = name;
     reactRoot.mainEl = mainEl;
