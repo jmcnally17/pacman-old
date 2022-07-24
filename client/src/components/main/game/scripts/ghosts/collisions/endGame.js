@@ -12,10 +12,13 @@ export default function endGame(
   ghosts,
   pacman,
   lastKeyPressed,
-  level
+  level,
+  callbackOne = cancelAnimationFrame,
+  callbackTwo = saveScore,
+  callbackThree = resetAfterGameOver
 ) {
-  cancelAnimationFrame(animationId);
-  saveScore(score, name);
-  resetAfterGameOver(pellets, powerUps, ghosts, pacman, lastKeyPressed, level);
+  callbackOne(animationId);
+  callbackTwo(score, name);
+  callbackThree(pellets, powerUps, ghosts, pacman, lastKeyPressed, level);
   mainEl.render(<Leaderboard score={score} mainEl={mainEl} name={name} />);
 }
