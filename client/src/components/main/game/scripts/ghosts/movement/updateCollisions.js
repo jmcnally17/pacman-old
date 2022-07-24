@@ -1,10 +1,15 @@
 import hitBoundaryConditional from "../../boundaries/hitBoundaryConditional";
 
-export default function updateCollisions(boundaries, collisions, ghost) {
+export default function updateCollisions(
+  boundaries,
+  collisions,
+  ghost,
+  callback = hitBoundaryConditional
+) {
   boundaries.forEach((boundary) => {
     if (
       !collisions.includes("down") &&
-      hitBoundaryConditional(ghost, boundary, {
+      callback(ghost, boundary, {
         velocity: {
           x: 0,
           y: ghost.speed,
@@ -14,7 +19,7 @@ export default function updateCollisions(boundaries, collisions, ghost) {
       collisions.push("down");
     } else if (
       !collisions.includes("right") &&
-      hitBoundaryConditional(ghost, boundary, {
+      callback(ghost, boundary, {
         velocity: {
           x: ghost.speed,
           y: 0,
@@ -24,7 +29,7 @@ export default function updateCollisions(boundaries, collisions, ghost) {
       collisions.push("right");
     } else if (
       !collisions.includes("left") &&
-      hitBoundaryConditional(ghost, boundary, {
+      callback(ghost, boundary, {
         velocity: {
           x: -ghost.speed,
           y: 0,
@@ -34,7 +39,7 @@ export default function updateCollisions(boundaries, collisions, ghost) {
       collisions.push("left");
     } else if (
       !collisions.includes("up") &&
-      hitBoundaryConditional(ghost, boundary, {
+      callback(ghost, boundary, {
         velocity: {
           x: 0,
           y: -ghost.speed,
@@ -44,7 +49,7 @@ export default function updateCollisions(boundaries, collisions, ghost) {
       collisions.push("up");
     }
   });
-  if (collisions.length > ghost.prevCollisions) {
+  if (collisions.length > ghost.prevCollisions.length) {
     ghost.prevCollisions = collisions;
   }
 }
