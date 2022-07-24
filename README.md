@@ -102,7 +102,7 @@ There are two minor bugs with the app:
 - Add some animations such as Pac-Man death, colliding with a scared ghost, and levelling up
 - Add appropriate audio files to the game
 - Add buttons to the page for mobile users who don't have arrow keys to move
-- (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and React
+- (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and Express
 
 ## Create React App and Express Application Generator
 
