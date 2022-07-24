@@ -52,23 +52,18 @@ const pellets = makePellets(map, length);
 const powerUps = makePowerUps(map, length);
 const ghosts = makeGhosts();
 const pacman = makePacman();
-
 const score = {
   points: 0,
 };
-
 const lastKeyPressed = {
   key: "",
 };
-
 const level = {
   number: 1,
 };
-
 const player = {
   name: "",
 }
-
 const reactRoot = {
   mainEl: null,
 }
