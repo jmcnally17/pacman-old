@@ -11,10 +11,11 @@ export default function dealWithCollision(
   mainEl,
   pellets,
   powerUps,
-  level
+  level,
+  callback = ghostAttack
 ) {
   if (!ghost.isScared) {
-    ghostAttack(
+    callback(
       pacman,
       animationId,
       score,
