@@ -1,7 +1,9 @@
 export default class PacMan {
   constructor({ position, velocity }) {
-    this.position = position;
-    this.velocity = velocity;
+    this.originalPosition = position;
+    this.position = { ...this.originalPosition };
+    this.originalVelocity = velocity;
+    this.velocity = { ...this.originalVelocity };
     this.radius = 7.5;
     this.speed = 2.5;
     this.radians = Math.PI / 4;
@@ -56,15 +58,9 @@ export default class PacMan {
     else if (this.velocity.y < 0) this.rotation = (Math.PI * 3) / 2;
   }
 
-  loseLife() {
-    this.lives--;
-  }
-
   reset() {
-    this.position.x = 290;
-    this.position.y = 470;
-    this.velocity.x = 0;
-    this.velocity.y = 0;
+    this.position = { ...this.originalPosition };
+    this.velocity = { ...this.originalVelocity };
     this.rotation = 0;
   }
 }

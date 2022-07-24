@@ -4,7 +4,6 @@ let ghost;
 let scaredGhost;
 let mockImage;
 let mockCtx;
-let ctxSpy;
 
 describe("Ghost", () => {
   beforeEach(() => {
@@ -39,7 +38,6 @@ describe("Ghost", () => {
     mockCtx = {
       drawImage: () => undefined,
     };
-    ctxSpy = jest.spyOn(mockCtx, "drawImage");
   });
 
   it("has a static speed class variable", () => {
@@ -78,15 +76,17 @@ describe("Ghost", () => {
 
   describe("draw", () => {
     it("calls drawImage on ctx to draw the ghost", () => {
+      const ctxSpy = jest.spyOn(mockCtx, "drawImage");
       ghost.draw(mockCtx);
       expect(ctxSpy).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("update", () => {
-    it("calls draw which calls drawImage and updates the position", () => {
+    it("calls draw and updates the position", () => {
+      const ghostSpy = jest.spyOn(ghost, "draw");
       ghost.update(mockCtx);
-      expect(ctxSpy).toHaveBeenCalledTimes(1);
+      expect(ghostSpy).toHaveBeenCalledTimes(1);
       expect(ghost.position.x).toBe(27.5);
       expect(ghost.position.y).toBe(22.5);
     });

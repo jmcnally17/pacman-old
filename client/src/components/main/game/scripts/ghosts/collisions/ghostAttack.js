@@ -29,7 +29,7 @@ export default function ghostAttack(
       level
     );
   } else {
-    pacman.loseLife();
+    pacman.lives--;
     callbackTwo(pacman, lastKeyPressed, ghosts);
   }
 }
