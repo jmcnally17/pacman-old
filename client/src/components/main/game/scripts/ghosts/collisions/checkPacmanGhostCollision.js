@@ -12,10 +12,12 @@ export default function checkPacmanGhostCollision(
   mainEl,
   pellets,
   powerUps,
-  level
+  level,
+  callbackOne = collisionConditional,
+  callbackTwo = dealWithCollision
 ) {
-  if (collisionConditional(ghost, pacman)) {
-    dealWithCollision(
+  if (callbackOne(ghost, pacman)) {
+    callbackTwo(
       ghost,
       pacman,
       animationId,
