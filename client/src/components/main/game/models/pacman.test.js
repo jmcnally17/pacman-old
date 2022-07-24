@@ -1,7 +1,6 @@
-/* eslint-disable jest/valid-title */
 import PacMan from "./pacman";
 
-describe(PacMan, () => {
+describe("PacMan", () => {
   it("has a number of instance variables upon instantiation", () => {
     const pacman = new PacMan({
       position: {

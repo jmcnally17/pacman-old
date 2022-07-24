@@ -1,7 +1,6 @@
-/* eslint-disable jest/valid-title */
 import Boundary from "./boundary";
 
-describe(Boundary, () => {
+describe("Boundary", () => {
   it("always has a width and height of 40", () => {
     const boundary = new Boundary({
       position: {

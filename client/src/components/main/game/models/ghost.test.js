@@ -1,7 +1,6 @@
-/* eslint-disable jest/valid-title */
 import Ghost from "./ghost";
 
-describe(Ghost, () => {
+describe("Ghost", () => {
   it("has a static speed class variable", () => {
     expect(Ghost.speed).toBe(2.5);
   });

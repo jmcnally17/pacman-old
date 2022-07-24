@@ -1,7 +1,6 @@
-/* eslint-disable jest/valid-title */
 import PowerUp from "./powerUp";
 
-describe(PowerUp, () => {
+describe("PowerUp", () => {
   it("has a number of instance variables upon instantation", () => {
     const powerUp = new PowerUp({
       position: {

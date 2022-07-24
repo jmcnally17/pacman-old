@@ -1,7 +1,6 @@
-/* eslint-disable jest/valid-title */
 import Pellet from "./pellet";
 
-describe(Pellet, () => {
+describe("Pellet", () => {
   it("has a number of instance variables upon instantiation", () => {
     const pellet = new Pellet({
       position: {
