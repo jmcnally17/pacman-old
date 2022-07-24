@@ -1,6 +1,7 @@
 import Pellet from "./pellet";
 
 let pellet;
+let eatenPellet;
 
 describe("Pellet", () => {
   beforeEach(() => {
@@ -10,6 +11,13 @@ describe("Pellet", () => {
         y: 100,
       },
     });
+    eatenPellet = new Pellet({
+      position: {
+        x: 50,
+        y: 100,
+      },
+    });
+    eatenPellet.changeEatenState();
   });
 
   describe("upon instantiation", () => {
@@ -25,6 +33,11 @@ describe("Pellet", () => {
     it("can change the pellet to being eaten", () => {
       pellet.changeEatenState();
       expect(pellet.hasBeenEaten).toBe(true);
+    });
+
+    it("can change the pellet to uneaten", () => {
+      eatenPellet.changeEatenState();
+      expect(eatenPellet.hasBeenEaten).toBe(false);
     });
   });
 

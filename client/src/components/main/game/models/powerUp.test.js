@@ -37,7 +37,7 @@ describe("PowerUp", () => {
 
     it("can change the power up to uneaten", () => {
       eatenPowerUp.changeEatenState();
-      expect(powerUp.hasBeenEaten).toBe(false);
+      expect(eatenPowerUp.hasBeenEaten).toBe(false);
     });
   });
 
