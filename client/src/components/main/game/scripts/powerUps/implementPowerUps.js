@@ -1,4 +1,3 @@
-import drawPowerUp from "./drawPowerUp";
 import eatPowerUp from "./eatPowerUp";
 
 export default function implementPowerUps(
@@ -9,7 +8,7 @@ export default function implementPowerUps(
   ghosts
 ) {
   powerUps.forEach((powerUp) => {
-    drawPowerUp(powerUp, ctx);
+    if (!powerUp.hasBeenEaten) powerUp.draw(ctx);
     eatPowerUp(powerUp, pacman, score, ghosts);
   });
 }
