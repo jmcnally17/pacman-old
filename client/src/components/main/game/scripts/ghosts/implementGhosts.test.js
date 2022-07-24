@@ -4,17 +4,7 @@ let mockGhostOne;
 let mockGhostsOne;
 let mockGhostTwo;
 let mockGhostsTwo;
-let mockBoundaries;
-let mockCtx;
-let mockPacman;
-let mockScore;
-let mockAnimationId;
-let mockLastKeyPressed;
-let mockName;
-let mockMainEl;
-let mockPellets;
-let mockPowerUps;
-let mockLevel;
+let mockObject;
 let mockAssignSprite;
 let mockImplementTunnel;
 let mockUpdateCollisions;
@@ -33,17 +23,6 @@ describe("implementGhosts", () => {
       prevCollisions: [],
     };
     mockGhostsTwo = [mockGhostTwo, mockGhostTwo];
-    mockBoundaries = [];
-    mockCtx = {};
-    mockPacman = {};
-    mockScore = {};
-    mockAnimationId = 200;
-    mockLastKeyPressed = {};
-    mockName = {};
-    mockMainEl = {};
-    mockPellets = [];
-    mockPowerUps = [];
-    mockLevel = {};
     mockAssignSprite = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();
@@ -55,17 +34,17 @@ describe("implementGhosts", () => {
     const updateSpy = jest.spyOn(mockGhostOne, "update");
     implementGhosts(
       mockGhostsOne,
-      mockBoundaries,
-      mockCtx,
-      mockPacman,
-      mockScore,
-      mockAnimationId,
-      mockLastKeyPressed,
-      mockName,
-      mockMainEl,
-      mockPellets,
-      mockPowerUps,
-      mockLevel,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
       mockAssignSprite,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -83,17 +62,17 @@ describe("implementGhosts", () => {
   it("does not call pickGhostDirection when the collisions array is equal to the prevCollisions array", () => {
     implementGhosts(
       mockGhostsTwo,
-      mockBoundaries,
-      mockCtx,
-      mockPacman,
-      mockScore,
-      mockAnimationId,
-      mockLastKeyPressed,
-      mockName,
-      mockMainEl,
-      mockPellets,
-      mockPowerUps,
-      mockLevel,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
       mockAssignSprite,
       mockImplementTunnel,
       mockUpdateCollisions,

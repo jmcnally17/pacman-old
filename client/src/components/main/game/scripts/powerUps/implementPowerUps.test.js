@@ -4,10 +4,7 @@ let mockUneatenPowerUp;
 let mockUneatenPowerUps;
 let mockEatenPowerUp;
 let mockEatenPowerUps;
-let mockCtx;
-let mockPacman;
-let mockScore;
-let mockGhosts;
+let mockObject;
 let uneatenDrawSpy;
 let eatenDrawSpy;
 let mockEatPowerUp;
@@ -28,10 +25,6 @@ describe("implementPowerUps", () => {
       draw: () => undefined,
     };
     mockEatenPowerUps = [mockEatenPowerUp, mockEatenPowerUp];
-    mockCtx = {};
-    mockPacman = {};
-    mockScore = {};
-    mockGhosts = [];
     uneatenDrawSpy = jest.spyOn(mockUneatenPowerUp, "draw");
     eatenDrawSpy = jest.spyOn(mockEatenPowerUp, "draw");
     mockEatPowerUp = jest.fn();
@@ -39,10 +32,10 @@ describe("implementPowerUps", () => {
   it("calls the necessary funcions to implement the power up functionality", () => {
     implementPowerUps(
       mockUneatenPowerUps,
-      mockCtx,
-      mockPacman,
-      mockScore,
-      mockGhosts,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
       mockEatPowerUp
     );
     expect(uneatenDrawSpy).toHaveBeenCalledTimes(3);
@@ -52,10 +45,10 @@ describe("implementPowerUps", () => {
   it("does not draw the power ups if they have been eaten", () => {
     implementPowerUps(
       mockEatenPowerUps,
-      mockCtx,
-      mockPacman,
-      mockScore,
-      mockGhosts,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
       mockEatPowerUp
     );
     expect(eatenDrawSpy).toHaveBeenCalledTimes(0);

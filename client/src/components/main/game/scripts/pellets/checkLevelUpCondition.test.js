@@ -4,10 +4,7 @@ let mockEatenPellet;
 let mockEatenPellets;
 let mockUneatenPellet;
 let mockUneatenPellets;
-let mockPacman;
-let mockLastKeyPressed;
-let mockGhosts;
-let mockPowerUps;
+let mockObject;
 let mockLevel;
 let mockResetAfterLevelUp;
 
@@ -21,10 +18,6 @@ describe("checkLevelUpCondition", () => {
       hasBeenEaten: false,
     };
     mockUneatenPellets = [mockUneatenPellet, mockUneatenPellet];
-    mockPacman = {};
-    mockLastKeyPressed = {};
-    mockGhosts = [];
-    mockPowerUps = [];
     mockLevel = {
       number: 3,
     };
@@ -34,10 +27,10 @@ describe("checkLevelUpCondition", () => {
   it("runs the callback and increases the level by 1 if all pellets have been eaten", () => {
     checkLevelUpCondition(
       mockEatenPellets,
-      mockPacman,
-      mockLastKeyPressed,
-      mockGhosts,
-      mockPowerUps,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
       mockLevel,
       mockResetAfterLevelUp
     );
@@ -48,10 +41,10 @@ describe("checkLevelUpCondition", () => {
   it("does not run the callback and leaves the level unchanged if the pellets have not been eaten", () => {
     checkLevelUpCondition(
       mockUneatenPellets,
-      mockPacman,
-      mockLastKeyPressed,
-      mockGhosts,
-      mockPowerUps,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
       mockLevel,
       mockResetAfterLevelUp
     );

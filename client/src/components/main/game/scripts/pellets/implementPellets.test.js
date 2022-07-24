@@ -4,13 +4,7 @@ let mockUneatenPellet;
 let mockUneatenPellets;
 let mockEatenPellet;
 let mockEatenPellets;
-let mockCtx;
-let mockPacman;
-let mockScore;
-let mockLastKeyPressed;
-let mockGhosts;
-let mockPowerUps;
-let mockLevel;
+let mockObject;
 let uneatenDrawSpy;
 let eatenDrawSpy;
 let mockEatPellet;
@@ -32,28 +26,22 @@ describe("implementPellets", () => {
       draw: () => undefined,
     };
     mockEatenPellets = [mockEatenPellet, mockEatenPellet];
-    mockCtx = {};
-    mockPacman = {};
-    mockScore = {};
-    mockLastKeyPressed = {};
-    mockGhosts = [];
-    mockPowerUps = [];
-    mockLevel = {};
     uneatenDrawSpy = jest.spyOn(mockUneatenPellet, "draw");
     eatenDrawSpy = jest.spyOn(mockEatenPellet, "draw");
     mockEatPellet = jest.fn();
     mockCheckLevelUpCondition = jest.fn();
   });
+
   it("calls the necessary funcions to implement the pellet functionality", () => {
     implementPellets(
       mockUneatenPellets,
-      mockCtx,
-      mockPacman,
-      mockScore,
-      mockLastKeyPressed,
-      mockGhosts,
-      mockPowerUps,
-      mockLevel,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
@@ -65,13 +53,13 @@ describe("implementPellets", () => {
   it("does not draw the pellets if they have been eaten", () => {
     implementPellets(
       mockEatenPellets,
-      mockCtx,
-      mockPacman,
-      mockScore,
-      mockLastKeyPressed,
-      mockGhosts,
-      mockPowerUps,
-      mockLevel,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
       mockEatPellet,
       mockCheckLevelUpCondition
     );

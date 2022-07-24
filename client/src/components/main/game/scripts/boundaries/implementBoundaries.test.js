@@ -6,14 +6,13 @@ describe("implementBoundaries", () => {
       draw: () => undefined,
     };
     const mockBoundaries = [mockBoundary, mockBoundary, mockBoundary];
-    const mockCtx = {};
-    const mockPacman = {};
+    let mockObject;
     const drawSpy = jest.spyOn(mockBoundary, "draw");
     const mockStopPacmanCollision = jest.fn();
     implementBoundaries(
       mockBoundaries,
-      mockCtx,
-      mockPacman,
+      mockObject,
+      mockObject,
       mockStopPacmanCollision
     );
     expect(drawSpy).toHaveBeenCalledTimes(3);
