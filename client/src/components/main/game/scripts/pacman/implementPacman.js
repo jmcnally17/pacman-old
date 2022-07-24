@@ -6,10 +6,13 @@ export default function implementPacman(
   lastKeyPressed,
   pacman,
   boundaries,
-  ctx
+  ctx,
+  callbackOne = makeMove,
+  callbackTwo = changeDirection,
+  callbackThree = implementTunnel
 ) {
-  makeMove(lastKeyPressed);
-  changeDirection(lastKeyPressed, pacman, boundaries);
+  callbackOne(lastKeyPressed);
+  callbackTwo(lastKeyPressed, pacman, boundaries);
   pacman.update(ctx);
-  implementTunnel(pacman);
+  callbackThree(pacman);
 }
