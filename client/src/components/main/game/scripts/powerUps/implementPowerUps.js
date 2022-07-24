@@ -5,10 +5,11 @@ export default function implementPowerUps(
   ctx,
   pacman,
   score,
-  ghosts
+  ghosts,
+  callback = eatPowerUp
 ) {
   powerUps.forEach((powerUp) => {
     if (!powerUp.hasBeenEaten) powerUp.draw(ctx);
-    eatPowerUp(powerUp, pacman, score, ghosts);
+    callback(powerUp, pacman, score, ghosts);
   });
 }
