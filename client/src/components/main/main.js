@@ -21,6 +21,11 @@ export default function Main() {
     setName(target.value);
   };
 
+  const handleEnter = (event) => {
+    const buttonEl = document.querySelector("#submit-button");
+    if (event.key === "Enter") buttonEl.click();
+  };
+
   const handleSubmit = () => {
     if (name === "") {
       window.alert("You must enter a name");
@@ -47,8 +52,13 @@ export default function Main() {
             type="text"
             placeholder="Name"
             onChange={handleName}
+            onKeyDown={handleEnter}
           ></input>
-          <button className="submit-button" onClick={handleSubmit}>
+          <button
+            className="submit-button"
+            id="submit-button"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </div>
