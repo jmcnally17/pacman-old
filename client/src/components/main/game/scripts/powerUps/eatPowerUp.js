@@ -17,7 +17,8 @@ export default function eatPowerUp(
     score.points += 50;
     killCount.number = 0;
     ghosts.forEach((ghost) => {
-      if (!ghost.isScared) callback(ghost);
+      clearTimeout(ghost.scaredTimeout);
+      callback(ghost);
     });
   }
 }

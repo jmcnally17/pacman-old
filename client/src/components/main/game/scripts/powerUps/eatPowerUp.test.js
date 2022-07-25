@@ -6,10 +6,8 @@ let mockPacmanOne;
 let mockPacmanTwo;
 let mockScore;
 let mockKillCount;
-let mockUnscaredGhost;
-let mockUnscaredGhosts;
-let mockScaredGhost;
-let mockScaredGhosts;
+let mockGhost;
+let mockGhosts;
 let mockScareGhost;
 
 describe("eatPowerUp", () => {
@@ -48,20 +46,8 @@ describe("eatPowerUp", () => {
     mockKillCount = {
       number: 2,
     };
-    mockUnscaredGhost = {
-      changeScaredState: () => undefined,
-      isScared: false,
-    };
-    mockScaredGhost = {
-      changeScaredState: () => undefined,
-      isScared: true,
-    };
-    mockUnscaredGhosts = [
-      mockUnscaredGhost,
-      mockUnscaredGhost,
-      mockUnscaredGhost,
-    ];
-    mockScaredGhosts = [mockScaredGhost, mockScaredGhost, mockScaredGhost];
+    mockGhost = {};
+    mockGhosts = [mockGhost, mockGhost, mockGhost];
     mockScareGhost = jest.fn();
   });
 
@@ -75,7 +61,7 @@ describe("eatPowerUp", () => {
       mockPacmanOne,
       mockScore,
       mockKillCount,
-      mockUnscaredGhosts,
+      mockGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(1);
@@ -93,7 +79,7 @@ describe("eatPowerUp", () => {
       mockPacmanOne,
       mockScore,
       mockKillCount,
-      mockUnscaredGhosts,
+      mockGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
@@ -111,7 +97,7 @@ describe("eatPowerUp", () => {
       mockPacmanTwo,
       mockScore,
       mockKillCount,
-      mockUnscaredGhosts,
+      mockGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
@@ -119,27 +105,17 @@ describe("eatPowerUp", () => {
     expect(mockKillCount.number).toBe(2);
   });
 
-  it("calls the scareGhost callback on the unscared ghosts when Pac-Man collides with the power up", () => {
+  it("resets all ghost timeouts and calls the scareGhost callback", () => {
+    const clearSpy = jest.spyOn(global, "clearTimeout");
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
       mockScore,
       mockKillCount,
-      mockUnscaredGhosts,
+      mockGhosts,
       mockScareGhost
     );
+    expect(clearSpy).toHaveBeenCalledTimes(3);
     expect(mockScareGhost).toHaveBeenCalledTimes(3);
-  });
-
-  it("does not call the scareGhost callback on the scared ghosts when Pac-Man collides with the power up", () => {
-    eatPowerUp(
-      mockUneatenPowerUp,
-      mockPacmanOne,
-      mockScore,
-      mockKillCount,
-      mockScaredGhosts,
-      mockScareGhost
-    );
-    expect(mockScareGhost).toHaveBeenCalledTimes(0);
   });
 });
