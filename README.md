@@ -88,6 +88,10 @@ Both the backend and frontend dependencies must be installed by running `npm ins
 
 Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit [http://localhost:3000](http://localhost:3000) in your browser to play the game.
 
+## Testing
+
+Tests can be run while in the [main](https://github.com/jmcnally17/pacman) directory by running `npm test`. Code coverage statistics can be be obtained by running `npm run test:coverage`.
+
 ## Issues
 
 There are two minor bugs with the app:
