@@ -12,6 +12,7 @@ export default function dealWithCollision(
   pellets,
   powerUps,
   level,
+  killCount,
   callback = ghostAttack
 ) {
   if (!ghost.isScared) {
@@ -28,7 +29,8 @@ export default function dealWithCollision(
       level
     );
   } else {
-    score.points += 200;
+    score.points += 200 * Math.pow(2, killCount.number);
+    killCount.number++;
     ghost.reset();
   }
 }

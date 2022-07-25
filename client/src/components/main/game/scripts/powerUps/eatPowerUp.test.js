@@ -5,6 +5,7 @@ let mockEatenPowerUp;
 let mockPacmanOne;
 let mockPacmanTwo;
 let mockScore;
+let mockKillCount;
 let mockUnscaredGhost;
 let mockUnscaredGhosts;
 let mockScaredGhost;
@@ -44,6 +45,9 @@ describe("eatPowerUp", () => {
     mockScore = {
       points: 0,
     };
+    mockKillCount = {
+      number: 2,
+    };
     mockUnscaredGhost = {
       changeScaredState: () => undefined,
       isScared: false,
@@ -61,7 +65,7 @@ describe("eatPowerUp", () => {
     mockScareGhost = jest.fn();
   });
 
-  it("calls changeEatenState when colliding with Pac-Man and increases the score", () => {
+  it("calls changeEatenState when colliding with Pac-Man, increases the score and resets the kill count to 0", () => {
     const changeEatenStateSpy = jest.spyOn(
       mockUneatenPowerUp,
       "changeEatenState"
@@ -70,14 +74,16 @@ describe("eatPowerUp", () => {
       mockUneatenPowerUp,
       mockPacmanOne,
       mockScore,
+      mockKillCount,
       mockUnscaredGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(1);
     expect(mockScore.points).toBe(50);
+    expect(mockKillCount.number).toBe(0);
   });
 
-  it("does not call changeEatenState when colliding with Pac-Man and does not increases the score if the power up has been eaten", () => {
+  it("does not call changeEatenState when colliding with Pac-Man, increase the score or reset the kill count if the power up has been eaten", () => {
     const changeEatenStateSpy = jest.spyOn(
       mockEatenPowerUp,
       "changeEatenState"
@@ -86,14 +92,16 @@ describe("eatPowerUp", () => {
       mockEatenPowerUp,
       mockPacmanOne,
       mockScore,
+      mockKillCount,
       mockUnscaredGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
     expect(mockScore.points).toBe(0);
+    expect(mockKillCount.number).toBe(2);
   });
 
-  it("does not call changeEatenState and does not increases the score if the power up and pacman are not colliding", () => {
+  it("does not call changeEatenState, increases the score or reset the kill count if the power up and pacman are not colliding", () => {
     const changeEatenStateSpy = jest.spyOn(
       mockUneatenPowerUp,
       "changeEatenState"
@@ -102,11 +110,13 @@ describe("eatPowerUp", () => {
       mockEatenPowerUp,
       mockPacmanTwo,
       mockScore,
+      mockKillCount,
       mockUnscaredGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
     expect(mockScore.points).toBe(0);
+    expect(mockKillCount.number).toBe(2);
   });
 
   it("calls the scareGhost callback on the unscared ghosts when Pac-Man collides with the power up", () => {
@@ -114,6 +124,7 @@ describe("eatPowerUp", () => {
       mockUneatenPowerUp,
       mockPacmanOne,
       mockScore,
+      mockKillCount,
       mockUnscaredGhosts,
       mockScareGhost
     );
@@ -125,6 +136,7 @@ describe("eatPowerUp", () => {
       mockUneatenPowerUp,
       mockPacmanOne,
       mockScore,
+      mockKillCount,
       mockScaredGhosts,
       mockScareGhost
     );

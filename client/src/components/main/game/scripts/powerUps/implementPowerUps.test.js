@@ -29,9 +29,11 @@ describe("implementPowerUps", () => {
     eatenDrawSpy = jest.spyOn(mockEatenPowerUp, "draw");
     mockEatPowerUp = jest.fn();
   });
+
   it("calls the necessary funcions to implement the power up functionality", () => {
     implementPowerUps(
       mockUneatenPowerUps,
+      mockObject,
       mockObject,
       mockObject,
       mockObject,
@@ -45,6 +47,7 @@ describe("implementPowerUps", () => {
   it("does not draw the power ups if they have been eaten", () => {
     implementPowerUps(
       mockEatenPowerUps,
+      mockObject,
       mockObject,
       mockObject,
       mockObject,

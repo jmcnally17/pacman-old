@@ -17,6 +17,7 @@ export default function implementGhosts(
   pellets,
   powerUps,
   level,
+  killCount,
   callbackOne = assignSprite,
   callbackTwo = implementTunnel,
   callbackThree = updateCollisions,
@@ -43,7 +44,8 @@ export default function implementGhosts(
       mainEl,
       pellets,
       powerUps,
-      level
+      level,
+      killCount
     );
   });
 }
