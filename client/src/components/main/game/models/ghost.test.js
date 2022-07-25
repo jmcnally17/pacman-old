@@ -105,12 +105,14 @@ describe("Ghost", () => {
   });
 
   describe("reset", () => {
-    it("changes the ghosts position and velocity back to their original values, as well as emptying the previous collisions array", () => {
+    it("changes the ghosts paramters back to their original configuration", () => {
       ghost.position.x += 20;
       ghost.position.y += 20;
       ghost.velocity.x += 5;
       ghost.velocity.y += 10;
       ghost.prevCollisions.push("up");
+      ghost.isScared = true;
+      const clearSpy = jest.spyOn(global, "clearTimeout");
       ghost.reset();
       expect(ghost.position).toEqual({
         x: 20,
@@ -121,6 +123,13 @@ describe("Ghost", () => {
         y: 2.5,
       });
       expect(ghost.prevCollisions).toEqual([]);
+      expect(ghost.isScared).toBeFalsy();
+      expect(clearSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("leaves isScared as false if it is already false", () => {
+      ghost.reset();
+      expect(ghost.isScared).toBeFalsy();
     });
   });
 });

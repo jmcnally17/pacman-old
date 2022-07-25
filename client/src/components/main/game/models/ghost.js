@@ -32,5 +32,7 @@ export default class Ghost {
     this.position = { ...this.originalPosition };
     this.velocity = { ...this.originalVelocity };
     this.prevCollisions = [];
+    if (this.isScared) this.changeScaredState();
+    clearTimeout(this.scaredTimeout);
   }
 }
