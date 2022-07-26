@@ -2,19 +2,33 @@ import PacMan from "./pacman";
 
 let pacman;
 let mockCtx;
+let mockMunchOne;
+let mockMunchTwo;
 
 describe("PacMan", () => {
   beforeEach(() => {
-    pacman = new PacMan({
-      position: {
-        x: 290,
-        y: 470,
+    mockMunchOne = {
+      src: "./audio/munch_1.wav",
+      play: () => undefined,
+    };
+    mockMunchTwo = {
+      src: "./audio/munch_2.wav",
+      play: () => undefined,
+    };
+    pacman = new PacMan(
+      {
+        position: {
+          x: 290,
+          y: 470,
+        },
+        velocity: {
+          x: 7.5,
+          y: 2.5,
+        },
       },
-      velocity: {
-        x: 7.5,
-        y: 2.5,
-      },
-    });
+      mockMunchOne,
+      mockMunchTwo
+    );
     mockCtx = {
       save: () => undefined,
       translate: () => undefined,
@@ -50,9 +64,13 @@ describe("PacMan", () => {
       expect(pacman.radius).toBe(7.5);
       expect(pacman.speed).toBe(2.5);
       expect(pacman.radians).toEqual(Math.PI / 4);
-      expect(pacman.openRate).toEqual(Math.PI / 48);
+      expect(pacman.openRate).toEqual(Math.PI / 36);
       expect(pacman.rotation).toBe(0);
       expect(pacman.lives).toBe(2);
+      expect(pacman.munchOne).toBe(mockMunchOne);
+      expect(pacman.munchTwo).toBe(mockMunchTwo);
+      expect(pacman.munchOne.src).toBe("./audio/munch_1.wav");
+      expect(pacman.munchTwo.src).toBe("./audio/munch_2.wav");
     });
   });
 
@@ -114,26 +132,30 @@ describe("PacMan", () => {
   describe("chomp", () => {
     it("adds the openRate to the radians", () => {
       pacman.chomp();
-      expect(pacman.radians).toBe((13 * Math.PI) / 48);
+      expect(pacman.radians).toBe((10 * Math.PI) / 36);
     });
 
-    it("multiplies the openRate by -1 when the radians becomes greater than PI / 4", () => {
+    it("multiplies the openRate by -1 and plays munchTwo when the radians becomes greater than PI / 4", () => {
+      const munchTwoSpy = jest.spyOn(mockMunchTwo, "play");
       pacman.radians = Math.PI / 2;
-      expect(pacman.openRate).toBe(Math.PI / 48);
+      expect(pacman.openRate).toBe(Math.PI / 36);
       pacman.chomp();
-      expect(pacman.openRate).toBe(-Math.PI / 48);
+      expect(pacman.openRate).toBe(-Math.PI / 36);
+      expect(munchTwoSpy).toHaveBeenCalledTimes(1);
     });
 
-    it("multiplies the openRate by -1 when the radians becomes smaller than PI / 48", () => {
+    it("multiplies the openRate by -1 and plays munchTwo when the radians becomes smaller than PI / 36", () => {
+      const munchOneSpy = jest.spyOn(mockMunchOne, "play");
       pacman.radians = 0;
-      pacman.openRate = -Math.PI / 48;
+      pacman.openRate = -Math.PI / 36;
       pacman.chomp();
-      expect(pacman.openRate).toBe(Math.PI / 48);
+      expect(pacman.openRate).toBe(Math.PI / 36);
+      expect(munchOneSpy).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("checkRotation", () => {
-    it("sets Pacm-Man's rotation to 0 when moving to the right", () => {
+    it("sets Pac-Man's rotation to 0 when moving to the right", () => {
       pacman.rotation = Math.PI;
       pacman.velocity = {
         x: 5,
@@ -143,7 +165,7 @@ describe("PacMan", () => {
       expect(pacman.rotation).toBe(0);
     });
 
-    it("sets Pacm-Man's rotation to PI when moving to the left", () => {
+    it("sets Pac-Man's rotation to PI when moving to the left", () => {
       pacman.velocity = {
         x: -5,
         y: 0,
@@ -152,7 +174,7 @@ describe("PacMan", () => {
       expect(pacman.rotation).toBe(Math.PI);
     });
 
-    it("sets Pacm-Man's rotation to PI / 2 when moving downwards", () => {
+    it("sets Pac-Man's rotation to PI / 2 when moving downwards", () => {
       pacman.velocity = {
         x: 0,
         y: 5,
@@ -161,7 +183,7 @@ describe("PacMan", () => {
       expect(pacman.rotation).toBe(Math.PI / 2);
     });
 
-    it("sets Pacm-Man's rotation to 3 * PI / 2 when moving upwards", () => {
+    it("sets Pac-Man's rotation to 3 * PI / 2 when moving upwards", () => {
       pacman.velocity = {
         x: 0,
         y: -5,

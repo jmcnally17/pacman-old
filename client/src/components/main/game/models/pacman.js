@@ -1,5 +1,9 @@
 export default class PacMan {
-  constructor({ position, velocity }) {
+  constructor(
+    { position, velocity },
+    munchOne = new Audio("./audio/munch_1.wav"),
+    munchTwo = new Audio("./audio/munch_2.wav")
+  ) {
     this.originalPosition = position;
     this.position = { ...this.originalPosition };
     this.originalVelocity = velocity;
@@ -7,9 +11,11 @@ export default class PacMan {
     this.radius = 7.5;
     this.speed = 2.5;
     this.radians = Math.PI / 4;
-    this.openRate = Math.PI / 48;
+    this.openRate = Math.PI / 36;
     this.rotation = 0;
     this.lives = 2;
+    this.munchOne = munchOne;
+    this.munchTwo = munchTwo;
   }
 
   draw(ctx) {
@@ -45,7 +51,12 @@ export default class PacMan {
   }
 
   chomp() {
-    if (this.radians < Math.PI / 48 || this.radians > Math.PI / 4) {
+    if (this.radians < Math.PI / 36 || this.radians > Math.PI / 4) {
+      if (this.openRate < 0) {
+        this.munchOne.play();
+      } else if (this.openRate > 0) {
+        this.munchTwo.play();
+      }
       this.openRate = -this.openRate;
     }
     this.radians += this.openRate;
