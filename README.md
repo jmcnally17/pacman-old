@@ -98,6 +98,7 @@ There are two minor bugs with the app:
 
 - The ghosts can flicker when their sprites change due to them changing direction. This bug is much more prevalent in the live version on Heroku and is a lot less noticeable when running locally
 - When the game ends, sometimes the players score does not immediately appear on the leaderboard even though it is saved to the database. This may be due to the POST request to save the score slightly lagging and not completing before the scores are pulled from the database onto the leaderboard
+- The speed of the game on a google pixel 4 (my phone that I've been testing the mobile version on) is incredibly fast, making it very hard to maneuver around the board. Other phones don't seem to have this issue
 
 ## Features Pending
 
