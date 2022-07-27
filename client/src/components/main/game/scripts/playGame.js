@@ -83,7 +83,7 @@ export default function playGame(name, mainEl) {
   let animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
-  ctx.clearRect(0, 0, board.clientWidth, board.clientHeight);
+  ctx.clearRect(0, 0, 560, 620);
 
   implementBoundaries(boundaries, ctx, pacman);
   implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level);

@@ -63,3 +63,9 @@ button {
   padding: 4px;
   cursor: pointer;
 }
+
+@media only screen and (max-device-width: 1024px) {
+  .buttons {
+    width: 100%;
+  }
+}
