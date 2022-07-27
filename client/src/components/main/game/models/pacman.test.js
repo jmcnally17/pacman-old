@@ -67,6 +67,7 @@ describe("PacMan", () => {
       expect(pacman.openRate).toEqual(Math.PI / 36);
       expect(pacman.rotation).toBe(0);
       expect(pacman.lives).toBe(2);
+      expect(pacman.isEating).toBe(false);
       expect(pacman.munchOne).toBe(mockMunchOne);
       expect(pacman.munchTwo).toBe(mockMunchTwo);
       expect(pacman.munchOne.src).toBe("./audio/munch_1.wav");
@@ -135,22 +136,50 @@ describe("PacMan", () => {
       expect(pacman.radians).toBe((10 * Math.PI) / 36);
     });
 
-    it("multiplies the openRate by -1 and plays munchTwo when the radians becomes greater than PI / 4", () => {
-      const munchTwoSpy = jest.spyOn(mockMunchTwo, "play");
+    it("multiplies the openRate by -1 when the radians becomes greater than PI / 4", () => {
       pacman.radians = Math.PI / 2;
       expect(pacman.openRate).toBe(Math.PI / 36);
       pacman.chomp();
       expect(pacman.openRate).toBe(-Math.PI / 36);
-      expect(munchTwoSpy).toHaveBeenCalledTimes(1);
     });
 
-    it("multiplies the openRate by -1 and plays munchTwo when the radians becomes smaller than PI / 36", () => {
-      const munchOneSpy = jest.spyOn(mockMunchOne, "play");
+    it("multiplies the openRate by -1 when the radians becomes smaller than PI / 36", () => {
       pacman.radians = 0;
       pacman.openRate = -Math.PI / 36;
       pacman.chomp();
       expect(pacman.openRate).toBe(Math.PI / 36);
+    });
+
+    it("plays munchTwo when the radians is greater than PI / 4, the openRate is positive and isEating is true", () => {
+      const munchTwoSpy = jest.spyOn(mockMunchTwo, "play");
+      pacman.radians = Math.PI / 2;
+      pacman.isEating = true;
+      pacman.chomp();
+      expect(munchTwoSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("plays munchOne when the radians becomes smaller than PI / 36, the openRate is negative and isEating is true", () => {
+      const munchOneSpy = jest.spyOn(mockMunchOne, "play");
+      pacman.radians = 0;
+      pacman.openRate *= -1;
+      pacman.isEating = true;
+      pacman.chomp();
       expect(munchOneSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("does not play munchTwo when isEating is false", () => {
+      const munchTwoSpy = jest.spyOn(mockMunchTwo, "play");
+      pacman.radians = Math.PI / 2;
+      pacman.chomp();
+      expect(munchTwoSpy).toHaveBeenCalledTimes(0);
+    });
+
+    it("does not play munchOne when isEating is false", () => {
+      const munchOneSpy = jest.spyOn(mockMunchOne, "play");
+      pacman.radians = 0;
+      pacman.openRate *= -1;
+      pacman.chomp();
+      expect(munchOneSpy).toHaveBeenCalledTimes(0);
     });
   });
 
