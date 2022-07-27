@@ -72,6 +72,8 @@ describe("PacMan", () => {
       expect(pacman.munchTwo).toBe(mockMunchTwo);
       expect(pacman.munchOne.src).toBe("./audio/munch_1.wav");
       expect(pacman.munchTwo.src).toBe("./audio/munch_2.wav");
+      expect(pacman.munchOne.volume).toBe(0.5);
+      expect(pacman.munchTwo.volume).toBe(0.5);
     });
   });
 

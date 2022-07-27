@@ -19,7 +19,7 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 - [HTML Canvas](https://www.w3schools.com/html/html5_canvas.asp) as a container for the graphics
 - [GitHub](https://github.com/) for storing the code and running Continuous Integreation (CI) in GitHub Actions
 
-Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses) YouTube channel for the tutorial which helped with most of the game mechanics present. Link to the tutorial video can be found [here](https://youtu.be/5IMXpp3rohQ).
+Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses) YouTube channel for the tutorial which helped with a lot of the basic game mechanics. Link to the tutorial video can be found [here](https://youtu.be/5IMXpp3rohQ).
 
 ## Gameplay
 

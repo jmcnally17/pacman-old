@@ -17,6 +17,8 @@ export default class PacMan {
     this.isEating = false;
     this.munchOne = munchOne;
     this.munchTwo = munchTwo;
+    this.munchOne.volume = 0.5;
+    this.munchTwo.volume = 0.5;
   }
 
   draw(ctx) {
