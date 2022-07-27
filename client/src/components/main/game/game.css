@@ -22,7 +22,7 @@
 .level {
   color: white;
   display: table-cell;
-  width: 50%;
+  width: 48%;
   text-align: center;
 }
 
@@ -38,6 +38,10 @@
 }
 
 @media only screen and (max-device-width: 1024px) {
+  .board {
+    width: 100%;
+  }
+
   .dpad {
     display: inline;
   }

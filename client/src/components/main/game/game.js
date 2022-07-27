@@ -29,35 +29,35 @@ export default function Game({ name, mainEl }) {
           src="./images/dpad.png"
           alt="dpad"
           useMap="#dpad"
-          height="400px"
-          width="400px"
+          height="200px"
+          width="200px"
         ></img>
         <map name="dpad">
           <area
             className="up"
             shape="rect"
-            coords="133,0,266,133"
+            coords="66,0,133,66"
             alt="up"
             onClick={() => handleDirection("ArrowUp")}
           ></area>
           <area
             className="left"
             shape="rect"
-            coords="0,133,133,266"
+            coords="0,66,66,133"
             alt="left"
             onClick={() => handleDirection("ArrowLeft")}
           ></area>
           <area
             className="right"
             shape="rect"
-            coords="266,133,400,266"
+            coords="133,66,200,133"
             alt="right"
             onClick={() => handleDirection("ArrowRight")}
           ></area>
           <area
             className="down"
             shape="rect"
-            coords="133,266,266,400"
+            coords="66,133,133,200"
             alt="down"
             onClick={() => handleDirection("ArrowDown")}
           ></area>
