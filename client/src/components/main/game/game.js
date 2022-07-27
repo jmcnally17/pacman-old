@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import "./game.css";
-import makeBoard from "./scripts/makeBoard";
+import playGame from "./scripts/playGame";
 
 export default function Game({ name, mainEl }) {
   useEffect(() => {
-    makeBoard(name, mainEl);
+    playGame(name, mainEl);
   }, [name, mainEl]);
 
   return (

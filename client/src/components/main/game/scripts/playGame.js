@@ -74,13 +74,13 @@ const killCount = {
 
 let count = 0;
 
-export default function makeBoard(name, mainEl) {
+export default function playGame(name, mainEl) {
   if (count === 0) {
     player.name = name;
     reactRoot.mainEl = mainEl;
     count ++;
   }
-  let animationId = requestAnimationFrame(makeBoard);
+  let animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, board.clientWidth, board.clientHeight);
