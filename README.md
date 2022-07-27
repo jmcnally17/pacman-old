@@ -23,7 +23,7 @@ Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses
 
 ## Gameplay
 
-The player can use the directional keys to move Pac-Man within the boundaries around the board while the ghosts move randomly.
+The player can use the directional keys to move Pac-Man within the boundaries around the board while the ghosts move randomly. For mobile and tablet users who don't have a keyboard, four buttons are displayed under the game board that they can click which trigger keyboard events for arrow keys.
 
 ### Rules
 
