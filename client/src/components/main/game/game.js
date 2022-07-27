@@ -24,33 +24,44 @@ export default function Game({ name, mainEl }) {
       </div>
       <canvas id="board" className="board" width="560" height="620"></canvas>
       <br></br>
-      <div className="mobile">
-        <button
-          className="arrowButton"
-          onClick={() => handleDirection("ArrowUp")}
-        >
-          Up
-        </button>
-        <br></br>
-        <button
-          className="arrowButton"
-          onClick={() => handleDirection("ArrowLeft")}
-        >
-          Left
-        </button>
-        <button
-          className="arrowButton"
-          onClick={() => handleDirection("ArrowRight")}
-        >
-          Right
-        </button>
-        <br></br>
-        <button
-          className="arrowButton"
-          onClick={() => handleDirection("ArrowDown")}
-        >
-          Down
-        </button>
+      <div className="dpad">
+        <img
+          src="./images/dpad.png"
+          alt="dpad"
+          useMap="#dpad"
+          height="400px"
+          width="400px"
+        ></img>
+        <map name="dpad">
+          <area
+            className="up"
+            shape="rect"
+            coords="133,0,266,133"
+            alt="up"
+            onClick={() => handleDirection("ArrowUp")}
+          ></area>
+          <area
+            className="left"
+            shape="rect"
+            coords="0,133,133,266"
+            alt="left"
+            onClick={() => handleDirection("ArrowLeft")}
+          ></area>
+          <area
+            className="right"
+            shape="rect"
+            coords="266,133,400,266"
+            alt="right"
+            onClick={() => handleDirection("ArrowRight")}
+          ></area>
+          <area
+            className="down"
+            shape="rect"
+            coords="133,266,266,400"
+            alt="down"
+            onClick={() => handleDirection("ArrowDown")}
+          ></area>
+        </map>
       </div>
     </div>
   );

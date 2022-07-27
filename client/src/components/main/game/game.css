@@ -33,21 +33,19 @@
   text-align: right;
 }
 
-.mobile {
+.dpad {
   display: none;
 }
 
 @media only screen and (max-device-width: 1024px) {
-  .mobile {
+  .dpad {
     display: inline;
   }
 
-  .arrowButton {
-    font-size: 24pt;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    padding: 4px;
+  .up,
+  .left,
+  .right,
+  .down {
     cursor: pointer;
-    margin: 10px;
   }
 }
