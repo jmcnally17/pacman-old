@@ -7,24 +7,9 @@ export default function Game({ name, mainEl }) {
     playGame(name, mainEl);
   }, [name, mainEl]);
 
-  const handleUp = () => {
-    const right = new KeyboardEvent("keydown", { key: "ArrowUp" });
-    window.dispatchEvent(right);
-  };
-
-  const handleLeft = () => {
-    const right = new KeyboardEvent("keydown", { key: "ArrowLeft" });
-    window.dispatchEvent(right);
-  };
-
-  const handleRight = () => {
-    const right = new KeyboardEvent("keydown", { key: "ArrowRight" });
-    window.dispatchEvent(right);
-  };
-
-  const handleDown = () => {
-    const right = new KeyboardEvent("keydown", { key: "ArrowDown" });
-    window.dispatchEvent(right);
+  const handleDirection = (direction) => {
+    const arrow = new KeyboardEvent("keydown", { key: direction });
+    window.dispatchEvent(arrow);
   };
 
   return (
@@ -40,10 +25,32 @@ export default function Game({ name, mainEl }) {
       <canvas id="board" className="board" width="560" height="620"></canvas>
       <br></br>
       <div className="mobile">
-        <button onClick={handleUp}>Up</button>
-        <button onClick={handleLeft}>Left</button>
-        <button onClick={handleRight}>Right</button>
-        <button onClick={handleDown}>Down</button>
+        <button
+          className="arrowButton"
+          onClick={() => handleDirection("ArrowUp")}
+        >
+          Up
+        </button>
+        <br></br>
+        <button
+          className="arrowButton"
+          onClick={() => handleDirection("ArrowLeft")}
+        >
+          Left
+        </button>
+        <button
+          className="arrowButton"
+          onClick={() => handleDirection("ArrowRight")}
+        >
+          Right
+        </button>
+        <br></br>
+        <button
+          className="arrowButton"
+          onClick={() => handleDirection("ArrowDown")}
+        >
+          Down
+        </button>
       </div>
     </div>
   );

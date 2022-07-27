@@ -41,4 +41,13 @@
   .mobile {
     display: inline;
   }
+
+  .arrowButton {
+    font-size: 24pt;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+    cursor: pointer;
+    margin: 10px;
+  }
 }
