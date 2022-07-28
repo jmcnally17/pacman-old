@@ -1,4 +1,5 @@
 export default function scareGhost(ghost) {
+  clearTimeout(ghost.scaredTimeout);
   if (!ghost.isScared) {
     ghost.changeScaredState();
   }

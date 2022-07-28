@@ -106,7 +106,6 @@ describe("eatPowerUp", () => {
   });
 
   it("resets all ghost timeouts and calls the scareGhost callback", () => {
-    const clearSpy = jest.spyOn(global, "clearTimeout");
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
@@ -115,7 +114,6 @@ describe("eatPowerUp", () => {
       mockGhosts,
       mockScareGhost
     );
-    expect(clearSpy).toHaveBeenCalledTimes(3);
     expect(mockScareGhost).toHaveBeenCalledTimes(3);
   });
 });
