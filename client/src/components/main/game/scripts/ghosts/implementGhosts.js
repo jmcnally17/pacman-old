@@ -8,6 +8,7 @@ export default function implementGhosts(
   ghosts,
   boundaries,
   ctx,
+  length,
   pacman,
   score,
   animationId,
@@ -28,7 +29,7 @@ export default function implementGhosts(
     callbackOne(ghost);
     const collisions = [];
     ghost.update(ctx);
-    callbackTwo(ghost);
+    callbackTwo(ghost, length);
     callbackThree(boundaries, collisions, ghost);
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
       callbackFour(ghost, collisions);

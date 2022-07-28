@@ -7,7 +7,7 @@ describe("implementTunnel", () => {
         x: 570,
       },
     };
-    implementTunnel(mockCharacter);
+    implementTunnel(mockCharacter, 20);
     expect(mockCharacter.position.x).toBe(-10);
   });
 
@@ -17,7 +17,7 @@ describe("implementTunnel", () => {
         x: -10,
       },
     };
-    implementTunnel(mockCharacter);
+    implementTunnel(mockCharacter, 20);
     expect(mockCharacter.position.x).toBe(570);
   });
 });

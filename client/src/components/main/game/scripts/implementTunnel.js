@@ -1,4 +1,6 @@
-export default function implementTunnel(character) {
-  if (character.position.x === 570) character.position.x = -10;
-  else if (character.position.x === -10) character.position.x = 570;
+export default function implementTunnel(character, length) {
+  if (character.position.x === (length * 57) / 2)
+    character.position.x = -length / 2;
+  else if (character.position.x === -length / 2)
+    character.position.x = (length * 57) / 2;
 }

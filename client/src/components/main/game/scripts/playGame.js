@@ -78,7 +78,7 @@ export default function playGame(name, mainEl) {
   if (count === 0) {
     player.name = name;
     reactRoot.mainEl = mainEl;
-    count ++;
+    count++;
   }
   let animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
@@ -88,8 +88,8 @@ export default function playGame(name, mainEl) {
   implementBoundaries(boundaries, ctx, pacman);
   implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level);
   implementPowerUps(powerUps, ctx, pacman, score, killCount, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level, killCount);
-  implementPacman(lastKeyPressed, pacman, boundaries, ctx, pellets);
+  implementGhosts(ghosts, boundaries, ctx, length, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level, killCount);
+  implementPacman(lastKeyPressed, pacman, boundaries, ctx, pellets, length);
   displayScore(score);
   displayLives(pacman);
   displayLevel(level);

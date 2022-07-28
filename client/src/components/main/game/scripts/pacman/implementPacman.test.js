@@ -17,6 +17,7 @@ describe("implementPacman", () => {
       mockObject,
       mockObject,
       mockObject,
+      mockObject,
       mockMakeMove,
       mockChangeDirection,
       mockCheckPacmanEating,

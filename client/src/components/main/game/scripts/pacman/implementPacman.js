@@ -9,6 +9,7 @@ export default function implementPacman(
   boundaries,
   ctx,
   pellets,
+  length,
   callbackOne = makeMove,
   callbackTwo = changeDirection,
   callbackThree = checkPacmanEating,
@@ -18,5 +19,5 @@ export default function implementPacman(
   callbackTwo(lastKeyPressed, pacman, boundaries);
   callbackThree(pellets, pacman);
   pacman.update(ctx);
-  callbackFour(pacman);
+  callbackFour(pacman, length);
 }
