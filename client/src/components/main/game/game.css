@@ -15,21 +15,21 @@
 .score {
   color: white;
   display: table-cell;
-  width: 25%;
+  width: 30%;
   text-align: left;
 }
 
 .level {
   color: white;
   display: table-cell;
-  width: 48%;
+  width: 40%;
   text-align: center;
 }
 
 .lives {
   color: white;
   display: table-cell;
-  width: 25%;
+  width: 30%;
   text-align: right;
 }
 
