@@ -9,56 +9,68 @@ cyanImage.src = "./images/cyanGhostLeft.png";
 const orangeImage = new Image();
 orangeImage.src = "./images/orangeGhostRight.png";
 
-export default function makeGhosts() {
+export default function makeGhosts(length) {
   const ghosts = [
-    new Ghost({
-      position: {
-        x: 250,
-        y: 230,
+    new Ghost(
+      {
+        position: {
+          x: (length * 25) / 2,
+          y: (length * 23) / 2,
+        },
+        velocity: {
+          x: 0,
+          y: -length / 8,
+        },
+        colour: "red",
+        image: redImage,
       },
-      velocity: {
-        x: 0,
-        y: -Ghost.speed,
+      length
+    ),
+    new Ghost(
+      {
+        position: {
+          x: (length * 31) / 2,
+          y: (length * 23) / 2,
+        },
+        velocity: {
+          x: 0,
+          y: -length / 8,
+        },
+        colour: "pink",
+        image: pinkImage,
       },
-      colour: "red",
-      image: redImage,
-    }),
-    new Ghost({
-      position: {
-        x: 310,
-        y: 230,
+      length
+    ),
+    new Ghost(
+      {
+        position: {
+          x: (length * 19) / 2,
+          y: (length * 29) / 2,
+        },
+        velocity: {
+          x: -length / 8,
+          y: 0,
+        },
+        colour: "cyan",
+        image: cyanImage,
       },
-      velocity: {
-        x: 0,
-        y: -Ghost.speed,
+      length
+    ),
+    new Ghost(
+      {
+        position: {
+          x: (length * 37) / 2,
+          y: (length * 29) / 2,
+        },
+        velocity: {
+          x: length / 8,
+          y: 0,
+        },
+        colour: "orange",
+        image: orangeImage,
       },
-      colour: "pink",
-      image: pinkImage,
-    }),
-    new Ghost({
-      position: {
-        x: 190,
-        y: 290,
-      },
-      velocity: {
-        x: -Ghost.speed,
-        y: 0,
-      },
-      colour: "cyan",
-      image: cyanImage,
-    }),
-    new Ghost({
-      position: {
-        x: 370,
-        y: 290,
-      },
-      velocity: {
-        x: Ghost.speed,
-        y: 0,
-      },
-      colour: "orange",
-      image: orangeImage,
-    }),
+      length
+    ),
   ];
   return ghosts;
 }

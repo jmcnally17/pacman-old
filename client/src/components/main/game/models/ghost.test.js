@@ -10,38 +10,40 @@ describe("Ghost", () => {
     mockImage = {
       src: "./randomSource",
     };
-    ghost = new Ghost({
-      position: {
-        x: 20,
-        y: 20,
+    ghost = new Ghost(
+      {
+        position: {
+          x: 20,
+          y: 20,
+        },
+        velocity: {
+          x: 7.5,
+          y: 2.5,
+        },
+        colour: "red",
+        image: mockImage,
       },
-      velocity: {
-        x: 7.5,
-        y: 2.5,
+      20
+    );
+    scaredGhost = new Ghost(
+      {
+        position: {
+          x: 20,
+          y: 20,
+        },
+        velocity: {
+          x: 7.5,
+          y: 2.5,
+        },
+        colour: "red",
+        image: mockImage,
       },
-      colour: "red",
-      image: mockImage,
-    });
-    scaredGhost = new Ghost({
-      position: {
-        x: 20,
-        y: 20,
-      },
-      velocity: {
-        x: 7.5,
-        y: 2.5,
-      },
-      colour: "red",
-      image: mockImage,
-    });
+      20
+    );
     scaredGhost.changeScaredState();
     mockCtx = {
       drawImage: () => undefined,
     };
-  });
-
-  it("has a static speed class variable", () => {
-    expect(Ghost.speed).toBe(2.5);
   });
 
   describe("upon instantiation", () => {

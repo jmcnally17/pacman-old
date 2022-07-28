@@ -1,8 +1,15 @@
 import makeBoundaries from "./makeBoundaries";
 
+let mockMakeTunnelBoundaries;
+
 describe("makeBoundaries", () => {
-  it("returns an array of the four tunnel boundaries for an empty map", () => {
-    expect(makeBoundaries([[]], 20).length).toBe(4);
+  beforeEach(() => {
+    mockMakeTunnelBoundaries = jest.fn();
+  });
+
+  it("adds no boundaries to an empty array but always calls makeTunnelBoundaries", () => {
+    expect(makeBoundaries([[]], 20, mockMakeTunnelBoundaries).length).toBe(0);
+    expect(mockMakeTunnelBoundaries).toHaveBeenCalledTimes(1);
   });
 
   it("returns an array of appropriate boundary objects for each type of boundary as well as the tunnel boundaries", () => {
@@ -13,8 +20,10 @@ describe("makeBoundaries", () => {
           ["1", "2", "3", "4"],
           [".", " "],
         ],
-        20
+        20,
+        mockMakeTunnelBoundaries
       ).length
-    ).toBe(10);
+    ).toBe(6);
+    expect(mockMakeTunnelBoundaries).toHaveBeenCalledTimes(1);
   });
 });

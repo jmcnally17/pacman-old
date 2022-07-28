@@ -5,12 +5,15 @@ export default function makePowerUps(map, length) {
   map.forEach((row, i) => {
     row.forEach((element, j) => {
       if (element === "o") {
-        const powerUp = new PowerUp({
-          position: {
-            x: (length * (2 * j + 1)) / 2,
-            y: (length * (2 * i + 1)) / 2,
+        const powerUp = new PowerUp(
+          {
+            position: {
+              x: (length * (2 * j + 1)) / 2,
+              y: (length * (2 * i + 1)) / 2,
+            },
           },
-        });
+          length
+        );
         powerUps.push(powerUp);
       }
     });

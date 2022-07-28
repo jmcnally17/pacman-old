@@ -1,6 +1,7 @@
 export default class PacMan {
   constructor(
     { position, velocity },
+    length,
     munchOne = new Audio("./audio/munch_1.wav"),
     munchTwo = new Audio("./audio/munch_2.wav")
   ) {
@@ -8,8 +9,9 @@ export default class PacMan {
     this.position = { ...this.originalPosition };
     this.originalVelocity = velocity;
     this.velocity = { ...this.originalVelocity };
-    this.radius = 7.5;
-    this.speed = 2.5;
+    this.length = length;
+    this.radius = (length * 3) / 8;
+    this.speed = length / 8;
     this.radians = Math.PI / 4;
     this.openRate = Math.PI / 36;
     this.rotation = 0;
@@ -34,7 +36,7 @@ export default class PacMan {
       this.radians,
       Math.PI * 2 - this.radians
     );
-    ctx.lineTo(this.position.x - 5, this.position.y);
+    ctx.lineTo(this.position.x - this.length / 4, this.position.y);
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();

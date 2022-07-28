@@ -1,7 +1,7 @@
 export default class Pellet {
-  constructor({ position }) {
+  constructor({ position }, length) {
     this.position = position;
-    this.radius = 2;
+    this.radius = length / 10;
     this.hasBeenEaten = false;
   }
 

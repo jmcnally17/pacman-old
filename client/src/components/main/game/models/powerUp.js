@@ -1,7 +1,7 @@
 export default class PowerUp {
-  constructor({ position }) {
+  constructor({ position }, length) {
     this.position = position;
-    this.radius = 7;
+    this.radius = (length * 7) / 20;
     this.hasBeenEaten = false;
   }
 

@@ -5,18 +5,24 @@ let eatenPellet;
 
 describe("Pellet", () => {
   beforeEach(() => {
-    pellet = new Pellet({
-      position: {
-        x: 50,
-        y: 100,
+    pellet = new Pellet(
+      {
+        position: {
+          x: 50,
+          y: 100,
+        },
       },
-    });
-    eatenPellet = new Pellet({
-      position: {
-        x: 50,
-        y: 100,
+      20
+    );
+    eatenPellet = new Pellet(
+      {
+        position: {
+          x: 50,
+          y: 100,
+        },
       },
-    });
+      20
+    );
     eatenPellet.changeEatenState();
   });
 

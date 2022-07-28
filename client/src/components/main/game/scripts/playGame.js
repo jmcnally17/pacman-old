@@ -50,8 +50,8 @@ const map = [
 const boundaries = makeBoundaries(map, length);
 const pellets = makePellets(map, length);
 const powerUps = makePowerUps(map, length);
-const ghosts = makeGhosts();
-const pacman = makePacman();
+const ghosts = makeGhosts(length);
+const pacman = makePacman(length);
 
 const score = {
   points: 0,

@@ -5,18 +5,24 @@ let eatenPowerUp;
 
 describe("PowerUp", () => {
   beforeEach(() => {
-    powerUp = new PowerUp({
-      position: {
-        x: 50,
-        y: 100,
+    powerUp = new PowerUp(
+      {
+        position: {
+          x: 50,
+          y: 100,
+        },
       },
-    });
-    eatenPowerUp = new PowerUp({
-      position: {
-        x: 50,
-        y: 100,
+      20
+    );
+    eatenPowerUp = new PowerUp(
+      {
+        position: {
+          x: 50,
+          y: 100,
+        },
       },
-    });
+      20
+    );
     eatenPowerUp.changeEatenState();
   });
 

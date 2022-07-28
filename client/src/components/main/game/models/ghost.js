@@ -1,21 +1,24 @@
 export default class Ghost {
-  static speed = 2.5;
-  constructor({ position, velocity, colour, image }) {
+  constructor({ position, velocity, colour, image }, length) {
     this.originalPosition = position;
     this.position = { ...this.originalPosition };
     this.originalVelocity = velocity;
     this.velocity = { ...this.originalVelocity };
-    this.radius = 7.5;
+    this.radius = (length * 3) / 8;
     this.colour = colour;
     this.prevCollisions = [];
-    this.speed = 2.5;
+    this.speed = length / 8;
     this.isScared = false;
     this.scaredTimeout = null;
     this.image = image;
   }
 
   draw(ctx) {
-    ctx.drawImage(this.image, this.position.x - 15, this.position.y - 15);
+    ctx.drawImage(
+      this.image,
+      this.position.x - this.radius * 2,
+      this.position.y - this.radius * 2
+    );
   }
 
   update(ctx) {

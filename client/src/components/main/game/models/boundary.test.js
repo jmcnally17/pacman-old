@@ -8,17 +8,20 @@ describe("Boundary", () => {
     mockImage = {
       src: "./randomSource",
     };
-    boundary = new Boundary({
-      position: {
-        x: 40,
-        y: 100,
+    boundary = new Boundary(
+      {
+        position: {
+          x: 40,
+          y: 100,
+        },
+        image: mockImage,
       },
-      image: mockImage,
-    });
+      20
+    );
   });
 
   describe("upon instantiation", () => {
-    it("has a width and height of 20", () => {
+    it("has a width and height equal to the length passed in", () => {
       expect(boundary.width).toBe(20);
       expect(boundary.height).toBe(20);
     });
