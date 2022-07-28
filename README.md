@@ -34,7 +34,7 @@ The player can use the directional keys to move Pac-Man within the boundaries ar
 - Eating one power up is worth 50 points
 - Eating a power up scares all unscared ghosts for 5 seconds which also halves their speed
 - Eating a power up has no effect on scared ghosts
-- Colliding with a scared ghost resets the ghosts position and is worth (200 \* 2<sup>killCount</sup>) points where killCount is the number of scared ghosts attacked since the last power up was eaten
+- Colliding with a scared ghost resets the ghosts position and is worth (200 \* 2<sup>n</sup>) points where n is the number of scared ghosts attacked since the last power up was eaten
 - Colliding with a ghost that is not scared decreases Pac-Man's lives by 1 and resets character positions on the board
 - Colliding with a ghost that is not scared with no extra lives left ends the game
 
