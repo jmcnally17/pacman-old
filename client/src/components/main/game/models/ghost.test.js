@@ -64,6 +64,7 @@ describe("Ghost", () => {
         x: 7.5,
         y: 2.5,
       });
+      expect(ghost.length).toBe(20);
       expect(ghost.radius).toBe(7.5);
       expect(ghost.colour).toBe("red");
       expect(ghost.prevCollisions).toEqual([]);
@@ -89,8 +90,10 @@ describe("Ghost", () => {
       const ghostSpy = jest.spyOn(ghost, "draw");
       ghost.update(mockCtx);
       expect(ghostSpy).toHaveBeenCalledTimes(1);
-      expect(ghost.position.x).toBe(27.5);
-      expect(ghost.position.y).toBe(22.5);
+      expect(ghost.position).toEqual({
+        x: 27.5,
+        y: 22.5,
+      });
     });
   });
 
@@ -112,6 +115,7 @@ describe("Ghost", () => {
       ghost.position.y += 20;
       ghost.velocity.x += 5;
       ghost.velocity.y += 10;
+      ghost.speed = 16;
       ghost.prevCollisions.push("up");
       ghost.isScared = true;
       const clearSpy = jest.spyOn(global, "clearTimeout");
@@ -124,6 +128,7 @@ describe("Ghost", () => {
         x: 7.5,
         y: 2.5,
       });
+      expect(ghost.speed).toBe(2.5);
       expect(ghost.prevCollisions).toEqual([]);
       expect(ghost.isScared).toBeFalsy();
       expect(clearSpy).toHaveBeenCalledTimes(1);

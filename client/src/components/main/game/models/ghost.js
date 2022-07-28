@@ -4,6 +4,7 @@ export default class Ghost {
     this.position = { ...this.originalPosition };
     this.originalVelocity = velocity;
     this.velocity = { ...this.originalVelocity };
+    this.length = length;
     this.radius = (length * 3) / 8;
     this.colour = colour;
     this.prevCollisions = [];
@@ -34,6 +35,7 @@ export default class Ghost {
   reset() {
     this.position = { ...this.originalPosition };
     this.velocity = { ...this.originalVelocity };
+    this.speed = this.length / 8;
     this.prevCollisions = [];
     if (this.isScared) this.changeScaredState();
     clearTimeout(this.scaredTimeout);

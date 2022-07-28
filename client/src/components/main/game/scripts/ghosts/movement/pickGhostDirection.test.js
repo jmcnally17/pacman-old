@@ -17,8 +17,10 @@ describe("pickGhostDirection", () => {
       speed: 5,
     };
     pickGhostDirection(mockGhost, mockCollisions);
-    expect(mockGhost.velocity.x).toBe(5);
-    expect(mockGhost.velocity.y).toBe(0);
+    expect(mockGhost.velocity).toEqual({
+      x: 5,
+      y: 0,
+    });
   });
 
   it("starts moving the ghost to the left if it is the only direction that becomes available", () => {
@@ -31,8 +33,10 @@ describe("pickGhostDirection", () => {
       speed: 5,
     };
     pickGhostDirection(mockGhost, mockCollisions);
-    expect(mockGhost.velocity.x).toBe(-5);
-    expect(mockGhost.velocity.y).toBe(0);
+    expect(mockGhost.velocity).toEqual({
+      x: -5,
+      y: 0,
+    });
   });
 
   it("starts moving the ghost upwards if it is the only direction that becomes available", () => {
@@ -45,8 +49,10 @@ describe("pickGhostDirection", () => {
       speed: 5,
     };
     pickGhostDirection(mockGhost, mockCollisions);
-    expect(mockGhost.velocity.x).toBe(0);
-    expect(mockGhost.velocity.y).toBe(-5);
+    expect(mockGhost.velocity).toEqual({
+      x: 0,
+      y: -5,
+    });
   });
 
   it("starts moving the ghost downwards if it is the only direction that becomes available", () => {
@@ -59,8 +65,10 @@ describe("pickGhostDirection", () => {
       speed: 5,
     };
     pickGhostDirection(mockGhost, mockCollisions);
-    expect(mockGhost.velocity.x).toBe(0);
-    expect(mockGhost.velocity.y).toBe(5);
+    expect(mockGhost.velocity).toEqual({
+      x: 0,
+      y: 5,
+    });
   });
 
   it("sets the prevCollisions array back to being empty at the end of the function", () => {

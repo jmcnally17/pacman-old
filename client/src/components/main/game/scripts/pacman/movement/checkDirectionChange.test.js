@@ -31,8 +31,10 @@ describe("checkDirectionChange", () => {
       mockHitBoundaryConditional
     );
     expect(mockHitBoundaryConditional).toHaveBeenCalledTimes(2);
-    expect(mockPacman.velocity.x).toBe(-5);
-    expect(mockPacman.velocity.y).toBe(0);
+    expect(mockPacman.velocity).toEqual({
+      x: -5,
+      y: 0,
+    });
   });
 
   it("leaves Pac-Man's velocity unchanged when he will collide with any boundaries", () => {
@@ -44,7 +46,9 @@ describe("checkDirectionChange", () => {
       mockHitBoundaryConditional
     );
     expect(mockHitBoundaryConditional).toHaveBeenCalledTimes(2);
-    expect(mockPacman.velocity.x).toBe(20);
-    expect(mockPacman.velocity.y).toBe(5);
+    expect(mockPacman.velocity).toEqual({
+      x: 20,
+      y: 5,
+    });
   });
 });

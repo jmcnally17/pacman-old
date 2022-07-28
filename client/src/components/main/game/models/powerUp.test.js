@@ -28,8 +28,10 @@ describe("PowerUp", () => {
 
   describe("upon instantiation", () => {
     it("has a number of instance variables", () => {
-      expect(powerUp.position.x).toBe(50);
-      expect(powerUp.position.y).toBe(100);
+      expect(powerUp.position).toEqual({
+        x: 50,
+        y: 100,
+      });
       expect(powerUp.radius).toBe(7);
       expect(powerUp.hasBeenEaten).toBe(false);
     });

@@ -3,6 +3,7 @@ import checkPacmanGhostCollision from "./collisions/checkPacmanGhostCollision";
 import updateCollisions from "./movement/updateCollisions";
 import implementTunnel from "../implementTunnel";
 import assignSprite from "./assignSprite";
+import checkSpeedMatchesState from "./movement/checkSpeedMatchesState";
 
 export default function implementGhosts(
   ghosts,
@@ -19,22 +20,24 @@ export default function implementGhosts(
   powerUps,
   level,
   killCount,
-  callbackOne = assignSprite,
-  callbackTwo = implementTunnel,
-  callbackThree = updateCollisions,
-  callbackFour = pickGhostDirection,
-  callbackFive = checkPacmanGhostCollision
+  callbackOne = checkSpeedMatchesState,
+  callbackTwo = assignSprite,
+  callbackThree = implementTunnel,
+  callbackFour = updateCollisions,
+  callbackFive = pickGhostDirection,
+  callbackSix = checkPacmanGhostCollision
 ) {
   ghosts.forEach((ghost) => {
-    callbackOne(ghost);
+    callbackOne(ghost, length);
+    callbackTwo(ghost);
     const collisions = [];
     ghost.update(ctx);
-    callbackTwo(ghost, length);
-    callbackThree(boundaries, collisions, ghost);
+    callbackThree(ghost, length);
+    callbackFour(boundaries, collisions, ghost);
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
-      callbackFour(ghost, collisions);
+      callbackFive(ghost, collisions);
     }
-    callbackFive(
+    callbackSix(
       ghost,
       pacman,
       score,

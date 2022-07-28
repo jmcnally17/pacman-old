@@ -28,8 +28,10 @@ describe("Pellet", () => {
 
   describe("upon instantiation", () => {
     it("has a number of instance variables", () => {
-      expect(pellet.position.x).toBe(50);
-      expect(pellet.position.y).toBe(100);
+      expect(pellet.position).toEqual({
+        x: 50,
+        y: 100,
+      });
       expect(pellet.radius).toBe(2);
       expect(pellet.hasBeenEaten).toBe(false);
     });

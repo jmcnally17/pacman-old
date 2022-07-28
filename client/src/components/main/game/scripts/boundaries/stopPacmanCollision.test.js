@@ -22,8 +22,10 @@ describe("stopPacmanCollision", () => {
       width: 50,
     };
     stopPacmanCollision(mockBoundary, mockPacman);
-    expect(mockPacman.velocity.x).toBe(0);
-    expect(mockPacman.velocity.y).toBe(0);
+    expect(mockPacman.velocity).toEqual({
+      x: 0,
+      y: 0,
+    });
   });
 
   it("leaves Pac-Man's velocity unchanged when not colliding with a boundary", () => {
@@ -47,7 +49,9 @@ describe("stopPacmanCollision", () => {
       width: 10,
     };
     stopPacmanCollision(mockBoundary, mockPacman);
-    expect(mockPacman.velocity.x).toBe(5);
-    expect(mockPacman.velocity.y).toBe(5);
+    expect(mockPacman.velocity).toEqual({
+      x: 5,
+      y: 5,
+    });
   });
 });
