@@ -94,7 +94,7 @@ Tests can be run while in the [main](https://github.com/jmcnally17/pacman) direc
 
 ## Issues
 
-There are two minor bugs with the app:
+There are three minor bugs in the app:
 
 - The ghosts can flicker when their sprites change due to them changing direction. This bug is much more prevalent in the live version on Heroku and is a lot less noticeable when running locally
 - When the game ends, sometimes the players score does not immediately appear on the leaderboard even though it is saved to the database. This may be due to the POST request to save the score slightly lagging and not completing before the scores are pulled from the database onto the leaderboard
