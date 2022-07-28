@@ -23,7 +23,7 @@ Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses
 
 ## Gameplay
 
-The player can use the directional keys to move Pac-Man within the boundaries around the board while the ghosts move randomly. For mobile and tablet users who don't have a keyboard, four buttons are displayed under the game board that they can click which trigger keyboard events for arrow keys.
+The player can use the directional keys to move Pac-Man within the boundaries around the board while the ghosts move randomly. For mobile and tablet users who don't have a keyboard, a D-pad is displayed under the game board that they can click which trigger keyboard events for arrow keys.
 
 ### Rules
 
@@ -32,9 +32,9 @@ The player can use the directional keys to move Pac-Man within the boundaries ar
 - Eating every pellet completes the current level
 - After completing a level, the board is reset to its original configuration, except for Pac-Man's lives and the players score
 - Eating one power up is worth 50 points
-- Eating a power up scares all unscared ghosts for 5 seconds
+- Eating a power up scares all unscared ghosts for 5 seconds which also halves their speed
 - Eating a power up has no effect on scared ghosts
-- Colliding with a scared ghost is worth 200 points and resets the ghosts position
+- Colliding with a scared ghost resets the ghosts position and is worth (200 \* 2<sup>killCount</sup>) points where killCount is the number of scared ghosts attacked since the last power up was eaten
 - Colliding with a ghost that is not scared decreases Pac-Man's lives by 1 and resets character positions on the board
 - Colliding with a ghost that is not scared with no extra lives left ends the game
 
@@ -98,13 +98,13 @@ There are two minor bugs with the app:
 
 - The ghosts can flicker when their sprites change due to them changing direction. This bug is much more prevalent in the live version on Heroku and is a lot less noticeable when running locally
 - When the game ends, sometimes the players score does not immediately appear on the leaderboard even though it is saved to the database. This may be due to the POST request to save the score slightly lagging and not completing before the scores are pulled from the database onto the leaderboard
-- The speed of the game on a google pixel 4 (my phone that I've been testing the mobile version on) is incredibly fast, making it very hard to maneuver around the board. Other phones don't seem to have this issue
+- The speed of the game on a Google Pixel 4 (my phone that I've been testing the mobile version on) is incredibly fast, making it very hard to maneuver around the board. Other phones don't seem to have this issue
 
 ## Features Pending
 
 - Change the ghost movement mechanics to hunt Pac-Man rather than having random movement
 - Add some animations such as Pac-Man death, colliding with a scared ghost, and levelling up
-- Add appropriate audio files to the game
+- Add appropriate audio to the game
 - (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and Express
 
 ## Create React App and Express Application Generator
