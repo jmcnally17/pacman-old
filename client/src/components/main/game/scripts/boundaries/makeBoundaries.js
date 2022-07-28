@@ -96,6 +96,6 @@ export default function makeBoundaries(
       }
     });
   });
-  callback(boundaries);
+  callback(boundaries, length);
   return boundaries;
 }
