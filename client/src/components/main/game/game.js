@@ -22,7 +22,7 @@ export default function Game({ name, mainEl }) {
           <div className="lives" id="lives"></div>
         </div>
       </div>
-      <canvas id="board" className="board" width="560" height="620"></canvas>
+      <canvas id="board" className="board" width="896" height="992"></canvas>
       <br></br>
       <div className="dpad">
         <img

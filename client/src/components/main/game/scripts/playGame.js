@@ -12,7 +12,7 @@ import displayScore from "./displayScore";
 import displayLives from "./displayLives";
 import displayLevel from "./displayLevel";
 
-const length = 20;
+const length = 32;
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
   ["|", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|", "|", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|"],
@@ -83,7 +83,7 @@ export default function playGame(name, mainEl) {
   let animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
-  ctx.clearRect(0, 0, 560, 620);
+  ctx.clearRect(0, 0, 896, 992);
 
   implementBoundaries(boundaries, ctx, pacman);
   implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level);
