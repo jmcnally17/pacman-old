@@ -9,6 +9,7 @@ describe("pickHuntDirection", () => {
         x: 0,
         y: 0,
       },
+      speed: 4,
     };
   });
 

@@ -1,9 +1,9 @@
-import pickRandomDirection from "./movement/random/pickRandomDirection";
 import checkPacmanGhostCollision from "./collisions/checkPacmanGhostCollision";
 import updateCollisions from "./movement/updateCollisions";
 import implementTunnel from "../implementTunnel";
 import assignSprite from "./assignSprite";
 import checkSpeedMatchesState from "./movement/checkSpeedMatchesState";
+import chooseMovement from "./movement/chooseMovement";
 
 export default function implementGhosts(
   ghosts,
@@ -24,7 +24,7 @@ export default function implementGhosts(
   callbackTwo = assignSprite,
   callbackThree = implementTunnel,
   callbackFour = updateCollisions,
-  callbackFive = pickRandomDirection,
+  callbackFive = chooseMovement,
   callbackSix = checkPacmanGhostCollision
 ) {
   ghosts.forEach((ghost) => {
@@ -35,7 +35,7 @@ export default function implementGhosts(
     callbackThree(ghost, length);
     callbackFour(boundaries, collisions, ghost);
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
-      callbackFive(ghost, collisions);
+      callbackFive(ghost, pacman, collisions, length);
     }
     callbackSix(
       ghost,

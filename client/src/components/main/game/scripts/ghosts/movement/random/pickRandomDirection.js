@@ -1,13 +1,4 @@
-export default function pickRandomDirection(ghost, collisions) {
-  if (ghost.velocity.x > 0) ghost.prevCollisions.push("right");
-  else if (ghost.velocity.x < 0) ghost.prevCollisions.push("left");
-  else if (ghost.velocity.y > 0) ghost.prevCollisions.push("down");
-  else if (ghost.velocity.y < 0) ghost.prevCollisions.push("up");
-
-  const pathways = ghost.prevCollisions.filter((collision) => {
-    return !collisions.includes(collision);
-  });
-
+export default function pickRandomDirection(ghost, pathways) {
   const direction = pathways[Math.floor(Math.random() * pathways.length)];
   if (direction === "up") {
     ghost.velocity.x = 0;
@@ -22,5 +13,4 @@ export default function pickRandomDirection(ghost, collisions) {
     ghost.velocity.x = -ghost.speed;
     ghost.velocity.y = 0;
   }
-  ghost.prevCollisions = [];
 }

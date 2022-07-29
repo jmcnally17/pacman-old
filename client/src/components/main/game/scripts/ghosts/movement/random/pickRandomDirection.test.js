@@ -1,85 +1,58 @@
 import pickRandomDirection from "./pickRandomDirection";
+import { mockRandom, resetMockRandom } from "jest-mock-random";
 
-let mockCollisions;
+let mockGhost;
+let mockPathways;
 
 describe("pickRandomDirection", () => {
   beforeEach(() => {
-    mockCollisions = [];
-  });
-
-  it("starts moving the ghost to the right if it is the only direction that becomes available", () => {
-    const mockGhost = {
+    mockGhost = {
       velocity: {
         x: 0,
         y: 0,
       },
-      prevCollisions: ["right"],
-      speed: 5,
+      speed: 4,
     };
-    pickRandomDirection(mockGhost, mockCollisions);
-    expect(mockGhost.velocity).toEqual({
-      x: 5,
-      y: 0,
-    });
+    mockPathways = ["up", "down", "right", "left"];
   });
 
-  it("starts moving the ghost to the left if it is the only direction that becomes available", () => {
-    const mockGhost = {
-      velocity: {
-        x: 0,
-        y: 0,
-      },
-      prevCollisions: ["left"],
-      speed: 5,
-    };
-    pickRandomDirection(mockGhost, mockCollisions);
-    expect(mockGhost.velocity).toEqual({
-      x: -5,
-      y: 0,
-    });
-  });
-
-  it("starts moving the ghost upwards if it is the only direction that becomes available", () => {
-    const mockGhost = {
-      velocity: {
-        x: 0,
-        y: 0,
-      },
-      prevCollisions: ["up"],
-      speed: 5,
-    };
-    pickRandomDirection(mockGhost, mockCollisions);
+  it("can start moving the ghost upwards if it is available", () => {
+    mockRandom([0]);
+    pickRandomDirection(mockGhost, mockPathways);
     expect(mockGhost.velocity).toEqual({
       x: 0,
-      y: -5,
+      y: -4,
     });
+    resetMockRandom();
   });
 
-  it("starts moving the ghost downwards if it is the only direction that becomes available", () => {
-    const mockGhost = {
-      velocity: {
-        x: 0,
-        y: 0,
-      },
-      prevCollisions: ["down"],
-      speed: 5,
-    };
-    pickRandomDirection(mockGhost, mockCollisions);
+  it("can start moving the ghost downwards if it is available", () => {
+    mockRandom([0.3]);
+    pickRandomDirection(mockGhost, mockPathways);
     expect(mockGhost.velocity).toEqual({
       x: 0,
-      y: 5,
+      y: 4,
     });
+    resetMockRandom();
   });
 
-  it("sets the prevCollisions array back to being empty at the end of the function", () => {
-    const mockGhost = {
-      velocity: {
-        x: 0,
-        y: 0,
-      },
-      prevCollisions: ["up", "right", "left"],
-    };
-    pickRandomDirection(mockGhost, mockCollisions);
-    expect(mockGhost.prevCollisions).toEqual([]);
+  it("can start moving the ghost to the right if it is available", () => {
+    mockRandom([0.6]);
+    pickRandomDirection(mockGhost, mockPathways);
+    expect(mockGhost.velocity).toEqual({
+      x: 4,
+      y: 0,
+    });
+    resetMockRandom();
+  });
+
+  it("can start moving the ghost to the left if it is available", () => {
+    mockRandom([0.9]);
+    pickRandomDirection(mockGhost, mockPathways);
+    expect(mockGhost.velocity).toEqual({
+      x: -4,
+      y: 0,
+    });
+    resetMockRandom();
   });
 });

@@ -9,7 +9,7 @@ let mockcheckSpeedMatchesState;
 let mockAssignSprite;
 let mockImplementTunnel;
 let mockUpdateCollisions;
-let mockpickRandomDirection;
+let mockChooseMovement;
 let mockCheckPacmanGhostCollision;
 
 describe("implementGhosts", () => {
@@ -28,7 +28,7 @@ describe("implementGhosts", () => {
     mockAssignSprite = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();
-    mockpickRandomDirection = jest.fn();
+    mockChooseMovement = jest.fn();
     mockCheckPacmanGhostCollision = jest.fn();
   });
 
@@ -53,7 +53,7 @@ describe("implementGhosts", () => {
       mockAssignSprite,
       mockImplementTunnel,
       mockUpdateCollisions,
-      mockpickRandomDirection,
+      mockChooseMovement,
       mockCheckPacmanGhostCollision
     );
     expect(mockcheckSpeedMatchesState).toHaveBeenCalledTimes(3);
@@ -61,7 +61,7 @@ describe("implementGhosts", () => {
     expect(updateSpy).toHaveBeenCalledTimes(3);
     expect(mockImplementTunnel).toHaveBeenCalledTimes(3);
     expect(mockUpdateCollisions).toHaveBeenCalledTimes(3);
-    expect(mockpickRandomDirection).toHaveBeenCalledTimes(3);
+    expect(mockChooseMovement).toHaveBeenCalledTimes(3);
     expect(mockCheckPacmanGhostCollision).toHaveBeenCalledTimes(3);
   });
 
@@ -85,9 +85,9 @@ describe("implementGhosts", () => {
       mockAssignSprite,
       mockImplementTunnel,
       mockUpdateCollisions,
-      mockpickRandomDirection,
+      mockChooseMovement,
       mockCheckPacmanGhostCollision
     );
-    expect(mockpickRandomDirection).toHaveBeenCalledTimes(0);
+    expect(mockChooseMovement).toHaveBeenCalledTimes(0);
   });
 });

@@ -1,3 +1,4 @@
+import emptyPrevCollisions from "../emptyPrevCollisions";
 import calculateDistance from "./calculateDistance";
 import pickHuntDirection from "./pickHuntDirection";
 
@@ -7,7 +8,8 @@ export default function huntPacman(
   collisions,
   length,
   callbackOne = calculateDistance,
-  callbackTwo = pickHuntDirection
+  callbackTwo = pickHuntDirection,
+  callbackthree = emptyPrevCollisions
 ) {
   if (ghost.velocity.x > 0) ghost.prevCollisions.push("right");
   else if (ghost.velocity.x < 0) ghost.prevCollisions.push("left");
@@ -23,5 +25,6 @@ export default function huntPacman(
     }
   });
   callbackOne(pacman, ghost, pathways, length);
-  callbackTwo(pathways, ghost, length);
+  callbackTwo(pathways, ghost);
+  callbackthree(ghost);
 }
