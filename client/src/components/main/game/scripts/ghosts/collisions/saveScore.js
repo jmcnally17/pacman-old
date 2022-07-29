@@ -1,16 +1,12 @@
-let url;
-if (process.env.REACT_APP_URL) {
-  url = `${process.env.REACT_APP_URL}/backend/scores`;
-} else {
-  url = "http://localhost:9000/backend/scores";
-}
+import getBackendUrl from "./getBackendUrl";
 
-export default function saveScore(score, name) {
+export default async function saveScore(score, name, callback = getBackendUrl) {
   const data = {
     name: name,
     points: score.points,
   };
-  fetch(url, {
+  let response;
+  await fetch(callback(), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,6 +14,7 @@ export default function saveScore(score, name) {
     body: JSON.stringify(data),
   })
     .then((response) => response.json())
-    .then((data) => console.log("Success: ", data))
-    .catch((error) => console.error("Error: ", error));
+    .then((data) => (response = `Success: ${data.message}`))
+    .catch((error) => (response = `Error: ${error}`));
+  return response;
 }

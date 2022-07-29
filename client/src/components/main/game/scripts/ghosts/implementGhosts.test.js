@@ -9,7 +9,7 @@ let mockcheckSpeedMatchesState;
 let mockAssignSprite;
 let mockImplementTunnel;
 let mockUpdateCollisions;
-let mockPickGhostDirection;
+let mockChooseMovement;
 let mockCheckPacmanGhostCollision;
 
 describe("implementGhosts", () => {
@@ -28,7 +28,7 @@ describe("implementGhosts", () => {
     mockAssignSprite = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();
-    mockPickGhostDirection = jest.fn();
+    mockChooseMovement = jest.fn();
     mockCheckPacmanGhostCollision = jest.fn();
   });
 
@@ -53,7 +53,7 @@ describe("implementGhosts", () => {
       mockAssignSprite,
       mockImplementTunnel,
       mockUpdateCollisions,
-      mockPickGhostDirection,
+      mockChooseMovement,
       mockCheckPacmanGhostCollision
     );
     expect(mockcheckSpeedMatchesState).toHaveBeenCalledTimes(3);
@@ -61,11 +61,11 @@ describe("implementGhosts", () => {
     expect(updateSpy).toHaveBeenCalledTimes(3);
     expect(mockImplementTunnel).toHaveBeenCalledTimes(3);
     expect(mockUpdateCollisions).toHaveBeenCalledTimes(3);
-    expect(mockPickGhostDirection).toHaveBeenCalledTimes(3);
+    expect(mockChooseMovement).toHaveBeenCalledTimes(3);
     expect(mockCheckPacmanGhostCollision).toHaveBeenCalledTimes(3);
   });
 
-  it("does not call pickGhostDirection when the collisions array is equal to the prevCollisions array", () => {
+  it("does not call pickRandomDirection when the collisions array is equal to the prevCollisions array", () => {
     implementGhosts(
       mockGhostsTwo,
       mockObject,
@@ -85,9 +85,9 @@ describe("implementGhosts", () => {
       mockAssignSprite,
       mockImplementTunnel,
       mockUpdateCollisions,
-      mockPickGhostDirection,
+      mockChooseMovement,
       mockCheckPacmanGhostCollision
     );
-    expect(mockPickGhostDirection).toHaveBeenCalledTimes(0);
+    expect(mockChooseMovement).toHaveBeenCalledTimes(0);
   });
 });

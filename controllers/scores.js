@@ -21,6 +21,7 @@ const ScoresController = {
       if (err) {
         throw err;
       }
+      res.status(201).send({ message: "your score has been saved" });
     });
   },
 };
