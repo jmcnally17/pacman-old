@@ -1,4 +1,4 @@
-export default function pickGhostDirection(ghost, collisions) {
+export default function pickRandomDirection(ghost, collisions) {
   if (ghost.velocity.x > 0) ghost.prevCollisions.push("right");
   else if (ghost.velocity.x < 0) ghost.prevCollisions.push("left");
   else if (ghost.velocity.y > 0) ghost.prevCollisions.push("down");

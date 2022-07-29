@@ -1,8 +1,8 @@
-import pickGhostDirection from "./pickGhostDirection";
+import pickRandomDirection from "./pickRandomDirection";
 
 let mockCollisions;
 
-describe("pickGhostDirection", () => {
+describe("pickRandomDirection", () => {
   beforeEach(() => {
     mockCollisions = [];
   });
@@ -16,7 +16,7 @@ describe("pickGhostDirection", () => {
       prevCollisions: ["right"],
       speed: 5,
     };
-    pickGhostDirection(mockGhost, mockCollisions);
+    pickRandomDirection(mockGhost, mockCollisions);
     expect(mockGhost.velocity).toEqual({
       x: 5,
       y: 0,
@@ -32,7 +32,7 @@ describe("pickGhostDirection", () => {
       prevCollisions: ["left"],
       speed: 5,
     };
-    pickGhostDirection(mockGhost, mockCollisions);
+    pickRandomDirection(mockGhost, mockCollisions);
     expect(mockGhost.velocity).toEqual({
       x: -5,
       y: 0,
@@ -48,7 +48,7 @@ describe("pickGhostDirection", () => {
       prevCollisions: ["up"],
       speed: 5,
     };
-    pickGhostDirection(mockGhost, mockCollisions);
+    pickRandomDirection(mockGhost, mockCollisions);
     expect(mockGhost.velocity).toEqual({
       x: 0,
       y: -5,
@@ -64,7 +64,7 @@ describe("pickGhostDirection", () => {
       prevCollisions: ["down"],
       speed: 5,
     };
-    pickGhostDirection(mockGhost, mockCollisions);
+    pickRandomDirection(mockGhost, mockCollisions);
     expect(mockGhost.velocity).toEqual({
       x: 0,
       y: 5,
@@ -79,7 +79,7 @@ describe("pickGhostDirection", () => {
       },
       prevCollisions: ["up", "right", "left"],
     };
-    pickGhostDirection(mockGhost, mockCollisions);
+    pickRandomDirection(mockGhost, mockCollisions);
     expect(mockGhost.prevCollisions).toEqual([]);
   });
 });
