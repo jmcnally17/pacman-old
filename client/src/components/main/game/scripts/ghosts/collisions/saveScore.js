@@ -6,7 +6,7 @@ export default async function saveScore(score, name, callback = getBackendUrl) {
     points: score.points,
   };
   let response;
-  await fetch(callback(), {
+  await fetch(callback(process.env.REACT_APP_URL), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
