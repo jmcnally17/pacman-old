@@ -51,13 +51,13 @@ describe("calculateDistance", () => {
   it("calculates the distance between four squares to the right of pacman facing right and each pathway if the ghost is pink", () => {
     const mockPathwayOne = {
       position: {
-        x: 267,
+        x: 331,
         y: 384,
       },
     };
     const mockPathwayTwo = {
       position: {
-        x: 259,
+        x: 323,
         y: 368,
       },
     };
@@ -78,13 +78,13 @@ describe("calculateDistance", () => {
     const mockPathwayOne = {
       position: {
         x: 203,
-        y: 448,
+        y: 512,
       },
     };
     const mockPathwayTwo = {
       position: {
         x: 195,
-        y: 432,
+        y: 496,
       },
     };
     const mockPathways = [mockPathwayOne, mockPathwayTwo];
@@ -103,13 +103,13 @@ describe("calculateDistance", () => {
     mockPacman.rotation = Math.PI;
     const mockPathwayOne = {
       position: {
-        x: 139,
+        x: 75,
         y: 384,
       },
     };
     const mockPathwayTwo = {
       position: {
-        x: 131,
+        x: 67,
         y: 368,
       },
     };
@@ -130,13 +130,13 @@ describe("calculateDistance", () => {
     const mockPathwayOne = {
       position: {
         x: 203,
-        y: 320,
+        y: 256,
       },
     };
     const mockPathwayTwo = {
       position: {
         x: 195,
-        y: 304,
+        y: 240,
       },
     };
     const mockPathways = [mockPathwayOne, mockPathwayTwo];

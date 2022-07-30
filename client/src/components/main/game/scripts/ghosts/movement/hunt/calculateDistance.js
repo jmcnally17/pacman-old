@@ -13,13 +13,13 @@ export default function calculateDistance(
     let y = pacman.position.y - pathway.position.y;
     if (ghost.colour === "pink") {
       if (pacman.rotation === 0) {
-        x += length * 2;
+        x += length * 4;
       } else if (pacman.rotation === Math.PI / 2) {
-        y += length * 2;
+        y += length * 4;
       } else if (pacman.rotation === Math.PI) {
-        x -= length * 2;
+        x -= length * 4;
       } else if (pacman.rotation === (Math.PI * 3) / 2) {
-        y -= length * 2;
+        y -= length * 4;
       }
     }
     const distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
