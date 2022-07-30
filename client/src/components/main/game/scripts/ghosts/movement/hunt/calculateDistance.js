@@ -11,22 +11,17 @@ export default function calculateDistance(
     callback(pathway, ghost, length);
     let x;
     let y;
-    if (ghost.colour === "red") {
-      x = pacman.position.x - pathway.position.x;
-      y = pacman.position.y - pathway.position.y;
-    } else if (ghost.colour === "pink") {
+    x = pacman.position.x - pathway.position.x;
+    y = pacman.position.y - pathway.position.y;
+    if (ghost.colour === "pink") {
       if (pacman.rotation === 0) {
-        x = pacman.position.x + length * 2 - pathway.position.x;
-        y = pacman.position.y - pathway.position.y;
+        x += length * 2;
       } else if (pacman.rotation === Math.PI / 2) {
-        x = pacman.position.x - pathway.position.x;
-        y = pacman.position.y + length * 2 - pathway.position.y;
+        y += length * 2;
       } else if (pacman.rotation === Math.PI) {
-        x = pacman.position.x - length * 2 - pathway.position.x;
-        y = pacman.position.y - pathway.position.y;
+        x -= length * 2;
       } else if (pacman.rotation === (Math.PI * 3) / 2) {
-        x = pacman.position.x - pathway.position.x;
-        y = pacman.position.y - length * 2 - pathway.position.y;
+        y -= length * 2;
       }
     }
     const distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
