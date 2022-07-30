@@ -1,4 +1,4 @@
-# Pac-Man <img src="./client/public/images/redGhostRight.png" height="30"> <img src="./client/public/images/pinkGhostRight.png" height="30"> <img src="./client/public/images/cyanGhostRight.png" height="30"> <img src="./client/public/images/orangeGhostRight.png" height="30"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./client/public/images/scaredGhostBlue.png" height="30"> 
+# Pac-Man <img src="./client/public/images/redGhostRight.png" height="30"> <img src="./client/public/images/pinkGhostRight.png" height="30"> <img src="./client/public/images/cyanGhostRight.png" height="30"> <img src="./client/public/images/orangeGhostRight.png" height="30"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./client/public/images/scaredGhostBlue.png" height="30">
 
 This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a MongoDB Atlas database which saves the players score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can see how well they did.
 
@@ -23,7 +23,7 @@ Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses
 
 ## Gameplay
 
-The player can use the directional keys to move Pac-Man within the boundaries around the board while the ghosts move randomly. For mobile and tablet users who don't have a keyboard, a D-pad is displayed under the game board that they can click which trigger keyboard events for arrow keys.
+The player can use the directional keys to move Pac-Man within the boundaries around the board. The red ghost chooses the direction of the shortest direct path to Pac-Man's position while the other three ghosts move randomly. For mobile and tablet users who don't have a keyboard, a D-pad is displayed under the game board that they can click which trigger keyboard events for arrow keys.
 
 ### Rules
 
