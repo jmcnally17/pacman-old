@@ -9,10 +9,8 @@ export default function calculateDistance(
 ) {
   pathways.forEach((pathway) => {
     callback(pathway, ghost, length);
-    let x;
-    let y;
-    x = pacman.position.x - pathway.position.x;
-    y = pacman.position.y - pathway.position.y;
+    let x = pacman.position.x - pathway.position.x;
+    let y = pacman.position.y - pathway.position.y;
     if (ghost.colour === "pink") {
       if (pacman.rotation === 0) {
         x += length * 2;
