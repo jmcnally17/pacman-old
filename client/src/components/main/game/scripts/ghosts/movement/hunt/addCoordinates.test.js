@@ -1,8 +1,8 @@
-import findPosition from "./findPosition";
+import addCoordinates from "./addCoordinates";
 
 let mockGhost;
 
-describe("findPosition", () => {
+describe("addCoordinates", () => {
   beforeEach(() => {
     mockGhost = {
       position: {
@@ -16,7 +16,7 @@ describe("findPosition", () => {
     const mockPathway = {
       direction: "up",
     };
-    findPosition(mockPathway, mockGhost, 32);
+    addCoordinates(mockPathway, mockGhost, 32);
     expect(mockPathway.position).toEqual({
       x: 200,
       y: 296,
@@ -27,7 +27,7 @@ describe("findPosition", () => {
     const mockPathway = {
       direction: "down",
     };
-    findPosition(mockPathway, mockGhost, 32);
+    addCoordinates(mockPathway, mockGhost, 32);
     expect(mockPathway.position).toEqual({
       x: 200,
       y: 304,
@@ -38,7 +38,7 @@ describe("findPosition", () => {
     const mockPathway = {
       direction: "left",
     };
-    findPosition(mockPathway, mockGhost, 32);
+    addCoordinates(mockPathway, mockGhost, 32);
     expect(mockPathway.position).toEqual({
       x: 196,
       y: 300,
@@ -49,7 +49,7 @@ describe("findPosition", () => {
     const mockPathway = {
       direction: "right",
     };
-    findPosition(mockPathway, mockGhost, 32);
+    addCoordinates(mockPathway, mockGhost, 32);
     expect(mockPathway.position).toEqual({
       x: 204,
       y: 300,

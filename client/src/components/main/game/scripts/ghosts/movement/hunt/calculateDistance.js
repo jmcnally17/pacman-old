@@ -1,11 +1,11 @@
-import findPosition from "./findPosition";
+import addCoordinates from "./addCoordinates";
 
 export default function calculateDistance(
   pacman,
   ghost,
   pathways,
   length,
-  callback = findPosition
+  callback = addCoordinates
 ) {
   pathways.forEach((pathway) => {
     callback(pathway, ghost, length);

@@ -3,7 +3,7 @@ import calculateDistance from "./calculateDistance";
 let mockPacman;
 let mockRedGhost;
 let mockPinkGhost;
-let mockFindPosition;
+let mockaddCoordinates;
 
 describe("calculateDistance", () => {
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe("calculateDistance", () => {
     mockPinkGhost = {
       colour: "pink",
     };
-    mockFindPosition = jest.fn();
+    mockaddCoordinates = jest.fn();
   });
 
   it("calculates the distance between pacman and each pathway if the ghost is red", () => {
@@ -42,7 +42,7 @@ describe("calculateDistance", () => {
       mockRedGhost,
       mockPathways,
       32,
-      mockFindPosition
+      mockaddCoordinates
     );
     expect(mockPathwayOne.distance).toBe(5);
     expect(mockPathwayTwo.distance).toBe(13);
@@ -67,7 +67,7 @@ describe("calculateDistance", () => {
       mockPinkGhost,
       mockPathways,
       32,
-      mockFindPosition
+      mockaddCoordinates
     );
     expect(mockPathwayOne.distance).toBe(5);
     expect(mockPathwayTwo.distance).toBe(13);
@@ -93,7 +93,7 @@ describe("calculateDistance", () => {
       mockPinkGhost,
       mockPathways,
       32,
-      mockFindPosition
+      mockaddCoordinates
     );
     expect(mockPathwayOne.distance).toBe(5);
     expect(mockPathwayTwo.distance).toBe(13);
@@ -119,7 +119,7 @@ describe("calculateDistance", () => {
       mockPinkGhost,
       mockPathways,
       32,
-      mockFindPosition
+      mockaddCoordinates
     );
     expect(mockPathwayOne.distance).toBe(5);
     expect(mockPathwayTwo.distance).toBe(13);
@@ -145,7 +145,7 @@ describe("calculateDistance", () => {
       mockPinkGhost,
       mockPathways,
       32,
-      mockFindPosition
+      mockaddCoordinates
     );
     expect(mockPathwayOne.distance).toBe(5);
     expect(mockPathwayTwo.distance).toBe(13);

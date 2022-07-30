@@ -1,4 +1,4 @@
-export default function findPosition(pathway, ghost, length) {
+export default function addCoordinates(pathway, ghost, length) {
   if (pathway.direction === "up") {
     pathway.position = {
       x: ghost.position.x,
