@@ -9,7 +9,10 @@ export default function chooseMovement(
   callbackOne = huntPacman,
   callbackTwo = moveRandomly
 ) {
-  if (ghost.colour === "red" && !ghost.isScared) {
+  if (
+    (ghost.colour === "red" && !ghost.isScared) ||
+    (ghost.colour === "pink" && !ghost.isScared)
+  ) {
     callbackOne(ghost, pacman, collisions, length);
   } else {
     callbackTwo(ghost, collisions);

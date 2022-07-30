@@ -10,7 +10,7 @@ describe("chooseMovement", () => {
     mockMoveRandomly = jest.fn();
   });
 
-  it("calls huntPacman if the ghost is red and is not scared", () => {
+  it("calls huntPacman if the ghost is red or pink and is not scared", () => {
     const mockRedGhost = {
       colour: "red",
       isScared: false,
@@ -27,9 +27,9 @@ describe("chooseMovement", () => {
     expect(mockMoveRandomly).toHaveBeenCalledTimes(0);
   });
 
-  it("calls randomDirection if the ghost is red but is scared", () => {
+  it("calls randomDirection if the ghost is red or pink but is scared", () => {
     const mockRedGhost = {
-      colour: "red",
+      colour: "pink",
       isScared: true,
     };
     chooseMovement(
@@ -44,7 +44,7 @@ describe("chooseMovement", () => {
     expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
   });
 
-  it("calls randomMovement if the ghost is not red", () => {
+  it("calls randomMovement if the ghost is not red or pink", () => {
     const mockCyanGhost = {
       colour: "cyan",
     };
