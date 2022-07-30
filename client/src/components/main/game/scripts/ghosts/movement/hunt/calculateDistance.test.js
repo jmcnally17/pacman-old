@@ -1,153 +1,60 @@
 import calculateDistance from "./calculateDistance";
 
-let mockPacman;
-let mockRedGhost;
-let mockPinkGhost;
-let mockaddCoordinates;
+let mockObject;
+let mockPathway;
+let mockPathways;
+let mockAddCoordinates;
+let mockFindRedOrangeAimPath;
+let mockFindPinkAimPath;
+let mockCalculateHypotenuse;
 
 describe("calculateDistance", () => {
   beforeEach(() => {
-    mockPacman = {
-      position: {
-        x: 200,
-        y: 380,
-      },
-      rotation: 0,
-    };
-    mockRedGhost = {
+    mockPathway = {};
+    mockPathways = [mockPathway, mockPathway];
+    mockAddCoordinates = jest.fn();
+    mockFindRedOrangeAimPath = jest.fn();
+    mockFindPinkAimPath = jest.fn();
+    mockCalculateHypotenuse = jest.fn();
+  });
+
+  it("calls the necessary callbacks if the ghost is red", () => {
+    const mockRedGhost = {
       colour: "red",
     };
-    mockPinkGhost = {
-      colour: "pink",
-    };
-    mockaddCoordinates = jest.fn();
-  });
-
-  it("calculates the distance between pacman and each pathway if the ghost is red", () => {
-    const mockPathwayOne = {
-      position: {
-        x: 203,
-        y: 384,
-      },
-    };
-    const mockPathwayTwo = {
-      position: {
-        x: 195,
-        y: 368,
-      },
-    };
-    const mockPathways = [mockPathwayOne, mockPathwayTwo];
     calculateDistance(
-      mockPacman,
+      mockObject,
       mockRedGhost,
       mockPathways,
-      32,
-      mockaddCoordinates
+      mockObject,
+      mockAddCoordinates,
+      mockFindRedOrangeAimPath,
+      mockFindPinkAimPath,
+      mockCalculateHypotenuse
     );
-    expect(mockPathwayOne.distance).toBe(5);
-    expect(mockPathwayTwo.distance).toBe(13);
+    expect(mockAddCoordinates).toHaveBeenCalledTimes(2);
+    expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(2);
+    expect(mockFindPinkAimPath).toHaveBeenCalledTimes(0);
+    expect(mockCalculateHypotenuse).toHaveBeenCalledTimes(2);
   });
 
-  it("calculates the distance between four squares to the right of pacman facing right and each pathway if the ghost is pink", () => {
-    const mockPathwayOne = {
-      position: {
-        x: 331,
-        y: 384,
-      },
+  it("calls the necessary callbacks if the ghost is pink", () => {
+    const mockPinkGhost = {
+      colour: "pink",
     };
-    const mockPathwayTwo = {
-      position: {
-        x: 323,
-        y: 368,
-      },
-    };
-    const mockPathways = [mockPathwayOne, mockPathwayTwo];
     calculateDistance(
-      mockPacman,
+      mockObject,
       mockPinkGhost,
       mockPathways,
-      32,
-      mockaddCoordinates
+      mockObject,
+      mockAddCoordinates,
+      mockFindRedOrangeAimPath,
+      mockFindPinkAimPath,
+      mockCalculateHypotenuse
     );
-    expect(mockPathwayOne.distance).toBe(5);
-    expect(mockPathwayTwo.distance).toBe(13);
-  });
-
-  it("calculates the distance between four squares below pacman facing down and each pathway if the ghost is pink", () => {
-    mockPacman.rotation = Math.PI / 2;
-    const mockPathwayOne = {
-      position: {
-        x: 203,
-        y: 512,
-      },
-    };
-    const mockPathwayTwo = {
-      position: {
-        x: 195,
-        y: 496,
-      },
-    };
-    const mockPathways = [mockPathwayOne, mockPathwayTwo];
-    calculateDistance(
-      mockPacman,
-      mockPinkGhost,
-      mockPathways,
-      32,
-      mockaddCoordinates
-    );
-    expect(mockPathwayOne.distance).toBe(5);
-    expect(mockPathwayTwo.distance).toBe(13);
-  });
-
-  it("calculates the distance between four squares to the left of pacman facing left and each pathway if the ghost is pink", () => {
-    mockPacman.rotation = Math.PI;
-    const mockPathwayOne = {
-      position: {
-        x: 75,
-        y: 384,
-      },
-    };
-    const mockPathwayTwo = {
-      position: {
-        x: 67,
-        y: 368,
-      },
-    };
-    const mockPathways = [mockPathwayOne, mockPathwayTwo];
-    calculateDistance(
-      mockPacman,
-      mockPinkGhost,
-      mockPathways,
-      32,
-      mockaddCoordinates
-    );
-    expect(mockPathwayOne.distance).toBe(5);
-    expect(mockPathwayTwo.distance).toBe(13);
-  });
-
-  it("calculates the distance between four squares above pacman facing up and each pathway if the ghost is pink", () => {
-    mockPacman.rotation = (Math.PI * 3) / 2;
-    const mockPathwayOne = {
-      position: {
-        x: 203,
-        y: 256,
-      },
-    };
-    const mockPathwayTwo = {
-      position: {
-        x: 195,
-        y: 240,
-      },
-    };
-    const mockPathways = [mockPathwayOne, mockPathwayTwo];
-    calculateDistance(
-      mockPacman,
-      mockPinkGhost,
-      mockPathways,
-      32,
-      mockaddCoordinates
-    );
-    expect(mockPathwayOne.distance).toBe(5);
-    expect(mockPathwayTwo.distance).toBe(13);
+    expect(mockAddCoordinates).toHaveBeenCalledTimes(2);
+    expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(0);
+    expect(mockFindPinkAimPath).toHaveBeenCalledTimes(2);
+    expect(mockCalculateHypotenuse).toHaveBeenCalledTimes(2);
   });
 });
