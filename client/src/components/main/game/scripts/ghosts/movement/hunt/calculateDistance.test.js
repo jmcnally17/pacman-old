@@ -5,6 +5,7 @@ let mockPathway;
 let mockPathways;
 let mockAddCoordinates;
 let mockFindRedOrangeAimPath;
+let mockIsOrangeFarFromPacman;
 let mockFindPinkAimPath;
 let mockFindCyanAimPath;
 let mockCalculateHypotenuse;
@@ -15,6 +16,7 @@ describe("calculateDistance", () => {
     mockPathways = [mockPathway, mockPathway];
     mockAddCoordinates = jest.fn();
     mockFindRedOrangeAimPath = jest.fn();
+    mockIsOrangeFarFromPacman = jest.fn();
     mockFindPinkAimPath = jest.fn();
     mockFindCyanAimPath = jest.fn();
     mockCalculateHypotenuse = jest.fn();
@@ -32,12 +34,14 @@ describe("calculateDistance", () => {
       mockObject,
       mockAddCoordinates,
       mockFindRedOrangeAimPath,
+      mockIsOrangeFarFromPacman,
       mockFindPinkAimPath,
       mockFindCyanAimPath,
       mockCalculateHypotenuse
     );
     expect(mockAddCoordinates).toHaveBeenCalledTimes(2);
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(2);
+    expect(mockIsOrangeFarFromPacman).toHaveBeenCalledTimes(0);
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanAimPath).toHaveBeenCalledTimes(0);
     expect(mockCalculateHypotenuse).toHaveBeenCalledTimes(2);
@@ -55,12 +59,14 @@ describe("calculateDistance", () => {
       mockObject,
       mockAddCoordinates,
       mockFindRedOrangeAimPath,
+      mockIsOrangeFarFromPacman,
       mockFindPinkAimPath,
       mockFindCyanAimPath,
       mockCalculateHypotenuse
     );
     expect(mockAddCoordinates).toHaveBeenCalledTimes(2);
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(0);
+    expect(mockIsOrangeFarFromPacman).toHaveBeenCalledTimes(0);
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(2);
     expect(mockFindCyanAimPath).toHaveBeenCalledTimes(0);
     expect(mockCalculateHypotenuse).toHaveBeenCalledTimes(2);
@@ -78,12 +84,14 @@ describe("calculateDistance", () => {
       mockObject,
       mockAddCoordinates,
       mockFindRedOrangeAimPath,
+      mockIsOrangeFarFromPacman,
       mockFindPinkAimPath,
       mockFindCyanAimPath,
       mockCalculateHypotenuse
     );
     expect(mockAddCoordinates).toHaveBeenCalledTimes(2);
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(0);
+    expect(mockIsOrangeFarFromPacman).toHaveBeenCalledTimes(0);
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanAimPath).toHaveBeenCalledTimes(2);
     expect(mockCalculateHypotenuse).toHaveBeenCalledTimes(2);
