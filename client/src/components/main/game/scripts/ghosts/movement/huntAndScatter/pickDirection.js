@@ -1,4 +1,4 @@
-export default function pickHuntDirection(pathways, ghost) {
+export default function pickDirection(pathways, ghost) {
   let shortest = { distance: 10000 };
   for (let i = 0; i < pathways.length; i++) {
     if (pathways[i].distance < shortest.distance) shortest = pathways[i];

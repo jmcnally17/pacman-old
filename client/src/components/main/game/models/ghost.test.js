@@ -125,43 +125,41 @@ describe("Ghost", () => {
 
   describe("reset", () => {
     it("changes the ghosts parameters back to their original configuration", () => {
-      ghost.position.x += 20;
-      ghost.position.y += 20;
-      ghost.velocity.x += 5;
-      ghost.velocity.y += 10;
-      ghost.speed = 16;
-      ghost.prevCollisions.push("up");
-      ghost.isScared = true;
+      scaredGhost.position.x += 20;
+      scaredGhost.position.y += 20;
+      scaredGhost.velocity.x += 5;
+      scaredGhost.velocity.y += 10;
+      scaredGhost.speed = 16;
+      scaredGhost.prevCollisions.push("up");
       const clearSpy = jest.spyOn(global, "clearTimeout");
-      ghost.reset();
-      expect(ghost.position).toEqual({
+      scaredGhost.reset();
+      expect(scaredGhost.position).toEqual({
         x: 20,
         y: 20,
       });
-      expect(ghost.velocity).toEqual({
+      expect(scaredGhost.velocity).toEqual({
         x: 7.5,
         y: 2.5,
       });
-      expect(ghost.speed).toBe(2.5);
-      expect(ghost.prevCollisions).toEqual([]);
-      expect(ghost.isScared).toBeFalsy();
+      expect(scaredGhost.speed).toBe(2.5);
+      expect(scaredGhost.prevCollisions).toEqual([]);
+      expect(scaredGhost.isScared).toBeFalsy();
       expect(clearSpy).toHaveBeenCalledTimes(1);
     });
 
-    it("leaves isScared and isHunting as false if they are already false", () => {
-      scaredGhost.reset();
-      expect(scaredGhost.isScared).toBeFalsy();
+    it("leaves isScared as false if it is already false", () => {
+      ghost.reset();
+      expect(ghost.isScared).toBeFalsy();
     });
   });
 
   describe("resetHuntingState", () => {
     it("changes the hunting state back to false", () => {
-      ghost.isHunting = false;
-      ghost.resetHuntingState();
-      expect(ghost.isHunting).toBeFalsy();
+      scaredGhost.resetHuntingState();
+      expect(scaredGhost.isHunting).toBeFalsy();
     });
 
-    it("leaves the hunting state as false if it already is", () => {
+    it("leaves the hunting state as false if it is already false", () => {
       ghost.resetHuntingState();
       expect(ghost.isHunting).toBeFalsy();
     });

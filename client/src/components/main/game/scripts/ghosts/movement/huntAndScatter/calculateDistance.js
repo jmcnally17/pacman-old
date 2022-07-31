@@ -1,9 +1,9 @@
 import addCoordinates from "./addCoordinates";
 import calculateHypotenuse from "./calculateHypotenuse";
-import findCyanAimPath from "./findCyanAimPath";
-import findOrangeScatterPath from "./findOrangeScatterPath";
-import findPinkAimPath from "./findPinkAimPath";
-import findRedOrangeAimPath from "./findRedOrangeAimPath";
+import findCyanAimPath from "./hunt/findCyanAimPath";
+import findOrangeScatterPath from "./scatter/findOrangeScatterPath";
+import findPinkAimPath from "./hunt/findPinkAimPath";
+import findRedOrangeAimPath from "./hunt/findRedOrangeAimPath";
 import isOrangeFarFromPacman from "./isOrangeFarFromPacman";
 
 export default function calculateDistance(

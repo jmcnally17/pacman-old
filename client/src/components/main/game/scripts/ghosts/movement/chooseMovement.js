@@ -1,4 +1,4 @@
-import huntPacman from "./hunt/huntPacman";
+import huntAndScatter from "./huntAndScatter/huntAndScatter";
 import moveRandomly from "./random/moveRandomly";
 
 export default function chooseMovement(
@@ -7,7 +7,7 @@ export default function chooseMovement(
   collisions,
   length,
   redGhost,
-  callbackOne = huntPacman,
+  callbackOne = huntAndScatter,
   callbackTwo = moveRandomly
 ) {
   if (!ghost.isScared) {

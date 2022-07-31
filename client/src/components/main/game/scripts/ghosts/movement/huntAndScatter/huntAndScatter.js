@@ -1,15 +1,15 @@
 import emptyPrevCollisions from "../emptyPrevCollisions";
 import calculateDistance from "./calculateDistance";
-import pickHuntDirection from "./pickHuntDirection";
+import pickDirection from "./pickDirection";
 
-export default function huntPacman(
+export default function huntAndScatter(
   ghost,
   pacman,
   collisions,
   length,
   redGhost,
   callbackOne = calculateDistance,
-  callbackTwo = pickHuntDirection,
+  callbackTwo = pickDirection,
   callbackthree = emptyPrevCollisions
 ) {
   if (ghost.velocity.x > 0) ghost.prevCollisions.push("right");

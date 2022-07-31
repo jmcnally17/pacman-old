@@ -1,8 +1,8 @@
-import pickHuntDirection from "./pickHuntDirection";
+import pickDirection from "./pickDirection";
 
 let mockGhost;
 
-describe("pickHuntDirection", () => {
+describe("pickDirection", () => {
   beforeEach(() => {
     mockGhost = {
       velocity: {
@@ -23,7 +23,7 @@ describe("pickHuntDirection", () => {
       distance: 25,
     };
     const mockPathways = [mockPathwayOne, mockPathwayTwo];
-    pickHuntDirection(mockPathways, mockGhost, 32);
+    pickDirection(mockPathways, mockGhost, 32);
     expect(mockGhost.velocity).toEqual({
       x: 0,
       y: -4,
@@ -40,7 +40,7 @@ describe("pickHuntDirection", () => {
       distance: 25,
     };
     const mockPathways = [mockPathwayOne, mockPathwayTwo];
-    pickHuntDirection(mockPathways, mockGhost, 32);
+    pickDirection(mockPathways, mockGhost, 32);
     expect(mockGhost.velocity).toEqual({
       x: 0,
       y: 4,
@@ -57,7 +57,7 @@ describe("pickHuntDirection", () => {
       distance: 25,
     };
     const mockPathways = [mockPathwayOne, mockPathwayTwo];
-    pickHuntDirection(mockPathways, mockGhost, 32);
+    pickDirection(mockPathways, mockGhost, 32);
     expect(mockGhost.velocity).toEqual({
       x: 4,
       y: 0,
@@ -74,7 +74,7 @@ describe("pickHuntDirection", () => {
       distance: 25,
     };
     const mockPathways = [mockPathwayOne, mockPathwayTwo];
-    pickHuntDirection(mockPathways, mockGhost, 32);
+    pickDirection(mockPathways, mockGhost, 32);
     expect(mockGhost.velocity).toEqual({
       x: -4,
       y: 0,
