@@ -32,7 +32,8 @@ export default function calculateDistance(
       displacementFromAim = callbackFour(pacman, pathway, length);
     else if (ghost.colour === "cyan")
       displacementFromAim = callbackFive(pacman, length, redGhost, pathway);
-    else if (ghost.colour === "orange") callbackSix(ghost);
+    else if (ghost.colour === "orange")
+      displacementFromAim = callbackSix(ghost);
     callbackSeven(displacementFromAim, pathway);
   });
 }
