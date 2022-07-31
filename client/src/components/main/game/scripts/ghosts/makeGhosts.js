@@ -14,7 +14,7 @@ export default function makeGhosts(length) {
     new Ghost(
       {
         position: {
-          x: (length * 25) / 2,
+          x: (length * 31) / 2,
           y: (length * 23) / 2,
         },
         velocity: {
@@ -29,7 +29,7 @@ export default function makeGhosts(length) {
     new Ghost(
       {
         position: {
-          x: (length * 31) / 2,
+          x: (length * 25) / 2,
           y: (length * 23) / 2,
         },
         velocity: {
@@ -44,11 +44,11 @@ export default function makeGhosts(length) {
     new Ghost(
       {
         position: {
-          x: (length * 19) / 2,
+          x: (length * 37) / 2,
           y: (length * 29) / 2,
         },
         velocity: {
-          x: -length / 8,
+          x: length / 8,
           y: 0,
         },
         colour: "cyan",
@@ -59,11 +59,11 @@ export default function makeGhosts(length) {
     new Ghost(
       {
         position: {
-          x: (length * 37) / 2,
+          x: (length * 19) / 2,
           y: (length * 29) / 2,
         },
         velocity: {
-          x: length / 8,
+          x: -length / 8,
           y: 0,
         },
         colour: "orange",
