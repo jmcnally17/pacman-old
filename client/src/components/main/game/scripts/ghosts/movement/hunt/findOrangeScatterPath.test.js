@@ -9,8 +9,8 @@ describe("findOrangeScatterPath", () => {
       },
     };
     expect(findOrangeScatterPath(mockOrangeGhost)).toEqual({
-      x: -232,
-      y: 492,
+      x: -280,
+      y: 572,
     });
   });
 });
