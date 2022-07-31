@@ -72,7 +72,7 @@ describe("Ghost", () => {
       expect(ghost.speed).toBe(2.5);
       expect(ghost.isScared).toBeFalsy();
       expect(ghost.scaredTimeout).toBeNull();
-      expect(ghost.isHunting).toBeTruthy();
+      expect(ghost.isHunting).toBeFalsy();
       expect(ghost.image).toEqual({
         src: "./randomSource",
       });
@@ -112,14 +112,14 @@ describe("Ghost", () => {
   });
 
   describe("changeHuntingState", () => {
-    it("can change isHunting to false when called", () => {
+    it("can change isHunting to true when called", () => {
       ghost.changeHuntingState();
-      expect(ghost.isHunting).toBeFalsy();
+      expect(ghost.isHunting).toBeTruthy();
     });
 
-    it("can change isHunting to true when called", () => {
+    it("can change isHunting to false when called", () => {
       scaredGhost.changeHuntingState();
-      expect(scaredGhost.isHunting).toBeTruthy();
+      expect(scaredGhost.isHunting).toBeFalsy();
     });
   });
 
@@ -155,15 +155,15 @@ describe("Ghost", () => {
   });
 
   describe("resetHuntingState", () => {
-    it("changes the hunting state back to true", () => {
+    it("changes the hunting state back to false", () => {
       ghost.isHunting = false;
       ghost.resetHuntingState();
-      expect(ghost.isHunting).toBeTruthy();
+      expect(ghost.isHunting).toBeFalsy();
     });
 
-    it("leaves the hunting state as true if it already is", () => {
+    it("leaves the hunting state as false if it already is", () => {
       ghost.resetHuntingState();
-      expect(ghost.isHunting).toBeTruthy();
+      expect(ghost.isHunting).toBeFalsy();
     });
   });
 });
