@@ -1,6 +1,6 @@
-export default function findOrangeScatterPath(orangeGhost) {
+export default function findOrangeScatterPath(pathway) {
   return {
-    x: 0 - orangeGhost.position.x,
-    y: 992 - orangeGhost.position.y,
+    x: 0 - pathway.position.x,
+    y: 992 - pathway.position.y,
   };
 }

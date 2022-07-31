@@ -1,7 +1,6 @@
 import hunt from "./hunt";
 
 let mockObject;
-let mockPathway;
 let mockIsOrangeFarFromPacman;
 let mockFindRedOrangeAimPath;
 let mockFindPinkAimPath;
@@ -10,7 +9,6 @@ let mockFindOrangeScatterPath;
 
 describe("hunt", () => {
   beforeEach(() => {
-    mockPathway = {};
     mockIsOrangeFarFromPacman = jest.fn();
     mockFindRedOrangeAimPath = jest.fn();
     mockFindPinkAimPath = jest.fn();
@@ -24,7 +22,7 @@ describe("hunt", () => {
     };
     hunt(
       mockRedGhost,
-      mockPathway,
+      mockObject,
       mockObject,
       mockObject,
       mockObject,
@@ -47,7 +45,7 @@ describe("hunt", () => {
     };
     hunt(
       mockPinkGhost,
-      mockPathway,
+      mockObject,
       mockObject,
       mockObject,
       mockObject,
@@ -70,7 +68,7 @@ describe("hunt", () => {
     };
     hunt(
       mockCyanGhost,
-      mockPathway,
+      mockObject,
       mockObject,
       mockObject,
       mockObject,
@@ -94,7 +92,7 @@ describe("hunt", () => {
     mockIsOrangeFarFromPacman.mockReturnValue(true);
     hunt(
       mockOrangeGhost,
-      mockPathway,
+      mockObject,
       mockObject,
       mockObject,
       mockObject,
@@ -118,7 +116,7 @@ describe("hunt", () => {
     mockIsOrangeFarFromPacman.mockReturnValue(false);
     hunt(
       mockOrangeGhost,
-      mockPathway,
+      mockObject,
       mockObject,
       mockObject,
       mockObject,

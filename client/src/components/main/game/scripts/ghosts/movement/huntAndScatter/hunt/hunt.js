@@ -25,5 +25,5 @@ export default function hunt(
     return callbackThree(pacman, pathway, length);
   else if (ghost.colour === "cyan")
     return callbackFour(pacman, length, redGhost, pathway);
-  else if (ghost.colour === "orange") return callbackFive(ghost);
+  else if (ghost.colour === "orange") return callbackFive(pathway);
 }

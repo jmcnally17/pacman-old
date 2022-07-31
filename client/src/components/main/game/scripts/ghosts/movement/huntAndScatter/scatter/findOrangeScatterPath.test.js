@@ -2,13 +2,13 @@ import findOrangeScatterPath from "./findOrangeScatterPath";
 
 describe("findOrangeScatterPath", () => {
   it("returns a vector from the orange ghosts position to its scatter corner", () => {
-    const mockOrangeGhost = {
+    const mockPathway = {
       position: {
         x: 280,
         y: 420,
       },
     };
-    expect(findOrangeScatterPath(mockOrangeGhost)).toEqual({
+    expect(findOrangeScatterPath(mockPathway)).toEqual({
       x: -280,
       y: 572,
     });
