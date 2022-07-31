@@ -41,6 +41,7 @@ describe("Ghost", () => {
       20
     );
     scaredGhost.changeScaredState();
+    scaredGhost.changeHuntingState();
     mockCtx = {
       drawImage: () => undefined,
     };
@@ -69,8 +70,9 @@ describe("Ghost", () => {
       expect(ghost.colour).toBe("red");
       expect(ghost.prevCollisions).toEqual([]);
       expect(ghost.speed).toBe(2.5);
-      expect(ghost.isScared).toBe(false);
-      expect(ghost.scaredTimeout).toBe(null);
+      expect(ghost.isScared).toBeFalsy();
+      expect(ghost.scaredTimeout).toBeNull();
+      expect(ghost.isHunting).toBeTruthy();
       expect(ghost.image).toEqual({
         src: "./randomSource",
       });
@@ -100,17 +102,29 @@ describe("Ghost", () => {
   describe("changeScaredState", () => {
     it("can change isScared to true when called", () => {
       ghost.changeScaredState();
-      expect(ghost.isScared).toBe(true);
+      expect(ghost.isScared).toBeTruthy();
     });
 
-    it("can make the ghost unscared when called", () => {
+    it("can change isScared to false when called", () => {
       scaredGhost.changeScaredState();
-      expect(scaredGhost.isScared).toBe(false);
+      expect(scaredGhost.isScared).toBeFalsy();
+    });
+  });
+
+  describe("changeHuntingState", () => {
+    it("can change isHunting to false when called", () => {
+      ghost.changeHuntingState();
+      expect(ghost.isHunting).toBeFalsy();
+    });
+
+    it("can change isHunting to true when called", () => {
+      scaredGhost.changeHuntingState();
+      expect(scaredGhost.isHunting).toBeTruthy();
     });
   });
 
   describe("reset", () => {
-    it("changes the ghosts paramters back to their original configuration", () => {
+    it("changes the ghosts parameters back to their original configuration", () => {
       ghost.position.x += 20;
       ghost.position.y += 20;
       ghost.velocity.x += 5;
@@ -134,9 +148,22 @@ describe("Ghost", () => {
       expect(clearSpy).toHaveBeenCalledTimes(1);
     });
 
-    it("leaves isScared as false if it is already false", () => {
-      ghost.reset();
-      expect(ghost.isScared).toBeFalsy();
+    it("leaves isScared and isHunting as false if they are already false", () => {
+      scaredGhost.reset();
+      expect(scaredGhost.isScared).toBeFalsy();
+    });
+  });
+
+  describe("resetHuntingState", () => {
+    it("changes the hunting state back to true", () => {
+      ghost.isHunting = false;
+      ghost.resetHuntingState();
+      expect(ghost.isHunting).toBeTruthy();
+    });
+
+    it("leaves the hunting state as true if it already is", () => {
+      ghost.resetHuntingState();
+      expect(ghost.isHunting).toBeTruthy();
     });
   });
 });
