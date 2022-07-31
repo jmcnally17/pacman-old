@@ -32,6 +32,7 @@ describe("huntPacman", () => {
       mockObject,
       collisions,
       32,
+      mockObject,
       mockCalculateDistance,
       mockPickHuntDirection,
       mockEmptyPrevCollisions
@@ -49,6 +50,7 @@ describe("huntPacman", () => {
       mockObject,
       collisions,
       32,
+      mockObject,
       mockCalculateDistance,
       mockPickHuntDirection,
       mockEmptyPrevCollisions
@@ -66,6 +68,7 @@ describe("huntPacman", () => {
       mockObject,
       collisions,
       32,
+      mockObject,
       mockCalculateDistance,
       mockPickHuntDirection,
       mockEmptyPrevCollisions
@@ -83,6 +86,7 @@ describe("huntPacman", () => {
       mockObject,
       collisions,
       32,
+      mockObject,
       mockCalculateDistance,
       mockPickHuntDirection,
       mockEmptyPrevCollisions
@@ -96,6 +100,7 @@ describe("huntPacman", () => {
       mockObject,
       collisions,
       32,
+      mockObject,
       mockCalculateDistance,
       mockPickHuntDirection,
       mockEmptyPrevCollisions

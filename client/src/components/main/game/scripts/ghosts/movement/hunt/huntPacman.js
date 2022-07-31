@@ -7,6 +7,7 @@ export default function huntPacman(
   pacman,
   collisions,
   length,
+  redGhost,
   callbackOne = calculateDistance,
   callbackTwo = pickHuntDirection,
   callbackthree = emptyPrevCollisions
@@ -24,7 +25,7 @@ export default function huntPacman(
       });
     }
   });
-  callbackOne(pacman, ghost, pathways, length);
+  callbackOne(pacman, ghost, pathways, length, redGhost);
   callbackTwo(pathways, ghost);
   callbackthree(ghost);
 }

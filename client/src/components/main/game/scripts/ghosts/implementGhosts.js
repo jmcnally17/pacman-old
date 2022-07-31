@@ -20,6 +20,7 @@ export default function implementGhosts(
   powerUps,
   level,
   killCount,
+  redGhost,
   callbackOne = checkSpeedMatchesState,
   callbackTwo = assignSprite,
   callbackThree = implementTunnel,
@@ -35,7 +36,7 @@ export default function implementGhosts(
     callbackThree(ghost, length);
     callbackFour(boundaries, collisions, ghost);
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
-      callbackFive(ghost, pacman, collisions, length);
+      callbackFive(ghost, pacman, collisions, length, redGhost);
     }
     callbackSix(
       ghost,
