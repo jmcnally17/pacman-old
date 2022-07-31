@@ -33,19 +33,19 @@ describe("Pellet", () => {
         y: 100,
       });
       expect(pellet.radius).toBe(2);
-      expect(pellet.hasBeenEaten).toBe(false);
+      expect(pellet.hasBeenEaten).toBeFalsy();
     });
   });
 
   describe("changeEatenState", () => {
     it("can change the pellet to being eaten", () => {
       pellet.changeEatenState();
-      expect(pellet.hasBeenEaten).toBe(true);
+      expect(pellet.hasBeenEaten).toBeTruthy();
     });
 
     it("can change the pellet to uneaten", () => {
       eatenPellet.changeEatenState();
-      expect(eatenPellet.hasBeenEaten).toBe(false);
+      expect(eatenPellet.hasBeenEaten).toBeFalsy();
     });
   });
 

@@ -1,16 +1,16 @@
 import chooseMovement from "./chooseMovement";
 
 let mockObject;
-let mockHuntPacman;
+let mockhuntAndScatter;
 let mockMoveRandomly;
 
 describe("chooseMovement", () => {
   beforeEach(() => {
-    mockHuntPacman = jest.fn();
+    mockhuntAndScatter = jest.fn();
     mockMoveRandomly = jest.fn();
   });
 
-  it("calls huntPacman if the ghost is not scared", () => {
+  it("calls huntAndScatter if the ghost is not scared", () => {
     const mockGhost = {
       isScared: false,
     };
@@ -20,10 +20,10 @@ describe("chooseMovement", () => {
       mockObject,
       mockObject,
       mockObject,
-      mockHuntPacman,
+      mockhuntAndScatter,
       mockMoveRandomly
     );
-    expect(mockHuntPacman).toHaveBeenCalledTimes(1);
+    expect(mockhuntAndScatter).toHaveBeenCalledTimes(1);
     expect(mockMoveRandomly).toHaveBeenCalledTimes(0);
   });
 
@@ -37,10 +37,10 @@ describe("chooseMovement", () => {
       mockObject,
       mockObject,
       mockObject,
-      mockHuntPacman,
+      mockhuntAndScatter,
       mockMoveRandomly
     );
-    expect(mockHuntPacman).toHaveBeenCalledTimes(0);
+    expect(mockhuntAndScatter).toHaveBeenCalledTimes(0);
     expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
   });
 });

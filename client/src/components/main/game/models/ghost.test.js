@@ -41,6 +41,7 @@ describe("Ghost", () => {
       20
     );
     scaredGhost.changeScaredState();
+    scaredGhost.changeHuntingState();
     mockCtx = {
       drawImage: () => undefined,
     };
@@ -69,8 +70,9 @@ describe("Ghost", () => {
       expect(ghost.colour).toBe("red");
       expect(ghost.prevCollisions).toEqual([]);
       expect(ghost.speed).toBe(2.5);
-      expect(ghost.isScared).toBe(false);
-      expect(ghost.scaredTimeout).toBe(null);
+      expect(ghost.isScared).toBeFalsy();
+      expect(ghost.scaredTimeout).toBeNull();
+      expect(ghost.isHunting).toBeFalsy();
       expect(ghost.image).toEqual({
         src: "./randomSource",
       });
@@ -100,43 +102,66 @@ describe("Ghost", () => {
   describe("changeScaredState", () => {
     it("can change isScared to true when called", () => {
       ghost.changeScaredState();
-      expect(ghost.isScared).toBe(true);
+      expect(ghost.isScared).toBeTruthy();
     });
 
-    it("can make the ghost unscared when called", () => {
+    it("can change isScared to false when called", () => {
       scaredGhost.changeScaredState();
-      expect(scaredGhost.isScared).toBe(false);
+      expect(scaredGhost.isScared).toBeFalsy();
+    });
+  });
+
+  describe("changeHuntingState", () => {
+    it("can change isHunting to true when called", () => {
+      ghost.changeHuntingState();
+      expect(ghost.isHunting).toBeTruthy();
+    });
+
+    it("can change isHunting to false when called", () => {
+      scaredGhost.changeHuntingState();
+      expect(scaredGhost.isHunting).toBeFalsy();
     });
   });
 
   describe("reset", () => {
-    it("changes the ghosts paramters back to their original configuration", () => {
-      ghost.position.x += 20;
-      ghost.position.y += 20;
-      ghost.velocity.x += 5;
-      ghost.velocity.y += 10;
-      ghost.speed = 16;
-      ghost.prevCollisions.push("up");
-      ghost.isScared = true;
+    it("changes the ghosts parameters back to their original configuration", () => {
+      scaredGhost.position.x += 20;
+      scaredGhost.position.y += 20;
+      scaredGhost.velocity.x += 5;
+      scaredGhost.velocity.y += 10;
+      scaredGhost.speed = 16;
+      scaredGhost.prevCollisions.push("up");
       const clearSpy = jest.spyOn(global, "clearTimeout");
-      ghost.reset();
-      expect(ghost.position).toEqual({
+      scaredGhost.reset();
+      expect(scaredGhost.position).toEqual({
         x: 20,
         y: 20,
       });
-      expect(ghost.velocity).toEqual({
+      expect(scaredGhost.velocity).toEqual({
         x: 7.5,
         y: 2.5,
       });
-      expect(ghost.speed).toBe(2.5);
-      expect(ghost.prevCollisions).toEqual([]);
-      expect(ghost.isScared).toBeFalsy();
+      expect(scaredGhost.speed).toBe(2.5);
+      expect(scaredGhost.prevCollisions).toEqual([]);
+      expect(scaredGhost.isScared).toBeFalsy();
       expect(clearSpy).toHaveBeenCalledTimes(1);
     });
 
     it("leaves isScared as false if it is already false", () => {
       ghost.reset();
       expect(ghost.isScared).toBeFalsy();
+    });
+  });
+
+  describe("resetHuntingState", () => {
+    it("changes the hunting state back to false", () => {
+      scaredGhost.resetHuntingState();
+      expect(scaredGhost.isHunting).toBeFalsy();
+    });
+
+    it("leaves the hunting state as false if it is already false", () => {
+      ghost.resetHuntingState();
+      expect(ghost.isHunting).toBeFalsy();
     });
   });
 });

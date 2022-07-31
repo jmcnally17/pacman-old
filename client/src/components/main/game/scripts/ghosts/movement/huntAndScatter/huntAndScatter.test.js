@@ -1,13 +1,13 @@
-import huntPacman from "./huntPacman";
+import huntAndScatter from "./huntAndScatter";
 
 let mockGhost;
 let collisions;
 let mockObject;
 let mockCalculateDistance;
-let mockPickHuntDirection;
+let mockpickDirection;
 let mockEmptyPrevCollisions;
 
-describe("huntPacman", () => {
+describe("huntAndScatter", () => {
   beforeEach(() => {
     mockGhost = {
       position: {
@@ -22,19 +22,19 @@ describe("huntPacman", () => {
     };
     collisions = [];
     mockCalculateDistance = jest.fn();
-    mockPickHuntDirection = jest.fn();
+    mockpickDirection = jest.fn();
     mockEmptyPrevCollisions = jest.fn();
   });
 
   it("adds right to the prevCollisions array if the ghost is moving to the right", () => {
-    huntPacman(
+    huntAndScatter(
       mockGhost,
       mockObject,
       collisions,
       32,
       mockObject,
       mockCalculateDistance,
-      mockPickHuntDirection,
+      mockpickDirection,
       mockEmptyPrevCollisions
     );
     expect(mockGhost.prevCollisions).toEqual(["right"]);
@@ -45,14 +45,14 @@ describe("huntPacman", () => {
       x: -4,
       y: 0,
     };
-    huntPacman(
+    huntAndScatter(
       mockGhost,
       mockObject,
       collisions,
       32,
       mockObject,
       mockCalculateDistance,
-      mockPickHuntDirection,
+      mockpickDirection,
       mockEmptyPrevCollisions
     );
     expect(mockGhost.prevCollisions).toEqual(["left"]);
@@ -63,14 +63,14 @@ describe("huntPacman", () => {
       x: 0,
       y: -4,
     };
-    huntPacman(
+    huntAndScatter(
       mockGhost,
       mockObject,
       collisions,
       32,
       mockObject,
       mockCalculateDistance,
-      mockPickHuntDirection,
+      mockpickDirection,
       mockEmptyPrevCollisions
     );
     expect(mockGhost.prevCollisions).toEqual(["up"]);
@@ -81,32 +81,32 @@ describe("huntPacman", () => {
       x: 0,
       y: 4,
     };
-    huntPacman(
+    huntAndScatter(
       mockGhost,
       mockObject,
       collisions,
       32,
       mockObject,
       mockCalculateDistance,
-      mockPickHuntDirection,
+      mockpickDirection,
       mockEmptyPrevCollisions
     );
     expect(mockGhost.prevCollisions).toEqual(["down"]);
   });
 
   it("calls the necessary callback functions in order to determine the ghosts next direction and empty the prevCollisions array", () => {
-    huntPacman(
+    huntAndScatter(
       mockGhost,
       mockObject,
       collisions,
       32,
       mockObject,
       mockCalculateDistance,
-      mockPickHuntDirection,
+      mockpickDirection,
       mockEmptyPrevCollisions
     );
     expect(mockCalculateDistance).toHaveBeenCalledTimes(1);
-    expect(mockPickHuntDirection).toHaveBeenCalledTimes(1);
+    expect(mockpickDirection).toHaveBeenCalledTimes(1);
     expect(mockEmptyPrevCollisions).toHaveBeenCalledTimes(1);
   });
 });

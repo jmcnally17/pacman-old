@@ -11,6 +11,7 @@ export default class Ghost {
     this.speed = length / 8;
     this.isScared = false;
     this.scaredTimeout = null;
+    this.isHunting = false;
     this.image = image;
   }
 
@@ -32,6 +33,10 @@ export default class Ghost {
     this.isScared = this.isScared ? false : true;
   }
 
+  changeHuntingState() {
+    this.isHunting = this.isHunting ? false : true;
+  }
+
   reset() {
     this.position = { ...this.originalPosition };
     this.velocity = { ...this.originalVelocity };
@@ -39,5 +44,9 @@ export default class Ghost {
     this.prevCollisions = [];
     if (this.isScared) this.changeScaredState();
     clearTimeout(this.scaredTimeout);
+  }
+
+  resetHuntingState() {
+    if (this.isHunting) this.changeHuntingState();
   }
 }

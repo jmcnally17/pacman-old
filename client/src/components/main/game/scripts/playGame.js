@@ -11,6 +11,7 @@ import implementPacman from "./pacman/implementPacman";
 import displayScore from "./displayScore";
 import displayLives from "./displayLives";
 import displayLevel from "./displayLevel";
+import startHuntingInterval from "./startHuntingInterval";
 
 const length = 32;
 const map = [
@@ -78,6 +79,7 @@ export default function playGame(name, mainEl) {
   if (count === 0) {
     player.name = name;
     reactRoot.mainEl = mainEl;
+    startHuntingInterval(ghosts)
     count++;
   }
   let animationId = requestAnimationFrame(playGame);

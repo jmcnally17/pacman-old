@@ -33,19 +33,19 @@ describe("PowerUp", () => {
         y: 100,
       });
       expect(powerUp.radius).toBe(7);
-      expect(powerUp.hasBeenEaten).toBe(false);
+      expect(powerUp.hasBeenEaten).toBeFalsy();
     });
   });
 
   describe("changeEatenState", () => {
     it("can change the power up to being eaten", () => {
       powerUp.changeEatenState();
-      expect(powerUp.hasBeenEaten).toBe(true);
+      expect(powerUp.hasBeenEaten).toBeTruthy();
     });
 
     it("can change the power up to uneaten", () => {
       eatenPowerUp.changeEatenState();
-      expect(eatenPowerUp.hasBeenEaten).toBe(false);
+      expect(eatenPowerUp.hasBeenEaten).toBeFalsy();
     });
   });
 
