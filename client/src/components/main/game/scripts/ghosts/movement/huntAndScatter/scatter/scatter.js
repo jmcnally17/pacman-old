@@ -1,12 +1,15 @@
 import findOrangeScatterPath from "./findOrangeScatterPath";
+import findPinkScatterPath from "./findPinkScatterPath";
 import findRedScatterPath from "./findRedScatterPath";
 
 export default function scatter(
   ghost,
   pathway,
   callbackOne = findRedScatterPath,
-  callbackTwo = findOrangeScatterPath
+  callbackTwo = findPinkScatterPath,
+  callbackThree = findOrangeScatterPath
 ) {
   if (ghost.colour === "red") callbackOne(pathway);
-  else if (ghost.colour === "orange") callbackTwo(pathway);
+  if (ghost.colour === "pink") callbackTwo(pathway);
+  else if (ghost.colour === "orange") callbackThree(pathway);
 }
