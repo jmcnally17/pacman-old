@@ -11,8 +11,8 @@ export default function scatter(
   callbackThree = findCyanScatterPath,
   callbackFour = findOrangeScatterPath
 ) {
-  if (ghost.colour === "red") callbackOne(pathway);
-  else if (ghost.colour === "pink") callbackTwo(pathway);
-  else if (ghost.colour === "cyan") callbackThree(pathway);
-  else if (ghost.colour === "orange") callbackFour(pathway);
+  if (ghost.colour === "red") return callbackOne(pathway);
+  else if (ghost.colour === "pink") return callbackTwo(pathway);
+  else if (ghost.colour === "cyan") return callbackThree(pathway);
+  else if (ghost.colour === "orange") return callbackFour(pathway);
 }

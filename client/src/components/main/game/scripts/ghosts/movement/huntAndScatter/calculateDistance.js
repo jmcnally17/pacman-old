@@ -1,6 +1,7 @@
 import addCoordinates from "./addCoordinates";
 import calculateHypotenuse from "./calculateHypotenuse";
 import hunt from "./hunt/hunt";
+import scatter from "./scatter/scatter";
 
 export default function calculateDistance(
   pacman,
@@ -10,17 +11,23 @@ export default function calculateDistance(
   redGhost,
   callbackOne = addCoordinates,
   callbackTwo = hunt,
-  callbackThree = calculateHypotenuse
+  callbackThree = scatter,
+  callbackFour = calculateHypotenuse
 ) {
   pathways.forEach((pathway) => {
     callbackOne(pathway, ghost, length);
-    const displacementFromAim = callbackTwo(
-      ghost,
-      pathway,
-      pacman,
-      length,
-      redGhost
-    );
-    callbackThree(displacementFromAim, pathway);
+    let displacementFromAim;
+    if (ghost.isHunting) {
+      displacementFromAim = callbackTwo(
+        ghost,
+        pathway,
+        pacman,
+        length,
+        redGhost
+      );
+    } else if (!ghost.isHunting) {
+      displacementFromAim = callbackThree(ghost, pathway);
+    }
+    callbackFour(displacementFromAim, pathway);
   });
 }
