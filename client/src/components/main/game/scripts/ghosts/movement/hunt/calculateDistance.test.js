@@ -6,6 +6,7 @@ let mockPathways;
 let mockAddCoordinates;
 let mockFindRedOrangeAimPath;
 let mockFindPinkAimPath;
+let mockFindCyanAimPath;
 let mockCalculateHypotenuse;
 
 describe("calculateDistance", () => {
@@ -15,6 +16,7 @@ describe("calculateDistance", () => {
     mockAddCoordinates = jest.fn();
     mockFindRedOrangeAimPath = jest.fn();
     mockFindPinkAimPath = jest.fn();
+    mockFindCyanAimPath = jest.fn();
     mockCalculateHypotenuse = jest.fn();
   });
 
@@ -27,14 +29,17 @@ describe("calculateDistance", () => {
       mockRedGhost,
       mockPathways,
       mockObject,
+      mockObject,
       mockAddCoordinates,
       mockFindRedOrangeAimPath,
       mockFindPinkAimPath,
+      mockFindCyanAimPath,
       mockCalculateHypotenuse
     );
     expect(mockAddCoordinates).toHaveBeenCalledTimes(2);
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(2);
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(0);
+    expect(mockFindCyanAimPath).toHaveBeenCalledTimes(0);
     expect(mockCalculateHypotenuse).toHaveBeenCalledTimes(2);
   });
 
@@ -47,14 +52,40 @@ describe("calculateDistance", () => {
       mockPinkGhost,
       mockPathways,
       mockObject,
+      mockObject,
       mockAddCoordinates,
       mockFindRedOrangeAimPath,
       mockFindPinkAimPath,
+      mockFindCyanAimPath,
       mockCalculateHypotenuse
     );
     expect(mockAddCoordinates).toHaveBeenCalledTimes(2);
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(2);
+    expect(mockFindCyanAimPath).toHaveBeenCalledTimes(0);
+    expect(mockCalculateHypotenuse).toHaveBeenCalledTimes(2);
+  });
+
+  it("calls the necessary callbacks if the ghost is cyan", () => {
+    const mockPinkGhost = {
+      colour: "cyan",
+    };
+    calculateDistance(
+      mockObject,
+      mockPinkGhost,
+      mockPathways,
+      mockObject,
+      mockObject,
+      mockAddCoordinates,
+      mockFindRedOrangeAimPath,
+      mockFindPinkAimPath,
+      mockFindCyanAimPath,
+      mockCalculateHypotenuse
+    );
+    expect(mockAddCoordinates).toHaveBeenCalledTimes(2);
+    expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(0);
+    expect(mockFindPinkAimPath).toHaveBeenCalledTimes(0);
+    expect(mockFindCyanAimPath).toHaveBeenCalledTimes(2);
     expect(mockCalculateHypotenuse).toHaveBeenCalledTimes(2);
   });
 });

@@ -10,7 +10,7 @@ const orangeImage = new Image();
 orangeImage.src = "./images/orangeGhostRight.png";
 
 export default function makeGhosts(length) {
-  const ghosts = [
+  return [
     new Ghost(
       {
         position: {
@@ -72,5 +72,4 @@ export default function makeGhosts(length) {
       length
     ),
   ];
-  return ghosts;
 }

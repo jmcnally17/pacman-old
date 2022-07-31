@@ -1,7 +1,7 @@
 import findRedOrangeAimPath from "./findRedOrangeAimPath";
 
 describe("findRedOrangeAimPath", () => {
-  it("returns a vector from Pac-Man's position to the pathways position", () => {
+  it("returns a vector from the pathways position to Pac-Man's position", () => {
     const mockPacman = {
       position: {
         x: 250,

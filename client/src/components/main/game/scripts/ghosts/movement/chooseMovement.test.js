@@ -20,6 +20,7 @@ describe("chooseMovement", () => {
       mockObject,
       mockObject,
       mockObject,
+      mockObject,
       mockHuntPacman,
       mockMoveRandomly
     );
@@ -37,6 +38,7 @@ describe("chooseMovement", () => {
       mockObject,
       mockObject,
       mockObject,
+      mockObject,
       mockHuntPacman,
       mockMoveRandomly
     );
@@ -44,12 +46,13 @@ describe("chooseMovement", () => {
     expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
   });
 
-  it("calls randomMovement if the ghost is not red or pink", () => {
+  it("calls randomMovement if the ghost is orange", () => {
     const mockCyanGhost = {
-      colour: "cyan",
+      colour: "orange",
     };
     chooseMovement(
       mockCyanGhost,
+      mockObject,
       mockObject,
       mockObject,
       mockObject,

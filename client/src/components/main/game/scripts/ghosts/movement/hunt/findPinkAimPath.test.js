@@ -20,14 +20,14 @@ describe("findPinkAimPath", () => {
     };
   });
 
-  it("returns a vector from four squares to the right of Pac-Man to the pathways position when Pac-Man is facing right", () => {
+  it("returns a vector from the pathways position to four squares to the right of Pac-Man  when Pac-Man is facing right", () => {
     expect(findPinkAimPath(mockPacman, mockPathway, 32)).toEqual({
       x: 78,
       y: 90,
     });
   });
 
-  it("returns a vector from four squares below Pac-Man to the pathways position when Pac-Man is facing downwards", () => {
+  it("returns a vector from the pathways position to four squares below Pac-Man when Pac-Man is facing downwards", () => {
     mockPacman.rotation = Math.PI / 2;
     expect(findPinkAimPath(mockPacman, mockPathway, 32)).toEqual({
       x: -50,
@@ -35,7 +35,7 @@ describe("findPinkAimPath", () => {
     });
   });
 
-  it("returns a vector from four squares to the left of Pac-Man to the pathways position when Pac-Man is facing left", () => {
+  it("returns a vector from the pathways position to four squares to the left of Pac-Man when Pac-Man is facing left", () => {
     mockPacman.rotation = Math.PI;
     expect(findPinkAimPath(mockPacman, mockPathway, 32)).toEqual({
       x: -178,
@@ -43,7 +43,7 @@ describe("findPinkAimPath", () => {
     });
   });
 
-  it("returns a vector from four squares above Pac-Man to the pathways position when Pac-Man is facing upwards", () => {
+  it("returns a vector from the pathways position to four squares above Pac-Man when Pac-Man is facing upwards", () => {
     mockPacman.rotation = (Math.PI * 3) / 2;
     expect(findPinkAimPath(mockPacman, mockPathway, 32)).toEqual({
       x: -50,
