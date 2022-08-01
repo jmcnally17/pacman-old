@@ -51,7 +51,7 @@ Each ghost has their own target tile during their scatter movement pattern. Thes
 </p>
 
 <p align="center">
-  <b>Fig.1 - A screenshot of the gameboard with each ghost in their respective corner during their scatter movement. Each path the ghosts take while circling around each corner is shown with the green crosses in each corner respresenting the specific spot on the board the ghosts are targeting</b>
+  <b>Fig.1 -</b> A screenshot of the gameboard with each ghost in their respective corner during their scatter movement. Each path the ghosts take while circling around each corner is shown with the green crosses in each corner respresenting the specific spot on the board the ghosts are targeting
 </p>
 
 
