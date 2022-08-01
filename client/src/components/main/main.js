@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import pic from "./title-pic.jpg";
 import "./main.css";
 import Game from "./game/game";
 
@@ -40,7 +39,11 @@ export default function Main() {
   return (
     <div className="main" id="main">
       <h1>Welcome to Pac-Man!</h1>
-      <img className="title-pic" src={pic} alt="" />
+      <img
+        className="title-pic"
+        src="https://media4.giphy.com/media/42rO49pxzaMnK/giphy.gif?cid=790b76116dc1bedf27887938cbe8df55b210b12f842af0e9&rid=giphy.gif&ct=g"
+        alt="Pac-Man gif"
+      />
       <div className="register">
         <label className="label" htmlFor="name-input">
           Enter your name:
