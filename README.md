@@ -44,9 +44,11 @@ The ghosts have three patterns of moving: scatter, hunt, and random. When the ga
 
 #### Scattering
 
-Each ghost has their own target tile during their scatter movement pattern. These four target tiles are each of the four corners of the board: the red ghost targets the top right corner; the pink ghost targets the top left corner; the cyan ghost targets the bottom right corner; and the orange ghost targets the bottom left corner. Due to the position of these targets, once the ghosts reach them, they will constantly pick the direction which is closest to the corner and will therefore circle around the wall in their respective corner. The following picture illustrates these patterns:
+Each ghost has their own target tile during their scatter movement pattern. These four target tiles are each of the four corners of the board: the red ghost targets the top right corner; the pink ghost targets the top left corner; the cyan ghost targets the bottom right corner; and the orange ghost targets the bottom left corner. Due to the position of these targets, once the ghosts reach them, they will constantly pick the direction which is closest to the corner and will therefore circle around the wall in their respective corner.
 
-<img src="./images/scatterPath.jpg">
+<p align="center">
+  <img src="./images/scatterPath.jpg" width="35%">
+</p>
 
 #### Hunting
 
