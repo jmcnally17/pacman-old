@@ -23,7 +23,7 @@ Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses
 
 ## Gameplay
 
-The player can use the directional keys to move Pac-Man within the boundaries around the board. The red ghost chooses the direction of the shortest direct path to Pac-Man's position while the other three ghosts move randomly. For mobile and tablet users who don't have a keyboard, a D-pad is displayed under the game board that they can click which trigger keyboard events for arrow keys.
+The player can use the directional keys to move Pac-Man within the boundaries around the board. The four ghosts will periodically cycle through scattering and hunting Pac-Man for ten seconds at a time each and will move randomly while in their scared state. For mobile and tablet users who don't have a keyboard, a D-pad is displayed under the game board that they can click which trigger keyboard events for arrow keys.
 
 ### Rules
 
@@ -37,6 +37,12 @@ The player can use the directional keys to move Pac-Man within the boundaries ar
 - Colliding with a scared ghost resets the ghosts position and is worth $2^n \cdot 200$ points where n is the number of scared ghosts attacked since the last power up was eaten
 - Colliding with a ghost that is not scared decreases Pac-Man's lives by 1 and resets character positions on the board
 - Colliding with a ghost that is not scared with no extra lives left ends the game
+
+### Ghost Movement
+
+#### Scattering
+
+#### Hunting
 
 ## Running Locally
 
