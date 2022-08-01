@@ -73,6 +73,7 @@ describe("Ghost", () => {
       expect(ghost.isScared).toBeFalsy();
       expect(ghost.scaredTimeout).toBeNull();
       expect(ghost.isHunting).toBeFalsy();
+      expect(ghost.huntingInterval).toBeNull();
       expect(ghost.image).toEqual({
         src: "./randomSource",
       });
@@ -154,9 +155,11 @@ describe("Ghost", () => {
   });
 
   describe("resetHuntingState", () => {
-    it("changes the hunting state back to false", () => {
+    it("changes the hunting state back to false and clears the hunting interval", () => {
+      const clearIntervalSpy = jest.spyOn(global, "clearInterval");
       scaredGhost.resetHuntingState();
       expect(scaredGhost.isHunting).toBeFalsy();
+      expect(clearIntervalSpy).toHaveBeenCalledTimes(1);
     });
 
     it("leaves the hunting state as false if it is already false", () => {

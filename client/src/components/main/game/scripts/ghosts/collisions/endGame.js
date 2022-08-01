@@ -20,5 +20,7 @@ export default function endGame(
   callbackOne(animationId);
   callbackTwo(score, name);
   callbackThree(pellets, powerUps, ghosts, pacman, lastKeyPressed, level);
-  mainEl.render(<Leaderboard score={score} mainEl={mainEl} name={name} />);
+  mainEl.render(
+    <Leaderboard score={score} mainEl={mainEl} name={name} ghosts={ghosts} />
+  );
 }

@@ -12,6 +12,7 @@ export default class Ghost {
     this.isScared = false;
     this.scaredTimeout = null;
     this.isHunting = false;
+    this.huntingInterval = null;
     this.image = image;
   }
 
@@ -48,5 +49,6 @@ export default class Ghost {
 
   resetHuntingState() {
     if (this.isHunting) this.changeHuntingState();
+    clearInterval(this.huntingInterval);
   }
 }
