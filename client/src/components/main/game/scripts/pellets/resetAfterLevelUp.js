@@ -1,20 +1,20 @@
+import startHuntingInterval from "../startHuntingInterval";
+
 export default function resetAfterLevelUp(
   pacman,
   lastKeyPressed,
   ghosts,
   pellets,
-  powerUps
+  powerUps,
+  callback = startHuntingInterval
 ) {
   pacman.reset();
   lastKeyPressed.key = "";
   ghosts.forEach((ghost) => {
     ghost.reset();
     ghost.resetHuntingState();
-    ghost.huntingInterval = setInterval(
-      () => ghost.changeHuntingState(),
-      10000
-    );
   });
+  callback(ghosts);
   pellets.forEach((pellet) => {
     pellet.changeEatenState();
   });

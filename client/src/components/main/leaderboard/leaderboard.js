@@ -1,6 +1,7 @@
 import "./leaderboard.css";
 import Game from "../game/game";
 import { useEffect, useState } from "react";
+import startHuntingInterval from "../game/scripts/startHuntingInterval";
 
 let url;
 if (process.env.REACT_APP_URL) {
@@ -29,12 +30,7 @@ export default function Leaderboard({ score, mainEl, name, ghosts }) {
 
   const handlePlayAgain = () => {
     score.points = 0;
-    ghosts.forEach((ghost) => {
-      ghost.huntingInterval = setInterval(
-        () => ghost.changeHuntingState(),
-        10000
-      );
-    });
+    startHuntingInterval(ghosts);
     mainEl.render(<Game name={name} mainEl={mainEl} />);
   };
 
