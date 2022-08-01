@@ -3,5 +3,10 @@ export default function resetAfterDeath(pacman, lastKeyPressed, ghosts) {
   lastKeyPressed.key = "";
   ghosts.forEach((ghost) => {
     ghost.reset();
+    ghost.resetHuntingState();
+    ghost.huntingInterval = setInterval(
+      () => ghost.changeHuntingState(),
+      10000
+    );
   });
 }

@@ -50,6 +50,7 @@ describe("resetAfterLevelUp", () => {
     expect(ghostResetSpy).toHaveBeenCalledTimes(3);
     expect(ghostResetHuntingSpy).toHaveBeenCalledTimes(3);
     expect(intervalSpy).toHaveBeenCalledTimes(3);
+    expect(mockGhost.huntingInterval).not.toBeNull();
     expect(pelletChangeEatenStateSpy).toHaveBeenCalledTimes(2);
     expect(powerUpChangeEatenStateSpy).toHaveBeenCalledTimes(1);
     jest.runOnlyPendingTimers();

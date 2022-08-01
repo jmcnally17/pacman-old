@@ -14,6 +14,7 @@ export default function resetAfterGameOver(
   });
   ghosts.forEach((ghost) => {
     ghost.reset();
+    ghost.resetHuntingState();
   });
   pacman.reset();
   pacman.lives = 2;
