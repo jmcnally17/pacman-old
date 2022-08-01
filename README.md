@@ -23,7 +23,7 @@ Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses
 
 ## Gameplay
 
-The player can use the directional keys to move Pac-Man within the boundaries around the board. The four ghosts will periodically cycle through scattering and hunting Pac-Man for ten seconds at a time each and will move randomly while in their scared state. For mobile and tablet users who don't have a keyboard, a D-pad is displayed under the game board that they can click which trigger keyboard events for arrow keys.
+The player can use the directional keys to move Pac-Man within the boundaries around the board. The four ghosts will periodically cycle through scattering and hunting Pac-Man and will move randomly while in their scared state. For mobile and tablet users who don't have a keyboard, a D-pad is displayed under the game board that they can click which trigger keyboard events for arrow keys.
 
 ### Rules
 
@@ -39,6 +39,8 @@ The player can use the directional keys to move Pac-Man within the boundaries ar
 - Colliding with a ghost that is not scared with no extra lives left ends the game
 
 ### Ghost Movement
+
+The ghosts have three patterns of moving: scatter, hunt, and random. When the game starts, the ghosts begin moving in their scatter-hunt cycle. In one cycle, the ghosts move in their scatter pattern for ten seconds and then in their hunting pattern for another ten seconds. This cycle gets reset when the player either loses a life or levels up. Each ghost moves in their random pattern when a power up is eaten by Pac-Man, which lasts for five seconds or until Pac-Man attacks the ghost. This power up does not pause the scatter-hunt cycle timer which just keeps running in the background. During the ghosts random pattern, anytime they encounter a crossroads, they will pick a direction at random using Javascripts in built `Math.random()` function.
 
 #### Scattering
 
