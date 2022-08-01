@@ -108,7 +108,6 @@ There are three minor bugs in the app:
 
 ## Features Pending
 
-- Change the ghost movement mechanics to hunt Pac-Man rather than having random movement
 - Add some animations such as Pac-Man death, colliding with a scared ghost, and levelling up
 - Add appropriate audio to the game
 - (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and Express
