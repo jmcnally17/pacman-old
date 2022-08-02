@@ -6,7 +6,7 @@ import ReactHowler from "react-howler";
 
 export default function Main() {
   const [name, setName] = useState("");
-  const [isAudioPlaying, setIsAudioPlaying] = useState(true);
+  // const [isAudioPlaying, setIsAudioPlaying] = useState(true);
 
   useEffect(() => {
     window.addEventListener("keydown", (event) => {
@@ -33,7 +33,7 @@ export default function Main() {
     } else if (name.length > 15) {
       window.alert("Name must be 15 characters or shorter");
     } else {
-      setIsAudioPlaying(false);
+      // setIsAudioPlaying(false);
       const mainEl = ReactDOM.createRoot(document.getElementById("main"));
       mainEl.render(<Game name={name} mainEl={mainEl} />);
     }
@@ -45,7 +45,7 @@ export default function Main() {
       <ReactHowler
         src={"./audio/game_start.wav"}
         preload={true}
-        playing={isAudioPlaying}
+        // playing={isAudioPlaying}
         loop={true}
         volume={0.5}
       />
