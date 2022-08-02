@@ -121,6 +121,7 @@ There are three minor bugs in the app:
 
 ## Features Pending
 
+- Speed up the ghosts when they get attacked by Pac-Man when in their scared state and make them move randomly with their sprites being replaced with a pair of eyes
 - Add some animations such as Pac-Man death, colliding with a scared ghost, and levelling up
 - Add appropriate audio to the game
 - (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and Express
