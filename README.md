@@ -56,6 +56,14 @@ Each ghost has their own target tile during their scatter movement pattern. Thes
 
 #### Hunting
 
+<p align="center">
+  <img src="./images/huntingPath.png" width="55%">
+</p>
+
+<p align="center">
+  <b>Fig.2 -</b> Four annotated diagrams of how each target position is calculated for each ghost. (Left) The red ghost always aims for the position of Pac-Man. (Middle left) The pink ghost alway aims for four tiles directly in front of where Pac-Man is facing. (Middle right) The cyan ghost aims for the position of the red ghost rotated 180&deg; around the position that is two tiles directly in front of where Pac-Man is facing. (Right) The orange ghost aims for Pac-Man's position when further than eight tile lengths away from Pac-Man and scatters when closer
+</p>
+
 ## Running Locally
 
 This app can be run on your localhost. However, a number of frameworks need to be installed which requires some setup to do:
