@@ -57,7 +57,7 @@ Each ghost has their own target tile during their scatter movement pattern. Thes
 #### Hunting
 
 <p align="center">
-  <img src="./images/huntingPath.png" width="55%">
+  <img src="./images/huntingPath.png" width="100%">
 </p>
 
 <p align="center">
