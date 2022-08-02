@@ -56,12 +56,24 @@ Each ghost has their own target tile during their scatter movement pattern. Thes
 
 #### Hunting
 
+Red:
+The red ghost has the simplest hunting movement. It will simply aim for Pac-Man's position by choosing the direction which is the shortest direct distance from Pac-Man. This means that often, the red ghost will follow Pac-Man from behind as they move throughout the board.
+
+Pink:
+The pink ghost has the next simplest hunting movement. It will always aim for four tiles directly in front of Pac-Man in an attempt to ambush Pac-Man from the front. In the original version, when Pac-Man was facing upwards, the pink ghost would aim for four tiles above and four tiles to the left. This was due to an overflow error in the original code when using a hexadecimal coordinate system. In this project however, the coordinates are simply integers on a HTML canvas object and therefore do not run into this issue.
+
+Cyan:
+The cyan ghosts movement is a little more complex. It not only depends on Pac-Man's position but also on the red ghosts position. First the position two tiles in front of Pac-Man is found. Then, the vector from this intermediate position to the red ghosts position is rotated 180&deg; to give the cyan ghosts target position in an attempt to flank Pac-Man. This makes the cyan ghosts movement can be difficult to predict due to the constantly changing positions of the characters on the board. In the original version, the intermediate position when Pac-Man is facing upwards is two tiles up and two tiles to the left due to the same overflow error mentioned in the pink ghosts movement. Again however, due to this projects coordinate system this bug is not encountered.
+
+Orange:
+The orange ghost has the most peculiar movment of the four. When it is further than eight tile lengths away from Pac-Man, it will aim for Pac-Man's current position just like the red ghost. However, when the orange ghost is eight tiles or closer to Pac-Man, it will start carrying out its scatter movement and aim for the bottom left corner. This means there are actually very few spots where Pac-Man can remain still and the orange ghost can catch him, with most of them being in the bottom left corner.
+
 <p align="center">
   <img src="./images/huntingPath.png" width="100%">
 </p>
 
 <p align="center">
-  <b>Fig.2 -</b> Four annotated diagrams of how each target position is calculated for each ghost. (Left) The red ghost always aims for the position of Pac-Man. (Middle left) The pink ghost alway aims for four tiles directly in front of Pac-Man. (Middle right) The cyan ghost aims for the position of the red ghost rotated 180&deg; around the position that is two tiles directly in front of Pac-Man. (Right) The orange ghost aims for Pac-Man's position when further than eight tile lengths away from Pac-Man and scatters when closer
+  <b>Fig.2 -</b> Four annotated diagrams of how each target position is calculated for each ghost. (Left) The red ghost aims for Pac-Man's position. (Middle left) The pink ghost aims for four tiles in front of Pac-Man. (Middle right) The cyan ghost aims for the position of the red ghost rotated 180&deg; around the position that is two tiles directly in front of Pac-Man. (Right) The orange ghost aims for Pac-Man's position when further than eight tile lengths away from Pac-Man and scatters when closer
 </p>
 
 ## Running Locally
