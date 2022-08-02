@@ -44,6 +44,7 @@ export default function Main() {
       <h1>Welcome to Pac-Man!</h1>
       <ReactHowler
         src={"./audio/game_start.wav"}
+        preload={true}
         playing={isAudioPlaying}
         loop={true}
         volume={0.5}
