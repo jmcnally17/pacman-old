@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./main.css";
 import Game from "./game/game";
-import ReactHowler from "react-howler";
+import { Howl } from "howler";
 
 export default function Main() {
   const [name, setName] = useState("");
-  // const [isAudioPlaying, setIsAudioPlaying] = useState(true);
+  const [theme] = useState(
+    new Howl({
+      src: ["./audio/game_start.wav"],
+      loop: true,
+      volume: 0.5,
+    })
+  );
 
   useEffect(() => {
+    theme.play();
     window.addEventListener("keydown", (event) => {
       if (
         ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.code)
@@ -16,7 +23,7 @@ export default function Main() {
         event.preventDefault();
       }
     });
-  }, []);
+  }, [theme]);
 
   const handleName = ({ target }) => {
     setName(target.value);
@@ -33,7 +40,7 @@ export default function Main() {
     } else if (name.length > 15) {
       window.alert("Name must be 15 characters or shorter");
     } else {
-      // setIsAudioPlaying(false);
+      theme.pause();
       const mainEl = ReactDOM.createRoot(document.getElementById("main"));
       mainEl.render(<Game name={name} mainEl={mainEl} />);
     }
@@ -42,13 +49,6 @@ export default function Main() {
   return (
     <div className="main" id="main">
       <h1>Welcome to Pac-Man!</h1>
-      <ReactHowler
-        src={"./audio/game_start.wav"}
-        preload={true}
-        // playing={isAudioPlaying}
-        loop={true}
-        volume={0.5}
-      />
       <img
         className="title-gif"
         src="https://media4.giphy.com/media/42rO49pxzaMnK/giphy.gif?cid=790b76116dc1bedf27887938cbe8df55b210b12f842af0e9&rid=giphy.gif&ct=g"
