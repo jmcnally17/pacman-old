@@ -60,6 +60,6 @@ export default class Ghost {
 
   resetRecoveringState() {
     if (this.isRecovering) this.changeRecoveringState();
-    clearTimeout(this.RecoveringTimeout);
+    clearTimeout(this.recoveringTimeout);
   }
 }
