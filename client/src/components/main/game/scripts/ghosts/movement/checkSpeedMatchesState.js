@@ -1,4 +1,4 @@
-import adjustPosition from "./adjustPosition";
+import adjustPosition from "./adjustPosition/adjustPosition";
 
 export default function checkSpeedMatchesState(
   ghost,
