@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./game.css";
-import playGame from "./scripts/playGame";
+import playGame from "./mechanics/playGame";
 
 export default function Game({ name, mainEl }) {
   useEffect(() => {

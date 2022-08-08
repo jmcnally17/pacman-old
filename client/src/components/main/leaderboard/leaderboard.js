@@ -1,7 +1,7 @@
 import "./leaderboard.css";
 import Game from "../game/game";
 import { useEffect, useState } from "react";
-import startHuntingInterval from "../game/scripts/startHuntingInterval";
+import startHuntingInterval from "../game/mechanics/startHuntingInterval";
 
 let url;
 if (process.env.REACT_APP_URL) {
