@@ -11,11 +11,16 @@ describe("resetAfterDeath", () => {
     const mockGhost = {
       reset: () => undefined,
       resetHuntingState: () => undefined,
+      resetRecoveringState: () => undefined,
     };
     const mockGhosts = [mockGhost, mockGhost, mockGhost];
     const pacmanResetSpy = jest.spyOn(mockPacman, "reset");
     const ghostResetSpy = jest.spyOn(mockGhost, "reset");
     const ghostResetHuntingSpy = jest.spyOn(mockGhost, "resetHuntingState");
+    const ghostResetRecoveringSpy = jest.spyOn(
+      mockGhost,
+      "resetRecoveringState"
+    );
     const mockStartHuntingInterval = jest.fn();
     resetAfterDeath(
       mockPacman,
@@ -27,6 +32,7 @@ describe("resetAfterDeath", () => {
     expect(mockLastKeyPressed.key).toBe("");
     expect(ghostResetSpy).toHaveBeenCalledTimes(3);
     expect(ghostResetHuntingSpy).toHaveBeenCalledTimes(3);
+    expect(ghostResetRecoveringSpy).toHaveBeenCalledTimes(3);
     expect(mockStartHuntingInterval).toHaveBeenCalledTimes(1);
   });
 });

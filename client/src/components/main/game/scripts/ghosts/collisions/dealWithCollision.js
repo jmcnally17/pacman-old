@@ -34,7 +34,7 @@ export default function dealWithCollision(
     ghost.changeRecoveringState();
     ghost.recoveringTimeout = setTimeout(() => {
       ghost.changeRecoveringState();
-    }, 2000);
+    }, 3000);
     ghost.changeScaredState();
     clearTimeout(ghost.scaredTimeout);
   }
