@@ -10,7 +10,7 @@ export default function chooseMovement(
   callbackOne = huntAndScatter,
   callbackTwo = moveRandomly
 ) {
-  if (!ghost.isScared) {
+  if (!ghost.isScared && !ghost.isRecovering) {
     callbackOne(ghost, pacman, collisions, length, redGhost);
   } else {
     callbackTwo(ghost, collisions);

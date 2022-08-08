@@ -13,6 +13,7 @@ export default function resetAfterLevelUp(
   ghosts.forEach((ghost) => {
     ghost.reset();
     ghost.resetHuntingState();
+    ghost.resetRecoveringState();
   });
   callback(ghosts);
   pellets.forEach((pellet) => {

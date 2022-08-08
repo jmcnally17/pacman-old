@@ -13,6 +13,8 @@ export default class Ghost {
     this.scaredTimeout = null;
     this.isHunting = false;
     this.huntingInterval = null;
+    this.isRecovering = false;
+    this.recoveringTimeout = null;
     this.image = image;
   }
 
@@ -38,6 +40,10 @@ export default class Ghost {
     this.isHunting = this.isHunting ? false : true;
   }
 
+  changeRecoveringState() {
+    this.isRecovering = this.isRecovering ? false : true;
+  }
+
   reset() {
     this.position = { ...this.originalPosition };
     this.velocity = { ...this.originalVelocity };
@@ -50,5 +56,10 @@ export default class Ghost {
   resetHuntingState() {
     if (this.isHunting) this.changeHuntingState();
     clearInterval(this.huntingInterval);
+  }
+
+  resetRecoveringState() {
+    if (this.isRecovering) this.changeRecoveringState();
+    clearTimeout(this.RecoveringTimeout);
   }
 }
