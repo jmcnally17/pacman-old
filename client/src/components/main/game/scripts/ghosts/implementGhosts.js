@@ -1,7 +1,7 @@
 import checkPacmanGhostCollision from "./collisions/checkPacmanGhostCollision";
 import updateCollisions from "./movement/updateCollisions";
 import implementTunnel from "../implementTunnel";
-import assignSprite from "./assignSprite";
+import assignSprite from "./sprites/assignSprite";
 import checkSpeedMatchesState from "./movement/checkSpeedMatchesState";
 import chooseMovement from "./movement/chooseMovement";
 
