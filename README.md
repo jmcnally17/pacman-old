@@ -17,7 +17,7 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 - [Heroku](https://www.heroku.com/) for deployment
 - [Pexels Draw](https://apps.apple.com/us/app/pexels-draw/id1320744895?mt=12) for creating the boundary images and ghost sprites
 - [HTML Canvas](https://www.w3schools.com/html/html5_canvas.asp) as a container for the graphics
-- [GitHub](https://github.com/) for storing the code and running Continuous Integreation (CI) in GitHub Actions
+- [GitHub](https://github.com/) for version control
 
 Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses) YouTube channel for his tutorial which helped with a lot of the basic game mechanics. Link to the tutorial video can be found [here](https://youtu.be/5IMXpp3rohQ).
 
