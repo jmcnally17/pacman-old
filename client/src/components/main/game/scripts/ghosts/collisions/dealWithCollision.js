@@ -15,7 +15,7 @@ export default function dealWithCollision(
   killCount,
   callback = ghostAttack
 ) {
-  if (!ghost.isScared && !ghost.isRecovering) {
+  if (!ghost.isScared && !ghost.isRetreating) {
     callback(
       pacman,
       animationId,
@@ -28,12 +28,12 @@ export default function dealWithCollision(
       powerUps,
       level
     );
-  } else if (ghost.isScared && !ghost.isRecovering) {
+  } else if (ghost.isScared && !ghost.isRetreating) {
     score.points += 200 * Math.pow(2, killCount.number);
     killCount.number++;
-    ghost.changeRecoveringState();
-    ghost.recoveringTimeout = setTimeout(() => {
-      ghost.changeRecoveringState();
+    ghost.changeRetreatingState();
+    ghost.retreatingTimeout = setTimeout(() => {
+      ghost.changeRetreatingState();
     }, 3000);
     ghost.changeScaredState();
     clearTimeout(ghost.scaredTimeout);

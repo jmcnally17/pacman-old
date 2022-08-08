@@ -15,7 +15,7 @@ describe("checkSpeedMatchesState", () => {
       },
       speed: 4,
       isScared: true,
-      isRecovering: false,
+      isRetreating: false,
     };
     checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
@@ -34,7 +34,7 @@ describe("checkSpeedMatchesState", () => {
       },
       speed: 4,
       isScared: false,
-      isRecovering: false,
+      isRetreating: false,
     };
     checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
@@ -53,7 +53,7 @@ describe("checkSpeedMatchesState", () => {
       },
       speed: 2,
       isScared: false,
-      isRecovering: false,
+      isRetreating: false,
     };
     checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
@@ -72,7 +72,7 @@ describe("checkSpeedMatchesState", () => {
       },
       speed: 2,
       isScared: true,
-      isRecovering: false,
+      isRetreating: false,
     };
     checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
@@ -83,7 +83,7 @@ describe("checkSpeedMatchesState", () => {
     expect(mockAdjustPosition).toHaveBeenCalledTimes(0);
   });
 
-  it("quadruples the ghosts speed and velocity if its speed is length / 16 and is recovering", () => {
+  it("quadruples the ghosts speed and velocity if its speed is length / 16 and is retreating", () => {
     const mockGhost = {
       velocity: {
         x: 2,
@@ -91,7 +91,7 @@ describe("checkSpeedMatchesState", () => {
       },
       speed: 2,
       isScared: false,
-      isRecovering: true,
+      isRetreating: true,
     };
     checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
@@ -102,7 +102,7 @@ describe("checkSpeedMatchesState", () => {
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
   });
 
-  it("halves the ghosts speed and velocity if its speed is length / 4 and is not recovering or scared", () => {
+  it("halves the ghosts speed and velocity if its speed is length / 4 and is not retreating or scared", () => {
     const mockGhost = {
       velocity: {
         x: 8,
@@ -110,7 +110,7 @@ describe("checkSpeedMatchesState", () => {
       },
       speed: 8,
       isScared: false,
-      isRecovering: false,
+      isRetreating: false,
     };
     checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
@@ -121,7 +121,7 @@ describe("checkSpeedMatchesState", () => {
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
   });
 
-  it("does not change the ghosts speed and velocity if its speed is length / 4 and is recovering", () => {
+  it("does not change the ghosts speed and velocity if its speed is length / 4 and is retreating", () => {
     const mockGhost = {
       velocity: {
         x: 8,
@@ -129,7 +129,7 @@ describe("checkSpeedMatchesState", () => {
       },
       speed: 8,
       isScared: false,
-      isRecovering: true,
+      isRetreating: true,
     };
     checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({

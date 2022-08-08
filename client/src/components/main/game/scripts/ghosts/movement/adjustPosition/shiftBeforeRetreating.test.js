@@ -1,11 +1,11 @@
-import shiftBeforeRecovering from "./shiftBeforeRecovering";
+import shiftBeforeRetreating from "./shiftBeforeRetreating";
 
 let mockShiftLeft;
 let mockShiftRight;
 let mockShiftUp;
 let mockShiftDown;
 
-describe("shiftBeforeRecovering", () => {
+describe("shiftBeforeRetreating", () => {
   beforeEach(() => {
     mockShiftLeft = jest.fn();
     mockShiftRight = jest.fn();
@@ -19,7 +19,7 @@ describe("shiftBeforeRecovering", () => {
         x: 4,
       },
     };
-    shiftBeforeRecovering(
+    shiftBeforeRetreating(
       mockGhost,
       mockShiftLeft,
       mockShiftRight,
@@ -38,7 +38,7 @@ describe("shiftBeforeRecovering", () => {
         x: -4,
       },
     };
-    shiftBeforeRecovering(
+    shiftBeforeRetreating(
       mockGhost,
       mockShiftLeft,
       mockShiftRight,
@@ -57,7 +57,7 @@ describe("shiftBeforeRecovering", () => {
         y: 4,
       },
     };
-    shiftBeforeRecovering(
+    shiftBeforeRetreating(
       mockGhost,
       mockShiftLeft,
       mockShiftRight,
@@ -76,7 +76,7 @@ describe("shiftBeforeRecovering", () => {
         y: -4,
       },
     };
-    shiftBeforeRecovering(
+    shiftBeforeRetreating(
       mockGhost,
       mockShiftLeft,
       mockShiftRight,

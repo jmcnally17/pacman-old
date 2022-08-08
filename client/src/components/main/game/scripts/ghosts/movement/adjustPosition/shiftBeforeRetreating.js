@@ -3,7 +3,7 @@ import shiftLeft from "./shiftLeft";
 import shiftRight from "./shiftRight";
 import shiftUp from "./shiftUp";
 
-export default function shiftBeforeRecovering(
+export default function shiftBeforeRetreating(
   ghost,
   callbackOne = shiftLeft,
   callbackTwo = shiftRight,

@@ -1,6 +1,6 @@
-import assignRecoveringSprite from "./assignRecoveringSprite";
+import assignRetreatingSprite from "./assignRetreatingSprite";
 
-describe("assignRecoveringSprite", () => {
+describe("assignRetreatingSprite", () => {
   it("sets the ghosts image to the right facing eyes sprite when moving to the right", () => {
     const mockGhost = {
       velocity: {
@@ -10,7 +10,7 @@ describe("assignRecoveringSprite", () => {
         src: "",
       },
     };
-    assignRecoveringSprite(mockGhost);
+    assignRetreatingSprite(mockGhost);
     expect(mockGhost.image.src).toBe("./images/eyesRight.png");
   });
 
@@ -23,7 +23,7 @@ describe("assignRecoveringSprite", () => {
         src: "",
       },
     };
-    assignRecoveringSprite(mockGhost);
+    assignRetreatingSprite(mockGhost);
     expect(mockGhost.image.src).toBe("./images/eyesLeft.png");
   });
 
@@ -36,7 +36,7 @@ describe("assignRecoveringSprite", () => {
         src: "",
       },
     };
-    assignRecoveringSprite(mockGhost);
+    assignRetreatingSprite(mockGhost);
     expect(mockGhost.image.src).toBe("./images/eyesUp.png");
   });
 
@@ -49,7 +49,7 @@ describe("assignRecoveringSprite", () => {
         src: "",
       },
     };
-    assignRecoveringSprite(mockGhost);
+    assignRetreatingSprite(mockGhost);
     expect(mockGhost.image.src).toBe("./images/eyesDown.png");
   });
 });

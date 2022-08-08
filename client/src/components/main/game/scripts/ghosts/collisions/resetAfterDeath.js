@@ -11,7 +11,7 @@ export default function resetAfterDeath(
   ghosts.forEach((ghost) => {
     ghost.reset();
     ghost.resetHuntingState();
-    ghost.resetRecoveringState();
+    ghost.resetRetreatingState();
   });
   callback(ghosts);
 }

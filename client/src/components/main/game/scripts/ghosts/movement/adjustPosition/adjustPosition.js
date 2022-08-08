@@ -1,11 +1,11 @@
-import shiftBeforeRecovering from "./shiftBeforeRecovering";
+import shiftBeforeRetreating from "./shiftBeforeRetreating";
 import shiftRegular from "./shiftRegular";
 
 export default function adjustPosition(
   ghost,
-  callbackOne = shiftBeforeRecovering,
+  callbackOne = shiftBeforeRetreating,
   callbackTwo = shiftRegular
 ) {
-  if (ghost.isRecovering) callbackOne(ghost);
+  if (ghost.isRetreating) callbackOne(ghost);
   else callbackTwo(ghost);
 }

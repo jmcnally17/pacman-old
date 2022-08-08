@@ -43,7 +43,7 @@ describe("resetAfterGameOver", () => {
     mockGhost = {
       reset: () => undefined,
       resetHuntingState: () => undefined,
-      resetRecoveringState: () => undefined,
+      resetRetreatingState: () => undefined,
     };
     mockGhosts = [mockGhost, mockGhost];
     mockPacman = {
@@ -63,9 +63,9 @@ describe("resetAfterGameOver", () => {
     const eatenPowerUpSpy = jest.spyOn(mockEatenPowerUp, "changeEatenState");
     const ghostSpy = jest.spyOn(mockGhost, "reset");
     const ghostResetHuntingSpy = jest.spyOn(mockGhost, "resetHuntingState");
-    const ghostResetRecoveringSpy = jest.spyOn(
+    const ghostResetRetreatingSpy = jest.spyOn(
       mockGhost,
-      "resetRecoveringState"
+      "resetRetreatingState"
     );
     const pacmanSpy = jest.spyOn(mockPacman, "reset");
     resetAfterGameOver(
@@ -80,7 +80,7 @@ describe("resetAfterGameOver", () => {
     expect(eatenPowerUpSpy).toHaveBeenCalledTimes(2);
     expect(ghostSpy).toHaveBeenCalledTimes(2);
     expect(ghostResetHuntingSpy).toHaveBeenCalledTimes(2);
-    expect(ghostResetRecoveringSpy).toHaveBeenCalledTimes(2);
+    expect(ghostResetRetreatingSpy).toHaveBeenCalledTimes(2);
     expect(pacmanSpy).toHaveBeenCalledTimes(1);
     expect(mockPacman.lives).toBe(2);
     expect(mockLastKeyPressed.key).toBe("");

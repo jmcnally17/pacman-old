@@ -42,7 +42,7 @@ describe("Ghost", () => {
     );
     scaredGhost.isScared = true;
     scaredGhost.isHunting = true;
-    scaredGhost.isRecovering = true;
+    scaredGhost.isRetreating = true;
     mockCtx = {
       drawImage: () => undefined,
     };
@@ -75,8 +75,8 @@ describe("Ghost", () => {
       expect(ghost.scaredTimeout).toBeNull();
       expect(ghost.isHunting).toBeFalsy();
       expect(ghost.huntingInterval).toBeNull();
-      expect(ghost.isRecovering).toBeFalsy();
-      expect(ghost.recoveringTimeout).toBeNull();
+      expect(ghost.isRetreating).toBeFalsy();
+      expect(ghost.retreatingTimeout).toBeNull();
       expect(ghost.image).toEqual({
         src: "./randomSource",
       });
@@ -127,15 +127,15 @@ describe("Ghost", () => {
     });
   });
 
-  describe("changeRecoveringState", () => {
-    it("can change isRecovering to true when called", () => {
-      ghost.changeRecoveringState();
-      expect(ghost.isRecovering).toBeTruthy();
+  describe("changeRetreatingState", () => {
+    it("can change isRetreating to true when called", () => {
+      ghost.changeRetreatingState();
+      expect(ghost.isRetreating).toBeTruthy();
     });
 
-    it("can change isRecovering to false when called", () => {
-      scaredGhost.changeRecoveringState();
-      expect(scaredGhost.isRecovering).toBeFalsy();
+    it("can change isRetreating to false when called", () => {
+      scaredGhost.changeRetreatingState();
+      expect(scaredGhost.isRetreating).toBeFalsy();
     });
   });
 
@@ -183,17 +183,17 @@ describe("Ghost", () => {
     });
   });
 
-  describe("resetRecoveringState", () => {
-    it("changes the recovering state back to false and clears the recovering timeout", () => {
+  describe("resetRetreatingState", () => {
+    it("changes the retreating state back to false and clears the retreating timeout", () => {
       const clearTimeoutSpy = jest.spyOn(global, "clearTimeout");
-      scaredGhost.resetRecoveringState();
-      expect(scaredGhost.isRecovering).toBeFalsy();
+      scaredGhost.resetRetreatingState();
+      expect(scaredGhost.isRetreating).toBeFalsy();
       expect(clearTimeoutSpy).toHaveBeenCalledTimes(1);
     });
 
-    it("leaves the recovering state as false if it is already false", () => {
-      ghost.resetRecoveringState();
-      expect(ghost.isRecovering).toBeFalsy();
+    it("leaves the retreating state as false if it is already false", () => {
+      ghost.resetRetreatingState();
+      expect(ghost.isRetreating).toBeFalsy();
     });
   });
 });

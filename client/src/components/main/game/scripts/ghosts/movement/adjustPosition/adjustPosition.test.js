@@ -1,29 +1,29 @@
 import adjustPosition from "./adjustPosition";
 
-let mockShiftBeforeRecovering;
+let mockShiftBeforeRetreating;
 let mockShiftRegular;
 
 describe("adjustPosition", () => {
   beforeEach(() => {
-    mockShiftBeforeRecovering = jest.fn();
+    mockShiftBeforeRetreating = jest.fn();
     mockShiftRegular = jest.fn();
   });
 
-  it("calls shiftBeforeRecovering if isRecovering is true", () => {
+  it("calls shiftBeforeRetreating if isRetreating is true", () => {
     const mockGhost = {
-      isRecovering: true,
+      isRetreating: true,
     };
-    adjustPosition(mockGhost, mockShiftBeforeRecovering, mockShiftRegular);
-    expect(mockShiftBeforeRecovering).toHaveBeenCalledTimes(1);
+    adjustPosition(mockGhost, mockShiftBeforeRetreating, mockShiftRegular);
+    expect(mockShiftBeforeRetreating).toHaveBeenCalledTimes(1);
     expect(mockShiftRegular).toHaveBeenCalledTimes(0);
   });
 
-  it("calls shiftRegular if isRecovering is false", () => {
+  it("calls shiftRegular if isRetreating is false", () => {
     const mockGhost = {
-      isRecovering: false,
+      isRetreating: false,
     };
-    adjustPosition(mockGhost, mockShiftBeforeRecovering, mockShiftRegular);
-    expect(mockShiftBeforeRecovering).toHaveBeenCalledTimes(0);
+    adjustPosition(mockGhost, mockShiftBeforeRetreating, mockShiftRegular);
+    expect(mockShiftBeforeRetreating).toHaveBeenCalledTimes(0);
     expect(mockShiftRegular).toHaveBeenCalledTimes(1);
   });
 });

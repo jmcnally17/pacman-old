@@ -1,4 +1,4 @@
-export default function assignRecoveringSprite(ghost) {
+export default function assignRetreatingSprite(ghost) {
   if (ghost.velocity.x > 0) {
     ghost.image.src = `./images/eyesRight.png`;
   } else if (ghost.velocity.x < 0) {

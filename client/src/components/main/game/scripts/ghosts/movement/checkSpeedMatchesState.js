@@ -10,7 +10,7 @@ export default function checkSpeedMatchesState(
     ghost.velocity.x /= 2;
     ghost.velocity.y /= 2;
     ghost.speed /= 2;
-  } else if (ghost.isRecovering && ghost.speed === length / 16) {
+  } else if (ghost.isRetreating && ghost.speed === length / 16) {
     callback(ghost);
     ghost.velocity.x *= 4;
     ghost.velocity.y *= 4;
@@ -20,7 +20,7 @@ export default function checkSpeedMatchesState(
     ghost.velocity.x *= 2;
     ghost.velocity.y *= 2;
     ghost.speed *= 2;
-  } else if (!ghost.isRecovering && ghost.speed === length / 4) {
+  } else if (!ghost.isRetreating && ghost.speed === length / 4) {
     callback(ghost);
     ghost.velocity.x /= 2;
     ghost.velocity.y /= 2;
