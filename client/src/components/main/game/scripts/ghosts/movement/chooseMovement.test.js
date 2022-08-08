@@ -10,9 +10,10 @@ describe("chooseMovement", () => {
     mockMoveRandomly = jest.fn();
   });
 
-  it("calls huntAndScatter if the ghost is not scared", () => {
+  it("calls huntAndScatter if the ghost is not scared or recovering", () => {
     const mockGhost = {
       isScared: false,
+      isRecovering: false,
     };
     chooseMovement(
       mockGhost,
@@ -30,6 +31,24 @@ describe("chooseMovement", () => {
   it("calls randomDirection if the ghost is scared", () => {
     const mockGhost = {
       isScared: true,
+    };
+    chooseMovement(
+      mockGhost,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockObject,
+      mockhuntAndScatter,
+      mockMoveRandomly
+    );
+    expect(mockhuntAndScatter).toHaveBeenCalledTimes(0);
+    expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls randomDirection if the ghost is recovering", () => {
+    const mockGhost = {
+      isScared: false,
+      isRecovering: true,
     };
     chooseMovement(
       mockGhost,

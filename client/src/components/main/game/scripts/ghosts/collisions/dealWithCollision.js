@@ -32,7 +32,9 @@ export default function dealWithCollision(
     score.points += 200 * Math.pow(2, killCount.number);
     killCount.number++;
     ghost.changeRecoveringState();
-    ghost.recoveringTimeout = setTimeout(ghost.changeRecoveringState, 2000);
+    ghost.recoveringTimeout = setTimeout(() => {
+      ghost.changeRecoveringState();
+    }, 2000);
     ghost.changeScaredState();
     clearTimeout(ghost.scaredTimeout);
   }
