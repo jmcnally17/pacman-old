@@ -40,8 +40,9 @@ describe("Ghost", () => {
       },
       20
     );
-    scaredGhost.changeScaredState();
-    scaredGhost.changeHuntingState();
+    scaredGhost.isScared = true;
+    scaredGhost.isHunting = true;
+    scaredGhost.isRecovering = true;
     mockCtx = {
       drawImage: () => undefined,
     };
@@ -74,6 +75,8 @@ describe("Ghost", () => {
       expect(ghost.scaredTimeout).toBeNull();
       expect(ghost.isHunting).toBeFalsy();
       expect(ghost.huntingInterval).toBeNull();
+      expect(ghost.isRecovering).toBeFalsy();
+      expect(ghost.recoveringTimeout).toBeNull();
       expect(ghost.image).toEqual({
         src: "./randomSource",
       });
@@ -124,6 +127,18 @@ describe("Ghost", () => {
     });
   });
 
+  describe("changeRecoveringState", () => {
+    it("can change isRecovering to true when called", () => {
+      ghost.changeRecoveringState();
+      expect(ghost.isRecovering).toBeTruthy();
+    });
+
+    it("can change isRecovering to false when called", () => {
+      scaredGhost.changeRecoveringState();
+      expect(scaredGhost.isRecovering).toBeFalsy();
+    });
+  });
+
   describe("reset", () => {
     it("changes the ghosts parameters back to their original configuration", () => {
       scaredGhost.position.x += 20;
@@ -165,6 +180,20 @@ describe("Ghost", () => {
     it("leaves the hunting state as false if it is already false", () => {
       ghost.resetHuntingState();
       expect(ghost.isHunting).toBeFalsy();
+    });
+  });
+
+  describe("resetRecoveringState", () => {
+    it("changes the recovering state back to false and clears the recovering timeout", () => {
+      const clearTimeoutSpy = jest.spyOn(global, "clearTimeout");
+      scaredGhost.resetRecoveringState();
+      expect(scaredGhost.isRecovering).toBeFalsy();
+      expect(clearTimeoutSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it("leaves the recovering state as false if it is already false", () => {
+      ghost.resetRecoveringState();
+      expect(ghost.isRecovering).toBeFalsy();
     });
   });
 });
