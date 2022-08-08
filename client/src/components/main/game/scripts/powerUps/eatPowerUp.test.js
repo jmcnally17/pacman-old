@@ -46,7 +46,9 @@ describe("eatPowerUp", () => {
     mockKillCount = {
       number: 2,
     };
-    mockGhost = {};
+    mockGhost = {
+      isRecovering: false,
+    };
     mockGhosts = [mockGhost, mockGhost, mockGhost];
     mockScareGhost = jest.fn();
   });
@@ -105,7 +107,7 @@ describe("eatPowerUp", () => {
     expect(mockKillCount.number).toBe(2);
   });
 
-  it("resets all ghost timeouts and calls the scareGhost callback", () => {
+  it("calls the scareGhost callback if they are not recovering", () => {
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
@@ -115,5 +117,25 @@ describe("eatPowerUp", () => {
       mockScareGhost
     );
     expect(mockScareGhost).toHaveBeenCalledTimes(3);
+  });
+
+  it("does not call the scareGhost callback if they are recovering", () => {
+    const mockRecoveringGhost = {
+      isRecovering: true,
+    };
+    const mockRecoveringGhosts = [
+      mockRecoveringGhost,
+      mockRecoveringGhost,
+      mockRecoveringGhost,
+    ];
+    eatPowerUp(
+      mockUneatenPowerUp,
+      mockPacmanOne,
+      mockScore,
+      mockKillCount,
+      mockRecoveringGhosts,
+      mockScareGhost
+    );
+    expect(mockScareGhost).toHaveBeenCalledTimes(0);
   });
 });
