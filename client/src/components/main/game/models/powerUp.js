@@ -19,6 +19,7 @@ export default class PowerUp {
   }
 
   flash() {
+    if (this.radius <= 2) this.rate = -this.rate;
     this.radius += this.rate;
   }
 }
