@@ -5,9 +5,9 @@ redImage.src = "./images/redGhostUp.png";
 const pinkImage = new Image();
 pinkImage.src = "./images/pinkGhostUp.png";
 const cyanImage = new Image();
-cyanImage.src = "./images/cyanGhostLeft.png";
+cyanImage.src = "./images/cyanGhostRight.png";
 const orangeImage = new Image();
-orangeImage.src = "./images/orangeGhostRight.png";
+orangeImage.src = "./images/orangeGhostLeft.png";
 
 export default function makeGhosts(length) {
   return [
