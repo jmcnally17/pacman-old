@@ -8,12 +8,20 @@ describe("Footer", () => {
       "This project was created by Joe McNally and stored on GitHub. " +
         "A big thank you to Namco for creating Pac-Man in 1980."
     );
+  });
+
+  it("contains the link to the GitHub profile", () => {
+    render(<Footer />);
     const profileLinkEl = screen.getByTestId("profile-link");
     expect(profileLinkEl).toHaveAttribute(
       "href",
       "https://github.com/jmcnally17"
     );
     expect(profileLinkEl).toHaveTextContent("Joe McNally");
+  });
+
+  it("contains the link to the GitHub repo", () => {
+    render(<Footer />);
     const githubRepoEl = screen.getByTestId("github-repo");
     expect(githubRepoEl).toHaveAttribute(
       "href",
