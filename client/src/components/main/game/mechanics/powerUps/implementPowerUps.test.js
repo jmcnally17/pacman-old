@@ -5,15 +5,15 @@ let mockUneatenPowerUps;
 let mockEatenPowerUp;
 let mockEatenPowerUps;
 let mockObject;
-let uneatenDrawSpy;
-let eatenDrawSpy;
+let uneatenUpdateSpy;
+let eatenUpdateSpy;
 let mockEatPowerUp;
 
 describe("implementPowerUps", () => {
   beforeEach(() => {
     mockUneatenPowerUp = {
       hasBeenEaten: false,
-      draw: () => undefined,
+      update: () => undefined,
     };
     mockUneatenPowerUps = [
       mockUneatenPowerUp,
@@ -22,11 +22,11 @@ describe("implementPowerUps", () => {
     ];
     mockEatenPowerUp = {
       hasBeenEaten: true,
-      draw: () => undefined,
+      update: () => undefined,
     };
     mockEatenPowerUps = [mockEatenPowerUp, mockEatenPowerUp];
-    uneatenDrawSpy = jest.spyOn(mockUneatenPowerUp, "draw");
-    eatenDrawSpy = jest.spyOn(mockEatenPowerUp, "draw");
+    uneatenUpdateSpy = jest.spyOn(mockUneatenPowerUp, "update");
+    eatenUpdateSpy = jest.spyOn(mockEatenPowerUp, "update");
     mockEatPowerUp = jest.fn();
   });
 
@@ -40,11 +40,11 @@ describe("implementPowerUps", () => {
       mockObject,
       mockEatPowerUp
     );
-    expect(uneatenDrawSpy).toHaveBeenCalledTimes(3);
+    expect(uneatenUpdateSpy).toHaveBeenCalledTimes(3);
     expect(mockEatPowerUp).toHaveBeenCalledTimes(3);
   });
 
-  it("does not draw the power ups if they have been eaten", () => {
+  it("does call update on the power ups if they have been eaten", () => {
     implementPowerUps(
       mockEatenPowerUps,
       mockObject,
@@ -54,7 +54,7 @@ describe("implementPowerUps", () => {
       mockObject,
       mockEatPowerUp
     );
-    expect(eatenDrawSpy).toHaveBeenCalledTimes(0);
+    expect(eatenUpdateSpy).toHaveBeenCalledTimes(0);
     expect(mockEatPowerUp).toHaveBeenCalledTimes(2);
   });
 });

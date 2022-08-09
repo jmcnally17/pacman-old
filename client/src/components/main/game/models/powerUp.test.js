@@ -2,9 +2,12 @@ import PowerUp from "./powerUp";
 
 let powerUp;
 let eatenPowerUp;
+let mockLength;
+let mockCtx;
 
 describe("PowerUp", () => {
   beforeEach(() => {
+    mockLength = 20;
     powerUp = new PowerUp(
       {
         position: {
@@ -12,7 +15,7 @@ describe("PowerUp", () => {
           y: 100,
         },
       },
-      20
+      mockLength
     );
     eatenPowerUp = new PowerUp(
       {
@@ -21,9 +24,16 @@ describe("PowerUp", () => {
           y: 100,
         },
       },
-      20
+      mockLength
     );
     eatenPowerUp.changeEatenState();
+    mockCtx = {
+      beginPath: () => undefined,
+      arc: () => undefined,
+      fillStyle: "",
+      fill: () => undefined,
+      closePath: () => undefined,
+    };
   });
 
   describe("upon instantiation", () => {
@@ -34,6 +44,8 @@ describe("PowerUp", () => {
       });
       expect(powerUp.radius).toBe(7);
       expect(powerUp.hasBeenEaten).toBeFalsy();
+      expect(powerUp.rate).toBe(-0.4);
+      expect(powerUp.length).toBe(20);
     });
   });
 
@@ -49,15 +61,18 @@ describe("PowerUp", () => {
     });
   });
 
+  describe("update", () => {
+    it("calls draw and flash", () => {
+      const drawSpy = jest.spyOn(powerUp, "draw");
+      const flashSpy = jest.spyOn(powerUp, "flash");
+      powerUp.update(mockCtx);
+      expect(drawSpy).toHaveBeenCalledTimes(1);
+      expect(flashSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe("draw", () => {
     it("calls the necessary functions on ctx to draw the power up", () => {
-      const mockCtx = {
-        beginPath: () => undefined,
-        arc: () => undefined,
-        fillStyle: "",
-        fill: () => undefined,
-        closePath: () => undefined,
-      };
       const beginPathSpy = jest.spyOn(mockCtx, "beginPath");
       const arcSpy = jest.spyOn(mockCtx, "arc");
       const fillSpy = jest.spyOn(mockCtx, "fill");
@@ -68,6 +83,28 @@ describe("PowerUp", () => {
       expect(fillSpy).toHaveBeenCalledTimes(1);
       expect(closePathSpy).toHaveBeenCalledTimes(1);
       expect(mockCtx.fillStyle).toBe("white");
+    });
+  });
+
+  describe("flash", () => {
+    it("adds the rate to the radius", () => {
+      powerUp.flash();
+      expect(powerUp.radius).toBe(6.6);
+    });
+
+    it("changes the sign of the rate to positive when the radius reaches a minimum value", () => {
+      powerUp.radius = 5;
+      powerUp.flash();
+      expect(powerUp.rate).toBe(0.4);
+      expect(powerUp.radius).toBe(5.4);
+    });
+
+    it("changes the sign of the rate to negative when the radius reaches a maximum value", () => {
+      powerUp.rate = 0.4;
+      powerUp.radius = 9;
+      powerUp.flash();
+      expect(powerUp.rate).toBe(-0.4);
+      expect(powerUp.radius).toBe(8.6);
     });
   });
 });
