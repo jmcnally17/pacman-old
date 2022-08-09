@@ -11,6 +11,11 @@ export default class PowerUp {
     this.hasBeenEaten = this.hasBeenEaten ? false : true;
   }
 
+  update(ctx) {
+    this.draw(ctx);
+    this.flash();
+  }
+
   draw(ctx) {
     ctx.beginPath();
     ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);

@@ -3,6 +3,7 @@ import PowerUp from "./powerUp";
 let powerUp;
 let eatenPowerUp;
 let mockLength;
+let mockCtx;
 
 describe("PowerUp", () => {
   beforeEach(() => {
@@ -26,6 +27,13 @@ describe("PowerUp", () => {
       mockLength
     );
     eatenPowerUp.changeEatenState();
+    mockCtx = {
+      beginPath: () => undefined,
+      arc: () => undefined,
+      fillStyle: "",
+      fill: () => undefined,
+      closePath: () => undefined,
+    };
   });
 
   describe("upon instantiation", () => {
@@ -53,15 +61,18 @@ describe("PowerUp", () => {
     });
   });
 
+  describe("update", () => {
+    it("calls draw and flash", () => {
+      const drawSpy = jest.spyOn(powerUp, "draw");
+      const flashSpy = jest.spyOn(powerUp, "flash");
+      powerUp.update(mockCtx);
+      expect(drawSpy).toHaveBeenCalledTimes(1);
+      expect(flashSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe("draw", () => {
     it("calls the necessary functions on ctx to draw the power up", () => {
-      const mockCtx = {
-        beginPath: () => undefined,
-        arc: () => undefined,
-        fillStyle: "",
-        fill: () => undefined,
-        closePath: () => undefined,
-      };
       const beginPathSpy = jest.spyOn(mockCtx, "beginPath");
       const arcSpy = jest.spyOn(mockCtx, "arc");
       const fillSpy = jest.spyOn(mockCtx, "fill");
