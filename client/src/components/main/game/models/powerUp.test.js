@@ -2,9 +2,11 @@ import PowerUp from "./powerUp";
 
 let powerUp;
 let eatenPowerUp;
+let mockLength;
 
 describe("PowerUp", () => {
   beforeEach(() => {
+    mockLength = 20;
     powerUp = new PowerUp(
       {
         position: {
@@ -12,7 +14,7 @@ describe("PowerUp", () => {
           y: 100,
         },
       },
-      20
+      mockLength
     );
     eatenPowerUp = new PowerUp(
       {
@@ -21,7 +23,7 @@ describe("PowerUp", () => {
           y: 100,
         },
       },
-      20
+      mockLength
     );
     eatenPowerUp.changeEatenState();
   });
@@ -34,6 +36,7 @@ describe("PowerUp", () => {
       });
       expect(powerUp.radius).toBe(7);
       expect(powerUp.hasBeenEaten).toBeFalsy();
+      expect(powerUp.rate).toBe(-1);
     });
   });
 
@@ -68,6 +71,13 @@ describe("PowerUp", () => {
       expect(fillSpy).toHaveBeenCalledTimes(1);
       expect(closePathSpy).toHaveBeenCalledTimes(1);
       expect(mockCtx.fillStyle).toBe("white");
+    });
+  });
+
+  describe("flash", () => {
+    it("adds the rate to the radius", () => {
+      powerUp.flash();
+      expect(powerUp.radius).toBe(6);
     });
   });
 });

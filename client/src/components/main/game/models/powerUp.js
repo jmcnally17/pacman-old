@@ -3,6 +3,7 @@ export default class PowerUp {
     this.position = position;
     this.radius = (length * 7) / 20;
     this.hasBeenEaten = false;
+    this.rate = -length / 20;
   }
 
   changeEatenState() {
@@ -15,5 +16,9 @@ export default class PowerUp {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.closePath();
+  }
+
+  flash() {
+    this.radius += this.rate;
   }
 }
