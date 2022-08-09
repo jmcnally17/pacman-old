@@ -37,6 +37,7 @@ describe("PowerUp", () => {
       expect(powerUp.radius).toBe(7);
       expect(powerUp.hasBeenEaten).toBeFalsy();
       expect(powerUp.rate).toBe(-1);
+      expect(powerUp.length).toBe(20);
     });
   });
 
@@ -76,15 +77,23 @@ describe("PowerUp", () => {
 
   describe("flash", () => {
     it("adds the rate to the radius", () => {
+      powerUp.radius = 4;
       powerUp.flash();
-      expect(powerUp.radius).toBe(6);
+      expect(powerUp.radius).toBe(3);
     });
 
-    it("changes the sign of the rate when it reaches a minimum value", () => {
+    it("changes the sign of the rate to negative when the radius reaches a minimum value", () => {
       powerUp.radius = 2;
       powerUp.flash();
       expect(powerUp.rate).toBe(1);
       expect(powerUp.radius).toBe(3);
+    });
+
+    it("changes the sign of the rate to positive when the radius reaches a maximum value", () => {
+      powerUp.rate = 1;
+      powerUp.flash();
+      expect(powerUp.rate).toBe(-1);
+      expect(powerUp.radius).toBe(6);
     });
   });
 });

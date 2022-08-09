@@ -4,6 +4,7 @@ export default class PowerUp {
     this.radius = (length * 7) / 20;
     this.hasBeenEaten = false;
     this.rate = -length / 20;
+    this.length = length;
   }
 
   changeEatenState() {
@@ -19,7 +20,12 @@ export default class PowerUp {
   }
 
   flash() {
-    if (this.radius <= 2) this.rate = -this.rate;
+    if (
+      this.radius <= this.length / 10 ||
+      this.radius >= (this.length * 7) / 20
+    ) {
+      this.rate = -this.rate;
+    }
     this.radius += this.rate;
   }
 }
