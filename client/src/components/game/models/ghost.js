@@ -1,5 +1,5 @@
 export default class Ghost {
-  constructor({ position, velocity, colour, image }, length) {
+  constructor({ position, velocity, colour, image = new Image() }, length) {
     this.originalPosition = position;
     this.position = { ...this.originalPosition };
     this.originalVelocity = velocity;

@@ -1,14 +1,5 @@
 import Ghost from "../../models/ghost";
 
-const redImage = new Image();
-redImage.src = "./images/redGhostUp.png";
-const pinkImage = new Image();
-pinkImage.src = "./images/pinkGhostUp.png";
-const cyanImage = new Image();
-cyanImage.src = "./images/cyanGhostRight.png";
-const orangeImage = new Image();
-orangeImage.src = "./images/orangeGhostLeft.png";
-
 export default function makeGhosts(length) {
   return [
     new Ghost(
@@ -22,7 +13,6 @@ export default function makeGhosts(length) {
           y: -length / 8,
         },
         colour: "red",
-        image: redImage,
       },
       length
     ),
@@ -37,7 +27,6 @@ export default function makeGhosts(length) {
           y: -length / 8,
         },
         colour: "pink",
-        image: pinkImage,
       },
       length
     ),
@@ -52,7 +41,6 @@ export default function makeGhosts(length) {
           y: 0,
         },
         colour: "cyan",
-        image: cyanImage,
       },
       length
     ),
@@ -67,7 +55,6 @@ export default function makeGhosts(length) {
           y: 0,
         },
         colour: "orange",
-        image: orangeImage,
       },
       length
     ),
