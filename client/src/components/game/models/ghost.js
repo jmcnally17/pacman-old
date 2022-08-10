@@ -1,5 +1,5 @@
 export default class Ghost {
-  constructor({ position, velocity, colour, image = new Image() }, length) {
+  constructor({ position, velocity, colour, image = Image }, length) {
     this.originalPosition = position;
     this.position = { ...this.originalPosition };
     this.originalVelocity = velocity;
@@ -15,7 +15,25 @@ export default class Ghost {
     this.huntingInterval = null;
     this.isRetreating = false;
     this.retreatingTimeout = null;
-    this.image = image;
+    this.image = new image();
+    this.up = new image();
+    this.up.src = `./images/${this.colour}GhostUp.png`;
+    this.left = new image();
+    this.left.src = `./images/${this.colour}GhostLeft.png`;
+    this.right = new image();
+    this.right.src = `./images/${this.colour}GhostRight.png`;
+    this.down = new image();
+    this.down.src = `./images/${this.colour}GhostDown.png`;
+    this.scaredBlue = new image();
+    this.scaredBlue.src = `./images/scaredGhostBlue.png`;
+    this.eyesUp = new image();
+    this.eyesUp.src = `./images/eyesUp.png`;
+    this.eyesLeft = new image();
+    this.eyesLeft.src = `./images/eyesLeft.png`;
+    this.eyesRight = new image();
+    this.eyesRight.src = `./images/eyesRight.png`;
+    this.eyesDown = new image();
+    this.eyesDown.src = `./images/eyesDown.png`;
   }
 
   draw(ctx) {
