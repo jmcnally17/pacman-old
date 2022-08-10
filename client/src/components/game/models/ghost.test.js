@@ -2,14 +2,10 @@ import Ghost from "./ghost";
 
 let ghost;
 let scaredGhost;
-let mockImage;
 let mockCtx;
 
 describe("Ghost", () => {
   beforeEach(() => {
-    mockImage = {
-      src: "./randomSource",
-    };
     ghost = new Ghost(
       {
         position: {
@@ -21,7 +17,6 @@ describe("Ghost", () => {
           y: 2.5,
         },
         colour: "red",
-        image: mockImage,
       },
       20
     );
@@ -36,7 +31,6 @@ describe("Ghost", () => {
           y: 2.5,
         },
         colour: "red",
-        image: mockImage,
       },
       20
     );
@@ -77,9 +71,18 @@ describe("Ghost", () => {
       expect(ghost.huntingInterval).toBeNull();
       expect(ghost.isRetreating).toBeFalsy();
       expect(ghost.retreatingTimeout).toBeNull();
-      expect(ghost.image).toEqual({
-        src: "./randomSource",
-      });
+      expect(ghost.image).toBeInstanceOf(Image);
+      expect(ghost.up.src).toBe("http://localhost/images/redGhostUp.png");
+      expect(ghost.left.src).toBe("http://localhost/images/redGhostLeft.png");
+      expect(ghost.right.src).toBe("http://localhost/images/redGhostRight.png");
+      expect(ghost.down.src).toBe("http://localhost/images/redGhostDown.png");
+      expect(ghost.scaredBlue.src).toBe(
+        "http://localhost/images/scaredGhostBlue.png"
+      );
+      expect(ghost.eyesUp.src).toBe("http://localhost/images/eyesUp.png");
+      expect(ghost.eyesLeft.src).toBe("http://localhost/images/eyesLeft.png");
+      expect(ghost.eyesRight.src).toBe("http://localhost/images/eyesRight.png");
+      expect(ghost.eyesDown.src).toBe("http://localhost/images/eyesDown.png");
     });
   });
 
@@ -92,10 +95,12 @@ describe("Ghost", () => {
   });
 
   describe("update", () => {
-    it("calls draw and updates the position", () => {
-      const ghostSpy = jest.spyOn(ghost, "draw");
+    it("calls assignSprite and draw and updates the position", () => {
+      const assignSpriteSpy = jest.spyOn(ghost, "assignSprite");
+      const drawSpy = jest.spyOn(ghost, "draw");
       ghost.update(mockCtx);
-      expect(ghostSpy).toHaveBeenCalledTimes(1);
+      expect(assignSpriteSpy).toHaveBeenCalledTimes(1);
+      expect(drawSpy).toHaveBeenCalledTimes(1);
       expect(ghost.position).toEqual({
         x: 27.5,
         y: 22.5,

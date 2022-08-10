@@ -6,7 +6,6 @@ let mockGhostTwo;
 let mockGhostsTwo;
 let mockObject;
 let mockcheckSpeedMatchesState;
-let mockAssignSprite;
 let mockImplementTunnel;
 let mockUpdateCollisions;
 let mockChooseMovement;
@@ -25,7 +24,6 @@ describe("implementGhosts", () => {
     };
     mockGhostsTwo = [mockGhostTwo, mockGhostTwo];
     mockcheckSpeedMatchesState = jest.fn();
-    mockAssignSprite = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();
     mockChooseMovement = jest.fn();
@@ -51,14 +49,12 @@ describe("implementGhosts", () => {
       mockObject,
       mockObject,
       mockcheckSpeedMatchesState,
-      mockAssignSprite,
       mockImplementTunnel,
       mockUpdateCollisions,
       mockChooseMovement,
       mockCheckPacmanGhostCollision
     );
     expect(mockcheckSpeedMatchesState).toHaveBeenCalledTimes(3);
-    expect(mockAssignSprite).toHaveBeenCalledTimes(3);
     expect(updateSpy).toHaveBeenCalledTimes(3);
     expect(mockImplementTunnel).toHaveBeenCalledTimes(3);
     expect(mockUpdateCollisions).toHaveBeenCalledTimes(3);
@@ -84,7 +80,6 @@ describe("implementGhosts", () => {
       mockObject,
       mockObject,
       mockcheckSpeedMatchesState,
-      mockAssignSprite,
       mockImplementTunnel,
       mockUpdateCollisions,
       mockChooseMovement,
