@@ -17,7 +17,6 @@ describe("Ghost", () => {
           y: 2.5,
         },
         colour: "red",
-        // image: mockImage,
       },
       20
     );
@@ -32,7 +31,6 @@ describe("Ghost", () => {
           y: 2.5,
         },
         colour: "red",
-        // image: mockImage,
       },
       20
     );
