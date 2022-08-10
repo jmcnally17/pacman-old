@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./main.css";
-import Game from "./game/game";
+import Game from "../game/game";
 import { Howl } from "howler";
 
 export default function Main() {
