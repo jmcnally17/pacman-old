@@ -2,14 +2,10 @@ import Ghost from "./ghost";
 
 let ghost;
 let scaredGhost;
-let mockImage;
 let mockCtx;
 
 describe("Ghost", () => {
   beforeEach(() => {
-    mockImage = {
-      src: "./randomSource",
-    };
     ghost = new Ghost(
       {
         position: {
