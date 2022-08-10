@@ -80,4 +80,11 @@ export default class Ghost {
     if (this.isRetreating) this.changeRetreatingState();
     clearTimeout(this.retreatingTimeout);
   }
+
+  assignSprite() {
+    if (this.velocity.y < 0) this.image = this.up;
+    if (this.velocity.x < 0) this.image = this.left;
+    if (this.velocity.x > 0) this.image = this.right;
+    if (this.velocity.y > 0) this.image = this.down;
+  }
 }
