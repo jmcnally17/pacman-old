@@ -45,6 +45,7 @@ export default class Ghost {
   }
 
   update(ctx) {
+    this.assignSprite();
     this.draw(ctx);
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;

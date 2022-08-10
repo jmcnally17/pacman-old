@@ -95,10 +95,12 @@ describe("Ghost", () => {
   });
 
   describe("update", () => {
-    it("calls draw and updates the position", () => {
-      const ghostSpy = jest.spyOn(ghost, "draw");
+    it("calls assignSprite and draw and updates the position", () => {
+      const assignSpriteSpy = jest.spyOn(ghost, "assignSprite");
+      const drawSpy = jest.spyOn(ghost, "draw");
       ghost.update(mockCtx);
-      expect(ghostSpy).toHaveBeenCalledTimes(1);
+      expect(assignSpriteSpy).toHaveBeenCalledTimes(1);
+      expect(drawSpy).toHaveBeenCalledTimes(1);
       expect(ghost.position).toEqual({
         x: 27.5,
         y: 22.5,
