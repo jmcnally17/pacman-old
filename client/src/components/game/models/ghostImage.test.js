@@ -54,5 +54,13 @@ describe("Ghost", () => {
         "http://localhost/images/orangeGhostDown.png"
       );
     });
+
+    it("assigns the scared blue sprite when the ghost is scared", () => {
+      ghost.isScared = true;
+      ghost.assignSprite();
+      expect(ghost.image.src).toBe(
+        "http://localhost/images/scaredGhostBlue.png"
+      );
+    });
   });
 });

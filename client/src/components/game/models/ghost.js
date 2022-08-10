@@ -82,9 +82,10 @@ export default class Ghost {
   }
 
   assignSprite() {
-    if (this.velocity.y < 0) this.image = this.up;
-    if (this.velocity.x < 0) this.image = this.left;
-    if (this.velocity.x > 0) this.image = this.right;
-    if (this.velocity.y > 0) this.image = this.down;
+    if (this.isScared) this.image = this.scaredBlue;
+    else if (this.velocity.y < 0) this.image = this.up;
+    else if (this.velocity.x < 0) this.image = this.left;
+    else if (this.velocity.x > 0) this.image = this.right;
+    else if (this.velocity.y > 0) this.image = this.down;
   }
 }
