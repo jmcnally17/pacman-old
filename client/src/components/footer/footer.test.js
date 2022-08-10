@@ -12,7 +12,7 @@ describe("Footer", () => {
 
   it("contains the link to the GitHub profile", () => {
     render(<Footer />);
-    const profileLinkEl = screen.getByTestId("profile-link");
+    const profileLinkEl = screen.getByRole("link", { name: "Joe McNally" });
     expect(profileLinkEl).toHaveAttribute(
       "href",
       "https://github.com/jmcnally17"
@@ -22,7 +22,7 @@ describe("Footer", () => {
 
   it("contains the link to the GitHub repo", () => {
     render(<Footer />);
-    const githubRepoEl = screen.getByTestId("github-repo");
+    const githubRepoEl = screen.getByRole("link", { name: "GitHub" });
     expect(githubRepoEl).toHaveAttribute(
       "href",
       "https://github.com/jmcnally17/pacman"

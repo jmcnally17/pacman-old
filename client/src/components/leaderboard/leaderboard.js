@@ -45,9 +45,9 @@ export default function Leaderboard({ score, mainEl, name, ghosts }) {
       <table className="list">
         <tbody>
           <tr>
-            <th className="rankHeader">Rank</th>
-            <th className="nameHeader">Name</th>
-            <th className="scoreHeader">Score</th>
+            <th className="rank-header">Rank</th>
+            <th className="name-header">Name</th>
+            <th className="score-header">Score</th>
           </tr>
           {scores.map((score, index) => {
             return (
@@ -61,10 +61,10 @@ export default function Leaderboard({ score, mainEl, name, ghosts }) {
         </tbody>
       </table>
       <div className="buttons">
-        <button className="playAgain" onClick={handlePlayAgain}>
+        <button className="play-again" onClick={handlePlayAgain}>
           Play Again
         </button>
-        <button className="changePlayer" onClick={handleChangePlayer}>
+        <button className="change-player" onClick={handleChangePlayer}>
           Change Player
         </button>
       </div>

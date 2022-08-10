@@ -16,7 +16,7 @@ export default function Game({ name, mainEl, callback = playGame }) {
     <div>
       <h1>Let&apos;s Play {name}!</h1>
       <div className="table">
-        <div className="gameInfo">
+        <div className="game-info">
           <div className="score" id="score"></div>
           <div className="level" id="level"></div>
           <div className="lives" id="lives"></div>

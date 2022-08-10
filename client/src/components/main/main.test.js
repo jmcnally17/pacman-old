@@ -27,9 +27,7 @@ describe("Main", () => {
 
   it("contains the input field and submit button", () => {
     render(<Main />);
-    const nameInputEl = screen.getByRole("textbox");
-    expect(nameInputEl).toHaveAttribute("placeholder", "Name");
-    const buttonEl = screen.getByRole("button");
-    expect(buttonEl).toHaveTextContent("Submit");
+    expect(screen.getByRole("textbox")).toHaveAttribute("placeholder", "Name");
+    expect(screen.getByRole("button")).toHaveTextContent("Submit");
   });
 });
