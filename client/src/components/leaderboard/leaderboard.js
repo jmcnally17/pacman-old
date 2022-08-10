@@ -51,7 +51,7 @@ export default function Leaderboard({ score, mainEl, name, ghosts }) {
           </tr>
           {scores.map((score, index) => {
             return (
-              <tr className="entry" key={index}>
+              <tr className="entry" key={index} aria-label={index}>
                 <td className="rank">{index + 1}</td>
                 <td className="name">{score.name}</td>
                 <td className="points">{score.points}</td>
