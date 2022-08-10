@@ -49,16 +49,24 @@ describe("Leaderboard", () => {
     expect(screen.getByRole("table")).toHaveAttribute("class", "list");
   });
 
-  it("contains the table headings", () => {
+  it("prints a message telling the user to wait a moment before the table data has been fetched", () => {
+    render(<Leaderboard score={mockScore} />);
+    const tableEl = screen.getByRole("table");
+    expect(within(tableEl).getByTestId("wait-message")).toHaveTextContent(
+      "Please wait a moment..."
+    );
+  });
+
+  it("contains the table headings after the data has been fetched", async () => {
     render(<Leaderboard score={mockScore} />);
     expect(
-      screen.getByRole("columnheader", { name: "Rank" })
+      await screen.findByRole("columnheader", { name: "Rank" })
     ).toHaveTextContent("Rank");
     expect(
-      screen.getByRole("columnheader", { name: "Name" })
+      await screen.findByRole("columnheader", { name: "Name" })
     ).toHaveTextContent("Name");
     expect(
-      screen.getByRole("columnheader", { name: "Score" })
+      await screen.findByRole("columnheader", { name: "Score" })
     ).toHaveTextContent("Score");
   });
 
@@ -99,15 +107,28 @@ describe("Leaderboard", () => {
     ).toBeInTheDocument();
   });
 
+  it("displays an error on the page when the fetch fails", async () => {
+    server.use(
+      rest.get("http://localhost:9000/backend/scores", (req, res, ctx) => {
+        return res(ctx.status(500));
+      })
+    );
+    render(<Leaderboard score={mockScore} />);
+    expect(await screen.findByTestId("error")).toHaveTextContent(
+      "Oops, something went wrong!"
+    );
+    expect(screen.queryByRole("table")).toBeNull();
+  });
+
   it("contains the buttons to play again and change player", () => {
     render(<Leaderboard score={mockScore} />);
     expect(
       screen.getByRole("button", { name: "Play Again" })
-    ).toHaveTextContent("Play Again");
+    ).toBeInTheDocument();
     expect(
       screen.getByRole("button", {
         name: "Change Player",
       })
-    ).toHaveTextContent("Change Player");
+    ).toBeInTheDocument();
   });
 });

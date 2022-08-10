@@ -2,6 +2,14 @@ h4 {
   color: white;
 }
 
+.wait-message,
+.error {
+  color: white;
+  padding: 138px;
+  padding-top: 223px;
+  padding-bottom: 224px;
+}
+
 .list {
   margin: auto;
   background-color: rgb(15, 15, 70);
