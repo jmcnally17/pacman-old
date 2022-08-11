@@ -4,7 +4,6 @@ let mockUneatenPowerUp;
 let mockEatenPowerUp;
 let mockPacmanOne;
 let mockPacmanTwo;
-let mockScore;
 let mockVariables;
 let mockGhost;
 let mockGhosts;
@@ -40,10 +39,8 @@ describe("eatPowerUp", () => {
       changeEatenState: () => undefined,
       hasBeenEaten: true,
     };
-    mockScore = {
-      points: 0,
-    };
     mockVariables = {
+      score: 0,
       killCount: 2,
     };
     mockGhost = {
@@ -61,13 +58,12 @@ describe("eatPowerUp", () => {
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
-      mockScore,
       mockVariables,
       mockGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(1);
-    expect(mockScore.points).toBe(50);
+    expect(mockVariables.score).toBe(50);
     expect(mockVariables.killCount).toBe(0);
   });
 
@@ -79,13 +75,12 @@ describe("eatPowerUp", () => {
     eatPowerUp(
       mockEatenPowerUp,
       mockPacmanOne,
-      mockScore,
       mockVariables,
       mockGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
-    expect(mockScore.points).toBe(0);
+    expect(mockVariables.score).toBe(0);
     expect(mockVariables.killCount).toBe(2);
   });
 
@@ -97,13 +92,12 @@ describe("eatPowerUp", () => {
     eatPowerUp(
       mockEatenPowerUp,
       mockPacmanTwo,
-      mockScore,
       mockVariables,
       mockGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
-    expect(mockScore.points).toBe(0);
+    expect(mockVariables.score).toBe(0);
     expect(mockVariables.killCount).toBe(2);
   });
 
@@ -111,7 +105,6 @@ describe("eatPowerUp", () => {
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
-      mockScore,
       mockVariables,
       mockGhosts,
       mockScareGhost
@@ -131,7 +124,6 @@ describe("eatPowerUp", () => {
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
-      mockScore,
       mockVariables,
       mockRetreatingGhosts,
       mockScareGhost

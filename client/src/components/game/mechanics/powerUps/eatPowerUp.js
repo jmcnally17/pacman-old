@@ -3,7 +3,6 @@ import scareGhost from "./scareGhost";
 export default function eatPowerUp(
   powerUp,
   pacman,
-  score,
   variables,
   ghosts,
   callback = scareGhost
@@ -14,7 +13,7 @@ export default function eatPowerUp(
     !powerUp.hasBeenEaten
   ) {
     powerUp.changeEatenState();
-    score.points += 50;
+    variables.score += 50;
     variables.killCount = 0;
     ghosts.forEach((ghost) => {
       if (!ghost.isRetreating) callback(ghost);
