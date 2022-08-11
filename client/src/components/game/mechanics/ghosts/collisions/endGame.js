@@ -18,9 +18,7 @@ export default function endGame(
   callbackThree(pellets, powerUps, ghosts, pacman, variables, cycleTimer);
   variables.reactRoot.render(
     <Leaderboard
-      score={variables.score}
-      reactRoot={variables.reactRoot}
-      name={variables.playerName}
+      variables={variables}
       ghosts={ghosts}
       cycleTimer={cycleTimer}
     />

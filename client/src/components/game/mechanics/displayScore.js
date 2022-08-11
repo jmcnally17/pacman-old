@@ -1,4 +1,4 @@
-export default function displayScore(score) {
+export default function displayScore(variables) {
   const scoreEl = document.querySelector("#score");
-  scoreEl.innerText = `Score: ${score.points}`;
+  scoreEl.innerText = `Score: ${variables.score}`;
 }
