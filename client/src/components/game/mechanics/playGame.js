@@ -59,11 +59,11 @@ const variables = {
   animationId: null,
 }
 
-const boundaries = makeBoundaries(map, variables.length);
-const pellets = makePellets(map, variables.length);
-const powerUps = makePowerUps(map, variables.length);
-const ghosts = makeGhosts(variables.length);
-const pacman = makePacman(variables.length);
+const boundaries = makeBoundaries(map, variables);
+const pellets = makePellets(map, variables);
+const powerUps = makePowerUps(map, variables);
+const ghosts = makeGhosts(variables);
+const pacman = makePacman(variables);
 const cycleTimer = new CycleTimer();
 
 export default function playGame(name, reactRoot) {

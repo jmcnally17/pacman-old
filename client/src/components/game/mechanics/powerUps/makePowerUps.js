@@ -1,6 +1,6 @@
 import PowerUp from "../../models/powerUp";
 
-export default function makePowerUps(map, length) {
+export default function makePowerUps(map, variables) {
   const powerUps = [];
   map.forEach((row, i) => {
     row.forEach((element, j) => {
@@ -8,11 +8,11 @@ export default function makePowerUps(map, length) {
         const powerUp = new PowerUp(
           {
             position: {
-              x: (length * (2 * j + 1)) / 2,
-              y: (length * (2 * i + 1)) / 2,
+              x: (variables.length * (2 * j + 1)) / 2,
+              y: (variables.length * (2 * i + 1)) / 2,
             },
           },
-          length
+          variables.length
         );
         powerUps.push(powerUp);
       }

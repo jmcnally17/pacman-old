@@ -3,7 +3,7 @@ import makeTunnelBoundaries from "./makeTunnelBoundaries";
 
 export default function makeBoundaries(
   map,
-  length,
+  variables,
   callback = makeTunnelBoundaries
 ) {
   const boundaries = [];
@@ -15,12 +15,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: length * j,
-              y: length * i,
+              x: variables.length * j,
+              y: variables.length * i,
             },
             image: image,
           },
-          length
+          variables.length
         );
         boundaries.push(boundary);
       } else if (element === "|") {
@@ -29,12 +29,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: length * j,
-              y: length * i,
+              x: variables.length * j,
+              y: variables.length * i,
             },
             image: image,
           },
-          length
+          variables.length
         );
         boundaries.push(boundary);
       } else if (element === "1") {
@@ -43,12 +43,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: length * j,
-              y: length * i,
+              x: variables.length * j,
+              y: variables.length * i,
             },
             image: image,
           },
-          length
+          variables.length
         );
         boundaries.push(boundary);
       } else if (element === "2") {
@@ -57,12 +57,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: length * j,
-              y: length * i,
+              x: variables.length * j,
+              y: variables.length * i,
             },
             image: image,
           },
-          length
+          variables.length
         );
         boundaries.push(boundary);
       } else if (element === "3") {
@@ -71,12 +71,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: length * j,
-              y: length * i,
+              x: variables.length * j,
+              y: variables.length * i,
             },
             image: image,
           },
-          length
+          variables.length
         );
         boundaries.push(boundary);
       } else if (element === "4") {
@@ -85,17 +85,17 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: length * j,
-              y: length * i,
+              x: variables.length * j,
+              y: variables.length * i,
             },
             image: image,
           },
-          length
+          variables.length
         );
         boundaries.push(boundary);
       }
     });
   });
-  callback(boundaries, length);
+  callback(boundaries, variables);
   return boundaries;
 }

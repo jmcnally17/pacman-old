@@ -3,46 +3,46 @@ import Boundary from "../../models/boundary";
 const image = new Image();
 image.src = "./images/pipeHorizontal.png";
 
-export default function makeTunnelBoundaries(boundaries, length) {
+export default function makeTunnelBoundaries(boundaries, variables) {
   const tunnelBoundaryOne = new Boundary(
     {
       position: {
-        x: -length,
-        y: length * 13,
+        x: -variables.length,
+        y: variables.length * 13,
       },
       image: image,
     },
-    length
+    variables.length
   );
   const tunnelBoundaryTwo = new Boundary(
     {
       position: {
-        x: -length,
-        y: length * 15,
+        x: -variables.length,
+        y: variables.length * 15,
       },
       image: image,
     },
-    length
+    variables.length
   );
   const tunnelBoundaryThree = new Boundary(
     {
       position: {
-        x: length * 28,
-        y: length * 13,
+        x: variables.length * 28,
+        y: variables.length * 13,
       },
       image: image,
     },
-    length
+    variables.length
   );
   const tunnelBoundaryFour = new Boundary(
     {
       position: {
-        x: length * 28,
-        y: length * 15,
+        x: variables.length * 28,
+        y: variables.length * 15,
       },
       image: image,
     },
-    length
+    variables.length
   );
   boundaries.push(
     tunnelBoundaryOne,

@@ -2,6 +2,9 @@ import makeGhosts from "./makeGhosts";
 
 describe("makeGhosts", () => {
   it("returns an array containing the four ghosts", () => {
-    expect(makeGhosts(20).length).toBe(4);
+    const mockVariables = {
+      length: 32,
+    };
+    expect(makeGhosts(mockVariables).length).toBe(4);
   });
 });
