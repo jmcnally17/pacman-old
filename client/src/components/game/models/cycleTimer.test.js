@@ -38,4 +38,14 @@ describe("CycleTimer", () => {
       expect(setTimeout).toHaveBeenCalledTimes(2);
     });
   });
+
+  describe("reset", () => {
+    it("clears the timeout and sets the count back to 0", () => {
+      jest.spyOn(global, "clearTimeout");
+      timer.count = 1;
+      timer.reset();
+      expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(timer.count).toBe(0);
+    });
+  });
 });

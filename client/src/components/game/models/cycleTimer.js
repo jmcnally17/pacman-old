@@ -16,4 +16,9 @@ export default class CycleTimer {
     );
     this.count === 0 ? this.count++ : this.count--;
   }
+
+  reset() {
+    clearTimeout(this.timeout);
+    this.count = 0;
+  }
 }
