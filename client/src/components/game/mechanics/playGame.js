@@ -13,7 +13,6 @@ import displayScore from "./displayScore";
 import displayLives from "./displayLives";
 import displayLevel from "./displayLevel";
 
-const length = 32;
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
   ["|", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|", "|", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|"],
@@ -48,14 +47,8 @@ const map = [
   ["4", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "3"],
 ];
 
-const boundaries = makeBoundaries(map, length);
-const pellets = makePellets(map, length);
-const powerUps = makePowerUps(map, length);
-const ghosts = makeGhosts(length);
-const pacman = makePacman(length);
-const cycleTimer = new CycleTimer();
-
 const variables = {
+  length: 32,
   score: 0,
   lastKeyPressed: "",
   level: 1,
@@ -63,45 +56,34 @@ const variables = {
   reactRoot: null,
   killCount: 0,
   start: true,
+  animationId: null,
 }
 
-const score = {
-  points: 0,
-};
-const lastKeyPressed = {
-  key: "",
-};
-const level = {
-  number: 1,
-};
-const player = {
-  name: "",
-}
-const reactRoot = {
-  mainEl: null,
-}
-const killCount = {
-  number: 0,
-}
+const boundaries = makeBoundaries(map, variables.length);
+const pellets = makePellets(map, variables.length);
+const powerUps = makePowerUps(map, variables.length);
+const ghosts = makeGhosts(variables.length);
+const pacman = makePacman(variables.length);
+const cycleTimer = new CycleTimer();
 
 export default function playGame(name, mainEl) {
   if (variables.start === true) {
-    player.name = name;
-    reactRoot.mainEl = mainEl;
+    variables.playerName = name;
+    variables.reactRoot.mainEl = mainEl;
     cycleTimer.start(ghosts);
     variables.start = false;
   }
-  let animationId = requestAnimationFrame(playGame);
+  variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, 896, 992);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level, cycleTimer);
-  implementPowerUps(powerUps, ctx, pacman, score, killCount, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, length, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level, killCount, ghosts[0], cycleTimer);
-  implementPacman(lastKeyPressed, pacman, boundaries, ctx, pellets, length);
-  displayScore(score);
+  implementPellets(pellets, ctx, pacman, variables, ghosts, powerUps, cycleTimer);
+  implementPowerUps(powerUps, ctx, pacman, variables, ghosts);
+  implementGhosts(ghosts, boundaries, ctx, variables, pacman, pellets, powerUps, ghosts[0], cycleTimer);
+  implementPacman(variables, pacman, boundaries, ctx, pellets);
+  displayScore(variables);
   displayLives(pacman);
-  displayLevel(level);
+  displayLevel(variables);
 };

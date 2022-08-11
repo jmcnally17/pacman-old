@@ -5,7 +5,7 @@ let mockEatenPellets;
 let mockUneatenPellet;
 let mockUneatenPellets;
 let mockObject;
-let mockLevel;
+let mockVariables;
 let mockResetAfterLevelUp;
 
 describe("checkLevelUpCondition", () => {
@@ -18,8 +18,8 @@ describe("checkLevelUpCondition", () => {
       hasBeenEaten: false,
     };
     mockUneatenPellets = [mockUneatenPellet, mockUneatenPellet];
-    mockLevel = {
-      number: 3,
+    mockVariables = {
+      level: 3,
     };
     mockResetAfterLevelUp = jest.fn();
   });
@@ -28,29 +28,27 @@ describe("checkLevelUpCondition", () => {
     checkLevelUpCondition(
       mockEatenPellets,
       mockObject,
+      mockVariables,
       mockObject,
       mockObject,
-      mockObject,
-      mockLevel,
       mockObject,
       mockResetAfterLevelUp
     );
     expect(mockResetAfterLevelUp).toHaveBeenCalledTimes(1);
-    expect(mockLevel.number).toBe(4);
+    expect(mockVariables.level).toBe(4);
   });
 
   it("does not run the callback and leaves the level unchanged if the pellets have not been eaten", () => {
     checkLevelUpCondition(
       mockUneatenPellets,
       mockObject,
+      mockVariables,
       mockObject,
       mockObject,
-      mockObject,
-      mockLevel,
       mockObject,
       mockResetAfterLevelUp
     );
     expect(mockResetAfterLevelUp).toHaveBeenCalledTimes(0);
-    expect(mockLevel.number).toBe(3);
+    expect(mockVariables.level).toBe(3);
   });
 });

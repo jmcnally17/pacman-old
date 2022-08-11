@@ -3,10 +3,9 @@ import resetAfterLevelUp from "./resetAfterLevelUp";
 export default function checkLevelUpCondition(
   pellets,
   pacman,
-  lastKeyPressed,
+  variables,
   ghosts,
   powerUps,
-  level,
   cycleTimer,
   callback = resetAfterLevelUp
 ) {
@@ -16,8 +15,8 @@ export default function checkLevelUpCondition(
       eatenPellets++;
     }
     if (eatenPellets === pellets.length) {
-      callback(pacman, lastKeyPressed, ghosts, pellets, powerUps, cycleTimer);
-      level.number++;
+      callback(pacman, variables, ghosts, pellets, powerUps, cycleTimer);
+      variables.level++;
     }
   });
 }
