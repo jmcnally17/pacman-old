@@ -1,4 +1,4 @@
-import startHuntingInterval from "../../startHuntingInterval";
+import startHuntingCycle from "../../startHuntingCycle";
 
 export default function resetAfterDeath(
   pacman,
@@ -6,7 +6,7 @@ export default function resetAfterDeath(
   ghosts,
   count,
   huntingTimeout,
-  callback = startHuntingInterval
+  callback = startHuntingCycle
 ) {
   pacman.reset();
   lastKeyPressed.key = "";

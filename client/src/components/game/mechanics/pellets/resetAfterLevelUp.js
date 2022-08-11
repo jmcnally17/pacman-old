@@ -1,4 +1,4 @@
-import startHuntingInterval from "../startHuntingInterval";
+import startHuntingCycle from "../startHuntingCycle";
 
 export default function resetAfterLevelUp(
   pacman,
@@ -8,7 +8,7 @@ export default function resetAfterLevelUp(
   powerUps,
   count,
   huntingTimeout,
-  callback = startHuntingInterval
+  callback = startHuntingCycle
 ) {
   pacman.reset();
   lastKeyPressed.key = "";

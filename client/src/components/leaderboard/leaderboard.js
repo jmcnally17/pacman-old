@@ -2,7 +2,7 @@ import "./leaderboard.css";
 import React from "react";
 import Game from "../game/game";
 import { useEffect, useState } from "react";
-import startHuntingInterval from "../game/mechanics/startHuntingInterval";
+import startHuntingCycle from "../game/mechanics/startHuntingCycle";
 
 let url;
 if (process.env.REACT_APP_URL) {
@@ -40,7 +40,7 @@ export default function Leaderboard({
 
   const handlePlayAgain = () => {
     score.points = 0;
-    startHuntingInterval(ghosts, count, huntingTimeout);
+    startHuntingCycle(ghosts, count, huntingTimeout);
     mainEl.render(<Game name={name} mainEl={mainEl} />);
   };
 

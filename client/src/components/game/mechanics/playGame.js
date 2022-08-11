@@ -11,7 +11,7 @@ import implementPacman from "./pacman/implementPacman";
 import displayScore from "./displayScore";
 import displayLives from "./displayLives";
 import displayLevel from "./displayLevel";
-import startHuntingInterval from "./startHuntingInterval";
+import startHuntingCycle from "./startHuntingCycle";
 
 const length = 32;
 const map = [
@@ -85,7 +85,7 @@ export default function playGame(name, mainEl) {
   if (start === true) {
     player.name = name;
     reactRoot.mainEl = mainEl;
-    startHuntingInterval(ghosts, count, huntingTimeout);
+    startHuntingCycle(ghosts, count, huntingTimeout);
     start = false;
   }
   let animationId = requestAnimationFrame(playGame);

@@ -1,10 +1,10 @@
-export default function startHuntingInterval(ghosts, count, huntingTimeout) {
+export default function startHuntingCycle(ghosts, count, huntingTimeout) {
   huntingTimeout.timeout = setTimeout(
     () => {
       ghosts.forEach((ghost) => {
         ghost.changeHuntingState();
       });
-      startHuntingInterval(ghosts, count, huntingTimeout);
+      startHuntingCycle(ghosts, count, huntingTimeout);
     },
     count.number === 0 ? 7000 : 20000
   );

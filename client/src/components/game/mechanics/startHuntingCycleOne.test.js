@@ -1,6 +1,6 @@
-import startHuntingInterval from "./startHuntingInterval";
+import startHuntingCycle from "./startHuntingCycle";
 
-describe("startHuntingInterval", () => {
+describe("startHuntingCycle", () => {
   it("calls setTimeout with a time of seven seconds when the count is 0 and adds 1 to the count", () => {
     jest.useFakeTimers();
     jest.spyOn(global, "setTimeout");
@@ -15,7 +15,7 @@ describe("startHuntingInterval", () => {
       timeout: null,
     };
     const huntingSpy = jest.spyOn(mockGhost, "changeHuntingState");
-    startHuntingInterval(mockGhosts, mockCount, mockHuntingTimeout);
+    startHuntingCycle(mockGhosts, mockCount, mockHuntingTimeout);
 
     expect(setTimeout).toHaveBeenCalledTimes(1);
     expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 7000);
