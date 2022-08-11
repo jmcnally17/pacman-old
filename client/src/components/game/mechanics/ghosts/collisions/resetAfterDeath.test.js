@@ -5,8 +5,8 @@ describe("resetAfterDeath", () => {
     const mockPacman = {
       reset: () => undefined,
     };
-    const mockLastKeyPressed = {
-      key: "up",
+    const mockVariables = {
+      lastKeyPressed: "up",
     };
     const mockCycleTimer = {
       reset: () => undefined,
@@ -27,9 +27,9 @@ describe("resetAfterDeath", () => {
       mockGhost,
       "resetRetreatingState"
     );
-    resetAfterDeath(mockPacman, mockLastKeyPressed, mockGhosts, mockCycleTimer);
+    resetAfterDeath(mockPacman, mockVariables, mockGhosts, mockCycleTimer);
     expect(pacmanResetSpy).toHaveBeenCalledTimes(1);
-    expect(mockLastKeyPressed.key).toBe("");
+    expect(mockVariables.lastKeyPressed).toBe("");
     expect(timerResetSpy).toHaveBeenCalledTimes(1);
     expect(timerStartSpy).toHaveBeenCalledTimes(1);
     expect(ghostResetSpy).toHaveBeenCalledTimes(3);

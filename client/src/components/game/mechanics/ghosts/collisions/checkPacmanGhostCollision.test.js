@@ -18,12 +18,6 @@ describe("checkPacmanGhostCollision", () => {
       mockObject,
       mockObject,
       mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
       mockCollisionConditional,
       mockDealWithCollision
     );
@@ -34,12 +28,6 @@ describe("checkPacmanGhostCollision", () => {
   it("does not call dealWithCollision when the collisionConditional is false", () => {
     const mockCollisionConditional = jest.fn().mockReturnValue(false);
     checkPacmanGhostCollision(
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
       mockObject,
       mockObject,
       mockObject,

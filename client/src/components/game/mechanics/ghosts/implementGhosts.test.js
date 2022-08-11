@@ -5,6 +5,7 @@ let mockGhostsOne;
 let mockGhostTwo;
 let mockGhostsTwo;
 let mockObject;
+let mockVariables;
 let mockcheckSpeedMatchesState;
 let mockImplementTunnel;
 let mockUpdateCollisions;
@@ -23,6 +24,9 @@ describe("implementGhosts", () => {
       prevCollisions: [],
     };
     mockGhostsTwo = [mockGhostTwo, mockGhostTwo];
+    mockVariables = {
+      length: 32,
+    };
     mockcheckSpeedMatchesState = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();
@@ -36,14 +40,7 @@ describe("implementGhosts", () => {
       mockGhostsOne,
       mockObject,
       mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockVariables,
       mockObject,
       mockObject,
       mockObject,
@@ -68,14 +65,7 @@ describe("implementGhosts", () => {
       mockGhostsTwo,
       mockObject,
       mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockVariables,
       mockObject,
       mockObject,
       mockObject,

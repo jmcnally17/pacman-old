@@ -66,10 +66,10 @@ const ghosts = makeGhosts(variables.length);
 const pacman = makePacman(variables.length);
 const cycleTimer = new CycleTimer();
 
-export default function playGame(name, mainEl) {
+export default function playGame(name, reactRoot) {
   if (variables.start === true) {
     variables.playerName = name;
-    variables.reactRoot.mainEl = mainEl;
+    variables.reactRoot = reactRoot;
     cycleTimer.start(ghosts);
     variables.start = false;
   }

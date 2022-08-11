@@ -12,7 +12,7 @@ if (process.env.REACT_APP_URL) {
 
 export default function Leaderboard({
   score,
-  mainEl,
+  reactRoot,
   name,
   ghosts,
   cycleTimer,
@@ -39,7 +39,7 @@ export default function Leaderboard({
   const handlePlayAgain = () => {
     score.points = 0;
     cycleTimer.start(ghosts);
-    mainEl.render(<Game name={name} mainEl={mainEl} />);
+    reactRoot.render(<Game name={name} reactRoot={reactRoot} />);
   };
 
   const handleChangePlayer = () => {

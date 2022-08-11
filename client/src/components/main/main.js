@@ -41,8 +41,8 @@ export default function Main() {
       window.alert("Name must be 15 characters or shorter");
     } else {
       theme.pause();
-      const mainEl = ReactDOM.createRoot(document.getElementById("main"));
-      mainEl.render(<Game name={name} mainEl={mainEl} />);
+      const reactRoot = ReactDOM.createRoot(document.getElementById("main"));
+      reactRoot.render(<Game name={name} reactRoot={reactRoot} />);
     }
   };
 

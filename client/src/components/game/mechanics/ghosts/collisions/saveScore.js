@@ -1,9 +1,9 @@
 import getBackendUrl from "./getBackendUrl";
 
-export default async function saveScore(score, name, callback = getBackendUrl) {
+export default async function saveScore(variables, callback = getBackendUrl) {
   const data = {
-    name: name,
-    points: score.points,
+    name: variables.playerName,
+    points: variables.score,
   };
   let response;
   await fetch(callback(process.env.REACT_APP_URL), {

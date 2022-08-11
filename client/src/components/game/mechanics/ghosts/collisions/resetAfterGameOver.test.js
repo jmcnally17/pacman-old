@@ -11,8 +11,7 @@ let mockUneatenPowerUps;
 let mockGhost;
 let mockGhosts;
 let mockPacman;
-let mockLastKeyPressed;
-let mockLevel;
+let mockVariables;
 let mockCycleTimer;
 
 describe("resetAfterGameOver", () => {
@@ -51,11 +50,9 @@ describe("resetAfterGameOver", () => {
       reset: () => undefined,
       lives: 0,
     };
-    mockLastKeyPressed = {
-      key: "down",
-    };
-    mockLevel = {
-      number: 5,
+    mockVariables = {
+      lastKeyPressed: "down",
+      level: 5,
     };
     mockCycleTimer = {
       reset: () => undefined,
@@ -78,8 +75,7 @@ describe("resetAfterGameOver", () => {
       mockEatenPowerUps,
       mockGhosts,
       mockPacman,
-      mockLastKeyPressed,
-      mockLevel,
+      mockVariables,
       mockCycleTimer
     );
     expect(eatenPelletSpy).toHaveBeenCalledTimes(3);
@@ -90,8 +86,8 @@ describe("resetAfterGameOver", () => {
     expect(ghostResetRetreatingSpy).toHaveBeenCalledTimes(2);
     expect(pacmanSpy).toHaveBeenCalledTimes(1);
     expect(mockPacman.lives).toBe(2);
-    expect(mockLastKeyPressed.key).toBe("");
-    expect(mockLevel.number).toBe(1);
+    expect(mockVariables.lastKeyPressed).toBe("");
+    expect(mockVariables.level).toBe(1);
   });
 
   it("does not call changeEatenState on the pellets and power ups if their conditionals are not met", () => {
@@ -105,8 +101,7 @@ describe("resetAfterGameOver", () => {
       mockUneatenPowerUps,
       mockGhosts,
       mockPacman,
-      mockLastKeyPressed,
-      mockLevel,
+      mockVariables,
       mockCycleTimer
     );
     expect(uneatenPelletSpy).toHaveBeenCalledTimes(0);
