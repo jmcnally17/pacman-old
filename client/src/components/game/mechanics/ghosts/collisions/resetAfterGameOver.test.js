@@ -13,6 +13,8 @@ let mockGhosts;
 let mockPacman;
 let mockLastKeyPressed;
 let mockLevel;
+let mockCount;
+let mockHuntingTimeout;
 
 describe("resetAfterGameOver", () => {
   beforeEach(() => {
@@ -56,6 +58,12 @@ describe("resetAfterGameOver", () => {
     mockLevel = {
       number: 5,
     };
+    mockCount = {
+      number: 1,
+    };
+    mockHuntingTimeout = {
+      timeout: undefined,
+    };
   });
 
   it("resets the board to its original configuration after game over", () => {
@@ -67,6 +75,7 @@ describe("resetAfterGameOver", () => {
       mockGhost,
       "resetRetreatingState"
     );
+    jest.spyOn(global, "clearTimeout");
     const pacmanSpy = jest.spyOn(mockPacman, "reset");
     resetAfterGameOver(
       mockEatenPellets,
@@ -74,13 +83,17 @@ describe("resetAfterGameOver", () => {
       mockGhosts,
       mockPacman,
       mockLastKeyPressed,
-      mockLevel
+      mockLevel,
+      mockCount,
+      mockHuntingTimeout
     );
     expect(eatenPelletSpy).toHaveBeenCalledTimes(3);
     expect(eatenPowerUpSpy).toHaveBeenCalledTimes(2);
     expect(ghostSpy).toHaveBeenCalledTimes(2);
     expect(ghostResetHuntingSpy).toHaveBeenCalledTimes(2);
     expect(ghostResetRetreatingSpy).toHaveBeenCalledTimes(2);
+    expect(mockCount.number).toBe(0);
+    expect(clearTimeout).toHaveBeenCalledTimes(1);
     expect(pacmanSpy).toHaveBeenCalledTimes(1);
     expect(mockPacman.lives).toBe(2);
     expect(mockLastKeyPressed.key).toBe("");
@@ -99,7 +112,9 @@ describe("resetAfterGameOver", () => {
       mockGhosts,
       mockPacman,
       mockLastKeyPressed,
-      mockLevel
+      mockLevel,
+      mockCount,
+      mockHuntingTimeout
     );
     expect(uneatenPelletSpy).toHaveBeenCalledTimes(0);
     expect(uneatenPowerUpSpy).toHaveBeenCalledTimes(0);

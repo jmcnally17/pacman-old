@@ -11,7 +11,14 @@ if (process.env.REACT_APP_URL) {
   url = "http://localhost:9000/backend/scores";
 }
 
-export default function Leaderboard({ score, mainEl, name, ghosts }) {
+export default function Leaderboard({
+  score,
+  mainEl,
+  name,
+  ghosts,
+  count,
+  huntingTimeout,
+}) {
   const [scores, setScores] = useState([]);
   const [error, setError] = useState(false);
 
@@ -33,7 +40,7 @@ export default function Leaderboard({ score, mainEl, name, ghosts }) {
 
   const handlePlayAgain = () => {
     score.points = 0;
-    startHuntingInterval(ghosts);
+    startHuntingInterval(ghosts, count, huntingTimeout);
     mainEl.render(<Game name={name} mainEl={mainEl} />);
   };
 

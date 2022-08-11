@@ -48,6 +48,8 @@ describe("implementGhosts", () => {
       mockObject,
       mockObject,
       mockObject,
+      mockObject,
+      mockObject,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -65,6 +67,8 @@ describe("implementGhosts", () => {
   it("does not call pickRandomDirection when the collisions array is equal to the prevCollisions array", () => {
     implementGhosts(
       mockGhostsTwo,
+      mockObject,
+      mockObject,
       mockObject,
       mockObject,
       mockObject,

@@ -12,14 +12,14 @@ export default function resetAfterLevelUp(
 ) {
   pacman.reset();
   lastKeyPressed.key = "";
+  count.number = 0;
+  clearTimeout(huntingTimeout.timeout);
   ghosts.forEach((ghost) => {
     ghost.reset();
     ghost.resetHuntingState();
     ghost.resetRetreatingState();
   });
-  count.number = 0;
-  clearTimeout(huntingTimeout.timeout);
-  callback(ghosts);
+  callback(ghosts, count, huntingTimeout);
   pellets.forEach((pellet) => {
     pellet.changeEatenState();
   });
