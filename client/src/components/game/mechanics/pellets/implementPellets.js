@@ -10,6 +10,8 @@ export default function implementPellets(
   ghosts,
   powerUps,
   level,
+  count,
+  huntingTimeout,
   callbackOne = eatPellet,
   callbackTwo = checkLevelUpCondition
 ) {
@@ -17,5 +19,14 @@ export default function implementPellets(
     if (!pellet.hasBeenEaten) pellet.draw(ctx);
     callbackOne(pellet, pacman, score);
   });
-  callbackTwo(pellets, pacman, lastKeyPressed, ghosts, powerUps, level);
+  callbackTwo(
+    pellets,
+    pacman,
+    lastKeyPressed,
+    ghosts,
+    powerUps,
+    level,
+    count,
+    huntingTimeout
+  );
 }

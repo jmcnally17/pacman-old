@@ -6,6 +6,8 @@ export default function resetAfterLevelUp(
   ghosts,
   pellets,
   powerUps,
+  count,
+  huntingTimeout,
   callback = startHuntingInterval
 ) {
   pacman.reset();
@@ -15,6 +17,8 @@ export default function resetAfterLevelUp(
     ghost.resetHuntingState();
     ghost.resetRetreatingState();
   });
+  count.number = 0;
+  clearTimeout(huntingTimeout.timeout);
   callback(ghosts);
   pellets.forEach((pellet) => {
     pellet.changeEatenState();

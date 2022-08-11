@@ -94,7 +94,7 @@ export default function playGame(name, mainEl) {
   ctx.clearRect(0, 0, 896, 992);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level);
+  implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level, count, huntingTimeout);
   implementPowerUps(powerUps, ctx, pacman, score, killCount, ghosts);
   implementGhosts(ghosts, boundaries, ctx, length, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level, killCount, ghosts[0]);
   implementPacman(lastKeyPressed, pacman, boundaries, ctx, pellets, length);
