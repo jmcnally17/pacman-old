@@ -1,17 +1,17 @@
 import makeBoundaries from "./boundaries/makeBoundaries";
-import makePellets from "./pellets/makePellets";
-import makePowerUps from "./powerUps/makePowerUps";
+import CycleTimer from "../models/cycleTimer";
 import makeGhosts from "./ghosts/makeGhosts";
 import makePacman from "./pacman/makePacman";
-import CycleTimer from "../models/cycleTimer";
+import makePellets from "./pellets/makePellets";
+import makePowerUps from "./powerUps/makePowerUps";
 import implementBoundaries from "./boundaries/implementBoundaries";
-import implementPellets from "./pellets/implementPellets";
-import implementPowerUps from "./powerUps/implementPowerUps";
 import implementGhosts from "./ghosts/implementGhosts";
 import implementPacman from "./pacman/implementPacman";
-import displayScore from "./displayScore";
-import displayLives from "./displayLives";
+import implementPellets from "./pellets/implementPellets";
+import implementPowerUps from "./powerUps/implementPowerUps";
 import displayLevel from "./displayLevel";
+import displayLives from "./displayLives";
+import displayScore from "./displayScore";
 
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
@@ -60,11 +60,11 @@ const variables = {
 }
 
 const boundaries = makeBoundaries(map, variables);
-const pellets = makePellets(map, variables);
-const powerUps = makePowerUps(map, variables);
+const cycleTimer = new CycleTimer();
 const ghosts = makeGhosts(variables);
 const pacman = makePacman(variables);
-const cycleTimer = new CycleTimer();
+const pellets = makePellets(map, variables);
+const powerUps = makePowerUps(map, variables);
 
 export default function playGame(name, reactRoot) {
   if (variables.start === true) {
@@ -79,10 +79,10 @@ export default function playGame(name, reactRoot) {
   ctx.clearRect(0, 0, 896, 992);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, variables, ghosts, powerUps, cycleTimer);
-  implementPowerUps(powerUps, ctx, pacman, variables, ghosts);
   implementGhosts(ghosts, boundaries, ctx, variables, pacman, pellets, powerUps, ghosts[0], cycleTimer);
   implementPacman(variables, pacman, boundaries, ctx, pellets);
+  implementPellets(pellets, ctx, pacman, variables, ghosts, powerUps, cycleTimer);
+  implementPowerUps(powerUps, ctx, pacman, variables, ghosts);
   displayScore(variables);
   displayLives(pacman);
   displayLevel(variables);
