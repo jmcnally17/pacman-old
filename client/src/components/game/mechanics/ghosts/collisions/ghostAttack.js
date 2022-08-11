@@ -12,6 +12,8 @@ export default function ghostAttack(
   pellets,
   powerUps,
   level,
+  count,
+  huntingTimeout,
   callbackOne = endGame,
   callbackTwo = resetAfterDeath
 ) {
@@ -26,10 +28,12 @@ export default function ghostAttack(
       ghosts,
       pacman,
       lastKeyPressed,
-      level
+      level,
+      count,
+      huntingTimeout
     );
   } else {
     pacman.lives--;
-    callbackTwo(pacman, lastKeyPressed, ghosts);
+    callbackTwo(pacman, lastKeyPressed, ghosts, count, huntingTimeout);
   }
 }

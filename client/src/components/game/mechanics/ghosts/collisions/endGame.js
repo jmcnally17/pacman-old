@@ -13,14 +13,32 @@ export default function endGame(
   pacman,
   lastKeyPressed,
   level,
+  count,
+  huntingTimeout,
   callbackOne = cancelAnimationFrame,
   callbackTwo = saveScore,
   callbackThree = resetAfterGameOver
 ) {
   callbackOne(animationId);
   callbackTwo(score, name);
-  callbackThree(pellets, powerUps, ghosts, pacman, lastKeyPressed, level);
+  callbackThree(
+    pellets,
+    powerUps,
+    ghosts,
+    pacman,
+    lastKeyPressed,
+    level,
+    count,
+    huntingTimeout
+  );
   mainEl.render(
-    <Leaderboard score={score} mainEl={mainEl} name={name} ghosts={ghosts} />
+    <Leaderboard
+      score={score}
+      mainEl={mainEl}
+      name={name}
+      ghosts={ghosts}
+      count={count}
+      huntingTimeout={huntingTimeout}
+    />
   );
 }

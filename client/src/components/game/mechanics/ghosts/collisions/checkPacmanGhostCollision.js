@@ -14,6 +14,8 @@ export default function checkPacmanGhostCollision(
   powerUps,
   level,
   killCount,
+  count,
+  huntingTimeout,
   callbackOne = collisionConditional,
   callbackTwo = dealWithCollision
 ) {
@@ -30,7 +32,9 @@ export default function checkPacmanGhostCollision(
       pellets,
       powerUps,
       level,
-      killCount
+      killCount,
+      count,
+      huntingTimeout
     );
   }
 }

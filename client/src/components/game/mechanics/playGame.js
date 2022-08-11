@@ -11,7 +11,7 @@ import implementPacman from "./pacman/implementPacman";
 import displayScore from "./displayScore";
 import displayLives from "./displayLives";
 import displayLevel from "./displayLevel";
-import startHuntingInterval from "./startHuntingInterval";
+import startHuntingCycle from "./startHuntingCycle";
 
 const length = 32;
 const map = [
@@ -72,15 +72,21 @@ const reactRoot = {
 const killCount = {
   number: 0,
 }
+const count = {
+  number: 0,
+}
+const huntingTimeout = {
+  timeout: null,
+}
 
-let count = 0;
+let start = true;
 
 export default function playGame(name, mainEl) {
-  if (count === 0) {
+  if (start === true) {
     player.name = name;
     reactRoot.mainEl = mainEl;
-    startHuntingInterval(ghosts)
-    count++;
+    startHuntingCycle(ghosts, count, huntingTimeout);
+    start = false;
   }
   let animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
@@ -88,9 +94,9 @@ export default function playGame(name, mainEl) {
   ctx.clearRect(0, 0, 896, 992);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level);
+  implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level, count, huntingTimeout);
   implementPowerUps(powerUps, ctx, pacman, score, killCount, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, length, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level, killCount, ghosts[0]);
+  implementGhosts(ghosts, boundaries, ctx, length, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level, killCount, ghosts[0], count, huntingTimeout);
   implementPacman(lastKeyPressed, pacman, boundaries, ctx, pellets, length);
   displayScore(score);
   displayLives(pacman);
