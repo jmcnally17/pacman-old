@@ -72,15 +72,21 @@ const reactRoot = {
 const killCount = {
   number: 0,
 }
+const count = {
+  number: 0,
+}
+const huntingTimeout = {
+  timeout: null,
+}
 
-let count = 0;
+let start = true;
 
 export default function playGame(name, mainEl) {
-  if (count === 0) {
+  if (start === true) {
     player.name = name;
     reactRoot.mainEl = mainEl;
-    startHuntingInterval(ghosts)
-    count++;
+    startHuntingInterval(ghosts, count, huntingTimeout);
+    start = false;
   }
   let animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
