@@ -2,6 +2,9 @@ import implementPacman from "./implementPacman";
 
 describe("implementPacman", () => {
   it("calls the necessary functions to implement Pac-Man functionality", () => {
+    const mockVariables = {
+      length: 32,
+    };
     let mockObject;
     const mockPacman = {
       update: () => undefined,
@@ -12,9 +15,8 @@ describe("implementPacman", () => {
     const mockImplementTunnel = jest.fn();
     const pacmanSpy = jest.spyOn(mockPacman, "update");
     implementPacman(
-      mockObject,
+      mockVariables,
       mockPacman,
-      mockObject,
       mockObject,
       mockObject,
       mockObject,

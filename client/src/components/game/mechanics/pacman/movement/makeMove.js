@@ -1,13 +1,13 @@
-export default function makeMove(lastKeyPressed) {
+export default function makeMove(variables) {
   window.addEventListener("keydown", ({ key }) => {
     if (key === "ArrowUp") {
-      lastKeyPressed.key = "up";
+      variables.lastKeyPressed = "up";
     } else if (key === "ArrowLeft") {
-      lastKeyPressed.key = "left";
+      variables.lastKeyPressed = "left";
     } else if (key === "ArrowRight") {
-      lastKeyPressed.key = "right";
+      variables.lastKeyPressed = "right";
     } else if (key === "ArrowDown") {
-      lastKeyPressed.key = "down";
+      variables.lastKeyPressed = "down";
     }
   });
 }
