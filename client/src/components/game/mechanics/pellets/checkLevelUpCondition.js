@@ -7,8 +7,7 @@ export default function checkLevelUpCondition(
   ghosts,
   powerUps,
   level,
-  count,
-  huntingTimeout,
+  cycleTimer,
   callback = resetAfterLevelUp
 ) {
   let eatenPellets = 0;
@@ -17,15 +16,7 @@ export default function checkLevelUpCondition(
       eatenPellets++;
     }
     if (eatenPellets === pellets.length) {
-      callback(
-        pacman,
-        lastKeyPressed,
-        ghosts,
-        pellets,
-        powerUps,
-        count,
-        huntingTimeout
-      );
+      callback(pacman, lastKeyPressed, ghosts, pellets, powerUps, cycleTimer);
       level.number++;
     }
   });

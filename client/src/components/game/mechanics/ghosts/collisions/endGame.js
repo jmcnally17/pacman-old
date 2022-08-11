@@ -13,8 +13,7 @@ export default function endGame(
   pacman,
   lastKeyPressed,
   level,
-  count,
-  huntingTimeout,
+  cycleTimer,
   callbackOne = cancelAnimationFrame,
   callbackTwo = saveScore,
   callbackThree = resetAfterGameOver
@@ -28,8 +27,7 @@ export default function endGame(
     pacman,
     lastKeyPressed,
     level,
-    count,
-    huntingTimeout
+    cycleTimer
   );
   mainEl.render(
     <Leaderboard
@@ -37,8 +35,7 @@ export default function endGame(
       mainEl={mainEl}
       name={name}
       ghosts={ghosts}
-      count={count}
-      huntingTimeout={huntingTimeout}
+      cycleTimer={cycleTimer}
     />
   );
 }

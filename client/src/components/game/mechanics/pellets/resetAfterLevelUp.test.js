@@ -23,13 +23,10 @@ describe("resetAfterLevelUp", () => {
     const mockGhosts = [mockGhost, mockGhost, mockGhost];
     const mockPellets = [mockPellet, mockPellet];
     const mockPowerUps = [mockPowerUp];
-    const mockCount = {
-      number: 1,
+    const mockCycleTimer = {
+      reset: () => undefined,
+      start: () => undefined,
     };
-    const mockHuntingTimeout = {
-      timeout: undefined,
-    };
-    jest.spyOn(global, "clearTimeout");
     const pacmanResetSpy = jest.spyOn(mockPacman, "reset");
     const ghostResetSpy = jest.spyOn(mockGhost, "reset");
     const ghostResetHuntingSpy = jest.spyOn(mockGhost, "resetHuntingState");
@@ -37,7 +34,8 @@ describe("resetAfterLevelUp", () => {
       mockGhost,
       "resetRetreatingState"
     );
-    const mockstartHuntingCycle = jest.fn();
+    const timerResetSpy = jest.spyOn(mockCycleTimer, "reset");
+    const timerStartSpy = jest.spyOn(mockCycleTimer, "start");
     const pelletChangeEatenStateSpy = jest.spyOn(
       mockPellet,
       "changeEatenState"
@@ -52,18 +50,15 @@ describe("resetAfterLevelUp", () => {
       mockGhosts,
       mockPellets,
       mockPowerUps,
-      mockCount,
-      mockHuntingTimeout,
-      mockstartHuntingCycle
+      mockCycleTimer
     );
     expect(pacmanResetSpy).toHaveBeenCalledTimes(1);
     expect(mockLastKeyPressed.key).toBe("");
+    expect(timerResetSpy).toHaveBeenCalledTimes(1);
     expect(ghostResetSpy).toHaveBeenCalledTimes(3);
     expect(ghostResetHuntingSpy).toHaveBeenCalledTimes(3);
     expect(ghostResetRetreatingSpy).toHaveBeenCalledTimes(3);
-    expect(mockCount.number).toBe(0);
-    expect(clearTimeout).toHaveBeenCalledTimes(1);
-    expect(mockstartHuntingCycle).toHaveBeenCalledTimes(1);
+    expect(timerStartSpy).toHaveBeenCalledTimes(1);
     expect(pelletChangeEatenStateSpy).toHaveBeenCalledTimes(2);
     expect(powerUpChangeEatenStateSpy).toHaveBeenCalledTimes(1);
   });

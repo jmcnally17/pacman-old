@@ -20,8 +20,7 @@ export default function implementGhosts(
   level,
   killCount,
   redGhost,
-  count,
-  huntingTimeout,
+  cycleTimer,
   callbackOne = checkSpeedMatchesState,
   callbackTwo = implementTunnel,
   callbackThree = updateCollisions,
@@ -50,8 +49,7 @@ export default function implementGhosts(
       powerUps,
       level,
       killCount,
-      count,
-      huntingTimeout
+      cycleTimer
     );
   });
 }
