@@ -55,6 +55,16 @@ const ghosts = makeGhosts(length);
 const pacman = makePacman(length);
 const cycleTimer = new CycleTimer();
 
+const variables = {
+  score: 0,
+  lastKeyPressed: "",
+  level: 1,
+  playerName: "",
+  reactRoot: null,
+  killCount: 0,
+  start: true,
+}
+
 const score = {
   points: 0,
 };
@@ -74,14 +84,12 @@ const killCount = {
   number: 0,
 }
 
-let start = true;
-
 export default function playGame(name, mainEl) {
-  if (start === true) {
+  if (variables.start === true) {
     player.name = name;
     reactRoot.mainEl = mainEl;
     cycleTimer.start(ghosts);
-    start = false;
+    variables.start = false;
   }
   let animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
