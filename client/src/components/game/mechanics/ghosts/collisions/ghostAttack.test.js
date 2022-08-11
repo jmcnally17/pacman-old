@@ -26,7 +26,6 @@ describe("ghostAttack", () => {
       mockObject,
       mockObject,
       mockObject,
-      mockObject,
       mockEndGame,
       mockResetAfterDeath
     );
@@ -40,7 +39,6 @@ describe("ghostAttack", () => {
     };
     ghostAttack(
       mockPacman,
-      mockObject,
       mockObject,
       mockObject,
       mockObject,

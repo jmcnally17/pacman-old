@@ -22,7 +22,6 @@ describe("endGame", () => {
       mockObject,
       mockObject,
       mockObject,
-      mockObject,
       mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver

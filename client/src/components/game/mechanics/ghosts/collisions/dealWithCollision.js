@@ -13,8 +13,7 @@ export default function dealWithCollision(
   powerUps,
   level,
   killCount,
-  count,
-  huntingTimeout,
+  cycleTimer,
   callback = ghostAttack
 ) {
   if (!ghost.isScared && !ghost.isRetreating) {
@@ -29,8 +28,7 @@ export default function dealWithCollision(
       pellets,
       powerUps,
       level,
-      count,
-      huntingTimeout
+      cycleTimer
     );
   } else if (ghost.isScared && !ghost.isRetreating) {
     score.points += 200 * Math.pow(2, killCount.number);

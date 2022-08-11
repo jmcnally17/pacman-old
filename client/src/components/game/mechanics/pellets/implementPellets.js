@@ -10,8 +10,7 @@ export default function implementPellets(
   ghosts,
   powerUps,
   level,
-  count,
-  huntingTimeout,
+  cycleTimer,
   callbackOne = eatPellet,
   callbackTwo = checkLevelUpCondition
 ) {
@@ -26,7 +25,6 @@ export default function implementPellets(
     ghosts,
     powerUps,
     level,
-    count,
-    huntingTimeout
+    cycleTimer
   );
 }

@@ -33,7 +33,6 @@ describe("checkLevelUpCondition", () => {
       mockObject,
       mockLevel,
       mockObject,
-      mockObject,
       mockResetAfterLevelUp
     );
     expect(mockResetAfterLevelUp).toHaveBeenCalledTimes(1);
@@ -48,7 +47,6 @@ describe("checkLevelUpCondition", () => {
       mockObject,
       mockObject,
       mockLevel,
-      mockObject,
       mockObject,
       mockResetAfterLevelUp
     );

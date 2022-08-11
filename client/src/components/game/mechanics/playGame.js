@@ -3,6 +3,7 @@ import makePellets from "./pellets/makePellets";
 import makePowerUps from "./powerUps/makePowerUps";
 import makeGhosts from "./ghosts/makeGhosts";
 import makePacman from "./pacman/makePacman";
+import CycleTimer from "../models/cycleTimer";
 import implementBoundaries from "./boundaries/implementBoundaries";
 import implementPellets from "./pellets/implementPellets";
 import implementPowerUps from "./powerUps/implementPowerUps";
@@ -11,7 +12,6 @@ import implementPacman from "./pacman/implementPacman";
 import displayScore from "./displayScore";
 import displayLives from "./displayLives";
 import displayLevel from "./displayLevel";
-import startHuntingCycle from "./startHuntingCycle";
 
 const length = 32;
 const map = [
@@ -53,6 +53,7 @@ const pellets = makePellets(map, length);
 const powerUps = makePowerUps(map, length);
 const ghosts = makeGhosts(length);
 const pacman = makePacman(length);
+const cycleTimer = new CycleTimer();
 
 const score = {
   points: 0,
@@ -72,12 +73,6 @@ const reactRoot = {
 const killCount = {
   number: 0,
 }
-const count = {
-  number: 0,
-}
-const huntingTimeout = {
-  timeout: null,
-}
 
 let start = true;
 
@@ -85,7 +80,7 @@ export default function playGame(name, mainEl) {
   if (start === true) {
     player.name = name;
     reactRoot.mainEl = mainEl;
-    startHuntingCycle(ghosts, count, huntingTimeout);
+    cycleTimer.start(ghosts);
     start = false;
   }
   let animationId = requestAnimationFrame(playGame);
@@ -94,9 +89,9 @@ export default function playGame(name, mainEl) {
   ctx.clearRect(0, 0, 896, 992);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level, count, huntingTimeout);
+  implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level, cycleTimer);
   implementPowerUps(powerUps, ctx, pacman, score, killCount, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, length, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level, killCount, ghosts[0], count, huntingTimeout);
+  implementGhosts(ghosts, boundaries, ctx, length, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level, killCount, ghosts[0], cycleTimer);
   implementPacman(lastKeyPressed, pacman, boundaries, ctx, pellets, length);
   displayScore(score);
   displayLives(pacman);

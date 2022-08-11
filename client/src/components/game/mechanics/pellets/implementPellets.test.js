@@ -43,7 +43,6 @@ describe("implementPellets", () => {
       mockObject,
       mockObject,
       mockObject,
-      mockObject,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
@@ -55,7 +54,6 @@ describe("implementPellets", () => {
   it("does not draw the pellets if they have been eaten", () => {
     implementPellets(
       mockEatenPellets,
-      mockObject,
       mockObject,
       mockObject,
       mockObject,

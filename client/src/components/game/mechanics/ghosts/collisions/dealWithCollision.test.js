@@ -36,7 +36,6 @@ describe("dealWithCollision", () => {
       mockObject,
       mockKillCount,
       mockObject,
-      mockObject,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(1);
@@ -71,7 +70,6 @@ describe("dealWithCollision", () => {
       mockObject,
       mockObject,
       mockKillCount,
-      mockObject,
       mockObject,
       mockGhostAttack
     );
