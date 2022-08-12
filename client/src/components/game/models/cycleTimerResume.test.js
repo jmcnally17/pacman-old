@@ -3,8 +3,8 @@ import CycleTimer from "./cycleTimer";
 jest.useFakeTimers();
 
 describe("CycleTimer", () => {
-  describe("start", () => {
-    it("calls setTimeout with a time of twenty seconds when the count is 1 and takes 1 from the count", () => {
+  describe("resume", () => {
+    it("calls setTimeout with the timeRemaining as the delay", () => {
       const mockGhost = {
         changeHuntingState: () => true,
       };
@@ -12,13 +12,12 @@ describe("CycleTimer", () => {
       jest.spyOn(mockGhost, "changeHuntingState");
       const timer = new CycleTimer(mockGhosts);
       jest.spyOn(global, "setTimeout");
-      timer.count = 1;
-      timer.start();
+      timer.timeRemaining = 4820;
+      timer.resume();
 
       expect(setTimeout).toHaveBeenCalledTimes(1);
-      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 20000);
+      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 4820);
       expect(timer.timeout).not.toBeNull();
-      expect(timer.count).toBe(0);
 
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeHuntingState).toHaveBeenCalledTimes(2);

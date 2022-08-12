@@ -2,15 +2,22 @@ import { render, screen } from "@testing-library/react";
 import Game from "./game";
 
 let mockPlayGame;
+let mockName;
+let mockReactRoot;
 
 describe("Game", () => {
   beforeEach(() => {
     mockPlayGame = jest.fn();
+    mockName = "John";
+    mockReactRoot = "reactRoot";
   });
 
   it("calls playGame as soon as the component renders", () => {
-    render(<Game callback={mockPlayGame} />);
+    render(
+      <Game name={mockName} reactRoot={mockReactRoot} callback={mockPlayGame} />
+    );
     expect(mockPlayGame).toHaveBeenCalledTimes(1);
+    expect(mockPlayGame).toHaveBeenCalledWith(mockName, mockReactRoot);
   });
 
   it("contains the heading with the player's name", () => {

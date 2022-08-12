@@ -27,6 +27,7 @@ describe("shiftBeforeRetreating", () => {
       mockShiftDown
     );
     expect(mockShiftLeft).toHaveBeenCalledTimes(1);
+    expect(mockShiftLeft).toHaveBeenCalledWith(mockGhost);
     expect(mockShiftRight).toHaveBeenCalledTimes(0);
     expect(mockShiftUp).toHaveBeenCalledTimes(0);
     expect(mockShiftDown).toHaveBeenCalledTimes(0);
@@ -47,6 +48,7 @@ describe("shiftBeforeRetreating", () => {
     );
     expect(mockShiftLeft).toHaveBeenCalledTimes(0);
     expect(mockShiftRight).toHaveBeenCalledTimes(1);
+    expect(mockShiftRight).toHaveBeenCalledWith(mockGhost);
     expect(mockShiftUp).toHaveBeenCalledTimes(0);
     expect(mockShiftDown).toHaveBeenCalledTimes(0);
   });
@@ -67,6 +69,7 @@ describe("shiftBeforeRetreating", () => {
     expect(mockShiftLeft).toHaveBeenCalledTimes(0);
     expect(mockShiftRight).toHaveBeenCalledTimes(0);
     expect(mockShiftUp).toHaveBeenCalledTimes(1);
+    expect(mockShiftUp).toHaveBeenCalledWith(mockGhost);
     expect(mockShiftDown).toHaveBeenCalledTimes(0);
   });
 
@@ -87,5 +90,6 @@ describe("shiftBeforeRetreating", () => {
     expect(mockShiftRight).toHaveBeenCalledTimes(0);
     expect(mockShiftUp).toHaveBeenCalledTimes(0);
     expect(mockShiftDown).toHaveBeenCalledTimes(1);
+    expect(mockShiftDown).toHaveBeenCalledWith(mockGhost);
   });
 });

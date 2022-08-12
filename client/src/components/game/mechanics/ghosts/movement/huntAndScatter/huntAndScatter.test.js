@@ -1,8 +1,10 @@
 import huntAndScatter from "./huntAndScatter";
 
 let mockGhost;
+let mockPacman;
 let collisions;
-let mockObject;
+let mockVariables;
+let mockRedGhost;
 let mockCalculateDistance;
 let mockpickDirection;
 let mockEmptyPrevCollisions;
@@ -20,7 +22,10 @@ describe("huntAndScatter", () => {
       },
       prevCollisions: [],
     };
+    mockPacman = "pacman";
     collisions = [];
+    mockVariables = "variables";
+    mockRedGhost = "redGhost";
     mockCalculateDistance = jest.fn();
     mockpickDirection = jest.fn();
     mockEmptyPrevCollisions = jest.fn();
@@ -29,10 +34,10 @@ describe("huntAndScatter", () => {
   it("adds right to the prevCollisions array if the ghost is moving to the right", () => {
     huntAndScatter(
       mockGhost,
-      mockObject,
+      mockPacman,
       collisions,
-      mockObject,
-      mockObject,
+      mockVariables,
+      mockRedGhost,
       mockCalculateDistance,
       mockpickDirection,
       mockEmptyPrevCollisions
@@ -47,10 +52,10 @@ describe("huntAndScatter", () => {
     };
     huntAndScatter(
       mockGhost,
-      mockObject,
+      mockPacman,
       collisions,
-      mockObject,
-      mockObject,
+      mockVariables,
+      mockRedGhost,
       mockCalculateDistance,
       mockpickDirection,
       mockEmptyPrevCollisions
@@ -65,10 +70,10 @@ describe("huntAndScatter", () => {
     };
     huntAndScatter(
       mockGhost,
-      mockObject,
+      mockPacman,
       collisions,
-      mockObject,
-      mockObject,
+      mockVariables,
+      mockRedGhost,
       mockCalculateDistance,
       mockpickDirection,
       mockEmptyPrevCollisions
@@ -83,10 +88,10 @@ describe("huntAndScatter", () => {
     };
     huntAndScatter(
       mockGhost,
-      mockObject,
+      mockPacman,
       collisions,
-      mockObject,
-      mockObject,
+      mockVariables,
+      mockRedGhost,
       mockCalculateDistance,
       mockpickDirection,
       mockEmptyPrevCollisions
@@ -97,16 +102,28 @@ describe("huntAndScatter", () => {
   it("calls the necessary callback functions in order to determine the ghosts next direction and empty the prevCollisions array", () => {
     huntAndScatter(
       mockGhost,
-      mockObject,
+      mockPacman,
       collisions,
-      mockObject,
-      mockObject,
+      mockVariables,
+      mockRedGhost,
       mockCalculateDistance,
       mockpickDirection,
       mockEmptyPrevCollisions
     );
     expect(mockCalculateDistance).toHaveBeenCalledTimes(1);
+    expect(mockCalculateDistance).toHaveBeenCalledWith(
+      mockPacman,
+      mockGhost,
+      [{ direction: "right" }],
+      mockVariables,
+      mockRedGhost
+    );
     expect(mockpickDirection).toHaveBeenCalledTimes(1);
+    expect(mockpickDirection).toHaveBeenCalledWith(
+      [{ direction: "right" }],
+      mockGhost
+    );
     expect(mockEmptyPrevCollisions).toHaveBeenCalledTimes(1);
+    expect(mockEmptyPrevCollisions).toHaveBeenCalledWith(mockGhost);
   });
 });

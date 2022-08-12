@@ -7,5 +7,5 @@ export default function resetAfterDeath(pacman, variables, ghosts, cycleTimer) {
     ghost.resetHuntingState();
     ghost.resetRetreatingState();
   });
-  cycleTimer.start(ghosts);
+  cycleTimer.start();
 }

@@ -18,22 +18,19 @@ describe("resetAfterDeath", () => {
       resetRetreatingState: () => undefined,
     };
     const mockGhosts = [mockGhost, mockGhost, mockGhost];
-    const pacmanResetSpy = jest.spyOn(mockPacman, "reset");
-    const timerResetSpy = jest.spyOn(mockCycleTimer, "reset");
-    const timerStartSpy = jest.spyOn(mockCycleTimer, "start");
-    const ghostResetSpy = jest.spyOn(mockGhost, "reset");
-    const ghostResetHuntingSpy = jest.spyOn(mockGhost, "resetHuntingState");
-    const ghostResetRetreatingSpy = jest.spyOn(
-      mockGhost,
-      "resetRetreatingState"
-    );
+    jest.spyOn(mockPacman, "reset");
+    jest.spyOn(mockCycleTimer, "reset");
+    jest.spyOn(mockCycleTimer, "start");
+    jest.spyOn(mockGhost, "reset");
+    jest.spyOn(mockGhost, "resetHuntingState");
+    jest.spyOn(mockGhost, "resetRetreatingState");
     resetAfterDeath(mockPacman, mockVariables, mockGhosts, mockCycleTimer);
-    expect(pacmanResetSpy).toHaveBeenCalledTimes(1);
+    expect(mockPacman.reset).toHaveBeenCalledTimes(1);
     expect(mockVariables.lastKeyPressed).toBe("");
-    expect(timerResetSpy).toHaveBeenCalledTimes(1);
-    expect(timerStartSpy).toHaveBeenCalledTimes(1);
-    expect(ghostResetSpy).toHaveBeenCalledTimes(3);
-    expect(ghostResetHuntingSpy).toHaveBeenCalledTimes(3);
-    expect(ghostResetRetreatingSpy).toHaveBeenCalledTimes(3);
+    expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
+    expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
+    expect(mockGhost.reset).toHaveBeenCalledTimes(3);
+    expect(mockGhost.resetHuntingState).toHaveBeenCalledTimes(3);
+    expect(mockGhost.resetRetreatingState).toHaveBeenCalledTimes(3);
   });
 });

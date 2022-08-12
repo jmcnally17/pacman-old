@@ -1,11 +1,18 @@
 import chooseMovement from "./chooseMovement";
 
-let mockObject;
+let mockPacman;
+let mockCollisions;
+let mockVariables;
+let mockRedGhost;
 let mockhuntAndScatter;
 let mockMoveRandomly;
 
 describe("chooseMovement", () => {
   beforeEach(() => {
+    mockPacman = "pacman";
+    mockCollisions = "collisions";
+    mockVariables = "variables";
+    mockRedGhost = "redGhost";
     mockhuntAndScatter = jest.fn();
     mockMoveRandomly = jest.fn();
   });
@@ -17,14 +24,21 @@ describe("chooseMovement", () => {
     };
     chooseMovement(
       mockGhost,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPacman,
+      mockCollisions,
+      mockVariables,
+      mockRedGhost,
       mockhuntAndScatter,
       mockMoveRandomly
     );
     expect(mockhuntAndScatter).toHaveBeenCalledTimes(1);
+    expect(mockhuntAndScatter).toHaveBeenCalledWith(
+      mockGhost,
+      mockPacman,
+      mockCollisions,
+      mockVariables,
+      mockRedGhost
+    );
     expect(mockMoveRandomly).toHaveBeenCalledTimes(0);
   });
 
@@ -34,15 +48,16 @@ describe("chooseMovement", () => {
     };
     chooseMovement(
       mockGhost,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPacman,
+      mockCollisions,
+      mockVariables,
+      mockRedGhost,
       mockhuntAndScatter,
       mockMoveRandomly
     );
     expect(mockhuntAndScatter).toHaveBeenCalledTimes(0);
     expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
+    expect(mockMoveRandomly).toHaveBeenCalledWith(mockGhost, mockCollisions);
   });
 
   it("calls randomDirection if the ghost is retreating", () => {
@@ -52,14 +67,15 @@ describe("chooseMovement", () => {
     };
     chooseMovement(
       mockGhost,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPacman,
+      mockCollisions,
+      mockVariables,
+      mockRedGhost,
       mockhuntAndScatter,
       mockMoveRandomly
     );
     expect(mockhuntAndScatter).toHaveBeenCalledTimes(0);
     expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
+    expect(mockMoveRandomly).toHaveBeenCalledWith(mockGhost, mockCollisions);
   });
 });

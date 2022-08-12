@@ -45,9 +45,9 @@ describe("Boundary", () => {
       const mockCtx = {
         drawImage: () => undefined,
       };
-      const ctxSpy = jest.spyOn(mockCtx, "drawImage");
+      jest.spyOn(mockCtx, "drawImage");
       boundary.draw(mockCtx);
-      expect(ctxSpy).toHaveBeenCalledTimes(1);
+      expect(mockCtx.drawImage).toHaveBeenCalledTimes(1);
     });
   });
 });

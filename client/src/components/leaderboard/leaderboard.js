@@ -10,7 +10,7 @@ if (process.env.REACT_APP_URL) {
   url = "http://localhost:9000/backend/scores";
 }
 
-export default function Leaderboard({ variables, ghosts, cycleTimer }) {
+export default function Leaderboard({ variables, cycleTimer }) {
   const [scores, setScores] = useState([]);
   const [error, setError] = useState(false);
 
@@ -32,7 +32,7 @@ export default function Leaderboard({ variables, ghosts, cycleTimer }) {
 
   const handlePlayAgain = () => {
     variables.score = 0;
-    cycleTimer.start(ghosts);
+    cycleTimer.start();
     variables.reactRoot.render(
       <Game name={variables.playerName} reactRoot={variables.reactRoot} />
     );

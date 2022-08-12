@@ -1,15 +1,26 @@
 import dealWithCollision from "./dealWithCollision";
 
-let mockObject;
+jest.useFakeTimers();
+
+let mockPacman;
 let mockVariables;
+let mockGhosts;
+let mockPellets;
+let mockPowerUps;
+let mockCycleTimer;
 let mockGhostAttack;
 
 describe("dealWithCollision", () => {
   beforeEach(() => {
+    mockPacman = "pacman";
     mockVariables = {
       score: 100,
       killCount: 2,
     };
+    mockGhosts = "ghosts";
+    mockPellets = "pellets";
+    mockPowerUps = "powerUps";
+    mockCycleTimer = "cycleTimer";
     mockGhostAttack = jest.fn();
   });
 
@@ -21,21 +32,28 @@ describe("dealWithCollision", () => {
     };
     dealWithCollision(
       mockGhost,
-      mockObject,
+      mockPacman,
       mockVariables,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(1);
+    expect(mockGhostAttack).toHaveBeenCalledWith(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer
+    );
     expect(mockVariables.score).toBe(100);
     expect(mockVariables.killCount).toBe(2);
   });
 
   it("increases the score and killCount and sends the ghost into retreating mode if the ghost is scared and is not retreating", () => {
-    jest.useFakeTimers();
     const mockGhost = {
       isScared: true,
       changeScaredState: () => undefined,
@@ -44,29 +62,31 @@ describe("dealWithCollision", () => {
       changeRetreatingState: () => undefined,
       retreatingTimeout: null,
     };
-    const ghostRetreatingSpy = jest.spyOn(mockGhost, "changeRetreatingState");
-    const timeoutSpy = jest.spyOn(global, "setTimeout");
-    const ghostScaredSpy = jest.spyOn(mockGhost, "changeScaredState");
-    const clearTimeoutSpy = jest.spyOn(global, "clearTimeout");
+    jest.spyOn(mockGhost, "changeRetreatingState");
+    jest.spyOn(global, "setTimeout");
+    jest.spyOn(mockGhost, "changeScaredState");
+    jest.spyOn(global, "clearTimeout");
     dealWithCollision(
       mockGhost,
-      mockObject,
+      mockPacman,
       mockVariables,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(0);
     expect(mockVariables.score).toBe(900);
     expect(mockVariables.killCount).toBe(3);
-    expect(ghostRetreatingSpy).toHaveBeenCalledTimes(1);
-    expect(timeoutSpy).toHaveBeenCalledTimes(1);
+    expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(1);
+    expect(setTimeout).toHaveBeenCalledTimes(1);
+    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 3000);
     expect(mockGhost.retreatingTimeout).not.toBeNull();
-    expect(ghostScaredSpy).toHaveBeenCalledTimes(1);
-    expect(clearTimeoutSpy).toHaveBeenCalledTimes(1);
+    expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(1);
+    expect(clearTimeout).toHaveBeenCalledTimes(1);
+    expect(clearTimeout).toHaveBeenCalledWith(mockGhost.scaredTimeout);
     jest.runOnlyPendingTimers();
-    expect(ghostRetreatingSpy).toHaveBeenCalledTimes(2);
+    expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(2);
   });
 });

@@ -4,9 +4,12 @@ let mockUneatenPellet;
 let mockUneatenPellets;
 let mockEatenPellet;
 let mockEatenPellets;
-let mockObject;
-let uneatenDrawSpy;
-let eatenDrawSpy;
+let mockCtx;
+let mockPacman;
+let mockVariables;
+let mockGhosts;
+let mockPowerUps;
+let mockCycleTimer;
 let mockEatPellet;
 let mockCheckLevelUpCondition;
 
@@ -26,8 +29,14 @@ describe("implementPellets", () => {
       draw: () => undefined,
     };
     mockEatenPellets = [mockEatenPellet, mockEatenPellet];
-    uneatenDrawSpy = jest.spyOn(mockUneatenPellet, "draw");
-    eatenDrawSpy = jest.spyOn(mockEatenPellet, "draw");
+    jest.spyOn(mockUneatenPellet, "draw");
+    jest.spyOn(mockEatenPellet, "draw");
+    mockCtx = "ctx";
+    mockPacman = "pacman";
+    mockVariables = "variables";
+    mockGhosts = "ghosts";
+    mockPowerUps = "powerUps";
+    mockCycleTimer = "cycleTimer";
     mockEatPellet = jest.fn();
     mockCheckLevelUpCondition = jest.fn();
   });
@@ -35,34 +44,83 @@ describe("implementPellets", () => {
   it("calls the necessary funcions to implement the pellet functionality", () => {
     implementPellets(
       mockUneatenPellets,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockCtx,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
-    expect(uneatenDrawSpy).toHaveBeenCalledTimes(3);
+    expect(mockUneatenPellet.draw).toHaveBeenCalledTimes(3);
+    expect(mockUneatenPellet.draw).toHaveBeenNthCalledWith(1, mockCtx);
+    expect(mockUneatenPellet.draw).toHaveBeenNthCalledWith(2, mockCtx);
+    expect(mockUneatenPellet.draw).toHaveBeenNthCalledWith(3, mockCtx);
     expect(mockEatPellet).toHaveBeenCalledTimes(3);
+    expect(mockEatPellet).toHaveBeenNthCalledWith(
+      1,
+      mockUneatenPellet,
+      mockPacman,
+      mockVariables
+    );
+    expect(mockEatPellet).toHaveBeenNthCalledWith(
+      2,
+      mockUneatenPellet,
+      mockPacman,
+      mockVariables
+    );
+    expect(mockEatPellet).toHaveBeenNthCalledWith(
+      3,
+      mockUneatenPellet,
+      mockPacman,
+      mockVariables
+    );
     expect(mockCheckLevelUpCondition).toHaveBeenCalledTimes(1);
+    expect(mockCheckLevelUpCondition).toHaveBeenCalledWith(
+      mockUneatenPellets,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer
+    );
   });
 
   it("does not draw the pellets if they have been eaten", () => {
     implementPellets(
       mockEatenPellets,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockCtx,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
-    expect(eatenDrawSpy).toHaveBeenCalledTimes(0);
+    expect(mockEatenPellet.draw).toHaveBeenCalledTimes(0);
     expect(mockEatPellet).toHaveBeenCalledTimes(2);
+    expect(mockEatPellet).toHaveBeenNthCalledWith(
+      1,
+      mockEatenPellet,
+      mockPacman,
+      mockVariables
+    );
+    expect(mockEatPellet).toHaveBeenNthCalledWith(
+      2,
+      mockEatenPellet,
+      mockPacman,
+      mockVariables
+    );
     expect(mockCheckLevelUpCondition).toHaveBeenCalledTimes(1);
+    expect(mockCheckLevelUpCondition).toHaveBeenCalledWith(
+      mockEatenPellets,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer
+    );
   });
 });

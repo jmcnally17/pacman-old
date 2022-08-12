@@ -14,7 +14,7 @@ export default function resetAfterLevelUp(
     ghost.resetHuntingState();
     ghost.resetRetreatingState();
   });
-  cycleTimer.start(ghosts);
+  cycleTimer.start();
   pellets.forEach((pellet) => {
     pellet.changeEatenState();
   });

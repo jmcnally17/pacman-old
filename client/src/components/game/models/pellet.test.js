@@ -58,15 +58,15 @@ describe("Pellet", () => {
         fill: () => undefined,
         closePath: () => undefined,
       };
-      const beginPathSpy = jest.spyOn(mockCtx, "beginPath");
-      const arcSpy = jest.spyOn(mockCtx, "arc");
-      const fillSpy = jest.spyOn(mockCtx, "fill");
-      const closePathSpy = jest.spyOn(mockCtx, "closePath");
+      jest.spyOn(mockCtx, "beginPath");
+      jest.spyOn(mockCtx, "arc");
+      jest.spyOn(mockCtx, "fill");
+      jest.spyOn(mockCtx, "closePath");
       pellet.draw(mockCtx);
-      expect(beginPathSpy).toHaveBeenCalledTimes(1);
-      expect(arcSpy).toHaveBeenCalledTimes(1);
-      expect(fillSpy).toHaveBeenCalledTimes(1);
-      expect(closePathSpy).toHaveBeenCalledTimes(1);
+      expect(mockCtx.beginPath).toHaveBeenCalledTimes(1);
+      expect(mockCtx.arc).toHaveBeenCalledTimes(1);
+      expect(mockCtx.fill).toHaveBeenCalledTimes(1);
+      expect(mockCtx.closePath).toHaveBeenCalledTimes(1);
       expect(mockCtx.fillStyle).toBe("white");
     });
   });

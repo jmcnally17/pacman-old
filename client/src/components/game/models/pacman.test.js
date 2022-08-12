@@ -42,6 +42,8 @@ describe("PacMan", () => {
       closePath: () => undefined,
       restore: () => undefined,
     };
+    jest.spyOn(mockMunchTwo, "play");
+    jest.spyOn(mockMunchOne, "play");
   });
 
   describe("upon instantiation", () => {
@@ -81,36 +83,36 @@ describe("PacMan", () => {
 
   describe("draw", () => {
     it("calls the necessary functions on ctx to draw Pac-Man", () => {
-      const saveSpy = jest.spyOn(mockCtx, "save");
-      const translateSpy = jest.spyOn(mockCtx, "translate");
-      const rotateSpy = jest.spyOn(mockCtx, "rotate");
-      const beginPathSpy = jest.spyOn(mockCtx, "beginPath");
-      const arcSpy = jest.spyOn(mockCtx, "arc");
-      const lineToSpy = jest.spyOn(mockCtx, "lineTo");
-      const fillSpy = jest.spyOn(mockCtx, "fill");
-      const closePathSpy = jest.spyOn(mockCtx, "closePath");
-      const restoreSpy = jest.spyOn(mockCtx, "restore");
+      jest.spyOn(mockCtx, "save");
+      jest.spyOn(mockCtx, "translate");
+      jest.spyOn(mockCtx, "rotate");
+      jest.spyOn(mockCtx, "beginPath");
+      jest.spyOn(mockCtx, "arc");
+      jest.spyOn(mockCtx, "lineTo");
+      jest.spyOn(mockCtx, "fill");
+      jest.spyOn(mockCtx, "closePath");
+      jest.spyOn(mockCtx, "restore");
       pacman.draw(mockCtx);
-      expect(saveSpy).toHaveBeenCalledTimes(1);
-      expect(translateSpy).toHaveBeenCalledTimes(2);
-      expect(rotateSpy).toHaveBeenCalledTimes(1);
-      expect(beginPathSpy).toHaveBeenCalledTimes(1);
-      expect(arcSpy).toHaveBeenCalledTimes(1);
-      expect(lineToSpy).toHaveBeenCalledTimes(1);
-      expect(fillSpy).toHaveBeenCalledTimes(1);
-      expect(closePathSpy).toHaveBeenCalledTimes(1);
-      expect(restoreSpy).toHaveBeenCalledTimes(1);
+      expect(mockCtx.save).toHaveBeenCalledTimes(1);
+      expect(mockCtx.translate).toHaveBeenCalledTimes(2);
+      expect(mockCtx.rotate).toHaveBeenCalledTimes(1);
+      expect(mockCtx.beginPath).toHaveBeenCalledTimes(1);
+      expect(mockCtx.arc).toHaveBeenCalledTimes(1);
+      expect(mockCtx.lineTo).toHaveBeenCalledTimes(1);
+      expect(mockCtx.fill).toHaveBeenCalledTimes(1);
+      expect(mockCtx.closePath).toHaveBeenCalledTimes(1);
+      expect(mockCtx.restore).toHaveBeenCalledTimes(1);
       expect(mockCtx.fillStyle).toBe("yellow");
     });
   });
 
   describe("update", () => {
     it("calls the necessary functions and updates Pac-Man's position", () => {
-      const checkRotationSpy = jest.spyOn(pacman, "checkRotation");
-      const drawSpy = jest.spyOn(pacman, "draw");
+      jest.spyOn(pacman, "checkRotation");
+      jest.spyOn(pacman, "draw");
       pacman.update(mockCtx);
-      expect(checkRotationSpy).toHaveBeenCalledTimes(1);
-      expect(drawSpy).toHaveBeenCalledTimes(1);
+      expect(pacman.checkRotation).toHaveBeenCalledTimes(1);
+      expect(pacman.draw).toHaveBeenCalledTimes(1);
       expect(pacman.position).toEqual({
         x: 297.5,
         y: 472.5,
@@ -118,9 +120,9 @@ describe("PacMan", () => {
     });
 
     it("calls chomp if Pac-Man is moving", () => {
-      const chompSpy = jest.spyOn(pacman, "chomp");
+      jest.spyOn(pacman, "chomp");
       pacman.update(mockCtx);
-      expect(chompSpy).toHaveBeenCalledTimes(1);
+      expect(pacman.chomp).toHaveBeenCalledTimes(1);
     });
 
     it("sets the radians back to PI / 4 if Pac-Man is not moving", () => {
@@ -155,35 +157,31 @@ describe("PacMan", () => {
     });
 
     it("plays munchTwo when the radians is greater than PI / 4, the openRate is positive and isEating is true", () => {
-      const munchTwoSpy = jest.spyOn(mockMunchTwo, "play");
       pacman.radians = Math.PI / 2;
       pacman.isEating = true;
       pacman.chomp();
-      expect(munchTwoSpy).toHaveBeenCalledTimes(1);
+      expect(mockMunchTwo.play).toHaveBeenCalledTimes(1);
     });
 
     it("plays munchOne when the radians becomes smaller than PI / 36, the openRate is negative and isEating is true", () => {
-      const munchOneSpy = jest.spyOn(mockMunchOne, "play");
       pacman.radians = 0;
       pacman.openRate *= -1;
       pacman.isEating = true;
       pacman.chomp();
-      expect(munchOneSpy).toHaveBeenCalledTimes(1);
+      expect(mockMunchOne.play).toHaveBeenCalledTimes(1);
     });
 
     it("does not play munchTwo when isEating is false", () => {
-      const munchTwoSpy = jest.spyOn(mockMunchTwo, "play");
       pacman.radians = Math.PI / 2;
       pacman.chomp();
-      expect(munchTwoSpy).toHaveBeenCalledTimes(0);
+      expect(mockMunchTwo.play).toHaveBeenCalledTimes(0);
     });
 
     it("does not play munchOne when isEating is false", () => {
-      const munchOneSpy = jest.spyOn(mockMunchOne, "play");
       pacman.radians = 0;
       pacman.openRate *= -1;
       pacman.chomp();
-      expect(munchOneSpy).toHaveBeenCalledTimes(0);
+      expect(mockMunchOne.play).toHaveBeenCalledTimes(0);
     });
   });
 

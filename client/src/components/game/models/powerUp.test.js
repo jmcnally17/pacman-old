@@ -61,25 +61,25 @@ describe("PowerUp", () => {
 
   describe("update", () => {
     it("calls draw and flash", () => {
-      const drawSpy = jest.spyOn(powerUp, "draw");
-      const flashSpy = jest.spyOn(powerUp, "flash");
+      jest.spyOn(powerUp, "draw");
+      jest.spyOn(powerUp, "flash");
       powerUp.update(mockCtx);
-      expect(drawSpy).toHaveBeenCalledTimes(1);
-      expect(flashSpy).toHaveBeenCalledTimes(1);
+      expect(powerUp.draw).toHaveBeenCalledTimes(1);
+      expect(powerUp.flash).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("draw", () => {
     it("calls the necessary functions on ctx to draw the power up", () => {
-      const beginPathSpy = jest.spyOn(mockCtx, "beginPath");
-      const arcSpy = jest.spyOn(mockCtx, "arc");
-      const fillSpy = jest.spyOn(mockCtx, "fill");
-      const closePathSpy = jest.spyOn(mockCtx, "closePath");
+      jest.spyOn(mockCtx, "beginPath");
+      jest.spyOn(mockCtx, "arc");
+      jest.spyOn(mockCtx, "fill");
+      jest.spyOn(mockCtx, "closePath");
       powerUp.draw(mockCtx);
-      expect(beginPathSpy).toHaveBeenCalledTimes(1);
-      expect(arcSpy).toHaveBeenCalledTimes(1);
-      expect(fillSpy).toHaveBeenCalledTimes(1);
-      expect(closePathSpy).toHaveBeenCalledTimes(1);
+      expect(mockCtx.beginPath).toHaveBeenCalledTimes(1);
+      expect(mockCtx.arc).toHaveBeenCalledTimes(1);
+      expect(mockCtx.fill).toHaveBeenCalledTimes(1);
+      expect(mockCtx.closePath).toHaveBeenCalledTimes(1);
       expect(mockCtx.fillStyle).toBe("white");
     });
   });
