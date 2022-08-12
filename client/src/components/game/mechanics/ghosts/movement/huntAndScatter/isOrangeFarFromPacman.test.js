@@ -1,6 +1,14 @@
 import isOrangeFarFromPacman from "./isOrangeFarFromPacman";
 
+let mockVariables;
+
 describe("isOrangeFarFromPacman", () => {
+  beforeEach(() => {
+    mockVariables = {
+      length: 32,
+    };
+  });
+
   it("returns true if the orange ghost is more than eight squares away from Pac-Man", () => {
     const mockOrangeGhost = {
       position: {
@@ -14,7 +22,9 @@ describe("isOrangeFarFromPacman", () => {
         y: 560,
       },
     };
-    expect(isOrangeFarFromPacman(mockOrangeGhost, mockPacman, 32)).toBeTruthy();
+    expect(
+      isOrangeFarFromPacman(mockOrangeGhost, mockPacman, mockVariables)
+    ).toBeTruthy();
   });
 
   it("returns false if the orange ghost is less than eight squares away from Pac-Man", () => {
@@ -30,6 +40,8 @@ describe("isOrangeFarFromPacman", () => {
         y: 230,
       },
     };
-    expect(isOrangeFarFromPacman(mockOrangeGhost, mockPacman, 32)).toBeFalsy();
+    expect(
+      isOrangeFarFromPacman(mockOrangeGhost, mockPacman, mockVariables)
+    ).toBeFalsy();
   });
 });

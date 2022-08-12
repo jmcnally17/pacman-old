@@ -24,9 +24,7 @@ describe("implementGhosts", () => {
       prevCollisions: [],
     };
     mockGhostsTwo = [mockGhostTwo, mockGhostTwo];
-    mockVariables = {
-      length: 32,
-    };
+    mockVariables = {};
     mockcheckSpeedMatchesState = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();

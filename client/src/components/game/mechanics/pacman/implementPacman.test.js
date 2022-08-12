@@ -2,9 +2,7 @@ import implementPacman from "./implementPacman";
 
 describe("implementPacman", () => {
   it("calls the necessary functions to implement Pac-Man functionality", () => {
-    const mockVariables = {
-      length: 32,
-    };
+    const mockVariables = {};
     let mockObject;
     const mockPacman = {
       update: () => undefined,

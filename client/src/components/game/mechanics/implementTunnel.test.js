@@ -1,13 +1,21 @@
 import implementTunnel from "./implementTunnel";
 
+let mockVariables;
+
 describe("implementTunnel", () => {
+  beforeEach(() => {
+    mockVariables = {
+      length: 20,
+    };
+  });
+
   it("changes the characters x position to -10 if it reaches 570", () => {
     const mockCharacter = {
       position: {
         x: 570,
       },
     };
-    implementTunnel(mockCharacter, 20);
+    implementTunnel(mockCharacter, mockVariables);
     expect(mockCharacter.position.x).toBe(-10);
   });
 
@@ -17,7 +25,7 @@ describe("implementTunnel", () => {
         x: -10,
       },
     };
-    implementTunnel(mockCharacter, 20);
+    implementTunnel(mockCharacter, mockVariables);
     expect(mockCharacter.position.x).toBe(570);
   });
 });

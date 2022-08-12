@@ -6,7 +6,7 @@ export default function huntAndScatter(
   ghost,
   pacman,
   collisions,
-  length,
+  variables,
   redGhost,
   callbackOne = calculateDistance,
   callbackTwo = pickDirection,
@@ -25,7 +25,7 @@ export default function huntAndScatter(
       });
     }
   });
-  callbackOne(pacman, ghost, pathways, length, redGhost);
+  callbackOne(pacman, ghost, pathways, variables, redGhost);
   callbackTwo(pathways, ghost);
   callbackthree(ghost);
 }

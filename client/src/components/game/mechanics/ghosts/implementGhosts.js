@@ -21,13 +21,13 @@ export default function implementGhosts(
   callbackFive = checkPacmanGhostCollision
 ) {
   ghosts.forEach((ghost) => {
-    callbackOne(ghost, variables.length);
+    callbackOne(ghost, variables);
     const collisions = [];
     ghost.update(ctx);
-    callbackTwo(ghost, variables.length);
+    callbackTwo(ghost, variables);
     callbackThree(boundaries, collisions, ghost);
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
-      callbackFour(ghost, pacman, collisions, variables.length, redGhost);
+      callbackFour(ghost, pacman, collisions, variables, redGhost);
     }
     callbackFive(
       ghost,

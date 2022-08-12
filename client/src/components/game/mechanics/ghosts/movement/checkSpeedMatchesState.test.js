@@ -1,9 +1,13 @@
 import checkSpeedMatchesState from "./checkSpeedMatchesState";
 
+let mockVariables;
 let mockAdjustPosition;
 
 describe("checkSpeedMatchesState", () => {
   beforeEach(() => {
+    mockVariables = {
+      length: 32,
+    };
     mockAdjustPosition = jest.fn();
   });
 
@@ -17,7 +21,7 @@ describe("checkSpeedMatchesState", () => {
       isScared: true,
       isRetreating: false,
     };
-    checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
+    checkSpeedMatchesState(mockGhost, mockVariables, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
       x: 2,
       y: 0,
@@ -36,7 +40,7 @@ describe("checkSpeedMatchesState", () => {
       isScared: false,
       isRetreating: false,
     };
-    checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
+    checkSpeedMatchesState(mockGhost, mockVariables, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
       x: 4,
       y: 0,
@@ -55,7 +59,7 @@ describe("checkSpeedMatchesState", () => {
       isScared: false,
       isRetreating: false,
     };
-    checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
+    checkSpeedMatchesState(mockGhost, mockVariables, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
       x: 4,
       y: 0,
@@ -74,7 +78,7 @@ describe("checkSpeedMatchesState", () => {
       isScared: true,
       isRetreating: false,
     };
-    checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
+    checkSpeedMatchesState(mockGhost, mockVariables, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
       x: 2,
       y: 0,
@@ -93,7 +97,7 @@ describe("checkSpeedMatchesState", () => {
       isScared: false,
       isRetreating: true,
     };
-    checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
+    checkSpeedMatchesState(mockGhost, mockVariables, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
       x: 8,
       y: 0,
@@ -112,7 +116,7 @@ describe("checkSpeedMatchesState", () => {
       isScared: false,
       isRetreating: false,
     };
-    checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
+    checkSpeedMatchesState(mockGhost, mockVariables, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
       x: 4,
       y: 0,
@@ -131,7 +135,7 @@ describe("checkSpeedMatchesState", () => {
       isScared: false,
       isRetreating: true,
     };
-    checkSpeedMatchesState(mockGhost, 32, mockAdjustPosition);
+    checkSpeedMatchesState(mockGhost, mockVariables, mockAdjustPosition);
     expect(mockGhost.velocity).toEqual({
       x: 8,
       y: 0,

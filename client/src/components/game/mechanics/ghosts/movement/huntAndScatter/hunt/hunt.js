@@ -8,7 +8,7 @@ export default function hunt(
   ghost,
   pathway,
   pacman,
-  length,
+  variables,
   redGhost,
   callbackOne = isOrangeFarFromPacman,
   callbackTwo = findRedOrangeAimPath,
@@ -18,12 +18,12 @@ export default function hunt(
 ) {
   if (
     ghost.colour === "red" ||
-    (ghost.colour === "orange" && callbackOne(ghost, pacman, length))
+    (ghost.colour === "orange" && callbackOne(ghost, pacman, variables))
   )
     return callbackTwo(pacman, pathway);
   else if (ghost.colour === "pink")
-    return callbackThree(pacman, pathway, length);
+    return callbackThree(pacman, pathway, variables);
   else if (ghost.colour === "cyan")
-    return callbackFour(pacman, length, redGhost, pathway);
+    return callbackFour(pacman, variables, redGhost, pathway);
   else if (ghost.colour === "orange") return callbackFive(pathway);
 }

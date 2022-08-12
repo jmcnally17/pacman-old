@@ -18,5 +18,5 @@ export default function implementPacman(
   callbackTwo(variables, pacman, boundaries);
   callbackThree(pellets, pacman);
   pacman.update(ctx);
-  callbackFour(pacman, variables.length);
+  callbackFour(pacman, variables);
 }
