@@ -12,7 +12,7 @@ describe("addCoordinates", () => {
       },
     };
     mockVariables = {
-      length: 32,
+      tileLength: 32,
     };
   });
 

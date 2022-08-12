@@ -4,7 +4,7 @@ describe("makeBoundaries", () => {
   it("adds the four tunnel boundaries to the boundaries array", () => {
     const mockBoundaries = [];
     const mockVariables = {
-      length: 32,
+      tileLength: 32,
     };
     makeTunnelBoundaries(mockBoundaries, mockVariables);
     expect(mockBoundaries.length).toBe(4);

@@ -5,7 +5,7 @@ let mockVariables;
 describe("implementTunnel", () => {
   beforeEach(() => {
     mockVariables = {
-      length: 20,
+      tileLength: 20,
     };
   });
 

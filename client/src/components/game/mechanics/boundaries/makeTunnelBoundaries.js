@@ -7,42 +7,42 @@ export default function makeTunnelBoundaries(boundaries, variables) {
   const tunnelBoundaryOne = new Boundary(
     {
       position: {
-        x: -variables.length,
-        y: variables.length * 13,
+        x: -variables.tileLength,
+        y: variables.tileLength * 13,
       },
       image: image,
     },
-    variables.length
+    variables.tileLength
   );
   const tunnelBoundaryTwo = new Boundary(
     {
       position: {
-        x: -variables.length,
-        y: variables.length * 15,
+        x: -variables.tileLength,
+        y: variables.tileLength * 15,
       },
       image: image,
     },
-    variables.length
+    variables.tileLength
   );
   const tunnelBoundaryThree = new Boundary(
     {
       position: {
-        x: variables.length * 28,
-        y: variables.length * 13,
+        x: variables.tileLength * 28,
+        y: variables.tileLength * 13,
       },
       image: image,
     },
-    variables.length
+    variables.tileLength
   );
   const tunnelBoundaryFour = new Boundary(
     {
       position: {
-        x: variables.length * 28,
-        y: variables.length * 15,
+        x: variables.tileLength * 28,
+        y: variables.tileLength * 15,
       },
       image: image,
     },
-    variables.length
+    variables.tileLength
   );
   boundaries.push(
     tunnelBoundaryOne,

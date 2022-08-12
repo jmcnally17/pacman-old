@@ -15,12 +15,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: variables.length * j,
-              y: variables.length * i,
+              x: variables.tileLength * j,
+              y: variables.tileLength * i,
             },
             image: image,
           },
-          variables.length
+          variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "|") {
@@ -29,12 +29,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: variables.length * j,
-              y: variables.length * i,
+              x: variables.tileLength * j,
+              y: variables.tileLength * i,
             },
             image: image,
           },
-          variables.length
+          variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "1") {
@@ -43,12 +43,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: variables.length * j,
-              y: variables.length * i,
+              x: variables.tileLength * j,
+              y: variables.tileLength * i,
             },
             image: image,
           },
-          variables.length
+          variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "2") {
@@ -57,12 +57,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: variables.length * j,
-              y: variables.length * i,
+              x: variables.tileLength * j,
+              y: variables.tileLength * i,
             },
             image: image,
           },
-          variables.length
+          variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "3") {
@@ -71,12 +71,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: variables.length * j,
-              y: variables.length * i,
+              x: variables.tileLength * j,
+              y: variables.tileLength * i,
             },
             image: image,
           },
-          variables.length
+          variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "4") {
@@ -85,12 +85,12 @@ export default function makeBoundaries(
         const boundary = new Boundary(
           {
             position: {
-              x: variables.length * j,
-              y: variables.length * i,
+              x: variables.tileLength * j,
+              y: variables.tileLength * i,
             },
             image: image,
           },
-          variables.length
+          variables.tileLength
         );
         boundaries.push(boundary);
       }

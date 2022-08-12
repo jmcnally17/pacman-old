@@ -4,15 +4,15 @@ export default function makePacman(variables) {
   const pacman = new PacMan(
     {
       position: {
-        x: (variables.length * 29) / 2,
-        y: (variables.length * 47) / 2,
+        x: (variables.tileLength * 29) / 2,
+        y: (variables.tileLength * 47) / 2,
       },
       velocity: {
         x: 0,
         y: 0,
       },
     },
-    variables.length
+    variables.tileLength
   );
   return pacman;
 }

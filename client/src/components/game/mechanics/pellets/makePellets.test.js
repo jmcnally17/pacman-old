@@ -5,7 +5,7 @@ let mockVariables;
 describe("makePellets", () => {
   beforeEach(() => {
     mockVariables = {
-      length: 32,
+      tileLength: 32,
     };
   });
 

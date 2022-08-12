@@ -1,8 +1,8 @@
 export default class Boundary {
-  constructor({ position, image }, length) {
+  constructor({ position, image }, tileLength) {
     this.position = position;
-    this.width = length;
-    this.height = length;
+    this.width = tileLength;
+    this.height = tileLength;
     this.image = image;
   }
 

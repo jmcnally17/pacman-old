@@ -8,11 +8,11 @@ export default function makePowerUps(map, variables) {
         const powerUp = new PowerUp(
           {
             position: {
-              x: (variables.length * (2 * j + 1)) / 2,
-              y: (variables.length * (2 * i + 1)) / 2,
+              x: (variables.tileLength * (2 * j + 1)) / 2,
+              y: (variables.tileLength * (2 * i + 1)) / 2,
             },
           },
-          variables.length
+          variables.tileLength
         );
         powerUps.push(powerUp);
       }

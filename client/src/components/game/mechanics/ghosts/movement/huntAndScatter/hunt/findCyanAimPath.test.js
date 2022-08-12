@@ -15,7 +15,7 @@ describe("findCyanAimPath", () => {
       rotation: 0,
     };
     mockVariables = {
-      length: 32,
+      tileLength: 32,
     };
     mockRedGhost = {
       position: {

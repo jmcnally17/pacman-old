@@ -2,12 +2,10 @@ import PowerUp from "./powerUp";
 
 let powerUp;
 let eatenPowerUp;
-let mockLength;
 let mockCtx;
 
 describe("PowerUp", () => {
   beforeEach(() => {
-    mockLength = 20;
     powerUp = new PowerUp(
       {
         position: {
@@ -15,7 +13,7 @@ describe("PowerUp", () => {
           y: 100,
         },
       },
-      mockLength
+      20
     );
     eatenPowerUp = new PowerUp(
       {
@@ -24,7 +22,7 @@ describe("PowerUp", () => {
           y: 100,
         },
       },
-      mockLength
+      20
     );
     eatenPowerUp.changeEatenState();
     mockCtx = {
@@ -45,7 +43,7 @@ describe("PowerUp", () => {
       expect(powerUp.radius).toBe(7);
       expect(powerUp.hasBeenEaten).toBeFalsy();
       expect(powerUp.rate).toBe(-0.4);
-      expect(powerUp.length).toBe(20);
+      expect(powerUp.tileLength).toBe(20);
     });
   });
 

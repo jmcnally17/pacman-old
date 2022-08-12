@@ -8,11 +8,11 @@ export default function makePellets(map, variables) {
         const pellet = new Pellet(
           {
             position: {
-              x: (variables.length * (2 * j + 1)) / 2,
-              y: (variables.length * (2 * i + 1)) / 2,
+              x: (variables.tileLength * (2 * j + 1)) / 2,
+              y: (variables.tileLength * (2 * i + 1)) / 2,
             },
           },
-          variables.length
+          variables.tileLength
         );
         pellets.push(pellet);
       }

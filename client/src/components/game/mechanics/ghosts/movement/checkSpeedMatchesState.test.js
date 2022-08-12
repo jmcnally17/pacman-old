@@ -6,12 +6,12 @@ let mockAdjustPosition;
 describe("checkSpeedMatchesState", () => {
   beforeEach(() => {
     mockVariables = {
-      length: 32,
+      tileLength: 32,
     };
     mockAdjustPosition = jest.fn();
   });
 
-  it("halves the ghosts speed and velocity if its speed is length / 8 and is scared", () => {
+  it("halves the ghosts speed and velocity if its speed is tileLength / 8 and is scared", () => {
     const mockGhost = {
       velocity: {
         x: 4,
@@ -30,7 +30,7 @@ describe("checkSpeedMatchesState", () => {
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
   });
 
-  it("does not change the ghosts speed and velocity if its speed is length / 8 and is not scared", () => {
+  it("does not change the ghosts speed and velocity if its speed is tileLength / 8 and is not scared", () => {
     const mockGhost = {
       velocity: {
         x: 4,
@@ -49,7 +49,7 @@ describe("checkSpeedMatchesState", () => {
     expect(mockAdjustPosition).toHaveBeenCalledTimes(0);
   });
 
-  it("doubles the ghosts speed and velocity if its speed is length / 16 and is not scared", () => {
+  it("doubles the ghosts speed and velocity if its speed is tileLength / 16 and is not scared", () => {
     const mockGhost = {
       velocity: {
         x: 2,
@@ -68,7 +68,7 @@ describe("checkSpeedMatchesState", () => {
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
   });
 
-  it("does not change the ghosts speed and velocity if its speed is length / 16 and is scared", () => {
+  it("does not change the ghosts speed and velocity if its speed is tileLength / 16 and is scared", () => {
     const mockGhost = {
       velocity: {
         x: 2,
@@ -87,7 +87,7 @@ describe("checkSpeedMatchesState", () => {
     expect(mockAdjustPosition).toHaveBeenCalledTimes(0);
   });
 
-  it("quadruples the ghosts speed and velocity if its speed is length / 16 and is retreating", () => {
+  it("quadruples the ghosts speed and velocity if its speed is tileLength / 16 and is retreating", () => {
     const mockGhost = {
       velocity: {
         x: 2,
@@ -106,7 +106,7 @@ describe("checkSpeedMatchesState", () => {
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
   });
 
-  it("halves the ghosts speed and velocity if its speed is length / 4 and is not retreating or scared", () => {
+  it("halves the ghosts speed and velocity if its speed is tileLength / 4 and is not retreating or scared", () => {
     const mockGhost = {
       velocity: {
         x: 8,
@@ -125,7 +125,7 @@ describe("checkSpeedMatchesState", () => {
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
   });
 
-  it("does not change the ghosts speed and velocity if its speed is length / 4 and is retreating", () => {
+  it("does not change the ghosts speed and velocity if its speed is tileLength / 4 and is retreating", () => {
     const mockGhost = {
       velocity: {
         x: 8,

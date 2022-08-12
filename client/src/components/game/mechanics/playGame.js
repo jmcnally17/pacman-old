@@ -48,7 +48,7 @@ const map = [
 ];
 
 const variables = {
-  length: 32,
+  tileLength: 32,
   score: 0,
   lastKeyPressed: "",
   level: 1,

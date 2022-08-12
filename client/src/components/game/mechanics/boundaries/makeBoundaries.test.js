@@ -6,7 +6,7 @@ let mockMakeTunnelBoundaries;
 describe("makeBoundaries", () => {
   beforeEach(() => {
     mockVariables = {
-      length: 32,
+      tileLength: 32,
     };
     mockMakeTunnelBoundaries = jest.fn();
   });

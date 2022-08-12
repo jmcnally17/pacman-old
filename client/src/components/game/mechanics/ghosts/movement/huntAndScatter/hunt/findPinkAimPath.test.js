@@ -20,7 +20,7 @@ describe("findPinkAimPath", () => {
       },
     };
     mockVariables = {
-      length: 32,
+      tileLength: 32,
     };
   });
 
