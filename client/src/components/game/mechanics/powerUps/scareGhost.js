@@ -1,5 +1,7 @@
-export default function scareGhost(ghost) {
-  clearTimeout(ghost.scaredTimeout);
+import deleteScaredTimeout from "./deleteScaredTimeout";
+
+export default function scareGhost(ghost, callback = deleteScaredTimeout) {
+  callback(ghost);
   if (!ghost.isScared) {
     ghost.changeScaredState();
   }
