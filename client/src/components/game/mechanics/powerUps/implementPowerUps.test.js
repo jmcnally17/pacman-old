@@ -4,7 +4,10 @@ let mockUneatenPowerUp;
 let mockUneatenPowerUps;
 let mockEatenPowerUp;
 let mockEatenPowerUps;
-let mockObject;
+let mockCtx;
+let mockPacman;
+let mockVariables;
+let mockGhosts;
 let mockEatPowerUp;
 
 describe("implementPowerUps", () => {
@@ -25,34 +28,60 @@ describe("implementPowerUps", () => {
     mockEatenPowerUps = [mockEatenPowerUp, mockEatenPowerUp];
     jest.spyOn(mockUneatenPowerUp, "update");
     jest.spyOn(mockEatenPowerUp, "update");
+    mockCtx = "ctx";
+    mockPacman = "pacman";
+    mockVariables = "variables";
+    mockGhosts = "ghosts";
     mockEatPowerUp = jest.fn();
   });
 
   it("calls the necessary funcions to implement the power up functionality", () => {
     implementPowerUps(
       mockUneatenPowerUps,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockCtx,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
       mockEatPowerUp
     );
     expect(mockUneatenPowerUp.update).toHaveBeenCalledTimes(3);
+    expect(mockUneatenPowerUp.update).toHaveBeenNthCalledWith(1, mockCtx);
+    expect(mockUneatenPowerUp.update).toHaveBeenNthCalledWith(2, mockCtx);
+    expect(mockUneatenPowerUp.update).toHaveBeenNthCalledWith(3, mockCtx);
     expect(mockEatPowerUp).toHaveBeenCalledTimes(3);
+    expect(mockEatPowerUp).toHaveBeenNthCalledWith(
+      1,
+      mockUneatenPowerUp,
+      mockPacman,
+      mockVariables,
+      mockGhosts
+    );
+    expect(mockEatPowerUp).toHaveBeenNthCalledWith(
+      2,
+      mockUneatenPowerUp,
+      mockPacman,
+      mockVariables,
+      mockGhosts
+    );
+    expect(mockEatPowerUp).toHaveBeenNthCalledWith(
+      3,
+      mockUneatenPowerUp,
+      mockPacman,
+      mockVariables,
+      mockGhosts
+    );
   });
 
-  it("does call update on the power ups if they have been eaten", () => {
+  it("does not call update or eatPowerUp on the power ups if they have been eaten", () => {
     implementPowerUps(
       mockEatenPowerUps,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockCtx,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
       mockEatPowerUp
     );
     expect(mockEatenPowerUp.update).toHaveBeenCalledTimes(0);
-    expect(mockEatPowerUp).toHaveBeenCalledTimes(2);
+    expect(mockEatPowerUp).toHaveBeenCalledTimes(0);
   });
 });

@@ -1,7 +1,7 @@
 import changeDirection from "./changeDirection";
 
 let mockPacman;
-let mockObject;
+let mockBoundaries;
 let mockCheckDirectionChange;
 
 describe("changeDirection", () => {
@@ -9,6 +9,7 @@ describe("changeDirection", () => {
     mockPacman = {
       speed: 5,
     };
+    mockBoundaries = "boundaries";
     mockCheckDirectionChange = jest.fn();
   });
 
@@ -19,10 +20,20 @@ describe("changeDirection", () => {
     changeDirection(
       mockVariables,
       mockPacman,
-      mockObject,
+      mockBoundaries,
       mockCheckDirectionChange
     );
     expect(mockCheckDirectionChange).toHaveBeenCalledTimes(1);
+    expect(mockCheckDirectionChange).toHaveBeenCalledWith(
+      mockPacman,
+      mockBoundaries,
+      {
+        velocity: {
+          x: 0,
+          y: -5,
+        },
+      }
+    );
   });
 
   it("calls checkDirectionChange if the last key pressed is down", () => {
@@ -32,10 +43,20 @@ describe("changeDirection", () => {
     changeDirection(
       mockVariables,
       mockPacman,
-      mockObject,
+      mockBoundaries,
       mockCheckDirectionChange
     );
     expect(mockCheckDirectionChange).toHaveBeenCalledTimes(1);
+    expect(mockCheckDirectionChange).toHaveBeenCalledWith(
+      mockPacman,
+      mockBoundaries,
+      {
+        velocity: {
+          x: 0,
+          y: 5,
+        },
+      }
+    );
   });
 
   it("calls checkDirectionChange if the last key pressed is right", () => {
@@ -45,10 +66,20 @@ describe("changeDirection", () => {
     changeDirection(
       mockVariables,
       mockPacman,
-      mockObject,
+      mockBoundaries,
       mockCheckDirectionChange
     );
     expect(mockCheckDirectionChange).toHaveBeenCalledTimes(1);
+    expect(mockCheckDirectionChange).toHaveBeenCalledWith(
+      mockPacman,
+      mockBoundaries,
+      {
+        velocity: {
+          x: 5,
+          y: 0,
+        },
+      }
+    );
   });
 
   it("calls checkDirectionChange if the last key pressed is left", () => {
@@ -58,10 +89,20 @@ describe("changeDirection", () => {
     changeDirection(
       mockVariables,
       mockPacman,
-      mockObject,
+      mockBoundaries,
       mockCheckDirectionChange
     );
     expect(mockCheckDirectionChange).toHaveBeenCalledTimes(1);
+    expect(mockCheckDirectionChange).toHaveBeenCalledWith(
+      mockPacman,
+      mockBoundaries,
+      {
+        velocity: {
+          x: -5,
+          y: 0,
+        },
+      }
+    );
   });
 
   it("does not call checkDirectionChange if the last key pressed is empty", () => {
@@ -71,7 +112,7 @@ describe("changeDirection", () => {
     changeDirection(
       mockVariables,
       mockPacman,
-      mockObject,
+      mockBoundaries,
       mockCheckDirectionChange
     );
     expect(mockCheckDirectionChange).toHaveBeenCalledTimes(0);

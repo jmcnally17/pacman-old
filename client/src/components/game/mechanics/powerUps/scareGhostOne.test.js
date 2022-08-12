@@ -14,6 +14,7 @@ describe("scareGhost", () => {
     jest.spyOn(mockGhost, "changeScaredState");
     scareGhost(mockGhost, mockDeleteScaredTimeout);
     expect(mockDeleteScaredTimeout).toHaveBeenCalledTimes(1);
+    expect(mockDeleteScaredTimeout).toHaveBeenCalledWith(mockGhost);
     expect(mockGhost.scaredTimeout).not.toBeNull();
     expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(1);
     expect(setTimeout).toHaveBeenCalledTimes(1);

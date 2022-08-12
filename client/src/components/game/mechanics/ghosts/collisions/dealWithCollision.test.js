@@ -2,16 +2,25 @@ import dealWithCollision from "./dealWithCollision";
 
 jest.useFakeTimers();
 
-let mockObject;
+let mockPacman;
 let mockVariables;
+let mockGhosts;
+let mockPellets;
+let mockPowerUps;
+let mockCycleTimer;
 let mockGhostAttack;
 
 describe("dealWithCollision", () => {
   beforeEach(() => {
+    mockPacman = "pacman";
     mockVariables = {
       score: 100,
       killCount: 2,
     };
+    mockGhosts = "ghosts";
+    mockPellets = "pellets";
+    mockPowerUps = "powerUps";
+    mockCycleTimer = "cycleTimer";
     mockGhostAttack = jest.fn();
   });
 
@@ -23,15 +32,23 @@ describe("dealWithCollision", () => {
     };
     dealWithCollision(
       mockGhost,
-      mockObject,
+      mockPacman,
       mockVariables,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(1);
+    expect(mockGhostAttack).toHaveBeenCalledWith(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer
+    );
     expect(mockVariables.score).toBe(100);
     expect(mockVariables.killCount).toBe(2);
   });
@@ -51,12 +68,12 @@ describe("dealWithCollision", () => {
     jest.spyOn(global, "clearTimeout");
     dealWithCollision(
       mockGhost,
-      mockObject,
+      mockPacman,
       mockVariables,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(0);

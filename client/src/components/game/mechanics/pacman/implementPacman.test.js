@@ -3,10 +3,12 @@ import implementPacman from "./implementPacman";
 describe("implementPacman", () => {
   it("calls the necessary functions to implement Pac-Man functionality", () => {
     const mockVariables = {};
-    let mockObject;
     const mockPacman = {
       update: () => undefined,
     };
+    const mockBoundaries = "boundaries";
+    const mockCtx = "ctx";
+    const mockPellets = "pellets";
     const mockMakeMove = jest.fn();
     const mockChangeDirection = jest.fn();
     const mockCheckPacmanEating = jest.fn();
@@ -15,18 +17,27 @@ describe("implementPacman", () => {
     implementPacman(
       mockVariables,
       mockPacman,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockBoundaries,
+      mockCtx,
+      mockPellets,
       mockMakeMove,
       mockChangeDirection,
       mockCheckPacmanEating,
       mockImplementTunnel
     );
     expect(mockMakeMove).toHaveBeenCalledTimes(1);
+    expect(mockMakeMove).toHaveBeenCalledWith(mockVariables);
     expect(mockChangeDirection).toHaveBeenCalledTimes(1);
+    expect(mockChangeDirection).toHaveBeenCalledWith(
+      mockVariables,
+      mockPacman,
+      mockBoundaries
+    );
     expect(mockCheckPacmanEating).toHaveBeenCalledTimes(1);
+    expect(mockCheckPacmanEating).toHaveBeenCalledWith(mockPellets, mockPacman);
     expect(mockPacman.update).toHaveBeenCalledTimes(1);
+    expect(mockPacman.update).toHaveBeenCalledWith(mockCtx);
     expect(mockImplementTunnel).toHaveBeenCalledTimes(1);
+    expect(mockImplementTunnel).toHaveBeenCalledWith(mockPacman, mockVariables);
   });
 });

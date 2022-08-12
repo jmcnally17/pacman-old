@@ -1,44 +1,74 @@
 import checkPacmanGhostCollision from "./checkPacmanGhostCollision";
 
-let mockObject;
+let mockGhost;
+let mockPacman;
+let mockVariables;
+let mockGhosts;
+let mockPellets;
+let mockPowerUps;
+let mockCycleTimer;
 let mockDealWithCollision;
 
 describe("checkPacmanGhostCollision", () => {
   beforeEach(() => {
+    mockGhost = "ghost";
+    mockPacman = "pacman";
+    mockVariables = "variables";
+    mockGhosts = "ghosts";
+    mockPellets = "pellets";
+    mockPowerUps = "powerUps";
+    mockCycleTimer = "cycleTimer";
     mockDealWithCollision = jest.fn();
   });
 
   it("call dealWithCollision when the collisionConditional is true", () => {
     const mockCollisionConditional = jest.fn().mockReturnValue(true);
     checkPacmanGhostCollision(
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockGhost,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
       mockCollisionConditional,
       mockDealWithCollision
     );
     expect(mockCollisionConditional).toHaveBeenCalledTimes(1);
+    expect(mockCollisionConditional).toHaveBeenCalledWith(
+      mockGhost,
+      mockPacman
+    );
     expect(mockDealWithCollision).toHaveBeenCalledTimes(1);
+    expect(mockDealWithCollision).toHaveBeenCalledWith(
+      mockGhost,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer
+    );
   });
 
   it("does not call dealWithCollision when the collisionConditional is false", () => {
     const mockCollisionConditional = jest.fn().mockReturnValue(false);
     checkPacmanGhostCollision(
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockGhost,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
       mockCollisionConditional,
       mockDealWithCollision
     );
     expect(mockCollisionConditional).toHaveBeenCalledTimes(1);
+    expect(mockCollisionConditional).toHaveBeenCalledWith(
+      mockGhost,
+      mockPacman
+    );
     expect(mockDealWithCollision).toHaveBeenCalledTimes(0);
   });
 });

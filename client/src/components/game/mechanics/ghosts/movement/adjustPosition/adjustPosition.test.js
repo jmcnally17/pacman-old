@@ -15,6 +15,7 @@ describe("adjustPosition", () => {
     };
     adjustPosition(mockGhost, mockShiftBeforeRetreating, mockShiftRegular);
     expect(mockShiftBeforeRetreating).toHaveBeenCalledTimes(1);
+    expect(mockShiftBeforeRetreating).toHaveBeenCalledWith(mockGhost);
     expect(mockShiftRegular).toHaveBeenCalledTimes(0);
   });
 
@@ -25,5 +26,6 @@ describe("adjustPosition", () => {
     adjustPosition(mockGhost, mockShiftBeforeRetreating, mockShiftRegular);
     expect(mockShiftBeforeRetreating).toHaveBeenCalledTimes(0);
     expect(mockShiftRegular).toHaveBeenCalledTimes(1);
+    expect(mockShiftRegular).toHaveBeenCalledWith(mockGhost);
   });
 });

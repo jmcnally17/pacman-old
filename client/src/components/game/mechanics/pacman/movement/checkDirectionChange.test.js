@@ -1,7 +1,8 @@
 import checkDirectionChange from "./checkDirectionChange";
 
 let mockPacman;
-let mockObject;
+let mockBoundaryOne;
+let mockBoundaryTwo;
 let mockBoundaries;
 let mockVelocity;
 
@@ -13,7 +14,9 @@ describe("checkDirectionChange", () => {
         y: 5,
       },
     };
-    mockBoundaries = [mockObject, mockObject];
+    mockBoundaryOne = "boundaryOne";
+    mockBoundaryTwo = "boundaryTwo";
+    mockBoundaries = [mockBoundaryOne, mockBoundaryTwo];
     mockVelocity = {
       velocity: {
         x: -5,
@@ -31,6 +34,28 @@ describe("checkDirectionChange", () => {
       mockHitBoundaryConditional
     );
     expect(mockHitBoundaryConditional).toHaveBeenCalledTimes(2);
+    expect(mockHitBoundaryConditional).toHaveBeenNthCalledWith(
+      1,
+      mockPacman,
+      mockBoundaryOne,
+      {
+        velocity: {
+          x: -5,
+          y: 0,
+        },
+      }
+    );
+    expect(mockHitBoundaryConditional).toHaveBeenNthCalledWith(
+      2,
+      mockPacman,
+      mockBoundaryTwo,
+      {
+        velocity: {
+          x: -5,
+          y: 0,
+        },
+      }
+    );
     expect(mockPacman.velocity).toEqual({
       x: -5,
       y: 0,
@@ -46,6 +71,28 @@ describe("checkDirectionChange", () => {
       mockHitBoundaryConditional
     );
     expect(mockHitBoundaryConditional).toHaveBeenCalledTimes(2);
+    expect(mockHitBoundaryConditional).toHaveBeenNthCalledWith(
+      1,
+      mockPacman,
+      mockBoundaryOne,
+      {
+        velocity: {
+          x: -5,
+          y: 0,
+        },
+      }
+    );
+    expect(mockHitBoundaryConditional).toHaveBeenNthCalledWith(
+      2,
+      mockPacman,
+      mockBoundaryTwo,
+      {
+        velocity: {
+          x: -5,
+          y: 0,
+        },
+      }
+    );
     expect(mockPacman.velocity).toEqual({
       x: 20,
       y: 5,

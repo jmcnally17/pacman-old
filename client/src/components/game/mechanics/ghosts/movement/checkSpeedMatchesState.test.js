@@ -28,6 +28,7 @@ describe("checkSpeedMatchesState", () => {
     });
     expect(mockGhost.speed).toBe(2);
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
+    expect(mockAdjustPosition).toHaveBeenCalledWith(mockGhost);
   });
 
   it("does not change the ghosts speed and velocity if its speed is tileLength / 8 and is not scared", () => {
@@ -66,6 +67,7 @@ describe("checkSpeedMatchesState", () => {
     });
     expect(mockGhost.speed).toBe(4);
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
+    expect(mockAdjustPosition).toHaveBeenCalledWith(mockGhost);
   });
 
   it("does not change the ghosts speed and velocity if its speed is tileLength / 16 and is scared", () => {
@@ -104,6 +106,7 @@ describe("checkSpeedMatchesState", () => {
     });
     expect(mockGhost.speed).toBe(8);
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
+    expect(mockAdjustPosition).toHaveBeenCalledWith(mockGhost);
   });
 
   it("halves the ghosts speed and velocity if its speed is tileLength / 4 and is not retreating or scared", () => {
@@ -123,6 +126,7 @@ describe("checkSpeedMatchesState", () => {
     });
     expect(mockGhost.speed).toBe(4);
     expect(mockAdjustPosition).toHaveBeenCalledTimes(1);
+    expect(mockAdjustPosition).toHaveBeenCalledWith(mockGhost);
   });
 
   it("does not change the ghosts speed and velocity if its speed is tileLength / 4 and is retreating", () => {

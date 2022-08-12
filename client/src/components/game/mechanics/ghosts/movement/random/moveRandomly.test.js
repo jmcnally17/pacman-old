@@ -83,6 +83,8 @@ describe("moveRandomly", () => {
       mockEmptyPrevCollisions
     );
     expect(mockPickRandomDirection).toHaveBeenCalledTimes(1);
+    expect(mockPickRandomDirection).toHaveBeenCalledWith(mockGhost, ["right"]);
     expect(mockEmptyPrevCollisions).toHaveBeenCalledTimes(1);
+    expect(mockEmptyPrevCollisions).toHaveBeenCalledWith(mockGhost);
   });
 });

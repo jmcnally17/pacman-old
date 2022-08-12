@@ -1,7 +1,6 @@
 import eatPowerUp from "./eatPowerUp";
 
-let mockUneatenPowerUp;
-let mockEatenPowerUp;
+let mockPowerUp;
 let mockPacmanOne;
 let mockPacmanTwo;
 let mockVariables;
@@ -23,24 +22,14 @@ describe("eatPowerUp", () => {
         y: 250,
       },
     };
-    mockUneatenPowerUp = {
+    mockPowerUp = {
       position: {
         x: 200,
         y: 200,
       },
       changeEatenState: () => undefined,
-      hasBeenEaten: false,
     };
-    mockEatenPowerUp = {
-      position: {
-        x: 200,
-        y: 200,
-      },
-      changeEatenState: () => undefined,
-      hasBeenEaten: true,
-    };
-    jest.spyOn(mockUneatenPowerUp, "changeEatenState");
-    jest.spyOn(mockEatenPowerUp, "changeEatenState");
+    jest.spyOn(mockPowerUp, "changeEatenState");
     mockVariables = {
       score: 0,
       killCount: 2,
@@ -54,52 +43,42 @@ describe("eatPowerUp", () => {
 
   it("calls changeEatenState when colliding with Pac-Man, increases the score and resets the kill count to 0", () => {
     eatPowerUp(
-      mockUneatenPowerUp,
+      mockPowerUp,
       mockPacmanOne,
       mockVariables,
       mockGhosts,
       mockScareGhost
     );
-    expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
+    expect(mockPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
     expect(mockVariables.score).toBe(50);
     expect(mockVariables.killCount).toBe(0);
   });
 
-  it("does not call changeEatenState when colliding with Pac-Man, increase the score or reset the kill count if the power up has been eaten", () => {
-    eatPowerUp(
-      mockEatenPowerUp,
-      mockPacmanOne,
-      mockVariables,
-      mockGhosts,
-      mockScareGhost
-    );
-    expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
-    expect(mockVariables.score).toBe(0);
-    expect(mockVariables.killCount).toBe(2);
-  });
-
   it("does not call changeEatenState, increases the score or reset the kill count if the power up and pacman are not colliding", () => {
     eatPowerUp(
-      mockEatenPowerUp,
+      mockPowerUp,
       mockPacmanTwo,
       mockVariables,
       mockGhosts,
       mockScareGhost
     );
-    expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
+    expect(mockPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
     expect(mockVariables.score).toBe(0);
     expect(mockVariables.killCount).toBe(2);
   });
 
   it("calls the scareGhost callback if they are not retreating", () => {
     eatPowerUp(
-      mockUneatenPowerUp,
+      mockPowerUp,
       mockPacmanOne,
       mockVariables,
       mockGhosts,
       mockScareGhost
     );
     expect(mockScareGhost).toHaveBeenCalledTimes(3);
+    expect(mockScareGhost).toHaveBeenNthCalledWith(1, mockGhost);
+    expect(mockScareGhost).toHaveBeenNthCalledWith(2, mockGhost);
+    expect(mockScareGhost).toHaveBeenNthCalledWith(3, mockGhost);
   });
 
   it("does not call the scareGhost callback if they are retreating", () => {
@@ -112,7 +91,7 @@ describe("eatPowerUp", () => {
       mockRetreatingGhost,
     ];
     eatPowerUp(
-      mockUneatenPowerUp,
+      mockPowerUp,
       mockPacmanOne,
       mockVariables,
       mockRetreatingGhosts,

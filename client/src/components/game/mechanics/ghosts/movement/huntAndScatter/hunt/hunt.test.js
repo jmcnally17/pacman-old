@@ -1,6 +1,9 @@
 import hunt from "./hunt";
 
-let mockObject;
+let mockPathway;
+let mockPacman;
+let mockVariables;
+let mockRedGhost;
 let mockIsOrangeFarFromPacman;
 let mockFindRedOrangeAimPath;
 let mockFindPinkAimPath;
@@ -9,6 +12,10 @@ let mockFindOrangeScatterPath;
 
 describe("hunt", () => {
   beforeEach(() => {
+    mockPathway = "pathway";
+    mockPacman = "pacman";
+    mockVariables = "variables";
+    mockRedGhost = "redGhost";
     mockIsOrangeFarFromPacman = jest.fn();
     mockFindRedOrangeAimPath = jest.fn();
     mockFindPinkAimPath = jest.fn();
@@ -22,10 +29,10 @@ describe("hunt", () => {
     };
     hunt(
       mockRedGhost,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPathway,
+      mockPacman,
+      mockVariables,
+      mockRedGhost,
       mockIsOrangeFarFromPacman,
       mockFindRedOrangeAimPath,
       mockFindPinkAimPath,
@@ -34,6 +41,10 @@ describe("hunt", () => {
     );
     expect(mockIsOrangeFarFromPacman).toHaveBeenCalledTimes(0);
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(1);
+    expect(mockFindRedOrangeAimPath).toHaveBeenCalledWith(
+      mockPacman,
+      mockPathway
+    );
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
@@ -45,10 +56,10 @@ describe("hunt", () => {
     };
     hunt(
       mockPinkGhost,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPathway,
+      mockPacman,
+      mockVariables,
+      mockRedGhost,
       mockIsOrangeFarFromPacman,
       mockFindRedOrangeAimPath,
       mockFindPinkAimPath,
@@ -58,6 +69,11 @@ describe("hunt", () => {
     expect(mockIsOrangeFarFromPacman).toHaveBeenCalledTimes(0);
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(1);
+    expect(mockFindPinkAimPath).toHaveBeenCalledWith(
+      mockPacman,
+      mockPathway,
+      mockVariables
+    );
     expect(mockFindCyanAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
   });
@@ -68,10 +84,10 @@ describe("hunt", () => {
     };
     hunt(
       mockCyanGhost,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPathway,
+      mockPacman,
+      mockVariables,
+      mockRedGhost,
       mockIsOrangeFarFromPacman,
       mockFindRedOrangeAimPath,
       mockFindPinkAimPath,
@@ -82,6 +98,12 @@ describe("hunt", () => {
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanAimPath).toHaveBeenCalledTimes(1);
+    expect(mockFindCyanAimPath).toHaveBeenCalledWith(
+      mockPacman,
+      mockVariables,
+      mockRedGhost,
+      mockPathway
+    );
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
   });
 
@@ -92,10 +114,10 @@ describe("hunt", () => {
     mockIsOrangeFarFromPacman.mockReturnValue(true);
     hunt(
       mockOrangeGhost,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPathway,
+      mockPacman,
+      mockVariables,
+      mockRedGhost,
       mockIsOrangeFarFromPacman,
       mockFindRedOrangeAimPath,
       mockFindPinkAimPath,
@@ -103,23 +125,32 @@ describe("hunt", () => {
       mockFindOrangeScatterPath
     );
     expect(mockIsOrangeFarFromPacman).toHaveBeenCalledTimes(1);
+    expect(mockIsOrangeFarFromPacman).toHaveBeenCalledWith(
+      mockOrangeGhost,
+      mockPacman,
+      mockVariables
+    );
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(1);
+    expect(mockFindRedOrangeAimPath).toHaveBeenCalledWith(
+      mockPacman,
+      mockPathway
+    );
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
   });
 
-  it("calls the necessary callbacks if the ghost is orange is close to Pac-Man", () => {
+  it("calls the necessary callbacks if the ghost is orange and is close to Pac-Man", () => {
     const mockOrangeGhost = {
       colour: "orange",
     };
     mockIsOrangeFarFromPacman.mockReturnValue(false);
     hunt(
       mockOrangeGhost,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPathway,
+      mockPacman,
+      mockVariables,
+      mockRedGhost,
       mockIsOrangeFarFromPacman,
       mockFindRedOrangeAimPath,
       mockFindPinkAimPath,
@@ -127,9 +158,15 @@ describe("hunt", () => {
       mockFindOrangeScatterPath
     );
     expect(mockIsOrangeFarFromPacman).toHaveBeenCalledTimes(1);
+    expect(mockIsOrangeFarFromPacman).toHaveBeenCalledWith(
+      mockOrangeGhost,
+      mockPacman,
+      mockVariables
+    );
     expect(mockFindRedOrangeAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindPinkAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanAimPath).toHaveBeenCalledTimes(0);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(1);
+    expect(mockFindOrangeScatterPath).toHaveBeenCalledWith(mockPathway);
   });
 });

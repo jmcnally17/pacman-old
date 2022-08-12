@@ -4,8 +4,13 @@ let mockGhostOne;
 let mockGhostsOne;
 let mockGhostTwo;
 let mockGhostsTwo;
-let mockObject;
+let mockBoundaries;
+let mockCtx;
 let mockVariables;
+let mockPacman;
+let mockPellets;
+let mockPowerUps;
+let mockCycleTimer;
 let mockcheckSpeedMatchesState;
 let mockImplementTunnel;
 let mockUpdateCollisions;
@@ -24,7 +29,13 @@ describe("implementGhosts", () => {
       prevCollisions: [],
     };
     mockGhostsTwo = [mockGhostTwo, mockGhostTwo];
-    mockVariables = {};
+    mockBoundaries = "boundaries";
+    mockCtx = "ctx";
+    mockVariables = "variables";
+    mockPacman = "pacman";
+    mockPellets = "pellets";
+    mockPowerUps = "powerUps";
+    mockCycleTimer = "cycleTimer";
     mockcheckSpeedMatchesState = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();
@@ -36,13 +47,13 @@ describe("implementGhosts", () => {
     jest.spyOn(mockGhostOne, "update");
     implementGhosts(
       mockGhostsOne,
-      mockObject,
-      mockObject,
+      mockBoundaries,
+      mockCtx,
       mockVariables,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -50,23 +61,53 @@ describe("implementGhosts", () => {
       mockCheckPacmanGhostCollision
     );
     expect(mockcheckSpeedMatchesState).toHaveBeenCalledTimes(3);
+    expect(mockcheckSpeedMatchesState).toHaveBeenCalledWith(
+      mockGhostOne,
+      mockVariables
+    );
     expect(mockGhostOne.update).toHaveBeenCalledTimes(3);
+    expect(mockGhostOne.update).toHaveBeenCalledWith(mockCtx);
     expect(mockImplementTunnel).toHaveBeenCalledTimes(3);
+    expect(mockImplementTunnel).toHaveBeenCalledWith(
+      mockGhostOne,
+      mockVariables
+    );
     expect(mockUpdateCollisions).toHaveBeenCalledTimes(3);
+    expect(mockUpdateCollisions).toHaveBeenCalledWith(
+      mockBoundaries,
+      [],
+      mockGhostOne
+    );
     expect(mockChooseMovement).toHaveBeenCalledTimes(3);
+    expect(mockChooseMovement).toHaveBeenCalledWith(
+      mockGhostOne,
+      mockPacman,
+      [],
+      mockVariables,
+      mockGhostOne
+    );
     expect(mockCheckPacmanGhostCollision).toHaveBeenCalledTimes(3);
+    expect(mockCheckPacmanGhostCollision).toHaveBeenCalledWith(
+      mockGhostOne,
+      mockPacman,
+      mockVariables,
+      mockGhostsOne,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer
+    );
   });
 
   it("does not call pickRandomDirection when the collisions array is equal to the prevCollisions array", () => {
     implementGhosts(
       mockGhostsTwo,
-      mockObject,
-      mockObject,
+      mockBoundaries,
+      mockCtx,
       mockVariables,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,

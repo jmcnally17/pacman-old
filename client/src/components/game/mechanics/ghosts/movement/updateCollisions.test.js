@@ -1,13 +1,14 @@
 import updateCollisions from "./updateCollisions";
 
-let mockObject;
+let mockBoundary;
 let mockBoundaries;
 let mockTrueHitBoundaryConditional;
 let mockFalseHitBoundaryConditional;
 
 describe("updateCollisions", () => {
   beforeEach(() => {
-    mockBoundaries = [mockObject];
+    mockBoundary = "boundary";
+    mockBoundaries = [mockBoundary];
     mockTrueHitBoundaryConditional = jest.fn().mockReturnValue(true);
     mockFalseHitBoundaryConditional = jest.fn().mockReturnValue(false);
   });
@@ -15,6 +16,7 @@ describe("updateCollisions", () => {
   it("adds down to the collisions array", () => {
     const mockCollisions = [];
     const mockGhost = {
+      speed: 8,
       prevCollisions: ["down"],
     };
     updateCollisions(
@@ -23,12 +25,24 @@ describe("updateCollisions", () => {
       mockGhost,
       mockTrueHitBoundaryConditional
     );
+    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledTimes(1);
+    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledWith(
+      mockGhost,
+      mockBoundary,
+      {
+        velocity: {
+          x: 0,
+          y: 8,
+        },
+      }
+    );
     expect(mockCollisions).toEqual(["down"]);
   });
 
   it("adds right to the collisions array", () => {
     const mockCollisions = ["down"];
     const mockGhost = {
+      speed: 8,
       prevCollisions: ["down", "right"],
     };
     updateCollisions(
@@ -37,12 +51,24 @@ describe("updateCollisions", () => {
       mockGhost,
       mockTrueHitBoundaryConditional
     );
+    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledTimes(1);
+    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledWith(
+      mockGhost,
+      mockBoundary,
+      {
+        velocity: {
+          x: 8,
+          y: 0,
+        },
+      }
+    );
     expect(mockCollisions).toEqual(["down", "right"]);
   });
 
   it("adds left to the collisions array", () => {
     const mockCollisions = ["down", "right"];
     const mockGhost = {
+      speed: 8,
       prevCollisions: ["down", "right", "left"],
     };
     updateCollisions(
@@ -51,12 +77,24 @@ describe("updateCollisions", () => {
       mockGhost,
       mockTrueHitBoundaryConditional
     );
+    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledTimes(1);
+    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledWith(
+      mockGhost,
+      mockBoundary,
+      {
+        velocity: {
+          x: -8,
+          y: 0,
+        },
+      }
+    );
     expect(mockCollisions).toEqual(["down", "right", "left"]);
   });
 
   it("adds up to the collisions array", () => {
     const mockCollisions = ["down", "right", "left"];
     const mockGhost = {
+      speed: 8,
       prevCollisions: ["down", "right", "left", "up"],
     };
     updateCollisions(
@@ -64,6 +102,17 @@ describe("updateCollisions", () => {
       mockCollisions,
       mockGhost,
       mockTrueHitBoundaryConditional
+    );
+    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledTimes(1);
+    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledWith(
+      mockGhost,
+      mockBoundary,
+      {
+        velocity: {
+          x: 0,
+          y: -8,
+        },
+      }
     );
     expect(mockCollisions).toEqual(["down", "right", "left", "up"]);
   });
@@ -79,6 +128,7 @@ describe("updateCollisions", () => {
       mockGhost,
       mockFalseHitBoundaryConditional
     );
+    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledTimes(0);
     expect(mockCollisions).toEqual([]);
   });
 

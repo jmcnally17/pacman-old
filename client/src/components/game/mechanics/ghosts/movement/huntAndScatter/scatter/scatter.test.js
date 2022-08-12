@@ -1,6 +1,6 @@
 import scatter from "./scatter";
 
-let mockObject;
+let mockPathway;
 let mockFindRedScatterPath;
 let mockFindPinkScatterPath;
 let mockFindCyanScatterPath;
@@ -8,6 +8,7 @@ let mockFindOrangeScatterPath;
 
 describe("scatter", () => {
   beforeEach(() => {
+    mockPathway = "pathway";
     mockFindRedScatterPath = jest.fn();
     mockFindPinkScatterPath = jest.fn();
     mockFindCyanScatterPath = jest.fn();
@@ -20,13 +21,14 @@ describe("scatter", () => {
     };
     scatter(
       mockRedGhost,
-      mockObject,
+      mockPathway,
       mockFindRedScatterPath,
       mockFindPinkScatterPath,
       mockFindCyanScatterPath,
       mockFindOrangeScatterPath
     );
     expect(mockFindRedScatterPath).toHaveBeenCalledTimes(1);
+    expect(mockFindRedScatterPath).toHaveBeenCalledWith(mockPathway);
     expect(mockFindPinkScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
@@ -38,7 +40,7 @@ describe("scatter", () => {
     };
     scatter(
       mockPinkGhost,
-      mockObject,
+      mockPathway,
       mockFindRedScatterPath,
       mockFindPinkScatterPath,
       mockFindCyanScatterPath,
@@ -46,6 +48,7 @@ describe("scatter", () => {
     );
     expect(mockFindRedScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindPinkScatterPath).toHaveBeenCalledTimes(1);
+    expect(mockFindPinkScatterPath).toHaveBeenCalledWith(mockPathway);
     expect(mockFindCyanScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
   });
@@ -56,7 +59,7 @@ describe("scatter", () => {
     };
     scatter(
       mockCyanGhost,
-      mockObject,
+      mockPathway,
       mockFindRedScatterPath,
       mockFindPinkScatterPath,
       mockFindCyanScatterPath,
@@ -65,6 +68,7 @@ describe("scatter", () => {
     expect(mockFindRedScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindPinkScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanScatterPath).toHaveBeenCalledTimes(1);
+    expect(mockFindCyanScatterPath).toHaveBeenCalledWith(mockPathway);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
   });
 
@@ -74,7 +78,7 @@ describe("scatter", () => {
     };
     scatter(
       mockOrangeGhost,
-      mockObject,
+      mockPathway,
       mockFindRedScatterPath,
       mockFindPinkScatterPath,
       mockFindCyanScatterPath,
@@ -84,5 +88,6 @@ describe("scatter", () => {
     expect(mockFindPinkScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(1);
+    expect(mockFindOrangeScatterPath).toHaveBeenCalledWith(mockPathway);
   });
 });
