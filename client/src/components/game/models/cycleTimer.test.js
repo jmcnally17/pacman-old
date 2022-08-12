@@ -43,6 +43,17 @@ describe("CycleTimer", () => {
     });
   });
 
+  describe("pause", () => {
+    it("calls clearTimeout and saves the time remaining in this.timeRemaining", () => {
+      jest.spyOn(global, "clearTimeout");
+      const mockDateNow = 5780;
+      timer.startTime = 2460;
+      timer.pause(mockDateNow);
+      expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(timer.timeRemaining).toBe(3320);
+    });
+  });
+
   describe("reset", () => {
     it("clears the timeout and sets the count back to 0", () => {
       jest.spyOn(global, "clearTimeout");

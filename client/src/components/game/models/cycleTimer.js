@@ -20,6 +20,12 @@ export default class CycleTimer {
     this.count === 0 ? this.count++ : this.count--;
   }
 
+  pause(dateNow = Date.now()) {
+    const now = dateNow;
+    this.timeRemaining = now - this.startTime;
+    clearTimeout(this.timeout);
+  }
+
   reset() {
     clearTimeout(this.timeout);
     this.count = 0;
