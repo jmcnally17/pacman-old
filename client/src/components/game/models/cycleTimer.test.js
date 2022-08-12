@@ -25,10 +25,12 @@ describe("CycleTimer", () => {
   });
 
   describe("start", () => {
-    it("calls setTimeout with a time of seven seconds when the count is 0 and adds 1 to the count", () => {
+    it("begins the timeout with a delay of seven seconds if the count is equal to 1", () => {
+      const mockDateNow = 16940;
       jest.spyOn(global, "setTimeout");
-      timer.start(mockGhosts);
+      timer.start(mockGhosts, mockDateNow);
 
+      expect(timer.startTime).toBe(16940);
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 7000);
       expect(timer.timeout).not.toBeNull();

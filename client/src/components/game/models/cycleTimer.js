@@ -5,7 +5,8 @@ export default class CycleTimer {
     this.startTime = null;
   }
 
-  start(ghosts) {
+  start(ghosts, dateNow = Date.now()) {
+    this.startTime = dateNow;
     this.timeout = setTimeout(
       () => {
         ghosts.forEach((ghost) => {
