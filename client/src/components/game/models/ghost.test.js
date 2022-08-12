@@ -165,6 +165,7 @@ describe("Ghost", () => {
       expect(scaredGhost.prevCollisions).toEqual([]);
       expect(scaredGhost.isScared).toBeFalsy();
       expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledWith(scaredGhost.scaredTimeout);
     });
 
     it("leaves isScared as false if it is already false", () => {
@@ -190,6 +191,7 @@ describe("Ghost", () => {
       scaredGhost.resetRetreatingState();
       expect(scaredGhost.isRetreating).toBeFalsy();
       expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledWith(scaredGhost.retreatingTimeout);
     });
 
     it("leaves the retreating state as false if it is already false", () => {

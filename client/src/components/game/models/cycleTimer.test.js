@@ -53,6 +53,7 @@ describe("CycleTimer", () => {
       timer.startTime = 2460;
       timer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledWith(timer.timeout);
       expect(timer.timeRemaining).toBe(3680);
     });
 
@@ -62,6 +63,7 @@ describe("CycleTimer", () => {
       timer.startTime = 2460;
       timer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledWith(timer.timeout);
       expect(timer.timeRemaining).toBe(16680);
     });
   });
@@ -72,6 +74,7 @@ describe("CycleTimer", () => {
       timer.count = 1;
       timer.reset();
       expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledWith(timer.timeout);
       expect(timer.count).toBe(0);
     });
   });

@@ -68,6 +68,7 @@ describe("dealWithCollision", () => {
     expect(mockGhost.retreatingTimeout).not.toBeNull();
     expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(1);
     expect(clearTimeout).toHaveBeenCalledTimes(1);
+    expect(clearTimeout).toHaveBeenCalledWith(mockGhost.scaredTimeout);
     jest.runOnlyPendingTimers();
     expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(2);
   });
