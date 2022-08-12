@@ -51,10 +51,7 @@ describe("eatPowerUp", () => {
   });
 
   it("calls changeEatenState when colliding with Pac-Man, increases the score and resets the kill count to 0", () => {
-    const changeEatenStateSpy = jest.spyOn(
-      mockUneatenPowerUp,
-      "changeEatenState"
-    );
+    jest.spyOn(mockUneatenPowerUp, "changeEatenState");
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
@@ -62,16 +59,13 @@ describe("eatPowerUp", () => {
       mockGhosts,
       mockScareGhost
     );
-    expect(changeEatenStateSpy).toHaveBeenCalledTimes(1);
+    expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
     expect(mockVariables.score).toBe(50);
     expect(mockVariables.killCount).toBe(0);
   });
 
   it("does not call changeEatenState when colliding with Pac-Man, increase the score or reset the kill count if the power up has been eaten", () => {
-    const changeEatenStateSpy = jest.spyOn(
-      mockEatenPowerUp,
-      "changeEatenState"
-    );
+    jest.spyOn(mockEatenPowerUp, "changeEatenState");
     eatPowerUp(
       mockEatenPowerUp,
       mockPacmanOne,
@@ -79,16 +73,13 @@ describe("eatPowerUp", () => {
       mockGhosts,
       mockScareGhost
     );
-    expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
+    expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
     expect(mockVariables.score).toBe(0);
     expect(mockVariables.killCount).toBe(2);
   });
 
   it("does not call changeEatenState, increases the score or reset the kill count if the power up and pacman are not colliding", () => {
-    const changeEatenStateSpy = jest.spyOn(
-      mockUneatenPowerUp,
-      "changeEatenState"
-    );
+    jest.spyOn(mockUneatenPowerUp, "changeEatenState");
     eatPowerUp(
       mockEatenPowerUp,
       mockPacmanTwo,
@@ -96,7 +87,7 @@ describe("eatPowerUp", () => {
       mockGhosts,
       mockScareGhost
     );
-    expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
+    expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
     expect(mockVariables.score).toBe(0);
     expect(mockVariables.killCount).toBe(2);
   });

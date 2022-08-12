@@ -5,8 +5,6 @@ let mockUneatenPowerUps;
 let mockEatenPowerUp;
 let mockEatenPowerUps;
 let mockObject;
-let uneatenUpdateSpy;
-let eatenUpdateSpy;
 let mockEatPowerUp;
 
 describe("implementPowerUps", () => {
@@ -25,8 +23,8 @@ describe("implementPowerUps", () => {
       update: () => undefined,
     };
     mockEatenPowerUps = [mockEatenPowerUp, mockEatenPowerUp];
-    uneatenUpdateSpy = jest.spyOn(mockUneatenPowerUp, "update");
-    eatenUpdateSpy = jest.spyOn(mockEatenPowerUp, "update");
+    jest.spyOn(mockUneatenPowerUp, "update");
+    jest.spyOn(mockEatenPowerUp, "update");
     mockEatPowerUp = jest.fn();
   });
 
@@ -40,7 +38,7 @@ describe("implementPowerUps", () => {
       mockObject,
       mockEatPowerUp
     );
-    expect(uneatenUpdateSpy).toHaveBeenCalledTimes(3);
+    expect(mockUneatenPowerUp.update).toHaveBeenCalledTimes(3);
     expect(mockEatPowerUp).toHaveBeenCalledTimes(3);
   });
 
@@ -54,7 +52,7 @@ describe("implementPowerUps", () => {
       mockObject,
       mockEatPowerUp
     );
-    expect(eatenUpdateSpy).toHaveBeenCalledTimes(0);
+    expect(mockEatenPowerUp.update).toHaveBeenCalledTimes(0);
     expect(mockEatPowerUp).toHaveBeenCalledTimes(2);
   });
 });

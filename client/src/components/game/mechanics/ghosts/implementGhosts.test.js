@@ -33,7 +33,7 @@ describe("implementGhosts", () => {
   });
 
   it("calls the necessary callback functions to implement the ghosts functionality", () => {
-    const updateSpy = jest.spyOn(mockGhostOne, "update");
+    jest.spyOn(mockGhostOne, "update");
     implementGhosts(
       mockGhostsOne,
       mockObject,
@@ -50,7 +50,7 @@ describe("implementGhosts", () => {
       mockCheckPacmanGhostCollision
     );
     expect(mockcheckSpeedMatchesState).toHaveBeenCalledTimes(3);
-    expect(updateSpy).toHaveBeenCalledTimes(3);
+    expect(mockGhostOne.update).toHaveBeenCalledTimes(3);
     expect(mockImplementTunnel).toHaveBeenCalledTimes(3);
     expect(mockUpdateCollisions).toHaveBeenCalledTimes(3);
     expect(mockChooseMovement).toHaveBeenCalledTimes(3);

@@ -3,7 +3,6 @@ import CycleTimer from "./cycleTimer";
 let timer;
 let mockGhost;
 let mockGhosts;
-let huntingSpy;
 jest.useFakeTimers();
 
 describe("CycleTimer", () => {
@@ -12,7 +11,7 @@ describe("CycleTimer", () => {
       changeHuntingState: () => true,
     };
     mockGhosts = [mockGhost, mockGhost];
-    huntingSpy = jest.spyOn(mockGhost, "changeHuntingState");
+    jest.spyOn(mockGhost, "changeHuntingState");
     timer = new CycleTimer(mockGhosts);
   });
 
@@ -39,7 +38,7 @@ describe("CycleTimer", () => {
       expect(timer.count).toBe(1);
 
       jest.runOnlyPendingTimers();
-      expect(huntingSpy).toHaveBeenCalledTimes(2);
+      expect(mockGhost.changeHuntingState).toHaveBeenCalledTimes(2);
       expect(setTimeout).toHaveBeenCalledTimes(2);
     });
   });

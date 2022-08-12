@@ -9,7 +9,7 @@ describe("CycleTimer", () => {
         changeHuntingState: () => true,
       };
       const mockGhosts = [mockGhost, mockGhost];
-      const huntingSpy = jest.spyOn(mockGhost, "changeHuntingState");
+      jest.spyOn(mockGhost, "changeHuntingState");
       const timer = new CycleTimer(mockGhosts);
       jest.spyOn(global, "setTimeout");
       timer.count = 1;
@@ -21,7 +21,7 @@ describe("CycleTimer", () => {
       expect(timer.count).toBe(0);
 
       jest.runOnlyPendingTimers();
-      expect(huntingSpy).toHaveBeenCalledTimes(2);
+      expect(mockGhost.changeHuntingState).toHaveBeenCalledTimes(2);
       expect(setTimeout).toHaveBeenCalledTimes(2);
     });
   });

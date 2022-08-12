@@ -5,8 +5,6 @@ let mockUneatenPellets;
 let mockEatenPellet;
 let mockEatenPellets;
 let mockObject;
-let uneatenDrawSpy;
-let eatenDrawSpy;
 let mockEatPellet;
 let mockCheckLevelUpCondition;
 
@@ -26,8 +24,8 @@ describe("implementPellets", () => {
       draw: () => undefined,
     };
     mockEatenPellets = [mockEatenPellet, mockEatenPellet];
-    uneatenDrawSpy = jest.spyOn(mockUneatenPellet, "draw");
-    eatenDrawSpy = jest.spyOn(mockEatenPellet, "draw");
+    jest.spyOn(mockUneatenPellet, "draw");
+    jest.spyOn(mockEatenPellet, "draw");
     mockEatPellet = jest.fn();
     mockCheckLevelUpCondition = jest.fn();
   });
@@ -44,7 +42,7 @@ describe("implementPellets", () => {
       mockEatPellet,
       mockCheckLevelUpCondition
     );
-    expect(uneatenDrawSpy).toHaveBeenCalledTimes(3);
+    expect(mockUneatenPellet.draw).toHaveBeenCalledTimes(3);
     expect(mockEatPellet).toHaveBeenCalledTimes(3);
     expect(mockCheckLevelUpCondition).toHaveBeenCalledTimes(1);
   });
@@ -61,7 +59,7 @@ describe("implementPellets", () => {
       mockEatPellet,
       mockCheckLevelUpCondition
     );
-    expect(eatenDrawSpy).toHaveBeenCalledTimes(0);
+    expect(mockEatenPellet.draw).toHaveBeenCalledTimes(0);
     expect(mockEatPellet).toHaveBeenCalledTimes(2);
     expect(mockCheckLevelUpCondition).toHaveBeenCalledTimes(1);
   });

@@ -87,19 +87,19 @@ describe("Ghost", () => {
 
   describe("draw", () => {
     it("calls drawImage on ctx to draw the ghost", () => {
-      const ctxSpy = jest.spyOn(mockCtx, "drawImage");
+      jest.spyOn(mockCtx, "drawImage");
       ghost.draw(mockCtx);
-      expect(ctxSpy).toHaveBeenCalledTimes(1);
+      expect(mockCtx.drawImage).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("update", () => {
     it("calls assignSprite and draw and updates the position", () => {
-      const assignSpriteSpy = jest.spyOn(ghost, "assignSprite");
-      const drawSpy = jest.spyOn(ghost, "draw");
+      jest.spyOn(ghost, "assignSprite");
+      jest.spyOn(ghost, "draw");
       ghost.update(mockCtx);
-      expect(assignSpriteSpy).toHaveBeenCalledTimes(1);
-      expect(drawSpy).toHaveBeenCalledTimes(1);
+      expect(ghost.assignSprite).toHaveBeenCalledTimes(1);
+      expect(ghost.draw).toHaveBeenCalledTimes(1);
       expect(ghost.position).toEqual({
         x: 27.5,
         y: 22.5,
@@ -151,7 +151,7 @@ describe("Ghost", () => {
       scaredGhost.velocity.y += 10;
       scaredGhost.speed = 16;
       scaredGhost.prevCollisions.push("up");
-      const clearSpy = jest.spyOn(global, "clearTimeout");
+      jest.spyOn(global, "clearTimeout");
       scaredGhost.reset();
       expect(scaredGhost.position).toEqual({
         x: 20,
@@ -164,7 +164,7 @@ describe("Ghost", () => {
       expect(scaredGhost.speed).toBe(2.5);
       expect(scaredGhost.prevCollisions).toEqual([]);
       expect(scaredGhost.isScared).toBeFalsy();
-      expect(clearSpy).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledTimes(1);
     });
 
     it("leaves isScared as false if it is already false", () => {
@@ -187,10 +187,10 @@ describe("Ghost", () => {
 
   describe("resetRetreatingState", () => {
     it("changes the retreating state back to false and clears the retreating timeout", () => {
-      const clearTimeoutSpy = jest.spyOn(global, "clearTimeout");
+      jest.spyOn(global, "clearTimeout");
       scaredGhost.resetRetreatingState();
       expect(scaredGhost.isRetreating).toBeFalsy();
-      expect(clearTimeoutSpy).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledTimes(1);
     });
 
     it("leaves the retreating state as false if it is already false", () => {

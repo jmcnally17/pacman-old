@@ -44,10 +44,10 @@ describe("dealWithCollision", () => {
       changeRetreatingState: () => undefined,
       retreatingTimeout: null,
     };
-    const ghostRetreatingSpy = jest.spyOn(mockGhost, "changeRetreatingState");
-    const timeoutSpy = jest.spyOn(global, "setTimeout");
-    const ghostScaredSpy = jest.spyOn(mockGhost, "changeScaredState");
-    const clearTimeoutSpy = jest.spyOn(global, "clearTimeout");
+    jest.spyOn(mockGhost, "changeRetreatingState");
+    jest.spyOn(global, "setTimeout");
+    jest.spyOn(mockGhost, "changeScaredState");
+    jest.spyOn(global, "clearTimeout");
     dealWithCollision(
       mockGhost,
       mockObject,
@@ -61,12 +61,12 @@ describe("dealWithCollision", () => {
     expect(mockGhostAttack).toHaveBeenCalledTimes(0);
     expect(mockVariables.score).toBe(900);
     expect(mockVariables.killCount).toBe(3);
-    expect(ghostRetreatingSpy).toHaveBeenCalledTimes(1);
-    expect(timeoutSpy).toHaveBeenCalledTimes(1);
+    expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(1);
+    expect(setTimeout).toHaveBeenCalledTimes(1);
     expect(mockGhost.retreatingTimeout).not.toBeNull();
-    expect(ghostScaredSpy).toHaveBeenCalledTimes(1);
-    expect(clearTimeoutSpy).toHaveBeenCalledTimes(1);
+    expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(1);
+    expect(clearTimeout).toHaveBeenCalledTimes(1);
     jest.runOnlyPendingTimers();
-    expect(ghostRetreatingSpy).toHaveBeenCalledTimes(2);
+    expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(2);
   });
 });

@@ -11,7 +11,7 @@ describe("implementPacman", () => {
     const mockChangeDirection = jest.fn();
     const mockCheckPacmanEating = jest.fn();
     const mockImplementTunnel = jest.fn();
-    const pacmanSpy = jest.spyOn(mockPacman, "update");
+    jest.spyOn(mockPacman, "update");
     implementPacman(
       mockVariables,
       mockPacman,
@@ -26,7 +26,7 @@ describe("implementPacman", () => {
     expect(mockMakeMove).toHaveBeenCalledTimes(1);
     expect(mockChangeDirection).toHaveBeenCalledTimes(1);
     expect(mockCheckPacmanEating).toHaveBeenCalledTimes(1);
-    expect(pacmanSpy).toHaveBeenCalledTimes(1);
+    expect(mockPacman.update).toHaveBeenCalledTimes(1);
     expect(mockImplementTunnel).toHaveBeenCalledTimes(1);
   });
 });

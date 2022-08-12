@@ -60,16 +60,13 @@ describe("resetAfterGameOver", () => {
   });
 
   it("resets the board to its original configuration after game over", () => {
-    const eatenPelletSpy = jest.spyOn(mockEatenPellet, "changeEatenState");
-    const eatenPowerUpSpy = jest.spyOn(mockEatenPowerUp, "changeEatenState");
-    const timerResetSpy = jest.spyOn(mockCycleTimer, "reset");
-    const ghostSpy = jest.spyOn(mockGhost, "reset");
-    const ghostResetHuntingSpy = jest.spyOn(mockGhost, "resetHuntingState");
-    const ghostResetRetreatingSpy = jest.spyOn(
-      mockGhost,
-      "resetRetreatingState"
-    );
-    const pacmanSpy = jest.spyOn(mockPacman, "reset");
+    jest.spyOn(mockEatenPellet, "changeEatenState");
+    jest.spyOn(mockEatenPowerUp, "changeEatenState");
+    jest.spyOn(mockCycleTimer, "reset");
+    jest.spyOn(mockGhost, "reset");
+    jest.spyOn(mockGhost, "resetHuntingState");
+    jest.spyOn(mockGhost, "resetRetreatingState");
+    jest.spyOn(mockPacman, "reset");
     resetAfterGameOver(
       mockEatenPellets,
       mockEatenPowerUps,
@@ -78,24 +75,21 @@ describe("resetAfterGameOver", () => {
       mockVariables,
       mockCycleTimer
     );
-    expect(eatenPelletSpy).toHaveBeenCalledTimes(3);
-    expect(eatenPowerUpSpy).toHaveBeenCalledTimes(2);
-    expect(timerResetSpy).toHaveBeenCalledTimes(1);
-    expect(ghostSpy).toHaveBeenCalledTimes(2);
-    expect(ghostResetHuntingSpy).toHaveBeenCalledTimes(2);
-    expect(ghostResetRetreatingSpy).toHaveBeenCalledTimes(2);
-    expect(pacmanSpy).toHaveBeenCalledTimes(1);
+    expect(mockEatenPellet.changeEatenState).toHaveBeenCalledTimes(3);
+    expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(2);
+    expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
+    expect(mockGhost.reset).toHaveBeenCalledTimes(2);
+    expect(mockGhost.resetHuntingState).toHaveBeenCalledTimes(2);
+    expect(mockGhost.resetRetreatingState).toHaveBeenCalledTimes(2);
+    expect(mockPacman.reset).toHaveBeenCalledTimes(1);
     expect(mockPacman.lives).toBe(2);
     expect(mockVariables.lastKeyPressed).toBe("");
     expect(mockVariables.level).toBe(1);
   });
 
   it("does not call changeEatenState on the pellets and power ups if their conditionals are not met", () => {
-    const uneatenPelletSpy = jest.spyOn(mockUneatenPellet, "changeEatenState");
-    const uneatenPowerUpSpy = jest.spyOn(
-      mockUneatenPowerUp,
-      "changeEatenState"
-    );
+    jest.spyOn(mockUneatenPellet, "changeEatenState");
+    jest.spyOn(mockUneatenPowerUp, "changeEatenState");
     resetAfterGameOver(
       mockUneatenPellets,
       mockUneatenPowerUps,
@@ -104,7 +98,7 @@ describe("resetAfterGameOver", () => {
       mockVariables,
       mockCycleTimer
     );
-    expect(uneatenPelletSpy).toHaveBeenCalledTimes(0);
-    expect(uneatenPowerUpSpy).toHaveBeenCalledTimes(0);
+    expect(mockUneatenPellet.changeEatenState).toHaveBeenCalledTimes(0);
+    expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
   });
 });

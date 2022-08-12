@@ -10,13 +10,13 @@ describe("scareGhost", () => {
       changeScaredState: () => undefined,
       scaredTimeout: null,
     };
-    const changeStateSpy = jest.spyOn(mockScaredGhost, "changeScaredState");
+    jest.spyOn(mockScaredGhost, "changeScaredState");
     scareGhost(mockScaredGhost);
     expect(clearTimeout).toHaveBeenCalledTimes(1);
     expect(mockScaredGhost.scaredTimeout).not.toBeNull();
-    expect(changeStateSpy).toHaveBeenCalledTimes(0);
+    expect(mockScaredGhost.changeScaredState).toHaveBeenCalledTimes(0);
     expect(setTimeout).toHaveBeenCalledTimes(1);
     jest.runOnlyPendingTimers();
-    expect(changeStateSpy).toHaveBeenCalledTimes(1);
+    expect(mockScaredGhost.changeScaredState).toHaveBeenCalledTimes(1);
   });
 });
