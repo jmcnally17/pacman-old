@@ -79,7 +79,7 @@ export default function playGame(name, reactRoot) {
   ctx.clearRect(0, 0, 896, 992);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementGhosts(ghosts, boundaries, ctx, variables, pacman, pellets, powerUps, ghosts[0], cycleTimer);
+  implementGhosts(ghosts, boundaries, ctx, variables, pacman, pellets, powerUps, cycleTimer);
   implementPacman(variables, pacman, boundaries, ctx, pellets);
   implementPellets(pellets, ctx, pacman, variables, ghosts, powerUps, cycleTimer);
   implementPowerUps(powerUps, ctx, pacman, variables, ghosts);
