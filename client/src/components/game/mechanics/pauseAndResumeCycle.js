@@ -1,4 +1,11 @@
-export default function pauseAndResumeCycle(cycleTimer, gameWindow = window) {
-  gameWindow.addEventListener("blur", cycleTimer.pause);
-  gameWindow.addEventListener("focus", cycleTimer.resume);
+export default function pauseAndResumeCycle(cycleTimer, variables) {
+  document.addEventListener("visibilitychange", () => {
+    if (variables.windowIsVisible) {
+      cycleTimer.pause();
+      variables.windowIsVisible = false;
+    } else {
+      cycleTimer.resume();
+      variables.windowIsVisible = true;
+    }
+  });
 }

@@ -1,7 +1,8 @@
 import pauseAndResumeCycle from "./pauseAndResumeCycle";
 
 let mockCycleTimer;
-let mockGameWindow;
+let mockVariables;
+let visibilityChange;
 
 describe("pauseAndResumeCycle", () => {
   beforeEach(() => {
@@ -9,24 +10,28 @@ describe("pauseAndResumeCycle", () => {
       pause: () => undefined,
       resume: () => undefined,
     };
-    mockGameWindow = {
-      addEventListener: () => undefined,
+    mockVariables = {
+      windowIsVisible: true,
     };
-    jest.spyOn(mockGameWindow, "addEventListener");
+    visibilityChange = new Event("visibilitychange");
+    jest.spyOn(mockCycleTimer, "pause");
+    jest.spyOn(mockCycleTimer, "resume");
   });
 
-  it("adds the event listener to pause and resume the cycle when window is out of and in focus respectively", () => {
-    pauseAndResumeCycle(mockCycleTimer, mockGameWindow);
-    expect(mockGameWindow.addEventListener).toHaveBeenCalledTimes(2);
-    expect(mockGameWindow.addEventListener).toHaveBeenNthCalledWith(
-      1,
-      "blur",
-      mockCycleTimer.pause
-    );
-    expect(mockGameWindow.addEventListener).toHaveBeenNthCalledWith(
-      2,
-      "focus",
-      mockCycleTimer.resume
-    );
+  it("pauses the cycle when the window becomes invisible", () => {
+    pauseAndResumeCycle(mockCycleTimer, mockVariables);
+    document.dispatchEvent(visibilityChange);
+    expect(mockCycleTimer.pause).toHaveBeenCalledTimes(1);
+    expect(mockCycleTimer.resume).toHaveBeenCalledTimes(0);
+    expect(mockVariables.windowIsVisible).toBeFalsy();
+  });
+
+  it("resumes the cycle when the window becomes visible", () => {
+    mockVariables.windowIsVisible = false;
+    pauseAndResumeCycle(mockCycleTimer, mockVariables);
+    document.dispatchEvent(visibilityChange);
+    expect(mockCycleTimer.pause).toHaveBeenCalledTimes(0);
+    expect(mockCycleTimer.resume).toHaveBeenCalledTimes(1);
+    expect(mockVariables.windowIsVisible).toBeTruthy();
   });
 });

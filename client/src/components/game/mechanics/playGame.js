@@ -4,6 +4,7 @@ import makePowerUps from "./powerUps/makePowerUps";
 import makeGhosts from "./ghosts/makeGhosts";
 import makePacman from "./pacman/makePacman";
 import CycleTimer from "../models/cycleTimer";
+import pauseAndResumeCycle from "./pauseAndResumeCycle";
 import implementBoundaries from "./boundaries/implementBoundaries";
 import implementGhosts from "./ghosts/implementGhosts";
 import implementPacman from "./pacman/implementPacman";
@@ -49,6 +50,7 @@ const map = [
 
 const variables = {
   tileLength: 32,
+  windowIsVisible: true,
   score: 0,
   lastKeyPressed: "",
   level: 1,
@@ -71,6 +73,7 @@ export default function playGame(name, reactRoot) {
     variables.playerName = name;
     variables.reactRoot = reactRoot;
     cycleTimer.start();
+    pauseAndResumeCycle(cycleTimer, variables);
     variables.start = false;
   }
   variables.animationId = requestAnimationFrame(playGame);
