@@ -39,6 +39,8 @@ describe("eatPowerUp", () => {
       changeEatenState: () => undefined,
       hasBeenEaten: true,
     };
+    jest.spyOn(mockUneatenPowerUp, "changeEatenState");
+    jest.spyOn(mockEatenPowerUp, "changeEatenState");
     mockVariables = {
       score: 0,
       killCount: 2,
@@ -51,7 +53,6 @@ describe("eatPowerUp", () => {
   });
 
   it("calls changeEatenState when colliding with Pac-Man, increases the score and resets the kill count to 0", () => {
-    jest.spyOn(mockUneatenPowerUp, "changeEatenState");
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
@@ -65,7 +66,6 @@ describe("eatPowerUp", () => {
   });
 
   it("does not call changeEatenState when colliding with Pac-Man, increase the score or reset the kill count if the power up has been eaten", () => {
-    jest.spyOn(mockEatenPowerUp, "changeEatenState");
     eatPowerUp(
       mockEatenPowerUp,
       mockPacmanOne,
@@ -79,7 +79,6 @@ describe("eatPowerUp", () => {
   });
 
   it("does not call changeEatenState, increases the score or reset the kill count if the power up and pacman are not colliding", () => {
-    jest.spyOn(mockUneatenPowerUp, "changeEatenState");
     eatPowerUp(
       mockEatenPowerUp,
       mockPacmanTwo,

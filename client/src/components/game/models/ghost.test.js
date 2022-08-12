@@ -40,6 +40,7 @@ describe("Ghost", () => {
     mockCtx = {
       drawImage: () => undefined,
     };
+    jest.spyOn(global, "clearTimeout");
   });
 
   describe("upon instantiation", () => {
@@ -151,7 +152,6 @@ describe("Ghost", () => {
       scaredGhost.velocity.y += 10;
       scaredGhost.speed = 16;
       scaredGhost.prevCollisions.push("up");
-      jest.spyOn(global, "clearTimeout");
       scaredGhost.reset();
       expect(scaredGhost.position).toEqual({
         x: 20,
@@ -187,7 +187,6 @@ describe("Ghost", () => {
 
   describe("resetRetreatingState", () => {
     it("changes the retreating state back to false and clears the retreating timeout", () => {
-      jest.spyOn(global, "clearTimeout");
       scaredGhost.resetRetreatingState();
       expect(scaredGhost.isRetreating).toBeFalsy();
       expect(clearTimeout).toHaveBeenCalledTimes(1);
