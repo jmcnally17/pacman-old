@@ -2,6 +2,7 @@ export default class CycleTimer {
   constructor() {
     this.timeout = null;
     this.count = 0;
+    this.startTime = null;
   }
 
   start(ghosts) {
