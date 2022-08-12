@@ -10,10 +10,7 @@ export default class CycleTimer {
     this.startTime = dateNow;
     this.timeout = setTimeout(
       () => {
-        ghosts.forEach((ghost) => {
-          ghost.changeHuntingState();
-        });
-        this.start(ghosts);
+        this.#switchHuntScatterState(ghosts);
       },
       this.count === 0 ? 7000 : 20000
     );
@@ -28,15 +25,25 @@ export default class CycleTimer {
 
   resume(ghosts) {
     this.timeout = setTimeout(() => {
-      ghosts.forEach((ghost) => {
-        ghost.changeHuntingState();
-      });
-      this.start(ghosts);
+      this.#switchHuntScatterState(ghosts);
     }, this.timeRemaining);
   }
 
   reset() {
     clearTimeout(this.timeout);
     this.count = 0;
+  }
+
+  private;
+
+  #switchHuntScatterState(ghosts) {
+    ghosts.forEach((ghost) => {
+      ghost.changeHuntingState();
+    });
+    this.#carryOnCycle(ghosts);
+  }
+
+  #carryOnCycle(ghosts) {
+    this.start(ghosts);
   }
 }
