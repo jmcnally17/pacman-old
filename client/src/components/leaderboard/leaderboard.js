@@ -10,13 +10,7 @@ if (process.env.REACT_APP_URL) {
   url = "http://localhost:9000/backend/scores";
 }
 
-export default function Leaderboard({
-  score,
-  mainEl,
-  name,
-  ghosts,
-  cycleTimer,
-}) {
+export default function Leaderboard({ variables, ghosts, cycleTimer }) {
   const [scores, setScores] = useState([]);
   const [error, setError] = useState(false);
 
@@ -37,9 +31,11 @@ export default function Leaderboard({
   }, []);
 
   const handlePlayAgain = () => {
-    score.points = 0;
+    variables.score = 0;
     cycleTimer.start(ghosts);
-    mainEl.render(<Game name={name} mainEl={mainEl} />);
+    variables.reactRoot.render(
+      <Game name={variables.playerName} reactRoot={variables.reactRoot} />
+    );
   };
 
   const handleChangePlayer = () => {
@@ -49,7 +45,7 @@ export default function Leaderboard({
   return (
     <div className="leaderboard">
       <h1>Game Over</h1>
-      <h4>You scored {score.points} points</h4>
+      <h4>You scored {variables.score} points</h4>
       {error ? (
         <p className="error" data-testid="error">
           Oops, something went wrong!

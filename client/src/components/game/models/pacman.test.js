@@ -62,7 +62,7 @@ describe("PacMan", () => {
         x: 7.5,
         y: 2.5,
       });
-      expect(pacman.length).toBe(20);
+      expect(pacman.tileLength).toBe(20);
       expect(pacman.radius).toBe(7.5);
       expect(pacman.speed).toBe(2.5);
       expect(pacman.radians).toEqual(Math.PI / 4);

@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import "./game.css";
 import playGame from "./mechanics/playGame";
 
-export default function Game({ name, mainEl, callback = playGame }) {
+export default function Game({ name, reactRoot, callback = playGame }) {
   useEffect(() => {
-    callback(name, mainEl);
-  }, [callback, name, mainEl]);
+    callback(name, reactRoot);
+  }, [callback, name, reactRoot]);
 
   const handleDirection = (direction) => {
     const arrow = new KeyboardEvent("keydown", { key: direction });

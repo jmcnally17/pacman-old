@@ -4,20 +4,19 @@ import changeDirection from "./movement/changeDirection";
 import makeMove from "./movement/makeMove";
 
 export default function implementPacman(
-  lastKeyPressed,
+  variables,
   pacman,
   boundaries,
   ctx,
   pellets,
-  length,
   callbackOne = makeMove,
   callbackTwo = changeDirection,
   callbackThree = checkPacmanEating,
   callbackFour = implementTunnel
 ) {
-  callbackOne(lastKeyPressed);
-  callbackTwo(lastKeyPressed, pacman, boundaries);
+  callbackOne(variables);
+  callbackTwo(variables, pacman, boundaries);
   callbackThree(pellets, pacman);
   pacman.update(ctx);
-  callbackFour(pacman, length);
+  callbackFour(pacman, variables);
 }

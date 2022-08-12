@@ -4,8 +4,7 @@ let mockUneatenPowerUp;
 let mockEatenPowerUp;
 let mockPacmanOne;
 let mockPacmanTwo;
-let mockScore;
-let mockKillCount;
+let mockVariables;
 let mockGhost;
 let mockGhosts;
 let mockScareGhost;
@@ -40,11 +39,9 @@ describe("eatPowerUp", () => {
       changeEatenState: () => undefined,
       hasBeenEaten: true,
     };
-    mockScore = {
-      points: 0,
-    };
-    mockKillCount = {
-      number: 2,
+    mockVariables = {
+      score: 0,
+      killCount: 2,
     };
     mockGhost = {
       isRetreating: false,
@@ -61,14 +58,13 @@ describe("eatPowerUp", () => {
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
-      mockScore,
-      mockKillCount,
+      mockVariables,
       mockGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(1);
-    expect(mockScore.points).toBe(50);
-    expect(mockKillCount.number).toBe(0);
+    expect(mockVariables.score).toBe(50);
+    expect(mockVariables.killCount).toBe(0);
   });
 
   it("does not call changeEatenState when colliding with Pac-Man, increase the score or reset the kill count if the power up has been eaten", () => {
@@ -79,14 +75,13 @@ describe("eatPowerUp", () => {
     eatPowerUp(
       mockEatenPowerUp,
       mockPacmanOne,
-      mockScore,
-      mockKillCount,
+      mockVariables,
       mockGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
-    expect(mockScore.points).toBe(0);
-    expect(mockKillCount.number).toBe(2);
+    expect(mockVariables.score).toBe(0);
+    expect(mockVariables.killCount).toBe(2);
   });
 
   it("does not call changeEatenState, increases the score or reset the kill count if the power up and pacman are not colliding", () => {
@@ -97,22 +92,20 @@ describe("eatPowerUp", () => {
     eatPowerUp(
       mockEatenPowerUp,
       mockPacmanTwo,
-      mockScore,
-      mockKillCount,
+      mockVariables,
       mockGhosts,
       mockScareGhost
     );
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
-    expect(mockScore.points).toBe(0);
-    expect(mockKillCount.number).toBe(2);
+    expect(mockVariables.score).toBe(0);
+    expect(mockVariables.killCount).toBe(2);
   });
 
   it("calls the scareGhost callback if they are not retreating", () => {
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
-      mockScore,
-      mockKillCount,
+      mockVariables,
       mockGhosts,
       mockScareGhost
     );
@@ -131,8 +124,7 @@ describe("eatPowerUp", () => {
     eatPowerUp(
       mockUneatenPowerUp,
       mockPacmanOne,
-      mockScore,
-      mockKillCount,
+      mockVariables,
       mockRetreatingGhosts,
       mockScareGhost
     );

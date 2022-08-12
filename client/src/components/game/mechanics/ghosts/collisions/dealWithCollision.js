@@ -3,36 +3,18 @@ import ghostAttack from "./ghostAttack";
 export default function dealWithCollision(
   ghost,
   pacman,
-  animationId,
-  score,
-  lastKeyPressed,
+  variables,
   ghosts,
-  name,
-  mainEl,
   pellets,
   powerUps,
-  level,
-  killCount,
   cycleTimer,
   callback = ghostAttack
 ) {
   if (!ghost.isScared && !ghost.isRetreating) {
-    callback(
-      pacman,
-      animationId,
-      score,
-      lastKeyPressed,
-      ghosts,
-      name,
-      mainEl,
-      pellets,
-      powerUps,
-      level,
-      cycleTimer
-    );
+    callback(pacman, variables, ghosts, pellets, powerUps, cycleTimer);
   } else if (ghost.isScared && !ghost.isRetreating) {
-    score.points += 200 * Math.pow(2, killCount.number);
-    killCount.number++;
+    variables.score += 200 * Math.pow(2, variables.killCount);
+    variables.killCount++;
     ghost.changeRetreatingState();
     ghost.retreatingTimeout = setTimeout(() => {
       ghost.changeRetreatingState();

@@ -4,16 +4,10 @@ import dealWithCollision from "./dealWithCollision";
 export default function checkPacmanGhostCollision(
   ghost,
   pacman,
-  score,
-  animationId,
-  lastKeyPressed,
+  variables,
   ghosts,
-  name,
-  mainEl,
   pellets,
   powerUps,
-  level,
-  killCount,
   cycleTimer,
   callbackOne = collisionConditional,
   callbackTwo = dealWithCollision
@@ -22,16 +16,10 @@ export default function checkPacmanGhostCollision(
     callbackTwo(
       ghost,
       pacman,
-      animationId,
-      score,
-      lastKeyPressed,
+      variables,
       ghosts,
-      name,
-      mainEl,
       pellets,
       powerUps,
-      level,
-      killCount,
       cycleTimer
     );
   }

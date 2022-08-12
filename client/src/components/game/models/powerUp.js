@@ -1,10 +1,10 @@
 export default class PowerUp {
-  constructor({ position }, length) {
+  constructor({ position }, tileLength) {
     this.position = position;
-    this.radius = (length * 7) / 20;
+    this.radius = (tileLength * 7) / 20;
     this.hasBeenEaten = false;
-    this.rate = -length / 50;
-    this.length = length;
+    this.rate = -tileLength / 50;
+    this.tileLength = tileLength;
   }
 
   changeEatenState() {
@@ -26,8 +26,8 @@ export default class PowerUp {
 
   flash() {
     if (
-      this.radius <= this.length / 4 ||
-      this.radius >= (this.length * 9) / 20
+      this.radius <= this.tileLength / 4 ||
+      this.radius >= (this.tileLength * 9) / 20
     ) {
       this.rate = -this.rate;
     }

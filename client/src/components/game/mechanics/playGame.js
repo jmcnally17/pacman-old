@@ -1,19 +1,18 @@
 import makeBoundaries from "./boundaries/makeBoundaries";
 import makePellets from "./pellets/makePellets";
 import makePowerUps from "./powerUps/makePowerUps";
+import CycleTimer from "../models/cycleTimer";
 import makeGhosts from "./ghosts/makeGhosts";
 import makePacman from "./pacman/makePacman";
-import CycleTimer from "../models/cycleTimer";
 import implementBoundaries from "./boundaries/implementBoundaries";
-import implementPellets from "./pellets/implementPellets";
-import implementPowerUps from "./powerUps/implementPowerUps";
 import implementGhosts from "./ghosts/implementGhosts";
 import implementPacman from "./pacman/implementPacman";
-import displayScore from "./displayScore";
-import displayLives from "./displayLives";
+import implementPellets from "./pellets/implementPellets";
+import implementPowerUps from "./powerUps/implementPowerUps";
 import displayLevel from "./displayLevel";
+import displayLives from "./displayLives";
+import displayScore from "./displayScore";
 
-const length = 32;
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
   ["|", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|", "|", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "|"],
@@ -48,52 +47,43 @@ const map = [
   ["4", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "3"],
 ];
 
-const boundaries = makeBoundaries(map, length);
-const pellets = makePellets(map, length);
-const powerUps = makePowerUps(map, length);
-const ghosts = makeGhosts(length);
-const pacman = makePacman(length);
+const variables = {
+  tileLength: 32,
+  score: 0,
+  lastKeyPressed: "",
+  level: 1,
+  playerName: "",
+  reactRoot: null,
+  killCount: 0,
+  start: true,
+  animationId: null,
+}
+
+const boundaries = makeBoundaries(map, variables);
+const pellets = makePellets(map, variables);
+const powerUps = makePowerUps(map, variables);
 const cycleTimer = new CycleTimer();
+const ghosts = makeGhosts(variables);
+const pacman = makePacman(variables);
 
-const score = {
-  points: 0,
-};
-const lastKeyPressed = {
-  key: "",
-};
-const level = {
-  number: 1,
-};
-const player = {
-  name: "",
-}
-const reactRoot = {
-  mainEl: null,
-}
-const killCount = {
-  number: 0,
-}
-
-let start = true;
-
-export default function playGame(name, mainEl) {
-  if (start === true) {
-    player.name = name;
-    reactRoot.mainEl = mainEl;
+export default function playGame(name, reactRoot) {
+  if (variables.start === true) {
+    variables.playerName = name;
+    variables.reactRoot = reactRoot;
     cycleTimer.start(ghosts);
-    start = false;
+    variables.start = false;
   }
-  let animationId = requestAnimationFrame(playGame);
+  variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, 896, 992);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, score, lastKeyPressed, ghosts, powerUps, level, cycleTimer);
-  implementPowerUps(powerUps, ctx, pacman, score, killCount, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, length, pacman, score, animationId, lastKeyPressed, player.name, reactRoot.mainEl, pellets, powerUps, level, killCount, ghosts[0], cycleTimer);
-  implementPacman(lastKeyPressed, pacman, boundaries, ctx, pellets, length);
-  displayScore(score);
+  implementPellets(pellets, ctx, pacman, variables, ghosts, powerUps, cycleTimer);
+  implementPowerUps(powerUps, ctx, pacman, variables, ghosts);
+  implementGhosts(ghosts, boundaries, ctx, variables, pacman, pellets, powerUps, cycleTimer);
+  implementPacman(variables, pacman, boundaries, ctx, pellets);
+  displayScore(variables);
   displayLives(pacman);
-  displayLevel(level);
+  displayLevel(variables);
 };

@@ -1,14 +1,20 @@
 import makeBoundaries from "./makeBoundaries";
 
+let mockVariables;
 let mockMakeTunnelBoundaries;
 
 describe("makeBoundaries", () => {
   beforeEach(() => {
+    mockVariables = {
+      tileLength: 32,
+    };
     mockMakeTunnelBoundaries = jest.fn();
   });
 
   it("adds no boundaries to an empty array but always calls makeTunnelBoundaries", () => {
-    expect(makeBoundaries([[]], 20, mockMakeTunnelBoundaries).length).toBe(0);
+    expect(
+      makeBoundaries([[]], mockVariables, mockMakeTunnelBoundaries).length
+    ).toBe(0);
     expect(mockMakeTunnelBoundaries).toHaveBeenCalledTimes(1);
   });
 
@@ -20,7 +26,7 @@ describe("makeBoundaries", () => {
           ["1", "2", "3", "4"],
           [".", " "],
         ],
-        20,
+        mockVariables,
         mockMakeTunnelBoundaries
       ).length
     ).toBe(6);

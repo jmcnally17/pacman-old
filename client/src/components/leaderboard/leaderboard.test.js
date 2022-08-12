@@ -19,14 +19,14 @@ const server = setupServer(
   })
 );
 
-let mockScore;
+let mockVariables;
 
 describe("Leaderboard", () => {
   beforeAll(() => server.listen());
 
   beforeEach(() => {
-    mockScore = {
-      points: 2000,
+    mockVariables = {
+      score: 2000,
     };
   });
 
@@ -35,7 +35,7 @@ describe("Leaderboard", () => {
   afterAll(() => server.close());
 
   it("contains the headings for Game over and the number of points scored", () => {
-    render(<Leaderboard score={mockScore} />);
+    render(<Leaderboard variables={mockVariables} />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Game Over"
     );
@@ -45,12 +45,12 @@ describe("Leaderboard", () => {
   });
 
   it("contains the leaderboard table", () => {
-    render(<Leaderboard score={mockScore} />);
+    render(<Leaderboard variables={mockVariables} />);
     expect(screen.getByRole("table")).toHaveAttribute("class", "list");
   });
 
   it("prints a message telling the user to wait a moment before the table data has been fetched", () => {
-    render(<Leaderboard score={mockScore} />);
+    render(<Leaderboard variables={mockVariables} />);
     const tableEl = screen.getByRole("table");
     expect(within(tableEl).getByTestId("wait-message")).toHaveTextContent(
       "Please wait a moment..."
@@ -58,7 +58,7 @@ describe("Leaderboard", () => {
   });
 
   it("contains the table headings after the data has been fetched", async () => {
-    render(<Leaderboard score={mockScore} />);
+    render(<Leaderboard variables={mockVariables} />);
     expect(
       await screen.findByRole("columnheader", { name: "Rank" })
     ).toHaveTextContent("Rank");
@@ -71,7 +71,7 @@ describe("Leaderboard", () => {
   });
 
   it("fetches the scores from the database and displays them in the table", async () => {
-    render(<Leaderboard score={mockScore} />);
+    render(<Leaderboard variables={mockVariables} />);
 
     const entryOneEl = await screen.findByRole("row", { name: 0 });
     expect(
@@ -113,7 +113,7 @@ describe("Leaderboard", () => {
         return res(ctx.status(500));
       })
     );
-    render(<Leaderboard score={mockScore} />);
+    render(<Leaderboard variables={mockVariables} />);
     expect(await screen.findByTestId("error")).toHaveTextContent(
       "Oops, something went wrong!"
     );
@@ -121,7 +121,7 @@ describe("Leaderboard", () => {
   });
 
   it("contains the buttons to play again and change player", () => {
-    render(<Leaderboard score={mockScore} />);
+    render(<Leaderboard variables={mockVariables} />);
     expect(
       screen.getByRole("button", { name: "Play Again" })
     ).toBeInTheDocument();

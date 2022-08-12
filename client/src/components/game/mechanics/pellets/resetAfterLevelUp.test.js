@@ -5,8 +5,8 @@ describe("resetAfterLevelUp", () => {
     const mockPacman = {
       reset: () => undefined,
     };
-    const mockLastKeyPressed = {
-      key: "up",
+    const mockVariables = {
+      lastKeyPressed: "up",
     };
     const mockGhost = {
       reset: () => undefined,
@@ -46,14 +46,14 @@ describe("resetAfterLevelUp", () => {
     );
     resetAfterLevelUp(
       mockPacman,
-      mockLastKeyPressed,
+      mockVariables,
       mockGhosts,
       mockPellets,
       mockPowerUps,
       mockCycleTimer
     );
     expect(pacmanResetSpy).toHaveBeenCalledTimes(1);
-    expect(mockLastKeyPressed.key).toBe("");
+    expect(mockVariables.lastKeyPressed).toBe("");
     expect(timerResetSpy).toHaveBeenCalledTimes(1);
     expect(ghostResetSpy).toHaveBeenCalledTimes(3);
     expect(ghostResetHuntingSpy).toHaveBeenCalledTimes(3);

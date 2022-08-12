@@ -3,37 +3,22 @@ import Leaderboard from "../../../../leaderboard/leaderboard";
 import resetAfterGameOver from "./resetAfterGameOver";
 
 export default function endGame(
-  animationId,
-  score,
-  name,
-  mainEl,
+  variables,
   pellets,
   powerUps,
   ghosts,
   pacman,
-  lastKeyPressed,
-  level,
   cycleTimer,
   callbackOne = cancelAnimationFrame,
   callbackTwo = saveScore,
   callbackThree = resetAfterGameOver
 ) {
-  callbackOne(animationId);
-  callbackTwo(score, name);
-  callbackThree(
-    pellets,
-    powerUps,
-    ghosts,
-    pacman,
-    lastKeyPressed,
-    level,
-    cycleTimer
-  );
-  mainEl.render(
+  callbackOne(variables.animationId);
+  callbackTwo(variables);
+  callbackThree(pellets, powerUps, ghosts, pacman, variables, cycleTimer);
+  variables.reactRoot.render(
     <Leaderboard
-      score={score}
-      mainEl={mainEl}
-      name={name}
+      variables={variables}
       ghosts={ghosts}
       cycleTimer={cycleTimer}
     />

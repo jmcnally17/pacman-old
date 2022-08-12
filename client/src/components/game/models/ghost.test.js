@@ -60,7 +60,7 @@ describe("Ghost", () => {
         x: 7.5,
         y: 2.5,
       });
-      expect(ghost.length).toBe(20);
+      expect(ghost.tileLength).toBe(20);
       expect(ghost.radius).toBe(7.5);
       expect(ghost.colour).toBe("red");
       expect(ghost.prevCollisions).toEqual([]);

@@ -4,7 +4,7 @@ let mockPacmanOne;
 let mockPacmanTwo;
 let mockUneatenPellet;
 let mockEatenPellet;
-let mockScore;
+let mockVariables;
 
 describe("eatPellet", () => {
   beforeEach(() => {
@@ -36,8 +36,8 @@ describe("eatPellet", () => {
       changeEatenState: () => undefined,
       hasBeenEaten: true,
     };
-    mockScore = {
-      points: 0,
+    mockVariables = {
+      score: 0,
     };
   });
 
@@ -46,16 +46,16 @@ describe("eatPellet", () => {
       mockUneatenPellet,
       "changeEatenState"
     );
-    eatPellet(mockUneatenPellet, mockPacmanOne, mockScore);
+    eatPellet(mockUneatenPellet, mockPacmanOne, mockVariables);
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(1);
-    expect(mockScore.points).toBe(10);
+    expect(mockVariables.score).toBe(10);
   });
 
   it("does not call changeEatenState when colliding with Pac-Man and does not increases the score if the pellet has been eaten", () => {
     const changeEatenStateSpy = jest.spyOn(mockEatenPellet, "changeEatenState");
-    eatPellet(mockEatenPellet, mockPacmanOne, mockScore);
+    eatPellet(mockEatenPellet, mockPacmanOne, mockVariables);
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
-    expect(mockScore.points).toBe(0);
+    expect(mockVariables.score).toBe(0);
   });
 
   it("does not call changeEatenState and does not increases the score if the pellet and pacman are not colliding", () => {
@@ -63,8 +63,8 @@ describe("eatPellet", () => {
       mockUneatenPellet,
       "changeEatenState"
     );
-    eatPellet(mockEatenPellet, mockPacmanTwo, mockScore);
+    eatPellet(mockEatenPellet, mockPacmanTwo, mockVariables);
     expect(changeEatenStateSpy).toHaveBeenCalledTimes(0);
-    expect(mockScore.points).toBe(0);
+    expect(mockVariables.score).toBe(0);
   });
 });

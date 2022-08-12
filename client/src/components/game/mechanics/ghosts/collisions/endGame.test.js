@@ -2,21 +2,19 @@ import endGame from "./endGame";
 
 describe("endGame", () => {
   it("calls the necessary functions to end the game", () => {
-    let mockObject;
-    const mockMainEl = {
-      render: () => undefined,
+    const mockVariables = {
+      animationId: undefined,
+      reactRoot: {
+        render: () => undefined,
+      },
     };
+    let mockObject;
     const mockCancelAnimationFrame = jest.fn();
     const mockSaveScore = jest.fn();
     const mockResetAfterGameOver = jest.fn();
-    const mainElSpy = jest.spyOn(mockMainEl, "render");
+    const renderSpy = jest.spyOn(mockVariables.reactRoot, "render");
     endGame(
-      mockObject,
-      mockObject,
-      mockObject,
-      mockMainEl,
-      mockObject,
-      mockObject,
+      mockVariables,
       mockObject,
       mockObject,
       mockObject,
@@ -29,6 +27,6 @@ describe("endGame", () => {
     expect(mockCancelAnimationFrame).toHaveBeenCalledTimes(1);
     expect(mockSaveScore).toHaveBeenCalledTimes(1);
     expect(mockResetAfterGameOver).toHaveBeenCalledTimes(1);
-    expect(mainElSpy).toHaveBeenCalledTimes(1);
+    expect(renderSpy).toHaveBeenCalledTimes(1);
   });
 });

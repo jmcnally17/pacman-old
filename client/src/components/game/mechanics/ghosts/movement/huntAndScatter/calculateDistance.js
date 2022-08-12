@@ -7,7 +7,7 @@ export default function calculateDistance(
   pacman,
   ghost,
   pathways,
-  length,
+  variables,
   redGhost,
   callbackOne = addCoordinates,
   callbackTwo = hunt,
@@ -15,14 +15,14 @@ export default function calculateDistance(
   callbackFour = calculateHypotenuse
 ) {
   pathways.forEach((pathway) => {
-    callbackOne(pathway, ghost, length);
+    callbackOne(pathway, ghost, variables);
     let displacementFromAim;
     if (ghost.isHunting) {
       displacementFromAim = callbackTwo(
         ghost,
         pathway,
         pacman,
-        length,
+        variables,
         redGhost
       );
     } else if (!ghost.isHunting) {

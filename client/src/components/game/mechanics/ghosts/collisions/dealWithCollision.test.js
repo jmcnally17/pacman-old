@@ -1,17 +1,14 @@
 import dealWithCollision from "./dealWithCollision";
 
 let mockObject;
-let mockScore;
-let mockKillCount;
+let mockVariables;
 let mockGhostAttack;
 
 describe("dealWithCollision", () => {
   beforeEach(() => {
-    mockScore = {
-      points: 100,
-    };
-    mockKillCount = {
-      number: 2,
+    mockVariables = {
+      score: 100,
+      killCount: 2,
     };
     mockGhostAttack = jest.fn();
   });
@@ -25,22 +22,16 @@ describe("dealWithCollision", () => {
     dealWithCollision(
       mockGhost,
       mockObject,
-      mockObject,
-      mockScore,
-      mockObject,
+      mockVariables,
       mockObject,
       mockObject,
       mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockKillCount,
       mockObject,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(1);
-    expect(mockScore.points).toBe(100);
-    expect(mockKillCount.number).toBe(2);
+    expect(mockVariables.score).toBe(100);
+    expect(mockVariables.killCount).toBe(2);
   });
 
   it("increases the score and killCount and sends the ghost into retreating mode if the ghost is scared and is not retreating", () => {
@@ -60,22 +51,16 @@ describe("dealWithCollision", () => {
     dealWithCollision(
       mockGhost,
       mockObject,
-      mockObject,
-      mockScore,
-      mockObject,
+      mockVariables,
       mockObject,
       mockObject,
       mockObject,
-      mockObject,
-      mockObject,
-      mockObject,
-      mockKillCount,
       mockObject,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(0);
-    expect(mockScore.points).toBe(900);
-    expect(mockKillCount.number).toBe(3);
+    expect(mockVariables.score).toBe(900);
+    expect(mockVariables.killCount).toBe(3);
     expect(ghostRetreatingSpy).toHaveBeenCalledTimes(1);
     expect(timeoutSpy).toHaveBeenCalledTimes(1);
     expect(mockGhost.retreatingTimeout).not.toBeNull();

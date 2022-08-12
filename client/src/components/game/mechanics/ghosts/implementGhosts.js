@@ -8,18 +8,10 @@ export default function implementGhosts(
   ghosts,
   boundaries,
   ctx,
-  length,
+  variables,
   pacman,
-  score,
-  animationId,
-  lastKeyPressed,
-  name,
-  mainEl,
   pellets,
   powerUps,
-  level,
-  killCount,
-  redGhost,
   cycleTimer,
   callbackOne = checkSpeedMatchesState,
   callbackTwo = implementTunnel,
@@ -28,27 +20,21 @@ export default function implementGhosts(
   callbackFive = checkPacmanGhostCollision
 ) {
   ghosts.forEach((ghost) => {
-    callbackOne(ghost, length);
+    callbackOne(ghost, variables);
     const collisions = [];
     ghost.update(ctx);
-    callbackTwo(ghost, length);
+    callbackTwo(ghost, variables);
     callbackThree(boundaries, collisions, ghost);
     if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
-      callbackFour(ghost, pacman, collisions, length, redGhost);
+      callbackFour(ghost, pacman, collisions, variables, ghosts[0]);
     }
     callbackFive(
       ghost,
       pacman,
-      score,
-      animationId,
-      lastKeyPressed,
+      variables,
       ghosts,
-      name,
-      mainEl,
       pellets,
       powerUps,
-      level,
-      killCount,
       cycleTimer
     );
   });

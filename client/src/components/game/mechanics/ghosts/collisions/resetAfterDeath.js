@@ -1,11 +1,6 @@
-export default function resetAfterDeath(
-  pacman,
-  lastKeyPressed,
-  ghosts,
-  cycleTimer
-) {
+export default function resetAfterDeath(pacman, variables, ghosts, cycleTimer) {
   pacman.reset();
-  lastKeyPressed.key = "";
+  variables.lastKeyPressed = "";
   cycleTimer.reset();
   ghosts.forEach((ghost) => {
     ghost.reset();

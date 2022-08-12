@@ -13,11 +13,11 @@ describe("changeDirection", () => {
   });
 
   it("calls checkDirectionChange if the last key pressed is up", () => {
-    const mockLastKeyPressed = {
-      key: "up",
+    const mockVariables = {
+      lastKeyPressed: "up",
     };
     changeDirection(
-      mockLastKeyPressed,
+      mockVariables,
       mockPacman,
       mockObject,
       mockCheckDirectionChange
@@ -26,11 +26,11 @@ describe("changeDirection", () => {
   });
 
   it("calls checkDirectionChange if the last key pressed is down", () => {
-    const mockLastKeyPressed = {
-      key: "down",
+    const mockVariables = {
+      lastKeyPressed: "down",
     };
     changeDirection(
-      mockLastKeyPressed,
+      mockVariables,
       mockPacman,
       mockObject,
       mockCheckDirectionChange
@@ -39,11 +39,11 @@ describe("changeDirection", () => {
   });
 
   it("calls checkDirectionChange if the last key pressed is right", () => {
-    const mockLastKeyPressed = {
-      key: "right",
+    const mockVariables = {
+      lastKeyPressed: "right",
     };
     changeDirection(
-      mockLastKeyPressed,
+      mockVariables,
       mockPacman,
       mockObject,
       mockCheckDirectionChange
@@ -52,11 +52,11 @@ describe("changeDirection", () => {
   });
 
   it("calls checkDirectionChange if the last key pressed is left", () => {
-    const mockLastKeyPressed = {
-      key: "left",
+    const mockVariables = {
+      lastKeyPressed: "left",
     };
     changeDirection(
-      mockLastKeyPressed,
+      mockVariables,
       mockPacman,
       mockObject,
       mockCheckDirectionChange
@@ -65,11 +65,11 @@ describe("changeDirection", () => {
   });
 
   it("does not call checkDirectionChange if the last key pressed is empty", () => {
-    const mockLastKeyPressed = {
-      key: "",
+    const mockVariables = {
+      lastKeyPressed: "",
     };
     changeDirection(
-      mockLastKeyPressed,
+      mockVariables,
       mockPacman,
       mockObject,
       mockCheckDirectionChange

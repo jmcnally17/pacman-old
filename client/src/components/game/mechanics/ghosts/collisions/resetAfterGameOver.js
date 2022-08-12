@@ -3,8 +3,7 @@ export default function resetAfterGameOver(
   powerUps,
   ghosts,
   pacman,
-  lastKeyPressed,
-  level,
+  variables,
   cycleTimer
 ) {
   pellets.forEach((pellet) => {
@@ -21,6 +20,6 @@ export default function resetAfterGameOver(
   });
   pacman.reset();
   pacman.lives = 2;
-  lastKeyPressed.key = "";
-  level.number = 1;
+  variables.lastKeyPressed = "";
+  variables.level = 1;
 }

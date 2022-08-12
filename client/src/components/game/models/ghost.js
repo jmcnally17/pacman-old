@@ -1,14 +1,14 @@
 export default class Ghost {
-  constructor({ position, velocity, colour, image = Image }, length) {
+  constructor({ position, velocity, colour, image = Image }, tileLength) {
     this.originalPosition = position;
     this.position = { ...this.originalPosition };
     this.originalVelocity = velocity;
     this.velocity = { ...this.originalVelocity };
-    this.length = length;
-    this.radius = (length * 3) / 8;
+    this.tileLength = tileLength;
+    this.radius = (this.tileLength * 3) / 8;
     this.colour = colour;
     this.prevCollisions = [];
-    this.speed = length / 8;
+    this.speed = this.tileLength / 8;
     this.isScared = false;
     this.scaredTimeout = null;
     this.isHunting = false;
@@ -65,7 +65,7 @@ export default class Ghost {
   reset() {
     this.position = { ...this.originalPosition };
     this.velocity = { ...this.originalVelocity };
-    this.speed = this.length / 8;
+    this.speed = this.tileLength / 8;
     this.prevCollisions = [];
     if (this.isScared) this.changeScaredState();
     clearTimeout(this.scaredTimeout);
