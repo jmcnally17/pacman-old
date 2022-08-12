@@ -20,7 +20,8 @@ describe("CycleTimer", () => {
     it("has a number of instance variables", () => {
       expect(timer.timeout).toBeNull();
       expect(timer.count).toBe(0);
-      expect(timer.startTime).toBe(null);
+      expect(timer.startTime).toBeNull();
+      expect(timer.timeRemaining).toBeNull();
     });
   });
 

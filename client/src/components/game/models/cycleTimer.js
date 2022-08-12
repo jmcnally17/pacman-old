@@ -3,6 +3,7 @@ export default class CycleTimer {
     this.timeout = null;
     this.count = 0;
     this.startTime = null;
+    this.timeRemaining = null;
   }
 
   start(ghosts, dateNow = Date.now()) {
