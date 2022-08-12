@@ -8,12 +8,12 @@ jest.useFakeTimers();
 
 describe("CycleTimer", () => {
   beforeEach(() => {
-    timer = new CycleTimer();
     mockGhost = {
       changeHuntingState: () => true,
     };
     mockGhosts = [mockGhost, mockGhost];
     huntingSpy = jest.spyOn(mockGhost, "changeHuntingState");
+    timer = new CycleTimer(mockGhosts);
   });
 
   describe("upon instanstation", () => {
@@ -22,6 +22,7 @@ describe("CycleTimer", () => {
       expect(timer.count).toBe(0);
       expect(timer.startTime).toBeNull();
       expect(timer.timeRemaining).toBeNull();
+      expect(timer.ghosts).toEqual(mockGhosts);
     });
   });
 
@@ -29,7 +30,7 @@ describe("CycleTimer", () => {
     it("begins the timeout with a delay of seven seconds if the count is equal to 1", () => {
       const mockDateNow = 16940;
       jest.spyOn(global, "setTimeout");
-      timer.start(mockGhosts, mockDateNow);
+      timer.start(mockDateNow);
 
       expect(timer.startTime).toBe(16940);
       expect(setTimeout).toHaveBeenCalledTimes(1);

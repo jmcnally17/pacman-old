@@ -1,16 +1,17 @@
 export default class CycleTimer {
-  constructor() {
+  constructor(ghosts) {
     this.timeout = null;
     this.count = 0;
     this.startTime = null;
     this.timeRemaining = null;
+    this.ghosts = ghosts;
   }
 
-  start(ghosts, dateNow = Date.now()) {
+  start(dateNow = Date.now()) {
     this.startTime = dateNow;
     this.timeout = setTimeout(
       () => {
-        this.#switchHuntScatterState(ghosts);
+        this.#switchHuntScatterState();
       },
       this.count === 0 ? 7000 : 20000
     );
@@ -23,9 +24,9 @@ export default class CycleTimer {
     clearTimeout(this.timeout);
   }
 
-  resume(ghosts) {
+  resume() {
     this.timeout = setTimeout(() => {
-      this.#switchHuntScatterState(ghosts);
+      this.#switchHuntScatterState();
     }, this.timeRemaining);
   }
 
@@ -36,14 +37,14 @@ export default class CycleTimer {
 
   private;
 
-  #switchHuntScatterState(ghosts) {
-    ghosts.forEach((ghost) => {
+  #switchHuntScatterState() {
+    this.ghosts.forEach((ghost) => {
       ghost.changeHuntingState();
     });
-    this.#carryOnCycle(ghosts);
+    this.#carryOnCycle();
   }
 
-  #carryOnCycle(ghosts) {
-    this.start(ghosts);
+  #carryOnCycle() {
+    this.start();
   }
 }

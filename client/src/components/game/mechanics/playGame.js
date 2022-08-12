@@ -1,9 +1,9 @@
 import makeBoundaries from "./boundaries/makeBoundaries";
 import makePellets from "./pellets/makePellets";
 import makePowerUps from "./powerUps/makePowerUps";
-import CycleTimer from "../models/cycleTimer";
 import makeGhosts from "./ghosts/makeGhosts";
 import makePacman from "./pacman/makePacman";
+import CycleTimer from "../models/cycleTimer";
 import implementBoundaries from "./boundaries/implementBoundaries";
 import implementGhosts from "./ghosts/implementGhosts";
 import implementPacman from "./pacman/implementPacman";
@@ -62,15 +62,15 @@ const variables = {
 const boundaries = makeBoundaries(map, variables);
 const pellets = makePellets(map, variables);
 const powerUps = makePowerUps(map, variables);
-const cycleTimer = new CycleTimer();
 const ghosts = makeGhosts(variables);
 const pacman = makePacman(variables);
+const cycleTimer = new CycleTimer(ghosts);
 
 export default function playGame(name, reactRoot) {
   if (variables.start === true) {
     variables.playerName = name;
     variables.reactRoot = reactRoot;
-    cycleTimer.start(ghosts);
+    cycleTimer.start();
     variables.start = false;
   }
   variables.animationId = requestAnimationFrame(playGame);

@@ -32,7 +32,7 @@ export default function Leaderboard({ variables, ghosts, cycleTimer }) {
 
   const handlePlayAgain = () => {
     variables.score = 0;
-    cycleTimer.start(ghosts);
+    cycleTimer.start();
     variables.reactRoot.render(
       <Game name={variables.playerName} reactRoot={variables.reactRoot} />
     );

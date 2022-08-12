@@ -5,15 +5,15 @@ jest.useFakeTimers();
 describe("CycleTimer", () => {
   describe("resume", () => {
     it("calls setTimeout with the timeRemaining as the delay", () => {
-      const timer = new CycleTimer();
       const mockGhost = {
         changeHuntingState: () => true,
       };
       const mockGhosts = [mockGhost, mockGhost];
       const huntingSpy = jest.spyOn(mockGhost, "changeHuntingState");
+      const timer = new CycleTimer(mockGhosts);
       jest.spyOn(global, "setTimeout");
       timer.timeRemaining = 4820;
-      timer.resume(mockGhosts);
+      timer.resume();
 
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 4820);
