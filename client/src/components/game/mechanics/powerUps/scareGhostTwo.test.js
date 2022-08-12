@@ -1,8 +1,9 @@
 import scareGhost from "./scareGhost";
 
+jest.useFakeTimers();
+
 describe("scareGhost", () => {
   it("does not call changeScaredState if the ghost is scared and just clears and sets the timeout", () => {
-    jest.useFakeTimers();
     jest.spyOn(global, "clearTimeout");
     jest.spyOn(global, "setTimeout");
     const mockScaredGhost = {
@@ -16,6 +17,7 @@ describe("scareGhost", () => {
     expect(mockScaredGhost.scaredTimeout).not.toBeNull();
     expect(mockScaredGhost.changeScaredState).toHaveBeenCalledTimes(0);
     expect(setTimeout).toHaveBeenCalledTimes(1);
+    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
     jest.runOnlyPendingTimers();
     expect(mockScaredGhost.changeScaredState).toHaveBeenCalledTimes(1);
   });
