@@ -26,6 +26,15 @@ export default class CycleTimer {
     clearTimeout(this.timeout);
   }
 
+  resume(ghosts) {
+    this.timeout = setTimeout(() => {
+      ghosts.forEach((ghost) => {
+        ghost.changeHuntingState();
+      });
+      this.start(ghosts);
+    }, this.timeRemaining);
+  }
+
   reset() {
     clearTimeout(this.timeout);
     this.count = 0;
