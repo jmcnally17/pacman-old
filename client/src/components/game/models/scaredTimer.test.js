@@ -9,6 +9,7 @@ let scaredTimer;
 describe("ScaredTimer", () => {
   beforeEach(() => {
     mockGhost = {
+      isScared: true,
       changeScaredState: () => undefined,
     };
     mockGhosts = [mockGhost, mockGhost, mockGhost, mockGhost];
@@ -23,7 +24,7 @@ describe("ScaredTimer", () => {
   });
 
   describe("start", () => {
-    it("sets this.timeout to a setTimeout of the ghosts changing scared state with a five second delay", () => {
+    it("sets this.timeout to a setTimeout of the ghosts changing scared state with a five second delay if they are scared", () => {
       jest.spyOn(global, "setTimeout");
       jest.spyOn(mockGhost, "changeScaredState");
       scaredTimer.start();

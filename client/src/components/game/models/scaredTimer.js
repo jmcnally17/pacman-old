@@ -6,7 +6,9 @@ export default class ScaredTimer {
 
   start() {
     this.timeout = setTimeout(() => {
-      this.ghosts.forEach((ghost) => ghost.changeScaredState());
+      this.ghosts.forEach((ghost) => {
+        if (ghost.isScared) ghost.changeScaredState();
+      });
     }, 5000);
   }
 
