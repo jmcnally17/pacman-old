@@ -1,11 +1,12 @@
-import scareGhost from "./scareGhost";
+import scareGhosts from "./scareGhosts";
 
 export default function eatPowerUp(
   powerUp,
   pacman,
   variables,
   ghosts,
-  callback = scareGhost
+  scaredTimer,
+  callback = scareGhosts
 ) {
   if (
     powerUp.position.x === pacman.position.x &&
@@ -14,8 +15,6 @@ export default function eatPowerUp(
     powerUp.changeEatenState();
     variables.score += 50;
     variables.killCount = 0;
-    ghosts.forEach((ghost) => {
-      if (!ghost.isRetreating) callback(ghost);
-    });
+    callback(ghosts, scaredTimer);
   }
 }

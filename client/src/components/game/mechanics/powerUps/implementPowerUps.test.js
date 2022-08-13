@@ -8,6 +8,7 @@ let mockCtx;
 let mockPacman;
 let mockVariables;
 let mockGhosts;
+let mockScaredTimer;
 let mockEatPowerUp;
 
 describe("implementPowerUps", () => {
@@ -32,6 +33,7 @@ describe("implementPowerUps", () => {
     mockPacman = "pacman";
     mockVariables = "variables";
     mockGhosts = "ghosts";
+    mockScaredTimer = "scaredTimer";
     mockEatPowerUp = jest.fn();
   });
 
@@ -42,6 +44,7 @@ describe("implementPowerUps", () => {
       mockPacman,
       mockVariables,
       mockGhosts,
+      mockScaredTimer,
       mockEatPowerUp
     );
     expect(mockUneatenPowerUp.update).toHaveBeenCalledTimes(3);
@@ -54,21 +57,24 @@ describe("implementPowerUps", () => {
       mockUneatenPowerUp,
       mockPacman,
       mockVariables,
-      mockGhosts
+      mockGhosts,
+      mockScaredTimer
     );
     expect(mockEatPowerUp).toHaveBeenNthCalledWith(
       2,
       mockUneatenPowerUp,
       mockPacman,
       mockVariables,
-      mockGhosts
+      mockGhosts,
+      mockScaredTimer
     );
     expect(mockEatPowerUp).toHaveBeenNthCalledWith(
       3,
       mockUneatenPowerUp,
       mockPacman,
       mockVariables,
-      mockGhosts
+      mockGhosts,
+      mockScaredTimer
     );
   });
 
@@ -79,6 +85,7 @@ describe("implementPowerUps", () => {
       mockPacman,
       mockVariables,
       mockGhosts,
+      mockScaredTimer,
       mockEatPowerUp
     );
     expect(mockEatenPowerUp.update).toHaveBeenCalledTimes(0);

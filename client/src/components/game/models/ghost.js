@@ -10,7 +10,6 @@ export default class Ghost {
     this.prevCollisions = [];
     this.speed = this.tileLength / 8;
     this.isScared = false;
-    this.scaredTimeout = null;
     this.isHunting = false;
     this.isRetreating = false;
     this.retreatingTimeout = null;
@@ -67,17 +66,7 @@ export default class Ghost {
     this.velocity = { ...this.originalVelocity };
     this.speed = this.tileLength / 8;
     this.prevCollisions = [];
-    if (this.isScared) this.changeScaredState();
-    clearTimeout(this.scaredTimeout);
-  }
-
-  resetHuntingState() {
-    if (this.isHunting) this.changeHuntingState();
-  }
-
-  resetRetreatingState() {
-    if (this.isRetreating) this.changeRetreatingState();
-    clearTimeout(this.retreatingTimeout);
+    this.#resetStates();
   }
 
   assignSprite() {
@@ -87,6 +76,13 @@ export default class Ghost {
   }
 
   private;
+
+  #resetStates() {
+    if (this.isScared) this.changeScaredState();
+    if (this.isHunting) this.changeHuntingState();
+    clearTimeout(this.retreatingTimeout);
+    if (this.isRetreating) this.changeRetreatingState();
+  }
 
   #assignRetreatingSprite() {
     if (this.velocity.y < 0) this.image = this.eyesUp;
