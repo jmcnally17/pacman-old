@@ -9,4 +9,8 @@ export default class ScaredTimer {
       this.ghosts.forEach((ghost) => ghost.changeScaredState());
     }, 5000);
   }
+
+  clear() {
+    clearTimeout(this.timeout);
+  }
 }

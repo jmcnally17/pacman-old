@@ -34,4 +34,13 @@ describe("ScaredTimer", () => {
       expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(4);
     });
   });
+
+  describe("clear", () => {
+    it("calls clearTimeout on this.timeout", () => {
+      jest.spyOn(global, "clearTimeout");
+      scaredTimer.clear();
+      expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledWith(scaredTimer.timeout);
+    });
+  });
 });
