@@ -4,7 +4,7 @@ jest.useFakeTimers();
 
 describe("scareGhost", () => {
   it("calls changeScaredState if the ghost is not scared and clears and sets a timeout to call it again", () => {
-    const mockDeleteScaredTimeout = jest.fn();
+    const mockClearScaredTimeout = jest.fn();
     jest.spyOn(global, "setTimeout");
     const mockGhost = {
       isScared: false,
@@ -12,9 +12,9 @@ describe("scareGhost", () => {
       scaredTimeout: null,
     };
     jest.spyOn(mockGhost, "changeScaredState");
-    scareGhost(mockGhost, mockDeleteScaredTimeout);
-    expect(mockDeleteScaredTimeout).toHaveBeenCalledTimes(1);
-    expect(mockDeleteScaredTimeout).toHaveBeenCalledWith(mockGhost);
+    scareGhost(mockGhost, mockClearScaredTimeout);
+    expect(mockClearScaredTimeout).toHaveBeenCalledTimes(1);
+    expect(mockClearScaredTimeout).toHaveBeenCalledWith(mockGhost);
     expect(mockGhost.scaredTimeout).not.toBeNull();
     expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(1);
     expect(setTimeout).toHaveBeenCalledTimes(1);
