@@ -13,6 +13,7 @@ export default function implementGhosts(
   pellets,
   powerUps,
   cycleTimer,
+  scaredTimer,
   callbackOne = checkSpeedMatchesState,
   callbackTwo = implementTunnel,
   callbackThree = updateCollisions,
@@ -35,7 +36,8 @@ export default function implementGhosts(
       ghosts,
       pellets,
       powerUps,
-      cycleTimer
+      cycleTimer,
+      scaredTimer
     );
   });
 }

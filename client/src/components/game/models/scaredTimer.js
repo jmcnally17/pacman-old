@@ -12,7 +12,7 @@ export default class ScaredTimer {
     }, 5000);
   }
 
-  clear() {
+  reset() {
     clearTimeout(this.timeout);
   }
 }

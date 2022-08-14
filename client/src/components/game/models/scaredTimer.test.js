@@ -36,10 +36,10 @@ describe("ScaredTimer", () => {
     });
   });
 
-  describe("clear", () => {
+  describe("reset", () => {
     it("calls clearTimeout on this.timeout", () => {
       jest.spyOn(global, "clearTimeout");
-      scaredTimer.clear();
+      scaredTimer.reset();
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(scaredTimer.timeout);
     });

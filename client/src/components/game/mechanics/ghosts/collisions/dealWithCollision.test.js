@@ -8,6 +8,7 @@ let mockGhosts;
 let mockPellets;
 let mockPowerUps;
 let mockCycleTimer;
+let mockScaredTimer;
 let mockGhostAttack;
 
 describe("dealWithCollision", () => {
@@ -21,6 +22,7 @@ describe("dealWithCollision", () => {
     mockPellets = "pellets";
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
+    mockScaredTimer = "scaredTimer";
     mockGhostAttack = jest.fn();
   });
 
@@ -38,6 +40,7 @@ describe("dealWithCollision", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(1);
@@ -47,7 +50,8 @@ describe("dealWithCollision", () => {
       mockGhosts,
       mockPellets,
       mockPowerUps,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
     expect(mockVariables.score).toBe(100);
     expect(mockVariables.killCount).toBe(2);
@@ -57,7 +61,6 @@ describe("dealWithCollision", () => {
     const mockGhost = {
       isScared: true,
       changeScaredState: () => undefined,
-      scaredTimeout: undefined,
       isRetreating: false,
       changeRetreatingState: () => undefined,
       retreatingTimeout: null,
@@ -65,7 +68,6 @@ describe("dealWithCollision", () => {
     jest.spyOn(mockGhost, "changeRetreatingState");
     jest.spyOn(global, "setTimeout");
     jest.spyOn(mockGhost, "changeScaredState");
-    jest.spyOn(global, "clearTimeout");
     dealWithCollision(
       mockGhost,
       mockPacman,
@@ -74,6 +76,7 @@ describe("dealWithCollision", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(0);
@@ -84,8 +87,6 @@ describe("dealWithCollision", () => {
     expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 3000);
     expect(mockGhost.retreatingTimeout).not.toBeNull();
     expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(1);
-    expect(clearTimeout).toHaveBeenCalledTimes(1);
-    expect(clearTimeout).toHaveBeenCalledWith(mockGhost.scaredTimeout);
     jest.runOnlyPendingTimers();
     expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(2);
   });

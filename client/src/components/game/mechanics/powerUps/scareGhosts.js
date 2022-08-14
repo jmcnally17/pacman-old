@@ -1,5 +1,5 @@
 export default function scareGhosts(ghosts, scaredTimer) {
-  scaredTimer.clear();
+  scaredTimer.reset();
   ghosts.forEach((ghost) => {
     if (!ghost.isScared && !ghost.isRetreating) ghost.changeScaredState();
   });

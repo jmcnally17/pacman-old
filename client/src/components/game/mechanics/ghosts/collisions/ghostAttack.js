@@ -8,13 +8,22 @@ export default function ghostAttack(
   pellets,
   powerUps,
   cycleTimer,
+  scaredTimer,
   callbackOne = endGame,
   callbackTwo = resetAfterDeath
 ) {
   if (pacman.lives <= 0) {
-    callbackOne(variables, pellets, powerUps, ghosts, pacman, cycleTimer);
+    callbackOne(
+      variables,
+      pellets,
+      powerUps,
+      ghosts,
+      pacman,
+      cycleTimer,
+      scaredTimer
+    );
   } else {
     pacman.lives--;
-    callbackTwo(pacman, variables, ghosts, cycleTimer);
+    callbackTwo(pacman, variables, ghosts, cycleTimer, scaredTimer);
   }
 }

@@ -4,15 +4,15 @@ export default function resetAfterLevelUp(
   ghosts,
   pellets,
   powerUps,
-  cycleTimer
+  cycleTimer,
+  scaredTimer
 ) {
   pacman.reset();
   variables.lastKeyPressed = "";
   cycleTimer.reset();
+  scaredTimer.reset();
   ghosts.forEach((ghost) => {
     ghost.reset();
-    ghost.resetHuntingState();
-    ghost.resetRetreatingState();
   });
   cycleTimer.start();
   pellets.forEach((pellet) => {

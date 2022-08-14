@@ -11,6 +11,7 @@ let mockEatenPowerUps;
 let mockUneatenPowerUp;
 let mockUneatenPowerUps;
 let mockCycleTimer;
+let mockScaredTimer;
 
 describe("resetAfterLevelUp", () => {
   beforeEach(() => {
@@ -22,8 +23,6 @@ describe("resetAfterLevelUp", () => {
     };
     mockGhost = {
       reset: () => undefined,
-      resetHuntingState: () => undefined,
-      resetRetreatingState: () => undefined,
     };
     mockPellet = {
       changeEatenState: () => undefined,
@@ -44,14 +43,16 @@ describe("resetAfterLevelUp", () => {
       reset: () => undefined,
       start: () => undefined,
     };
+    mockScaredTimer = {
+      reset: () => undefined,
+    };
   });
 
   it("calls all the necessary functions to reset the board", () => {
     jest.spyOn(mockPacman, "reset");
     jest.spyOn(mockGhost, "reset");
-    jest.spyOn(mockGhost, "resetHuntingState");
-    jest.spyOn(mockGhost, "resetRetreatingState");
     jest.spyOn(mockCycleTimer, "reset");
+    jest.spyOn(mockScaredTimer, "reset");
     jest.spyOn(mockCycleTimer, "start");
     jest.spyOn(mockPellet, "changeEatenState");
     jest.spyOn(mockEatenPowerUp, "changeEatenState");
@@ -61,14 +62,14 @@ describe("resetAfterLevelUp", () => {
       mockGhosts,
       mockPellets,
       mockEatenPowerUps,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
     expect(mockPacman.reset).toHaveBeenCalledTimes(1);
     expect(mockVariables.lastKeyPressed).toBe("");
     expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
     expect(mockGhost.reset).toHaveBeenCalledTimes(3);
-    expect(mockGhost.resetHuntingState).toHaveBeenCalledTimes(3);
-    expect(mockGhost.resetRetreatingState).toHaveBeenCalledTimes(3);
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
     expect(mockPellet.changeEatenState).toHaveBeenCalledTimes(2);
     expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
@@ -82,7 +83,8 @@ describe("resetAfterLevelUp", () => {
       mockGhosts,
       mockPellets,
       mockUneatenPowerUps,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
     expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
   });

@@ -5,10 +5,10 @@ let mockScaredTimer;
 describe("scareGhosts", () => {
   beforeEach(() => {
     mockScaredTimer = {
-      clear: () => undefined,
+      reset: () => undefined,
       start: () => undefined,
     };
-    jest.spyOn(mockScaredTimer, "clear");
+    jest.spyOn(mockScaredTimer, "reset");
     jest.spyOn(mockScaredTimer, "start");
   });
 
@@ -21,7 +21,7 @@ describe("scareGhosts", () => {
     const mockGhosts = [mockGhost, mockGhost, mockGhost, mockGhost];
     jest.spyOn(mockGhost, "changeScaredState");
     scareGhosts(mockGhosts, mockScaredTimer);
-    expect(mockScaredTimer.clear).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
     expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(4);
     expect(mockScaredTimer.start).toHaveBeenCalledTimes(1);
   });
@@ -40,7 +40,7 @@ describe("scareGhosts", () => {
     ];
     jest.spyOn(mockScaredGhost, "changeScaredState");
     scareGhosts(mockScaredGhosts, mockScaredTimer);
-    expect(mockScaredTimer.clear).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
     expect(mockScaredGhost.changeScaredState).toHaveBeenCalledTimes(0);
     expect(mockScaredTimer.start).toHaveBeenCalledTimes(1);
   });
@@ -59,7 +59,7 @@ describe("scareGhosts", () => {
     ];
     jest.spyOn(mockRetreatingGhost, "changeScaredState");
     scareGhosts(mockRetreatingGhosts, mockScaredTimer);
-    expect(mockScaredTimer.clear).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
     expect(mockRetreatingGhost.changeScaredState).toHaveBeenCalledTimes(0);
     expect(mockScaredTimer.start).toHaveBeenCalledTimes(1);
   });
