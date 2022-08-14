@@ -7,6 +7,7 @@ let mockGhosts;
 let mockPellets;
 let mockPowerUps;
 let mockCycleTimer;
+let mockScaredTimer;
 let mockDealWithCollision;
 
 describe("checkPacmanGhostCollision", () => {
@@ -18,6 +19,7 @@ describe("checkPacmanGhostCollision", () => {
     mockPellets = "pellets";
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
+    mockScaredTimer = "scaredTimer";
     mockDealWithCollision = jest.fn();
   });
 
@@ -31,6 +33,7 @@ describe("checkPacmanGhostCollision", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockCollisionConditional,
       mockDealWithCollision
     );
@@ -47,7 +50,8 @@ describe("checkPacmanGhostCollision", () => {
       mockGhosts,
       mockPellets,
       mockPowerUps,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
   });
 
@@ -61,6 +65,7 @@ describe("checkPacmanGhostCollision", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockCollisionConditional,
       mockDealWithCollision
     );

@@ -9,6 +9,7 @@ let mockVariables;
 let mockGhosts;
 let mockPowerUps;
 let mockCycleTimer;
+let mockScaredTimer;
 let mockResetAfterLevelUp;
 
 describe("checkLevelUpCondition", () => {
@@ -28,6 +29,7 @@ describe("checkLevelUpCondition", () => {
     mockGhosts = "ghosts";
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
+    mockScaredTimer = "scaredTimer";
     mockResetAfterLevelUp = jest.fn();
   });
 
@@ -39,6 +41,7 @@ describe("checkLevelUpCondition", () => {
       mockGhosts,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockResetAfterLevelUp
     );
     expect(mockResetAfterLevelUp).toHaveBeenCalledTimes(1);
@@ -48,7 +51,8 @@ describe("checkLevelUpCondition", () => {
       mockGhosts,
       mockEatenPellets,
       mockPowerUps,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
     expect(mockVariables.level).toBe(4);
   });
@@ -61,6 +65,7 @@ describe("checkLevelUpCondition", () => {
       mockGhosts,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockResetAfterLevelUp
     );
     expect(mockResetAfterLevelUp).toHaveBeenCalledTimes(0);

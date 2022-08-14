@@ -2,7 +2,7 @@ import CycleTimer from "./cycleTimer";
 
 jest.useFakeTimers();
 
-let timer;
+let cycleTimer;
 let mockGhost;
 let mockGhosts;
 
@@ -13,16 +13,16 @@ describe("CycleTimer", () => {
     };
     mockGhosts = [mockGhost, mockGhost];
     jest.spyOn(mockGhost, "changeHuntingState");
-    timer = new CycleTimer(mockGhosts);
+    cycleTimer = new CycleTimer(mockGhosts);
   });
 
   describe("upon instanstation", () => {
     it("has a number of instance variables", () => {
-      expect(timer.timeout).toBeNull();
-      expect(timer.count).toBe(0);
-      expect(timer.startTime).toBeNull();
-      expect(timer.timeRemaining).toBeNull();
-      expect(timer.ghosts).toEqual(mockGhosts);
+      expect(cycleTimer.timeout).toBeNull();
+      expect(cycleTimer.count).toBe(0);
+      expect(cycleTimer.startTime).toBeNull();
+      expect(cycleTimer.timeRemaining).toBeNull();
+      expect(cycleTimer.ghosts).toEqual(mockGhosts);
     });
   });
 
@@ -30,13 +30,13 @@ describe("CycleTimer", () => {
     it("begins the timeout with a delay of seven seconds if the count is equal to 1", () => {
       const mockDateNow = 16940;
       jest.spyOn(global, "setTimeout");
-      timer.start(mockDateNow);
+      cycleTimer.start(mockDateNow);
 
-      expect(timer.startTime).toBe(16940);
+      expect(cycleTimer.startTime).toBe(16940);
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 7000);
-      expect(timer.timeout).not.toBeNull();
-      expect(timer.count).toBe(1);
+      expect(cycleTimer.timeout).not.toBeNull();
+      expect(cycleTimer.count).toBe(1);
 
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeHuntingState).toHaveBeenCalledTimes(2);
@@ -48,34 +48,34 @@ describe("CycleTimer", () => {
   describe("pause", () => {
     it("calls clearTimeout and saves the time remaining in this.timeRemaining for the seven second delay", () => {
       jest.spyOn(global, "clearTimeout");
-      timer.count = 1;
+      cycleTimer.count = 1;
       const mockDateNow = 5780;
-      timer.startTime = 2460;
-      timer.pause(mockDateNow);
+      cycleTimer.startTime = 2460;
+      cycleTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
-      expect(clearTimeout).toHaveBeenCalledWith(timer.timeout);
-      expect(timer.timeRemaining).toBe(3680);
+      expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);
+      expect(cycleTimer.timeRemaining).toBe(3680);
     });
 
     it("calls clearTimeout and saves the time remaining in this.timeRemaining for the twenty second delay", () => {
       jest.spyOn(global, "clearTimeout");
       const mockDateNow = 5780;
-      timer.startTime = 2460;
-      timer.pause(mockDateNow);
+      cycleTimer.startTime = 2460;
+      cycleTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
-      expect(clearTimeout).toHaveBeenCalledWith(timer.timeout);
-      expect(timer.timeRemaining).toBe(16680);
+      expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);
+      expect(cycleTimer.timeRemaining).toBe(16680);
     });
   });
 
   describe("reset", () => {
     it("clears the timeout and sets the count back to 0", () => {
       jest.spyOn(global, "clearTimeout");
-      timer.count = 1;
-      timer.reset();
+      cycleTimer.count = 1;
+      cycleTimer.reset();
       expect(clearTimeout).toHaveBeenCalledTimes(1);
-      expect(clearTimeout).toHaveBeenCalledWith(timer.timeout);
-      expect(timer.count).toBe(0);
+      expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);
+      expect(cycleTimer.count).toBe(0);
     });
   });
 });

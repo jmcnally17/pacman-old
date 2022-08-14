@@ -4,6 +4,7 @@ import makePowerUps from "./powerUps/makePowerUps";
 import makeGhosts from "./ghosts/makeGhosts";
 import makePacman from "./pacman/makePacman";
 import CycleTimer from "../models/cycleTimer";
+import ScaredTimer from "../models/scaredTimer";
 import pauseAndResumeCycle from "./pauseAndResumeCycle";
 import implementBoundaries from "./boundaries/implementBoundaries";
 import implementGhosts from "./ghosts/implementGhosts";
@@ -67,6 +68,7 @@ const powerUps = makePowerUps(map, variables);
 const ghosts = makeGhosts(variables);
 const pacman = makePacman(variables);
 const cycleTimer = new CycleTimer(ghosts);
+const scaredTimer = new ScaredTimer(ghosts);
 
 export default function playGame(name, reactRoot) {
   if (variables.start === true) {
@@ -82,9 +84,9 @@ export default function playGame(name, reactRoot) {
   ctx.clearRect(0, 0, 896, 992);
 
   implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, variables, ghosts, powerUps, cycleTimer);
-  implementPowerUps(powerUps, ctx, pacman, variables, ghosts);
-  implementGhosts(ghosts, boundaries, ctx, variables, pacman, pellets, powerUps, cycleTimer);
+  implementPellets(pellets, ctx, pacman, variables, ghosts, powerUps, cycleTimer, scaredTimer);
+  implementPowerUps(powerUps, ctx, pacman, variables, ghosts, scaredTimer);
+  implementGhosts(ghosts, boundaries, ctx, variables, pacman, pellets, powerUps, cycleTimer, scaredTimer);
   implementPacman(variables, pacman, boundaries, ctx, pellets);
   displayScore(variables);
   displayLives(pacman);

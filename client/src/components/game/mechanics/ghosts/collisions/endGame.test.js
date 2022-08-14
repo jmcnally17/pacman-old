@@ -13,6 +13,7 @@ describe("endGame", () => {
     const mockGhosts = "ghosts";
     const mockPacman = "pacman";
     const mockCycleTimer = "cycleTimer";
+    const mockScaredTimer = "scaredTimer";
     const mockCancelAnimationFrame = jest.fn();
     const mockSaveScore = jest.fn();
     const mockResetAfterGameOver = jest.fn();
@@ -24,6 +25,7 @@ describe("endGame", () => {
       mockGhosts,
       mockPacman,
       mockCycleTimer,
+      mockScaredTimer,
       mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver
@@ -41,7 +43,8 @@ describe("endGame", () => {
       mockGhosts,
       mockPacman,
       mockVariables,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
     expect(mockVariables.reactRoot.render).toHaveBeenCalledTimes(1);
   });

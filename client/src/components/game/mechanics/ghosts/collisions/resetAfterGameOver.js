@@ -4,7 +4,8 @@ export default function resetAfterGameOver(
   ghosts,
   pacman,
   variables,
-  cycleTimer
+  cycleTimer,
+  scaredTimer
 ) {
   pellets.forEach((pellet) => {
     if (pellet.hasBeenEaten) pellet.changeEatenState();
@@ -13,10 +14,9 @@ export default function resetAfterGameOver(
     if (powerUp.hasBeenEaten) powerUp.changeEatenState();
   });
   cycleTimer.reset();
+  scaredTimer.reset();
   ghosts.forEach((ghost) => {
     ghost.reset();
-    ghost.resetHuntingState();
-    ghost.resetRetreatingState();
   });
   pacman.reset();
   pacman.lives = 2;

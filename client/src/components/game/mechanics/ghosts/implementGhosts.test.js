@@ -11,6 +11,7 @@ let mockPacman;
 let mockPellets;
 let mockPowerUps;
 let mockCycleTimer;
+let mockScaredTimer;
 let mockcheckSpeedMatchesState;
 let mockImplementTunnel;
 let mockUpdateCollisions;
@@ -36,6 +37,7 @@ describe("implementGhosts", () => {
     mockPellets = "pellets";
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
+    mockScaredTimer = "scaredTimer";
     mockcheckSpeedMatchesState = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();
@@ -54,6 +56,7 @@ describe("implementGhosts", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -94,7 +97,8 @@ describe("implementGhosts", () => {
       mockGhostsOne,
       mockPellets,
       mockPowerUps,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
   });
 
@@ -108,6 +112,7 @@ describe("implementGhosts", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,

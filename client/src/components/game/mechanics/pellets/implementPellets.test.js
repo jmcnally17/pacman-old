@@ -10,6 +10,7 @@ let mockVariables;
 let mockGhosts;
 let mockPowerUps;
 let mockCycleTimer;
+let mockScaredTimer;
 let mockEatPellet;
 let mockCheckLevelUpCondition;
 
@@ -37,6 +38,7 @@ describe("implementPellets", () => {
     mockGhosts = "ghosts";
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
+    mockScaredTimer = "scaredTimer";
     mockEatPellet = jest.fn();
     mockCheckLevelUpCondition = jest.fn();
   });
@@ -50,6 +52,7 @@ describe("implementPellets", () => {
       mockGhosts,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
@@ -83,7 +86,8 @@ describe("implementPellets", () => {
       mockVariables,
       mockGhosts,
       mockPowerUps,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
   });
 
@@ -96,6 +100,7 @@ describe("implementPellets", () => {
       mockGhosts,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
@@ -120,7 +125,8 @@ describe("implementPellets", () => {
       mockVariables,
       mockGhosts,
       mockPowerUps,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
   });
 });

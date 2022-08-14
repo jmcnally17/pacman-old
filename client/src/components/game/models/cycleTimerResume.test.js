@@ -10,14 +10,14 @@ describe("CycleTimer", () => {
       };
       const mockGhosts = [mockGhost, mockGhost];
       jest.spyOn(mockGhost, "changeHuntingState");
-      const timer = new CycleTimer(mockGhosts);
+      const cycleTimer = new CycleTimer(mockGhosts);
       jest.spyOn(global, "setTimeout");
-      timer.timeRemaining = 4820;
-      timer.resume();
+      cycleTimer.timeRemaining = 4820;
+      cycleTimer.resume();
 
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 4820);
-      expect(timer.timeout).not.toBeNull();
+      expect(cycleTimer.timeout).not.toBeNull();
 
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeHuntingState).toHaveBeenCalledTimes(2);

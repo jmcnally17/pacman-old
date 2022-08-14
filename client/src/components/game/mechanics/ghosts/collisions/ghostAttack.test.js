@@ -5,6 +5,7 @@ let mockGhosts;
 let mockPellets;
 let mockPowerUps;
 let mockCycleTimer;
+let mockScaredTimer;
 let mockEndGame;
 let mockResetAfterDeath;
 
@@ -15,6 +16,7 @@ describe("ghostAttack", () => {
     mockPellets = "pellets";
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
+    mockScaredTimer = "scaredTimer";
     mockEndGame = jest.fn();
     mockResetAfterDeath = jest.fn();
   });
@@ -30,6 +32,7 @@ describe("ghostAttack", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockEndGame,
       mockResetAfterDeath
     );
@@ -40,7 +43,8 @@ describe("ghostAttack", () => {
       mockPowerUps,
       mockGhosts,
       mockPacman,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
     expect(mockResetAfterDeath).toHaveBeenCalledTimes(0);
   });
@@ -56,6 +60,7 @@ describe("ghostAttack", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
+      mockScaredTimer,
       mockEndGame,
       mockResetAfterDeath
     );
@@ -66,7 +71,8 @@ describe("ghostAttack", () => {
       mockPacman,
       mockVariables,
       mockGhosts,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
   });
 });

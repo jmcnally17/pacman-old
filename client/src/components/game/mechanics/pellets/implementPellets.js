@@ -9,6 +9,7 @@ export default function implementPellets(
   ghosts,
   powerUps,
   cycleTimer,
+  scaredTimer,
   callbackOne = eatPellet,
   callbackTwo = checkLevelUpCondition
 ) {
@@ -16,5 +17,13 @@ export default function implementPellets(
     if (!pellet.hasBeenEaten) pellet.draw(ctx);
     callbackOne(pellet, pacman, variables);
   });
-  callbackTwo(pellets, pacman, variables, ghosts, powerUps, cycleTimer);
+  callbackTwo(
+    pellets,
+    pacman,
+    variables,
+    ghosts,
+    powerUps,
+    cycleTimer,
+    scaredTimer
+  );
 }

@@ -13,6 +13,7 @@ let mockGhosts;
 let mockPacman;
 let mockVariables;
 let mockCycleTimer;
+let mockScaredTimer;
 
 describe("resetAfterGameOver", () => {
   beforeEach(() => {
@@ -42,8 +43,6 @@ describe("resetAfterGameOver", () => {
     ];
     mockGhost = {
       reset: () => undefined,
-      resetHuntingState: () => undefined,
-      resetRetreatingState: () => undefined,
     };
     mockGhosts = [mockGhost, mockGhost];
     mockPacman = {
@@ -57,15 +56,17 @@ describe("resetAfterGameOver", () => {
     mockCycleTimer = {
       reset: () => undefined,
     };
+    mockScaredTimer = {
+      reset: () => undefined,
+    };
   });
 
   it("resets the board to its original configuration after game over", () => {
     jest.spyOn(mockEatenPellet, "changeEatenState");
     jest.spyOn(mockEatenPowerUp, "changeEatenState");
     jest.spyOn(mockCycleTimer, "reset");
+    jest.spyOn(mockScaredTimer, "reset");
     jest.spyOn(mockGhost, "reset");
-    jest.spyOn(mockGhost, "resetHuntingState");
-    jest.spyOn(mockGhost, "resetRetreatingState");
     jest.spyOn(mockPacman, "reset");
     resetAfterGameOver(
       mockEatenPellets,
@@ -73,14 +74,14 @@ describe("resetAfterGameOver", () => {
       mockGhosts,
       mockPacman,
       mockVariables,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
     expect(mockEatenPellet.changeEatenState).toHaveBeenCalledTimes(3);
     expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(2);
     expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
     expect(mockGhost.reset).toHaveBeenCalledTimes(2);
-    expect(mockGhost.resetHuntingState).toHaveBeenCalledTimes(2);
-    expect(mockGhost.resetRetreatingState).toHaveBeenCalledTimes(2);
     expect(mockPacman.reset).toHaveBeenCalledTimes(1);
     expect(mockPacman.lives).toBe(2);
     expect(mockVariables.lastKeyPressed).toBe("");
@@ -96,7 +97,8 @@ describe("resetAfterGameOver", () => {
       mockGhosts,
       mockPacman,
       mockVariables,
-      mockCycleTimer
+      mockCycleTimer,
+      mockScaredTimer
     );
     expect(mockUneatenPellet.changeEatenState).toHaveBeenCalledTimes(0);
     expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
