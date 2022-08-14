@@ -16,7 +16,7 @@ describe("CycleTimer", () => {
     cycleTimer = new CycleTimer(mockGhosts);
   });
 
-  describe("upon instanstation", () => {
+  describe("upon instantiation", () => {
     it("has a number of instance variables", () => {
       expect(cycleTimer.timeout).toBeNull();
       expect(cycleTimer.count).toBe(0);
