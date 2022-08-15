@@ -21,13 +21,11 @@ export default function dealWithCollision(
       cycleTimer,
       scaredTimer
     );
-  } else if (ghost.isScared && !ghost.isRetreating) {
+  } else if (ghost.isScared) {
     variables.score += 200 * Math.pow(2, variables.killCount);
     variables.killCount++;
     ghost.changeRetreatingState();
-    ghost.retreatingTimeout = setTimeout(() => {
-      ghost.changeRetreatingState();
-    }, 3000);
+    ghost.retreatingTimer.start();
     ghost.changeScaredState();
   }
 }
