@@ -6,8 +6,15 @@ export default class RetreatingTimer {
     this.timeRemaining = null;
   }
 
-  start() {
+  start(dateNow = Date.now()) {
+    this.startTime = dateNow;
     this.timeout = setTimeout(() => this.ghost.changeRetreatingState(), 3000);
+  }
+
+  pause(dateNow = Date.now()) {
+    clearTimeout(this.timeout);
+    const timeElapsed = dateNow - this.startTime;
+    this.timeRemaining = 3000 - timeElapsed;
   }
 
   reset() {

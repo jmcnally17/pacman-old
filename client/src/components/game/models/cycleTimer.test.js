@@ -51,9 +51,9 @@ describe("CycleTimer", () => {
     it("calls clearTimeout and saves the time remaining in this.timeRemaining for the seven second delay", () => {
       jest.spyOn(global, "clearTimeout");
       cycleTimer.count = 1;
-      const mockDateNow = 5780;
       cycleTimer.startTime = 2460;
       cycleTimer.isRunning = true;
+      const mockDateNow = 5780;
       cycleTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);
@@ -63,9 +63,9 @@ describe("CycleTimer", () => {
 
     it("calls clearTimeout and saves the time remaining in this.timeRemaining for the twenty second delay", () => {
       jest.spyOn(global, "clearTimeout");
-      const mockDateNow = 5780;
       cycleTimer.startTime = 2460;
       cycleTimer.isRunning = true;
+      const mockDateNow = 5780;
       cycleTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);

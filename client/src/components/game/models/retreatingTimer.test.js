@@ -34,6 +34,24 @@ describe("RetreatingTimer", () => {
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(1);
     });
+
+    it("sets the startTime equal to the Date.now()", () => {
+      const mockDateNow = 128460;
+      retreatingTimer.start(mockDateNow);
+      expect(retreatingTimer.startTime).toBe(mockDateNow);
+    });
+  });
+
+  describe("pause", () => {
+    it("calls clearTimeout and saves the time remaining in this.timeRemaining", () => {
+      jest.spyOn(global, "clearTimeout");
+      retreatingTimer.startTime = 3960;
+      const mockDateNow = 5620;
+      retreatingTimer.pause(mockDateNow);
+      expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledWith(retreatingTimer.timeout);
+      expect(retreatingTimer.timeRemaining).toBe(1340);
+    });
   });
 
   describe("reset", () => {
