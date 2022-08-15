@@ -5,6 +5,7 @@ jest.useFakeTimers();
 let mockGhost;
 let mockGhosts;
 let scaredTimer;
+let mockCycleTimer;
 
 describe("ScaredTimer", () => {
   beforeEach(() => {
@@ -14,6 +15,9 @@ describe("ScaredTimer", () => {
     };
     mockGhosts = [mockGhost, mockGhost, mockGhost, mockGhost];
     scaredTimer = new ScaredTimer(mockGhosts);
+    mockCycleTimer = {
+      resume: () => undefined,
+    };
   });
 
   describe("upon instantiation", () => {
@@ -27,12 +31,14 @@ describe("ScaredTimer", () => {
     it("sets this.timeout to a setTimeout of the ghosts changing scared state with a five second delay if they are scared", () => {
       jest.spyOn(global, "setTimeout");
       jest.spyOn(mockGhost, "changeScaredState");
-      scaredTimer.start();
+      jest.spyOn(mockCycleTimer, "resume");
+      scaredTimer.start(mockCycleTimer);
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
       expect(scaredTimer.timeout).not.toBeNull();
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(4);
+      expect(mockCycleTimer.resume).toHaveBeenCalledTimes(1);
     });
   });
 
