@@ -7,12 +7,13 @@ export default function implementPowerUps(
   variables,
   ghosts,
   scaredTimer,
+  cycleTimer,
   callback = eatPowerUp
 ) {
   powerUps.forEach((powerUp) => {
     if (!powerUp.hasBeenEaten) {
       powerUp.update(ctx);
-      callback(powerUp, pacman, variables, ghosts, scaredTimer);
+      callback(powerUp, pacman, variables, ghosts, scaredTimer, cycleTimer);
     }
   });
 }
