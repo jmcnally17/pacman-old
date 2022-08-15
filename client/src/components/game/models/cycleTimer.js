@@ -5,6 +5,7 @@ export default class CycleTimer {
     this.startTime = null;
     this.timeRemaining = null;
     this.ghosts = ghosts;
+    this.isRunning = false;
   }
 
   start(dateNow = Date.now()) {
@@ -16,6 +17,7 @@ export default class CycleTimer {
       this.count === 0 ? 7000 : 20000
     );
     this.count === 0 ? this.count++ : this.count--;
+    this.isRunning = true;
   }
 
   pause(dateNow = Date.now()) {
@@ -25,17 +27,20 @@ export default class CycleTimer {
       ? (this.timeRemaining = 20000 - timeElapsed)
       : (this.timeRemaining = 7000 - timeElapsed);
     clearTimeout(this.timeout);
+    this.isRunning = false;
   }
 
   resume() {
     this.timeout = setTimeout(() => {
       this.#switchHuntScatterState();
     }, this.timeRemaining);
+    this.isRunning = true;
   }
 
   reset() {
     clearTimeout(this.timeout);
     this.count = 0;
+    this.isRunning = false;
   }
 
   // private

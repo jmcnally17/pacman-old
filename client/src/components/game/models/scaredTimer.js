@@ -4,11 +4,12 @@ export default class ScaredTimer {
     this.ghosts = ghosts;
   }
 
-  start() {
+  start(cycleTimer) {
     this.timeout = setTimeout(() => {
       this.ghosts.forEach((ghost) => {
         if (ghost.isScared) ghost.changeScaredState();
       });
+      cycleTimer.resume();
     }, 5000);
   }
 

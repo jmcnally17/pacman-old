@@ -18,6 +18,7 @@ describe("CycleTimer", () => {
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 4820);
       expect(cycleTimer.timeout).not.toBeNull();
+      expect(cycleTimer.isRunning).toBeTruthy();
 
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeHuntingState).toHaveBeenCalledTimes(2);

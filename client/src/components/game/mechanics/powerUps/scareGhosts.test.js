@@ -1,9 +1,23 @@
 import scareGhosts from "./scareGhosts";
 
+let mockGhost;
+let mockGhosts;
+let mockCycleTimer;
 let mockScaredTimer;
 
 describe("scareGhosts", () => {
   beforeEach(() => {
+    mockGhost = {
+      isScared: false,
+      isRetreating: false,
+      changeScaredState: () => undefined,
+    };
+    mockGhosts = [mockGhost, mockGhost, mockGhost, mockGhost];
+    mockCycleTimer = {
+      isRunning: true,
+      pause: () => undefined,
+    };
+    jest.spyOn(mockCycleTimer, "pause");
     mockScaredTimer = {
       reset: () => undefined,
       start: () => undefined,
@@ -12,18 +26,28 @@ describe("scareGhosts", () => {
     jest.spyOn(mockScaredTimer, "start");
   });
 
-  it("calls changeScaredState if the ghosts are not scared or retreating and clears and sets the scared timeout", () => {
-    const mockGhost = {
-      isScared: false,
-      isRetreating: false,
-      changeScaredState: () => undefined,
-    };
-    const mockGhosts = [mockGhost, mockGhost, mockGhost, mockGhost];
-    jest.spyOn(mockGhost, "changeScaredState");
-    scareGhosts(mockGhosts, mockScaredTimer);
+  it("resets and starts the scaredTimer", () => {
+    scareGhosts(mockGhosts, mockCycleTimer, mockScaredTimer);
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
-    expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(4);
     expect(mockScaredTimer.start).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.start).toHaveBeenCalledWith(mockCycleTimer);
+  });
+
+  it("pauses the cycleTimer if it is running", () => {
+    scareGhosts(mockGhosts, mockCycleTimer, mockScaredTimer);
+    expect(mockCycleTimer.pause).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not pause the cycleTimer if it is not running", () => {
+    mockCycleTimer.isRunning = false;
+    scareGhosts(mockGhosts, mockCycleTimer, mockScaredTimer);
+    expect(mockCycleTimer.pause).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls changeScaredState if the ghosts are not scared or retreating and clears and sets the scared timeout", () => {
+    jest.spyOn(mockGhost, "changeScaredState");
+    scareGhosts(mockGhosts, mockCycleTimer, mockScaredTimer);
+    expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(4);
   });
 
   it("does not call changeScaredState if the ghosts are scared and clears and sets the scared timeout", () => {
@@ -39,10 +63,8 @@ describe("scareGhosts", () => {
       mockScaredGhost,
     ];
     jest.spyOn(mockScaredGhost, "changeScaredState");
-    scareGhosts(mockScaredGhosts, mockScaredTimer);
-    expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
+    scareGhosts(mockScaredGhosts, mockCycleTimer, mockScaredTimer);
     expect(mockScaredGhost.changeScaredState).toHaveBeenCalledTimes(0);
-    expect(mockScaredTimer.start).toHaveBeenCalledTimes(1);
   });
 
   it("does not call changeScaredState if the ghosts are retreating and clears and sets the scared timeout", () => {
@@ -58,9 +80,7 @@ describe("scareGhosts", () => {
       mockRetreatingGhost,
     ];
     jest.spyOn(mockRetreatingGhost, "changeScaredState");
-    scareGhosts(mockRetreatingGhosts, mockScaredTimer);
-    expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
+    scareGhosts(mockRetreatingGhosts, mockCycleTimer, mockScaredTimer);
     expect(mockRetreatingGhost.changeScaredState).toHaveBeenCalledTimes(0);
-    expect(mockScaredTimer.start).toHaveBeenCalledTimes(1);
   });
 });

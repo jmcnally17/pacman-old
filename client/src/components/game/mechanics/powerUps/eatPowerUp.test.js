@@ -6,6 +6,7 @@ let mockPacmanTwo;
 let mockVariables;
 let mockGhosts;
 let mockScaredTimer;
+let mockCycleTimer;
 let mockScareGhosts;
 
 describe("eatPowerUp", () => {
@@ -36,6 +37,7 @@ describe("eatPowerUp", () => {
     };
     mockGhosts = "ghosts";
     mockScaredTimer = "scaredTimer";
+    mockCycleTimer = "cycleTimer";
     mockScareGhosts = jest.fn();
   });
 
@@ -46,13 +48,18 @@ describe("eatPowerUp", () => {
       mockVariables,
       mockGhosts,
       mockScaredTimer,
+      mockCycleTimer,
       mockScareGhosts
     );
     expect(mockPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
     expect(mockVariables.score).toBe(50);
     expect(mockVariables.killCount).toBe(0);
     expect(mockScareGhosts).toHaveBeenCalledTimes(1);
-    expect(mockScareGhosts).toHaveBeenCalledWith(mockGhosts, mockScaredTimer);
+    expect(mockScareGhosts).toHaveBeenCalledWith(
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer
+    );
   });
 
   it("does not call changeEatenState, increases the score, reset the kill count or call the scareGhosts callback if the power up and pacman are not colliding", () => {
@@ -62,6 +69,7 @@ describe("eatPowerUp", () => {
       mockVariables,
       mockGhosts,
       mockScaredTimer,
+      mockCycleTimer,
       mockScareGhosts
     );
     expect(mockPowerUp.changeEatenState).toHaveBeenCalledTimes(0);

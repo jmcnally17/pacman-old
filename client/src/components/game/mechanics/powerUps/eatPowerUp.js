@@ -6,6 +6,7 @@ export default function eatPowerUp(
   variables,
   ghosts,
   scaredTimer,
+  cycleTimer,
   callback = scareGhosts
 ) {
   if (
@@ -15,6 +16,6 @@ export default function eatPowerUp(
     powerUp.changeEatenState();
     variables.score += 50;
     variables.killCount = 0;
-    callback(ghosts, scaredTimer);
+    callback(ghosts, cycleTimer, scaredTimer);
   }
 }

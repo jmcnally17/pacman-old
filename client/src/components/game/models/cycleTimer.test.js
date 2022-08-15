@@ -23,6 +23,7 @@ describe("CycleTimer", () => {
       expect(cycleTimer.startTime).toBeNull();
       expect(cycleTimer.timeRemaining).toBeNull();
       expect(cycleTimer.ghosts).toEqual(mockGhosts);
+      expect(cycleTimer.isRunning).toBeFalsy();
     });
   });
 
@@ -37,6 +38,7 @@ describe("CycleTimer", () => {
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 7000);
       expect(cycleTimer.timeout).not.toBeNull();
       expect(cycleTimer.count).toBe(1);
+      expect(cycleTimer.isRunning).toBeTruthy();
 
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeHuntingState).toHaveBeenCalledTimes(2);
@@ -51,20 +53,24 @@ describe("CycleTimer", () => {
       cycleTimer.count = 1;
       const mockDateNow = 5780;
       cycleTimer.startTime = 2460;
+      cycleTimer.isRunning = true;
       cycleTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);
       expect(cycleTimer.timeRemaining).toBe(3680);
+      expect(cycleTimer.isRunning).toBeFalsy();
     });
 
     it("calls clearTimeout and saves the time remaining in this.timeRemaining for the twenty second delay", () => {
       jest.spyOn(global, "clearTimeout");
       const mockDateNow = 5780;
       cycleTimer.startTime = 2460;
+      cycleTimer.isRunning = true;
       cycleTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);
       expect(cycleTimer.timeRemaining).toBe(16680);
+      expect(cycleTimer.isRunning).toBeFalsy();
     });
   });
 
@@ -72,10 +78,12 @@ describe("CycleTimer", () => {
     it("clears the timeout and sets the count back to 0", () => {
       jest.spyOn(global, "clearTimeout");
       cycleTimer.count = 1;
+      cycleTimer.isRunning = true;
       cycleTimer.reset();
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);
       expect(cycleTimer.count).toBe(0);
+      expect(cycleTimer.isRunning).toBeFalsy();
     });
   });
 });
