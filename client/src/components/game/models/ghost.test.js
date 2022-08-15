@@ -40,7 +40,6 @@ describe("Ghost", () => {
     mockCtx = {
       drawImage: () => undefined,
     };
-    jest.spyOn(global, "clearTimeout");
   });
 
   describe("upon instantiation", () => {
@@ -69,7 +68,7 @@ describe("Ghost", () => {
       expect(ghost.isScared).toBeFalsy();
       expect(ghost.isHunting).toBeFalsy();
       expect(ghost.isRetreating).toBeFalsy();
-      expect(ghost.retreatingTimeout).toBeNull();
+      expect(ghost.retreatingTimer).toBeNull();
       expect(ghost.image).toBeInstanceOf(Image);
       expect(ghost.up.src).toBe("http://localhost/images/redGhostUp.png");
       expect(ghost.left.src).toBe("http://localhost/images/redGhostLeft.png");
@@ -165,10 +164,6 @@ describe("Ghost", () => {
       expect(scaredHuntingRetreatingGhost.isScared).toBeFalsy();
       expect(scaredHuntingRetreatingGhost.isHunting).toBeFalsy();
       expect(scaredHuntingRetreatingGhost.isRetreating).toBeFalsy();
-      expect(clearTimeout).toHaveBeenCalledTimes(1);
-      expect(clearTimeout).toHaveBeenCalledWith(
-        scaredHuntingRetreatingGhost.retreatingTimeout
-      );
     });
 
     it("leaves isScared as false if it is already false", () => {
