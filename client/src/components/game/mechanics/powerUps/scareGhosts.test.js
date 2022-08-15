@@ -37,6 +37,12 @@ describe("scareGhosts", () => {
     expect(mockCycleTimer.pause).toHaveBeenCalledTimes(1);
   });
 
+  it("does not pause the cycleTimer if it is not running", () => {
+    mockCycleTimer.isRunning = false;
+    scareGhosts(mockGhosts, mockCycleTimer, mockScaredTimer);
+    expect(mockCycleTimer.pause).toHaveBeenCalledTimes(0);
+  });
+
   it("calls changeScaredState if the ghosts are not scared or retreating and clears and sets the scared timeout", () => {
     jest.spyOn(mockGhost, "changeScaredState");
     scareGhosts(mockGhosts, mockCycleTimer, mockScaredTimer);
