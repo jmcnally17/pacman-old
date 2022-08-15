@@ -5,7 +5,8 @@ import makeGhosts from "./ghosts/makeGhosts";
 import makePacman from "./pacman/makePacman";
 import CycleTimer from "../models/cycleTimer";
 import ScaredTimer from "../models/scaredTimer";
-import pauseAndResumeCycle from "./pauseAndResumeCycle";
+import makeRetreatingTimers from "./timers/makeRetreatingTimers";
+import pauseAndResumeCycle from "./timers/pauseAndResumeCycle";
 import implementBoundaries from "./boundaries/implementBoundaries";
 import implementGhosts from "./ghosts/implementGhosts";
 import implementPacman from "./pacman/implementPacman";
@@ -69,6 +70,7 @@ const ghosts = makeGhosts(variables);
 const pacman = makePacman(variables);
 const cycleTimer = new CycleTimer(ghosts);
 const scaredTimer = new ScaredTimer(ghosts);
+const retreatingTimers = makeRetreatingTimers(ghosts)
 
 export default function playGame(name, reactRoot) {
   if (variables.start === true) {

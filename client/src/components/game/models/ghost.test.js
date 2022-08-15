@@ -2,6 +2,7 @@ import Ghost from "./ghost";
 
 let ghost;
 let scaredHuntingRetreatingGhost;
+let mockRetreatingTimer;
 let mockCtx;
 
 describe("Ghost", () => {
@@ -37,10 +38,14 @@ describe("Ghost", () => {
     scaredHuntingRetreatingGhost.isScared = true;
     scaredHuntingRetreatingGhost.isHunting = true;
     scaredHuntingRetreatingGhost.isRetreating = true;
+    mockRetreatingTimer = {
+      reset: () => undefined,
+    };
+    scaredHuntingRetreatingGhost.retreatingTimer = mockRetreatingTimer;
+    jest.spyOn(mockRetreatingTimer, "reset");
     mockCtx = {
       drawImage: () => undefined,
     };
-    jest.spyOn(global, "clearTimeout");
   });
 
   describe("upon instantiation", () => {
@@ -69,7 +74,7 @@ describe("Ghost", () => {
       expect(ghost.isScared).toBeFalsy();
       expect(ghost.isHunting).toBeFalsy();
       expect(ghost.isRetreating).toBeFalsy();
-      expect(ghost.retreatingTimeout).toBeNull();
+      expect(ghost.retreatingTimer).toBeNull();
       expect(ghost.image).toBeInstanceOf(Image);
       expect(ghost.up.src).toBe("http://localhost/images/redGhostUp.png");
       expect(ghost.left.src).toBe("http://localhost/images/redGhostLeft.png");
@@ -164,24 +169,24 @@ describe("Ghost", () => {
       expect(scaredHuntingRetreatingGhost.prevCollisions).toEqual([]);
       expect(scaredHuntingRetreatingGhost.isScared).toBeFalsy();
       expect(scaredHuntingRetreatingGhost.isHunting).toBeFalsy();
+      expect(mockRetreatingTimer.reset).toHaveBeenCalledTimes(1);
       expect(scaredHuntingRetreatingGhost.isRetreating).toBeFalsy();
-      expect(clearTimeout).toHaveBeenCalledTimes(1);
-      expect(clearTimeout).toHaveBeenCalledWith(
-        scaredHuntingRetreatingGhost.retreatingTimeout
-      );
     });
 
     it("leaves isScared as false if it is already false", () => {
+      ghost.retreatingTimer = mockRetreatingTimer;
       ghost.reset();
       expect(ghost.isScared).toBeFalsy();
     });
 
     it("leaves the hunting state as false if it is already false", () => {
+      ghost.retreatingTimer = mockRetreatingTimer;
       ghost.reset();
       expect(ghost.isHunting).toBeFalsy();
     });
 
     it("leaves the retreating state as false if it is already false", () => {
+      ghost.retreatingTimer = mockRetreatingTimer;
       ghost.reset();
       expect(ghost.isRetreating).toBeFalsy();
     });

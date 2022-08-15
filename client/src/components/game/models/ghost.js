@@ -12,7 +12,7 @@ export default class Ghost {
     this.isScared = false;
     this.isHunting = false;
     this.isRetreating = false;
-    this.retreatingTimeout = null;
+    this.retreatingTimer = null;
     this.image = new image();
     this.up = new image();
     this.up.src = `./images/${this.colour}GhostUp.png`;
@@ -75,12 +75,12 @@ export default class Ghost {
     else this.#assignRegularSprite();
   }
 
-  private;
+  // private
 
   #resetStates() {
     if (this.isScared) this.changeScaredState();
     if (this.isHunting) this.changeHuntingState();
-    clearTimeout(this.retreatingTimeout);
+    this.retreatingTimer.reset();
     if (this.isRetreating) this.changeRetreatingState();
   }
 
