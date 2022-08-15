@@ -18,6 +18,8 @@ describe("RetreatingTimer", () => {
     it("has a number of instance variables", () => {
       expect(retreatingTimer.timeout).toBeNull();
       expect(retreatingTimer.ghost).toEqual(mockGhost);
+      expect(retreatingTimer.startTime).toBeNull();
+      expect(retreatingTimer.timeRemaining).toBeNull();
     });
   });
 

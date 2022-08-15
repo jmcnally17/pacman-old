@@ -19,10 +19,10 @@ describe("CycleTimer", () => {
   describe("upon instantiation", () => {
     it("has a number of instance variables", () => {
       expect(cycleTimer.timeout).toBeNull();
+      expect(cycleTimer.ghosts).toEqual(mockGhosts);
       expect(cycleTimer.count).toBe(0);
       expect(cycleTimer.startTime).toBeNull();
       expect(cycleTimer.timeRemaining).toBeNull();
-      expect(cycleTimer.ghosts).toEqual(mockGhosts);
       expect(cycleTimer.isRunning).toBeFalsy();
     });
   });

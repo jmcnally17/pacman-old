@@ -1,10 +1,10 @@
 export default class CycleTimer {
   constructor(ghosts) {
     this.timeout = null;
+    this.ghosts = ghosts;
     this.count = 0;
     this.startTime = null;
     this.timeRemaining = null;
-    this.ghosts = ghosts;
     this.isRunning = false;
   }
 
