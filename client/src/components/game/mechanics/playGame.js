@@ -5,7 +5,7 @@ import makeGhosts from "./ghosts/makeGhosts";
 import makePacman from "./pacman/makePacman";
 import CycleTimer from "../models/cycleTimer";
 import ScaredTimer from "../models/scaredTimer";
-import pauseAndResumeCycle from "./pauseAndResumeCycle";
+import pauseAndResumeCycle from "./timers/pauseAndResumeCycle";
 import implementBoundaries from "./boundaries/implementBoundaries";
 import implementGhosts from "./ghosts/implementGhosts";
 import implementPacman from "./pacman/implementPacman";
