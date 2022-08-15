@@ -26,10 +26,11 @@ describe("scareGhosts", () => {
     jest.spyOn(mockScaredTimer, "start");
   });
 
-  it("resets and starts the cycleTimer", () => {
+  it("resets and starts the scaredTimer", () => {
     scareGhosts(mockGhosts, mockCycleTimer, mockScaredTimer);
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
     expect(mockScaredTimer.start).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.start).toHaveBeenCalledWith(mockCycleTimer);
   });
 
   it("pauses the cycleTimer if it is running", () => {
