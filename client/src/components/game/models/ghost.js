@@ -75,11 +75,12 @@ export default class Ghost {
     else this.#assignRegularSprite();
   }
 
-  private;
+  // private
 
   #resetStates() {
     if (this.isScared) this.changeScaredState();
     if (this.isHunting) this.changeHuntingState();
+    this.retreatingTimer.reset();
     if (this.isRetreating) this.changeRetreatingState();
   }
 

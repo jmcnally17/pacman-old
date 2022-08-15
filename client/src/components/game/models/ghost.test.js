@@ -2,6 +2,7 @@ import Ghost from "./ghost";
 
 let ghost;
 let scaredHuntingRetreatingGhost;
+let mockRetreatingTimer;
 let mockCtx;
 
 describe("Ghost", () => {
@@ -37,6 +38,11 @@ describe("Ghost", () => {
     scaredHuntingRetreatingGhost.isScared = true;
     scaredHuntingRetreatingGhost.isHunting = true;
     scaredHuntingRetreatingGhost.isRetreating = true;
+    mockRetreatingTimer = {
+      reset: () => undefined,
+    };
+    scaredHuntingRetreatingGhost.retreatingTimer = mockRetreatingTimer;
+    jest.spyOn(mockRetreatingTimer, "reset");
     mockCtx = {
       drawImage: () => undefined,
     };
@@ -163,20 +169,24 @@ describe("Ghost", () => {
       expect(scaredHuntingRetreatingGhost.prevCollisions).toEqual([]);
       expect(scaredHuntingRetreatingGhost.isScared).toBeFalsy();
       expect(scaredHuntingRetreatingGhost.isHunting).toBeFalsy();
+      expect(mockRetreatingTimer.reset).toHaveBeenCalledTimes(1);
       expect(scaredHuntingRetreatingGhost.isRetreating).toBeFalsy();
     });
 
     it("leaves isScared as false if it is already false", () => {
+      ghost.retreatingTimer = mockRetreatingTimer;
       ghost.reset();
       expect(ghost.isScared).toBeFalsy();
     });
 
     it("leaves the hunting state as false if it is already false", () => {
+      ghost.retreatingTimer = mockRetreatingTimer;
       ghost.reset();
       expect(ghost.isHunting).toBeFalsy();
     });
 
     it("leaves the retreating state as false if it is already false", () => {
+      ghost.retreatingTimer = mockRetreatingTimer;
       ghost.reset();
       expect(ghost.isRetreating).toBeFalsy();
     });

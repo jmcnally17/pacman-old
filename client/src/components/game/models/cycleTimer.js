@@ -38,7 +38,7 @@ export default class CycleTimer {
     this.count = 0;
   }
 
-  private;
+  // private
 
   #switchHuntScatterState() {
     this.ghosts.forEach((ghost) => {
