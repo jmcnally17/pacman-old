@@ -7,4 +7,8 @@ export default class RetreatingTimer {
   start() {
     this.timeout = setTimeout(() => this.ghost.changeRetreatingState(), 3000);
   }
+
+  reset() {
+    clearTimeout(this.timeout);
+  }
 }

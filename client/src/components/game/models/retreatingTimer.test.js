@@ -33,4 +33,13 @@ describe("RetreatingTimer", () => {
       expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe("reset", () => {
+    it("calls clearTimeout on this.timeout", () => {
+      jest.spyOn(global, "clearTimeout");
+      retreatingTimer.reset();
+      expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledWith(retreatingTimer.timeout);
+    });
+  });
 });
