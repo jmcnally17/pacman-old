@@ -51,4 +51,16 @@ describe("pauseAndResumeTimers", () => {
     document.dispatchEvent(visibilityChange);
     expect(mockVariables.windowIsVisible).toBeFalsy();
   });
+
+  it("changes windowIsVisible to true when it is false", () => {
+    pauseAndResumeTimers(
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers
+    );
+    mockVariables.windowIsVisible = false;
+    document.dispatchEvent(visibilityChange);
+    expect(mockVariables.windowIsVisible).toBeTruthy();
+  });
 });
