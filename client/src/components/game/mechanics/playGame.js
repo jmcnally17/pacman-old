@@ -6,7 +6,7 @@ import makePacman from "./pacman/makePacman";
 import CycleTimer from "../models/cycleTimer";
 import ScaredTimer from "../models/scaredTimer";
 import makeRetreatingTimers from "./timers/makeRetreatingTimers";
-import addVisibilityDetection from "./timers/addVisibilityDetection";
+import finishSetup from "./finishSetup";
 import implementBoundaries from "./boundaries/implementBoundaries";
 import implementGhosts from "./ghosts/implementGhosts";
 import implementPacman from "./pacman/implementPacman";
@@ -74,11 +74,7 @@ const retreatingTimers = makeRetreatingTimers(ghosts)
 
 export default function playGame(name, reactRoot) {
   if (variables.start === true) {
-    variables.playerName = name;
-    variables.reactRoot = reactRoot;
-    cycleTimer.start();
-    addVisibilityDetection(variables, cycleTimer, scaredTimer, retreatingTimers);
-    variables.start = false;
+    finishSetup(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers)
   }
   variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
