@@ -85,4 +85,28 @@ describe("pauseAndResumeTimers", () => {
     expect(mockCycleTimer.resume).toHaveBeenCalledTimes(0);
     expect(mockScaredTimer.resume).toHaveBeenCalledTimes(1);
   });
+
+  it("pauses the retreating timer if it is running and the window is initially visible", () => {
+    document.dispatchEvent(visibilityChange);
+    expect(mockRetreatingTimer.pause).toHaveBeenCalledTimes(4);
+  });
+
+  it("resumes the retreating timer if it is running and the window is initially invisible", () => {
+    mockVariables.windowIsVisible = false;
+    document.dispatchEvent(visibilityChange);
+    expect(mockRetreatingTimer.resume).toHaveBeenCalledTimes(4);
+  });
+
+  it("does not pause the retreating timer if it is not running and the window is initially visible", () => {
+    mockRetreatingTimer.isRunning = false;
+    document.dispatchEvent(visibilityChange);
+    expect(mockRetreatingTimer.pause).toHaveBeenCalledTimes(0);
+  });
+
+  it("does not resume the retreating timer if it is not running and the window is initially invisible", () => {
+    mockVariables.windowIsVisible = false;
+    mockRetreatingTimer.isRunning = false;
+    document.dispatchEvent(visibilityChange);
+    expect(mockRetreatingTimer.resume).toHaveBeenCalledTimes(0);
+  });
 });
