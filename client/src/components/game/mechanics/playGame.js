@@ -6,7 +6,7 @@ import makePacman from "./pacman/makePacman";
 import CycleTimer from "../models/cycleTimer";
 import ScaredTimer from "../models/scaredTimer";
 import makeRetreatingTimers from "./timers/makeRetreatingTimers";
-import pauseAndResumeCycle from "./timers/pauseAndResumeCycle";
+import pauseAndResumeTimers from "./timers/pauseAndResumeTimers";
 import implementBoundaries from "./boundaries/implementBoundaries";
 import implementGhosts from "./ghosts/implementGhosts";
 import implementPacman from "./pacman/implementPacman";
@@ -77,7 +77,7 @@ export default function playGame(name, reactRoot) {
     variables.playerName = name;
     variables.reactRoot = reactRoot;
     cycleTimer.start();
-    pauseAndResumeCycle(cycleTimer, variables);
+    pauseAndResumeTimers(cycleTimer, variables);
     variables.start = false;
   }
   variables.animationId = requestAnimationFrame(playGame);

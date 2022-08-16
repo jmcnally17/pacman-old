@@ -1,10 +1,13 @@
-export default function pauseAndResumeCycle(cycleTimer, variables) {
+export default function pauseAndResumeTimers(
+  variables,
+  cycleTimer,
+  scaredTimer,
+  retreatingTimers
+) {
   document.addEventListener("visibilitychange", () => {
     if (variables.windowIsVisible) {
-      cycleTimer.pause();
       variables.windowIsVisible = false;
     } else {
-      cycleTimer.resume();
       variables.windowIsVisible = true;
     }
   });
