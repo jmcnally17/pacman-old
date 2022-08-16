@@ -1,4 +1,4 @@
-import implementTunnel from "../implementTunnel";
+import implementTunnel from "../boundaries/implementTunnel";
 import checkPacmanEating from "./checkPacmanEating";
 import changeDirection from "./movement/changeDirection";
 import makeMove from "./movement/makeMove";

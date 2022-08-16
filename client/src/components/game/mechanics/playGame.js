@@ -12,9 +12,9 @@ import implementGhosts from "./ghosts/implementGhosts";
 import implementPacman from "./pacman/implementPacman";
 import implementPellets from "./pellets/implementPellets";
 import implementPowerUps from "./powerUps/implementPowerUps";
-import displayLevel from "./displayLevel";
-import displayLives from "./displayLives";
-import displayScore from "./displayScore";
+import displayLevel from "./display/displayLevel";
+import displayLives from "./display/displayLives";
+import displayScore from "./display/displayScore";
 
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
