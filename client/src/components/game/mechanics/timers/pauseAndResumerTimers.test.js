@@ -61,11 +61,13 @@ describe("pauseAndResumeTimers", () => {
   it("pauses the cycle timer if the scared timer is not running and the window is initially visible", () => {
     document.dispatchEvent(visibilityChange);
     expect(mockCycleTimer.pause).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.pause).toHaveBeenCalledTimes(0);
   });
 
   it("resumes the cycle timer if the scared timer is not running and the window is initially invisible", () => {
     mockVariables.windowIsVisible = false;
     document.dispatchEvent(visibilityChange);
     expect(mockCycleTimer.resume).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.resume).toHaveBeenCalledTimes(0);
   });
 });
