@@ -2,9 +2,6 @@ import RetreatingTimer from "./retreatingTimer";
 
 jest.useFakeTimers();
 
-let mockGhost;
-let retreatingTimer;
-
 describe("RetreatingTimer", () => {
   describe("resume", () => {
     it("calls setTimeout with the timeRemaining as the delay", () => {
