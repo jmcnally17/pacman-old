@@ -7,11 +7,7 @@ import CycleTimer from "../models/cycleTimer";
 import ScaredTimer from "../models/scaredTimer";
 import makeRetreatingTimers from "./timers/makeRetreatingTimers";
 import finishSetup from "./finishSetup";
-import implementBoundaries from "./boundaries/implementBoundaries";
-import implementGhosts from "./ghosts/implementGhosts";
-import implementPacman from "./pacman/implementPacman";
-import implementPellets from "./pellets/implementPellets";
-import implementPowerUps from "./powerUps/implementPowerUps";
+import implementObjects from "./implementObjects";
 import displayLevel from "./display/displayLevel";
 import displayLives from "./display/displayLives";
 import displayScore from "./display/displayScore";
@@ -81,11 +77,7 @@ export default function playGame(name, reactRoot) {
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, 896, 992);
 
-  implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, variables, ghosts, powerUps, cycleTimer, scaredTimer);
-  implementPowerUps(powerUps, ctx, pacman, variables, ghosts, scaredTimer, cycleTimer);
-  implementGhosts(ghosts, boundaries, ctx, variables, pacman, pellets, powerUps, cycleTimer, scaredTimer);
-  implementPacman(variables, pacman, boundaries, ctx, pellets);
+  implementObjects(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables)
   displayScore(variables);
   displayLives(pacman);
   displayLevel(variables);

@@ -11,7 +11,7 @@ let mockAddVisibilityDetection;
 describe("finishSetup", () => {
   beforeEach(() => {
     mockVariables = {
-      name: "",
+      playerName: "",
       reactRoot: "",
       start: true,
     };
@@ -36,7 +36,7 @@ describe("finishSetup", () => {
       mockRetreatingTimers,
       mockAddVisibilityDetection
     );
-    expect(mockVariables.name).toBe(mockName);
+    expect(mockVariables.playerName).toBe(mockName);
     expect(mockVariables.reactRoot).toBe(mockReactRoot);
   });
 

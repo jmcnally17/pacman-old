@@ -9,7 +9,7 @@ export default function finishSetup(
   retreatingTimers,
   callback = addVisibilityDetection
 ) {
-  variables.name = name;
+  variables.playerName = name;
   variables.reactRoot = reactRoot;
   cycleTimer.start();
   callback(variables, cycleTimer, scaredTimer, retreatingTimers);
