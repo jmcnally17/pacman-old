@@ -26,6 +26,7 @@ describe("ScaredTimer", () => {
       expect(scaredTimer.ghosts).toEqual(mockGhosts);
       expect(scaredTimer.startTime).toBeNull();
       expect(scaredTimer.timeRemaining).toBeNull();
+      expect(scaredTimer.isRunning).toBeFalsy();
     });
   });
 
@@ -40,9 +41,11 @@ describe("ScaredTimer", () => {
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
       expect(scaredTimer.timeout).not.toBeNull();
       expect(scaredTimer.startTime).toBe(mockDateNow);
+      expect(scaredTimer.isRunning).toBeTruthy();
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(4);
       expect(mockCycleTimer.resume).toHaveBeenCalledTimes(1);
+      expect(scaredTimer.isRunning).toBeFalsy();
     });
   });
 
@@ -61,9 +64,11 @@ describe("ScaredTimer", () => {
   describe("reset", () => {
     it("calls clearTimeout on this.timeout", () => {
       jest.spyOn(global, "clearTimeout");
+      scaredTimer.isRunning = true;
       scaredTimer.reset();
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(scaredTimer.timeout);
+      expect(scaredTimer.isRunning).toBeFalsy();
     });
   });
 });

@@ -18,6 +18,7 @@ describe("ScaredTimer", () => {
       jest.spyOn(mockGhost, "changeScaredState");
       jest.spyOn(mockCycleTimer, "resume");
       scaredTimer.timeRemaining = 4160;
+      scaredTimer.isRunning = true;
       scaredTimer.resume(mockCycleTimer);
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 4160);
@@ -25,6 +26,7 @@ describe("ScaredTimer", () => {
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(0);
       expect(mockCycleTimer.resume).toHaveBeenCalledTimes(1);
+      expect(scaredTimer.isRunning).toBeFalsy();
     });
   });
 });

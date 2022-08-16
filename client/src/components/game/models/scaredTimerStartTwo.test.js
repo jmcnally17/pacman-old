@@ -23,9 +23,11 @@ describe("ScaredTimer", () => {
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
       expect(scaredTimer.timeout).not.toBeNull();
       expect(scaredTimer.startTime).toBe(mockDateNow);
+      expect(scaredTimer.isRunning).toBeTruthy();
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(0);
       expect(mockCycleTimer.resume).toHaveBeenCalledTimes(1);
+      expect(scaredTimer.isRunning).toBeFalsy();
     });
   });
 });

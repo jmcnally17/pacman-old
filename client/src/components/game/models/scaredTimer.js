@@ -4,6 +4,7 @@ export default class ScaredTimer {
     this.ghosts = ghosts;
     this.startTime = null;
     this.timeRemaining = null;
+    this.isRunning = false;
   }
 
   start(cycleTimer, dateNow = Date.now()) {
@@ -13,7 +14,9 @@ export default class ScaredTimer {
         if (ghost.isScared) ghost.changeScaredState();
       });
       cycleTimer.resume();
+      this.isRunning = false;
     }, 5000);
+    this.isRunning = true;
   }
 
   pause(dateNow = Date.now()) {
@@ -28,10 +31,12 @@ export default class ScaredTimer {
         if (ghost.isScared) ghost.changeScaredState();
       });
       cycleTimer.resume();
+      this.isRunning = false;
     }, this.timeRemaining);
   }
 
   reset() {
     clearTimeout(this.timeout);
+    this.isRunning = false;
   }
 }
