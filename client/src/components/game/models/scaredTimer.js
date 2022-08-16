@@ -22,6 +22,13 @@ export default class ScaredTimer {
     this.timeRemaining = 5000 - timeElapsed;
   }
 
+  resume(cycleTimer) {
+    this.timeout = setTimeout(() => {
+      this.ghosts.forEach((ghost) => ghost.changeScaredState());
+      cycleTimer.resume();
+    }, this.timeRemaining);
+  }
+
   reset() {
     clearTimeout(this.timeout);
   }
