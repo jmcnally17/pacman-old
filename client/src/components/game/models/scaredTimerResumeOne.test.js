@@ -3,10 +3,10 @@ import ScaredTimer from "./scaredTimer";
 jest.useFakeTimers();
 
 describe("ScaredTimer", () => {
-  describe("start", () => {
-    it("does not call changeScaredState in the timeout if the ghosts are not scared", () => {
+  describe("resume", () => {
+    it("starts the timeout again to change the ghosts scared state if they are scared and resume the cycleTimer", () => {
       const mockGhost = {
-        isScared: false,
+        isScared: true,
         changeScaredState: () => undefined,
       };
       const mockGhosts = [mockGhost, mockGhost, mockGhost, mockGhost];
@@ -14,18 +14,17 @@ describe("ScaredTimer", () => {
       const mockCycleTimer = {
         resume: () => undefined,
       };
-      const mockDateNow = 173620;
       jest.spyOn(global, "setTimeout");
       jest.spyOn(mockGhost, "changeScaredState");
       jest.spyOn(mockCycleTimer, "resume");
-      scaredTimer.start(mockCycleTimer, mockDateNow);
+      scaredTimer.timeRemaining = 4160;
+      scaredTimer.isRunning = true;
+      scaredTimer.resume(mockCycleTimer);
       expect(setTimeout).toHaveBeenCalledTimes(1);
-      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
+      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 4160);
       expect(scaredTimer.timeout).not.toBeNull();
-      expect(scaredTimer.startTime).toBe(mockDateNow);
-      expect(scaredTimer.isRunning).toBeTruthy();
       jest.runOnlyPendingTimers();
-      expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(0);
+      expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(4);
       expect(mockCycleTimer.resume).toHaveBeenCalledTimes(1);
       expect(scaredTimer.isRunning).toBeFalsy();
     });
