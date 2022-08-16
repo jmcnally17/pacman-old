@@ -66,11 +66,11 @@ Pink:
 
 Cyan:
 
-- The cyan ghosts movement is a little more complex. It not only depends on Pac-Man's position but also on the red ghosts position. First the position two tiles in front of Pac-Man is found. Then, the vector from this intermediate position to the red ghosts position is rotated 180&deg; to give the cyan ghosts target position in an attempt to flank Pac-Man. This means the cyan ghosts movement can be difficult to predict due to the constantly changing positions of the characters on the board. In the original version, the intermediate position when Pac-Man is facing upwards is two tiles up and two tiles to the left due to the same overflow error mentioned in the pink ghosts movement. Again however, due to this projects coordinate system this bug is not encountered.
+- The cyan ghosts hunting movement is the most complex of the four. It not only depends on Pac-Man's position but also on the red ghosts position. First the position two tiles in front of Pac-Man is found. Then, the vector from this intermediate position to the red ghosts position is rotated 180&deg; to give the cyan ghosts target position in an attempt to flank Pac-Man. This means the cyan ghosts movement can be difficult to predict due to the constantly changing positions of the characters on the board. In the original version, the intermediate position when Pac-Man is facing upwards is two tiles up and two tiles to the left due to the same overflow error mentioned in the pink ghosts movement. Again however, due to this projects coordinate system this bug is not encountered.
 
 Orange:
 
-- The orange ghost has the most peculiar movment of the four. When it is further than eight tile lengths away from Pac-Man, it will aim for Pac-Man's current position just like the red ghost. However, when the orange ghost is eight tiles or closer to Pac-Man, it will start carrying out its scatter movement and aim for the bottom left corner. This means there are actually very few spots where Pac-Man can remain still and the orange ghost can catch him, with most of them being in the bottom left corner.
+- The orange ghost has a more peculiar hunting movment. When it is further than eight tile lengths away from Pac-Man, it will aim for Pac-Man's current position just like the red ghost. However, when the orange ghost is eight tiles or closer to Pac-Man, it will start carrying out its scatter movement and aim for the bottom left corner. This means there are actually very few spots where Pac-Man can remain still and the orange ghost can catch him, with most of them being in the bottom left corner.
 
 &nbsp;
 
