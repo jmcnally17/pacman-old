@@ -6,7 +6,8 @@ export default class ScaredTimer {
     this.timeRemaining = null;
   }
 
-  start(cycleTimer) {
+  start(cycleTimer, dateNow = Date.now()) {
+    this.startTime = dateNow;
     this.timeout = setTimeout(() => {
       this.ghosts.forEach((ghost) => {
         if (ghost.isScared) ghost.changeScaredState();
