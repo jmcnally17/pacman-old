@@ -46,12 +46,17 @@ describe("ScaredTimer", () => {
     });
   });
 
-  // describe("pause", () => {
-  //   it("calls clearTimeout and saves the time remaining in this.timeRemaining", () => {
-  //     jest.spyOn(global, "clearTimeout");
-
-  //   });
-  // });
+  describe("pause", () => {
+    it("calls clearTimeout and saves the time remaining in this.timeRemaining", () => {
+      jest.spyOn(global, "clearTimeout");
+      scaredTimer.startTime = 4860;
+      const mockDateNow = 7180;
+      scaredTimer.pause(mockDateNow);
+      expect(clearTimeout).toHaveBeenCalledTimes(1);
+      expect(clearTimeout).toHaveBeenCalledWith(scaredTimer.timeout);
+      expect(scaredTimer.timeRemaining).toBe(2680);
+    });
+  });
 
   describe("reset", () => {
     it("calls clearTimeout on this.timeout", () => {

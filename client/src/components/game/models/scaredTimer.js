@@ -16,6 +16,12 @@ export default class ScaredTimer {
     }, 5000);
   }
 
+  pause(dateNow = Date.now()) {
+    clearTimeout(this.timeout);
+    const timeElapsed = dateNow - this.startTime;
+    this.timeRemaining = 5000 - timeElapsed;
+  }
+
   reset() {
     clearTimeout(this.timeout);
   }

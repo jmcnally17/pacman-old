@@ -21,12 +21,11 @@ export default class CycleTimer {
   }
 
   pause(dateNow = Date.now()) {
-    const now = dateNow;
-    const timeElapsed = now - this.startTime;
+    clearTimeout(this.timeout);
+    const timeElapsed = dateNow - this.startTime;
     this.count === 0
       ? (this.timeRemaining = 20000 - timeElapsed)
       : (this.timeRemaining = 7000 - timeElapsed);
-    clearTimeout(this.timeout);
     this.isRunning = false;
   }
 
