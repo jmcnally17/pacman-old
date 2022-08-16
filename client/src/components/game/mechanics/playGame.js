@@ -8,9 +8,7 @@ import ScaredTimer from "../models/scaredTimer";
 import makeRetreatingTimers from "./timers/makeRetreatingTimers";
 import finishSetup from "./finishSetup";
 import implementObjects from "./implementObjects";
-import displayLevel from "./display/displayLevel";
-import displayLives from "./display/displayLives";
-import displayScore from "./display/displayScore";
+import updateDisplay from "./updateDisplay";
 
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
@@ -78,7 +76,5 @@ export default function playGame(name, reactRoot) {
   ctx.clearRect(0, 0, 896, 992);
 
   implementObjects(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables)
-  displayScore(variables);
-  displayLives(pacman);
-  displayLevel(variables);
+  updateDisplay(pacman, variables)
 };
