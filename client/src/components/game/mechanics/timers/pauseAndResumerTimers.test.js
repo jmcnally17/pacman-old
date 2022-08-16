@@ -22,7 +22,7 @@ describe("pauseAndResumeTimers", () => {
       resume: () => undefined,
     };
     mockRetreatingTimer = {
-      isRunning: false,
+      isRunning: true,
       pause: () => undefined,
       resume: () => undefined,
     };
@@ -69,5 +69,20 @@ describe("pauseAndResumeTimers", () => {
     document.dispatchEvent(visibilityChange);
     expect(mockCycleTimer.resume).toHaveBeenCalledTimes(1);
     expect(mockScaredTimer.resume).toHaveBeenCalledTimes(0);
+  });
+
+  it("pauses the scared timer if the scared timer is running and the window is initially visible", () => {
+    mockScaredTimer.isRunning = true;
+    document.dispatchEvent(visibilityChange);
+    expect(mockCycleTimer.pause).toHaveBeenCalledTimes(0);
+    expect(mockScaredTimer.pause).toHaveBeenCalledTimes(1);
+  });
+
+  it("resumes the scared timer if the scared timer is running and the window is initially invisible", () => {
+    mockScaredTimer.isRunning = true;
+    mockVariables.windowIsVisible = false;
+    document.dispatchEvent(visibilityChange);
+    expect(mockCycleTimer.resume).toHaveBeenCalledTimes(0);
+    expect(mockScaredTimer.resume).toHaveBeenCalledTimes(1);
   });
 });

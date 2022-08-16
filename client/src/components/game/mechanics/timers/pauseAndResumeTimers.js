@@ -7,10 +7,12 @@ export default function pauseAndResumeTimers(
   document.addEventListener("visibilitychange", () => {
     if (variables.windowIsVisible) {
       variables.windowIsVisible = false;
-      cycleTimer.pause();
+      if (scaredTimer.isRunning) scaredTimer.pause();
+      else cycleTimer.pause();
     } else {
       variables.windowIsVisible = true;
-      cycleTimer.resume();
+      if (scaredTimer.isRunning) scaredTimer.resume();
+      else cycleTimer.resume();
     }
   });
 }
