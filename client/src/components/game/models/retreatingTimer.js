@@ -17,6 +17,13 @@ export default class RetreatingTimer {
     this.timeRemaining = 3000 - timeElapsed;
   }
 
+  resume() {
+    this.timeout = setTimeout(
+      () => this.ghost.changeRetreatingState(),
+      this.timeRemaining
+    );
+  }
+
   reset() {
     clearTimeout(this.timeout);
   }
