@@ -3,7 +3,7 @@ export default function resumeTimers(
   scaredTimer,
   retreatingTimers
 ) {
-  if (scaredTimer.isRunning) scaredTimer.resume();
+  if (scaredTimer.isRunning) scaredTimer.resume(cycleTimer);
   else cycleTimer.resume();
   retreatingTimers.forEach((timer) => {
     if (timer.isRunning) timer.resume();

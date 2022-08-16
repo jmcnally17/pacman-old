@@ -77,7 +77,7 @@ export default function playGame(name, reactRoot) {
     variables.playerName = name;
     variables.reactRoot = reactRoot;
     cycleTimer.start();
-    addVisibilityDetection(cycleTimer, variables);
+    addVisibilityDetection(variables, cycleTimer, scaredTimer, retreatingTimers);
     variables.start = false;
   }
   variables.animationId = requestAnimationFrame(playGame);

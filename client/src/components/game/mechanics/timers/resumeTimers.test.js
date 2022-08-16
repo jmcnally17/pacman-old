@@ -40,6 +40,7 @@ describe("resumeTimers", () => {
     resumeTimers(mockCycleTimer, mockScaredTimer, mockRetreatingTimers);
     expect(mockCycleTimer.resume).toHaveBeenCalledTimes(0);
     expect(mockScaredTimer.resume).toHaveBeenCalledTimes(1);
+    expect(mockScaredTimer.resume).toHaveBeenCalledWith(mockCycleTimer);
   });
 
   it("calls resume on the retreating timers if it is running", () => {
