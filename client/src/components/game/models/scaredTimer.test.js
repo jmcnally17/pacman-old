@@ -24,6 +24,8 @@ describe("ScaredTimer", () => {
     it("has a number of instance variables", () => {
       expect(scaredTimer.timeout).toBeNull();
       expect(scaredTimer.ghosts).toEqual(mockGhosts);
+      expect(scaredTimer.startTime).toBeNull();
+      expect(scaredTimer.timeRemaining).toBeNull();
     });
   });
 
@@ -41,6 +43,13 @@ describe("ScaredTimer", () => {
       expect(mockCycleTimer.resume).toHaveBeenCalledTimes(1);
     });
   });
+
+  // describe("pause", () => {
+  //   it("calls clearTimeout and saves the time remaining in this.timeRemaining", () => {
+  //     jest.spyOn(global, "clearTimeout");
+
+  //   });
+  // });
 
   describe("reset", () => {
     it("calls clearTimeout on this.timeout", () => {
