@@ -4,11 +4,16 @@ export default class RetreatingTimer {
     this.ghost = ghost;
     this.startTime = null;
     this.timeRemaining = null;
+    this.isRunning = false;
   }
 
   start(dateNow = Date.now()) {
     this.startTime = dateNow;
-    this.timeout = setTimeout(() => this.ghost.changeRetreatingState(), 3000);
+    this.timeout = setTimeout(() => {
+      this.ghost.changeRetreatingState();
+      this.isRunning = false;
+    }, 3000);
+    this.isRunning = true;
   }
 
   pause(dateNow = Date.now()) {
@@ -18,13 +23,14 @@ export default class RetreatingTimer {
   }
 
   resume() {
-    this.timeout = setTimeout(
-      () => this.ghost.changeRetreatingState(),
-      this.timeRemaining
-    );
+    this.timeout = setTimeout(() => {
+      this.ghost.changeRetreatingState();
+      this.isRunning = false;
+    }, this.timeRemaining);
   }
 
   reset() {
     clearTimeout(this.timeout);
+    this.isRunning = false;
   }
 }

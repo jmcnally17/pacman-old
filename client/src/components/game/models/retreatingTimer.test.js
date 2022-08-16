@@ -20,6 +20,7 @@ describe("RetreatingTimer", () => {
       expect(retreatingTimer.ghost).toEqual(mockGhost);
       expect(retreatingTimer.startTime).toBeNull();
       expect(retreatingTimer.timeRemaining).toBeNull();
+      expect(retreatingTimer.isRunning).toBeFalsy();
     });
   });
 
@@ -31,8 +32,10 @@ describe("RetreatingTimer", () => {
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 3000);
       expect(retreatingTimer.timeout).not.toBeNull();
+      expect(retreatingTimer.isRunning).toBeTruthy();
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(1);
+      expect(retreatingTimer.isRunning).toBeFalsy();
     });
 
     it("sets the startTime equal to the Date.now()", () => {
@@ -57,9 +60,11 @@ describe("RetreatingTimer", () => {
   describe("reset", () => {
     it("calls clearTimeout on this.timeout", () => {
       jest.spyOn(global, "clearTimeout");
+      retreatingTimer.isRunning = true;
       retreatingTimer.reset();
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(retreatingTimer.timeout);
+      expect(retreatingTimer.isRunning).toBeFalsy();
     });
   });
 });
