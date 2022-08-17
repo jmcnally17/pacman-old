@@ -9,7 +9,6 @@ describe("implementPacman", () => {
     const mockBoundaries = "boundaries";
     const mockCtx = "ctx";
     const mockPellets = "pellets";
-    const mockMakeMove = jest.fn();
     const mockChangeDirection = jest.fn();
     const mockCheckPacmanEating = jest.fn();
     const mockImplementTunnel = jest.fn();
@@ -20,13 +19,10 @@ describe("implementPacman", () => {
       mockBoundaries,
       mockCtx,
       mockPellets,
-      mockMakeMove,
       mockChangeDirection,
       mockCheckPacmanEating,
       mockImplementTunnel
     );
-    expect(mockMakeMove).toHaveBeenCalledTimes(1);
-    expect(mockMakeMove).toHaveBeenCalledWith(mockVariables);
     expect(mockChangeDirection).toHaveBeenCalledTimes(1);
     expect(mockChangeDirection).toHaveBeenCalledWith(
       mockVariables,

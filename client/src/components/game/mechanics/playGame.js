@@ -6,15 +6,9 @@ import makePacman from "./pacman/makePacman";
 import CycleTimer from "../models/cycleTimer";
 import ScaredTimer from "../models/scaredTimer";
 import makeRetreatingTimers from "./timers/makeRetreatingTimers";
-import addVisibilityDetection from "./timers/addVisibilityDetection";
-import implementBoundaries from "./boundaries/implementBoundaries";
-import implementGhosts from "./ghosts/implementGhosts";
-import implementPacman from "./pacman/implementPacman";
-import implementPellets from "./pellets/implementPellets";
-import implementPowerUps from "./powerUps/implementPowerUps";
-import displayLevel from "./displayLevel";
-import displayLives from "./displayLives";
-import displayScore from "./displayScore";
+import finishSetup from "./finishSetup";
+import implementObjects from "./implementObjects";
+import updateDisplay from "./display/updateDisplay";
 
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
@@ -72,25 +66,14 @@ const cycleTimer = new CycleTimer(ghosts);
 const scaredTimer = new ScaredTimer(ghosts);
 const retreatingTimers = makeRetreatingTimers(ghosts)
 
-export default function playGame(name, reactRoot) {
+export default function playGame(name, reactRoot, callbackOne = finishSetup, callbackTwo = implementObjects, callbackThree = updateDisplay) {
   if (variables.start === true) {
-    variables.playerName = name;
-    variables.reactRoot = reactRoot;
-    cycleTimer.start();
-    addVisibilityDetection(variables, cycleTimer, scaredTimer, retreatingTimers);
-    variables.start = false;
+    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers)
   }
   variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, 896, 992);
-
-  implementBoundaries(boundaries, ctx, pacman);
-  implementPellets(pellets, ctx, pacman, variables, ghosts, powerUps, cycleTimer, scaredTimer);
-  implementPowerUps(powerUps, ctx, pacman, variables, ghosts, scaredTimer, cycleTimer);
-  implementGhosts(ghosts, boundaries, ctx, variables, pacman, pellets, powerUps, cycleTimer, scaredTimer);
-  implementPacman(variables, pacman, boundaries, ctx, pellets);
-  displayScore(variables);
-  displayLives(pacman);
-  displayLevel(variables);
+  callbackTwo(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables)
+  callbackThree(pacman, variables)
 };

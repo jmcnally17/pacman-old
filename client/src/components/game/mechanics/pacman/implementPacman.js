@@ -1,7 +1,6 @@
-import implementTunnel from "../implementTunnel";
+import implementTunnel from "../boundaries/implementTunnel";
 import checkPacmanEating from "./checkPacmanEating";
 import changeDirection from "./movement/changeDirection";
-import makeMove from "./movement/makeMove";
 
 export default function implementPacman(
   variables,
@@ -9,14 +8,12 @@ export default function implementPacman(
   boundaries,
   ctx,
   pellets,
-  callbackOne = makeMove,
-  callbackTwo = changeDirection,
-  callbackThree = checkPacmanEating,
-  callbackFour = implementTunnel
+  callbackOne = changeDirection,
+  callbackTwo = checkPacmanEating,
+  callbackThree = implementTunnel
 ) {
-  callbackOne(variables);
-  callbackTwo(variables, pacman, boundaries);
-  callbackThree(pellets, pacman);
+  callbackOne(variables, pacman, boundaries);
+  callbackTwo(pellets, pacman);
   pacman.update(ctx);
-  callbackFour(pacman, variables);
+  callbackThree(pacman, variables);
 }
