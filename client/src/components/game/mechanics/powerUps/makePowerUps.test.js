@@ -1,9 +1,13 @@
 import makePowerUps from "./makePowerUps";
+import PowerUp from "../../models/powerUp";
+
+jest.mock("../../models/powerUp");
 
 let mockVariables;
 
 describe("makePowerUps", () => {
   beforeEach(() => {
+    PowerUp.mockClear();
     mockVariables = {
       tileLength: 32,
     };
@@ -23,6 +27,8 @@ describe("makePowerUps", () => {
       ["4", "3", "o"],
       ["o", "o", "-"],
     ];
-    expect(makePowerUps(mockMap, mockVariables).length).toBe(4);
+    const powerUps = makePowerUps(mockMap, mockVariables);
+    expect(powerUps.length).toBe(4);
+    powerUps.forEach((powerUp) => expect(powerUp).toBeInstanceOf(PowerUp));
   });
 });

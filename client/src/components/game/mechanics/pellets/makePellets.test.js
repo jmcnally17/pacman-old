@@ -1,9 +1,13 @@
 import makePellets from "./makePellets";
+import Pellet from "../../models/pellet";
+
+jest.mock("../../models/pellet");
 
 let mockVariables;
 
 describe("makePellets", () => {
   beforeEach(() => {
+    Pellet.mockClear();
     mockVariables = {
       tileLength: 32,
     };
@@ -14,15 +18,15 @@ describe("makePellets", () => {
   });
 
   it("returns an array of appropriate boundary objects for each type of boundary as well as the tunnel boundaries", () => {
-    expect(
-      makePellets(
-        [
-          ["-", "|"],
-          [".", "2", ".", "4"],
-          [".", " "],
-        ],
-        mockVariables
-      ).length
-    ).toBe(3);
+    const pellets = makePellets(
+      [
+        ["-", "|"],
+        [".", "2", ".", "4"],
+        [".", " "],
+      ],
+      mockVariables
+    );
+    expect(pellets.length).toBe(3);
+    pellets.forEach((pellet) => expect(pellet).toBeInstanceOf(Pellet));
   });
 });

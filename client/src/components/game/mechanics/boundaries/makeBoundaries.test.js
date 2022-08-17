@@ -1,10 +1,14 @@
 import makeBoundaries from "./makeBoundaries";
+import Boundary from "../../models/boundary";
+
+jest.mock("../../models/boundary");
 
 let mockVariables;
 let mockMakeTunnelBoundaries;
 
 describe("makeBoundaries", () => {
   beforeEach(() => {
+    Boundary.mockClear();
     mockVariables = {
       tileLength: 32,
     };
@@ -19,17 +23,17 @@ describe("makeBoundaries", () => {
   });
 
   it("returns an array of appropriate boundary objects for each type of boundary as well as the tunnel boundaries", () => {
-    expect(
-      makeBoundaries(
-        [
-          ["-", "|"],
-          ["1", "2", "3", "4"],
-          [".", " "],
-        ],
-        mockVariables,
-        mockMakeTunnelBoundaries
-      ).length
-    ).toBe(6);
+    const boundaries = makeBoundaries(
+      [
+        ["-", "|"],
+        ["1", "2", "3", "4"],
+        [".", " "],
+      ],
+      mockVariables,
+      mockMakeTunnelBoundaries
+    );
+    expect(boundaries.length).toBe(6);
+    boundaries.forEach((boundary) => expect(boundary).toBeInstanceOf(Boundary));
     expect(mockMakeTunnelBoundaries).toHaveBeenCalledTimes(1);
   });
 });
