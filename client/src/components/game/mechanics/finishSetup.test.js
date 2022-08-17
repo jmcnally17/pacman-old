@@ -7,6 +7,7 @@ let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
 let mockAddVisibilityDetection;
+let mockAddDirectionDetection;
 
 describe("finishSetup", () => {
   beforeEach(() => {
@@ -24,6 +25,7 @@ describe("finishSetup", () => {
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
     mockAddVisibilityDetection = jest.fn();
+    mockAddDirectionDetection = jest.fn();
   });
 
   it("sets the playerName and reactRoot", () => {
@@ -34,7 +36,8 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddDirectionDetection
     );
     expect(mockVariables.playerName).toBe(mockName);
     expect(mockVariables.reactRoot).toBe(mockReactRoot);
@@ -48,7 +51,8 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddDirectionDetection
     );
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
   });
@@ -61,7 +65,8 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddDirectionDetection
     );
     expect(mockAddVisibilityDetection).toHaveBeenCalledTimes(1);
     expect(mockAddVisibilityDetection).toHaveBeenCalledWith(
@@ -70,6 +75,8 @@ describe("finishSetup", () => {
       mockScaredTimer,
       mockRetreatingTimers
     );
+    expect(mockAddDirectionDetection).toHaveBeenCalledTimes(1);
+    expect(mockAddDirectionDetection).toHaveBeenCalledWith(mockVariables);
   });
 
   it("sets the start variable to false", () => {
@@ -80,7 +87,8 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddDirectionDetection
     );
     expect(mockVariables.start).toBeFalsy();
   });

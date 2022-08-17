@@ -1,6 +1,6 @@
-import displayLevel from "./display/displayLevel";
-import displayLives from "./display/displayLives";
-import displayScore from "./display/displayScore";
+import displayLevel from "./displayLevel";
+import displayLives from "./displayLives";
+import displayScore from "./displayScore";
 
 export default function updateDisplay(
   pacman,

@@ -8,7 +8,7 @@ import ScaredTimer from "../models/scaredTimer";
 import makeRetreatingTimers from "./timers/makeRetreatingTimers";
 import finishSetup from "./finishSetup";
 import implementObjects from "./implementObjects";
-import updateDisplay from "./updateDisplay";
+import updateDisplay from "./display/updateDisplay";
 
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],

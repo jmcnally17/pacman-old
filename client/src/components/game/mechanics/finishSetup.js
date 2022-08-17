@@ -1,3 +1,4 @@
+import addDirectionDetection from "./addDirectionDetection";
 import addVisibilityDetection from "./timers/addVisibilityDetection";
 
 export default function finishSetup(
@@ -7,11 +8,13 @@ export default function finishSetup(
   cycleTimer,
   scaredTimer,
   retreatingTimers,
-  callback = addVisibilityDetection
+  callbackOne = addVisibilityDetection,
+  callbackTwo = addDirectionDetection
 ) {
   variables.playerName = name;
   variables.reactRoot = reactRoot;
   cycleTimer.start();
-  callback(variables, cycleTimer, scaredTimer, retreatingTimers);
+  callbackOne(variables, cycleTimer, scaredTimer, retreatingTimers);
+  callbackTwo(variables);
   variables.start = false;
 }
