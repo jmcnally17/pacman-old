@@ -1,5 +1,5 @@
 export default class Ghost {
-  constructor({ position, velocity, colour, image = Image }, tileLength) {
+  constructor({ position, velocity, colour }, tileLength) {
     this.originalPosition = position;
     this.position = { ...this.originalPosition };
     this.originalVelocity = velocity;
@@ -13,25 +13,26 @@ export default class Ghost {
     this.isHunting = false;
     this.isRetreating = false;
     this.retreatingTimer = null;
-    this.image = new image();
-    this.up = new image();
+    this.image = new Image();
+    this.up = new Image();
     this.up.src = `./images/${this.colour}GhostUp.png`;
-    this.left = new image();
+    this.left = new Image();
     this.left.src = `./images/${this.colour}GhostLeft.png`;
-    this.right = new image();
+    this.right = new Image();
     this.right.src = `./images/${this.colour}GhostRight.png`;
-    this.down = new image();
+    this.down = new Image();
     this.down.src = `./images/${this.colour}GhostDown.png`;
-    this.scaredBlue = new image();
+    this.scaredBlue = new Image();
     this.scaredBlue.src = `./images/scaredGhostBlue.png`;
-    this.eyesUp = new image();
+    this.eyesUp = new Image();
     this.eyesUp.src = `./images/eyesUp.png`;
-    this.eyesLeft = new image();
+    this.eyesLeft = new Image();
     this.eyesLeft.src = `./images/eyesLeft.png`;
-    this.eyesRight = new image();
+    this.eyesRight = new Image();
     this.eyesRight.src = `./images/eyesRight.png`;
-    this.eyesDown = new image();
+    this.eyesDown = new Image();
     this.eyesDown.src = `./images/eyesDown.png`;
+    this.siren = new Audio("./audio/siren.wav");
   }
 
   draw(ctx) {

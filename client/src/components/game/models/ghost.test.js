@@ -76,17 +76,28 @@ describe("Ghost", () => {
       expect(ghost.isRetreating).toBeFalsy();
       expect(ghost.retreatingTimer).toBeNull();
       expect(ghost.image).toBeInstanceOf(Image);
+      expect(ghost.up).toBeInstanceOf(Image);
       expect(ghost.up.src).toBe("http://localhost/images/redGhostUp.png");
+      expect(ghost.left).toBeInstanceOf(Image);
       expect(ghost.left.src).toBe("http://localhost/images/redGhostLeft.png");
+      expect(ghost.right).toBeInstanceOf(Image);
       expect(ghost.right.src).toBe("http://localhost/images/redGhostRight.png");
+      expect(ghost.down).toBeInstanceOf(Image);
       expect(ghost.down.src).toBe("http://localhost/images/redGhostDown.png");
+      expect(ghost.scaredBlue).toBeInstanceOf(Image);
       expect(ghost.scaredBlue.src).toBe(
         "http://localhost/images/scaredGhostBlue.png"
       );
+      expect(ghost.eyesUp).toBeInstanceOf(Image);
       expect(ghost.eyesUp.src).toBe("http://localhost/images/eyesUp.png");
+      expect(ghost.eyesLeft).toBeInstanceOf(Image);
       expect(ghost.eyesLeft.src).toBe("http://localhost/images/eyesLeft.png");
+      expect(ghost.eyesRight).toBeInstanceOf(Image);
       expect(ghost.eyesRight.src).toBe("http://localhost/images/eyesRight.png");
+      expect(ghost.eyesDown).toBeInstanceOf(Image);
       expect(ghost.eyesDown.src).toBe("http://localhost/images/eyesDown.png");
+      expect(ghost.siren).toBeInstanceOf(Audio);
+      expect(ghost.siren.src).toBe("http://localhost/audio/siren.wav");
     });
   });
 
