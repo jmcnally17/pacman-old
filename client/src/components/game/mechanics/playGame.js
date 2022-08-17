@@ -66,15 +66,15 @@ const cycleTimer = new CycleTimer(ghosts);
 const scaredTimer = new ScaredTimer(ghosts);
 const retreatingTimers = makeRetreatingTimers(ghosts)
 
-export default function playGame(name, reactRoot) {
+export default function playGame(name, reactRoot, callbackOne = finishSetup, callbackTwo = implementObjects, callbackThree = updateDisplay) {
   if (variables.start === true) {
-    finishSetup(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers)
+    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers)
   }
   variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, 896, 992);
 
-  implementObjects(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables)
-  updateDisplay(pacman, variables)
+  callbackTwo(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables)
+  callbackThree(pacman, variables)
 };
