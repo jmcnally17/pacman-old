@@ -1,21 +1,39 @@
 import implementObjects from "./implementObjects";
 
+let mockBoundaries;
+let mockGhosts;
+let mockPacman;
+let mockPellets;
+let mockPowerUps;
+let mockCycleTimer;
+let mockScaredTimer;
+let mockCtx;
+let mockVariables;
+let mockImplementBoundaries;
+let mockImplementPellets;
+let mockImplementPowerUps;
+let mockImplementGhosts;
+let mockImplementPacman;
+
 describe("implementObjects", () => {
-  it("calls the necessary functions to implement all of the different objects", () => {
-    const mockBoundaries = "boundaries";
-    const mockGhosts = "ghosts";
-    const mockPacman = "pacman";
-    const mockPellets = "pellets";
-    const mockPowerUps = "powerUps";
-    const mockCycleTimer = "cycleTimer";
-    const mockScaredTimer = "scaredTimer";
-    const mockCtx = "ctx";
-    const mockVariables = "variables";
-    const mockImplementBoundaries = jest.fn();
-    const mockImplementPellets = jest.fn();
-    const mockImplementPowerUps = jest.fn();
-    const mockImplementGhosts = jest.fn();
-    const mockImplementPacman = jest.fn();
+  beforeEach(() => {
+    mockBoundaries = "boundaries";
+    mockGhosts = "ghosts";
+    mockPacman = "pacman";
+    mockPellets = "pellets";
+    mockPowerUps = "powerUps";
+    mockCycleTimer = "cycleTimer";
+    mockScaredTimer = "scaredTimer";
+    mockCtx = "ctx";
+    mockVariables = "variables";
+    mockImplementBoundaries = jest.fn();
+    mockImplementPellets = jest.fn();
+    mockImplementPowerUps = jest.fn();
+    mockImplementGhosts = jest.fn();
+    mockImplementPacman = jest.fn();
+  });
+
+  it("calls implementBoundaries", () => {
     implementObjects(
       mockBoundaries,
       mockGhosts,
@@ -38,6 +56,26 @@ describe("implementObjects", () => {
       mockCtx,
       mockPacman
     );
+  });
+
+  it("calls implementPellets", () => {
+    implementObjects(
+      mockBoundaries,
+      mockGhosts,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockVariables,
+      mockImplementBoundaries,
+      mockImplementPellets,
+      mockImplementPowerUps,
+      mockImplementGhosts,
+      mockImplementPacman
+    );
+
     expect(mockImplementPellets).toHaveBeenCalledTimes(1);
     expect(mockImplementPellets).toHaveBeenCalledWith(
       mockPellets,
@@ -49,6 +87,25 @@ describe("implementObjects", () => {
       mockCycleTimer,
       mockScaredTimer
     );
+  });
+
+  it("calls implementPowerUps", () => {
+    implementObjects(
+      mockBoundaries,
+      mockGhosts,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockVariables,
+      mockImplementBoundaries,
+      mockImplementPellets,
+      mockImplementPowerUps,
+      mockImplementGhosts,
+      mockImplementPacman
+    );
     expect(mockImplementPowerUps).toHaveBeenCalledTimes(1);
     expect(mockImplementPowerUps).toHaveBeenCalledWith(
       mockPowerUps,
@@ -58,6 +115,25 @@ describe("implementObjects", () => {
       mockGhosts,
       mockScaredTimer,
       mockCycleTimer
+    );
+  });
+
+  it("calls implementGhosts", () => {
+    implementObjects(
+      mockBoundaries,
+      mockGhosts,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockVariables,
+      mockImplementBoundaries,
+      mockImplementPellets,
+      mockImplementPowerUps,
+      mockImplementGhosts,
+      mockImplementPacman
     );
     expect(mockImplementGhosts).toHaveBeenCalledTimes(1);
     expect(mockImplementGhosts).toHaveBeenCalledWith(
@@ -70,6 +146,25 @@ describe("implementObjects", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer
+    );
+  });
+
+  it("calls implementPacman", () => {
+    implementObjects(
+      mockBoundaries,
+      mockGhosts,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockVariables,
+      mockImplementBoundaries,
+      mockImplementPellets,
+      mockImplementPowerUps,
+      mockImplementGhosts,
+      mockImplementPacman
     );
     expect(mockImplementPacman).toHaveBeenCalledTimes(1);
     expect(mockImplementPacman).toHaveBeenCalledWith(

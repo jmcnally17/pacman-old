@@ -1,7 +1,7 @@
 import displayLevel from "./displayLevel";
 
 describe("displayLevel", () => {
-  it("calls document.querySelector and sets the inner text", () => {
+  it("calls document.querySelector to find the level element and sets its inner text", () => {
     const mockVariables = {
       level: 4,
     };

@@ -14,8 +14,10 @@ export default function implementPellets(
   callbackTwo = checkLevelUpCondition
 ) {
   pellets.forEach((pellet) => {
-    if (!pellet.hasBeenEaten) pellet.draw(ctx);
-    callbackOne(pellet, pacman, variables);
+    if (!pellet.hasBeenEaten) {
+      pellet.draw(ctx);
+      callbackOne(pellet, pacman, variables);
+    }
   });
   callbackTwo(
     pellets,

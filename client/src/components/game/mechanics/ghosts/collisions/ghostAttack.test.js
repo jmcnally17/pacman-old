@@ -46,10 +46,9 @@ describe("ghostAttack", () => {
       mockCycleTimer,
       mockScaredTimer
     );
-    expect(mockResetAfterDeath).toHaveBeenCalledTimes(0);
   });
 
-  it("calls resetAfterDeath and decreases Pac-Man's lives by 1 when he has lives left", () => {
+  it("decreases Pac-Man's lives by 1 when he has lives left", () => {
     const mockPacman = {
       lives: 2,
     };
@@ -64,8 +63,24 @@ describe("ghostAttack", () => {
       mockEndGame,
       mockResetAfterDeath
     );
-    expect(mockEndGame).toHaveBeenCalledTimes(0);
     expect(mockPacman.lives).toBe(1);
+  });
+
+  it("calls resetAfterDeath when Pac-Man has lives left", () => {
+    const mockPacman = {
+      lives: 2,
+    };
+    ghostAttack(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockEndGame,
+      mockResetAfterDeath
+    );
     expect(mockResetAfterDeath).toHaveBeenCalledTimes(1);
     expect(mockResetAfterDeath).toHaveBeenCalledWith(
       mockPacman,

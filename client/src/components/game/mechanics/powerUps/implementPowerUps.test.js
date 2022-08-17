@@ -39,7 +39,7 @@ describe("implementPowerUps", () => {
     mockEatPowerUp = jest.fn();
   });
 
-  it("calls the necessary funcions to implement the power up functionality", () => {
+  it("calls update on each power up if they have not been eaten", () => {
     implementPowerUps(
       mockUneatenPowerUps,
       mockCtx,
@@ -54,6 +54,33 @@ describe("implementPowerUps", () => {
     expect(mockUneatenPowerUp.update).toHaveBeenNthCalledWith(1, mockCtx);
     expect(mockUneatenPowerUp.update).toHaveBeenNthCalledWith(2, mockCtx);
     expect(mockUneatenPowerUp.update).toHaveBeenNthCalledWith(3, mockCtx);
+  });
+
+  it("does not call update on each power up if they have been eaten", () => {
+    implementPowerUps(
+      mockEatenPowerUps,
+      mockCtx,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockScaredTimer,
+      mockCycleTimer,
+      mockEatPowerUp
+    );
+    expect(mockEatenPowerUp.update).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls eatPowerUp on each power up if they have not been eaten", () => {
+    implementPowerUps(
+      mockUneatenPowerUps,
+      mockCtx,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockScaredTimer,
+      mockCycleTimer,
+      mockEatPowerUp
+    );
     expect(mockEatPowerUp).toHaveBeenCalledTimes(3);
     expect(mockEatPowerUp).toHaveBeenNthCalledWith(
       1,
@@ -84,7 +111,7 @@ describe("implementPowerUps", () => {
     );
   });
 
-  it("does not call update or eatPowerUp on the power ups if they have been eaten", () => {
+  it("does not call eatPowerUp on each power up if they have been eaten", () => {
     implementPowerUps(
       mockEatenPowerUps,
       mockCtx,
@@ -95,7 +122,6 @@ describe("implementPowerUps", () => {
       mockCycleTimer,
       mockEatPowerUp
     );
-    expect(mockEatenPowerUp.update).toHaveBeenCalledTimes(0);
     expect(mockEatPowerUp).toHaveBeenCalledTimes(0);
   });
 });

@@ -128,7 +128,6 @@ describe("updateCollisions", () => {
       mockGhost,
       mockFalseHitBoundaryConditional
     );
-    expect(mockTrueHitBoundaryConditional).toHaveBeenCalledTimes(0);
     expect(mockCollisions).toEqual([]);
   });
 

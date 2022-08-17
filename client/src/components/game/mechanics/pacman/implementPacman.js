@@ -1,5 +1,5 @@
 import implementTunnel from "../boundaries/implementTunnel";
-import checkPacmanEating from "./checkPacmanEating";
+import checkIfPacmanIsEating from "./checkIfPacmanIsEating";
 import changeDirection from "./movement/changeDirection";
 
 export default function implementPacman(
@@ -9,7 +9,7 @@ export default function implementPacman(
   ctx,
   pellets,
   callbackOne = changeDirection,
-  callbackTwo = checkPacmanEating,
+  callbackTwo = checkIfPacmanIsEating,
   callbackThree = implementTunnel
 ) {
   callbackOne(variables, pacman, boundaries);

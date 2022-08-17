@@ -1,7 +1,7 @@
 import displayLives from "./displayLives";
 
 describe("displayLives", () => {
-  it("calls document.querySelector and sets the inner text", () => {
+  it("calls document.querySelector to find the lives element and sets its inner text", () => {
     const mockVariables = {
       lives: 2,
     };

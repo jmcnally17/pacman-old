@@ -1,7 +1,8 @@
 export default function pickDirection(pathways, ghost) {
-  let shortest = { distance: 10000 };
+  let shortest;
   for (let i = 0; i < pathways.length; i++) {
-    if (pathways[i].distance < shortest.distance) shortest = pathways[i];
+    if (shortest === undefined || pathways[i].distance < shortest.distance)
+      shortest = pathways[i];
   }
   if (shortest.direction === "up") {
     ghost.velocity.x = 0;

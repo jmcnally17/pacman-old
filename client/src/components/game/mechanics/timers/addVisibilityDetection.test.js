@@ -49,13 +49,11 @@ describe("addVisibilityDetection", () => {
         mockScaredTimer,
         mockRetreatingTimers
       );
-      expect(mockResumeTimers).toHaveBeenCalledTimes(0);
     });
 
     it("to call resumeTimers if windowIsVisible is intially false", () => {
       mockVariables.windowIsVisible = false;
       document.dispatchEvent(visibilityChange);
-      expect(mockPauseTimers).toHaveBeenCalledTimes(0);
       expect(mockResumeTimers).toHaveBeenCalledTimes(1);
       expect(mockResumeTimers).toHaveBeenCalledWith(
         mockCycleTimer,

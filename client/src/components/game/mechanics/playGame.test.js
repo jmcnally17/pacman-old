@@ -29,7 +29,7 @@ describe("playGame", () => {
     mockBoard.getContext.mockReturnValue(mockCtx);
   });
 
-  it("calls the necessary functions to run the game", () => {
+  it("calls finishSetup", () => {
     playGame(
       mockName,
       mockReactRoot,
@@ -38,8 +38,6 @@ describe("playGame", () => {
       mockUpdateDisplay
     );
     expect(mockFinishSetup).toHaveBeenCalledTimes(1);
-    expect(mockImplementObjects).toHaveBeenCalledTimes(1);
-    expect(mockUpdateDisplay).toHaveBeenCalledTimes(1);
   });
 
   it("calls requestAnimationFrame", () => {
@@ -68,5 +66,27 @@ describe("playGame", () => {
     expect(mockBoard.getContext).toHaveBeenCalledWith("2d");
     expect(mockCtx.clearRect).toHaveBeenCalledTimes(1);
     expect(mockCtx.clearRect).toHaveBeenCalledWith(0, 0, 896, 992);
+  });
+
+  it("calls implementObjects", () => {
+    playGame(
+      mockName,
+      mockReactRoot,
+      mockFinishSetup,
+      mockImplementObjects,
+      mockUpdateDisplay
+    );
+    expect(mockImplementObjects).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls updateDisplay", () => {
+    playGame(
+      mockName,
+      mockReactRoot,
+      mockFinishSetup,
+      mockImplementObjects,
+      mockUpdateDisplay
+    );
+    expect(mockUpdateDisplay).toHaveBeenCalledTimes(1);
   });
 });

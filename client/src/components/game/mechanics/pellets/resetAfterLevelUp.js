@@ -14,11 +14,11 @@ export default function resetAfterLevelUp(
   ghosts.forEach((ghost) => {
     ghost.reset();
   });
-  cycleTimer.start();
   pellets.forEach((pellet) => {
     pellet.changeEatenState();
   });
   powerUps.forEach((powerUp) => {
     if (powerUp.hasBeenEaten) powerUp.changeEatenState();
   });
+  cycleTimer.start();
 }

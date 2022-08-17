@@ -28,9 +28,6 @@ describe("shiftBeforeRetreating", () => {
     );
     expect(mockShiftLeft).toHaveBeenCalledTimes(1);
     expect(mockShiftLeft).toHaveBeenCalledWith(mockGhost);
-    expect(mockShiftRight).toHaveBeenCalledTimes(0);
-    expect(mockShiftUp).toHaveBeenCalledTimes(0);
-    expect(mockShiftDown).toHaveBeenCalledTimes(0);
   });
 
   it("calls shiftRight when the ghost is moving to the left", () => {
@@ -46,11 +43,8 @@ describe("shiftBeforeRetreating", () => {
       mockShiftUp,
       mockShiftDown
     );
-    expect(mockShiftLeft).toHaveBeenCalledTimes(0);
     expect(mockShiftRight).toHaveBeenCalledTimes(1);
     expect(mockShiftRight).toHaveBeenCalledWith(mockGhost);
-    expect(mockShiftUp).toHaveBeenCalledTimes(0);
-    expect(mockShiftDown).toHaveBeenCalledTimes(0);
   });
 
   it("calls shiftUp when the ghost is moving downwards", () => {
@@ -66,11 +60,8 @@ describe("shiftBeforeRetreating", () => {
       mockShiftUp,
       mockShiftDown
     );
-    expect(mockShiftLeft).toHaveBeenCalledTimes(0);
-    expect(mockShiftRight).toHaveBeenCalledTimes(0);
     expect(mockShiftUp).toHaveBeenCalledTimes(1);
     expect(mockShiftUp).toHaveBeenCalledWith(mockGhost);
-    expect(mockShiftDown).toHaveBeenCalledTimes(0);
   });
 
   it("calls shiftDown when the ghost is moving upwards", () => {
@@ -86,9 +77,6 @@ describe("shiftBeforeRetreating", () => {
       mockShiftUp,
       mockShiftDown
     );
-    expect(mockShiftLeft).toHaveBeenCalledTimes(0);
-    expect(mockShiftRight).toHaveBeenCalledTimes(0);
-    expect(mockShiftUp).toHaveBeenCalledTimes(0);
     expect(mockShiftDown).toHaveBeenCalledTimes(1);
     expect(mockShiftDown).toHaveBeenCalledWith(mockGhost);
   });

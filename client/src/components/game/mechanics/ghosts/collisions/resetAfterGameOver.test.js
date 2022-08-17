@@ -61,13 +61,8 @@ describe("resetAfterGameOver", () => {
     };
   });
 
-  it("resets the board to its original configuration after game over", () => {
+  it("calls changeEatenState on the pellets if they have been eaten", () => {
     jest.spyOn(mockEatenPellet, "changeEatenState");
-    jest.spyOn(mockEatenPowerUp, "changeEatenState");
-    jest.spyOn(mockCycleTimer, "reset");
-    jest.spyOn(mockScaredTimer, "reset");
-    jest.spyOn(mockGhost, "reset");
-    jest.spyOn(mockPacman, "reset");
     resetAfterGameOver(
       mockEatenPellets,
       mockEatenPowerUps,
@@ -78,19 +73,10 @@ describe("resetAfterGameOver", () => {
       mockScaredTimer
     );
     expect(mockEatenPellet.changeEatenState).toHaveBeenCalledTimes(3);
-    expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(2);
-    expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
-    expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
-    expect(mockGhost.reset).toHaveBeenCalledTimes(2);
-    expect(mockPacman.reset).toHaveBeenCalledTimes(1);
-    expect(mockPacman.lives).toBe(2);
-    expect(mockVariables.lastKeyPressed).toBe("");
-    expect(mockVariables.level).toBe(1);
   });
 
-  it("does not call changeEatenState on the pellets and power ups if their conditionals are not met", () => {
+  it("does not call changeEatenState on the pellets if they have not been eaten", () => {
     jest.spyOn(mockUneatenPellet, "changeEatenState");
-    jest.spyOn(mockUneatenPowerUp, "changeEatenState");
     resetAfterGameOver(
       mockUneatenPellets,
       mockUneatenPowerUps,
@@ -101,6 +87,128 @@ describe("resetAfterGameOver", () => {
       mockScaredTimer
     );
     expect(mockUneatenPellet.changeEatenState).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls changeEatenState on the power ups if they have been eaten", () => {
+    jest.spyOn(mockEatenPowerUp, "changeEatenState");
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not call changeEatenState on the power ups if they have not been eaten", () => {
+    jest.spyOn(mockUneatenPowerUp, "changeEatenState");
+    resetAfterGameOver(
+      mockUneatenPellets,
+      mockUneatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
+  });
+
+  it("resets the cycle timer", () => {
+    jest.spyOn(mockCycleTimer, "reset");
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets the scared timer", () => {
+    jest.spyOn(mockScaredTimer, "reset");
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets the ghosts", () => {
+    jest.spyOn(mockGhost, "reset");
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockGhost.reset).toHaveBeenCalledTimes(2);
+  });
+
+  it("resets Pac-Man", () => {
+    jest.spyOn(mockPacman, "reset");
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockPacman.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets Pac-Man's lives back to 2", () => {
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockPacman.lives).toBe(2);
+  });
+
+  it("resets the last key pressed", () => {
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockVariables.lastKeyPressed).toBe("");
+  });
+
+  it("resets the level back to 1", () => {
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockVariables.level).toBe(1);
   });
 });

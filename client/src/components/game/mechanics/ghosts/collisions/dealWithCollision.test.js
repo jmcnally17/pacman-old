@@ -24,7 +24,7 @@ describe("dealWithCollision", () => {
     mockGhostAttack = jest.fn();
   });
 
-  it("calls ghostAttack if the ghost is not scared and is not retreating and does not increase the score", () => {
+  it("calls ghostAttack if the ghost is not scared or retreating and does not increase the score or kill count", () => {
     const mockGhost = {
       isScared: false,
       isRetreating: false,
@@ -55,7 +55,7 @@ describe("dealWithCollision", () => {
     expect(mockVariables.killCount).toBe(2);
   });
 
-  it("increases the score and killCount and sends the ghost into retreating mode if the ghost is scared", () => {
+  it("increases the score and kill count and sends the ghost into retreating mode if the ghost is scared", () => {
     const mockRetreatingTimer = {
       start: () => undefined,
     };
@@ -86,5 +86,26 @@ describe("dealWithCollision", () => {
     expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(1);
     expect(mockRetreatingTimer.start).toHaveBeenCalledTimes(1);
     expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(1);
+  });
+
+  it("has no effect when the ghost is retreating", () => {
+    const mockGhost = {
+      isScared: false,
+      isRetreating: true,
+    };
+    dealWithCollision(
+      mockGhost,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAttack
+    );
+    expect(mockGhostAttack).toHaveBeenCalledTimes(0);
+    expect(mockVariables.score).toBe(100);
+    expect(mockVariables.killCount).toBe(2);
   });
 });

@@ -43,7 +43,7 @@ describe("implementPellets", () => {
     mockCheckLevelUpCondition = jest.fn();
   });
 
-  it("calls the necessary funcions to implement the pellet functionality", () => {
+  it("calls draw on each pellet if they have not been eaten", () => {
     implementPellets(
       mockUneatenPellets,
       mockCtx,
@@ -60,6 +60,37 @@ describe("implementPellets", () => {
     expect(mockUneatenPellet.draw).toHaveBeenNthCalledWith(1, mockCtx);
     expect(mockUneatenPellet.draw).toHaveBeenNthCalledWith(2, mockCtx);
     expect(mockUneatenPellet.draw).toHaveBeenNthCalledWith(3, mockCtx);
+  });
+
+  it("does not call draw on each pellet if they have been eaten", () => {
+    implementPellets(
+      mockEatenPellets,
+      mockCtx,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockEatPellet,
+      mockCheckLevelUpCondition
+    );
+    expect(mockUneatenPellet.draw).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls eatPellet on each pellet if they have not been eaten", () => {
+    implementPellets(
+      mockUneatenPellets,
+      mockCtx,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockEatPellet,
+      mockCheckLevelUpCondition
+    );
     expect(mockEatPellet).toHaveBeenCalledTimes(3);
     expect(mockEatPellet).toHaveBeenNthCalledWith(
       1,
@@ -79,19 +110,9 @@ describe("implementPellets", () => {
       mockPacman,
       mockVariables
     );
-    expect(mockCheckLevelUpCondition).toHaveBeenCalledTimes(1);
-    expect(mockCheckLevelUpCondition).toHaveBeenCalledWith(
-      mockUneatenPellets,
-      mockPacman,
-      mockVariables,
-      mockGhosts,
-      mockPowerUps,
-      mockCycleTimer,
-      mockScaredTimer
-    );
   });
 
-  it("does not draw the pellets if they have been eaten", () => {
+  it("does not call eatPellet on each pellet if they have been eaten", () => {
     implementPellets(
       mockEatenPellets,
       mockCtx,
@@ -104,23 +125,25 @@ describe("implementPellets", () => {
       mockEatPellet,
       mockCheckLevelUpCondition
     );
-    expect(mockEatenPellet.draw).toHaveBeenCalledTimes(0);
-    expect(mockEatPellet).toHaveBeenCalledTimes(2);
-    expect(mockEatPellet).toHaveBeenNthCalledWith(
-      1,
-      mockEatenPellet,
+    expect(mockEatPellet).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls checkLevelUpCondition", () => {
+    implementPellets(
+      mockUneatenPellets,
+      mockCtx,
       mockPacman,
-      mockVariables
-    );
-    expect(mockEatPellet).toHaveBeenNthCalledWith(
-      2,
-      mockEatenPellet,
-      mockPacman,
-      mockVariables
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockEatPellet,
+      mockCheckLevelUpCondition
     );
     expect(mockCheckLevelUpCondition).toHaveBeenCalledTimes(1);
     expect(mockCheckLevelUpCondition).toHaveBeenCalledWith(
-      mockEatenPellets,
+      mockUneatenPellets,
       mockPacman,
       mockVariables,
       mockGhosts,

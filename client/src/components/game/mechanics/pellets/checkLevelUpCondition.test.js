@@ -33,7 +33,7 @@ describe("checkLevelUpCondition", () => {
     mockResetAfterLevelUp = jest.fn();
   });
 
-  it("runs the callback and increases the level by 1 if all pellets have been eaten", () => {
+  it("calls resetAfterLevelUp if all pellets have been eaten", () => {
     checkLevelUpCondition(
       mockEatenPellets,
       mockPacman,
@@ -54,10 +54,23 @@ describe("checkLevelUpCondition", () => {
       mockCycleTimer,
       mockScaredTimer
     );
+  });
+
+  it("increases the level by 1 if all pellets have been eaten", () => {
+    checkLevelUpCondition(
+      mockEatenPellets,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockResetAfterLevelUp
+    );
     expect(mockVariables.level).toBe(4);
   });
 
-  it("does not run the callback and leaves the level unchanged if the pellets have not been eaten", () => {
+  it("does not call resetAfterLevelUp if the pellets have not been eaten", () => {
     checkLevelUpCondition(
       mockUneatenPellets,
       mockPacman,
@@ -69,6 +82,19 @@ describe("checkLevelUpCondition", () => {
       mockResetAfterLevelUp
     );
     expect(mockResetAfterLevelUp).toHaveBeenCalledTimes(0);
+  });
+
+  it("does not increase the level if the pellets have not been eaten", () => {
+    checkLevelUpCondition(
+      mockUneatenPellets,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockResetAfterLevelUp
+    );
     expect(mockVariables.level).toBe(3);
   });
 });

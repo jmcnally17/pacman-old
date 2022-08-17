@@ -75,6 +75,19 @@ describe("finishSetup", () => {
       mockScaredTimer,
       mockRetreatingTimers
     );
+  });
+
+  it("calls addDirectionDetection to add the event listener", () => {
+    finishSetup(
+      mockVariables,
+      mockName,
+      mockReactRoot,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers,
+      mockAddVisibilityDetection,
+      mockAddDirectionDetection
+    );
     expect(mockAddDirectionDetection).toHaveBeenCalledTimes(1);
     expect(mockAddDirectionDetection).toHaveBeenCalledWith(mockVariables);
   });

@@ -1,7 +1,7 @@
 import displayScore from "./displayScore";
 
 describe("displayScore", () => {
-  it("calls document.querySelector and sets the inner text", () => {
+  it("calls document.querySelector to find the score element and sets its inner text", () => {
     const mockVariables = {
       score: 4820,
     };

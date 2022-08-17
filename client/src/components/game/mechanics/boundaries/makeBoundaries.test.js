@@ -15,14 +15,13 @@ describe("makeBoundaries", () => {
     mockMakeTunnelBoundaries = jest.fn();
   });
 
-  it("adds no boundaries to an empty array but always calls makeTunnelBoundaries", () => {
+  it("adds no boundaries to an empty array", () => {
     expect(
       makeBoundaries([[]], mockVariables, mockMakeTunnelBoundaries).length
     ).toBe(0);
-    expect(mockMakeTunnelBoundaries).toHaveBeenCalledTimes(1);
   });
 
-  it("returns an array of appropriate boundary objects for each type of boundary as well as the tunnel boundaries", () => {
+  it("returns an array of appropriate boundary objects for each type of boundary", () => {
     const boundaries = makeBoundaries(
       [
         ["-", "|"],
@@ -34,6 +33,10 @@ describe("makeBoundaries", () => {
     );
     expect(boundaries.length).toBe(6);
     boundaries.forEach((boundary) => expect(boundary).toBeInstanceOf(Boundary));
+  });
+
+  it("calls makeTunnelBoundaries to add them to the boundaries array", () => {
+    makeBoundaries([[]], mockVariables, mockMakeTunnelBoundaries);
     expect(mockMakeTunnelBoundaries).toHaveBeenCalledTimes(1);
   });
 });

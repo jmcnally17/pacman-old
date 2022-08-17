@@ -48,14 +48,8 @@ describe("resetAfterLevelUp", () => {
     };
   });
 
-  it("calls all the necessary functions to reset the board", () => {
+  it("calls reset on Pac-Man", () => {
     jest.spyOn(mockPacman, "reset");
-    jest.spyOn(mockGhost, "reset");
-    jest.spyOn(mockCycleTimer, "reset");
-    jest.spyOn(mockScaredTimer, "reset");
-    jest.spyOn(mockCycleTimer, "start");
-    jest.spyOn(mockPellet, "changeEatenState");
-    jest.spyOn(mockEatenPowerUp, "changeEatenState");
     resetAfterLevelUp(
       mockPacman,
       mockVariables,
@@ -66,16 +60,92 @@ describe("resetAfterLevelUp", () => {
       mockScaredTimer
     );
     expect(mockPacman.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets the last key pressed", () => {
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockVariables.lastKeyPressed).toBe("");
+  });
+
+  it("calls reset on the cycle timer", () => {
+    jest.spyOn(mockCycleTimer, "reset");
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls reset on the scared timer", () => {
+    jest.spyOn(mockScaredTimer, "reset");
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls reset on each ghost", () => {
+    jest.spyOn(mockGhost, "reset");
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockGhost.reset).toHaveBeenCalledTimes(3);
-    expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls changeEatenState on each pellet", () => {
+    jest.spyOn(mockPellet, "changeEatenState");
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockPellet.changeEatenState).toHaveBeenCalledTimes(2);
+  });
+
+  it("calls changeEatenState on each power up if they have been eaten", () => {
+    jest.spyOn(mockEatenPowerUp, "changeEatenState");
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
   });
 
-  it("does not call changeEatenState on the power ups if they haven't been eaten", () => {
+  it("does not call changeEatenState on each power up if they have not been eaten", () => {
     jest.spyOn(mockUneatenPowerUp, "changeEatenState");
     resetAfterLevelUp(
       mockPacman,
@@ -87,5 +157,19 @@ describe("resetAfterLevelUp", () => {
       mockScaredTimer
     );
     expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls start on the cycle timer to restart it", () => {
+    jest.spyOn(mockCycleTimer, "start");
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
   });
 });

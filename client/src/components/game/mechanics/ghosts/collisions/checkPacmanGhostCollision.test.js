@@ -23,7 +23,7 @@ describe("checkPacmanGhostCollision", () => {
     mockDealWithCollision = jest.fn();
   });
 
-  it("call dealWithCollision when the collisionConditional is true", () => {
+  it("calls dealWithCollision when the collisionConditional is true", () => {
     const mockCollisionConditional = jest.fn().mockReturnValue(true);
     checkPacmanGhostCollision(
       mockGhost,

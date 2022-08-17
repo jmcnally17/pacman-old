@@ -16,6 +16,10 @@ describe("pickRandomDirection", () => {
     mockPathways = ["up", "down", "right", "left"];
   });
 
+  afterEach(() => {
+    resetMockRandom();
+  });
+
   it("can start moving the ghost upwards if it is available", () => {
     mockRandom([0]);
     pickRandomDirection(mockGhost, mockPathways);
@@ -23,7 +27,6 @@ describe("pickRandomDirection", () => {
       x: 0,
       y: -4,
     });
-    resetMockRandom();
   });
 
   it("can start moving the ghost downwards if it is available", () => {
@@ -33,7 +36,6 @@ describe("pickRandomDirection", () => {
       x: 0,
       y: 4,
     });
-    resetMockRandom();
   });
 
   it("can start moving the ghost to the right if it is available", () => {
@@ -43,7 +45,6 @@ describe("pickRandomDirection", () => {
       x: 4,
       y: 0,
     });
-    resetMockRandom();
   });
 
   it("can start moving the ghost to the left if it is available", () => {
@@ -53,6 +54,5 @@ describe("pickRandomDirection", () => {
       x: -4,
       y: 0,
     });
-    resetMockRandom();
   });
 });

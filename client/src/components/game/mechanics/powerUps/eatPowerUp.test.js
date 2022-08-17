@@ -41,7 +41,7 @@ describe("eatPowerUp", () => {
     mockScareGhosts = jest.fn();
   });
 
-  it("calls changeEatenState when colliding with Pac-Man, increases the score, resets the kill count to 0 and calls the scareGhosts callback", () => {
+  it("calls changeEatenState when Pac-Man collides with the power up", () => {
     eatPowerUp(
       mockPowerUp,
       mockPacmanOne,
@@ -52,8 +52,44 @@ describe("eatPowerUp", () => {
       mockScareGhosts
     );
     expect(mockPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
+  });
+
+  it("increases the score when Pac-Man collides with the power up", () => {
+    eatPowerUp(
+      mockPowerUp,
+      mockPacmanOne,
+      mockVariables,
+      mockGhosts,
+      mockScaredTimer,
+      mockCycleTimer,
+      mockScareGhosts
+    );
     expect(mockVariables.score).toBe(50);
+  });
+
+  it("resets the kill count to 0 when Pac-Man collides with the power up", () => {
+    eatPowerUp(
+      mockPowerUp,
+      mockPacmanOne,
+      mockVariables,
+      mockGhosts,
+      mockScaredTimer,
+      mockCycleTimer,
+      mockScareGhosts
+    );
     expect(mockVariables.killCount).toBe(0);
+  });
+
+  it("calls scareGhosts when Pac-Man collides with the power up", () => {
+    eatPowerUp(
+      mockPowerUp,
+      mockPacmanOne,
+      mockVariables,
+      mockGhosts,
+      mockScaredTimer,
+      mockCycleTimer,
+      mockScareGhosts
+    );
     expect(mockScareGhosts).toHaveBeenCalledTimes(1);
     expect(mockScareGhosts).toHaveBeenCalledWith(
       mockGhosts,
@@ -62,7 +98,7 @@ describe("eatPowerUp", () => {
     );
   });
 
-  it("does not call changeEatenState, increases the score, reset the kill count or call the scareGhosts callback if the power up and pacman are not colliding", () => {
+  it("does not call changeEatenState if the power up and pacman are not colliding", () => {
     eatPowerUp(
       mockPowerUp,
       mockPacmanTwo,
@@ -73,8 +109,44 @@ describe("eatPowerUp", () => {
       mockScareGhosts
     );
     expect(mockPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
+  });
+
+  it("does not increase the score if the power up and pacman are not colliding", () => {
+    eatPowerUp(
+      mockPowerUp,
+      mockPacmanTwo,
+      mockVariables,
+      mockGhosts,
+      mockScaredTimer,
+      mockCycleTimer,
+      mockScareGhosts
+    );
     expect(mockVariables.score).toBe(0);
+  });
+
+  it("does not reset the kill count if the power up and pacman are not colliding", () => {
+    eatPowerUp(
+      mockPowerUp,
+      mockPacmanTwo,
+      mockVariables,
+      mockGhosts,
+      mockScaredTimer,
+      mockCycleTimer,
+      mockScareGhosts
+    );
     expect(mockVariables.killCount).toBe(2);
+  });
+
+  it("does not call scareGhost if the power up and pacman are not colliding", () => {
+    eatPowerUp(
+      mockPowerUp,
+      mockPacmanTwo,
+      mockVariables,
+      mockGhosts,
+      mockScaredTimer,
+      mockCycleTimer,
+      mockScareGhosts
+    );
     expect(mockScareGhosts).toHaveBeenCalledTimes(0);
   });
 });

@@ -39,7 +39,6 @@ describe("chooseMovement", () => {
       mockVariables,
       mockRedGhost
     );
-    expect(mockMoveRandomly).toHaveBeenCalledTimes(0);
   });
 
   it("calls randomDirection if the ghost is scared", () => {
@@ -55,7 +54,6 @@ describe("chooseMovement", () => {
       mockhuntAndScatter,
       mockMoveRandomly
     );
-    expect(mockhuntAndScatter).toHaveBeenCalledTimes(0);
     expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
     expect(mockMoveRandomly).toHaveBeenCalledWith(mockGhost, mockCollisions);
   });
@@ -74,7 +72,6 @@ describe("chooseMovement", () => {
       mockhuntAndScatter,
       mockMoveRandomly
     );
-    expect(mockhuntAndScatter).toHaveBeenCalledTimes(0);
     expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
     expect(mockMoveRandomly).toHaveBeenCalledWith(mockGhost, mockCollisions);
   });

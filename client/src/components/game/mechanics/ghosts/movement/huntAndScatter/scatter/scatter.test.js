@@ -15,7 +15,7 @@ describe("scatter", () => {
     mockFindOrangeScatterPath = jest.fn();
   });
 
-  it("calls the necessary functions on the red ghost", () => {
+  it("calls findRedScatterPath if the ghost is red", () => {
     const mockRedGhost = {
       colour: "red",
     };
@@ -29,12 +29,9 @@ describe("scatter", () => {
     );
     expect(mockFindRedScatterPath).toHaveBeenCalledTimes(1);
     expect(mockFindRedScatterPath).toHaveBeenCalledWith(mockPathway);
-    expect(mockFindPinkScatterPath).toHaveBeenCalledTimes(0);
-    expect(mockFindCyanScatterPath).toHaveBeenCalledTimes(0);
-    expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
   });
 
-  it("calls the necessary functions on the pink ghost", () => {
+  it("calls findPinkScatterPath if the ghost is pink", () => {
     const mockPinkGhost = {
       colour: "pink",
     };
@@ -46,14 +43,11 @@ describe("scatter", () => {
       mockFindCyanScatterPath,
       mockFindOrangeScatterPath
     );
-    expect(mockFindRedScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindPinkScatterPath).toHaveBeenCalledTimes(1);
     expect(mockFindPinkScatterPath).toHaveBeenCalledWith(mockPathway);
-    expect(mockFindCyanScatterPath).toHaveBeenCalledTimes(0);
-    expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
   });
 
-  it("calls the necessary functions on the cyan ghost", () => {
+  it("calls findCyanScatterPath if the ghost is cyan", () => {
     const mockCyanGhost = {
       colour: "cyan",
     };
@@ -65,14 +59,11 @@ describe("scatter", () => {
       mockFindCyanScatterPath,
       mockFindOrangeScatterPath
     );
-    expect(mockFindRedScatterPath).toHaveBeenCalledTimes(0);
-    expect(mockFindPinkScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindCyanScatterPath).toHaveBeenCalledTimes(1);
     expect(mockFindCyanScatterPath).toHaveBeenCalledWith(mockPathway);
-    expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(0);
   });
 
-  it("calls the necessary functions on the orange ghost", () => {
+  it("calls findOrangeScatterPath if the ghost is orange", () => {
     const mockOrangeGhost = {
       colour: "orange",
     };
@@ -84,9 +75,6 @@ describe("scatter", () => {
       mockFindCyanScatterPath,
       mockFindOrangeScatterPath
     );
-    expect(mockFindRedScatterPath).toHaveBeenCalledTimes(0);
-    expect(mockFindPinkScatterPath).toHaveBeenCalledTimes(0);
-    expect(mockFindCyanScatterPath).toHaveBeenCalledTimes(0);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledTimes(1);
     expect(mockFindOrangeScatterPath).toHaveBeenCalledWith(mockPathway);
   });

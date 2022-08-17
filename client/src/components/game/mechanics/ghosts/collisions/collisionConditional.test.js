@@ -1,7 +1,7 @@
 import collisionConditional from "./collisionConditional";
 
 describe("collisionConditional", () => {
-  it("returns true for a ghost and Pac-Man collision", () => {
+  it("returns true when the ghost and Pac-Man are colliding", () => {
     const mockGhost = {
       position: {
         x: 200,
@@ -19,7 +19,7 @@ describe("collisionConditional", () => {
     expect(collisionConditional(mockGhost, mockPacman)).toBeTruthy();
   });
 
-  it("returns false for a ghost and Pac-Man not colliding", () => {
+  it("returns false when the ghost and Pac-Man are not colliding", () => {
     const mockGhost = {
       position: {
         x: 250,

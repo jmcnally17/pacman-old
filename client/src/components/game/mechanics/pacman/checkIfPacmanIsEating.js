@@ -1,4 +1,4 @@
-export default function checkPacmanEating(pellets, pacman) {
+export default function checkIfPacmanIsEating(pellets, pacman) {
   let count = 0;
   pellets.forEach((pellet) => {
     if (

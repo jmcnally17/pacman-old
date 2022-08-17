@@ -16,7 +16,6 @@ describe("adjustPosition", () => {
     adjustPosition(mockGhost, mockShiftBeforeRetreating, mockShiftRegular);
     expect(mockShiftBeforeRetreating).toHaveBeenCalledTimes(1);
     expect(mockShiftBeforeRetreating).toHaveBeenCalledWith(mockGhost);
-    expect(mockShiftRegular).toHaveBeenCalledTimes(0);
   });
 
   it("calls shiftRegular if isRetreating is false", () => {
@@ -24,7 +23,6 @@ describe("adjustPosition", () => {
       isRetreating: false,
     };
     adjustPosition(mockGhost, mockShiftBeforeRetreating, mockShiftRegular);
-    expect(mockShiftBeforeRetreating).toHaveBeenCalledTimes(0);
     expect(mockShiftRegular).toHaveBeenCalledTimes(1);
     expect(mockShiftRegular).toHaveBeenCalledWith(mockGhost);
   });

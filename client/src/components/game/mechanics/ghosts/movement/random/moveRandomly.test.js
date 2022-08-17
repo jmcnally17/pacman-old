@@ -75,7 +75,7 @@ describe("moveRandomly", () => {
     expect(mockGhost.prevCollisions).toEqual(["down"]);
   });
 
-  it("calls the necessary callback functions in order to determine the ghosts next direction and empty the prevCollisions array", () => {
+  it("calls pickRandomDirection", () => {
     moveRandomly(
       mockGhost,
       collisions,
@@ -84,6 +84,15 @@ describe("moveRandomly", () => {
     );
     expect(mockPickRandomDirection).toHaveBeenCalledTimes(1);
     expect(mockPickRandomDirection).toHaveBeenCalledWith(mockGhost, ["right"]);
+  });
+
+  it("calls emptyPrevCollisions", () => {
+    moveRandomly(
+      mockGhost,
+      collisions,
+      mockPickRandomDirection,
+      mockEmptyPrevCollisions
+    );
     expect(mockEmptyPrevCollisions).toHaveBeenCalledTimes(1);
     expect(mockEmptyPrevCollisions).toHaveBeenCalledWith(mockGhost);
   });

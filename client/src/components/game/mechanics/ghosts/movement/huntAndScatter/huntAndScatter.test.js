@@ -99,7 +99,7 @@ describe("huntAndScatter", () => {
     expect(mockGhost.prevCollisions).toEqual(["down"]);
   });
 
-  it("calls the necessary callback functions in order to determine the ghosts next direction and empty the prevCollisions array", () => {
+  it("calls calculateDistance", () => {
     huntAndScatter(
       mockGhost,
       mockPacman,
@@ -118,10 +118,36 @@ describe("huntAndScatter", () => {
       mockVariables,
       mockRedGhost
     );
+  });
+
+  it("calls pickDirection", () => {
+    huntAndScatter(
+      mockGhost,
+      mockPacman,
+      collisions,
+      mockVariables,
+      mockRedGhost,
+      mockCalculateDistance,
+      mockpickDirection,
+      mockEmptyPrevCollisions
+    );
     expect(mockpickDirection).toHaveBeenCalledTimes(1);
     expect(mockpickDirection).toHaveBeenCalledWith(
       [{ direction: "right" }],
       mockGhost
+    );
+  });
+
+  it("calls emptyPrevCollisions", () => {
+    huntAndScatter(
+      mockGhost,
+      mockPacman,
+      collisions,
+      mockVariables,
+      mockRedGhost,
+      mockCalculateDistance,
+      mockpickDirection,
+      mockEmptyPrevCollisions
     );
     expect(mockEmptyPrevCollisions).toHaveBeenCalledTimes(1);
     expect(mockEmptyPrevCollisions).toHaveBeenCalledWith(mockGhost);

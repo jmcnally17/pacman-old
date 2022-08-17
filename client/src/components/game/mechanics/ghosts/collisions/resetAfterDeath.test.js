@@ -1,29 +1,35 @@
 import resetAfterDeath from "./resetAfterDeath";
 
+let mockPacman;
+let mockVariables;
+let mockCycleTimer;
+let mockScaredTimer;
+let mockGhost;
+let mockGhosts;
+
 describe("resetAfterDeath", () => {
-  it("resets Pac-Man, the ghosts, the hunting timeout, the scared timeout and the last key pressed", () => {
-    const mockPacman = {
+  beforeEach(() => {
+    mockPacman = {
       reset: () => undefined,
     };
-    const mockVariables = {
+    mockVariables = {
       lastKeyPressed: "up",
     };
-    const mockCycleTimer = {
+    mockCycleTimer = {
       reset: () => undefined,
       start: () => undefined,
     };
-    const mockScaredTimer = {
+    mockScaredTimer = {
       reset: () => undefined,
     };
-    const mockGhost = {
+    mockGhost = {
       reset: () => undefined,
     };
-    const mockGhosts = [mockGhost, mockGhost, mockGhost];
+    mockGhosts = [mockGhost, mockGhost, mockGhost];
+  });
+
+  it("resets Pac-Man", () => {
     jest.spyOn(mockPacman, "reset");
-    jest.spyOn(mockCycleTimer, "reset");
-    jest.spyOn(mockScaredTimer, "reset");
-    jest.spyOn(mockCycleTimer, "start");
-    jest.spyOn(mockGhost, "reset");
     resetAfterDeath(
       mockPacman,
       mockVariables,
@@ -32,10 +38,64 @@ describe("resetAfterDeath", () => {
       mockScaredTimer
     );
     expect(mockPacman.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets the last key pressed", () => {
+    resetAfterDeath(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockVariables.lastKeyPressed).toBe("");
+  });
+
+  it("resets the cycle timer", () => {
+    jest.spyOn(mockCycleTimer, "reset");
+    resetAfterDeath(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets the scared timer", () => {
+    jest.spyOn(mockScaredTimer, "reset");
+    resetAfterDeath(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
-    expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets the ghosts", () => {
+    jest.spyOn(mockGhost, "reset");
+    resetAfterDeath(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer
+    );
     expect(mockGhost.reset).toHaveBeenCalledTimes(3);
+  });
+
+  it("starts the cycle timer again", () => {
+    jest.spyOn(mockCycleTimer, "start");
+    resetAfterDeath(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
   });
 });
