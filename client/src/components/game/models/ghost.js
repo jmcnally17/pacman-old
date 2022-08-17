@@ -1,3 +1,5 @@
+import { Howl } from "howler";
+
 export default class Ghost {
   constructor({ position, velocity, colour }, tileLength) {
     this.originalPosition = position;
@@ -32,7 +34,11 @@ export default class Ghost {
     this.eyesRight.src = `./images/eyesRight.png`;
     this.eyesDown = new Image();
     this.eyesDown.src = `./images/eyesDown.png`;
-    this.siren = new Audio("./audio/siren.wav");
+    this.siren = new Howl({
+      src: "./audio/siren.wav",
+      loop: true,
+      volume: 0.5,
+    });
   }
 
   draw(ctx) {

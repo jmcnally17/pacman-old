@@ -2,8 +2,8 @@ export default class PacMan {
   constructor(
     { position, velocity },
     tileLength,
-    munchOne = new Audio("./audio/munch_1.wav"),
-    munchTwo = new Audio("./audio/munch_2.wav")
+    munchOne = new Audio("./audio/munchOne.wav"),
+    munchTwo = new Audio("./audio/munchTwo.wav")
   ) {
     this.originalPosition = position;
     this.position = { ...this.originalPosition };

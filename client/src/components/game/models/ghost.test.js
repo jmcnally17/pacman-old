@@ -1,4 +1,5 @@
 import Ghost from "./ghost";
+import { Howl } from "howler";
 
 let ghost;
 let scaredHuntingRetreatingGhost;
@@ -96,8 +97,7 @@ describe("Ghost", () => {
       expect(ghost.eyesRight.src).toBe("http://localhost/images/eyesRight.png");
       expect(ghost.eyesDown).toBeInstanceOf(Image);
       expect(ghost.eyesDown.src).toBe("http://localhost/images/eyesDown.png");
-      expect(ghost.siren).toBeInstanceOf(Audio);
-      expect(ghost.siren.src).toBe("http://localhost/audio/siren.wav");
+      expect(ghost.siren).toBeInstanceOf(Howl);
     });
   });
 
