@@ -20,8 +20,6 @@ export default function addVisibilityDetection(
         callbackOne(cycleTimer, scaredTimer, retreatingTimers);
       } else {
         variables.windowIsVisible = true;
-        ghostAudioObjects[0].play();
-        ghostAudioObjects[1].play();
         callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
       }
     })

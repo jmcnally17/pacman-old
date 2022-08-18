@@ -22,11 +22,9 @@ describe("addVisibilityDetection", () => {
     mockRetreatingTimers = "retreatingTimers";
     mockSirenAudio = {
       pause: () => undefined,
-      play: () => undefined,
     };
     mockScaredAudio = {
       pause: () => undefined,
-      play: () => undefined,
     };
     mockGhostAudioObjects = [mockSirenAudio, mockScaredAudio];
     mockPauseTimers = jest.fn();
@@ -65,24 +63,10 @@ describe("addVisibilityDetection", () => {
       expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls play on the siren audio object if windowIsVisibly is initially false", () => {
-      mockVariables.windowIsVisible = false;
-      jest.spyOn(mockSirenAudio, "play");
-      document.dispatchEvent(visibilityChange);
-      expect(mockSirenAudio.play).toHaveBeenCalledTimes(1);
-    });
-
     it("calls pause on the scared audio object if windowIsVisibly is initially true", () => {
       jest.spyOn(mockScaredAudio, "pause");
       document.dispatchEvent(visibilityChange);
       expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
-    });
-
-    it("calls play on the scared audio object if windowIsVisibly is initially false", () => {
-      mockVariables.windowIsVisible = false;
-      jest.spyOn(mockScaredAudio, "play");
-      document.dispatchEvent(visibilityChange);
-      expect(mockScaredAudio.play).toHaveBeenCalledTimes(1);
     });
 
     it("to call pauseTimers if windowIsVisible is intially true", () => {
