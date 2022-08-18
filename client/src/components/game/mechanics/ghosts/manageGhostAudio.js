@@ -3,7 +3,17 @@ export default function manageGhostAudio(
   scaredTimer,
   retreatingTimers
 ) {
-  if (scaredTimer.isRunning && !ghostAudioObjects[1].playing()) {
+  let count = 0;
+  retreatingTimers.forEach((timer) => {
+    if (timer.isRunning) count++;
+  });
+  if (count > 0) {
+    if (!ghostAudioObjects[2].playing()) {
+      ghostAudioObjects[0].pause();
+      ghostAudioObjects[1].pause();
+      ghostAudioObjects[2].play();
+    }
+  } else if (scaredTimer.isRunning && !ghostAudioObjects[1].playing()) {
     ghostAudioObjects[0].pause();
     ghostAudioObjects[2].pause();
     ghostAudioObjects[1].play();

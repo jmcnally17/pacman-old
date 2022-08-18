@@ -45,18 +45,6 @@ describe("manageGhostAudio", () => {
       pause: () => undefined,
       play: () => undefined,
     };
-    mockRetreatingTimers = [
-      mockRetreatingTimer,
-      mockRetreatingTimer,
-      mockRetreatingTimer,
-      mockRetreatingTimer,
-    ];
-    mockRunningRetreatingTimers = [
-      mockRunningRetreatingTimer,
-      mockRunningRetreatingTimer,
-      mockRunningRetreatingTimer,
-      mockRunningRetreatingTimer,
-    ];
     mockScaredTimer = {
       isRunning: false,
     };
@@ -69,7 +57,18 @@ describe("manageGhostAudio", () => {
     mockRunningRetreatingTimer = {
       isRunning: true,
     };
-
+    mockRetreatingTimers = [
+      mockRetreatingTimer,
+      mockRetreatingTimer,
+      mockRetreatingTimer,
+      mockRetreatingTimer,
+    ];
+    mockRunningRetreatingTimers = [
+      mockRunningRetreatingTimer,
+      mockRunningRetreatingTimer,
+      mockRunningRetreatingTimer,
+      mockRunningRetreatingTimer,
+    ];
     jest.spyOn(mockSirenAudio, "playing");
     jest.spyOn(mockSirenAudio, "play");
     jest.spyOn(mockPlayingSirenAudio, "pause");
@@ -79,6 +78,39 @@ describe("manageGhostAudio", () => {
     jest.spyOn(mockRetreatingAudio, "playing");
     jest.spyOn(mockRetreatingAudio, "play");
     jest.spyOn(mockPlayingRetreatingAudio, "pause");
+  });
+
+  it("plays the retreating audio if it is not playing and any of the retreating timers are running", () => {
+    const mockGhostAudioObjects = [
+      mockPlayingSirenAudio,
+      mockPlayingScaredAudio,
+      mockRetreatingAudio,
+    ];
+    manageGhostAudio(
+      mockGhostAudioObjects,
+      mockRunningScaredTimer,
+      mockRunningRetreatingTimers
+    );
+    expect(mockRetreatingAudio.playing).toHaveBeenCalledTimes(1);
+    expect(mockPlayingSirenAudio.pause).toHaveBeenCalledTimes(1);
+    expect(mockPlayingScaredAudio.pause).toHaveBeenCalledTimes(1);
+    expect(mockRetreatingAudio.play).toHaveBeenCalledTimes(1);
+  });
+
+  it("leaves the retreating audio playing if any of the retreating timers are running", () => {
+    const mockGhostAudioObjects = [
+      mockSirenAudio,
+      mockScaredAudio,
+      mockPlayingRetreatingAudio,
+    ];
+    manageGhostAudio(
+      mockGhostAudioObjects,
+      mockRunningScaredTimer,
+      mockRunningRetreatingTimers
+    );
+    expect(mockSirenAudio.play).toHaveBeenCalledTimes(0);
+    expect(mockScaredAudio.play).toHaveBeenCalledTimes(0);
+    expect(mockPlayingRetreatingAudio.pause).toHaveBeenCalledTimes(0);
   });
 
   it("plays the scared audio if is not playing and the scared timer is running", () => {
@@ -102,17 +134,16 @@ describe("manageGhostAudio", () => {
     const mockGhostAudioObjects = [
       mockPlayingSirenAudio,
       mockScaredAudio,
-      mockPlayingRetreatingAudio,
+      mockRetreatingAudio,
     ];
     manageGhostAudio(
       mockGhostAudioObjects,
       mockScaredTimer,
       mockRetreatingTimers
     );
-    expect(mockScaredAudio.playing).toHaveBeenCalledTimes(0);
-    expect(mockPlayingSirenAudio.pause).toHaveBeenCalledTimes(0);
-    expect(mockPlayingRetreatingAudio.pause).toHaveBeenCalledTimes(0);
     expect(mockScaredAudio.play).toHaveBeenCalledTimes(0);
+    expect(mockRetreatingAudio.play).toHaveBeenCalledTimes(0);
+    expect(mockPlayingSirenAudio.pause).toHaveBeenCalledTimes(0);
   });
 
   it("plays the siren audio if it is not playing and the scared timer is not running", () => {
@@ -136,16 +167,15 @@ describe("manageGhostAudio", () => {
     const mockGhostAudioObjects = [
       mockSirenAudio,
       mockPlayingScaredAudio,
-      mockPlayingRetreatingAudio,
+      mockRetreatingAudio,
     ];
     manageGhostAudio(
       mockGhostAudioObjects,
       mockRunningScaredTimer,
       mockRetreatingTimers
     );
-    expect(mockSirenAudio.playing).toHaveBeenCalledTimes(0);
-    expect(mockPlayingScaredAudio.pause).toHaveBeenCalledTimes(0);
-    expect(mockPlayingRetreatingAudio.pause).toHaveBeenCalledTimes(0);
     expect(mockSirenAudio.play).toHaveBeenCalledTimes(0);
+    expect(mockRetreatingAudio.play).toHaveBeenCalledTimes(0);
+    expect(mockPlayingScaredAudio.pause).toHaveBeenCalledTimes(0);
   });
 });
