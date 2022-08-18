@@ -81,5 +81,5 @@ export default function playGame(name, reactRoot, callbackOne = finishSetup, cal
   ctx.clearRect(0, 0, 896, 992);
   callbackTwo(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables, ghostAudioObjects);
   callbackThree(pacman, variables);
-  callbackFour(ghostAudioObjects, scaredTimer);
+  callbackFour(ghostAudioObjects, scaredTimer, retreatingTimers);
 };
