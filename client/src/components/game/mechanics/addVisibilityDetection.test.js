@@ -57,13 +57,13 @@ describe("addVisibilityDetection", () => {
       expect(mockVariables.windowIsVisible).toBeFalsy();
     });
 
-    it("calls pause on the siren audio object if windowIsVisibly is initially true", () => {
+    it("calls pause on the ghosts siren audio object if windowIsVisibly is initially true", () => {
       jest.spyOn(mockSirenAudio, "pause");
       document.dispatchEvent(visibilityChange);
       expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls pause on the scared audio object if windowIsVisibly is initially true", () => {
+    it("calls pause on the ghosts scared audio object if windowIsVisibly is initially true", () => {
       jest.spyOn(mockScaredAudio, "pause");
       document.dispatchEvent(visibilityChange);
       expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);

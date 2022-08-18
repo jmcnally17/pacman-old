@@ -235,7 +235,7 @@ describe("resetAfterGameOver", () => {
     expect(mockVariables.level).toBe(1);
   });
 
-  it("unloads the siren audio", () => {
+  it("unloads the ghosts siren audio", () => {
     jest.spyOn(mockSirenAudio, "unload");
     resetAfterGameOver(
       mockEatenPellets,
@@ -250,7 +250,7 @@ describe("resetAfterGameOver", () => {
     expect(mockGhostAudioObjects[0].unload).toHaveBeenCalledTimes(1);
   });
 
-  it("unloads the scared audio", () => {
+  it("unloads the ghosts scared audio", () => {
     jest.spyOn(mockScaredAudio, "unload");
     resetAfterGameOver(
       mockEatenPellets,
