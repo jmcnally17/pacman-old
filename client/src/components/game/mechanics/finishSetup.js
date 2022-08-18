@@ -1,5 +1,5 @@
-import addDirectionDetection from "./addDirectionDetection";
-import addVisibilityDetection from "./addVisibilityDetection";
+import addDirectionDetection from "./eventListeners/addDirectionDetection";
+import addVisibilityDetection from "./eventListeners/addVisibilityDetection";
 
 export default function finishSetup(
   variables,

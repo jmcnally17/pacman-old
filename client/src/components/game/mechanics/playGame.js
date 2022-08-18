@@ -10,7 +10,7 @@ import makeGhostAudioObjects from "./ghosts/makeGhostAudioObjects";
 import finishSetup from "./finishSetup";
 import implementObjects from "./implementObjects";
 import updateDisplay from "./display/updateDisplay";
-import manageGhostAudio from "./manageGhostAudio";
+import manageGhostAudio from "./ghosts/manageGhostAudio";
 
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],

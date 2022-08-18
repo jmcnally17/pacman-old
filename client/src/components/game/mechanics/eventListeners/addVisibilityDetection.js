@@ -1,5 +1,5 @@
-import pauseTimers from "./timers/pauseTimers";
-import resumeTimers from "./timers/resumeTimers";
+import pauseTimers from "../timers/pauseTimers";
+import resumeTimers from "../timers/resumeTimers";
 
 export default function addVisibilityDetection(
   variables,
