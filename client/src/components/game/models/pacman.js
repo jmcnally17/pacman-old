@@ -1,9 +1,17 @@
+import { Howl } from "howler";
+
 export default class PacMan {
   constructor(
     { position, velocity },
     tileLength,
-    munchOne = new Audio("./audio/munchOne.wav"),
-    munchTwo = new Audio("./audio/munchTwo.wav")
+    munchOne = new Howl({
+      src: "./audio/munchOne.wav",
+      volume: 0.5,
+    }),
+    munchTwo = new Howl({
+      src: "./audio/munchTwo.wav",
+      volume: 0.5,
+    })
   ) {
     this.originalPosition = position;
     this.position = { ...this.originalPosition };
@@ -19,8 +27,6 @@ export default class PacMan {
     this.isEating = false;
     this.munchOne = munchOne;
     this.munchTwo = munchTwo;
-    this.munchOne.volume = 0.5;
-    this.munchTwo.volume = 0.5;
   }
 
   draw(ctx) {

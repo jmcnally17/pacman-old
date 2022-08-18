@@ -9,10 +9,12 @@ describe("PacMan", () => {
   beforeEach(() => {
     mockMunchOne = {
       src: "./audio/munchOne.wav",
+      volume: 0.5,
       play: () => undefined,
     };
     mockMunchTwo = {
       src: "./audio/munchTwo.wav",
+      volume: 0.5,
       play: () => undefined,
     };
     pacman = new PacMan(
