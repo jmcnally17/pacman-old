@@ -6,6 +6,7 @@ let mockScaredTimer;
 let mockRetreatingTimers;
 let mockSirenAudio;
 let mockScaredAudio;
+let mockRetreatingAudio;
 let mockGhostAudioObjects;
 let mockPauseTimers;
 let mockResumeTimers;
@@ -26,7 +27,14 @@ describe("addVisibilityDetection", () => {
     mockScaredAudio = {
       pause: () => undefined,
     };
-    mockGhostAudioObjects = [mockSirenAudio, mockScaredAudio];
+    mockRetreatingAudio = {
+      pause: () => undefined,
+    };
+    mockGhostAudioObjects = [
+      mockSirenAudio,
+      mockScaredAudio,
+      mockRetreatingAudio,
+    ];
     mockPauseTimers = jest.fn();
     mockResumeTimers = jest.fn();
     visibilityChange = new Event("visibilitychange");
@@ -67,6 +75,12 @@ describe("addVisibilityDetection", () => {
       jest.spyOn(mockScaredAudio, "pause");
       document.dispatchEvent(visibilityChange);
       expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on the ghosts retreating audio object if windowIsVisibly is initially true", () => {
+      jest.spyOn(mockRetreatingAudio, "pause");
+      document.dispatchEvent(visibilityChange);
+      expect(mockRetreatingAudio.pause).toHaveBeenCalledTimes(1);
     });
 
     it("to call pauseTimers if windowIsVisible is intially true", () => {

@@ -17,6 +17,7 @@ export default function addVisibilityDetection(
         variables.windowIsVisible = false;
         ghostAudioObjects[0].pause();
         ghostAudioObjects[1].pause();
+        ghostAudioObjects[2].pause();
         callbackOne(cycleTimer, scaredTimer, retreatingTimers);
       } else {
         variables.windowIsVisible = true;
