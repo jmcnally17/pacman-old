@@ -27,4 +27,5 @@ export default function finishSetup(
   ghostAudioObjects[0].load();
   ghostAudioObjects[0].play();
   ghostAudioObjects[1].load();
+  ghostAudioObjects[2].load();
 }

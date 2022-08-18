@@ -8,6 +8,7 @@ let mockScaredTimer;
 let mockRetreatingTimers;
 let mockSirenAudio;
 let mockScaredAudio;
+let mockRetreatingAudio;
 let mockGhostAudioObjects;
 let mockAddDirectionDetection;
 let mockAddVisibilityDetection;
@@ -36,7 +37,14 @@ describe("finishSetup", () => {
     mockScaredAudio = {
       load: () => undefined,
     };
-    mockGhostAudioObjects = [mockSirenAudio, mockScaredAudio];
+    mockRetreatingAudio = {
+      load: () => undefined,
+    };
+    mockGhostAudioObjects = [
+      mockSirenAudio,
+      mockScaredAudio,
+      mockRetreatingAudio,
+    ];
     mockAddDirectionDetection = jest.fn();
     mockAddVisibilityDetection = jest.fn();
   });
@@ -159,5 +167,21 @@ describe("finishSetup", () => {
       mockAddVisibilityDetection
     );
     expect(mockScaredAudio.load).toHaveBeenCalledTimes(1);
+  });
+
+  it("loads the ghosts retreating audio", () => {
+    jest.spyOn(mockRetreatingAudio, "load");
+    finishSetup(
+      mockVariables,
+      mockName,
+      mockReactRoot,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers,
+      mockGhostAudioObjects,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection
+    );
+    expect(mockRetreatingAudio.load).toHaveBeenCalledTimes(1);
   });
 });
