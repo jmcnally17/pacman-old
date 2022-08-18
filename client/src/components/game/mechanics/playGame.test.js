@@ -5,6 +5,7 @@ let mockReactRoot;
 let mockFinishSetup;
 let mockImplementObjects;
 let mockUpdateDisplay;
+let mockManageGhostAudio;
 let mockCtx;
 let mockBoard;
 
@@ -15,6 +16,7 @@ describe("playGame", () => {
     mockFinishSetup = jest.fn();
     mockImplementObjects = jest.fn();
     mockUpdateDisplay = jest.fn();
+    mockManageGhostAudio = jest.fn();
     jest.spyOn(global, "requestAnimationFrame");
     jest.spyOn(document, "querySelector");
     mockCtx = {
@@ -35,7 +37,8 @@ describe("playGame", () => {
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
-      mockUpdateDisplay
+      mockUpdateDisplay,
+      mockManageGhostAudio
     );
     expect(mockFinishSetup).toHaveBeenCalledTimes(1);
   });
@@ -46,7 +49,8 @@ describe("playGame", () => {
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
-      mockUpdateDisplay
+      mockUpdateDisplay,
+      mockManageGhostAudio
     );
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
     expect(requestAnimationFrame).toHaveBeenCalledWith(playGame);
@@ -58,7 +62,8 @@ describe("playGame", () => {
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
-      mockUpdateDisplay
+      mockUpdateDisplay,
+      mockManageGhostAudio
     );
     expect(document.querySelector).toHaveBeenCalledTimes(1);
     expect(document.querySelector).toHaveBeenCalledWith("#board");
@@ -74,7 +79,8 @@ describe("playGame", () => {
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
-      mockUpdateDisplay
+      mockUpdateDisplay,
+      mockManageGhostAudio
     );
     expect(mockImplementObjects).toHaveBeenCalledTimes(1);
   });
@@ -85,8 +91,21 @@ describe("playGame", () => {
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
-      mockUpdateDisplay
+      mockUpdateDisplay,
+      mockManageGhostAudio
     );
     expect(mockUpdateDisplay).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls manageGhostAudio", () => {
+    playGame(
+      mockName,
+      mockReactRoot,
+      mockFinishSetup,
+      mockImplementObjects,
+      mockUpdateDisplay,
+      mockManageGhostAudio
+    );
+    expect(mockManageGhostAudio).toHaveBeenCalledTimes(1);
   });
 });
