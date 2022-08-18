@@ -10,6 +10,7 @@ let mockGhosts;
 let mockPacman;
 let mockCycleTimer;
 let mockScaredTimer;
+let mockGhostAudioObjects;
 let mockCancelAnimationFrame;
 let mockSaveScore;
 let mockResetAfterGameOver;
@@ -29,6 +30,7 @@ describe("endGame", () => {
     mockPacman = "pacman";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
+    mockGhostAudioObjects = "mockGhostAudioObjects";
     mockCancelAnimationFrame = jest.fn();
     mockSaveScore = jest.fn();
     mockResetAfterGameOver = jest.fn();
@@ -44,6 +46,7 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver
@@ -63,6 +66,7 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver
@@ -80,6 +84,7 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver
@@ -92,7 +97,8 @@ describe("endGame", () => {
       mockPacman,
       mockVariables,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockGhostAudioObjects
     );
   });
 
@@ -105,6 +111,7 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver

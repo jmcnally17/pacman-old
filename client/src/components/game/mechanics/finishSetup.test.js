@@ -27,7 +27,12 @@ describe("finishSetup", () => {
     jest.spyOn(mockCycleTimer, "start");
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
-    mockGhostAudioObjects = [{ play: () => undefined }];
+    mockGhostAudioObjects = [
+      {
+        play: () => undefined,
+        load: () => undefined,
+      },
+    ];
     mockAddDirectionDetection = jest.fn();
     mockAddVisibilityDetection = jest.fn();
   });
@@ -118,6 +123,7 @@ describe("finishSetup", () => {
   });
 
   it("plays the ghost siren which is the first audio object in the array", () => {
+    jest.spyOn(mockGhostAudioObjects[0], "load");
     jest.spyOn(mockGhostAudioObjects[0], "play");
     finishSetup(
       mockVariables,
@@ -130,6 +136,7 @@ describe("finishSetup", () => {
       mockAddDirectionDetection,
       mockAddVisibilityDetection
     );
+    expect(mockGhostAudioObjects[0].load).toHaveBeenCalledTimes(1);
     expect(mockGhostAudioObjects[0].play).toHaveBeenCalledTimes(1);
   });
 });

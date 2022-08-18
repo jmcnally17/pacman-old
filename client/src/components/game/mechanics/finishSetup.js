@@ -18,5 +18,6 @@ export default function finishSetup(
   callbackOne(variables);
   callbackTwo(variables, cycleTimer, scaredTimer, retreatingTimers);
   variables.start = false;
+  ghostAudioObjects[0].load();
   ghostAudioObjects[0].play();
 }

@@ -14,6 +14,7 @@ export default function implementGhosts(
   powerUps,
   cycleTimer,
   scaredTimer,
+  ghostAudioObjects,
   callbackOne = checkSpeedMatchesState,
   callbackTwo = implementTunnel,
   callbackThree = updateCollisions,
@@ -37,7 +38,8 @@ export default function implementGhosts(
       pellets,
       powerUps,
       cycleTimer,
-      scaredTimer
+      scaredTimer,
+      ghostAudioObjects
     );
   });
 }

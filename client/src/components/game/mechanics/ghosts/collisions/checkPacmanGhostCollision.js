@@ -10,6 +10,7 @@ export default function checkPacmanGhostCollision(
   powerUps,
   cycleTimer,
   scaredTimer,
+  ghostAudioObjects,
   callbackOne = collisionConditional,
   callbackTwo = dealWithCollision
 ) {
@@ -22,7 +23,8 @@ export default function checkPacmanGhostCollision(
       pellets,
       powerUps,
       cycleTimer,
-      scaredTimer
+      scaredTimer,
+      ghostAudioObjects
     );
   }
 }
