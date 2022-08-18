@@ -16,10 +16,12 @@ export default function addVisibilityDetection(
       if (variables.windowIsVisible) {
         variables.windowIsVisible = false;
         ghostAudioObjects[0].pause();
+        ghostAudioObjects[1].pause();
         callbackOne(cycleTimer, scaredTimer, retreatingTimers);
       } else {
         variables.windowIsVisible = true;
         ghostAudioObjects[0].play();
+        ghostAudioObjects[1].play();
         callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
       }
     })
