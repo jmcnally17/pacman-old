@@ -14,6 +14,8 @@ let mockPacman;
 let mockVariables;
 let mockCycleTimer;
 let mockScaredTimer;
+let mockSirenAudio;
+let mockScaredAudio;
 let mockGhostAudioObjects;
 
 describe("resetAfterGameOver", () => {
@@ -62,7 +64,13 @@ describe("resetAfterGameOver", () => {
     mockScaredTimer = {
       reset: () => undefined,
     };
-    mockGhostAudioObjects = [{ unload: () => undefined }];
+    mockSirenAudio = {
+      unload: () => undefined,
+    };
+    mockScaredAudio = {
+      unload: () => undefined,
+    };
+    mockGhostAudioObjects = [mockSirenAudio, mockScaredAudio];
   });
 
   it("calls changeEatenState on the pellets if they have been eaten", () => {
@@ -227,8 +235,8 @@ describe("resetAfterGameOver", () => {
     expect(mockVariables.level).toBe(1);
   });
 
-  it("pauses the siren audio", () => {
-    jest.spyOn(mockGhostAudioObjects[0], "unload");
+  it("unloads the siren audio", () => {
+    jest.spyOn(mockSirenAudio, "unload");
     resetAfterGameOver(
       mockEatenPellets,
       mockEatenPowerUps,
@@ -240,5 +248,20 @@ describe("resetAfterGameOver", () => {
       mockGhostAudioObjects
     );
     expect(mockGhostAudioObjects[0].unload).toHaveBeenCalledTimes(1);
+  });
+
+  it("unloads the scared audio", () => {
+    jest.spyOn(mockScaredAudio, "unload");
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects
+    );
+    expect(mockScaredAudio.unload).toHaveBeenCalledTimes(1);
   });
 });
