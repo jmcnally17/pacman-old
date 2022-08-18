@@ -8,6 +8,7 @@ export default function finishSetup(
   cycleTimer,
   scaredTimer,
   retreatingTimers,
+  ghostAudioObjects,
   callbackOne = addDirectionDetection,
   callbackTwo = addVisibilityDetection
 ) {
@@ -17,4 +18,5 @@ export default function finishSetup(
   callbackOne(variables);
   callbackTwo(variables, cycleTimer, scaredTimer, retreatingTimers);
   variables.start = false;
+  ghostAudioObjects[0].play();
 }

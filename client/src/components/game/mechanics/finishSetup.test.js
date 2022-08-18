@@ -6,6 +6,7 @@ let mockReactRoot;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
+let mockGhostAudioObjects;
 let mockAddDirectionDetection;
 let mockAddVisibilityDetection;
 
@@ -26,6 +27,7 @@ describe("finishSetup", () => {
     jest.spyOn(mockCycleTimer, "start");
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
+    mockGhostAudioObjects = [{ play: () => undefined }];
     mockAddDirectionDetection = jest.fn();
     mockAddVisibilityDetection = jest.fn();
   });
@@ -38,6 +40,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockGhostAudioObjects,
       mockAddDirectionDetection,
       mockAddVisibilityDetection
     );
@@ -53,6 +56,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockGhostAudioObjects,
       mockAddDirectionDetection,
       mockAddVisibilityDetection
     );
@@ -68,6 +72,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockGhostAudioObjects,
       mockAddDirectionDetection,
       mockAddVisibilityDetection
     );
@@ -84,6 +89,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockGhostAudioObjects,
       mockAddDirectionDetection,
       mockAddVisibilityDetection
     );
@@ -104,9 +110,26 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockGhostAudioObjects,
       mockAddDirectionDetection,
       mockAddVisibilityDetection
     );
     expect(mockVariables.start).toBeFalsy();
+  });
+
+  it("plays the ghost siren which is the first audio object in the array", () => {
+    jest.spyOn(mockGhostAudioObjects[0], "play");
+    finishSetup(
+      mockVariables,
+      mockName,
+      mockReactRoot,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers,
+      mockGhostAudioObjects,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection
+    );
+    expect(mockGhostAudioObjects[0].play).toHaveBeenCalledTimes(1);
   });
 });

@@ -72,7 +72,7 @@ const ghostAudioObjects = makeGhostAudioObjects();
 
 export default function playGame(name, reactRoot, callbackOne = finishSetup, callbackTwo = implementObjects, callbackThree = updateDisplay) {
   if (variables.start === true) {
-    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers)
+    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, ghostAudioObjects)
   }
   variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
