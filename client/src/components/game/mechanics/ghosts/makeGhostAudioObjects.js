@@ -6,6 +6,10 @@ export default function makeGhostAudioObjects() {
     src: "./audio/siren.wav",
     loop: true,
   });
-  audioObjects.push(siren);
+  const scared = new Howl({
+    src: "./audio/scared.wav",
+    loop: true,
+  });
+  audioObjects.push(siren, scared);
   return audioObjects;
 }
