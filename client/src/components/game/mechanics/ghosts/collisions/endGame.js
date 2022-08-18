@@ -25,11 +25,5 @@ export default function endGame(
     cycleTimer,
     scaredTimer
   );
-  variables.reactRoot.render(
-    <Leaderboard
-      variables={variables}
-      ghosts={ghosts}
-      cycleTimer={cycleTimer}
-    />
-  );
+  variables.reactRoot.render(<Leaderboard variables={variables} />);
 }

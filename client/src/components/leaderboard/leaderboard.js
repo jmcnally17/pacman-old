@@ -10,7 +10,7 @@ if (process.env.REACT_APP_URL) {
   url = "http://localhost:9000/backend/scores";
 }
 
-export default function Leaderboard({ variables, cycleTimer }) {
+export default function Leaderboard({ variables }) {
   const [scores, setScores] = useState([]);
   const [error, setError] = useState(false);
 
