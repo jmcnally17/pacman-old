@@ -30,4 +30,5 @@ export default function resetAfterGameOver(
   );
   ghostAudioObjects[0].unload();
   ghostAudioObjects[1].unload();
+  ghostAudioObjects[2].unload();
 }
