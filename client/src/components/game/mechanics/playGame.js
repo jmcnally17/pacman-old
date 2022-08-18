@@ -56,6 +56,8 @@ const variables = {
   killCount: 0,
   start: true,
   animationId: null,
+  directionEventListener: null,
+  visibilityEventListener: null,
 }
 
 const boundaries = makeBoundaries(map, variables);

@@ -1,5 +1,5 @@
 export default function addDirectionDetection(variables) {
-  window.addEventListener("keydown", ({ key }) => {
+  return window.addEventListener("keydown", ({ key }) => {
     if (key === "ArrowUp") {
       variables.lastKeyPressed = "up";
     } else if (key === "ArrowLeft") {
