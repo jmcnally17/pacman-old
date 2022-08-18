@@ -1,5 +1,5 @@
-import pauseTimers from "./timers/pauseTimers";
-import resumeTimers from "./timers/resumeTimers";
+import pauseTimers from "../timers/pauseTimers";
+import resumeTimers from "../timers/resumeTimers";
 
 export default function addVisibilityDetection(
   variables,
@@ -16,10 +16,10 @@ export default function addVisibilityDetection(
       if (variables.windowIsVisible) {
         variables.windowIsVisible = false;
         ghostAudioObjects[0].pause();
+        ghostAudioObjects[1].pause();
         callbackOne(cycleTimer, scaredTimer, retreatingTimers);
       } else {
         variables.windowIsVisible = true;
-        ghostAudioObjects[0].play();
         callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
       }
     })

@@ -4,6 +4,8 @@ let mockVariables;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
+let mockSirenAudio;
+let mockScaredAudio;
 let mockGhostAudioObjects;
 let mockPauseTimers;
 let mockResumeTimers;
@@ -18,12 +20,13 @@ describe("addVisibilityDetection", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
-    mockGhostAudioObjects = [
-      {
-        pause: () => undefined,
-        play: () => undefined,
-      },
-    ];
+    mockSirenAudio = {
+      pause: () => undefined,
+    };
+    mockScaredAudio = {
+      pause: () => undefined,
+    };
+    mockGhostAudioObjects = [mockSirenAudio, mockScaredAudio];
     mockPauseTimers = jest.fn();
     mockResumeTimers = jest.fn();
     visibilityChange = new Event("visibilitychange");
@@ -54,17 +57,16 @@ describe("addVisibilityDetection", () => {
       expect(mockVariables.windowIsVisible).toBeFalsy();
     });
 
-    it("calls pause on the siren audio object if windowIsVisibly is initially true", () => {
-      jest.spyOn(mockGhostAudioObjects[0], "pause");
+    it("calls pause on the ghosts siren audio object if windowIsVisibly is initially true", () => {
+      jest.spyOn(mockSirenAudio, "pause");
       document.dispatchEvent(visibilityChange);
-      expect(mockGhostAudioObjects[0].pause).toHaveBeenCalledTimes(1);
+      expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls play on the siren audio object if windowIsVisibly is initially false", () => {
-      mockVariables.windowIsVisible = false;
-      jest.spyOn(mockGhostAudioObjects[0], "play");
+    it("calls pause on the ghosts scared audio object if windowIsVisibly is initially true", () => {
+      jest.spyOn(mockScaredAudio, "pause");
       document.dispatchEvent(visibilityChange);
-      expect(mockGhostAudioObjects[0].play).toHaveBeenCalledTimes(1);
+      expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
     });
 
     it("to call pauseTimers if windowIsVisible is intially true", () => {

@@ -10,6 +10,7 @@ import makeGhostAudioObjects from "./ghosts/makeGhostAudioObjects";
 import finishSetup from "./finishSetup";
 import implementObjects from "./implementObjects";
 import updateDisplay from "./display/updateDisplay";
+import manageGhostAudio from "./ghosts/manageGhostAudio";
 
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
@@ -70,14 +71,15 @@ const scaredTimer = new ScaredTimer(ghosts);
 const retreatingTimers = makeRetreatingTimers(ghosts);
 const ghostAudioObjects = makeGhostAudioObjects();
 
-export default function playGame(name, reactRoot, callbackOne = finishSetup, callbackTwo = implementObjects, callbackThree = updateDisplay) {
+export default function playGame(name, reactRoot, callbackOne = finishSetup, callbackTwo = implementObjects, callbackThree = updateDisplay, callbackFour = manageGhostAudio) {
   if (variables.start === true) {
-    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, ghostAudioObjects)
+    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, ghostAudioObjects);
   }
   variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, 896, 992);
-  callbackTwo(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables, ghostAudioObjects)
-  callbackThree(pacman, variables)
+  callbackTwo(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables, ghostAudioObjects);
+  callbackThree(pacman, variables);
+  callbackFour(ghostAudioObjects, scaredTimer);
 };

@@ -6,6 +6,8 @@ let mockReactRoot;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
+let mockSirenAudio;
+let mockScaredAudio;
 let mockGhostAudioObjects;
 let mockAddDirectionDetection;
 let mockAddVisibilityDetection;
@@ -27,12 +29,14 @@ describe("finishSetup", () => {
     jest.spyOn(mockCycleTimer, "start");
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
-    mockGhostAudioObjects = [
-      {
-        play: () => undefined,
-        load: () => undefined,
-      },
-    ];
+    mockSirenAudio = {
+      play: () => undefined,
+      load: () => undefined,
+    };
+    mockScaredAudio = {
+      load: () => undefined,
+    };
+    mockGhostAudioObjects = [mockSirenAudio, mockScaredAudio];
     mockAddDirectionDetection = jest.fn();
     mockAddVisibilityDetection = jest.fn();
   });
@@ -123,9 +127,9 @@ describe("finishSetup", () => {
     expect(mockVariables.start).toBeFalsy();
   });
 
-  it("plays the ghost siren which is the first audio object in the array", () => {
-    jest.spyOn(mockGhostAudioObjects[0], "load");
-    jest.spyOn(mockGhostAudioObjects[0], "play");
+  it("loads and plays the ghost siren", () => {
+    jest.spyOn(mockSirenAudio, "load");
+    jest.spyOn(mockSirenAudio, "play");
     finishSetup(
       mockVariables,
       mockName,
@@ -137,7 +141,23 @@ describe("finishSetup", () => {
       mockAddDirectionDetection,
       mockAddVisibilityDetection
     );
-    expect(mockGhostAudioObjects[0].load).toHaveBeenCalledTimes(1);
-    expect(mockGhostAudioObjects[0].play).toHaveBeenCalledTimes(1);
+    expect(mockSirenAudio.load).toHaveBeenCalledTimes(1);
+    expect(mockSirenAudio.play).toHaveBeenCalledTimes(1);
+  });
+
+  it("loads the ghosts scared audio", () => {
+    jest.spyOn(mockScaredAudio, "load");
+    finishSetup(
+      mockVariables,
+      mockName,
+      mockReactRoot,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers,
+      mockGhostAudioObjects,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection
+    );
+    expect(mockScaredAudio.load).toHaveBeenCalledTimes(1);
   });
 });

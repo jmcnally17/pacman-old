@@ -29,4 +29,5 @@ export default function resetAfterGameOver(
     variables.visibilityEventListener
   );
   ghostAudioObjects[0].unload();
+  ghostAudioObjects[1].unload();
 }
