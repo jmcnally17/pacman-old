@@ -6,7 +6,7 @@ let mockGhostAudioObjects;
 let mockScaredTimer;
 
 describe("manageGhostAudio", () => {
-  it("plays the scared audio if the scared timer is running and the siren audio is playing", () => {
+  it("plays the scared audio if is not playing and the scared timer is running", () => {
     mockSirenAudio = {
       playing: () => true,
       pause: () => undefined,
@@ -21,11 +21,11 @@ describe("manageGhostAudio", () => {
     mockScaredTimer = {
       isRunning: true,
     };
-    jest.spyOn(mockSirenAudio, "playing");
+    jest.spyOn(mockScaredAudio, "playing");
     jest.spyOn(mockSirenAudio, "pause");
     jest.spyOn(mockScaredAudio, "play");
     manageGhostAudio(mockGhostAudioObjects, mockScaredTimer);
-    expect(mockSirenAudio.playing).toHaveBeenCalledTimes(1);
+    expect(mockScaredAudio.playing).toHaveBeenCalledTimes(1);
     expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
     expect(mockScaredAudio.play).toHaveBeenCalledTimes(1);
   });
@@ -45,16 +45,16 @@ describe("manageGhostAudio", () => {
     mockScaredTimer = {
       isRunning: false,
     };
-    jest.spyOn(mockSirenAudio, "playing");
+    jest.spyOn(mockScaredAudio, "playing");
     jest.spyOn(mockSirenAudio, "pause");
     jest.spyOn(mockScaredAudio, "play");
     manageGhostAudio(mockGhostAudioObjects, mockScaredTimer);
-    expect(mockSirenAudio.playing).toHaveBeenCalledTimes(0);
+    expect(mockScaredAudio.playing).toHaveBeenCalledTimes(0);
     expect(mockSirenAudio.pause).toHaveBeenCalledTimes(0);
     expect(mockScaredAudio.play).toHaveBeenCalledTimes(0);
   });
 
-  it("plays the siren audio if the scared timer is not running and the scared audio is playing", () => {
+  it("plays the siren audio if it is not playing and the scared timer is not running", () => {
     mockSirenAudio = {
       playing: () => false,
       pause: () => undefined,
@@ -69,11 +69,11 @@ describe("manageGhostAudio", () => {
     mockScaredTimer = {
       isRunning: false,
     };
-    jest.spyOn(mockScaredAudio, "playing");
+    jest.spyOn(mockSirenAudio, "playing");
     jest.spyOn(mockScaredAudio, "pause");
     jest.spyOn(mockSirenAudio, "play");
     manageGhostAudio(mockGhostAudioObjects, mockScaredTimer);
-    expect(mockScaredAudio.playing).toHaveBeenCalledTimes(1);
+    expect(mockSirenAudio.playing).toHaveBeenCalledTimes(1);
     expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
     expect(mockSirenAudio.play).toHaveBeenCalledTimes(1);
   });
@@ -93,11 +93,11 @@ describe("manageGhostAudio", () => {
     mockScaredTimer = {
       isRunning: true,
     };
-    jest.spyOn(mockScaredAudio, "playing");
+    jest.spyOn(mockSirenAudio, "playing");
     jest.spyOn(mockScaredAudio, "pause");
     jest.spyOn(mockSirenAudio, "play");
     manageGhostAudio(mockGhostAudioObjects, mockScaredTimer);
-    expect(mockScaredAudio.playing).toHaveBeenCalledTimes(0);
+    expect(mockSirenAudio.playing).toHaveBeenCalledTimes(0);
     expect(mockScaredAudio.pause).toHaveBeenCalledTimes(0);
     expect(mockSirenAudio.play).toHaveBeenCalledTimes(0);
   });
