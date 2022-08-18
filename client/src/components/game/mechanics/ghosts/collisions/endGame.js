@@ -10,6 +10,7 @@ export default function endGame(
   pacman,
   cycleTimer,
   scaredTimer,
+  ghostAudioObjects,
   callbackOne = cancelAnimationFrame,
   callbackTwo = saveScore,
   callbackThree = resetAfterGameOver
@@ -23,13 +24,8 @@ export default function endGame(
     pacman,
     variables,
     cycleTimer,
-    scaredTimer
+    scaredTimer,
+    ghostAudioObjects
   );
-  variables.reactRoot.render(
-    <Leaderboard
-      variables={variables}
-      ghosts={ghosts}
-      cycleTimer={cycleTimer}
-    />
-  );
+  variables.reactRoot.render(<Leaderboard variables={variables} />);
 }

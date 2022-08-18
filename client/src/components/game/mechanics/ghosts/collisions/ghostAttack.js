@@ -9,6 +9,7 @@ export default function ghostAttack(
   powerUps,
   cycleTimer,
   scaredTimer,
+  ghostAudioObjects,
   callbackOne = endGame,
   callbackTwo = resetAfterDeath
 ) {
@@ -20,7 +21,8 @@ export default function ghostAttack(
       ghosts,
       pacman,
       cycleTimer,
-      scaredTimer
+      scaredTimer,
+      ghostAudioObjects
     );
   } else {
     pacman.lives--;

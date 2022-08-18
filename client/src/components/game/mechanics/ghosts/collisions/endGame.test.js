@@ -1,23 +1,43 @@
 import endGame from "./endGame";
+import Leaderboard from "../../../../leaderboard/leaderboard";
+
+jest.mock("../../../../leaderboard/leaderboard");
+
+let mockVariables;
+let mockPellets;
+let mockPowerUps;
+let mockGhosts;
+let mockPacman;
+let mockCycleTimer;
+let mockScaredTimer;
+let mockGhostAudioObjects;
+let mockCancelAnimationFrame;
+let mockSaveScore;
+let mockResetAfterGameOver;
 
 describe("endGame", () => {
-  it("calls the necessary functions to end the game", () => {
-    const mockVariables = {
+  beforeEach(() => {
+    Leaderboard.mockClear();
+    mockVariables = {
       animationId: undefined,
       reactRoot: {
         render: () => undefined,
       },
     };
-    const mockPellets = "pellets";
-    const mockPowerUps = "powerUps";
-    const mockGhosts = "ghosts";
-    const mockPacman = "pacman";
-    const mockCycleTimer = "cycleTimer";
-    const mockScaredTimer = "scaredTimer";
-    const mockCancelAnimationFrame = jest.fn();
-    const mockSaveScore = jest.fn();
-    const mockResetAfterGameOver = jest.fn();
+    mockPellets = "pellets";
+    mockPowerUps = "powerUps";
+    mockGhosts = "ghosts";
+    mockPacman = "pacman";
+    mockCycleTimer = "cycleTimer";
+    mockScaredTimer = "scaredTimer";
+    mockGhostAudioObjects = "mockGhostAudioObjects";
+    mockCancelAnimationFrame = jest.fn();
+    mockSaveScore = jest.fn();
+    mockResetAfterGameOver = jest.fn();
     jest.spyOn(mockVariables.reactRoot, "render");
+  });
+
+  it("calls cancelAnimationFrame on the current animationId", () => {
     endGame(
       mockVariables,
       mockPellets,
@@ -26,6 +46,7 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver
@@ -34,8 +55,40 @@ describe("endGame", () => {
     expect(mockCancelAnimationFrame).toHaveBeenCalledWith(
       mockVariables.animationId
     );
+  });
+
+  it("calls saveScore", () => {
+    endGame(
+      mockVariables,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockCancelAnimationFrame,
+      mockSaveScore,
+      mockResetAfterGameOver
+    );
     expect(mockSaveScore).toHaveBeenCalledTimes(1);
     expect(mockSaveScore).toHaveBeenCalledWith(mockVariables);
+  });
+
+  it("calls resetAfterGameOver", () => {
+    endGame(
+      mockVariables,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockCancelAnimationFrame,
+      mockSaveScore,
+      mockResetAfterGameOver
+    );
     expect(mockResetAfterGameOver).toHaveBeenCalledTimes(1);
     expect(mockResetAfterGameOver).toHaveBeenCalledWith(
       mockPellets,
@@ -44,8 +97,28 @@ describe("endGame", () => {
       mockPacman,
       mockVariables,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockGhostAudioObjects
+    );
+  });
+
+  it("renders the Leaderboard component", () => {
+    endGame(
+      mockVariables,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockCancelAnimationFrame,
+      mockSaveScore,
+      mockResetAfterGameOver
     );
     expect(mockVariables.reactRoot.render).toHaveBeenCalledTimes(1);
+    expect(mockVariables.reactRoot.render).toHaveBeenCalledWith(
+      <Leaderboard variables={mockVariables} />
+    );
   });
 });

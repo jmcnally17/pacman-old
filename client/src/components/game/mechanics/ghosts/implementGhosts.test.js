@@ -12,6 +12,7 @@ let mockPellets;
 let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
+let mockGhostAudioObjects;
 let mockcheckSpeedMatchesState;
 let mockImplementTunnel;
 let mockUpdateCollisions;
@@ -38,6 +39,7 @@ describe("implementGhosts", () => {
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
+    mockGhostAudioObjects = "mockGhostAudioObjects";
     mockcheckSpeedMatchesState = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();
@@ -45,8 +47,7 @@ describe("implementGhosts", () => {
     mockCheckPacmanGhostCollision = jest.fn();
   });
 
-  it("calls the necessary callback functions to implement the ghosts functionality", () => {
-    jest.spyOn(mockGhostOne, "update");
+  it("calls checkSpeedMatchesState on each ghost", () => {
     implementGhosts(
       mockGhostsOne,
       mockBoundaries,
@@ -57,6 +58,7 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -68,18 +70,99 @@ describe("implementGhosts", () => {
       mockGhostOne,
       mockVariables
     );
+  });
+
+  it("calls update on each ghost", () => {
+    jest.spyOn(mockGhostOne, "update");
+    implementGhosts(
+      mockGhostsOne,
+      mockBoundaries,
+      mockCtx,
+      mockVariables,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockcheckSpeedMatchesState,
+      mockImplementTunnel,
+      mockUpdateCollisions,
+      mockChooseMovement,
+      mockCheckPacmanGhostCollision
+    );
     expect(mockGhostOne.update).toHaveBeenCalledTimes(3);
     expect(mockGhostOne.update).toHaveBeenCalledWith(mockCtx);
+  });
+
+  it("calls implementTunnel on each ghost", () => {
+    implementGhosts(
+      mockGhostsOne,
+      mockBoundaries,
+      mockCtx,
+      mockVariables,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockcheckSpeedMatchesState,
+      mockImplementTunnel,
+      mockUpdateCollisions,
+      mockChooseMovement,
+      mockCheckPacmanGhostCollision
+    );
     expect(mockImplementTunnel).toHaveBeenCalledTimes(3);
     expect(mockImplementTunnel).toHaveBeenCalledWith(
       mockGhostOne,
       mockVariables
+    );
+  });
+
+  it("calls updatesCollisions on each ghost", () => {
+    implementGhosts(
+      mockGhostsOne,
+      mockBoundaries,
+      mockCtx,
+      mockVariables,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockcheckSpeedMatchesState,
+      mockImplementTunnel,
+      mockUpdateCollisions,
+      mockChooseMovement,
+      mockCheckPacmanGhostCollision
     );
     expect(mockUpdateCollisions).toHaveBeenCalledTimes(3);
     expect(mockUpdateCollisions).toHaveBeenCalledWith(
       mockBoundaries,
       [],
       mockGhostOne
+    );
+  });
+
+  it("calls chooseMovement on each ghost if the collisions array does not match the prevCollisions array in the ghost", () => {
+    implementGhosts(
+      mockGhostsOne,
+      mockBoundaries,
+      mockCtx,
+      mockVariables,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockcheckSpeedMatchesState,
+      mockImplementTunnel,
+      mockUpdateCollisions,
+      mockChooseMovement,
+      mockCheckPacmanGhostCollision
     );
     expect(mockChooseMovement).toHaveBeenCalledTimes(3);
     expect(mockChooseMovement).toHaveBeenCalledWith(
@@ -89,20 +172,9 @@ describe("implementGhosts", () => {
       mockVariables,
       mockGhostOne
     );
-    expect(mockCheckPacmanGhostCollision).toHaveBeenCalledTimes(3);
-    expect(mockCheckPacmanGhostCollision).toHaveBeenCalledWith(
-      mockGhostOne,
-      mockPacman,
-      mockVariables,
-      mockGhostsOne,
-      mockPellets,
-      mockPowerUps,
-      mockCycleTimer,
-      mockScaredTimer
-    );
   });
 
-  it("does not call pickRandomDirection when the collisions array is equal to the prevCollisions array", () => {
+  it("does not call chooseMovement on each ghost when the collisions array is equal to the prevCollisions array", () => {
     implementGhosts(
       mockGhostsTwo,
       mockBoundaries,
@@ -113,6 +185,7 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -120,5 +193,37 @@ describe("implementGhosts", () => {
       mockCheckPacmanGhostCollision
     );
     expect(mockChooseMovement).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls checkPacmanGhostCollision on each ghost", () => {
+    implementGhosts(
+      mockGhostsOne,
+      mockBoundaries,
+      mockCtx,
+      mockVariables,
+      mockPacman,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockcheckSpeedMatchesState,
+      mockImplementTunnel,
+      mockUpdateCollisions,
+      mockChooseMovement,
+      mockCheckPacmanGhostCollision
+    );
+    expect(mockCheckPacmanGhostCollision).toHaveBeenCalledTimes(3);
+    expect(mockCheckPacmanGhostCollision).toHaveBeenCalledWith(
+      mockGhostOne,
+      mockPacman,
+      mockVariables,
+      mockGhostsOne,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects
+    );
   });
 });

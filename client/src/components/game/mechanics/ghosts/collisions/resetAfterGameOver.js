@@ -5,7 +5,8 @@ export default function resetAfterGameOver(
   pacman,
   variables,
   cycleTimer,
-  scaredTimer
+  scaredTimer,
+  ghostAudioObjects
 ) {
   pellets.forEach((pellet) => {
     if (pellet.hasBeenEaten) pellet.changeEatenState();
@@ -22,4 +23,10 @@ export default function resetAfterGameOver(
   pacman.lives = 2;
   variables.lastKeyPressed = "";
   variables.level = 1;
+  window.removeEventListener("keydown", variables.directionEventListener);
+  document.removeEventListener(
+    "visibilitychange",
+    variables.visibilityEventListener
+  );
+  ghostAudioObjects[0].unload();
 }

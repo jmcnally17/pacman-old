@@ -6,8 +6,9 @@ let mockReactRoot;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
-let mockAddVisibilityDetection;
+let mockGhostAudioObjects;
 let mockAddDirectionDetection;
+let mockAddVisibilityDetection;
 
 describe("finishSetup", () => {
   beforeEach(() => {
@@ -15,6 +16,8 @@ describe("finishSetup", () => {
       playerName: "",
       reactRoot: "",
       start: true,
+      directionEventListener: null,
+      visibilityEventListener: null,
     };
     mockName = "John";
     mockReactRoot = "reactRoot";
@@ -24,8 +27,14 @@ describe("finishSetup", () => {
     jest.spyOn(mockCycleTimer, "start");
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
-    mockAddVisibilityDetection = jest.fn();
+    mockGhostAudioObjects = [
+      {
+        play: () => undefined,
+        load: () => undefined,
+      },
+    ];
     mockAddDirectionDetection = jest.fn();
+    mockAddVisibilityDetection = jest.fn();
   });
 
   it("sets the playerName and reactRoot", () => {
@@ -36,8 +45,9 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockAddVisibilityDetection,
-      mockAddDirectionDetection
+      mockGhostAudioObjects,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection
     );
     expect(mockVariables.playerName).toBe(mockName);
     expect(mockVariables.reactRoot).toBe(mockReactRoot);
@@ -51,13 +61,15 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockAddVisibilityDetection,
-      mockAddDirectionDetection
+      mockGhostAudioObjects,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection
     );
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
   });
 
-  it("calls addVisibilityDetection to add the event listener", () => {
+  it("calls addDirectionDetection to add the event listener", () => {
+    mockAddDirectionDetection.mockReturnValue("directionEventListener");
     finishSetup(
       mockVariables,
       mockName,
@@ -65,31 +77,35 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockAddVisibilityDetection,
-      mockAddDirectionDetection
+      mockGhostAudioObjects,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection
+    );
+    expect(mockAddDirectionDetection).toHaveBeenCalledTimes(1);
+    expect(mockAddDirectionDetection).toHaveBeenCalledWith(mockVariables);
+  });
+
+  it("calls addVisibilityDetection to add the event listener", () => {
+    mockAddVisibilityDetection.mockReturnValue("visibilityEventListener");
+    finishSetup(
+      mockVariables,
+      mockName,
+      mockReactRoot,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers,
+      mockGhostAudioObjects,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection
     );
     expect(mockAddVisibilityDetection).toHaveBeenCalledTimes(1);
     expect(mockAddVisibilityDetection).toHaveBeenCalledWith(
       mockVariables,
       mockCycleTimer,
       mockScaredTimer,
-      mockRetreatingTimers
-    );
-  });
-
-  it("calls addDirectionDetection to add the event listener", () => {
-    finishSetup(
-      mockVariables,
-      mockName,
-      mockReactRoot,
-      mockCycleTimer,
-      mockScaredTimer,
       mockRetreatingTimers,
-      mockAddVisibilityDetection,
-      mockAddDirectionDetection
+      mockGhostAudioObjects
     );
-    expect(mockAddDirectionDetection).toHaveBeenCalledTimes(1);
-    expect(mockAddDirectionDetection).toHaveBeenCalledWith(mockVariables);
   });
 
   it("sets the start variable to false", () => {
@@ -100,9 +116,28 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockAddVisibilityDetection,
-      mockAddDirectionDetection
+      mockGhostAudioObjects,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection
     );
     expect(mockVariables.start).toBeFalsy();
+  });
+
+  it("plays the ghost siren which is the first audio object in the array", () => {
+    jest.spyOn(mockGhostAudioObjects[0], "load");
+    jest.spyOn(mockGhostAudioObjects[0], "play");
+    finishSetup(
+      mockVariables,
+      mockName,
+      mockReactRoot,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers,
+      mockGhostAudioObjects,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection
+    );
+    expect(mockGhostAudioObjects[0].load).toHaveBeenCalledTimes(1);
+    expect(mockGhostAudioObjects[0].play).toHaveBeenCalledTimes(1);
   });
 });

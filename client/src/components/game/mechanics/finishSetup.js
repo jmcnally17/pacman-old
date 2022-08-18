@@ -1,5 +1,5 @@
 import addDirectionDetection from "./addDirectionDetection";
-import addVisibilityDetection from "./timers/addVisibilityDetection";
+import addVisibilityDetection from "./addVisibilityDetection";
 
 export default function finishSetup(
   variables,
@@ -8,13 +8,22 @@ export default function finishSetup(
   cycleTimer,
   scaredTimer,
   retreatingTimers,
-  callbackOne = addVisibilityDetection,
-  callbackTwo = addDirectionDetection
+  ghostAudioObjects,
+  callbackOne = addDirectionDetection,
+  callbackTwo = addVisibilityDetection
 ) {
   variables.playerName = name;
   variables.reactRoot = reactRoot;
   cycleTimer.start();
-  callbackOne(variables, cycleTimer, scaredTimer, retreatingTimers);
-  callbackTwo(variables);
+  callbackOne(variables);
+  callbackTwo(
+    variables,
+    cycleTimer,
+    scaredTimer,
+    retreatingTimers,
+    ghostAudioObjects
+  );
   variables.start = false;
+  ghostAudioObjects[0].load();
+  ghostAudioObjects[0].play();
 }

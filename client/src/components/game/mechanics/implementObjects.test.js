@@ -9,6 +9,7 @@ let mockCycleTimer;
 let mockScaredTimer;
 let mockCtx;
 let mockVariables;
+let mockGhostAudioObjects;
 let mockImplementBoundaries;
 let mockImplementPellets;
 let mockImplementPowerUps;
@@ -26,6 +27,7 @@ describe("implementObjects", () => {
     mockScaredTimer = "scaredTimer";
     mockCtx = "ctx";
     mockVariables = "variables";
+    mockGhostAudioObjects = "mockGhostAudioObjects";
     mockImplementBoundaries = jest.fn();
     mockImplementPellets = jest.fn();
     mockImplementPowerUps = jest.fn();
@@ -44,6 +46,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
+      mockGhostAudioObjects,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -69,6 +72,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
+      mockGhostAudioObjects,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -100,6 +104,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
+      mockGhostAudioObjects,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -129,6 +134,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
+      mockGhostAudioObjects,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -145,7 +151,8 @@ describe("implementObjects", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockGhostAudioObjects
     );
   });
 
@@ -160,6 +167,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
+      mockGhostAudioObjects,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,

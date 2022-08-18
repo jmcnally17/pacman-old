@@ -8,6 +8,8 @@ let mockPellets;
 let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
+let mockGhostAudioObjects;
+let mockCollisionConditional;
 let mockDealWithCollision;
 
 describe("checkPacmanGhostCollision", () => {
@@ -20,11 +22,12 @@ describe("checkPacmanGhostCollision", () => {
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
+    mockGhostAudioObjects = "mockGhostAudioObjects";
+    mockCollisionConditional = jest.fn();
     mockDealWithCollision = jest.fn();
   });
 
-  it("calls dealWithCollision when the collisionConditional is true", () => {
-    const mockCollisionConditional = jest.fn().mockReturnValue(true);
+  it("calls collisionConditional to check if Pac-Man and the ghost are colliding", () => {
     checkPacmanGhostCollision(
       mockGhost,
       mockPacman,
@@ -34,6 +37,7 @@ describe("checkPacmanGhostCollision", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockCollisionConditional,
       mockDealWithCollision
     );
@@ -41,6 +45,23 @@ describe("checkPacmanGhostCollision", () => {
     expect(mockCollisionConditional).toHaveBeenCalledWith(
       mockGhost,
       mockPacman
+    );
+  });
+
+  it("calls dealWithCollision when the collisionConditional is true", () => {
+    mockCollisionConditional.mockReturnValue(true);
+    checkPacmanGhostCollision(
+      mockGhost,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockCollisionConditional,
+      mockDealWithCollision
     );
     expect(mockDealWithCollision).toHaveBeenCalledTimes(1);
     expect(mockDealWithCollision).toHaveBeenCalledWith(
@@ -51,12 +72,13 @@ describe("checkPacmanGhostCollision", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockGhostAudioObjects
     );
   });
 
   it("does not call dealWithCollision when the collisionConditional is false", () => {
-    const mockCollisionConditional = jest.fn().mockReturnValue(false);
+    mockCollisionConditional.mockReturnValue(false);
     checkPacmanGhostCollision(
       mockGhost,
       mockPacman,
@@ -66,13 +88,9 @@ describe("checkPacmanGhostCollision", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockCollisionConditional,
       mockDealWithCollision
-    );
-    expect(mockCollisionConditional).toHaveBeenCalledTimes(1);
-    expect(mockCollisionConditional).toHaveBeenCalledWith(
-      mockGhost,
-      mockPacman
     );
     expect(mockDealWithCollision).toHaveBeenCalledTimes(0);
   });

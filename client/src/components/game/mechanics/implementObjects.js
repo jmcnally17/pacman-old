@@ -1,8 +1,8 @@
 import implementBoundaries from "./boundaries/implementBoundaries";
-import implementGhosts from "./ghosts/implementGhosts";
-import implementPacman from "./pacman/implementPacman";
 import implementPellets from "./pellets/implementPellets";
 import implementPowerUps from "./powerUps/implementPowerUps";
+import implementGhosts from "./ghosts/implementGhosts";
+import implementPacman from "./pacman/implementPacman";
 
 export default function implementObjects(
   boundaries,
@@ -14,6 +14,7 @@ export default function implementObjects(
   scaredTimer,
   ctx,
   variables,
+  ghostAudioObjects,
   callbackOne = implementBoundaries,
   callbackTwo = implementPellets,
   callbackThree = implementPowerUps,
@@ -49,7 +50,8 @@ export default function implementObjects(
     pellets,
     powerUps,
     cycleTimer,
-    scaredTimer
+    scaredTimer,
+    ghostAudioObjects
   );
   callbackFive(variables, pacman, boundaries, ctx, pellets);
 }
