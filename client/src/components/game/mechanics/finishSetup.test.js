@@ -103,7 +103,8 @@ describe("finishSetup", () => {
       mockVariables,
       mockCycleTimer,
       mockScaredTimer,
-      mockRetreatingTimers
+      mockRetreatingTimers,
+      mockGhostAudioObjects
     );
   });
 

@@ -4,6 +4,7 @@ let mockVariables;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
+let mockGhostAudioObjects;
 let mockPauseTimers;
 let mockResumeTimers;
 let visibilityChange;
@@ -17,6 +18,12 @@ describe("addVisibilityDetection", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
+    mockGhostAudioObjects = [
+      {
+        pause: () => undefined,
+        play: () => undefined,
+      },
+    ];
     mockPauseTimers = jest.fn();
     mockResumeTimers = jest.fn();
     visibilityChange = new Event("visibilitychange");
@@ -25,6 +32,7 @@ describe("addVisibilityDetection", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockGhostAudioObjects,
       mockPauseTimers,
       mockResumeTimers
     );
@@ -35,15 +43,28 @@ describe("addVisibilityDetection", () => {
   });
 
   describe("adds an event listener", () => {
+    it("to change windowIsVisible to false if it is initially true", () => {
+      mockVariables.windowIsVisible = true;
+      document.dispatchEvent(visibilityChange);
+      expect(mockVariables.windowIsVisible).toBeFalsy();
+    });
+
     it("to change windowIsVisible to true if it is intially false", () => {
       document.dispatchEvent(visibilityChange);
       expect(mockVariables.windowIsVisible).toBeFalsy();
     });
 
-    it("to change windowIsVisible to false if it is initially true", () => {
-      mockVariables.windowIsVisible = true;
+    it("calls pause on the siren audio object if windowIsVisibly is initially true", () => {
+      jest.spyOn(mockGhostAudioObjects[0], "pause");
       document.dispatchEvent(visibilityChange);
-      expect(mockVariables.windowIsVisible).toBeFalsy();
+      expect(mockGhostAudioObjects[0].pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls play on the siren audio object if windowIsVisibly is initially false", () => {
+      mockVariables.windowIsVisible = false;
+      jest.spyOn(mockGhostAudioObjects[0], "play");
+      document.dispatchEvent(visibilityChange);
+      expect(mockGhostAudioObjects[0].play).toHaveBeenCalledTimes(1);
     });
 
     it("to call pauseTimers if windowIsVisible is intially true", () => {
