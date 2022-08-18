@@ -9,13 +9,16 @@ export default function addVisibilityDetection(
   callbackOne = pauseTimers,
   callbackTwo = resumeTimers
 ) {
-  return document.addEventListener("visibilitychange", () => {
-    if (variables.windowIsVisible) {
-      variables.windowIsVisible = false;
-      callbackOne(cycleTimer, scaredTimer, retreatingTimers);
-    } else {
-      variables.windowIsVisible = true;
-      callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
-    }
-  });
+  document.addEventListener(
+    "visibilitychange",
+    (variables.visibilityEventListener = () => {
+      if (variables.windowIsVisible) {
+        variables.windowIsVisible = false;
+        callbackOne(cycleTimer, scaredTimer, retreatingTimers);
+      } else {
+        variables.windowIsVisible = true;
+        callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
+      }
+    })
+  );
 }

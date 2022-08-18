@@ -59,7 +59,7 @@ describe("finishSetup", () => {
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
   });
 
-  it("sets directionEventListener in the variables object to addDirectionDetection to add the event listener", () => {
+  it("calls addDirectionDetection to add the event listener", () => {
     mockAddDirectionDetection.mockReturnValue("directionEventListener");
     finishSetup(
       mockVariables,
@@ -73,12 +73,9 @@ describe("finishSetup", () => {
     );
     expect(mockAddDirectionDetection).toHaveBeenCalledTimes(1);
     expect(mockAddDirectionDetection).toHaveBeenCalledWith(mockVariables);
-    expect(mockVariables.directionEventListener).toEqual(
-      mockAddDirectionDetection()
-    );
   });
 
-  it("sets visibilityEventListener in the variables object to addVisibilityDetection to add the event listener", () => {
+  it("calls addVisibilityDetection to add the event listener", () => {
     mockAddVisibilityDetection.mockReturnValue("visibilityEventListener");
     finishSetup(
       mockVariables,
@@ -96,9 +93,6 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers
-    );
-    expect(mockVariables.visibilityEventListener).toEqual(
-      mockAddVisibilityDetection()
     );
   });
 

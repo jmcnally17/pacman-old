@@ -12,6 +12,7 @@ describe("addVisibilityDetection", () => {
   beforeEach(() => {
     mockVariables = {
       windowIsVisible: true,
+      visibilityEventListener: null,
     };
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
@@ -27,6 +28,10 @@ describe("addVisibilityDetection", () => {
       mockPauseTimers,
       mockResumeTimers
     );
+  });
+
+  it("sets visibilityEventListener in the variables object to the arrow function that defines the event listener", () => {
+    expect(mockVariables.visibilityEventListener).toEqual(expect.any(Function));
   });
 
   describe("adds an event listener", () => {

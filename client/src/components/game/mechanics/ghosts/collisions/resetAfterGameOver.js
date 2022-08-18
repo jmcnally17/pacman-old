@@ -22,4 +22,9 @@ export default function resetAfterGameOver(
   pacman.lives = 2;
   variables.lastKeyPressed = "";
   variables.level = 1;
+  window.removeEventListener("keydown", variables.directionEventListener);
+  document.removeEventListener(
+    "visibilitychange",
+    variables.visibilityEventListener
+  );
 }

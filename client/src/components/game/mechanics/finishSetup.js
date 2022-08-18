@@ -14,12 +14,7 @@ export default function finishSetup(
   variables.playerName = name;
   variables.reactRoot = reactRoot;
   cycleTimer.start();
-  variables.directionEventListener = callbackOne(variables);
-  variables.visibilityEventListener = callbackTwo(
-    variables,
-    cycleTimer,
-    scaredTimer,
-    retreatingTimers
-  );
+  callbackOne(variables);
+  callbackTwo(variables, cycleTimer, scaredTimer, retreatingTimers);
   variables.start = false;
 }

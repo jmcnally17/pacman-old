@@ -6,7 +6,13 @@ describe("addDirectionDetection", () => {
   beforeEach(() => {
     mockVariables = {
       lastKeyPressed: "",
+      directionEventListener: null,
     };
+  });
+
+  it("sets the directionEventListener key in the variables object to the arrow function that defines the event listener", () => {
+    addDirectionDetection(mockVariables);
+    expect(mockVariables.directionEventListener).toEqual(expect.any(Function));
   });
 
   describe("adds an event listener to", () => {

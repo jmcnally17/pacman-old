@@ -52,6 +52,8 @@ describe("resetAfterGameOver", () => {
     mockVariables = {
       lastKeyPressed: "down",
       level: 5,
+      directionEventListener: undefined,
+      visibilityEventListener: undefined,
     };
     mockCycleTimer = {
       reset: () => undefined,
