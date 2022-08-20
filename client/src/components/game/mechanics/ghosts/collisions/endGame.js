@@ -2,7 +2,7 @@ import saveScore from "./saveScore";
 import Leaderboard from "../../../../leaderboard/leaderboard";
 import resetAfterGameOver from "./resetAfterGameOver";
 
-export default function endGame(
+export default async function endGame(
   variables,
   pellets,
   powerUps,
@@ -15,7 +15,7 @@ export default function endGame(
   callbackTwo = resetAfterGameOver
 ) {
   cancelAnimationFrame(variables.animationId);
-  callbackOne(variables);
+  await callbackOne(variables);
   callbackTwo(
     pellets,
     powerUps,

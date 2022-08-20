@@ -72,8 +72,8 @@ describe("endGame", () => {
     expect(mockSaveScore).toHaveBeenCalledWith(mockVariables);
   });
 
-  it("calls resetAfterGameOver", () => {
-    endGame(
+  it("calls resetAfterGameOver", async () => {
+    await endGame(
       mockVariables,
       mockPellets,
       mockPowerUps,
@@ -98,8 +98,8 @@ describe("endGame", () => {
     );
   });
 
-  it("renders the Leaderboard component", () => {
-    endGame(
+  it("renders the Leaderboard component", async () => {
+    await endGame(
       mockVariables,
       mockPellets,
       mockPowerUps,
