@@ -3,7 +3,8 @@ export default function runDeathAnimation(
   ctx,
   boundaries,
   pellets,
-  powerUps
+  powerUps,
+  pacman
 ) {
   cancelAnimationFrame(variables.animationId);
   requestAnimationFrame(runDeathAnimation);
@@ -15,4 +16,5 @@ export default function runDeathAnimation(
   powerUps.forEach((powerUp) => {
     if (!powerUp.hasBeenEaten) powerUp.update(ctx);
   });
+  pacman.shrink(ctx);
 }

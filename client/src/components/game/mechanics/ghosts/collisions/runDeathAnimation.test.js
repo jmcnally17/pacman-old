@@ -12,6 +12,7 @@ let mockPowerUp;
 let mockPowerUps;
 let mockEatenPowerUp;
 let mockEatenPowerUps;
+let mockPacman;
 
 describe("runDeathAnimation", () => {
   beforeEach(() => {
@@ -45,6 +46,9 @@ describe("runDeathAnimation", () => {
       update: () => undefined,
     };
     mockEatenPowerUps = [mockEatenPowerUp, mockEatenPowerUp];
+    mockPacman = {
+      shrink: () => undefined,
+    };
   });
 
   it("cancels the current animation frame", () => {
@@ -54,7 +58,8 @@ describe("runDeathAnimation", () => {
       mockCtx,
       mockBoundaries,
       mockPellets,
-      mockPowerUps
+      mockPowerUps,
+      mockPacman
     );
     expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
     expect(cancelAnimationFrame).toHaveBeenCalledWith(
@@ -69,7 +74,8 @@ describe("runDeathAnimation", () => {
       mockCtx,
       mockBoundaries,
       mockPellets,
-      mockPowerUps
+      mockPowerUps,
+      mockPacman
     );
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
     expect(requestAnimationFrame).toHaveBeenCalledWith(runDeathAnimation);
@@ -82,7 +88,8 @@ describe("runDeathAnimation", () => {
       mockCtx,
       mockBoundaries,
       mockPellets,
-      mockPowerUps
+      mockPowerUps,
+      mockPacman
     );
     expect(mockCtx.clearRect).toHaveBeenCalledTimes(1);
     expect(mockCtx.clearRect).toHaveBeenCalledWith(0, 0, 896, 992);
@@ -95,7 +102,8 @@ describe("runDeathAnimation", () => {
       mockCtx,
       mockBoundaries,
       mockPellets,
-      mockPowerUps
+      mockPowerUps,
+      mockPacman
     );
     expect(mockBoundary.draw).toHaveBeenCalledTimes(2);
     expect(mockBoundary.draw).toHaveBeenNthCalledWith(1, mockCtx);
@@ -109,7 +117,8 @@ describe("runDeathAnimation", () => {
       mockCtx,
       mockBoundaries,
       mockPellets,
-      mockPowerUps
+      mockPowerUps,
+      mockPacman
     );
     expect(mockPellet.draw).toHaveBeenCalledTimes(2);
     expect(mockPellet.draw).toHaveBeenNthCalledWith(1, mockCtx);
@@ -123,7 +132,8 @@ describe("runDeathAnimation", () => {
       mockCtx,
       mockBoundaries,
       mockEatenPellets,
-      mockPowerUps
+      mockPowerUps,
+      mockPacman
     );
     expect(mockEatenPellet.draw).toHaveBeenCalledTimes(0);
   });
@@ -135,7 +145,8 @@ describe("runDeathAnimation", () => {
       mockCtx,
       mockBoundaries,
       mockPellets,
-      mockPowerUps
+      mockPowerUps,
+      mockPacman
     );
     expect(mockPowerUp.update).toHaveBeenCalledTimes(2);
     expect(mockPowerUp.update).toHaveBeenNthCalledWith(1, mockCtx);
@@ -149,8 +160,23 @@ describe("runDeathAnimation", () => {
       mockCtx,
       mockBoundaries,
       mockEatenPellets,
-      mockEatenPowerUps
+      mockEatenPowerUps,
+      mockPacman
     );
     expect(mockEatenPowerUp.update).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls shrink on Pac-Man", () => {
+    jest.spyOn(mockPacman, "shrink");
+    runDeathAnimation(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockPacman
+    );
+    expect(mockPacman.shrink).toHaveBeenCalledTimes(1);
+    expect(mockPacman.shrink).toHaveBeenCalledWith(mockCtx);
   });
 });
