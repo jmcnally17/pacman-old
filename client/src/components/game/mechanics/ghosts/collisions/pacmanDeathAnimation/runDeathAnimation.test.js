@@ -1,7 +1,6 @@
 import runDeathAnimation from "./runDeathAnimation";
-import mockRequesrAnimationFrame from "mock-request-animation-frame";
 
-mockRequesrAnimationFrame();
+jest.useFakeTimers();
 
 let mockVariables;
 let mockCtx;
@@ -84,6 +83,20 @@ describe("runDeathAnimation", () => {
     );
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
     expect(requestAnimationFrame).toHaveBeenCalledWith(expect.any(Function));
+    jest.runOnlyPendingTimers();
+    expect(mockRunDeathAnimation).toHaveBeenCalledTimes(1);
+    expect(mockRunDeathAnimation).toHaveBeenCalledWith(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockPacman,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects
+    );
   });
 
   it("calls drawBoard", () => {
