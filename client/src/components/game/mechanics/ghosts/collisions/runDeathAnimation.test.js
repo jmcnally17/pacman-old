@@ -17,7 +17,7 @@ let mockPacman;
 describe("runDeathAnimation", () => {
   beforeEach(() => {
     mockVariables = {
-      animationId: 1956382,
+      animationId: null,
     };
     mockCtx = {
       clearRect: () => undefined,
@@ -51,22 +51,6 @@ describe("runDeathAnimation", () => {
     };
   });
 
-  it("cancels the current animation frame", () => {
-    jest.spyOn(global, "cancelAnimationFrame");
-    runDeathAnimation(
-      mockVariables,
-      mockCtx,
-      mockBoundaries,
-      mockPellets,
-      mockPowerUps,
-      mockPacman
-    );
-    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
-    expect(cancelAnimationFrame).toHaveBeenCalledWith(
-      mockVariables.animationId
-    );
-  });
-
   it("calls requestAnimationFrame on itself", () => {
     jest.spyOn(global, "requestAnimationFrame");
     runDeathAnimation(
@@ -77,6 +61,7 @@ describe("runDeathAnimation", () => {
       mockPowerUps,
       mockPacman
     );
+    expect(mockVariables.animationId).toBe(1);
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
     expect(requestAnimationFrame).toHaveBeenCalledWith(runDeathAnimation);
   });

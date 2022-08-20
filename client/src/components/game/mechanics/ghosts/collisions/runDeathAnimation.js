@@ -6,8 +6,7 @@ export default function runDeathAnimation(
   powerUps,
   pacman
 ) {
-  cancelAnimationFrame(variables.animationId);
-  requestAnimationFrame(runDeathAnimation);
+  variables.animationId = requestAnimationFrame(runDeathAnimation);
   ctx.clearRect(0, 0, 896, 992);
   boundaries.forEach((boundary) => boundary.draw(ctx));
   pellets.forEach((pellet) => {
