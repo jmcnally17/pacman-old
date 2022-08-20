@@ -1,9 +1,12 @@
+import playGame from "../../playGame";
+
 export default function resetAfterDeath(
   pacman,
   variables,
   ghosts,
   cycleTimer,
-  scaredTimer
+  scaredTimer,
+  callback = playGame
 ) {
   pacman.reset();
   variables.lastKeyPressed = "";
@@ -13,4 +16,5 @@ export default function resetAfterDeath(
     ghost.reset();
   });
   cycleTimer.start();
+  callback(variables.name, variables.reactRoot);
 }

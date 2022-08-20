@@ -1,0 +1,177 @@
+import runDeathAnimation from "./runDeathAnimation";
+
+let mockVariables;
+let mockCtx;
+let mockBoundaries;
+let mockPellets;
+let mockPowerUps;
+let mockPacman;
+let mockShrunkPacman;
+let mockGhosts;
+let mockCycleTimer;
+let mockScaredTimer;
+let mockGhostAudioObjects;
+let mockDrawBoard;
+let mockCheckPacmanLives;
+
+describe("runDeathAnimation", () => {
+  beforeEach(() => {
+    mockVariables = {
+      animationId: 98,
+    };
+    mockCtx = "ctx";
+    mockBoundaries = "boundaries";
+    mockPellets = "pellets";
+    mockPowerUps = "powerUps";
+    mockPacman = {
+      radians: 0,
+      shrink: () => undefined,
+    };
+    mockShrunkPacman = {
+      radians: Math.PI,
+      shrink: () => undefined,
+    };
+    mockGhosts = "ghosts";
+    mockCycleTimer = "cycleTimer";
+    mockScaredTimer = "scaredTimer";
+    mockGhostAudioObjects = "ghostAudioObjects";
+    mockDrawBoard = jest.fn();
+    mockCheckPacmanLives = jest.fn();
+  });
+
+  it("calls cancelAnimationFrame to stop any movement on the board", () => {
+    jest.spyOn(global, "cancelAnimationFrame");
+    runDeathAnimation(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockPacman,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockDrawBoard,
+      mockCheckPacmanLives
+    );
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(cancelAnimationFrame).toHaveBeenCalledWith(98);
+  });
+
+  it("calls requestAnimationFrame on itself to begin the death animation", () => {
+    jest.spyOn(global, "requestAnimationFrame");
+    runDeathAnimation(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockPacman,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockDrawBoard,
+      mockCheckPacmanLives
+    );
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(requestAnimationFrame).toHaveBeenCalledWith(expect.any(Function));
+  });
+
+  it("calls drawBoard", () => {
+    runDeathAnimation(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockPacman,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockDrawBoard,
+      mockCheckPacmanLives
+    );
+    expect(mockDrawBoard).toHaveBeenCalledTimes(1);
+    expect(mockDrawBoard).toHaveBeenCalledWith(
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps
+    );
+  });
+
+  it("calls shrink on Pac-Man if its radians is less than PI", () => {
+    jest.spyOn(mockPacman, "shrink");
+    runDeathAnimation(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockPacman,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockDrawBoard,
+      mockCheckPacmanLives
+    );
+    expect(mockPacman.shrink).toHaveBeenCalledTimes(1);
+    expect(mockPacman.shrink).toHaveBeenCalledWith(mockCtx);
+  });
+
+  it("calls cancelAnimationFrame when Pac-Man's death animation has finished", () => {
+    jest.spyOn(global, "cancelAnimationFrame");
+    runDeathAnimation(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockShrunkPacman,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockDrawBoard,
+      mockCheckPacmanLives
+    );
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(2);
+    expect(cancelAnimationFrame).toHaveBeenNthCalledWith(1, 98);
+    expect(cancelAnimationFrame).toHaveBeenNthCalledWith(
+      2,
+      mockVariables.animationId
+    );
+  });
+
+  it("calls checkPacmanLives when Pac-Man's death animation has finished", () => {
+    runDeathAnimation(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockShrunkPacman,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockDrawBoard,
+      mockCheckPacmanLives
+    );
+    expect(mockCheckPacmanLives).toHaveBeenCalledTimes(1);
+    expect(mockCheckPacmanLives).toHaveBeenCalledWith(
+      mockShrunkPacman,
+      mockVariables,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects
+    );
+  });
+});

@@ -11,7 +11,7 @@ let mockScaredTimer;
 let mockGhostAudioObjects;
 let mockCtx;
 let mockBoundaries;
-let mockGhostAttack;
+let mockBeginDeathAnimation;
 
 describe("dealWithCollision", () => {
   beforeEach(() => {
@@ -37,13 +37,13 @@ describe("dealWithCollision", () => {
     mockGhostAudioObjects = "mockGhostAudioObjects";
     mockCtx = "ctx";
     mockBoundaries = "boundaries";
-    mockGhostAttack = jest.fn();
+    mockBeginDeathAnimation = jest.fn();
     jest.spyOn(mockScaredGhost, "changeRetreatingState");
     jest.spyOn(mockScaredGhost.retreatingTimer, "start");
     jest.spyOn(mockScaredGhost, "changeScaredState");
   });
 
-  it("calls ghostAttack if the ghost is not scared or retreating", () => {
+  it("calls beginDeathAnimation if the ghost is not scared or retreating", () => {
     const mockGhost = {
       isScared: false,
       isRetreating: false,
@@ -61,20 +61,20 @@ describe("dealWithCollision", () => {
       mockGhostAudioObjects,
       mockCtx,
       mockBoundaries,
-      mockGhostAttack
+      mockBeginDeathAnimation
     );
-    expect(mockGhostAttack).toHaveBeenCalledTimes(1);
-    expect(mockGhostAttack).toHaveBeenCalledWith(
-      mockPacman,
+    expect(mockBeginDeathAnimation).toHaveBeenCalledTimes(1);
+    expect(mockBeginDeathAnimation).toHaveBeenCalledWith(
       mockVariables,
-      mockGhosts,
+      mockCtx,
+      mockBoundaries,
       mockPellets,
       mockPowerUps,
+      mockPacman,
+      mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockCtx,
-      mockBoundaries
+      mockGhostAudioObjects
     );
   });
 
@@ -91,7 +91,7 @@ describe("dealWithCollision", () => {
       mockGhostAudioObjects,
       mockCtx,
       mockBoundaries,
-      mockGhostAttack
+      mockBeginDeathAnimation
     );
     expect(mockVariables.score).toBe(900);
     expect(mockVariables.killCount).toBe(3);
@@ -110,7 +110,7 @@ describe("dealWithCollision", () => {
       mockGhostAudioObjects,
       mockCtx,
       mockBoundaries,
-      mockGhostAttack
+      mockBeginDeathAnimation
     );
     expect(mockScaredGhost.changeRetreatingState).toHaveBeenCalledTimes(1);
     expect(mockScaredGhost.retreatingTimer.start).toHaveBeenCalledTimes(1);
@@ -134,9 +134,9 @@ describe("dealWithCollision", () => {
       mockGhostAudioObjects,
       mockCtx,
       mockBoundaries,
-      mockGhostAttack
+      mockBeginDeathAnimation
     );
-    expect(mockGhostAttack).toHaveBeenCalledTimes(0);
+    expect(mockBeginDeathAnimation).toHaveBeenCalledTimes(0);
     expect(mockVariables.score).toBe(100);
     expect(mockVariables.killCount).toBe(2);
     expect(mockScaredGhost.changeRetreatingState).toHaveBeenCalledTimes(0);
