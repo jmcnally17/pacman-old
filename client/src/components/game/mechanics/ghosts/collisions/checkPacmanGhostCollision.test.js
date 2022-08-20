@@ -11,6 +11,7 @@ let mockScaredTimer;
 let mockGhostAudioObjects;
 let mockCtx;
 let mockBoundaries;
+let mockPacmanDeathAudio;
 let mockCollisionConditional;
 let mockDealWithCollision;
 
@@ -27,6 +28,7 @@ describe("checkPacmanGhostCollision", () => {
     mockGhostAudioObjects = "mockGhostAudioObjects";
     mockCtx = "ctx";
     mockBoundaries = "boundaries";
+    mockPacmanDeathAudio = "pacmanDeathAudio";
     mockCollisionConditional = jest.fn();
     mockDealWithCollision = jest.fn();
   });
@@ -44,6 +46,7 @@ describe("checkPacmanGhostCollision", () => {
       mockGhostAudioObjects,
       mockCtx,
       mockBoundaries,
+      mockPacmanDeathAudio,
       mockCollisionConditional,
       mockDealWithCollision
     );
@@ -68,6 +71,7 @@ describe("checkPacmanGhostCollision", () => {
       mockGhostAudioObjects,
       mockCtx,
       mockBoundaries,
+      mockPacmanDeathAudio,
       mockCollisionConditional,
       mockDealWithCollision
     );
@@ -83,7 +87,8 @@ describe("checkPacmanGhostCollision", () => {
       mockScaredTimer,
       mockGhostAudioObjects,
       mockCtx,
-      mockBoundaries
+      mockBoundaries,
+      mockPacmanDeathAudio
     );
   });
 
@@ -101,6 +106,7 @@ describe("checkPacmanGhostCollision", () => {
       mockGhostAudioObjects,
       mockCtx,
       mockBoundaries,
+      mockPacmanDeathAudio,
       mockCollisionConditional,
       mockDealWithCollision
     );

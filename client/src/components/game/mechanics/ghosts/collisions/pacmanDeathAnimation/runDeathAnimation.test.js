@@ -12,9 +12,6 @@ let mockShrunkPacman;
 let mockGhosts;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockSirenAudio;
-let mockScaredAudio;
-let mockRetreatingAudio;
 let mockGhostAudioObjects;
 let mockRunDeathAnimation;
 let mockDrawBoard;
@@ -40,68 +37,10 @@ describe("runDeathAnimation", () => {
     mockGhosts = "ghosts";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockSirenAudio = {
-      pause: () => undefined,
-    };
-    mockScaredAudio = {
-      pause: () => undefined,
-    };
-    mockRetreatingAudio = {
-      pause: () => undefined,
-    };
-    mockGhostAudioObjects = [
-      mockSirenAudio,
-      mockScaredAudio,
-      mockRetreatingAudio,
-    ];
+    mockGhostAudioObjects = "ghostAudioObjects";
     mockRunDeathAnimation = jest.fn();
     mockDrawBoard = jest.fn();
     mockCheckPacmanLives = jest.fn();
-  });
-
-  it("calls pause on each of the ghost audio objects", () => {
-    jest.spyOn(mockSirenAudio, "pause");
-    jest.spyOn(mockScaredAudio, "pause");
-    jest.spyOn(mockRetreatingAudio, "pause");
-    runDeathAnimation(
-      mockVariables,
-      mockCtx,
-      mockBoundaries,
-      mockPellets,
-      mockPowerUps,
-      mockPacman,
-      mockGhosts,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockGhostAudioObjects,
-      mockRunDeathAnimation,
-      mockDrawBoard,
-      mockCheckPacmanLives
-    );
-    expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
-    expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
-    expect(mockRetreatingAudio.pause).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls cancelAnimationFrame to stop any movement on the board", () => {
-    jest.spyOn(global, "cancelAnimationFrame");
-    runDeathAnimation(
-      mockVariables,
-      mockCtx,
-      mockBoundaries,
-      mockPellets,
-      mockPowerUps,
-      mockPacman,
-      mockGhosts,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockGhostAudioObjects,
-      mockRunDeathAnimation,
-      mockDrawBoard,
-      mockCheckPacmanLives
-    );
-    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
-    expect(cancelAnimationFrame).toHaveBeenCalledWith(98);
   });
 
   it("calls requestAnimationFrame on itself to begin the death animation", () => {
@@ -202,10 +141,8 @@ describe("runDeathAnimation", () => {
       mockDrawBoard,
       mockCheckPacmanLives
     );
-    expect(cancelAnimationFrame).toHaveBeenCalledTimes(2);
-    expect(cancelAnimationFrame).toHaveBeenNthCalledWith(1, 98);
-    expect(cancelAnimationFrame).toHaveBeenNthCalledWith(
-      2,
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(cancelAnimationFrame).toHaveBeenCalledWith(
       mockVariables.animationId
     );
   });

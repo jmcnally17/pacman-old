@@ -9,6 +9,7 @@ export default function finishSetup(
   scaredTimer,
   retreatingTimers,
   ghostAudioObjects,
+  pacmanDeathAudio,
   callbackOne = addDirectionDetection,
   callbackTwo = addVisibilityDetection
 ) {
@@ -24,8 +25,7 @@ export default function finishSetup(
     ghostAudioObjects
   );
   variables.start = false;
-  ghostAudioObjects[0].load();
+  ghostAudioObjects.forEach((audio) => audio.load());
   ghostAudioObjects[0].play();
-  ghostAudioObjects[1].load();
-  ghostAudioObjects[2].load();
+  pacmanDeathAudio.load();
 }

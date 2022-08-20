@@ -7,6 +7,7 @@ import CycleTimer from "../models/cycleTimer";
 import ScaredTimer from "../models/scaredTimer";
 import makeRetreatingTimers from "./timers/makeRetreatingTimers";
 import makeGhostAudioObjects from "./ghosts/makeGhostAudioObjects";
+import makePacmanDeathAudio from "./pacman/makePacmanDeathAudio";
 import finishSetup from "./finishSetup";
 import implementObjects from "./implementObjects";
 import updateDisplay from "./display/updateDisplay";
@@ -70,16 +71,17 @@ const cycleTimer = new CycleTimer(ghosts);
 const scaredTimer = new ScaredTimer(ghosts);
 const retreatingTimers = makeRetreatingTimers(ghosts);
 const ghostAudioObjects = makeGhostAudioObjects();
+const pacmanDeathAudio = makePacmanDeathAudio();
 
 export default function playGame(name, reactRoot, callbackOne = finishSetup, callbackTwo = implementObjects, callbackThree = updateDisplay, callbackFour = manageGhostAudio) {
   if (variables.start === true) {
-    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, ghostAudioObjects);
+    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, ghostAudioObjects, pacmanDeathAudio);
   }
   variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, 896, 992);
-  callbackTwo(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables, ghostAudioObjects);
+  callbackTwo(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables, ghostAudioObjects, pacmanDeathAudio);
   callbackThree(pacman, variables);
   callbackFour(ghostAudioObjects, scaredTimer, retreatingTimers);
 };

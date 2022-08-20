@@ -12,9 +12,11 @@ export default function dealWithCollision(
   ghostAudioObjects,
   ctx,
   boundaries,
+  pacmanDeathAudio,
   callback = runDeathAnimation
 ) {
   if (!ghost.isScared && !ghost.isRetreating) {
+    ghostAudioObjects.forEach((audio) => audio.pause());
     callback(
       variables,
       ctx,

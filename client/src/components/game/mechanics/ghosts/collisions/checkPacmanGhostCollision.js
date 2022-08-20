@@ -13,6 +13,7 @@ export default function checkPacmanGhostCollision(
   ghostAudioObjects,
   ctx,
   boundaries,
+  pacmanDeathAudio,
   callbackOne = collisionConditional,
   callbackTwo = dealWithCollision
 ) {
@@ -28,7 +29,8 @@ export default function checkPacmanGhostCollision(
       scaredTimer,
       ghostAudioObjects,
       ctx,
-      boundaries
+      boundaries,
+      pacmanDeathAudio
     );
   }
 }
