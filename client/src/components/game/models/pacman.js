@@ -22,6 +22,7 @@ export default class PacMan {
     this.speed = tileLength / 8;
     this.radians = Math.PI / 4;
     this.openRate = Math.PI / 36;
+    this.shrinkRate = Math.PI / 72;
     this.rotation = 0;
     this.lives = 2;
     this.isEating = false;
@@ -75,6 +76,10 @@ export default class PacMan {
     else if (this.velocity.x < 0) this.rotation = Math.PI;
     else if (this.velocity.y > 0) this.rotation = Math.PI / 2;
     else if (this.velocity.y < 0) this.rotation = (Math.PI * 3) / 2;
+  }
+
+  shrink() {
+    this.radians -= this.shrinkRate;
   }
 
   reset() {

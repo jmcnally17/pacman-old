@@ -69,8 +69,9 @@ describe("PacMan", () => {
       expect(pacman.tileLength).toBe(20);
       expect(pacman.radius).toBe(7.5);
       expect(pacman.speed).toBe(2.5);
-      expect(pacman.radians).toEqual(Math.PI / 4);
-      expect(pacman.openRate).toEqual(Math.PI / 36);
+      expect(pacman.radians).toBe(Math.PI / 4);
+      expect(pacman.openRate).toBe(Math.PI / 36);
+      expect(pacman.shrinkRate).toBe(Math.PI / 72);
       expect(pacman.rotation).toBe(0);
       expect(pacman.lives).toBe(2);
       expect(pacman.isEating).toBeFalsy();
@@ -223,6 +224,13 @@ describe("PacMan", () => {
       };
       pacman.checkRotation();
       expect(pacman.rotation).toBe((3 * Math.PI) / 2);
+    });
+  });
+
+  describe("shrink", () => {
+    it("decreases the radians by the shrinkRate", () => {
+      pacman.shrink();
+      expect(pacman.radians).toBe((17 * Math.PI) / 72);
     });
   });
 
