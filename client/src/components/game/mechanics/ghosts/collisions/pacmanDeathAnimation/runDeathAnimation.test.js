@@ -13,6 +13,7 @@ let mockGhosts;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockGhostAudioObjects;
+let mockPacmanDeathAudio;
 let mockRunDeathAnimation;
 let mockDrawBoard;
 let mockCheckPacmanLives;
@@ -38,6 +39,7 @@ describe("runDeathAnimation", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockGhostAudioObjects = "ghostAudioObjects";
+    mockPacmanDeathAudio = "PacmanDeathAudio";
     mockRunDeathAnimation = jest.fn();
     mockDrawBoard = jest.fn();
     mockCheckPacmanLives = jest.fn();
@@ -56,6 +58,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockPacmanDeathAudio,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -74,7 +77,8 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects
+      mockGhostAudioObjects,
+      mockPacmanDeathAudio
     );
   });
 
@@ -90,6 +94,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockPacmanDeathAudio,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -116,6 +121,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockPacmanDeathAudio,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -137,6 +143,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockPacmanDeathAudio,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -159,6 +166,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockPacmanDeathAudio,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -172,7 +180,8 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects
+      mockGhostAudioObjects,
+      mockPacmanDeathAudio
     );
   });
 });

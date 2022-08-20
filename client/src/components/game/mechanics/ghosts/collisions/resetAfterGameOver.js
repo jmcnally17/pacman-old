@@ -6,7 +6,7 @@ export default function resetAfterGameOver(
   variables,
   cycleTimer,
   scaredTimer,
-  ghostAudioObjects
+  pacmanDeathAudio
 ) {
   pellets.forEach((pellet) => {
     if (pellet.hasBeenEaten) pellet.changeEatenState();
@@ -28,7 +28,5 @@ export default function resetAfterGameOver(
     "visibilitychange",
     variables.visibilityEventListener
   );
-  ghostAudioObjects[0].unload();
-  ghostAudioObjects[1].unload();
-  ghostAudioObjects[2].unload();
+  pacmanDeathAudio.unload();
 }

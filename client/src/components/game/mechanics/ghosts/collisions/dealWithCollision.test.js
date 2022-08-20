@@ -164,7 +164,8 @@ describe("dealWithCollision", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects
+      mockGhostAudioObjects,
+      mockPacmanDeathAudio
     );
   });
 

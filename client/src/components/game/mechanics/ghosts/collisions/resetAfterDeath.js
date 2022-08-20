@@ -6,6 +6,7 @@ export default function resetAfterDeath(
   ghosts,
   cycleTimer,
   scaredTimer,
+  ghostAudioObjects,
   callback = playGame
 ) {
   pacman.reset();
@@ -16,5 +17,6 @@ export default function resetAfterDeath(
     ghost.reset();
   });
   cycleTimer.start();
+  ghostAudioObjects.forEach((audio) => audio.load());
   callback(variables.name, variables.reactRoot);
 }
