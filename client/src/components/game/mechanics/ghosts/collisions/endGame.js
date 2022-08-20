@@ -1,6 +1,6 @@
-import saveScore from "./saveScore";
 import Leaderboard from "../../../../leaderboard/leaderboard";
 import resetAfterGameOver from "./resetAfterGameOver";
+import saveScore from "./saveScore";
 
 export default async function endGame(
   variables,
