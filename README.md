@@ -138,8 +138,7 @@ Tests can be run while in the [main](https://github.com/jmcnally17/pacman) direc
 
 ## Features Pending
 
-- Add some animations such as Pac-Man death, colliding with a scared ghost, and levelling up
-- Add appropriate audio to the game
+- Add some more animations such as levelling up
 - (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and Express
 
 ## Create React App and Express Application Generator
