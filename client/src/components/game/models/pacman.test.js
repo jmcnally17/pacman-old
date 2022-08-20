@@ -227,11 +227,13 @@ describe("PacMan", () => {
   });
 
   describe("reset", () => {
-    it("puts Pac-Man back into original position, original velocity and sets the rotation back to 0", () => {
+    it("puts Pac-Man back into original position, velocity, rotation, radians and openRate", () => {
       pacman.position.x += 20;
       pacman.position.y += 20;
       pacman.velocity.x += 5;
       pacman.velocity.y += 10;
+      pacman.radians = Math.PI / 18;
+      pacman.openRate = -Math.PI / 36;
       pacman.rotation += Math.PI;
       pacman.reset();
       expect(pacman.position).toEqual({
@@ -242,6 +244,8 @@ describe("PacMan", () => {
         x: 7.5,
         y: 2.5,
       });
+      expect(pacman.radians).toBe(Math.PI / 4);
+      expect(pacman.openRate).toBe(Math.PI / 36);
       expect(pacman.rotation).toBe(0);
     });
   });

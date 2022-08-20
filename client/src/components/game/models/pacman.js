@@ -80,6 +80,8 @@ export default class PacMan {
   reset() {
     this.position = { ...this.originalPosition };
     this.velocity = { ...this.originalVelocity };
+    this.radians = Math.PI / 4;
+    this.openRate = Math.PI / 36;
     this.rotation = 0;
   }
 }
