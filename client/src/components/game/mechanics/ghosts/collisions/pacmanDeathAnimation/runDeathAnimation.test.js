@@ -1,4 +1,7 @@
 import runDeathAnimation from "./runDeathAnimation";
+import mockRequesrAnimationFrame from "mock-request-animation-frame";
+
+mockRequesrAnimationFrame();
 
 let mockVariables;
 let mockCtx;
@@ -11,6 +14,7 @@ let mockGhosts;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockGhostAudioObjects;
+let mockRunDeathAnimation;
 let mockDrawBoard;
 let mockCheckPacmanLives;
 
@@ -35,6 +39,7 @@ describe("runDeathAnimation", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockGhostAudioObjects = "ghostAudioObjects";
+    mockRunDeathAnimation = jest.fn();
     mockDrawBoard = jest.fn();
     mockCheckPacmanLives = jest.fn();
   });
@@ -52,6 +57,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
     );
@@ -72,6 +78,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
     );
@@ -91,6 +98,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
     );
@@ -116,6 +124,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
     );
@@ -136,6 +145,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
     );
@@ -159,6 +169,7 @@ describe("runDeathAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
     );

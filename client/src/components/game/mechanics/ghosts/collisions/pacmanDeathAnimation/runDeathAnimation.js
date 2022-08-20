@@ -12,12 +12,13 @@ export default function runDeathAnimation(
   cycleTimer,
   scaredTimer,
   ghostAudioObjects,
-  callbackOne = drawBoard,
-  callbackTwo = checkPacmanLives
+  callbackOne = runDeathAnimation,
+  callbackTwo = drawBoard,
+  callbackThree = checkPacmanLives
 ) {
   cancelAnimationFrame(variables.animationId);
   variables.animationId = requestAnimationFrame(() =>
-    runDeathAnimation(
+    callbackOne(
       variables,
       ctx,
       boundaries,
@@ -30,12 +31,12 @@ export default function runDeathAnimation(
       ghostAudioObjects
     )
   );
-  callbackOne(ctx, boundaries, pellets, powerUps);
+  callbackTwo(ctx, boundaries, pellets, powerUps);
   if (pacman.radians < Math.PI) {
     pacman.shrink(ctx);
   } else {
     cancelAnimationFrame(variables.animationId);
-    callbackTwo(
+    callbackThree(
       pacman,
       variables,
       pellets,
