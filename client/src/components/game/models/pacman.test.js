@@ -71,7 +71,7 @@ describe("PacMan", () => {
       expect(pacman.speed).toBe(2.5);
       expect(pacman.radians).toBe(Math.PI / 4);
       expect(pacman.openRate).toBe(Math.PI / 36);
-      expect(pacman.shrinkRate).toBe(Math.PI / 72);
+      expect(pacman.shrinkRate).toBe(Math.PI / 220);
       expect(pacman.rotation).toBe(0);
       expect(pacman.lives).toBe(2);
       expect(pacman.isEating).toBeFalsy();
@@ -233,7 +233,7 @@ describe("PacMan", () => {
       pacman.shrink(mockCtx);
       expect(pacman.draw).toHaveBeenCalledTimes(1);
       expect(pacman.draw).toHaveBeenCalledWith(mockCtx);
-      expect(pacman.radians).toBe((19 * Math.PI) / 72);
+      expect(pacman.radians).toBe(Math.PI / 4 + Math.PI / 220);
     });
   });
 

@@ -22,7 +22,7 @@ export default class PacMan {
     this.speed = tileLength / 8;
     this.radians = Math.PI / 4;
     this.openRate = Math.PI / 36;
-    this.shrinkRate = Math.PI / 72;
+    this.shrinkRate = Math.PI / 220;
     this.rotation = 0;
     this.lives = 2;
     this.isEating = false;

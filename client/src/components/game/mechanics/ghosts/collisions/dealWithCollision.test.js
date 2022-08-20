@@ -34,7 +34,9 @@ describe("dealWithCollision", () => {
         start: () => undefined,
       },
     };
-    mockPacman = "pacman";
+    mockPacman = {
+      radians: Math.PI / 24,
+    };
     mockVariables = {
       score: 100,
       killCount: 2,
@@ -68,6 +70,25 @@ describe("dealWithCollision", () => {
     jest.spyOn(mockScaredGhost, "changeRetreatingState");
     jest.spyOn(mockScaredGhost.retreatingTimer, "start");
     jest.spyOn(mockScaredGhost, "changeScaredState");
+  });
+
+  it("sets the radians in Pac-Man to PI / 4", () => {
+    dealWithCollision(
+      mockGhost,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
+      mockPacmanDeathAudio,
+      mockRunDeathAnimation
+    );
+    expect(mockPacman.radians).toBe(Math.PI / 4);
   });
 
   it("calls cancelAnimationFrame", () => {
