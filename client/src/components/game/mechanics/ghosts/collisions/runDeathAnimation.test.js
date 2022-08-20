@@ -17,4 +17,11 @@ describe("runDeathAnimation", () => {
       mockVariables.animationId
     );
   });
+
+  it("calls requestAnimationFrame on itself", () => {
+    jest.spyOn(global, "requestAnimationFrame");
+    runDeathAnimation(mockVariables);
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(requestAnimationFrame).toHaveBeenCalledWith(runDeathAnimation);
+  });
 });
