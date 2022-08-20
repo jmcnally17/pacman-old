@@ -9,6 +9,9 @@ let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockGhostAudioObjects;
+let mockCtx;
+let mockBoundaries;
+let mockRunDeathAnimation;
 let mockEndGame;
 let mockResetAfterDeath;
 
@@ -29,6 +32,9 @@ describe("ghostAttack", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockGhostAudioObjects = "mockGhostAudioObjects";
+    mockCtx = "ctx";
+    mockBoundaries = "boundaries";
+    mockRunDeathAnimation = jest.fn();
     mockEndGame = jest.fn();
     mockResetAfterDeath = jest.fn();
   });
@@ -44,12 +50,42 @@ describe("ghostAttack", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
+      mockRunDeathAnimation,
       mockEndGame,
       mockResetAfterDeath
     );
     expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
     expect(cancelAnimationFrame).toHaveBeenCalledWith(
       mockVariables.animationId
+    );
+  });
+
+  it("calls runDeathAnimation", () => {
+    ghostAttack(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
+      mockRunDeathAnimation,
+      mockEndGame,
+      mockResetAfterDeath
+    );
+    expect(mockRunDeathAnimation).toHaveBeenCalledTimes(1);
+    expect(mockRunDeathAnimation).toHaveBeenCalledWith(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockPacman
     );
   });
 
@@ -66,6 +102,9 @@ describe("ghostAttack", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
+      mockRunDeathAnimation,
       mockEndGame,
       mockResetAfterDeath
     );
@@ -92,6 +131,9 @@ describe("ghostAttack", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
+      mockRunDeathAnimation,
       mockEndGame,
       mockResetAfterDeath
     );
@@ -108,6 +150,9 @@ describe("ghostAttack", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
+      mockRunDeathAnimation,
       mockEndGame,
       mockResetAfterDeath
     );

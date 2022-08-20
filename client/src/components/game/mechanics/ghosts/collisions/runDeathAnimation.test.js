@@ -63,7 +63,7 @@ describe("runDeathAnimation", () => {
     );
     expect(mockVariables.animationId).toBe(1);
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
-    expect(requestAnimationFrame).toHaveBeenCalledWith(runDeathAnimation);
+    expect(requestAnimationFrame).toHaveBeenCalledWith(expect.any(Function));
   });
 
   it("calls clearRect on the ctx with the board dimensions", () => {

@@ -223,7 +223,9 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects
+      mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries
     );
   });
 });

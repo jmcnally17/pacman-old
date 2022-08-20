@@ -9,6 +9,8 @@ let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockGhostAudioObjects;
+let mockCtx;
+let mockBoundaries;
 let mockGhostAttack;
 
 describe("dealWithCollision", () => {
@@ -33,6 +35,8 @@ describe("dealWithCollision", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockGhostAudioObjects = "mockGhostAudioObjects";
+    mockCtx = "ctx";
+    mockBoundaries = "boundaries";
     mockGhostAttack = jest.fn();
     jest.spyOn(mockScaredGhost, "changeRetreatingState");
     jest.spyOn(mockScaredGhost.retreatingTimer, "start");
@@ -55,6 +59,8 @@ describe("dealWithCollision", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(1);
@@ -66,7 +72,9 @@ describe("dealWithCollision", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects
+      mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries
     );
   });
 
@@ -81,6 +89,8 @@ describe("dealWithCollision", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
       mockGhostAttack
     );
     expect(mockVariables.score).toBe(900);
@@ -98,6 +108,8 @@ describe("dealWithCollision", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
       mockGhostAttack
     );
     expect(mockScaredGhost.changeRetreatingState).toHaveBeenCalledTimes(1);
@@ -120,6 +132,8 @@ describe("dealWithCollision", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
       mockGhostAttack
     );
     expect(mockGhostAttack).toHaveBeenCalledTimes(0);

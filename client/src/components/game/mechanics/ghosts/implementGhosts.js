@@ -39,7 +39,9 @@ export default function implementGhosts(
       powerUps,
       cycleTimer,
       scaredTimer,
-      ghostAudioObjects
+      ghostAudioObjects,
+      ctx,
+      boundaries
     );
   });
 }

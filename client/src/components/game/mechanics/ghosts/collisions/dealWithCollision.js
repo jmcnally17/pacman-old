@@ -10,6 +10,8 @@ export default function dealWithCollision(
   cycleTimer,
   scaredTimer,
   ghostAudioObjects,
+  ctx,
+  boundaries,
   callback = ghostAttack
 ) {
   if (!ghost.isScared && !ghost.isRetreating) {
@@ -21,7 +23,9 @@ export default function dealWithCollision(
       powerUps,
       cycleTimer,
       scaredTimer,
-      ghostAudioObjects
+      ghostAudioObjects,
+      ctx,
+      boundaries
     );
   } else if (ghost.isScared) {
     variables.score += 200 * Math.pow(2, variables.killCount);

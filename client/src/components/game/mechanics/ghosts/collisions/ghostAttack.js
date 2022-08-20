@@ -1,5 +1,6 @@
 import endGame from "./endGame";
 import resetAfterDeath from "./resetAfterDeath";
+import runDeathAnimation from "./runDeathAnimation";
 
 export default function ghostAttack(
   pacman,
@@ -10,12 +11,16 @@ export default function ghostAttack(
   cycleTimer,
   scaredTimer,
   ghostAudioObjects,
-  callbackOne = endGame,
-  callbackTwo = resetAfterDeath
+  ctx,
+  boundaries,
+  callbackOne = runDeathAnimation,
+  callbackTwo = endGame,
+  callbackThree = resetAfterDeath
 ) {
   cancelAnimationFrame(variables.animationId);
+  callbackOne(variables, ctx, boundaries, pellets, powerUps, pacman);
   if (pacman.lives <= 0) {
-    callbackOne(
+    callbackTwo(
       variables,
       pellets,
       powerUps,
@@ -27,6 +32,6 @@ export default function ghostAttack(
     );
   } else {
     pacman.lives--;
-    callbackTwo(pacman, variables, ghosts, cycleTimer, scaredTimer);
+    callbackThree(pacman, variables, ghosts, cycleTimer, scaredTimer);
   }
 }
