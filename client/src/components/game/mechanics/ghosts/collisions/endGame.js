@@ -1,4 +1,3 @@
-import saveScore from "./saveScore";
 import Leaderboard from "../../../../leaderboard/leaderboard";
 import resetAfterGameOver from "./resetAfterGameOver";
 
@@ -11,12 +10,10 @@ export default function endGame(
   cycleTimer,
   scaredTimer,
   ghostAudioObjects,
-  callbackOne = saveScore,
-  callbackTwo = resetAfterGameOver
+  callback = resetAfterGameOver
 ) {
   cancelAnimationFrame(variables.animationId);
-  callbackOne(variables);
-  callbackTwo(
+  callback(
     pellets,
     powerUps,
     ghosts,
