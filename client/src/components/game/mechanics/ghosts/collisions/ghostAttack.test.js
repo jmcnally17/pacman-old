@@ -1,5 +1,7 @@
 import ghostAttack from "./ghostAttack";
 
+let mockNoLivesPacman;
+let mockPacman;
 let mockVariables;
 let mockGhosts;
 let mockPellets;
@@ -12,7 +14,15 @@ let mockResetAfterDeath;
 
 describe("ghostAttack", () => {
   beforeEach(() => {
-    mockVariables = "variables";
+    mockNoLivesPacman = {
+      lives: 0,
+    };
+    mockPacman = {
+      lives: 2,
+    };
+    mockVariables = {
+      animationid: 275639,
+    };
     mockGhosts = "ghosts";
     mockPellets = "pellets";
     mockPowerUps = "powerUps";
@@ -23,12 +33,32 @@ describe("ghostAttack", () => {
     mockResetAfterDeath = jest.fn();
   });
 
+  it("calls cancelAnimationFrame to stop the game", () => {
+    jest.spyOn(global, "cancelAnimationFrame");
+    ghostAttack(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockEndGame,
+      mockResetAfterDeath
+    );
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(cancelAnimationFrame).toHaveBeenCalledWith(
+      mockVariables.animationId
+    );
+  });
+
   it("calls endGame when Pac-Man has no lives left", () => {
     const mockPacman = {
       lives: 0,
     };
     ghostAttack(
-      mockPacman,
+      mockNoLivesPacman,
       mockVariables,
       mockGhosts,
       mockPellets,
@@ -53,9 +83,6 @@ describe("ghostAttack", () => {
   });
 
   it("decreases Pac-Man's lives by 1 when he has lives left", () => {
-    const mockPacman = {
-      lives: 2,
-    };
     ghostAttack(
       mockPacman,
       mockVariables,
@@ -72,9 +99,6 @@ describe("ghostAttack", () => {
   });
 
   it("calls resetAfterDeath when Pac-Man has lives left", () => {
-    const mockPacman = {
-      lives: 2,
-    };
     ghostAttack(
       mockPacman,
       mockVariables,

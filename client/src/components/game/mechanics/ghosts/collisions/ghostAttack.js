@@ -13,6 +13,7 @@ export default function ghostAttack(
   callbackOne = endGame,
   callbackTwo = resetAfterDeath
 ) {
+  cancelAnimationFrame(variables.animationId);
   if (pacman.lives <= 0) {
     callbackOne(
       variables,

@@ -11,13 +11,12 @@ export default function endGame(
   cycleTimer,
   scaredTimer,
   ghostAudioObjects,
-  callbackOne = cancelAnimationFrame,
-  callbackTwo = saveScore,
-  callbackThree = resetAfterGameOver
+  callbackOne = saveScore,
+  callbackTwo = resetAfterGameOver
 ) {
-  callbackOne(variables.animationId);
-  callbackTwo(variables);
-  callbackThree(
+  cancelAnimationFrame(variables.animationId);
+  callbackOne(variables);
+  callbackTwo(
     pellets,
     powerUps,
     ghosts,

@@ -11,7 +11,6 @@ let mockPacman;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockGhostAudioObjects;
-let mockCancelAnimationFrame;
 let mockSaveScore;
 let mockResetAfterGameOver;
 
@@ -31,13 +30,13 @@ describe("endGame", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockGhostAudioObjects = "mockGhostAudioObjects";
-    mockCancelAnimationFrame = jest.fn();
     mockSaveScore = jest.fn();
     mockResetAfterGameOver = jest.fn();
     jest.spyOn(mockVariables.reactRoot, "render");
   });
 
   it("calls cancelAnimationFrame on the current animationId", () => {
+    jest.spyOn(global, "cancelAnimationFrame");
     endGame(
       mockVariables,
       mockPellets,
@@ -47,12 +46,11 @@ describe("endGame", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
-      mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver
     );
-    expect(mockCancelAnimationFrame).toHaveBeenCalledTimes(1);
-    expect(mockCancelAnimationFrame).toHaveBeenCalledWith(
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(cancelAnimationFrame).toHaveBeenCalledWith(
       mockVariables.animationId
     );
   });
@@ -67,7 +65,6 @@ describe("endGame", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
-      mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver
     );
@@ -85,7 +82,6 @@ describe("endGame", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
-      mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver
     );
@@ -112,7 +108,6 @@ describe("endGame", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
-      mockCancelAnimationFrame,
       mockSaveScore,
       mockResetAfterGameOver
     );
