@@ -1,3 +1,4 @@
+import { Howl } from "howler";
 import makePacmanDeathAudio from "./makePacmanDeathAudio";
 
 describe("makePacmanDeathAudio", () => {
