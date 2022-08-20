@@ -69,8 +69,9 @@ describe("PacMan", () => {
       expect(pacman.tileLength).toBe(20);
       expect(pacman.radius).toBe(7.5);
       expect(pacman.speed).toBe(2.5);
-      expect(pacman.radians).toEqual(Math.PI / 4);
-      expect(pacman.openRate).toEqual(Math.PI / 36);
+      expect(pacman.radians).toBe(Math.PI / 4);
+      expect(pacman.openRate).toBe(Math.PI / 36);
+      expect(pacman.shrinkRate).toBe(Math.PI / 220);
       expect(pacman.rotation).toBe(0);
       expect(pacman.lives).toBe(2);
       expect(pacman.isEating).toBeFalsy();
@@ -226,12 +227,24 @@ describe("PacMan", () => {
     });
   });
 
+  describe("shrink", () => {
+    it("calls draw and increases the radians by the shrinkRate", () => {
+      jest.spyOn(pacman, "draw");
+      pacman.shrink(mockCtx);
+      expect(pacman.draw).toHaveBeenCalledTimes(1);
+      expect(pacman.draw).toHaveBeenCalledWith(mockCtx);
+      expect(pacman.radians).toBe(Math.PI / 4 + Math.PI / 220);
+    });
+  });
+
   describe("reset", () => {
-    it("puts Pac-Man back into original position, original velocity and sets the rotation back to 0", () => {
+    it("puts Pac-Man back into original position, velocity, rotation, radians and openRate", () => {
       pacman.position.x += 20;
       pacman.position.y += 20;
       pacman.velocity.x += 5;
       pacman.velocity.y += 10;
+      pacman.radians = Math.PI / 18;
+      pacman.openRate = -Math.PI / 36;
       pacman.rotation += Math.PI;
       pacman.reset();
       expect(pacman.position).toEqual({
@@ -242,6 +255,8 @@ describe("PacMan", () => {
         x: 7.5,
         y: 2.5,
       });
+      expect(pacman.radians).toBe(Math.PI / 4);
+      expect(pacman.openRate).toBe(Math.PI / 36);
       expect(pacman.rotation).toBe(0);
     });
   });

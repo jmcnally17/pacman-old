@@ -136,12 +136,6 @@ Both backend and frontend servers must be running simultaneously so open two sep
 
 Tests can be run while in the [main](https://github.com/jmcnally17/pacman) directory by running `npm test`. Code coverage statistics can be be obtained by running `npm run test:coverage`.
 
-## Issues
-
-There is one minor bug in the app:
-
-- When the game ends, sometimes the players score does not immediately appear on the leaderboard even though it is saved to the database. This may be due to the POST request to save the score slightly lagging and not completing before the scores are pulled from the database onto the leaderboard
-
 ## Features Pending
 
 - Add some animations such as Pac-Man death, colliding with a scared ghost, and levelling up

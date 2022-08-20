@@ -10,8 +10,7 @@ let mockGhosts;
 let mockPacman;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockGhostAudioObjects;
-let mockCancelAnimationFrame;
+let mockPacmanDeathAudio;
 let mockSaveScore;
 let mockResetAfterGameOver;
 
@@ -30,14 +29,14 @@ describe("endGame", () => {
     mockPacman = "pacman";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockGhostAudioObjects = "mockGhostAudioObjects";
-    mockCancelAnimationFrame = jest.fn();
+    mockPacmanDeathAudio = "mockPacmanDeathAudio";
     mockSaveScore = jest.fn();
     mockResetAfterGameOver = jest.fn();
     jest.spyOn(mockVariables.reactRoot, "render");
   });
 
   it("calls cancelAnimationFrame on the current animationId", () => {
+    jest.spyOn(global, "cancelAnimationFrame");
     endGame(
       mockVariables,
       mockPellets,
@@ -46,13 +45,12 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockCancelAnimationFrame,
+      mockPacmanDeathAudio,
       mockSaveScore,
       mockResetAfterGameOver
     );
-    expect(mockCancelAnimationFrame).toHaveBeenCalledTimes(1);
-    expect(mockCancelAnimationFrame).toHaveBeenCalledWith(
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(cancelAnimationFrame).toHaveBeenCalledWith(
       mockVariables.animationId
     );
   });
@@ -66,8 +64,7 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockCancelAnimationFrame,
+      mockPacmanDeathAudio,
       mockSaveScore,
       mockResetAfterGameOver
     );
@@ -75,8 +72,8 @@ describe("endGame", () => {
     expect(mockSaveScore).toHaveBeenCalledWith(mockVariables);
   });
 
-  it("calls resetAfterGameOver", () => {
-    endGame(
+  it("calls resetAfterGameOver", async () => {
+    await endGame(
       mockVariables,
       mockPellets,
       mockPowerUps,
@@ -84,8 +81,7 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockCancelAnimationFrame,
+      mockPacmanDeathAudio,
       mockSaveScore,
       mockResetAfterGameOver
     );
@@ -98,12 +94,12 @@ describe("endGame", () => {
       mockVariables,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects
+      mockPacmanDeathAudio
     );
   });
 
-  it("renders the Leaderboard component", () => {
-    endGame(
+  it("renders the Leaderboard component", async () => {
+    await endGame(
       mockVariables,
       mockPellets,
       mockPowerUps,
@@ -111,8 +107,7 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockCancelAnimationFrame,
+      mockPacmanDeathAudio,
       mockSaveScore,
       mockResetAfterGameOver
     );

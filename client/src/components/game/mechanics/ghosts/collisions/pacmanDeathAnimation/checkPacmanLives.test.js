@@ -1,5 +1,7 @@
-import ghostAttack from "./ghostAttack";
+import checkPacmanLives from "./checkPacmanLives";
 
+let mockPacman;
+let mockNoLivesPacman;
 let mockVariables;
 let mockGhosts;
 let mockPellets;
@@ -7,35 +9,41 @@ let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockGhostAudioObjects;
+let mockPacmanDeathAudio;
 let mockEndGame;
 let mockResetAfterDeath;
 
-describe("ghostAttack", () => {
+describe("checkPacmanLives", () => {
   beforeEach(() => {
+    mockPacman = {
+      lives: 2,
+    };
+    mockNoLivesPacman = {
+      lives: 0,
+    };
     mockVariables = "variables";
     mockGhosts = "ghosts";
     mockPellets = "pellets";
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockGhostAudioObjects = "mockGhostAudioObjects";
+    mockGhostAudioObjects = "ghostAudioObjects";
+    mockPacmanDeathAudio = "PacmanDeathAudio";
     mockEndGame = jest.fn();
     mockResetAfterDeath = jest.fn();
   });
 
   it("calls endGame when Pac-Man has no lives left", () => {
-    const mockPacman = {
-      lives: 0,
-    };
-    ghostAttack(
-      mockPacman,
+    checkPacmanLives(
+      mockNoLivesPacman,
       mockVariables,
-      mockGhosts,
       mockPellets,
       mockPowerUps,
+      mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockPacmanDeathAudio,
       mockEndGame,
       mockResetAfterDeath
     );
@@ -45,26 +53,24 @@ describe("ghostAttack", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
-      mockPacman,
+      mockNoLivesPacman,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects
+      mockPacmanDeathAudio
     );
   });
 
   it("decreases Pac-Man's lives by 1 when he has lives left", () => {
-    const mockPacman = {
-      lives: 2,
-    };
-    ghostAttack(
+    checkPacmanLives(
       mockPacman,
       mockVariables,
-      mockGhosts,
       mockPellets,
       mockPowerUps,
+      mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockPacmanDeathAudio,
       mockEndGame,
       mockResetAfterDeath
     );
@@ -72,18 +78,16 @@ describe("ghostAttack", () => {
   });
 
   it("calls resetAfterDeath when Pac-Man has lives left", () => {
-    const mockPacman = {
-      lives: 2,
-    };
-    ghostAttack(
+    checkPacmanLives(
       mockPacman,
       mockVariables,
-      mockGhosts,
       mockPellets,
       mockPowerUps,
+      mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
       mockGhostAudioObjects,
+      mockPacmanDeathAudio,
       mockEndGame,
       mockResetAfterDeath
     );
@@ -93,7 +97,8 @@ describe("ghostAttack", () => {
       mockVariables,
       mockGhosts,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockGhostAudioObjects
     );
   });
 });

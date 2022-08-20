@@ -1,4 +1,4 @@
-import ghostAttack from "./ghostAttack";
+import runDeathAnimation from "./pacmanDeathAnimation/runDeathAnimation";
 
 export default function dealWithCollision(
   ghost,
@@ -10,18 +10,28 @@ export default function dealWithCollision(
   cycleTimer,
   scaredTimer,
   ghostAudioObjects,
-  callback = ghostAttack
+  ctx,
+  boundaries,
+  pacmanDeathAudio,
+  callback = runDeathAnimation
 ) {
   if (!ghost.isScared && !ghost.isRetreating) {
+    pacman.radians = Math.PI / 4;
+    cancelAnimationFrame(variables.animationId);
+    ghostAudioObjects.forEach((audio) => audio.unload());
+    pacmanDeathAudio.play();
     callback(
-      pacman,
       variables,
-      ghosts,
+      ctx,
+      boundaries,
       pellets,
       powerUps,
+      pacman,
+      ghosts,
       cycleTimer,
       scaredTimer,
-      ghostAudioObjects
+      ghostAudioObjects,
+      pacmanDeathAudio
     );
   } else if (ghost.isScared) {
     variables.score += 200 * Math.pow(2, variables.killCount);

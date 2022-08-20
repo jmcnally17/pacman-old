@@ -1,8 +1,8 @@
-import saveScore from "./saveScore";
 import Leaderboard from "../../../../leaderboard/leaderboard";
 import resetAfterGameOver from "./resetAfterGameOver";
+import saveScore from "./saveScore";
 
-export default function endGame(
+export default async function endGame(
   variables,
   pellets,
   powerUps,
@@ -10,14 +10,13 @@ export default function endGame(
   pacman,
   cycleTimer,
   scaredTimer,
-  ghostAudioObjects,
-  callbackOne = cancelAnimationFrame,
-  callbackTwo = saveScore,
-  callbackThree = resetAfterGameOver
+  pacmanDeathAudio,
+  callbackOne = saveScore,
+  callbackTwo = resetAfterGameOver
 ) {
-  callbackOne(variables.animationId);
-  callbackTwo(variables);
-  callbackThree(
+  cancelAnimationFrame(variables.animationId);
+  await callbackOne(variables);
+  callbackTwo(
     pellets,
     powerUps,
     ghosts,
@@ -25,7 +24,7 @@ export default function endGame(
     variables,
     cycleTimer,
     scaredTimer,
-    ghostAudioObjects
+    pacmanDeathAudio
   );
   variables.reactRoot.render(<Leaderboard variables={variables} />);
 }
