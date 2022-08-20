@@ -16,6 +16,7 @@ export default function runDeathAnimation(
   callbackTwo = drawBoard,
   callbackThree = checkPacmanLives
 ) {
+  ghostAudioObjects.forEach((audio) => audio.pause());
   cancelAnimationFrame(variables.animationId);
   variables.animationId = requestAnimationFrame(() =>
     callbackOne(

@@ -12,6 +12,9 @@ let mockShrunkPacman;
 let mockGhosts;
 let mockCycleTimer;
 let mockScaredTimer;
+let mockSirenAudio;
+let mockScaredAudio;
+let mockRetreatingAudio;
 let mockGhostAudioObjects;
 let mockRunDeathAnimation;
 let mockDrawBoard;
@@ -37,10 +40,47 @@ describe("runDeathAnimation", () => {
     mockGhosts = "ghosts";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockGhostAudioObjects = "ghostAudioObjects";
+    mockSirenAudio = {
+      pause: () => undefined,
+    };
+    mockScaredAudio = {
+      pause: () => undefined,
+    };
+    mockRetreatingAudio = {
+      pause: () => undefined,
+    };
+    mockGhostAudioObjects = [
+      mockSirenAudio,
+      mockScaredAudio,
+      mockRetreatingAudio,
+    ];
     mockRunDeathAnimation = jest.fn();
     mockDrawBoard = jest.fn();
     mockCheckPacmanLives = jest.fn();
+  });
+
+  it("calls pause on each of the ghost audio objects", () => {
+    jest.spyOn(mockSirenAudio, "pause");
+    jest.spyOn(mockScaredAudio, "pause");
+    jest.spyOn(mockRetreatingAudio, "pause");
+    runDeathAnimation(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockPacman,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockRunDeathAnimation,
+      mockDrawBoard,
+      mockCheckPacmanLives
+    );
+    expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
+    expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
+    expect(mockRetreatingAudio.pause).toHaveBeenCalledTimes(1);
   });
 
   it("calls cancelAnimationFrame to stop any movement on the board", () => {
