@@ -31,6 +31,10 @@ export default class PacMan {
   }
 
   draw(ctx) {
+    ctx.save();
+    ctx.translate(this.position.x, this.position.y);
+    ctx.rotate(this.rotation);
+    ctx.translate(-this.position.x, -this.position.y);
     ctx.beginPath();
     ctx.arc(
       this.position.x,
@@ -43,16 +47,12 @@ export default class PacMan {
     ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
+    ctx.restore();
   }
 
   update(ctx) {
     this.checkRotation();
-    ctx.save();
-    ctx.translate(this.position.x, this.position.y);
-    ctx.rotate(this.rotation);
-    ctx.translate(-this.position.x, -this.position.y);
     this.draw(ctx);
-    ctx.restore();
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
     if (this.velocity.x !== 0 || this.velocity.y !== 0) {

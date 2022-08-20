@@ -86,17 +86,25 @@ describe("PacMan", () => {
 
   describe("draw", () => {
     it("calls the necessary functions on ctx to draw Pac-Man", () => {
+      jest.spyOn(mockCtx, "save");
+      jest.spyOn(mockCtx, "translate");
+      jest.spyOn(mockCtx, "rotate");
       jest.spyOn(mockCtx, "beginPath");
       jest.spyOn(mockCtx, "arc");
       jest.spyOn(mockCtx, "lineTo");
       jest.spyOn(mockCtx, "fill");
       jest.spyOn(mockCtx, "closePath");
+      jest.spyOn(mockCtx, "restore");
       pacman.draw(mockCtx);
+      expect(mockCtx.save).toHaveBeenCalledTimes(1);
+      expect(mockCtx.translate).toHaveBeenCalledTimes(2);
+      expect(mockCtx.rotate).toHaveBeenCalledTimes(1);
       expect(mockCtx.beginPath).toHaveBeenCalledTimes(1);
       expect(mockCtx.arc).toHaveBeenCalledTimes(1);
       expect(mockCtx.lineTo).toHaveBeenCalledTimes(1);
       expect(mockCtx.fill).toHaveBeenCalledTimes(1);
       expect(mockCtx.closePath).toHaveBeenCalledTimes(1);
+      expect(mockCtx.restore).toHaveBeenCalledTimes(1);
       expect(mockCtx.fillStyle).toBe("yellow");
     });
   });
@@ -104,18 +112,10 @@ describe("PacMan", () => {
   describe("update", () => {
     it("calls the necessary functions and updates Pac-Man's position", () => {
       jest.spyOn(pacman, "checkRotation");
-      jest.spyOn(mockCtx, "save");
-      jest.spyOn(mockCtx, "translate");
-      jest.spyOn(mockCtx, "rotate");
       jest.spyOn(pacman, "draw");
-      jest.spyOn(mockCtx, "restore");
       pacman.update(mockCtx);
       expect(pacman.checkRotation).toHaveBeenCalledTimes(1);
-      expect(mockCtx.save).toHaveBeenCalledTimes(1);
-      expect(mockCtx.translate).toHaveBeenCalledTimes(2);
-      expect(mockCtx.rotate).toHaveBeenCalledTimes(1);
       expect(pacman.draw).toHaveBeenCalledTimes(1);
-      expect(mockCtx.restore).toHaveBeenCalledTimes(1);
       expect(pacman.position).toEqual({
         x: 297.5,
         y: 472.5,
