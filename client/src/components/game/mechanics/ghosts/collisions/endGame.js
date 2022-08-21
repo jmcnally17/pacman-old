@@ -10,7 +10,6 @@ export default async function endGame(
   pacman,
   cycleTimer,
   scaredTimer,
-  pacmanDeathAudio,
   callbackOne = saveScore,
   callbackTwo = resetAfterGameOver
 ) {
@@ -23,8 +22,7 @@ export default async function endGame(
     pacman,
     variables,
     cycleTimer,
-    scaredTimer,
-    pacmanDeathAudio
+    scaredTimer
   );
   variables.reactRoot.render(<Leaderboard variables={variables} />);
 }

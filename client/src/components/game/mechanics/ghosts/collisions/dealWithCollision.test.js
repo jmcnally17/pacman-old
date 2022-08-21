@@ -64,6 +64,7 @@ describe("dealWithCollision", () => {
     mockCtx = "ctx";
     mockBoundaries = "boundaries";
     mockPacmanDeathAudio = {
+      load: () => undefined,
       play: () => undefined,
     };
     mockRunDeathAnimation = jest.fn();
@@ -138,7 +139,8 @@ describe("dealWithCollision", () => {
     expect(mockRetreatingAudio.unload).toHaveBeenCalledTimes(1);
   });
 
-  it("calls play on the pacmanDeathAudio", () => {
+  it("calls load and play on the pacmanDeathAudio", () => {
+    jest.spyOn(mockPacmanDeathAudio, "load");
     jest.spyOn(mockPacmanDeathAudio, "play");
     dealWithCollision(
       mockGhost,
@@ -155,6 +157,7 @@ describe("dealWithCollision", () => {
       mockPacmanDeathAudio,
       mockRunDeathAnimation
     );
+    expect(mockPacmanDeathAudio.load).toHaveBeenCalledTimes(1);
     expect(mockPacmanDeathAudio.play).toHaveBeenCalledTimes(1);
   });
 

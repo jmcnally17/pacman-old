@@ -47,7 +47,7 @@ describe("finishSetup", () => {
       mockRetreatingAudio,
     ];
     mockPacmanDeathAudio = {
-      load: () => undefined,
+      unload: () => undefined,
     };
     mockAddDirectionDetection = jest.fn();
     mockAddVisibilityDetection = jest.fn();
@@ -124,7 +124,8 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects
+      mockGhostAudioObjects,
+      mockPacmanDeathAudio
     );
   });
 
@@ -198,7 +199,7 @@ describe("finishSetup", () => {
   });
 
   it("loads the Pac-Man death audio", () => {
-    jest.spyOn(mockPacmanDeathAudio, "load");
+    jest.spyOn(mockPacmanDeathAudio, "unload");
     finishSetup(
       mockVariables,
       mockName,
@@ -211,6 +212,6 @@ describe("finishSetup", () => {
       mockAddDirectionDetection,
       mockAddVisibilityDetection
     );
-    expect(mockPacmanDeathAudio.load).toHaveBeenCalledTimes(1);
+    expect(mockPacmanDeathAudio.unload).toHaveBeenCalledTimes(1);
   });
 });

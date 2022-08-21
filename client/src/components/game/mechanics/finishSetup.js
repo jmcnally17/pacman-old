@@ -22,10 +22,11 @@ export default function finishSetup(
     cycleTimer,
     scaredTimer,
     retreatingTimers,
-    ghostAudioObjects
+    ghostAudioObjects,
+    pacmanDeathAudio
   );
   variables.start = false;
   ghostAudioObjects.forEach((audio) => audio.load());
   ghostAudioObjects[0].play();
-  pacmanDeathAudio.load();
+  pacmanDeathAudio.unload();
 }

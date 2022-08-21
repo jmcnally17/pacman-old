@@ -19,6 +19,7 @@ export default function dealWithCollision(
     pacman.radians = Math.PI / 4;
     cancelAnimationFrame(variables.animationId);
     ghostAudioObjects.forEach((audio) => audio.unload());
+    pacmanDeathAudio.load();
     pacmanDeathAudio.play();
     callback(
       variables,
