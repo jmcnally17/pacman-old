@@ -10,7 +10,6 @@ let mockGhosts;
 let mockPacman;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockPacmanDeathAudio;
 let mockSaveScore;
 let mockResetAfterGameOver;
 
@@ -29,7 +28,6 @@ describe("endGame", () => {
     mockPacman = "pacman";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockPacmanDeathAudio = "mockPacmanDeathAudio";
     mockSaveScore = jest.fn();
     mockResetAfterGameOver = jest.fn();
     jest.spyOn(mockVariables.reactRoot, "render");
@@ -45,7 +43,6 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
-      mockPacmanDeathAudio,
       mockSaveScore,
       mockResetAfterGameOver
     );
@@ -64,7 +61,6 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
-      mockPacmanDeathAudio,
       mockSaveScore,
       mockResetAfterGameOver
     );
@@ -81,7 +77,6 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
-      mockPacmanDeathAudio,
       mockSaveScore,
       mockResetAfterGameOver
     );
@@ -93,8 +88,7 @@ describe("endGame", () => {
       mockPacman,
       mockVariables,
       mockCycleTimer,
-      mockScaredTimer,
-      mockPacmanDeathAudio
+      mockScaredTimer
     );
   });
 
@@ -107,7 +101,6 @@ describe("endGame", () => {
       mockPacman,
       mockCycleTimer,
       mockScaredTimer,
-      mockPacmanDeathAudio,
       mockSaveScore,
       mockResetAfterGameOver
     );
