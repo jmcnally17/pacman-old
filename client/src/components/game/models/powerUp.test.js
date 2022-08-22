@@ -65,6 +65,7 @@ describe("PowerUp", () => {
       jest.spyOn(powerUp, "flash");
       powerUp.update(mockCtx);
       expect(powerUp.draw).toHaveBeenCalledTimes(1);
+      expect(powerUp.draw).toHaveBeenCalledWith(mockCtx);
       expect(powerUp.flash).toHaveBeenCalledTimes(1);
     });
   });
@@ -78,9 +79,10 @@ describe("PowerUp", () => {
       powerUp.draw(mockCtx);
       expect(mockCtx.beginPath).toHaveBeenCalledTimes(1);
       expect(mockCtx.arc).toHaveBeenCalledTimes(1);
+      expect(mockCtx.arc).toHaveBeenCalledWith(50, 100, 7, 0, Math.PI * 2);
+      expect(mockCtx.fillStyle).toBe("white");
       expect(mockCtx.fill).toHaveBeenCalledTimes(1);
       expect(mockCtx.closePath).toHaveBeenCalledTimes(1);
-      expect(mockCtx.fillStyle).toBe("white");
     });
   });
 
