@@ -12,6 +12,7 @@ let mockUneatenPowerUp;
 let mockUneatenPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
+let mockPlayGame;
 
 describe("resetAfterLevelUp", () => {
   beforeEach(() => {
@@ -46,6 +47,7 @@ describe("resetAfterLevelUp", () => {
     mockScaredTimer = {
       reset: () => undefined,
     };
+    mockPlayGame = jest.fn();
   });
 
   it("calls reset on Pac-Man", () => {
@@ -57,7 +59,8 @@ describe("resetAfterLevelUp", () => {
       mockPellets,
       mockEatenPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockPlayGame
     );
     expect(mockPacman.reset).toHaveBeenCalledTimes(1);
   });
@@ -70,7 +73,8 @@ describe("resetAfterLevelUp", () => {
       mockPellets,
       mockEatenPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockPlayGame
     );
     expect(mockVariables.lastKeyPressed).toBe("");
   });
@@ -84,7 +88,8 @@ describe("resetAfterLevelUp", () => {
       mockPellets,
       mockEatenPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockPlayGame
     );
     expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
   });
@@ -98,7 +103,8 @@ describe("resetAfterLevelUp", () => {
       mockPellets,
       mockEatenPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockPlayGame
     );
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
   });
@@ -112,7 +118,8 @@ describe("resetAfterLevelUp", () => {
       mockPellets,
       mockEatenPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockPlayGame
     );
     expect(mockGhost.reset).toHaveBeenCalledTimes(3);
   });
@@ -126,7 +133,8 @@ describe("resetAfterLevelUp", () => {
       mockPellets,
       mockEatenPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockPlayGame
     );
     expect(mockPellet.changeEatenState).toHaveBeenCalledTimes(2);
   });
@@ -140,7 +148,8 @@ describe("resetAfterLevelUp", () => {
       mockPellets,
       mockEatenPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockPlayGame
     );
     expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
   });
@@ -154,7 +163,8 @@ describe("resetAfterLevelUp", () => {
       mockPellets,
       mockUneatenPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockPlayGame
     );
     expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
   });
@@ -168,8 +178,23 @@ describe("resetAfterLevelUp", () => {
       mockPellets,
       mockEatenPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockPlayGame
     );
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls playGame to restart the animation frames", () => {
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockPlayGame
+    );
+    expect(mockPlayGame).toHaveBeenCalledTimes(1);
   });
 });

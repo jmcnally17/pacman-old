@@ -16,6 +16,7 @@ export default function checkLevelUpCondition(
       eatenPellets++;
     }
     if (eatenPellets === pellets.length) {
+      cancelAnimationFrame(variables.animationId);
       callback(
         pacman,
         variables,

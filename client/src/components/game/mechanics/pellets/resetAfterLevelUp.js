@@ -1,3 +1,5 @@
+import playGame from "../playGame";
+
 export default function resetAfterLevelUp(
   pacman,
   variables,
@@ -5,7 +7,8 @@ export default function resetAfterLevelUp(
   pellets,
   powerUps,
   cycleTimer,
-  scaredTimer
+  scaredTimer,
+  callback = playGame
 ) {
   pacman.reset();
   variables.lastKeyPressed = "";
@@ -21,4 +24,5 @@ export default function resetAfterLevelUp(
     if (powerUp.hasBeenEaten) powerUp.changeEatenState();
   });
   cycleTimer.start();
+  callback();
 }

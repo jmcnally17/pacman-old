@@ -24,6 +24,7 @@ describe("checkLevelUpCondition", () => {
     mockUneatenPellets = [mockUneatenPellet, mockUneatenPellet];
     mockPacman = "pacman";
     mockVariables = {
+      animationId: 43,
       level: 3,
     };
     mockGhosts = "ghosts";
@@ -31,6 +32,24 @@ describe("checkLevelUpCondition", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockResetAfterLevelUp = jest.fn();
+  });
+
+  it("calls cancelAnimationFrame if all pellets have been eaten", () => {
+    jest.spyOn(global, "cancelAnimationFrame");
+    checkLevelUpCondition(
+      mockEatenPellets,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockResetAfterLevelUp
+    );
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(cancelAnimationFrame).toHaveBeenCalledWith(
+      mockVariables.animationId
+    );
   });
 
   it("calls resetAfterLevelUp if all pellets have been eaten", () => {
