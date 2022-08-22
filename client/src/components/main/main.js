@@ -17,9 +17,7 @@ export default function Main() {
   useEffect(() => {
     theme.play();
     window.addEventListener("keydown", (event) => {
-      if (
-        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.code)
-      ) {
+      if (["ArrowUp", "ArrowDown"].includes(event.code)) {
         event.preventDefault();
       }
     });
