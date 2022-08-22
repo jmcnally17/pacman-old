@@ -37,6 +37,8 @@ export default function Main() {
   const handleSubmit = () => {
     if (name === "") {
       window.alert("You must enter a name");
+    } else if (name.includes(" ")) {
+      window.alert("Name cannot contain any spaces");
     } else if (name.length > 15) {
       window.alert("Name must be 15 characters or shorter");
     } else {
