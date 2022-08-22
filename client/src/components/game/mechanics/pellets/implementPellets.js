@@ -26,6 +26,7 @@ export default function implementPellets(
     ghosts,
     powerUps,
     cycleTimer,
-    scaredTimer
+    scaredTimer,
+    ctx
   );
 }

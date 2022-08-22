@@ -149,7 +149,8 @@ describe("implementPellets", () => {
       mockGhosts,
       mockPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockCtx
     );
   });
 });

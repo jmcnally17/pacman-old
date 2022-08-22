@@ -21,6 +21,7 @@ describe("resetAfterLevelUp", () => {
     };
     mockVariables = {
       lastKeyPressed: "up",
+      levelUpCount: 1000,
     };
     mockGhost = {
       reset: () => undefined,
@@ -77,6 +78,20 @@ describe("resetAfterLevelUp", () => {
       mockPlayGame
     );
     expect(mockVariables.lastKeyPressed).toBe("");
+  });
+
+  it("resets the level up count back to 0", () => {
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockPlayGame
+    );
+    expect(mockVariables.levelUpCount).toBe(0);
   });
 
   it("calls reset on the cycle timer", () => {

@@ -60,6 +60,7 @@ const variables = {
   animationId: null,
   directionEventListener: null,
   visibilityEventListener: null,
+  levelUpCount: 0,
 }
 
 const boundaries = makeBoundaries(map, variables);

@@ -12,6 +12,7 @@ export default function resetAfterLevelUp(
 ) {
   pacman.reset();
   variables.lastKeyPressed = "";
+  variables.levelUpCount = 0;
   cycleTimer.reset();
   scaredTimer.reset();
   ghosts.forEach((ghost) => {
