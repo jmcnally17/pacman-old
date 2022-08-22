@@ -104,6 +104,7 @@ describe("Ghost", () => {
       jest.spyOn(mockCtx, "drawImage");
       ghost.draw(mockCtx);
       expect(mockCtx.drawImage).toHaveBeenCalledTimes(1);
+      expect(mockCtx.drawImage).toHaveBeenCalledWith(ghost.image, 5, 5);
     });
   });
 
@@ -114,6 +115,7 @@ describe("Ghost", () => {
       ghost.update(mockCtx);
       expect(ghost.assignSprite).toHaveBeenCalledTimes(1);
       expect(ghost.draw).toHaveBeenCalledTimes(1);
+      expect(ghost.draw).toHaveBeenCalledWith(mockCtx);
       expect(ghost.position).toEqual({
         x: 27.5,
         y: 22.5,

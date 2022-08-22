@@ -26,14 +26,14 @@ describe("Boundary", () => {
       expect(boundary.height).toBe(20);
     });
 
-    it("has a position that is passed in on instantiation", () => {
+    it("has a position that is passed in", () => {
       expect(boundary.position).toEqual({
         x: 40,
         y: 100,
       });
     });
 
-    it("has an image that is passed in on instantiation", () => {
+    it("has an image that is passed in", () => {
       expect(boundary.image).toEqual({
         src: "./randomSource",
       });
@@ -48,6 +48,7 @@ describe("Boundary", () => {
       jest.spyOn(mockCtx, "drawImage");
       boundary.draw(mockCtx);
       expect(mockCtx.drawImage).toHaveBeenCalledTimes(1);
+      expect(mockCtx.drawImage).toHaveBeenCalledWith(mockImage, 40, 100);
     });
   });
 });

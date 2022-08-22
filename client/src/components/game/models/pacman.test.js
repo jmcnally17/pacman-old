@@ -98,14 +98,25 @@ describe("PacMan", () => {
       pacman.draw(mockCtx);
       expect(mockCtx.save).toHaveBeenCalledTimes(1);
       expect(mockCtx.translate).toHaveBeenCalledTimes(2);
+      expect(mockCtx.translate).toHaveBeenNthCalledWith(1, 290, 470);
+      expect(mockCtx.translate).toHaveBeenNthCalledWith(2, -290, -470);
       expect(mockCtx.rotate).toHaveBeenCalledTimes(1);
+      expect(mockCtx.rotate).toHaveBeenCalledWith(0);
       expect(mockCtx.beginPath).toHaveBeenCalledTimes(1);
       expect(mockCtx.arc).toHaveBeenCalledTimes(1);
+      expect(mockCtx.arc).toHaveBeenCalledWith(
+        290,
+        470,
+        15,
+        Math.PI / 4,
+        (7 * Math.PI) / 4
+      );
       expect(mockCtx.lineTo).toHaveBeenCalledTimes(1);
+      expect(mockCtx.lineTo).toHaveBeenCalledWith(285, 470);
+      expect(mockCtx.fillStyle).toBe("yellow");
       expect(mockCtx.fill).toHaveBeenCalledTimes(1);
       expect(mockCtx.closePath).toHaveBeenCalledTimes(1);
       expect(mockCtx.restore).toHaveBeenCalledTimes(1);
-      expect(mockCtx.fillStyle).toBe("yellow");
     });
   });
 
@@ -116,6 +127,7 @@ describe("PacMan", () => {
       pacman.update(mockCtx);
       expect(pacman.checkRotation).toHaveBeenCalledTimes(1);
       expect(pacman.draw).toHaveBeenCalledTimes(1);
+      expect(pacman.draw).toHaveBeenCalledWith(mockCtx);
       expect(pacman.position).toEqual({
         x: 297.5,
         y: 472.5,

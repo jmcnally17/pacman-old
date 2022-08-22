@@ -65,9 +65,10 @@ describe("Pellet", () => {
       pellet.draw(mockCtx);
       expect(mockCtx.beginPath).toHaveBeenCalledTimes(1);
       expect(mockCtx.arc).toHaveBeenCalledTimes(1);
+      expect(mockCtx.arc).toHaveBeenCalledWith(50, 100, 2, 0, Math.PI * 2);
+      expect(mockCtx.fillStyle).toBe("white");
       expect(mockCtx.fill).toHaveBeenCalledTimes(1);
       expect(mockCtx.closePath).toHaveBeenCalledTimes(1);
-      expect(mockCtx.fillStyle).toBe("white");
     });
   });
 });
