@@ -13,6 +13,7 @@ let mockCycleTimer;
 let mockScaredTimer;
 let mockGhostAudioObjects;
 let mockLevelUpAudio;
+let mockBoundaries;
 let mockEatPellet;
 let mockCheckLevelUpCondition;
 
@@ -43,6 +44,7 @@ describe("implementPellets", () => {
     mockScaredTimer = "scaredTimer";
     mockGhostAudioObjects = "ghostAudioObjects";
     mockLevelUpAudio = "levelUpAudio";
+    mockBoundaries = "boundaries";
     mockEatPellet = jest.fn();
     mockCheckLevelUpCondition = jest.fn();
   });
@@ -59,6 +61,7 @@ describe("implementPellets", () => {
       mockScaredTimer,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
@@ -80,6 +83,7 @@ describe("implementPellets", () => {
       mockScaredTimer,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
@@ -98,6 +102,7 @@ describe("implementPellets", () => {
       mockScaredTimer,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
@@ -134,6 +139,7 @@ describe("implementPellets", () => {
       mockScaredTimer,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
@@ -152,6 +158,7 @@ describe("implementPellets", () => {
       mockScaredTimer,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
     );
@@ -166,7 +173,8 @@ describe("implementPellets", () => {
       mockScaredTimer,
       mockCtx,
       mockGhostAudioObjects,
-      mockLevelUpAudio
+      mockLevelUpAudio,
+      mockBoundaries
     );
   });
 });

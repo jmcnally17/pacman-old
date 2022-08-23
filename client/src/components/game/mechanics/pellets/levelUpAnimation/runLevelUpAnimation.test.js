@@ -12,7 +12,9 @@ let mockScaredTimer;
 let mockCtx;
 let mockGhostAudioObjects;
 let mockLevelUpAudio;
+let mockBoundaries;
 let mockRunLevelUpAnimation;
+let mockDrawLevelUpBoard;
 let mockResetAfterLevelUp;
 
 describe("runLevelUpAnimation", () => {
@@ -38,7 +40,9 @@ describe("runLevelUpAnimation", () => {
     mockLevelUpAudio = {
       unload: () => undefined,
     };
+    mockBoundaries = "boundaries";
     mockRunLevelUpAnimation = jest.fn();
+    mockDrawLevelUpBoard = jest.fn();
     mockResetAfterLevelUp = jest.fn();
   });
 
@@ -55,7 +59,9 @@ describe("runLevelUpAnimation", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
       mockResetAfterLevelUp
     );
     expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
@@ -72,12 +78,12 @@ describe("runLevelUpAnimation", () => {
       mockScaredTimer,
       mockCtx,
       mockGhostAudioObjects,
-      mockLevelUpAudio
+      mockLevelUpAudio,
+      mockBoundaries
     );
   });
 
-  it("calls the necessary commands on ctx to fill the level up text", () => {
-    jest.spyOn(mockCtx, "fillText");
+  it("calls drawLevelUpBoard", () => {
     runLevelUpAnimation(
       mockVariables,
       mockPacman,
@@ -89,14 +95,13 @@ describe("runLevelUpAnimation", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
       mockResetAfterLevelUp
     );
-    expect(mockCtx.font).toBe("40px Arial");
-    expect(mockCtx.fillStyle).toBe("yellow");
-    expect(mockCtx.textAlign).toBe("center");
-    expect(mockCtx.fillText).toHaveBeenCalledTimes(1);
-    expect(mockCtx.fillText).toHaveBeenCalledWith("Level Up!", 448, 576);
+    expect(mockDrawLevelUpBoard).toHaveBeenCalledTimes(1);
+    expect(mockDrawLevelUpBoard).toHaveBeenCalledWith(mockCtx, mockBoundaries);
   });
 
   it("increases the levelUpCount by 1", () => {
@@ -111,7 +116,9 @@ describe("runLevelUpAnimation", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
       mockResetAfterLevelUp
     );
     expect(mockVariables.levelUpCount).toBe(1);
@@ -131,7 +138,9 @@ describe("runLevelUpAnimation", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
       mockResetAfterLevelUp
     );
     expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
@@ -154,7 +163,9 @@ describe("runLevelUpAnimation", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
       mockResetAfterLevelUp
     );
     expect(mockLevelUpAudio.unload).toHaveBeenCalledTimes(1);
@@ -173,7 +184,9 @@ describe("runLevelUpAnimation", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
       mockResetAfterLevelUp
     );
     expect(mockVariables.level).toBe(5);
@@ -192,7 +205,9 @@ describe("runLevelUpAnimation", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
       mockResetAfterLevelUp
     );
     expect(mockResetAfterLevelUp).toHaveBeenCalledTimes(1);

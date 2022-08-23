@@ -1,3 +1,4 @@
+import drawLevelUpBoard from "./drawLevelUpBoard";
 import resetAfterLevelUp from "./resetAfterLevelUp";
 
 export default function runLevelUpAnimation(
@@ -11,8 +12,10 @@ export default function runLevelUpAnimation(
   ctx,
   ghostAudioObjects,
   levelUpAudio,
+  boundaries,
   callbackOne = runLevelUpAnimation,
-  callbackTwo = resetAfterLevelUp
+  callbackTwo = drawLevelUpBoard,
+  callbackThree = resetAfterLevelUp
 ) {
   variables.animationId = requestAnimationFrame(() =>
     callbackOne(
@@ -25,19 +28,17 @@ export default function runLevelUpAnimation(
       scaredTimer,
       ctx,
       ghostAudioObjects,
-      levelUpAudio
+      levelUpAudio,
+      boundaries
     )
   );
-  ctx.font = "40px Arial";
-  ctx.fillStyle = "yellow";
-  ctx.textAlign = "center";
-  ctx.fillText("Level Up!", 448, 576);
+  callbackTwo(ctx, boundaries);
   variables.levelUpCount++;
   if (variables.levelUpCount >= 350) {
     cancelAnimationFrame(variables.animationId);
     levelUpAudio.unload();
     variables.level++;
-    callbackTwo(
+    callbackThree(
       pacman,
       variables,
       ghosts,

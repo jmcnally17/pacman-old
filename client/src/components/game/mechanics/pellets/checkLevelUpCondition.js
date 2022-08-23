@@ -11,6 +11,7 @@ export default function checkLevelUpCondition(
   ctx,
   ghostAudioObjects,
   levelUpAudio,
+  boundaries,
   callback = runLevelUpAnimation
 ) {
   let eatenPellets = 0;
@@ -33,7 +34,8 @@ export default function checkLevelUpCondition(
         scaredTimer,
         ctx,
         ghostAudioObjects,
-        levelUpAudio
+        levelUpAudio,
+        boundaries
       );
     }
   });

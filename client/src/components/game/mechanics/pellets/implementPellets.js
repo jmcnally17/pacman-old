@@ -12,6 +12,7 @@ export default function implementPellets(
   scaredTimer,
   ghostAudioObjects,
   levelUpAudio,
+  boundaries,
   callbackOne = eatPellet,
   callbackTwo = checkLevelUpCondition
 ) {
@@ -31,6 +32,7 @@ export default function implementPellets(
     scaredTimer,
     ctx,
     ghostAudioObjects,
-    levelUpAudio
+    levelUpAudio,
+    boundaries
   );
 }

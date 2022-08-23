@@ -16,6 +16,7 @@ let mockScaredAudio;
 let mockRetreatingAudio;
 let mockGhostAudioObjects;
 let mockLevelUpAudio;
+let mockBoundaries;
 let mockRunLevelUpAnimation;
 
 describe("checkLevelUpCondition", () => {
@@ -56,6 +57,7 @@ describe("checkLevelUpCondition", () => {
       load: () => undefined,
       play: () => undefined,
     };
+    mockBoundaries = "boundaries";
     mockRunLevelUpAnimation = jest.fn();
   });
 
@@ -72,6 +74,7 @@ describe("checkLevelUpCondition", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation
     );
     expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
@@ -95,6 +98,7 @@ describe("checkLevelUpCondition", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation
     );
     expect(mockSirenAudio.unload).toHaveBeenCalledTimes(1);
@@ -116,6 +120,7 @@ describe("checkLevelUpCondition", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation
     );
     expect(mockLevelUpAudio.load).toHaveBeenCalledTimes(1);
@@ -134,6 +139,7 @@ describe("checkLevelUpCondition", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation
     );
     expect(mockRunLevelUpAnimation).toHaveBeenCalledTimes(1);
@@ -147,7 +153,8 @@ describe("checkLevelUpCondition", () => {
       mockScaredTimer,
       mockCtx,
       mockGhostAudioObjects,
-      mockLevelUpAudio
+      mockLevelUpAudio,
+      mockBoundaries
     );
   });
 
@@ -163,6 +170,7 @@ describe("checkLevelUpCondition", () => {
       mockCtx,
       mockGhostAudioObjects,
       mockLevelUpAudio,
+      mockBoundaries,
       mockRunLevelUpAnimation
     );
     expect(mockRunLevelUpAnimation).toHaveBeenCalledTimes(0);
