@@ -15,6 +15,7 @@ let mockSirenAudio;
 let mockScaredAudio;
 let mockRetreatingAudio;
 let mockGhostAudioObjects;
+let mockLevelUpAudio;
 let mockRunLevelUpAnimation;
 
 describe("checkLevelUpCondition", () => {
@@ -51,6 +52,10 @@ describe("checkLevelUpCondition", () => {
       mockScaredAudio,
       mockRetreatingAudio,
     ];
+    mockLevelUpAudio = {
+      load: () => undefined,
+      play: () => undefined,
+    };
     mockRunLevelUpAnimation = jest.fn();
   });
 
@@ -66,6 +71,7 @@ describe("checkLevelUpCondition", () => {
       mockScaredTimer,
       mockCtx,
       mockGhostAudioObjects,
+      mockLevelUpAudio,
       mockRunLevelUpAnimation
     );
     expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
@@ -88,11 +94,32 @@ describe("checkLevelUpCondition", () => {
       mockScaredTimer,
       mockCtx,
       mockGhostAudioObjects,
+      mockLevelUpAudio,
       mockRunLevelUpAnimation
     );
     expect(mockSirenAudio.unload).toHaveBeenCalledTimes(1);
     expect(mockScaredAudio.unload).toHaveBeenCalledTimes(1);
     expect(mockRetreatingAudio.unload).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls load and play on the level up audio object if all pellets have been eaten", () => {
+    jest.spyOn(mockLevelUpAudio, "load");
+    jest.spyOn(mockLevelUpAudio, "play");
+    checkLevelUpCondition(
+      mockEatenPellets,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockGhostAudioObjects,
+      mockLevelUpAudio,
+      mockRunLevelUpAnimation
+    );
+    expect(mockLevelUpAudio.load).toHaveBeenCalledTimes(1);
+    expect(mockLevelUpAudio.play).toHaveBeenCalledTimes(1);
   });
 
   it("calls runLevelUpAnimation if all pellets have been eaten", () => {
@@ -106,6 +133,7 @@ describe("checkLevelUpCondition", () => {
       mockScaredTimer,
       mockCtx,
       mockGhostAudioObjects,
+      mockLevelUpAudio,
       mockRunLevelUpAnimation
     );
     expect(mockRunLevelUpAnimation).toHaveBeenCalledTimes(1);
@@ -118,7 +146,8 @@ describe("checkLevelUpCondition", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockGhostAudioObjects
+      mockGhostAudioObjects,
+      mockLevelUpAudio
     );
   });
 
@@ -133,6 +162,7 @@ describe("checkLevelUpCondition", () => {
       mockScaredTimer,
       mockCtx,
       mockGhostAudioObjects,
+      mockLevelUpAudio,
       mockRunLevelUpAnimation
     );
     expect(mockRunLevelUpAnimation).toHaveBeenCalledTimes(0);

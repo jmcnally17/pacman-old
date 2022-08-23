@@ -11,6 +11,7 @@ export default function implementPellets(
   cycleTimer,
   scaredTimer,
   ghostAudioObjects,
+  levelUpAudio,
   callbackOne = eatPellet,
   callbackTwo = checkLevelUpCondition
 ) {
@@ -29,6 +30,7 @@ export default function implementPellets(
     cycleTimer,
     scaredTimer,
     ctx,
-    ghostAudioObjects
+    ghostAudioObjects,
+    levelUpAudio
   );
 }

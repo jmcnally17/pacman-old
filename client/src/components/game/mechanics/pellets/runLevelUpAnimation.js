@@ -10,6 +10,7 @@ export default function runLevelUpAnimation(
   scaredTimer,
   ctx,
   ghostAudioObjects,
+  levelUpAudio,
   callbackOne = runLevelUpAnimation,
   callbackTwo = resetAfterLevelUp
 ) {
@@ -23,7 +24,8 @@ export default function runLevelUpAnimation(
       cycleTimer,
       scaredTimer,
       ctx,
-      ghostAudioObjects
+      ghostAudioObjects,
+      levelUpAudio
     )
   );
   ctx.font = "40px Arial";
@@ -31,8 +33,10 @@ export default function runLevelUpAnimation(
   ctx.textAlign = "center";
   ctx.fillText("Level Up!", 448, 576);
   variables.levelUpCount++;
-  if (variables.levelUpCount >= 100) {
+  if (variables.levelUpCount >= 350) {
     cancelAnimationFrame(variables.animationId);
+    levelUpAudio.unload();
+    variables.level++;
     callbackTwo(
       pacman,
       variables,
@@ -43,6 +47,5 @@ export default function runLevelUpAnimation(
       scaredTimer,
       ghostAudioObjects
     );
-    variables.level++;
   }
 }
