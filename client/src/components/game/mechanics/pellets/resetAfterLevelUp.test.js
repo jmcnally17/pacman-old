@@ -12,6 +12,10 @@ let mockUneatenPowerUp;
 let mockUneatenPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
+let mockSirenAudio;
+let mockScaredAudio;
+let mockRetreatingAudio;
+let mockGhostAudioObjects;
 let mockPlayGame;
 
 describe("resetAfterLevelUp", () => {
@@ -48,6 +52,20 @@ describe("resetAfterLevelUp", () => {
     mockScaredTimer = {
       reset: () => undefined,
     };
+    mockSirenAudio = {
+      load: () => undefined,
+    };
+    mockScaredAudio = {
+      load: () => undefined,
+    };
+    mockRetreatingAudio = {
+      load: () => undefined,
+    };
+    mockGhostAudioObjects = [
+      mockSirenAudio,
+      mockScaredAudio,
+      mockRetreatingAudio,
+    ];
     mockPlayGame = jest.fn();
   });
 
@@ -61,6 +79,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockPacman.reset).toHaveBeenCalledTimes(1);
@@ -75,6 +94,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockVariables.lastKeyPressed).toBe("");
@@ -89,6 +109,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockVariables.levelUpCount).toBe(0);
@@ -104,6 +125,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
@@ -119,6 +141,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
@@ -134,6 +157,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockGhost.reset).toHaveBeenCalledTimes(3);
@@ -149,6 +173,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockPellet.changeEatenState).toHaveBeenCalledTimes(2);
@@ -164,6 +189,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
@@ -179,9 +205,30 @@ describe("resetAfterLevelUp", () => {
       mockUneatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
+  });
+
+  it("calls load on each ghost audio object", () => {
+    jest.spyOn(mockSirenAudio, "load");
+    jest.spyOn(mockScaredAudio, "load");
+    jest.spyOn(mockRetreatingAudio, "load");
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockPlayGame
+    );
+    expect(mockSirenAudio.load).toHaveBeenCalledTimes(1);
+    expect(mockScaredAudio.load).toHaveBeenCalledTimes(1);
+    expect(mockRetreatingAudio.load).toHaveBeenCalledTimes(1);
   });
 
   it("calls start on the cycle timer to restart it", () => {
@@ -194,6 +241,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
@@ -208,6 +256,7 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
+      mockGhostAudioObjects,
       mockPlayGame
     );
     expect(mockPlayGame).toHaveBeenCalledTimes(1);

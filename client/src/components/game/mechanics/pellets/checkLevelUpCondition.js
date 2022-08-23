@@ -9,6 +9,7 @@ export default function checkLevelUpCondition(
   cycleTimer,
   scaredTimer,
   ctx,
+  ghostAudioObjects,
   callback = runLevelUpAnimation
 ) {
   let eatenPellets = 0;
@@ -18,6 +19,7 @@ export default function checkLevelUpCondition(
     }
     if (eatenPellets === pellets.length) {
       cancelAnimationFrame(variables.animationId);
+      ghostAudioObjects.forEach((audio) => audio.unload());
       callback(
         variables,
         pacman,
@@ -26,7 +28,8 @@ export default function checkLevelUpCondition(
         powerUps,
         cycleTimer,
         scaredTimer,
-        ctx
+        ctx,
+        ghostAudioObjects
       );
     }
   });

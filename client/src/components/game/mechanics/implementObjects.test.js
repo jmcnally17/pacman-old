@@ -93,7 +93,8 @@ describe("implementObjects", () => {
       mockGhosts,
       mockPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockGhostAudioObjects
     );
   });
 

@@ -31,7 +31,8 @@ export default function implementObjects(
     ghosts,
     powerUps,
     cycleTimer,
-    scaredTimer
+    scaredTimer,
+    ghostAudioObjects
   );
   callbackThree(
     powerUps,

@@ -9,6 +9,7 @@ export default function runLevelUpAnimation(
   cycleTimer,
   scaredTimer,
   ctx,
+  ghostAudioObjects,
   callbackOne = runLevelUpAnimation,
   callbackTwo = resetAfterLevelUp
 ) {
@@ -21,7 +22,8 @@ export default function runLevelUpAnimation(
       powerUps,
       cycleTimer,
       scaredTimer,
-      ctx
+      ctx,
+      ghostAudioObjects
     )
   );
   ctx.font = "40px Arial";
@@ -38,7 +40,8 @@ export default function runLevelUpAnimation(
       pellets,
       powerUps,
       cycleTimer,
-      scaredTimer
+      scaredTimer,
+      ghostAudioObjects
     );
     variables.level++;
   }

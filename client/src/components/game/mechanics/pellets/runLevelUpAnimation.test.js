@@ -10,6 +10,7 @@ let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockCtx;
+let mockGhostAudioObjects;
 let mockRunLevelUpAnimation;
 let mockResetAfterLevelUp;
 
@@ -32,6 +33,7 @@ describe("runLevelUpAnimation", () => {
       textAlign: undefined,
       fillText: () => undefined,
     };
+    mockGhostAudioObjects = "ghostAudioObjects";
     mockRunLevelUpAnimation = jest.fn();
     mockResetAfterLevelUp = jest.fn();
   });
@@ -47,6 +49,7 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
+      mockGhostAudioObjects,
       mockRunLevelUpAnimation,
       mockResetAfterLevelUp
     );
@@ -62,7 +65,8 @@ describe("runLevelUpAnimation", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockCtx
+      mockCtx,
+      mockGhostAudioObjects
     );
   });
 
@@ -77,6 +81,7 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
+      mockGhostAudioObjects,
       mockRunLevelUpAnimation,
       mockResetAfterLevelUp
     );
@@ -97,6 +102,7 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
+      mockGhostAudioObjects,
       mockRunLevelUpAnimation,
       mockResetAfterLevelUp
     );
@@ -115,6 +121,7 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
+      mockGhostAudioObjects,
       mockRunLevelUpAnimation,
       mockResetAfterLevelUp
     );
@@ -135,6 +142,7 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
+      mockGhostAudioObjects,
       mockRunLevelUpAnimation,
       mockResetAfterLevelUp
     );
@@ -146,7 +154,8 @@ describe("runLevelUpAnimation", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockGhostAudioObjects
     );
   });
 
@@ -161,6 +170,7 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
+      mockGhostAudioObjects,
       mockRunLevelUpAnimation,
       mockResetAfterLevelUp
     );
