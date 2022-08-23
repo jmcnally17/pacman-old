@@ -3,8 +3,8 @@ import makePellets from "./pellets/makePellets";
 import makePowerUps from "./powerUps/makePowerUps";
 import makeGhosts from "./ghosts/makeGhosts";
 import makePacman from "./pacman/makePacman";
-import CycleTimer from "../models/cycleTimer";
-import ScaredTimer from "../models/scaredTimer";
+import makeCycleTimer from "./timers/makeCycleTimer";
+import makeScaredTimer from "./timers/makeScaredTimer";
 import makeRetreatingTimers from "./timers/makeRetreatingTimers";
 import makeGhostAudioObjects from "./ghosts/makeGhostAudioObjects";
 import makePacmanDeathAudio from "./pacman/makePacmanDeathAudio";
@@ -69,8 +69,8 @@ const pellets = makePellets(map, variables);
 const powerUps = makePowerUps(map, variables);
 const ghosts = makeGhosts(variables);
 const pacman = makePacman(variables);
-const cycleTimer = new CycleTimer(ghosts);
-const scaredTimer = new ScaredTimer(ghosts);
+const cycleTimer = makeCycleTimer(ghosts)
+const scaredTimer = makeScaredTimer(ghosts)
 const retreatingTimers = makeRetreatingTimers(ghosts);
 const ghostAudioObjects = makeGhostAudioObjects();
 const pacmanDeathAudio = makePacmanDeathAudio();
