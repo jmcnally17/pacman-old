@@ -78,7 +78,7 @@ const levelUpAudio = makeLevelUpAudio();
 
 export default function playGame(name, reactRoot, callbackOne = finishSetup, callbackTwo = implementObjects, callbackThree = updateDisplay, callbackFour = manageGhostAudio) {
   if (variables.start === true) {
-    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, ghostAudioObjects, pacmanDeathAudio);
+    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, ghostAudioObjects, pacmanDeathAudio, levelUpAudio);
   }
   variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");

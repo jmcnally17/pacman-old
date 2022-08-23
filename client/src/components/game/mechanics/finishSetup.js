@@ -10,6 +10,7 @@ export default function finishSetup(
   retreatingTimers,
   ghostAudioObjects,
   pacmanDeathAudio,
+  levelUpAudio,
   callbackOne = addDirectionDetection,
   callbackTwo = addVisibilityDetection
 ) {
@@ -23,10 +24,12 @@ export default function finishSetup(
     scaredTimer,
     retreatingTimers,
     ghostAudioObjects,
-    pacmanDeathAudio
+    pacmanDeathAudio,
+    levelUpAudio
   );
   variables.start = false;
   ghostAudioObjects.forEach((audio) => audio.load());
   ghostAudioObjects[0].play();
   pacmanDeathAudio.unload();
+  levelUpAudio.unload();
 }
