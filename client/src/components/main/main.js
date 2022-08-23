@@ -37,8 +37,8 @@ export default function Main() {
       window.alert("You must enter a name");
     } else if (name.includes(" ")) {
       window.alert("Name cannot contain any spaces");
-    } else if (name.length < 5 || name.length > 15) {
-      window.alert("Name must be 5-15 characters long");
+    } else if (name.length < 3 || name.length > 15) {
+      window.alert("Name must be 3-15 characters long");
     } else {
       theme.pause();
       const reactRoot = ReactDOM.createRoot(document.getElementById("main"));

@@ -1,7 +1,7 @@
 import endGame from "./endGame";
-import Leaderboard from "../../../../leaderboard/leaderboard";
+import Leaderboard from "../../../../../leaderboard/leaderboard";
 
-jest.mock("../../../../leaderboard/leaderboard");
+jest.mock("../../../../../leaderboard/leaderboard");
 
 let mockVariables;
 let mockPellets;

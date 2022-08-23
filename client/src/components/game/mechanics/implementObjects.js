@@ -16,6 +16,7 @@ export default function implementObjects(
   variables,
   ghostAudioObjects,
   pacmanDeathAudio,
+  levelUpAudio,
   callbackOne = implementBoundaries,
   callbackTwo = implementPellets,
   callbackThree = implementPowerUps,
@@ -31,7 +32,10 @@ export default function implementObjects(
     ghosts,
     powerUps,
     cycleTimer,
-    scaredTimer
+    scaredTimer,
+    ghostAudioObjects,
+    levelUpAudio,
+    boundaries
   );
   callbackThree(
     powerUps,

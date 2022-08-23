@@ -11,6 +11,7 @@ let mockCtx;
 let mockVariables;
 let mockGhostAudioObjects;
 let mockPacmanDeathAudio;
+let mockLevelUpAudio;
 let mockImplementBoundaries;
 let mockImplementPellets;
 let mockImplementPowerUps;
@@ -30,6 +31,7 @@ describe("implementObjects", () => {
     mockVariables = "variables";
     mockGhostAudioObjects = "mockGhostAudioObjects";
     mockPacmanDeathAudio = "pacmanDeathAudio";
+    mockLevelUpAudio = "levelUpAudio";
     mockImplementBoundaries = jest.fn();
     mockImplementPellets = jest.fn();
     mockImplementPowerUps = jest.fn();
@@ -50,6 +52,7 @@ describe("implementObjects", () => {
       mockVariables,
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
+      mockLevelUpAudio,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -77,6 +80,7 @@ describe("implementObjects", () => {
       mockVariables,
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
+      mockLevelUpAudio,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -93,7 +97,10 @@ describe("implementObjects", () => {
       mockGhosts,
       mockPowerUps,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockLevelUpAudio,
+      mockBoundaries
     );
   });
 
@@ -110,6 +117,7 @@ describe("implementObjects", () => {
       mockVariables,
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
+      mockLevelUpAudio,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -141,6 +149,7 @@ describe("implementObjects", () => {
       mockVariables,
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
+      mockLevelUpAudio,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -176,6 +185,7 @@ describe("implementObjects", () => {
       mockVariables,
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
+      mockLevelUpAudio,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,

@@ -1,3 +1,5 @@
+import playGame from "../../playGame";
+
 export default function resetAfterLevelUp(
   pacman,
   variables,
@@ -5,10 +7,13 @@ export default function resetAfterLevelUp(
   pellets,
   powerUps,
   cycleTimer,
-  scaredTimer
+  scaredTimer,
+  ghostAudioObjects,
+  callback = playGame
 ) {
   pacman.reset();
   variables.lastKeyPressed = "";
+  variables.levelUpCount = 0;
   cycleTimer.reset();
   scaredTimer.reset();
   ghosts.forEach((ghost) => {
@@ -20,5 +25,7 @@ export default function resetAfterLevelUp(
   powerUps.forEach((powerUp) => {
     if (powerUp.hasBeenEaten) powerUp.changeEatenState();
   });
+  ghostAudioObjects.forEach((audio) => audio.load());
   cycleTimer.start();
+  callback();
 }

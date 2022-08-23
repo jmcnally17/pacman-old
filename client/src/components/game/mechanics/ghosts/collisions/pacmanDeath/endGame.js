@@ -1,4 +1,4 @@
-import Leaderboard from "../../../../leaderboard/leaderboard";
+import Leaderboard from "../../../../../leaderboard/leaderboard";
 import resetAfterGameOver from "./resetAfterGameOver";
 import saveScore from "./saveScore";
 

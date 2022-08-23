@@ -1,4 +1,4 @@
-import resetAfterLevelUp from "./resetAfterLevelUp";
+import runLevelUpAnimation from "./levelUpAnimation/runLevelUpAnimation";
 
 export default function checkLevelUpCondition(
   pellets,
@@ -8,7 +8,11 @@ export default function checkLevelUpCondition(
   powerUps,
   cycleTimer,
   scaredTimer,
-  callback = resetAfterLevelUp
+  ctx,
+  ghostAudioObjects,
+  levelUpAudio,
+  boundaries,
+  callback = runLevelUpAnimation
 ) {
   let eatenPellets = 0;
   pellets.forEach((pellet) => {
@@ -16,16 +20,23 @@ export default function checkLevelUpCondition(
       eatenPellets++;
     }
     if (eatenPellets === pellets.length) {
+      cancelAnimationFrame(variables.animationId);
+      ghostAudioObjects.forEach((audio) => audio.unload());
+      levelUpAudio.load();
+      levelUpAudio.play();
       callback(
-        pacman,
         variables,
+        pacman,
         ghosts,
         pellets,
         powerUps,
         cycleTimer,
-        scaredTimer
+        scaredTimer,
+        ctx,
+        ghostAudioObjects,
+        levelUpAudio,
+        boundaries
       );
-      variables.level++;
     }
   });
 }
