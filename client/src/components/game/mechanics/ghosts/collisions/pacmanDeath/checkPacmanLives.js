@@ -1,5 +1,5 @@
-import endGame from "../endGame";
-import resetAfterDeath from "../resetAfterDeath";
+import endGame from "./endGame";
+import resetAfterDeath from "./resetAfterDeath";
 
 export default function checkPacmanLives(
   pacman,

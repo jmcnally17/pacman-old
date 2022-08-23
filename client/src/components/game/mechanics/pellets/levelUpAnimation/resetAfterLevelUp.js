@@ -1,4 +1,4 @@
-import playGame from "../playGame";
+import playGame from "../../playGame";
 
 export default function resetAfterLevelUp(
   pacman,

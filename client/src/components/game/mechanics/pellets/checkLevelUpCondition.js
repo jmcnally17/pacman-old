@@ -1,4 +1,4 @@
-import runLevelUpAnimation from "./runLevelUpAnimation";
+import runLevelUpAnimation from "./levelUpAnimation/runLevelUpAnimation";
 
 export default function checkLevelUpCondition(
   pellets,
