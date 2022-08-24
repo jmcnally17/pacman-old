@@ -138,7 +138,6 @@ Tests can be run while in the [main](https://github.com/jmcnally17/pacman) direc
 
 ## Features Pending
 
-- Add some more animations such as levelling up
 - Increase difficulty as the player levels up
 - (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and Express
 
