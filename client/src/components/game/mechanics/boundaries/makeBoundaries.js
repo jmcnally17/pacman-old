@@ -39,7 +39,7 @@ export default function makeBoundaries(
         boundaries.push(boundary);
       } else if (element === "1") {
         const image = new Image();
-        image.src = "./images/pipeCorner1.png";
+        image.src = "./images/pipeCornerOne.png";
         const boundary = new Boundary(
           {
             position: {
@@ -53,7 +53,7 @@ export default function makeBoundaries(
         boundaries.push(boundary);
       } else if (element === "2") {
         const image = new Image();
-        image.src = "./images/pipeCorner2.png";
+        image.src = "./images/pipeCornerTwo.png";
         const boundary = new Boundary(
           {
             position: {
@@ -67,7 +67,7 @@ export default function makeBoundaries(
         boundaries.push(boundary);
       } else if (element === "3") {
         const image = new Image();
-        image.src = "./images/pipeCorner3.png";
+        image.src = "./images/pipeCornerThree.png";
         const boundary = new Boundary(
           {
             position: {
@@ -81,7 +81,7 @@ export default function makeBoundaries(
         boundaries.push(boundary);
       } else if (element === "4") {
         const image = new Image();
-        image.src = "./images/pipeCorner4.png";
+        image.src = "./images/pipeCornerFour.png";
         const boundary = new Boundary(
           {
             position: {
