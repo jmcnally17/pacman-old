@@ -9,4 +9,11 @@ export default class Boundary {
   draw(ctx) {
     ctx.drawImage(this.image, this.position.x, this.position.y);
   }
+
+  flash() {
+    let imageSource = this.image.src;
+    this.image.src = imageSource.includes("White")
+      ? imageSource.replace("White", "")
+      : imageSource.replace(".png", "White.png");
+  }
 }

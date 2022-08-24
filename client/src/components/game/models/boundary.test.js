@@ -6,7 +6,7 @@ let mockImage;
 describe("Boundary", () => {
   beforeEach(() => {
     mockImage = {
-      src: "./randomSource",
+      src: "./randomSource.png",
     };
     boundary = new Boundary(
       {
@@ -35,7 +35,7 @@ describe("Boundary", () => {
 
     it("has an image that is passed in", () => {
       expect(boundary.image).toEqual({
-        src: "./randomSource",
+        src: "./randomSource.png",
       });
     });
   });
@@ -49,6 +49,19 @@ describe("Boundary", () => {
       boundary.draw(mockCtx);
       expect(mockCtx.drawImage).toHaveBeenCalledTimes(1);
       expect(mockCtx.drawImage).toHaveBeenCalledWith(mockImage, 40, 100);
+    });
+  });
+
+  describe("flash", () => {
+    it("changes the image source from the regular to the white", () => {
+      boundary.flash();
+      expect(boundary.image.src).toBe("./randomSourceWhite.png");
+    });
+
+    it("changes the image source from the white to the regular", () => {
+      mockImage.src = "./randomSourceWhite.png";
+      boundary.flash();
+      expect(boundary.image.src).toBe("./randomSource.png");
     });
   });
 });
