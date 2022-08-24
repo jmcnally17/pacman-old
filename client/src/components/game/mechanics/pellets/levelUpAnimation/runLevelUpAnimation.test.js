@@ -12,6 +12,7 @@ let mockScaredTimer;
 let mockCtx;
 let mockGhostAudioObjects;
 let mockLevelUpAudio;
+let mockBoundary;
 let mockBoundaries;
 let mockRunLevelUpAnimation;
 let mockDrawLevelUpBoard;
@@ -40,7 +41,10 @@ describe("runLevelUpAnimation", () => {
     mockLevelUpAudio = {
       unload: () => undefined,
     };
-    mockBoundaries = "boundaries";
+    mockBoundary = {
+      flash: () => undefined,
+    };
+    mockBoundaries = [mockBoundary, mockBoundary];
     mockRunLevelUpAnimation = jest.fn();
     mockDrawLevelUpBoard = jest.fn();
     mockResetAfterLevelUp = jest.fn();
@@ -104,7 +108,51 @@ describe("runLevelUpAnimation", () => {
     expect(mockDrawLevelUpBoard).toHaveBeenCalledWith(mockCtx, mockBoundaries);
   });
 
-  it("increases the levelUpCount by 1", () => {
+  it("calls flash on each boundary if levelUpCount is a multiple of 10", () => {
+    mockVariables.levelUpCount = 150;
+    jest.spyOn(mockBoundary, "flash");
+    runLevelUpAnimation(
+      mockVariables,
+      mockPacman,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockGhostAudioObjects,
+      mockLevelUpAudio,
+      mockBoundaries,
+      mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
+      mockResetAfterLevelUp
+    );
+    expect(mockBoundary.flash).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not call flash on each boundary if levelUpCount is not a multiple of 10", () => {
+    mockVariables.levelUpCount = 286;
+    jest.spyOn(mockBoundary, "flash");
+    runLevelUpAnimation(
+      mockVariables,
+      mockPacman,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockGhostAudioObjects,
+      mockLevelUpAudio,
+      mockBoundaries,
+      mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
+      mockResetAfterLevelUp
+    );
+    expect(mockBoundary.flash).toHaveBeenCalledTimes(0);
+  });
+
+  it("increases levelUpCount by 1", () => {
     runLevelUpAnimation(
       mockVariables,
       mockPacman,

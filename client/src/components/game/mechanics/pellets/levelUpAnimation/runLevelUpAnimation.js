@@ -33,6 +33,8 @@ export default function runLevelUpAnimation(
     )
   );
   callbackTwo(ctx, boundaries);
+  if (variables.levelUpCount % 10 === 0 && variables.levelUpCount !== 0)
+    boundaries.forEach((boundary) => boundary.flash());
   variables.levelUpCount++;
   if (variables.levelUpCount >= 350) {
     cancelAnimationFrame(variables.animationId);
