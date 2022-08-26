@@ -163,6 +163,25 @@ describe("resetAfterLevelUp", () => {
     expect(mockScaredTimer.duration).toBe(4500);
   });
 
+  it("leaves the duration on the scared timer the same if it is equal to 0", () => {
+    const mockScaredTimerZero = {
+      reset: () => undefined,
+      duration: 0,
+    };
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimerZero,
+      mockGhostAudioObjects,
+      mockPlayGame
+    );
+    expect(mockScaredTimerZero.duration).toBe(0);
+  });
+
   it("calls reset on each ghost", () => {
     jest.spyOn(mockGhost, "reset");
     resetAfterLevelUp(
