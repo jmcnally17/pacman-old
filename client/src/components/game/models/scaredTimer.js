@@ -16,14 +16,14 @@ export default class ScaredTimer {
       });
       cycleTimer.resume();
       this.isRunning = false;
-    }, 5000);
+    }, this.duration);
     this.isRunning = true;
   }
 
   pause(dateNow = Date.now()) {
     clearTimeout(this.timeout);
     const timeElapsed = dateNow - this.startTime;
-    this.timeRemaining = 5000 - timeElapsed;
+    this.timeRemaining = this.duration - timeElapsed;
   }
 
   resume(cycleTimer) {

@@ -32,14 +32,14 @@ describe("ScaredTimer", () => {
   });
 
   describe("start", () => {
-    it("sets this.timeout to a setTimeout of the ghosts changing scared state with a five second delay if they are scared", () => {
+    it("sets this.timeout to a setTimeout of the ghosts changing scared state with a seven second delay if they are scared", () => {
       const mockDateNow = 173620;
       jest.spyOn(global, "setTimeout");
       jest.spyOn(mockGhost, "changeScaredState");
       jest.spyOn(mockCycleTimer, "resume");
       scaredTimer.start(mockCycleTimer, mockDateNow);
       expect(setTimeout).toHaveBeenCalledTimes(1);
-      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 5000);
+      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 7000);
       expect(scaredTimer.timeout).not.toBeNull();
       expect(scaredTimer.startTime).toBe(mockDateNow);
       expect(scaredTimer.isRunning).toBeTruthy();
@@ -58,7 +58,7 @@ describe("ScaredTimer", () => {
       scaredTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(scaredTimer.timeout);
-      expect(scaredTimer.timeRemaining).toBe(2680);
+      expect(scaredTimer.timeRemaining).toBe(4680);
     });
   });
 
