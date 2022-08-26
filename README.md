@@ -28,19 +28,23 @@ The player can use the directional keys to move Pac-Man within the boundaries ar
 ### Rules
 
 - Pac-Man starts off with 2 extra lives
-- Eating one pellet is worth 10 points
+- Eating 1 pellet is worth 10 points
 - Eating every pellet completes the current level
 - After completing a level, the board is reset to its original configuration, except for Pac-Man's lives and the players score
-- Eating one power up is worth 50 points
-- Eating a power up scares all unscared ghosts for 5 seconds which also halves their speed
+- Eating 1 power up is worth 50 points
+- Eating a power up scares all unscared ghosts which halves their speed and lasts for a specific duration that depends on the level number
 - Eating a power up has no effect on scared ghosts
-- Colliding with a scared ghost sends the ghost into retreating mode for three seconds and is worth $2^n \cdot 200$ points where n is the number of scared ghosts attacked since the last power up was eaten
+- Colliding with a scared ghost sends the ghost into retreating mode for 3 seconds and is worth $2^n \cdot 200$ points where n is the number of scared ghosts attacked since the last power up was eaten
 - Colliding with a ghost that is not scared decreases Pac-Man's lives by 1 and resets character positions on the board
 - Colliding with a ghost that is not scared with no extra lives left ends the game
 
 ## Ghost Movement
 
-The ghosts have three patterns of moving: scatter, hunt, and random. When the game starts, the ghosts begin moving in their scatter-hunt cycle. In one cycle, the ghosts move in their scatter pattern for seven seconds and then in their hunting pattern for twenty seconds. This cycle repeats until the player either loses a life or levels up, at which point the cycle resets and starts over again. Each ghost moves in their random pattern when a power up is eaten by Pac-Man, which lasts for five seconds and slows the ghosts down while they are in their scared state. During this scared phase, the scatter-hunt cycle timer is paused and resumes once the five seconds are up. Eating a power up while the effects of a previous power up still linger, the scared phase simply starts again with a fresh five second timer. They also move in their random pattern when in retreating mode which occurs when Pac-Man collides with them when they are scared. This mode lasts for three seconds, during which the collision mechanics of Pac-Man and that particular ghost are deactivated and the ghosts speed is increased. After the three seconds are up, the ghost returns to the hunt and scatter cycle. During the ghosts random pattern, anytime they encounter a crossroads, they will pick a direction at random using Javascripts in built `Math.random()` function.
+The ghosts have three patterns of moving: scatter, hunt, and random. When the game starts, the ghosts begin moving in their scatter-hunt cycle. In one cycle, the ghosts move in their scatter pattern for 7 seconds and then in their hunting pattern for 20 seconds. This cycle repeats until the player either loses a life or levels up, at which point the cycle resets and starts over again.
+
+Each ghost moves in their random pattern when a power up is eaten by Pac-Man, which slows the ghosts down while they are in their scared state. During this scared phase, the scatter-hunt cycle timer is paused and resumes once the scared timer duration is up. If a power up is eaten while the effects of a previous power up still linger, the scared phase simply starts again with a fresh timer. The duration of this scared timer depends on what level the player is currently in. It starts off at 7 seconds in level 1 and subsequently decreases by half a second every level up until it reaches 0 seconds in level 15. After which, the power ups will essentially have no effect, other than adding 50 points to the player's score.
+
+They also move in their random pattern when in retreating mode which occurs when Pac-Man collides with them when they are scared. This mode lasts for 3 seconds, during which the collision mechanics of Pac-Man and that particular ghost are deactivated and the ghosts speed is increased. After the 3 seconds are up, the ghost returns to the hunt and scatter cycle. During the ghosts random pattern, anytime they encounter a crossroads, they will pick a direction at random using Javascripts in built `Math.random()` function.
 
 ### Scattering
 
