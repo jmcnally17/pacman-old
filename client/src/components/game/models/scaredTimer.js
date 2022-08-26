@@ -5,6 +5,7 @@ export default class ScaredTimer {
     this.startTime = null;
     this.timeRemaining = null;
     this.isRunning = false;
+    this.duration = 7000;
   }
 
   start(cycleTimer, dateNow = Date.now()) {

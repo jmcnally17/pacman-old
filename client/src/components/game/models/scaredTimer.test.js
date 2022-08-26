@@ -27,6 +27,7 @@ describe("ScaredTimer", () => {
       expect(scaredTimer.startTime).toBeNull();
       expect(scaredTimer.timeRemaining).toBeNull();
       expect(scaredTimer.isRunning).toBeFalsy();
+      expect(scaredTimer.duration).toBe(7000);
     });
   });
 
