@@ -1,6 +1,6 @@
 # Pac-Man <img src="./client/public/images/redGhostRight.png" height="30"> <img src="./client/public/images/pinkGhostRight.png" height="30"> <img src="./client/public/images/cyanGhostRight.png" height="30"> <img src="./client/public/images/orangeGhostRight.png" height="30"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./client/public/images/scaredGhostBlue.png" height="30">
 
-This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a MongoDB Atlas database which saves the players score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can see how well they did.
+This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a MongoDB Atlas database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can see how well they did.
 
 [<img src="./images/pacmanPlayButton.png">](https://pacman-clone.herokuapp.com/)
 
@@ -30,10 +30,10 @@ The player can use the directional keys to move Pac-Man within the boundaries ar
 - Pac-Man starts off with 2 extra lives
 - Eating 1 pellet is worth 10 points
 - Eating every pellet completes the current level
-- After completing a level, the board is reset to its original configuration, except for Pac-Man's lives and the players score
+- After completing a level, the board is reset to its original configuration, except for Pac-Man's lives and the player's score
 - Eating 1 power up is worth 50 points
 - Eating a power up scares all unscared ghosts which halves their speed and lasts for a specific duration that depends on the level number
-- Eating a power up has no effect on scared ghosts
+- Eating a power up has no effect on scared ghosts other than restarting the scared phase
 - Colliding with a scared ghost sends the ghost into retreating mode for 3 seconds and is worth $2^n \cdot 200$ points where n is the number of scared ghosts attacked since the last power up was eaten
 - Colliding with a ghost that is not scared decreases Pac-Man's lives by 1 and resets character positions on the board
 - Colliding with a ghost that is not scared with no extra lives left ends the game
@@ -44,7 +44,7 @@ The ghosts have three patterns of moving: scatter, hunt, and random. When the ga
 
 Each ghost moves in their random pattern when a power up is eaten by Pac-Man, which slows the ghosts down while they are in their scared state. During this scared phase, the scatter-hunt cycle timer is paused and resumes once the scared timer duration is up. If a power up is eaten while the effects of a previous power up still linger, the scared phase simply starts again with a fresh timer. The duration of this scared timer depends on what level the player is currently in. It starts off at 7 seconds in level 1 and subsequently decreases by half a second every level up until it reaches 0 seconds in level 15. After which, the power ups will essentially have no effect, other than adding 50 points to the player's score.
 
-They also move in their random pattern when in retreating mode which occurs when Pac-Man collides with them when they are scared. This mode lasts for 3 seconds, during which the collision mechanics of Pac-Man and that particular ghost are deactivated and the ghosts speed is increased. After the 3 seconds are up, the ghost returns to the hunt and scatter cycle. During the ghosts random pattern, anytime they encounter a crossroads, they will pick a direction at random using Javascripts in built `Math.random()` function.
+They also move in their random pattern when in retreating mode which occurs when Pac-Man collides with them when they are scared. This mode lasts for 3 seconds, during which the collision mechanics of Pac-Man and that particular ghost are deactivated and the ghost's speed is increased. After the 3 seconds are up, the ghost returns to the hunt and scatter cycle. During the ghost's random pattern, anytime they encounter a crossroads, they will pick a direction at random using Javascripts in built `Math.random()` function.
 
 ### Scattering
 
@@ -70,7 +70,7 @@ Pink:
 
 Cyan:
 
-- The cyan ghosts hunting movement is the most complex of the four. It not only depends on Pac-Man's position but also on the red ghosts position. First the position two tiles in front of Pac-Man is found. Then, the vector from this intermediate position to the red ghosts position is rotated 180&deg; to give the cyan ghosts target position in an attempt to flank Pac-Man. This means the cyan ghosts movement can be difficult to predict due to the constantly changing positions of the characters on the board. In the original version, the intermediate position when Pac-Man is facing upwards is two tiles up and two tiles to the left due to the same overflow error mentioned in the pink ghosts movement. Again however, due to this projects coordinate system this bug is not encountered.
+- The cyan ghost's hunting movement is the most complex of the four. It not only depends on Pac-Man's position but also on the red ghost's position. First the position two tiles in front of Pac-Man is found. Then, the vector from this intermediate position to the red ghost's position is rotated 180&deg; to give the cyan ghost's target position in an attempt to flank Pac-Man. This means the cyan ghost's movement can be difficult to predict due to the constantly changing positions of the characters on the board. In the original version, the intermediate position when Pac-Man is facing upwards is two tiles up and two tiles to the left due to the same overflow error mentioned in the pink ghost's movement. Again however, due to this projects coordinate system this bug is not encountered.
 
 Orange:
 
