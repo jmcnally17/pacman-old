@@ -15,6 +15,7 @@ export default function resetAfterGameOver(
   });
   cycleTimer.reset();
   scaredTimer.reset();
+  scaredTimer.duration = 7000;
   ghosts.forEach((ghost) => {
     ghost.reset();
   });

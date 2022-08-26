@@ -60,6 +60,7 @@ describe("resetAfterGameOver", () => {
     };
     mockScaredTimer = {
       reset: () => undefined,
+      duration: 2500,
     };
   });
 
@@ -145,6 +146,19 @@ describe("resetAfterGameOver", () => {
       mockScaredTimer
     );
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("sets the duration on the scared timer back to 7000", () => {
+    resetAfterGameOver(
+      mockEatenPellets,
+      mockEatenPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer
+    );
+    expect(mockScaredTimer.duration).toBe(7000);
   });
 
   it("resets the ghosts", () => {

@@ -5,6 +5,7 @@ export default class ScaredTimer {
     this.startTime = null;
     this.timeRemaining = null;
     this.isRunning = false;
+    this.duration = 7000;
   }
 
   start(cycleTimer, dateNow = Date.now()) {
@@ -15,14 +16,14 @@ export default class ScaredTimer {
       });
       cycleTimer.resume();
       this.isRunning = false;
-    }, 5000);
+    }, this.duration);
     this.isRunning = true;
   }
 
   pause(dateNow = Date.now()) {
     clearTimeout(this.timeout);
     const timeElapsed = dateNow - this.startTime;
-    this.timeRemaining = 5000 - timeElapsed;
+    this.timeRemaining = this.duration - timeElapsed;
   }
 
   resume(cycleTimer) {

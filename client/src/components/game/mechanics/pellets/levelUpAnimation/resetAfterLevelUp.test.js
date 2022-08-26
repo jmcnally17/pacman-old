@@ -51,6 +51,7 @@ describe("resetAfterLevelUp", () => {
     };
     mockScaredTimer = {
       reset: () => undefined,
+      duration: 5000,
     };
     mockSirenAudio = {
       load: () => undefined,
@@ -145,6 +146,40 @@ describe("resetAfterLevelUp", () => {
       mockPlayGame
     );
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("decreases the duration on the scared timer by 500 if it is greater than 0", () => {
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockPlayGame
+    );
+    expect(mockScaredTimer.duration).toBe(4500);
+  });
+
+  it("leaves the duration on the scared timer the same if it is equal to 0", () => {
+    const mockScaredTimerZero = {
+      reset: () => undefined,
+      duration: 0,
+    };
+    resetAfterLevelUp(
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockEatenPowerUps,
+      mockCycleTimer,
+      mockScaredTimerZero,
+      mockGhostAudioObjects,
+      mockPlayGame
+    );
+    expect(mockScaredTimerZero.duration).toBe(0);
   });
 
   it("calls reset on each ghost", () => {

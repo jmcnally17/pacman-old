@@ -16,6 +16,7 @@ export default function resetAfterLevelUp(
   variables.levelUpCount = 0;
   cycleTimer.reset();
   scaredTimer.reset();
+  if (scaredTimer.duration > 0) scaredTimer.duration -= 500;
   ghosts.forEach((ghost) => {
     ghost.reset();
   });
