@@ -2,7 +2,7 @@ import emptyPrevCollisions from "../emptyPrevCollisions";
 import calculateDistance from "./calculateDistance";
 import pickDirection from "./pickDirection";
 
-export default function huntAndScatter(
+export default function chaseAndScatter(
   ghost,
   pacman,
   collisions,

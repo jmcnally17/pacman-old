@@ -8,7 +8,7 @@ let mockPathways;
 let mockVariables;
 let mockRedGhost;
 let mockAddCoordinates;
-let mockHunt;
+let mockChase;
 let mockScatter;
 let mockCalculateHypotenuse;
 
@@ -22,7 +22,7 @@ describe("calculateDistance", () => {
     mockVariables = "variables";
     mockRedGhost = "redGhost";
     mockAddCoordinates = jest.fn();
-    mockHunt = jest.fn();
+    mockChase = jest.fn();
     mockScatter = jest.fn();
     mockCalculateHypotenuse = jest.fn();
   });
@@ -35,7 +35,7 @@ describe("calculateDistance", () => {
       mockVariables,
       mockRedGhost,
       mockAddCoordinates,
-      mockHunt,
+      mockChase,
       mockScatter,
       mockCalculateHypotenuse
     );
@@ -54,33 +54,33 @@ describe("calculateDistance", () => {
     );
   });
 
-  it("calls hunt if the ghost is hunting", () => {
-    const mockHuntingGhost = {
-      isHunting: true,
+  it("calls chase if the ghost is chasing", () => {
+    const mockChasingGhost = {
+      isChasing: true,
     };
     calculateDistance(
       mockPacman,
-      mockHuntingGhost,
+      mockChasingGhost,
       mockPathways,
       mockVariables,
       mockRedGhost,
       mockAddCoordinates,
-      mockHunt,
+      mockChase,
       mockScatter,
       mockCalculateHypotenuse
     );
-    expect(mockHunt).toHaveBeenCalledTimes(2);
-    expect(mockHunt).toHaveBeenNthCalledWith(
+    expect(mockChase).toHaveBeenCalledTimes(2);
+    expect(mockChase).toHaveBeenNthCalledWith(
       1,
-      mockHuntingGhost,
+      mockChasingGhost,
       mockPathwayOne,
       mockPacman,
       mockVariables,
       mockRedGhost
     );
-    expect(mockHunt).toHaveBeenNthCalledWith(
+    expect(mockChase).toHaveBeenNthCalledWith(
       2,
-      mockHuntingGhost,
+      mockChasingGhost,
       mockPathwayTwo,
       mockPacman,
       mockVariables,
@@ -88,9 +88,9 @@ describe("calculateDistance", () => {
     );
   });
 
-  it("calls scatter if the ghost is not hunting", () => {
+  it("calls scatter if the ghost is not chasing", () => {
     const mockScatteringGhost = {
-      isHunting: false,
+      isChasing: false,
     };
     calculateDistance(
       mockPacman,
@@ -99,7 +99,7 @@ describe("calculateDistance", () => {
       mockVariables,
       mockRedGhost,
       mockAddCoordinates,
-      mockHunt,
+      mockChase,
       mockScatter,
       mockCalculateHypotenuse
     );
@@ -124,7 +124,7 @@ describe("calculateDistance", () => {
       mockVariables,
       mockRedGhost,
       mockAddCoordinates,
-      mockHunt,
+      mockChase,
       mockScatter,
       mockCalculateHypotenuse
     );

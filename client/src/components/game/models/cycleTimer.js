@@ -12,7 +12,7 @@ export default class CycleTimer {
     this.startTime = dateNow;
     this.timeout = setTimeout(
       () => {
-        this.#switchHuntScatterState();
+        this.#switchChaseScatterState();
       },
       this.count === 0 ? 7000 : 20000
     );
@@ -31,7 +31,7 @@ export default class CycleTimer {
 
   resume() {
     this.timeout = setTimeout(() => {
-      this.#switchHuntScatterState();
+      this.#switchChaseScatterState();
     }, this.timeRemaining);
     this.isRunning = true;
   }
@@ -44,9 +44,9 @@ export default class CycleTimer {
 
   // private
 
-  #switchHuntScatterState() {
+  #switchChaseScatterState() {
     this.ghosts.forEach((ghost) => {
-      ghost.changeHuntingState();
+      ghost.changeChasingState();
     });
     this.#carryOnCycle();
   }

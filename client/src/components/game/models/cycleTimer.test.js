@@ -9,10 +9,10 @@ let mockGhosts;
 describe("CycleTimer", () => {
   beforeEach(() => {
     mockGhost = {
-      changeHuntingState: () => true,
+      changeChasingState: () => true,
     };
     mockGhosts = [mockGhost, mockGhost];
-    jest.spyOn(mockGhost, "changeHuntingState");
+    jest.spyOn(mockGhost, "changeChasingState");
     cycleTimer = new CycleTimer(mockGhosts);
   });
 
@@ -41,7 +41,7 @@ describe("CycleTimer", () => {
       expect(cycleTimer.isRunning).toBeTruthy();
 
       jest.runOnlyPendingTimers();
-      expect(mockGhost.changeHuntingState).toHaveBeenCalledTimes(2);
+      expect(mockGhost.changeChasingState).toHaveBeenCalledTimes(2);
       expect(setTimeout).toHaveBeenCalledTimes(2);
       expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 20000);
     });

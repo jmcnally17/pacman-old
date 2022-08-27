@@ -1,6 +1,6 @@
 import addCoordinates from "./addCoordinates";
 import calculateHypotenuse from "./calculateHypotenuse";
-import hunt from "./hunt/hunt";
+import chase from "./chase/chase";
 import scatter from "./scatter/scatter";
 
 export default function calculateDistance(
@@ -10,14 +10,14 @@ export default function calculateDistance(
   variables,
   redGhost,
   callbackOne = addCoordinates,
-  callbackTwo = hunt,
+  callbackTwo = chase,
   callbackThree = scatter,
   callbackFour = calculateHypotenuse
 ) {
   pathways.forEach((pathway) => {
     callbackOne(pathway, ghost, variables);
     let displacementFromAim;
-    if (ghost.isHunting) {
+    if (ghost.isChasing) {
       displacementFromAim = callbackTwo(
         ghost,
         pathway,
@@ -25,7 +25,7 @@ export default function calculateDistance(
         variables,
         redGhost
       );
-    } else if (!ghost.isHunting) {
+    } else if (!ghost.isChasing) {
       displacementFromAim = callbackThree(ghost, pathway);
     }
     callbackFour(displacementFromAim, pathway);

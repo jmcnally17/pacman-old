@@ -10,7 +10,7 @@ export default class Ghost {
     this.prevCollisions = [];
     this.speed = this.tileLength / 8;
     this.isScared = false;
-    this.isHunting = false;
+    this.isChasing = false;
     this.isRetreating = false;
     this.retreatingTimer = null;
     this.image = new Image();
@@ -53,8 +53,8 @@ export default class Ghost {
     this.isScared = this.isScared ? false : true;
   }
 
-  changeHuntingState() {
-    this.isHunting = this.isHunting ? false : true;
+  changeChasingState() {
+    this.isChasing = this.isChasing ? false : true;
   }
 
   changeRetreatingState() {
@@ -79,7 +79,7 @@ export default class Ghost {
 
   #resetStates() {
     if (this.isScared) this.changeScaredState();
-    if (this.isHunting) this.changeHuntingState();
+    if (this.isChasing) this.changeChasingState();
     this.retreatingTimer.reset();
     if (this.isRetreating) this.changeRetreatingState();
   }

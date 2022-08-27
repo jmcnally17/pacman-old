@@ -4,7 +4,7 @@ import findCyanAimPath from "./findCyanAimPath";
 import findPinkAimPath from "./findPinkAimPath";
 import findRedOrangeAimPath from "./findRedOrangeAimPath";
 
-export default function hunt(
+export default function chase(
   ghost,
   pathway,
   pacman,

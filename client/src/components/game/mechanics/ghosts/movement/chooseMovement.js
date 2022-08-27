@@ -1,4 +1,4 @@
-import huntAndScatter from "./huntAndScatter/huntAndScatter";
+import chaseAndScatter from "./chaseAndScatter/chaseAndScatter";
 import moveRandomly from "./random/moveRandomly";
 
 export default function chooseMovement(
@@ -7,7 +7,7 @@ export default function chooseMovement(
   collisions,
   variables,
   redGhost,
-  callbackOne = huntAndScatter,
+  callbackOne = chaseAndScatter,
   callbackTwo = moveRandomly
 ) {
   if (!ghost.isScared && !ghost.isRetreating) {

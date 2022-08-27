@@ -23,7 +23,7 @@ Also, a huge thank you to [Chris Courses](https://www.youtube.com/c/ChrisCourses
 
 ## Gameplay
 
-The player can use the directional keys to move Pac-Man within the boundaries around the board. The four ghosts will periodically cycle through scattering and hunting Pac-Man and will move randomly while in their scared state or retreating state. For mobile and tablet users who don't have a keyboard, a D-pad is displayed under the game board that they can click which trigger keyboard events for arrow keys.
+The player can use the directional keys to move Pac-Man within the boundaries around the board. The four ghosts will periodically cycle through scattering and chasing Pac-Man and will move randomly while in their scared state or retreating state. For mobile and tablet users who don't have a keyboard, a D-pad is displayed under the game board that they can click which trigger keyboard events for arrow keys.
 
 ### Rules
 
@@ -40,11 +40,11 @@ The player can use the directional keys to move Pac-Man within the boundaries ar
 
 ## Ghost Movement
 
-The ghosts have three patterns of moving: scatter, hunt, and random. When the game starts, the ghosts begin moving in their scatter-hunt cycle. In one cycle, the ghosts move in their scatter pattern for 7 seconds and then in their hunting pattern for 20 seconds. This cycle repeats until the player either loses a life or levels up, at which point the cycle resets and starts over again.
+The ghosts have three patterns of moving: scatter, chase, and random. When the game starts, the ghosts begin moving in their scatter-chase cycle. In one cycle, the ghosts move in their scatter pattern for 7 seconds and then in their chasing pattern for 20 seconds. This cycle repeats until the player either loses a life or levels up, at which point the cycle resets and starts over again.
 
-Each ghost moves in their random pattern when a power up is eaten by Pac-Man, which slows the ghosts down while they are in their scared state. During this scared phase, the scatter-hunt cycle timer is paused and resumes once the scared timer duration is up. If a power up is eaten while the effects of a previous power up still linger, the scared phase simply starts again with a fresh timer. The duration of this scared timer depends on what level the player is currently in. It starts off at 7 seconds in level 1 and subsequently decreases by half a second every level up until it reaches 0 seconds in level 15. After which, the power ups will essentially have no effect, other than adding 50 points to the player's score.
+Each ghost moves in their random pattern when a power up is eaten by Pac-Man, which slows the ghosts down while they are in their scared state. During this scared phase, the scatter-chase cycle timer is paused and resumes once the scared timer duration is up. If a power up is eaten while the effects of a previous power up still linger, the scared phase simply starts again with a fresh timer. The duration of this scared timer depends on what level the player is currently in. It starts off at 7 seconds in level 1 and subsequently decreases by half a second every level up until it reaches 0 seconds in level 15. After which, the power ups will essentially have no effect, other than adding 50 points to the player's score.
 
-They also move in their random pattern when in retreating mode which occurs when Pac-Man collides with them when they are scared. This mode lasts for 3 seconds, during which the collision mechanics of Pac-Man and that particular ghost are deactivated and the ghost's speed is increased. After the 3 seconds are up, the ghost returns to the hunt and scatter cycle. During the ghost's random pattern, anytime they encounter a crossroads, they will pick a direction at random using Javascripts in built `Math.random()` function.
+They also move in their random pattern when in retreating mode which occurs when Pac-Man collides with them when they are scared. This mode lasts for 3 seconds, during which the collision mechanics of Pac-Man and that particular ghost are deactivated and the ghost's speed is increased. After the 3 seconds are up, the ghost returns to the chase and scatter cycle. During the ghost's random pattern, anytime they encounter a crossroads, they will pick a direction at random using Javascripts in built `Math.random()` function.
 
 ### Scattering
 
@@ -58,28 +58,28 @@ Each ghost has their own target tile during their scatter movement pattern. Thes
   <b>Fig.1 -</b> A screenshot of the gameboard with each ghost in their respective corner during their scatter movement. Each path the ghosts take while circling around each corner is shown with the green crosses in each corner respresenting the specific spot on the board the ghosts are targeting
 </p>
 
-### Hunting
+### Chasing
 
 Red:
 
-- The red ghost has the simplest hunting movement. It will simply aim for Pac-Man's position by choosing the direction which is the shortest direct distance from Pac-Man. This means that often, the red ghost will follow Pac-Man from behind as they move throughout the board.
+- The red ghost has the simplest chasing movement. It will simply aim for Pac-Man's position by choosing the direction which is the shortest direct distance from Pac-Man. This means that often, the red ghost will follow Pac-Man from behind as they move throughout the board.
 
 Pink:
 
-- The pink ghost has the next simplest hunting movement. It will always aim for four tiles directly in front of Pac-Man in an attempt to ambush Pac-Man from the front. In the original version, when Pac-Man was facing upwards, the pink ghost would aim for four tiles above and four tiles to the left. This was due to an overflow error in the original code when using a hexadecimal coordinate system. In this project however, the coordinates are simply integers on a HTML canvas object and therefore do not run into this issue.
+- The pink ghost has the next simplest chasing movement. It will always aim for four tiles directly in front of Pac-Man in an attempt to ambush Pac-Man from the front. In the original version, when Pac-Man was facing upwards, the pink ghost would aim for four tiles above and four tiles to the left. This was due to an overflow error in the original code when using a hexadecimal coordinate system. In this project however, the coordinates are simply integers on a HTML canvas object and therefore do not run into this issue.
 
 Cyan:
 
-- The cyan ghost's hunting movement is the most complex of the four. It not only depends on Pac-Man's position but also on the red ghost's position. First the position two tiles in front of Pac-Man is found. Then, the vector from this intermediate position to the red ghost's position is rotated 180&deg; to give the cyan ghost's target position in an attempt to flank Pac-Man. This means the cyan ghost's movement can be difficult to predict due to the constantly changing positions of the characters on the board. In the original version, the intermediate position when Pac-Man is facing upwards is two tiles up and two tiles to the left due to the same overflow error mentioned in the pink ghost's movement. Again however, due to this projects coordinate system this bug is not encountered.
+- The cyan ghost's chasing movement is the most complex of the four. It not only depends on Pac-Man's position but also on the red ghost's position. First the position two tiles in front of Pac-Man is found. Then, the vector from this intermediate position to the red ghost's position is rotated 180&deg; to give the cyan ghost's target position in an attempt to flank Pac-Man. This means the cyan ghost's movement can be difficult to predict due to the constantly changing positions of the characters on the board. In the original version, the intermediate position when Pac-Man is facing upwards is two tiles up and two tiles to the left due to the same overflow error mentioned in the pink ghost's movement. Again however, due to this projects coordinate system this bug is not encountered.
 
 Orange:
 
-- The orange ghost has a more peculiar hunting movment. When it is further than eight tile lengths away from Pac-Man, it will aim for Pac-Man's current position just like the red ghost. However, when the orange ghost is eight tiles or closer to Pac-Man, it will start carrying out its scatter movement and aim for the bottom left corner. This means there are actually very few spots where Pac-Man can remain still and the orange ghost can catch him, with most of them being in the bottom left corner.
+- The orange ghost has a more peculiar chasing movment. When it is further than eight tile lengths away from Pac-Man, it will aim for Pac-Man's current position just like the red ghost. However, when the orange ghost is eight tiles or closer to Pac-Man, it will start carrying out its scatter movement and aim for the bottom left corner. This means there are actually very few spots where Pac-Man can remain still and the orange ghost can catch him, with most of them being in the bottom left corner.
 
 &nbsp;
 
 <p align="center">
-  <img src="./images/huntingPath.png" width="100%">
+  <img src="./images/chasingPath.png" width="100%">
 </p>
 
 <p align="center">

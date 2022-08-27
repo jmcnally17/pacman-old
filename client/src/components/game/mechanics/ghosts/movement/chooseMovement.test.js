@@ -4,7 +4,7 @@ let mockPacman;
 let mockCollisions;
 let mockVariables;
 let mockRedGhost;
-let mockhuntAndScatter;
+let mockchaseAndScatter;
 let mockMoveRandomly;
 
 describe("chooseMovement", () => {
@@ -13,11 +13,11 @@ describe("chooseMovement", () => {
     mockCollisions = "collisions";
     mockVariables = "variables";
     mockRedGhost = "redGhost";
-    mockhuntAndScatter = jest.fn();
+    mockchaseAndScatter = jest.fn();
     mockMoveRandomly = jest.fn();
   });
 
-  it("calls huntAndScatter if the ghost is not scared or retreating", () => {
+  it("calls chaseAndScatter if the ghost is not scared or retreating", () => {
     const mockGhost = {
       isScared: false,
       isRetreating: false,
@@ -28,11 +28,11 @@ describe("chooseMovement", () => {
       mockCollisions,
       mockVariables,
       mockRedGhost,
-      mockhuntAndScatter,
+      mockchaseAndScatter,
       mockMoveRandomly
     );
-    expect(mockhuntAndScatter).toHaveBeenCalledTimes(1);
-    expect(mockhuntAndScatter).toHaveBeenCalledWith(
+    expect(mockchaseAndScatter).toHaveBeenCalledTimes(1);
+    expect(mockchaseAndScatter).toHaveBeenCalledWith(
       mockGhost,
       mockPacman,
       mockCollisions,
@@ -51,7 +51,7 @@ describe("chooseMovement", () => {
       mockCollisions,
       mockVariables,
       mockRedGhost,
-      mockhuntAndScatter,
+      mockchaseAndScatter,
       mockMoveRandomly
     );
     expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
@@ -69,7 +69,7 @@ describe("chooseMovement", () => {
       mockCollisions,
       mockVariables,
       mockRedGhost,
-      mockhuntAndScatter,
+      mockchaseAndScatter,
       mockMoveRandomly
     );
     expect(mockMoveRandomly).toHaveBeenCalledTimes(1);
