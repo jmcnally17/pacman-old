@@ -1,4 +1,4 @@
-import huntAndScatter from "./huntAndScatter";
+import chaseAndScatter from "./chaseAndScatter";
 
 let mockGhost;
 let mockPacman;
@@ -9,7 +9,7 @@ let mockCalculateDistance;
 let mockpickDirection;
 let mockEmptyPrevCollisions;
 
-describe("huntAndScatter", () => {
+describe("chaseAndScatter", () => {
   beforeEach(() => {
     mockGhost = {
       position: {
@@ -32,7 +32,7 @@ describe("huntAndScatter", () => {
   });
 
   it("adds right to the prevCollisions array if the ghost is moving to the right", () => {
-    huntAndScatter(
+    chaseAndScatter(
       mockGhost,
       mockPacman,
       collisions,
@@ -50,7 +50,7 @@ describe("huntAndScatter", () => {
       x: -4,
       y: 0,
     };
-    huntAndScatter(
+    chaseAndScatter(
       mockGhost,
       mockPacman,
       collisions,
@@ -68,7 +68,7 @@ describe("huntAndScatter", () => {
       x: 0,
       y: -4,
     };
-    huntAndScatter(
+    chaseAndScatter(
       mockGhost,
       mockPacman,
       collisions,
@@ -86,7 +86,7 @@ describe("huntAndScatter", () => {
       x: 0,
       y: 4,
     };
-    huntAndScatter(
+    chaseAndScatter(
       mockGhost,
       mockPacman,
       collisions,
@@ -100,7 +100,7 @@ describe("huntAndScatter", () => {
   });
 
   it("calls calculateDistance", () => {
-    huntAndScatter(
+    chaseAndScatter(
       mockGhost,
       mockPacman,
       collisions,
@@ -121,7 +121,7 @@ describe("huntAndScatter", () => {
   });
 
   it("calls pickDirection", () => {
-    huntAndScatter(
+    chaseAndScatter(
       mockGhost,
       mockPacman,
       collisions,
@@ -139,7 +139,7 @@ describe("huntAndScatter", () => {
   });
 
   it("calls emptyPrevCollisions", () => {
-    huntAndScatter(
+    chaseAndScatter(
       mockGhost,
       mockPacman,
       collisions,

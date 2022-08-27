@@ -1,4 +1,4 @@
-import hunt from "./hunt";
+import chase from "./chase";
 
 let mockPathway;
 let mockPacman;
@@ -10,7 +10,7 @@ let mockFindPinkAimPath;
 let mockFindCyanAimPath;
 let mockFindOrangeScatterPath;
 
-describe("hunt", () => {
+describe("chase", () => {
   beforeEach(() => {
     mockPathway = "pathway";
     mockPacman = "pacman";
@@ -27,7 +27,7 @@ describe("hunt", () => {
     const mockRedGhost = {
       colour: "red",
     };
-    hunt(
+    chase(
       mockRedGhost,
       mockPathway,
       mockPacman,
@@ -50,7 +50,7 @@ describe("hunt", () => {
     const mockPinkGhost = {
       colour: "pink",
     };
-    hunt(
+    chase(
       mockPinkGhost,
       mockPathway,
       mockPacman,
@@ -74,7 +74,7 @@ describe("hunt", () => {
     const mockCyanGhost = {
       colour: "cyan",
     };
-    hunt(
+    chase(
       mockCyanGhost,
       mockPathway,
       mockPacman,
@@ -99,7 +99,7 @@ describe("hunt", () => {
     const mockOrangeGhost = {
       colour: "orange",
     };
-    hunt(
+    chase(
       mockOrangeGhost,
       mockPathway,
       mockPacman,
@@ -124,7 +124,7 @@ describe("hunt", () => {
       colour: "orange",
     };
     mockIsOrangeFarFromPacman.mockReturnValue(true);
-    hunt(
+    chase(
       mockOrangeGhost,
       mockPathway,
       mockPacman,
@@ -148,7 +148,7 @@ describe("hunt", () => {
       colour: "orange",
     };
     mockIsOrangeFarFromPacman.mockReturnValue(false);
-    hunt(
+    chase(
       mockOrangeGhost,
       mockPathway,
       mockPacman,

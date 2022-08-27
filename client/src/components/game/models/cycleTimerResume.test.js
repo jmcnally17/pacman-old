@@ -6,10 +6,10 @@ describe("CycleTimer", () => {
   describe("resume", () => {
     it("calls setTimeout with the timeRemaining as the delay", () => {
       const mockGhost = {
-        changeHuntingState: () => true,
+        changeChasingState: () => true,
       };
       const mockGhosts = [mockGhost, mockGhost];
-      jest.spyOn(mockGhost, "changeHuntingState");
+      jest.spyOn(mockGhost, "changeChasingState");
       const cycleTimer = new CycleTimer(mockGhosts);
       jest.spyOn(global, "setTimeout");
       cycleTimer.timeRemaining = 4820;
@@ -21,7 +21,7 @@ describe("CycleTimer", () => {
       expect(cycleTimer.isRunning).toBeTruthy();
 
       jest.runOnlyPendingTimers();
-      expect(mockGhost.changeHuntingState).toHaveBeenCalledTimes(2);
+      expect(mockGhost.changeChasingState).toHaveBeenCalledTimes(2);
       expect(setTimeout).toHaveBeenCalledTimes(2);
       expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 7000);
     });

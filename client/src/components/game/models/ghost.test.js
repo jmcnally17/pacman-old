@@ -1,7 +1,7 @@
 import Ghost from "./ghost";
 
 let ghost;
-let scaredHuntingRetreatingGhost;
+let scaredChasingRetreatingGhost;
 let mockRetreatingTimer;
 let mockCtx;
 
@@ -21,7 +21,7 @@ describe("Ghost", () => {
       },
       20
     );
-    scaredHuntingRetreatingGhost = new Ghost(
+    scaredChasingRetreatingGhost = new Ghost(
       {
         position: {
           x: 20,
@@ -35,13 +35,13 @@ describe("Ghost", () => {
       },
       20
     );
-    scaredHuntingRetreatingGhost.isScared = true;
-    scaredHuntingRetreatingGhost.isHunting = true;
-    scaredHuntingRetreatingGhost.isRetreating = true;
+    scaredChasingRetreatingGhost.isScared = true;
+    scaredChasingRetreatingGhost.isChasing = true;
+    scaredChasingRetreatingGhost.isRetreating = true;
     mockRetreatingTimer = {
       reset: () => undefined,
     };
-    scaredHuntingRetreatingGhost.retreatingTimer = mockRetreatingTimer;
+    scaredChasingRetreatingGhost.retreatingTimer = mockRetreatingTimer;
     jest.spyOn(mockRetreatingTimer, "reset");
     mockCtx = {
       drawImage: () => undefined,
@@ -72,7 +72,7 @@ describe("Ghost", () => {
       expect(ghost.prevCollisions).toEqual([]);
       expect(ghost.speed).toBe(2.5);
       expect(ghost.isScared).toBeFalsy();
-      expect(ghost.isHunting).toBeFalsy();
+      expect(ghost.isChasing).toBeFalsy();
       expect(ghost.isRetreating).toBeFalsy();
       expect(ghost.retreatingTimer).toBeNull();
       expect(ghost.image).toBeInstanceOf(Image);
@@ -130,20 +130,20 @@ describe("Ghost", () => {
     });
 
     it("can change isScared to false when called", () => {
-      scaredHuntingRetreatingGhost.changeScaredState();
-      expect(scaredHuntingRetreatingGhost.isScared).toBeFalsy();
+      scaredChasingRetreatingGhost.changeScaredState();
+      expect(scaredChasingRetreatingGhost.isScared).toBeFalsy();
     });
   });
 
-  describe("changeHuntingState", () => {
-    it("can change isHunting to true when called", () => {
-      ghost.changeHuntingState();
-      expect(ghost.isHunting).toBeTruthy();
+  describe("changeChasingState", () => {
+    it("can change isChasing to true when called", () => {
+      ghost.changeChasingState();
+      expect(ghost.isChasing).toBeTruthy();
     });
 
-    it("can change isHunting to false when called", () => {
-      scaredHuntingRetreatingGhost.changeHuntingState();
-      expect(scaredHuntingRetreatingGhost.isHunting).toBeFalsy();
+    it("can change isChasing to false when called", () => {
+      scaredChasingRetreatingGhost.changeChasingState();
+      expect(scaredChasingRetreatingGhost.isChasing).toBeFalsy();
     });
   });
 
@@ -154,34 +154,34 @@ describe("Ghost", () => {
     });
 
     it("can change isRetreating to false when called", () => {
-      scaredHuntingRetreatingGhost.changeRetreatingState();
-      expect(scaredHuntingRetreatingGhost.isRetreating).toBeFalsy();
+      scaredChasingRetreatingGhost.changeRetreatingState();
+      expect(scaredChasingRetreatingGhost.isRetreating).toBeFalsy();
     });
   });
 
   describe("reset", () => {
     it("changes the ghosts parameters back to their original configuration", () => {
-      scaredHuntingRetreatingGhost.position.x += 20;
-      scaredHuntingRetreatingGhost.position.y += 20;
-      scaredHuntingRetreatingGhost.velocity.x += 5;
-      scaredHuntingRetreatingGhost.velocity.y += 10;
-      scaredHuntingRetreatingGhost.speed = 16;
-      scaredHuntingRetreatingGhost.prevCollisions.push("up");
-      scaredHuntingRetreatingGhost.reset();
-      expect(scaredHuntingRetreatingGhost.position).toEqual({
+      scaredChasingRetreatingGhost.position.x += 20;
+      scaredChasingRetreatingGhost.position.y += 20;
+      scaredChasingRetreatingGhost.velocity.x += 5;
+      scaredChasingRetreatingGhost.velocity.y += 10;
+      scaredChasingRetreatingGhost.speed = 16;
+      scaredChasingRetreatingGhost.prevCollisions.push("up");
+      scaredChasingRetreatingGhost.reset();
+      expect(scaredChasingRetreatingGhost.position).toEqual({
         x: 20,
         y: 20,
       });
-      expect(scaredHuntingRetreatingGhost.velocity).toEqual({
+      expect(scaredChasingRetreatingGhost.velocity).toEqual({
         x: 7.5,
         y: 2.5,
       });
-      expect(scaredHuntingRetreatingGhost.speed).toBe(2.5);
-      expect(scaredHuntingRetreatingGhost.prevCollisions).toEqual([]);
-      expect(scaredHuntingRetreatingGhost.isScared).toBeFalsy();
-      expect(scaredHuntingRetreatingGhost.isHunting).toBeFalsy();
+      expect(scaredChasingRetreatingGhost.speed).toBe(2.5);
+      expect(scaredChasingRetreatingGhost.prevCollisions).toEqual([]);
+      expect(scaredChasingRetreatingGhost.isScared).toBeFalsy();
+      expect(scaredChasingRetreatingGhost.isChasing).toBeFalsy();
       expect(mockRetreatingTimer.reset).toHaveBeenCalledTimes(1);
-      expect(scaredHuntingRetreatingGhost.isRetreating).toBeFalsy();
+      expect(scaredChasingRetreatingGhost.isRetreating).toBeFalsy();
     });
 
     it("leaves isScared as false if it is already false", () => {
@@ -190,10 +190,10 @@ describe("Ghost", () => {
       expect(ghost.isScared).toBeFalsy();
     });
 
-    it("leaves the hunting state as false if it is already false", () => {
+    it("leaves the chasing state as false if it is already false", () => {
       ghost.retreatingTimer = mockRetreatingTimer;
       ghost.reset();
-      expect(ghost.isHunting).toBeFalsy();
+      expect(ghost.isChasing).toBeFalsy();
     });
 
     it("leaves the retreating state as false if it is already false", () => {
