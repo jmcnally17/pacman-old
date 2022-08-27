@@ -7,7 +7,7 @@
 var app = require("../app");
 var debug = require("debug")("pacman:server");
 var http = require("http");
-var mongoose = require("mongoose");
+var Sequelize = require("sequelize");
 
 /**
  * Get port from environment and store in Express.
@@ -17,17 +17,16 @@ var port = normalizePort(process.env.PORT || "9000");
 app.set("port", port);
 
 /**
- * Connect to MongoDB
+ * Connect to PostgreSQL.
  */
 
-var mongoDbUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1/pacman";
-mongoose.connect(mongoDbUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-var db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
+var sequelize = new Sequelize("postgres://127.0.0.1/pacman");
+try {
+  sequelize.authenticate();
+  console.log("Connection has been established successfully.");
+} catch (error) {
+  console.error("Unable to connect to the database:", error);
+}
 
 /**
  * Create HTTP server.

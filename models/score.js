@@ -1,10 +1,13 @@
-const mongoose = require("mongoose");
+const Sequelize = require("sequelize");
+var sequelize = new Sequelize("postgres://127.0.0.1/pacman");
 
-const ScoreSchema = new mongoose.Schema({
-  name: String,
-  points: Number,
+const Score = sequelize.define("scores", {
+  name: Sequelize.STRING,
+  points: Sequelize.INTEGER,
 });
 
-const Score = mongoose.model("Score", ScoreSchema);
+sequelize
+  .sync()
+  .then(() => console.log("Database and table have been created/found"));
 
 module.exports = Score;
