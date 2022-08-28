@@ -5,8 +5,6 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 
-const scoresRouter = require("./routes/scores");
-
 const app = express();
 
 const url = process.env.REACT_APP_URL || "http://localhost:3000";
@@ -23,8 +21,6 @@ app.use(
     credentials: true,
   })
 );
-
-app.use("/backend/scores", scoresRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));

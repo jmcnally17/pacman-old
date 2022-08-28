@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI frontend
 
 # Controls when the workflow will run
 on:
@@ -21,7 +21,6 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        mongodb-version: ['5.0.7']
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -33,11 +32,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       
-      - name: Start MongoDB
-        uses: supercharge/mongodb-github-action@1.7.0
-        with:
-          mongodb-version: ${{ matrix.mongodb-version }}
-      
       - name: Install backend dependencies
         run: npm install
         
@@ -46,4 +40,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Testing
-        run: npm run test
+        run: npm run test:client
