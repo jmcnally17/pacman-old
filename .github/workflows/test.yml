@@ -33,15 +33,13 @@ jobs:
       - name: Create database
         run: |
           sudo -u postgres createdb pacman_test
+          psql --host=localhost --list pacman_test
       
       - name: Install backend dependencies
         run: npm install
         
       - name: Install frontend dependencies
         run: npm install --prefix ./client
-
-      - name: Run migration
-        run: npm run migration:test
 
       - name: Testing
         run: npm run test
