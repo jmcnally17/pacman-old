@@ -36,8 +36,8 @@ jobs:
       - name: Install frontend dependencies
         run: npm install --prefix ./client
 
-      - name: Sequelize migration
-        run: npm run migration:test
+      # - name: Sequelize migration
+      #   run: npm run migration:test
 
       - name: Testing
         run: npm run test:client
