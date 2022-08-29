@@ -6,6 +6,7 @@
     "start": "nodemon ./bin/www",
     "db:create:test": "npx sequelize-cli db:create --env test",
     "migration:test": "npx sequelize-cli db:migrate --env test",
+    "setup:test": "npm run db:create:test && npm run migration:test",
     "test:unit": "jest spec --detectOpenHandles",
     "test:unit:coverage": "jest spec --detectOpenHandles --coverage",
     "test:client": "cd client && CI=true npm test",
