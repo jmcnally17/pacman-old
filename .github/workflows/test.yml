@@ -1,4 +1,4 @@
-name: CI
+name: CI frontend
 
 # Controls when the workflow will run
 on:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:  
 
 jobs:
-  test:
+  test-frontend:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,15 +24,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Start PostgreSQL
-        run: |
-          sudo systemctl start postgresql.service
-          pg_isready
-      
-      - name: Create database
-        run: |
-          sudo -u postgres createdb pacman_test
       
       - name: Install backend dependencies
         run: npm install
@@ -41,4 +32,4 @@ jobs:
         run: npm install --prefix ./client
 
       - name: Testing
-        run: npm run test
+        run: npm run test:client
