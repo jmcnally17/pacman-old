@@ -133,7 +133,7 @@ Now, you can clone this repository:
 git clone https://github.com/jmcnally17/pacman
 ```
 
-Both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively. Now the database and table need to be set up, so while in the main directory, run:
+Both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively. Then the database and table need to be set up, so while in the main directory, run:
 
 ```
 npm run db:create
