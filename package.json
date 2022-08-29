@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test:unit": "jest spec",
-    "test:unit:coverage": "jest spec --coverage",
+    "db:create": "npx sequelize-cli db:create",
+    "migration": "npx sequelize-cli db:migrate",
+    "test:unit": "jest spec --detectOpenHandles",
+    "test:unit:coverage": "jest spec --detectOpenHandles --coverage",
     "test:client": "cd client && CI=true npm test",
     "test:client:coverage": "cd client && CI=true npm test -- --coverage",
     "test": "npm run test:unit && npm run test:client",
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "jest": "^28.1.2",
-    "sequelize-cli": "^6.4.1"
+    "sequelize-cli": "^6.4.1",
+    "supertest": "^6.2.4"
   }
 }

@@ -38,6 +38,9 @@ jobs:
       - name: Install frontend dependencies
         run: npm install --prefix ./client
 
+      - name: Setup PostgreSQL database
+        run: "npm run db:create && npm run migration"
+
       # Runs a single command using the runners shell
       - name: Testing
-        run: npm run test:client
+        run: npm run test
