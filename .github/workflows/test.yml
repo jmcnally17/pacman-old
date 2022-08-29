@@ -7,10 +7,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
-  workflow_dispatch:
+  workflow_dispatch:  
 
-jobs:
-  test-fronted:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,12 +23,20 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: Setup PostgreSQL
+        uses: Harmon758/postgresql-action@v1.0.0
+        with:
+          postgresql db: pacman_test
       
       - name: Install backend dependencies
         run: npm install
         
       - name: Install frontend dependencies
         run: npm install --prefix ./client
+
+      - name: Sequelize migration
+        run: npm run migration:test
 
       - name: Testing
         run: npm run test:client
