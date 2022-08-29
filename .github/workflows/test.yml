@@ -39,7 +39,7 @@ jobs:
         run: npm install --prefix ./client
 
       - name: Setup PostgreSQL database
-        run: "npm run db:create && npm run migration"
+        run: "npm run db:create:test && npm run migration:test"
 
       # Runs a single command using the runners shell
       - name: Testing
