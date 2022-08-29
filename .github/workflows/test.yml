@@ -41,7 +41,7 @@ jobs:
       - name: Install SQL Server
         uses: Particular/install-sql-server-action@v1.0.0
         with:
-          connection-string-env-vars: SQL_SERVER_CONNECTION_STRING
+          connection-string-env-var: SQL_SERVER_CONNECTION_STRING
           catalog: pacman_test
 
       - name: Setup PostgreSQL database
