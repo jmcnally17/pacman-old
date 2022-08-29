@@ -32,7 +32,7 @@ jobs:
       
       - name: Create database
         run: |
-          sudo -u postgres createdb --owner=postgres pacman_test
+          sudo -u postgres createdb pacman_test
       
       - name: Install backend dependencies
         run: npm install
