@@ -25,10 +25,19 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Setup PostgreSQL
-        uses: Harmon758/postgresql-action@v1.0.0
-        with:
-          postgresql db: pacman_test
+      - name: Start PostgreSQL
+        run: |
+          sudo systemctl start postgresql.service
+          pg_isready
+
+      - name: Create scheduler user
+        run: |
+          sudo -u postgres psql --command="CREATE USER scheduler PASSWORD 'somestring'" --command="\du"
+      
+      - name: Create database
+        run: |
+          sudo -u postgres createdb --owner=scheduler pacman_test
+          PGPASSWORD=somestring psql --username=scheduler --host=localhost --list pacman_test
       
       - name: Install backend dependencies
         run: npm install
@@ -36,8 +45,8 @@ jobs:
       - name: Install frontend dependencies
         run: npm install --prefix ./client
 
-      # - name: Sequelize migration
-      #   run: npm run migration:test
+      - name: Run migration
+        run: npm run migration:test
 
       - name: Testing
         run: npm run test
