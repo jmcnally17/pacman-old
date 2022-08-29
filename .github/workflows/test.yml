@@ -9,7 +9,8 @@ on:
 
   workflow_dispatch:  
 
-  build:
+jobs:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
