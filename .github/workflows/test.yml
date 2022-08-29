@@ -15,26 +15,9 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  test:
-    name: Test
+  build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_DB: pacman_test
-          POSTGRES_PASSWORD: "postgres"
-          POSTGRES_USER:  postgres
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    env:
-      DB_Test_URL: postgres://postgres:postgres@0.0.0.0:5432/pacman_test
     strategy:
       matrix:
         node-version: [18.x]
@@ -54,6 +37,12 @@ jobs:
         
       - name: Install frontend dependencies
         run: npm install --prefix ./client
+
+      - name: Install SQL Server
+        uses: Particular/install-sql-server-action@v1.0.0
+        with:
+          connection-string-env-vars: SQL_SERVER_CONNECTION_STRING
+          catalog: pacman_test
 
       - name: Setup PostgreSQL database
         run: npm run migration:test
