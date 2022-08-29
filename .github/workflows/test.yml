@@ -29,15 +29,10 @@ jobs:
         run: |
           sudo systemctl start postgresql.service
           pg_isready
-
-      - name: Create scheduler user
-        run: |
-          sudo -u postgres psql --command="CREATE USER scheduler PASSWORD 'somestring'" --command="\du"
       
       - name: Create database
         run: |
-          sudo -u postgres createdb --owner=scheduler pacman_test
-          PGPASSWORD=somestring psql --username=scheduler --host=localhost --list pacman_test
+          sudo -u postgres createdb --owner=postgres pacman_test
       
       - name: Install backend dependencies
         run: npm install
