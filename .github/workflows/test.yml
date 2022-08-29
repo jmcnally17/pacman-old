@@ -40,4 +40,4 @@ jobs:
       #   run: npm run migration:test
 
       - name: Testing
-        run: npm run test:client
+        run: npm run test
