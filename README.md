@@ -1,6 +1,6 @@
 # Pac-Man <img src="./client/public/images/redGhostRight.png" height="30"> <img src="./client/public/images/pinkGhostRight.png" height="30"> <img src="./client/public/images/cyanGhostRight.png" height="30"> <img src="./client/public/images/orangeGhostRight.png" height="30"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./client/public/images/scaredGhostBlue.png" height="30">
 
-This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a MongoDB Atlas database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can see how well they did.
+This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a PostgreSQL database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did.
 
 [<img src="./images/pacmanPlayButton.png">](https://pacman-clone.herokuapp.com/)
 
@@ -8,12 +8,12 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 
 - [Miro](https://miro.com/index/) for planning the layout (Board can be found [here](https://miro.com/app/board/uXjVOo0XLMk=/?share_link_id=344912241548))
 - [Trello](https://trello.com/) for monitoring feature progress
-- [Mongoose](https://mongoosejs.com/docs/) for Object Data Modelling (ODM)
+- [Sequelize](https://sequelize.org/) for Object Relation Mapping (ORM)
 - [Express](https://expressjs.com/) for setting up a backend server
 - [React](https://reactjs.org/) for frontend development
 - [Node.js](https://nodejs.org/en/) for the server runtime environment
-- [MongoDB Atlas](https://www.mongodb.com/atlas/database) to store the database
-- [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing
+- [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql) to store the database
+- [Jest](https://jestjs.io/), [Supertest](https://www.npmjs.com/package/supertest) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing
 - [Heroku](https://www.heroku.com/) for deployment
 - [Pexels Draw](https://apps.apple.com/us/app/pexels-draw/id1320744895?mt=12) for creating the boundary images and ghost sprites
 - [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp) as a container for the graphics
@@ -111,18 +111,19 @@ nvm install node
 nvm use node
 ```
 
-`nvm use node` will use the latest stable version. MongoDB will need to be installed as it is the database that stores all the scores. You can do so by using Homebrew (which can be installed using the instructions [here](https://brew.sh/)):
+`nvm use node` will use the latest stable version. PostgreSQL will need to be installed and set up as it is the database that stores all the scores. You can do so by using Homebrew (which can be installed using the instructions [here](https://brew.sh/)):
 
 ```
-brew tap mongodb/brew
-brew install mongodb-community@5.0
+brew install postgresql
 ```
 
-Then, start MongoDB by using:
+Then, start PostgreSQL by using:
 
 ```
-brew services start mongodb-community@5.0
+brew services start postgresql
 ```
+
+Check that it has installed correctly by running `psql postgres` and you should enter the psql interface.
 
 ### How To Use
 
@@ -132,17 +133,27 @@ Now, you can clone this repository:
 git clone https://github.com/jmcnally17/pacman
 ```
 
-Both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively.
+Both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively. Then the database and table need to be set up, so while in the main directory, run:
+
+```
+npm run db:create
+npm run migrate
+```
 
 Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit [http://localhost:3000](http://localhost:3000) in your browser to play the game.
 
 ## Testing
 
+Like when running the app locally, the test database and table also need to be set up. Therefore, like before, run:
+
+```
+npm run db:create:test
+npm run migrate:test
+```
+
+and you should be ready to run the backend tests (PostgreSQL must be installed first).
+
 Tests can be run while in the [main](https://github.com/jmcnally17/pacman) directory by running `npm test`. Code coverage statistics can be be obtained by running `npm run test:coverage`.
-
-## Features Pending
-
-- (Optional) Switch from MongoDB to PostgreSQL to gain experience using a SQL database with JS and Express
 
 ## Create React App and Express Application Generator
 
