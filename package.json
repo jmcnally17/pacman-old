@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "database:create": "npx sequelize-cli db:create",
+    "db:create": "npx sequelize-cli db:create",
     "migrate": "npx sequelize-cli db:migrate",
+    "db:create:test": "npx sequelize-cli db:create --env test",
+    "migrate:test": "npx sequelize-cli db:migrate --env test",
     "test:unit": "jest spec --detectOpenHandles",
     "test:unit:coverage": "jest spec --detectOpenHandles --coverage",
     "test:client": "cd client && CI=true npm test",
