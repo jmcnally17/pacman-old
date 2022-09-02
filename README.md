@@ -153,7 +153,7 @@ npm run migrate:test
 
 and you should be ready to run the backend tests (PostgreSQL must be installed first).
 
-Tests can be run while in the [main](https://github.com/jmcnally17/pacman) directory by running `npm test`. Code coverage statistics can be be obtained by running `npm run test:coverage`.
+Tests can be run while in the [main](https://github.com/jmcnally17/pacman) directory by running `npm test`. Code coverage statistics can be be obtained by running `npm run test:coverage`. Tests were written first in order to adhere to the test-driven-development process by following the Red-Green-Refactor cycle.
 
 ## Create React App and Express Application Generator
 
