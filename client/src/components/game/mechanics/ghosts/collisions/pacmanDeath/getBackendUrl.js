@@ -1,9 +1,9 @@
 export default function getBackendUrl(reactAppUrl) {
   let url;
   if (reactAppUrl) {
-    url = `${reactAppUrl}/backend/scores`;
+    url = `${reactAppUrl}/scores`;
   } else {
-    url = "http://localhost:9000/backend/scores";
+    url = "http://localhost:9000/scores";
   }
   return url;
 }

@@ -8,13 +8,13 @@ describe("Backend routes", () => {
   });
 
   it("show all scores from database", async () => {
-    const res = await request(app).get("/backend/scores");
+    const res = await request(app).get("/scores");
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty("scores");
   });
 
   it("can save a score to the database", async () => {
-    const res = await request(app).post("/backend/scores").send({
+    const res = await request(app).post("/scores").send({
       name: "John",
       points: 2000,
     });

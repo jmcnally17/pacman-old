@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 
 let url;
 if (process.env.REACT_APP_URL) {
-  url = `${process.env.REACT_APP_URL}/backend/scores`;
+  url = `${process.env.REACT_APP_URL}/scores`;
 } else {
-  url = "http://localhost:9000/backend/scores";
+  url = "http://localhost:9000/scores";
 }
 
 export default function Leaderboard({ variables }) {

@@ -24,7 +24,7 @@ app.use(
   })
 );
 
-app.use("/backend/scores", scoresRouter);
+app.use("/scores", scoresRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));

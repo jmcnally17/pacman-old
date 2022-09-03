@@ -10,7 +10,7 @@ const mockScores = [
 ];
 
 const server = setupServer(
-  rest.get("http://localhost:9000/backend/scores", (req, res, ctx) => {
+  rest.get("http://localhost:9000/scores", (req, res, ctx) => {
     return res(
       ctx.json({
         scores: mockScores,
@@ -109,7 +109,7 @@ describe("Leaderboard", () => {
 
   it("displays an error on the page when the fetch fails", async () => {
     server.use(
-      rest.get("http://localhost:9000/backend/scores", (req, res, ctx) => {
+      rest.get("http://localhost:9000/scores", (req, res, ctx) => {
         return res(ctx.status(500));
       })
     );
