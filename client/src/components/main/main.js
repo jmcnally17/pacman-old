@@ -74,7 +74,7 @@ export default function Main() {
           Submit
         </button>
       </div>
-      <p>
+      <p className="instructions">
         Use the directional keys to move Pac-Man around the board while avoiding
         the ghosts as best you can. Pick up a power up and then attack the
         ghosts! Eat all the pellets on the board to level up. (For mobile and
