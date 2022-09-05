@@ -22,3 +22,9 @@
   padding: 4px;
   cursor: pointer;
 }
+
+.instructions {
+  color: white;
+  margin: auto;
+  padding: 20px;
+}
