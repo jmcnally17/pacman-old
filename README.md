@@ -88,7 +88,7 @@ Orange:
 
 ## Running Locally
 
-This app can be run on your localhost. However, a number of frameworks need to be installed which requires some setup to do:
+This app can be run on your localhost. However, a number of frameworks need to be installed which requires some setup to do.
 
 ### Getting Started
 
