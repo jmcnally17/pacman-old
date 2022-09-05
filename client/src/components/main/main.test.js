@@ -30,4 +30,15 @@ describe("Main", () => {
     expect(screen.getByRole("textbox")).toHaveAttribute("placeholder", "Name");
     expect(screen.getByRole("button")).toHaveTextContent("Submit");
   });
+
+  it("contains the instructions text", () => {
+    render(<Main />);
+    const instructionsEl = screen.getByText(
+      "Use the directional keys to move Pac-Man around the board while avoiding the ghosts as best you can. " +
+        "Pick up a power up and then attack the ghosts! " +
+        "Eat all the pellets on the board to level up. " +
+        "(For mobile and tablet users, a D-pad will appear below the board for you to move Pac-Man around)"
+    );
+    expect(instructionsEl).toBeInTheDocument();
+  });
 });
