@@ -157,4 +157,4 @@ Tests can be run while in the [main](https://github.com/jmcnally17/pacman) direc
 
 ## Create React App and Express Application Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Express Application Generator](https://expressjs.com/en/starter/generator.html)..
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Express Application Generator](https://expressjs.com/en/starter/generator.html).
