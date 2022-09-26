@@ -6,11 +6,11 @@ export default class PacMan {
     tileLength,
     munchOne = new Howl({
       src: "./audio/munchOne.wav",
-      volume: 0.4,
+      volume: 0.1,
     }),
     munchTwo = new Howl({
       src: "./audio/munchTwo.wav",
-      volume: 0.4,
+      volume: 0.1,
     })
   ) {
     this.originalPosition = position;
