@@ -10,7 +10,7 @@ export default function makeGhostAudioObjects() {
   const scared = new Howl({
     src: "./audio/scared.wav",
     loop: true,
-    volume: 0.1,
+    volume: 0.08,
   });
   const retreating = new Howl({
     src: "./audio/retreating.wav",
