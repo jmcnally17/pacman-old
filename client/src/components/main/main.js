@@ -34,11 +34,13 @@ export default function Main() {
 
   const handleSubmit = () => {
     if (name === "") {
-      window.alert("You must enter a name");
+      document.getElementById("name-error").innerText = "You must enter a name";
     } else if (name.includes(" ")) {
-      window.alert("Name cannot contain any spaces");
+      document.getElementById("name-error").innerText =
+        "Name cannot contain any spaces";
     } else if (name.length < 3 || name.length > 15) {
-      window.alert("Name must be 3-15 characters long");
+      document.getElementById("name-error").innerText =
+        "Name must be 3-15 characters long";
     } else {
       theme.pause();
       const reactRoot = ReactDOM.createRoot(document.getElementById("main"));
@@ -74,6 +76,7 @@ export default function Main() {
           Submit
         </button>
       </div>
+      <p className="name-error" id="name-error"></p>
       <p className="instructions">
         Use the directional keys to move Pac-Man around the board while avoiding
         the ghosts as best you can. Pick up a power up and then attack the
