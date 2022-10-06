@@ -10,7 +10,7 @@ export default function Main() {
     new Howl({
       src: ["./audio/titleTheme.wav"],
       loop: true,
-      volume: 0.5,
+      volume: 0.3,
     })
   );
 

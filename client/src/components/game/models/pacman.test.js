@@ -9,12 +9,12 @@ describe("PacMan", () => {
   beforeEach(() => {
     mockMunchOne = {
       src: "./audio/munchOne.wav",
-      volume: 0.4,
+      volume: 0.1,
       play: () => undefined,
     };
     mockMunchTwo = {
       src: "./audio/munchTwo.wav",
-      volume: 0.4,
+      volume: 0.1,
       play: () => undefined,
     };
     pacman = new PacMan(
@@ -79,8 +79,8 @@ describe("PacMan", () => {
       expect(pacman.munchTwo).toBe(mockMunchTwo);
       expect(pacman.munchOne.src).toBe("./audio/munchOne.wav");
       expect(pacman.munchTwo.src).toBe("./audio/munchTwo.wav");
-      expect(pacman.munchOne.volume).toBe(0.4);
-      expect(pacman.munchTwo.volume).toBe(0.4);
+      expect(pacman.munchOne.volume).toBe(0.1);
+      expect(pacman.munchTwo.volume).toBe(0.1);
     });
   });
 
