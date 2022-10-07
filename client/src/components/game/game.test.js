@@ -22,7 +22,7 @@ describe("Game", () => {
 
   it("contains the heading with the player's name", () => {
     render(<Game name={"John"} callback={mockPlayGame} />);
-    expect(screen.getByRole("heading")).toHaveTextContent("Let's Play John!");
+    expect(screen.getByRole("heading")).toHaveTextContent("Let's play John!");
   });
 
   it("contains the canvas element for the board", () => {

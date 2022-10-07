@@ -14,7 +14,7 @@ export default function Game({ name, reactRoot, callback = playGame }) {
 
   return (
     <div>
-      <h1>Let&apos;s Play {name}!</h1>
+      <h1>Let&apos;s play {name}!</h1>
       <div className="table">
         <div className="game-info">
           <div className="score" id="score"></div>
