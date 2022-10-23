@@ -38,7 +38,7 @@ The player can use the directional keys to move Pac-Man within the boundaries ar
 - Eating a power up has no effect on scared ghosts other than restarting the scared phase
 - Colliding with a scared ghost sends the ghost into retreating mode for 3 seconds and is worth $2^n \cdot 200$ points where n is the number of scared ghosts attacked since the last power up was eaten
 - Colliding with a ghost that is not scared decreases Pac-Man's lives by 1 and resets character positions on the board
-- Colliding with a ghost that is not scared with no extra lives left ends the game
+- Colliding with a ghost that is not scared when Pac-Man has no extra lives left ends the game
 
 ## Ghost Movement
 
