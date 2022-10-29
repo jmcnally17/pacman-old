@@ -14,6 +14,7 @@ let mockLevelUpAudio;
 let mockUnloadedLevelUpAudio;
 let mockPauseTimers;
 let mockResumeTimers;
+let mockPlayGame;
 let escKeyEvent;
 
 describe("addPauseDetection", () => {
@@ -22,6 +23,8 @@ describe("addPauseDetection", () => {
       animationId: 3950,
       isGamePaused: false,
       pauseEventListener: null,
+      playerName: "John",
+      reactRoot: "undefined",
     };
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
@@ -62,10 +65,11 @@ describe("addPauseDetection", () => {
     };
     mockPauseTimers = jest.fn();
     mockResumeTimers = jest.fn();
+    mockPlayGame = jest.fn();
     escKeyEvent = new KeyboardEvent("keydown", { key: "Escape" });
   });
 
-  it("calls cancelAnimationFrame when isGamePaused is initially false", () => {
+  it("adds an event listener to call cancelAnimationFrame when isGamePaused is initially false", () => {
     addPauseDetection(
       mockVariables,
       mockCycleTimer,
@@ -75,7 +79,8 @@ describe("addPauseDetection", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockPauseTimers,
-      mockResumeTimers
+      mockResumeTimers,
+      mockPlayGame
     );
     jest.spyOn(global, "cancelAnimationFrame");
     window.dispatchEvent(escKeyEvent);
@@ -95,13 +100,14 @@ describe("addPauseDetection", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockPauseTimers,
-      mockResumeTimers
+      mockResumeTimers,
+      mockPlayGame
     );
     expect(mockVariables.pauseEventListener).toEqual(expect.any(Function));
   });
 
-  describe("adds an event listener", () => {
-    it("to change isGamePaused to true if it is initially false", () => {
+  describe("adds an event listener to", () => {
+    it("change isGamePaused to true if it is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -111,13 +117,14 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       window.dispatchEvent(escKeyEvent);
       expect(mockVariables.isGamePaused).toBeTruthy();
     });
 
-    it("to change isGamePaused to false if it is initially true", () => {
+    it("change isGamePaused to false if it is initially true", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -127,14 +134,15 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       mockVariables.isGamePaused = true;
       window.dispatchEvent(escKeyEvent);
       expect(mockVariables.isGamePaused).toBeFalsy();
     });
 
-    it("calls pause on the ghosts siren audio object if isGamePaused is initially false", () => {
+    it("call playGame if isGamePaused is initially true", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -144,14 +152,37 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
+      );
+      mockVariables.isGamePaused = true;
+      window.dispatchEvent(escKeyEvent);
+      expect(mockPlayGame).toHaveBeenCalledTimes(1);
+      expect(mockPlayGame).toHaveBeenCalledWith(
+        mockVariables.playerName,
+        mockVariables.reactRoot
+      );
+    });
+
+    it("call pause on the ghosts siren audio object if isGamePaused is initially false", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers,
+        mockPlayGame
       );
       jest.spyOn(mockSirenAudio, "pause");
       window.dispatchEvent(escKeyEvent);
       expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls pause on the ghosts scared audio object if isGamePaused is initially false", () => {
+    it("call pause on the ghosts scared audio object if isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -161,14 +192,15 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       jest.spyOn(mockScaredAudio, "pause");
       window.dispatchEvent(escKeyEvent);
       expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls pause on the ghosts retreating audio object if isGamePaused is initially false", () => {
+    it("call pause on the ghosts retreating audio object if isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -178,14 +210,15 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       jest.spyOn(mockRetreatingAudio, "pause");
       window.dispatchEvent(escKeyEvent);
       expect(mockRetreatingAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls pause on the pacman death audio if it is loaded and isGamePaused is initially false", () => {
+    it("call pause on the pacman death audio if it is loaded and isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -195,14 +228,15 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       jest.spyOn(mockPacmanDeathAudio, "pause");
       window.dispatchEvent(escKeyEvent);
       expect(mockPacmanDeathAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("does not call pause on the pacman death audio if it is unloaded and isGamePaused is initially false", () => {
+    it("not call pause on the pacman death audio if it is unloaded and isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -212,14 +246,15 @@ describe("addPauseDetection", () => {
         mockUnloadedPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       jest.spyOn(mockUnloadedPacmanDeathAudio, "pause");
       window.dispatchEvent(escKeyEvent);
       expect(mockUnloadedPacmanDeathAudio.pause).toHaveBeenCalledTimes(0);
     });
 
-    it("calls play on the pacman death audio if it is loaded and isGamePaused is initially true", () => {
+    it("call play on the pacman death audio if it is loaded and isGamePaused is initially true", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -229,7 +264,8 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       mockVariables.isGamePaused = true;
       jest.spyOn(mockPacmanDeathAudio, "play");
@@ -237,7 +273,7 @@ describe("addPauseDetection", () => {
       expect(mockPacmanDeathAudio.play).toHaveBeenCalledTimes(1);
     });
 
-    it("does not call play on the pacman death audio if it is unloaded and isGamePaused is initially true", () => {
+    it("not call play on the pacman death audio if it is unloaded and isGamePaused is initially true", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -247,7 +283,8 @@ describe("addPauseDetection", () => {
         mockUnloadedPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       mockVariables.isGamePaused = true;
       jest.spyOn(mockUnloadedPacmanDeathAudio, "play");
@@ -255,7 +292,7 @@ describe("addPauseDetection", () => {
       expect(mockUnloadedPacmanDeathAudio.play).toHaveBeenCalledTimes(0);
     });
 
-    it("calls pause on the level up audio if it is loaded and isGamePaused is initially false", () => {
+    it("call pause on the level up audio if it is loaded and isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -265,14 +302,15 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       jest.spyOn(mockLevelUpAudio, "pause");
       window.dispatchEvent(escKeyEvent);
       expect(mockLevelUpAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("does not call pause on the level up audio if it is unloaded and isGamePaused is initially false", () => {
+    it("not call pause on the level up audio if it is unloaded and isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -282,14 +320,15 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockUnloadedLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       jest.spyOn(mockUnloadedLevelUpAudio, "pause");
       window.dispatchEvent(escKeyEvent);
       expect(mockUnloadedLevelUpAudio.pause).toHaveBeenCalledTimes(0);
     });
 
-    it("calls play on the level up audio if it is loaded and isGamePaused is initially true", () => {
+    it("call play on the level up audio if it is loaded and isGamePaused is initially true", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -299,7 +338,8 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       mockVariables.isGamePaused = true;
       jest.spyOn(mockLevelUpAudio, "play");
@@ -307,7 +347,7 @@ describe("addPauseDetection", () => {
       expect(mockLevelUpAudio.play).toHaveBeenCalledTimes(1);
     });
 
-    it("does not call play on the level up audio if it is unloaded and isGamePaused is initially true", () => {
+    it("not call play on the level up audio if it is unloaded and isGamePaused is initially true", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -317,7 +357,8 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockUnloadedLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       mockVariables.isGamePaused = true;
       jest.spyOn(mockUnloadedLevelUpAudio, "play");
@@ -335,7 +376,8 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       window.dispatchEvent(escKeyEvent);
       expect(mockPauseTimers).toHaveBeenCalledTimes(1);
@@ -356,7 +398,8 @@ describe("addPauseDetection", () => {
         mockPacmanDeathAudio,
         mockLevelUpAudio,
         mockPauseTimers,
-        mockResumeTimers
+        mockResumeTimers,
+        mockPlayGame
       );
       mockVariables.isGamePaused = true;
       window.dispatchEvent(escKeyEvent);

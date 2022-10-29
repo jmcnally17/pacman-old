@@ -1,5 +1,6 @@
 import pauseTimers from "../timers/pauseTimers";
 import resumeTimers from "../timers/resumeTimers";
+import playGame from "../playGame";
 
 export default function addPauseDetection(
   variables,
@@ -10,7 +11,8 @@ export default function addPauseDetection(
   pacmanDeathAudio,
   levelUpAudio,
   callbackOne = pauseTimers,
-  callbackTwo = resumeTimers
+  callbackTwo = resumeTimers,
+  callbackThree = playGame
 ) {
   window.addEventListener(
     "keydown",
@@ -27,6 +29,7 @@ export default function addPauseDetection(
           callbackOne(cycleTimer, scaredTimer, retreatingTimers);
         } else {
           variables.isGamePaused = false;
+          callbackThree(variables.playerName, variables.reactRoot);
           if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.play();
           if (levelUpAudio._state === "loaded") levelUpAudio.play();
           callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
