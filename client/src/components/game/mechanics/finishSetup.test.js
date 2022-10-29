@@ -14,6 +14,7 @@ let mockPacmanDeathAudio;
 let mockLevelUpAudio;
 let mockAddDirectionDetection;
 let mockAddVisibilityDetection;
+let mockAddPauseDetection;
 
 describe("finishSetup", () => {
   beforeEach(() => {
@@ -55,6 +56,7 @@ describe("finishSetup", () => {
     };
     mockAddDirectionDetection = jest.fn();
     mockAddVisibilityDetection = jest.fn();
+    mockAddPauseDetection = jest.fn();
   });
 
   it("sets the playerName and reactRoot", () => {
@@ -69,7 +71,8 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockVariables.playerName).toBe(mockName);
     expect(mockVariables.reactRoot).toBe(mockReactRoot);
@@ -87,13 +90,13 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
   });
 
   it("calls addDirectionDetection to add the event listener", () => {
-    mockAddDirectionDetection.mockReturnValue("directionEventListener");
     finishSetup(
       mockVariables,
       mockName,
@@ -105,14 +108,14 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockAddDirectionDetection).toHaveBeenCalledTimes(1);
     expect(mockAddDirectionDetection).toHaveBeenCalledWith(mockVariables);
   });
 
   it("calls addVisibilityDetection to add the event listener", () => {
-    mockAddVisibilityDetection.mockReturnValue("visibilityEventListener");
     finishSetup(
       mockVariables,
       mockName,
@@ -124,10 +127,38 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockAddVisibilityDetection).toHaveBeenCalledTimes(1);
     expect(mockAddVisibilityDetection).toHaveBeenCalledWith(
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers,
+      mockGhostAudioObjects,
+      mockPacmanDeathAudio,
+      mockLevelUpAudio
+    );
+  });
+
+  it("calls addPauseDetection to add the event listener", () => {
+    finishSetup(
+      mockVariables,
+      mockName,
+      mockReactRoot,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers,
+      mockGhostAudioObjects,
+      mockPacmanDeathAudio,
+      mockLevelUpAudio,
+      mockAddDirectionDetection,
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
+    );
+    expect(mockAddPauseDetection).toHaveBeenCalledTimes(1);
+    expect(mockAddPauseDetection).toHaveBeenCalledWith(
       mockVariables,
       mockCycleTimer,
       mockScaredTimer,
@@ -150,7 +181,8 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockVariables.start).toBeFalsy();
   });
@@ -169,7 +201,8 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockSirenAudio.load).toHaveBeenCalledTimes(1);
     expect(mockSirenAudio.play).toHaveBeenCalledTimes(1);
@@ -188,7 +221,8 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockScaredAudio.load).toHaveBeenCalledTimes(1);
   });
@@ -206,7 +240,8 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockRetreatingAudio.load).toHaveBeenCalledTimes(1);
   });
@@ -224,7 +259,8 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockPacmanDeathAudio.unload).toHaveBeenCalledTimes(1);
   });
@@ -242,7 +278,8 @@ describe("finishSetup", () => {
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockAddDirectionDetection,
-      mockAddVisibilityDetection
+      mockAddVisibilityDetection,
+      mockAddPauseDetection
     );
     expect(mockLevelUpAudio.unload).toHaveBeenCalledTimes(1);
   });

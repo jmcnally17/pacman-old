@@ -24,7 +24,7 @@ describe("addPauseDetection", () => {
       isGamePaused: false,
       pauseEventListener: null,
       playerName: "John",
-      reactRoot: "undefined",
+      reactRoot: undefined,
     };
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";

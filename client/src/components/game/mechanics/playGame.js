@@ -51,6 +51,7 @@ const map = [
 const variables = {
   tileLength: 32,
   windowIsVisible: true,
+  isGamePaused: false,
   score: 0,
   lastKeyPressed: "",
   level: 1,
@@ -61,6 +62,7 @@ const variables = {
   animationId: null,
   directionEventListener: null,
   visibilityEventListener: null,
+  pauseEventListener: null,
   levelUpCount: 0,
 }
 
