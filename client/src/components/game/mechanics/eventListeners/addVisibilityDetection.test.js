@@ -130,7 +130,7 @@ describe("addVisibilityDetection", () => {
       expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls pause on the ghosts scared audio object if windowIsVisibly is initially true", () => {
+    it("calls pause on the ghosts scared audio object if windowIsVisible is initially true", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,

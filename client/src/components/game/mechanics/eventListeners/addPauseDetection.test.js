@@ -114,7 +114,7 @@ describe("addPauseDetection", () => {
       expect(mockVariables.isGamePaused).toBeFalsy();
     });
 
-    it("calls pause on the ghosts siren audio object if windowIsVisibly is initially true", () => {
+    it("calls pause on the ghosts siren audio object if isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -131,7 +131,7 @@ describe("addPauseDetection", () => {
       expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls pause on the ghosts scared audio object if windowIsVisibly is initially true", () => {
+    it("calls pause on the ghosts scared audio object if isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -148,7 +148,7 @@ describe("addPauseDetection", () => {
       expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls pause on the ghosts retreating audio object if windowIsVisible is initially true", () => {
+    it("calls pause on the ghosts retreating audio object if isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
