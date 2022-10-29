@@ -1,4 +1,5 @@
 import pauseTimers from "../timers/pauseTimers";
+import resumeTimers from "../timers/resumeTimers";
 
 export default function addPauseDetection(
   variables,
@@ -8,7 +9,8 @@ export default function addPauseDetection(
   ghostAudioObjects,
   pacmanDeathAudio,
   levelUpAudio,
-  callbackOne = pauseTimers
+  callbackOne = pauseTimers,
+  callbackTwo = resumeTimers
 ) {
   window.addEventListener(
     "keydown",
@@ -26,6 +28,7 @@ export default function addPauseDetection(
           variables.isGamePaused = false;
           if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.play();
           if (levelUpAudio._state === "loaded") levelUpAudio.play();
+          callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
         }
       }
     })

@@ -325,5 +325,27 @@ describe("addPauseDetection", () => {
         mockRetreatingTimers
       );
     });
+
+    it("to call resumeTimers if isGamePaused is intially true", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers
+      );
+      mockVariables.isGamePaused = true;
+      window.dispatchEvent(escKeyEvent);
+      expect(mockResumeTimers).toHaveBeenCalledTimes(1);
+      expect(mockResumeTimers).toHaveBeenCalledWith(
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers
+      );
+    });
   });
 });
