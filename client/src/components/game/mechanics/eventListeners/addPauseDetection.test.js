@@ -19,6 +19,7 @@ let escKeyEvent;
 describe("addPauseDetection", () => {
   beforeEach(() => {
     mockVariables = {
+      animationId: 3950,
       isGamePaused: false,
       pauseEventListener: null,
     };
@@ -111,6 +112,57 @@ describe("addPauseDetection", () => {
       mockVariables.isGamePaused = true;
       window.dispatchEvent(escKeyEvent);
       expect(mockVariables.isGamePaused).toBeFalsy();
+    });
+
+    it("calls pause on the ghosts siren audio object if windowIsVisibly is initially true", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers
+      );
+      jest.spyOn(mockSirenAudio, "pause");
+      window.dispatchEvent(escKeyEvent);
+      expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on the ghosts scared audio object if windowIsVisibly is initially true", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers
+      );
+      jest.spyOn(mockScaredAudio, "pause");
+      window.dispatchEvent(escKeyEvent);
+      expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on the ghosts retreating audio object if windowIsVisible is initially true", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers
+      );
+      jest.spyOn(mockRetreatingAudio, "pause");
+      window.dispatchEvent(escKeyEvent);
+      expect(mockRetreatingAudio.pause).toHaveBeenCalledTimes(1);
     });
   });
 });
