@@ -304,5 +304,26 @@ describe("addPauseDetection", () => {
       window.dispatchEvent(escKeyEvent);
       expect(mockUnloadedLevelUpAudio.play).toHaveBeenCalledTimes(0);
     });
+
+    it("to call pauseTimers if isGamePaused is intially false", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers
+      );
+      window.dispatchEvent(escKeyEvent);
+      expect(mockPauseTimers).toHaveBeenCalledTimes(1);
+      expect(mockPauseTimers).toHaveBeenCalledWith(
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers
+      );
+    });
   });
 });
