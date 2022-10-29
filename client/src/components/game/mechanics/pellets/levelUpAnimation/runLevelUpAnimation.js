@@ -37,6 +37,7 @@ export default function runLevelUpAnimation(
     boundaries.forEach((boundary) => boundary.flash());
   variables.levelUpCount++;
   if (variables.levelUpCount >= 350) {
+    pacman.isLevellingUp = false;
     cancelAnimationFrame(variables.animationId);
     levelUpAudio.unload();
     variables.level++;

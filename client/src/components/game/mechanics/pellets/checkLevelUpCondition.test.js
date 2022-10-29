@@ -29,7 +29,9 @@ describe("checkLevelUpCondition", () => {
       hasBeenEaten: false,
     };
     mockUneatenPellets = [mockUneatenPellet, mockUneatenPellet];
-    mockPacman = "pacman";
+    mockPacman = {
+      isLevellingUp: false,
+    };
     mockVariables = {
       animationId: 43,
       level: 3,
@@ -125,6 +127,24 @@ describe("checkLevelUpCondition", () => {
     );
     expect(mockLevelUpAudio.load).toHaveBeenCalledTimes(1);
     expect(mockLevelUpAudio.play).toHaveBeenCalledTimes(1);
+  });
+
+  it("changes isLevellingUp in Pac-Man to true if all pellets have been eaten", () => {
+    checkLevelUpCondition(
+      mockEatenPellets,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockGhostAudioObjects,
+      mockLevelUpAudio,
+      mockBoundaries,
+      mockRunLevelUpAnimation
+    );
+    expect(mockPacman.isLevellingUp).toBeTruthy();
   });
 
   it("calls runLevelUpAnimation if all pellets have been eaten", () => {

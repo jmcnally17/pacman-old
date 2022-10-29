@@ -36,6 +36,7 @@ describe("dealWithCollision", () => {
     };
     mockPacman = {
       radians: Math.PI / 24,
+      isShrinking: false,
     };
     mockVariables = {
       score: 100,
@@ -73,7 +74,7 @@ describe("dealWithCollision", () => {
     jest.spyOn(mockScaredGhost, "changeScaredState");
   });
 
-  it("sets the radians in Pac-Man to PI / 4", () => {
+  it("sets the radians in Pac-Man to PI / 4 if the ghost is not scared or retreating", () => {
     dealWithCollision(
       mockGhost,
       mockPacman,
@@ -92,7 +93,7 @@ describe("dealWithCollision", () => {
     expect(mockPacman.radians).toBe(Math.PI / 4);
   });
 
-  it("calls cancelAnimationFrame", () => {
+  it("calls cancelAnimationFrame if the ghost is not scared or retreating", () => {
     jest.spyOn(global, "cancelAnimationFrame");
     dealWithCollision(
       mockGhost,
@@ -139,7 +140,7 @@ describe("dealWithCollision", () => {
     expect(mockRetreatingAudio.unload).toHaveBeenCalledTimes(1);
   });
 
-  it("calls load and play on the pacmanDeathAudio", () => {
+  it("calls load and play on the pacmanDeathAudio if the ghost is not scared or retreating", () => {
     jest.spyOn(mockPacmanDeathAudio, "load");
     jest.spyOn(mockPacmanDeathAudio, "play");
     dealWithCollision(
@@ -159,6 +160,25 @@ describe("dealWithCollision", () => {
     );
     expect(mockPacmanDeathAudio.load).toHaveBeenCalledTimes(1);
     expect(mockPacmanDeathAudio.play).toHaveBeenCalledTimes(1);
+  });
+
+  it("changes isShrinking in Pac-Man to true if the ghost is not scared or retreating", () => {
+    dealWithCollision(
+      mockGhost,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockCtx,
+      mockBoundaries,
+      mockPacmanDeathAudio,
+      mockRunDeathAnimation
+    );
+    expect(mockPacman.isShrinking).toBeTruthy();
   });
 
   it("calls runDeathAnimation if the ghost is not scared or retreating", () => {

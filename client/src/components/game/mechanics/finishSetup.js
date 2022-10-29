@@ -1,5 +1,6 @@
 import addDirectionDetection from "./eventListeners/addDirectionDetection";
 import addVisibilityDetection from "./eventListeners/addVisibilityDetection";
+import addPauseDetection from "./eventListeners/addPauseDetection";
 
 export default function finishSetup(
   variables,
@@ -11,8 +12,15 @@ export default function finishSetup(
   ghostAudioObjects,
   pacmanDeathAudio,
   levelUpAudio,
+  pacman,
+  ctx,
+  boundaries,
+  pellets,
+  powerUps,
+  ghosts,
   callbackOne = addDirectionDetection,
-  callbackTwo = addVisibilityDetection
+  callbackTwo = addVisibilityDetection,
+  callbackThree = addPauseDetection
 ) {
   variables.playerName = name;
   variables.reactRoot = reactRoot;
@@ -26,6 +34,21 @@ export default function finishSetup(
     ghostAudioObjects,
     pacmanDeathAudio,
     levelUpAudio
+  );
+  callbackThree(
+    variables,
+    cycleTimer,
+    scaredTimer,
+    retreatingTimers,
+    ghostAudioObjects,
+    pacmanDeathAudio,
+    levelUpAudio,
+    pacman,
+    ctx,
+    boundaries,
+    pellets,
+    powerUps,
+    ghosts
   );
   variables.start = false;
   ghostAudioObjects.forEach((audio) => audio.load());

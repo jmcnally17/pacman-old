@@ -19,7 +19,7 @@ describe("resetAfterDeath", () => {
     };
     mockVariables = {
       lastKeyPressed: "up",
-      name: "John",
+      playerName: "John",
       reactRoot: "reactRoot",
     };
     mockCycleTimer = {
@@ -163,7 +163,7 @@ describe("resetAfterDeath", () => {
     );
     expect(mockPlayGame).toHaveBeenCalledTimes(1);
     expect(mockPlayGame).toHaveBeenCalledWith(
-      mockVariables.name,
+      mockVariables.playerName,
       mockVariables.reactRoot
     );
   });

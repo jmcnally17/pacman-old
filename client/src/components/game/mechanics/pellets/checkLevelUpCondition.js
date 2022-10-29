@@ -24,6 +24,7 @@ export default function checkLevelUpCondition(
       ghostAudioObjects.forEach((audio) => audio.unload());
       levelUpAudio.load();
       levelUpAudio.play();
+      pacman.isLevellingUp = true;
       callback(
         variables,
         pacman,

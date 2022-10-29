@@ -25,7 +25,9 @@ describe("runLevelUpAnimation", () => {
       levelUpCount: 0,
       level: 4,
     };
-    mockPacman = "pacman";
+    mockPacman = {
+      isLevellingUp: true,
+    };
     mockGhosts = "ghosts";
     mockPellets = "pellets";
     mockPowerUps = "powerUps";
@@ -170,6 +172,27 @@ describe("runLevelUpAnimation", () => {
       mockResetAfterLevelUp
     );
     expect(mockVariables.levelUpCount).toBe(1);
+  });
+
+  it("changes isLevellingUp in Pac-Man back to false when the level up count reaches 350", () => {
+    mockVariables.levelUpCount = 350;
+    runLevelUpAnimation(
+      mockVariables,
+      mockPacman,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockGhostAudioObjects,
+      mockLevelUpAudio,
+      mockBoundaries,
+      mockRunLevelUpAnimation,
+      mockDrawLevelUpBoard,
+      mockResetAfterLevelUp
+    );
+    expect(mockPacman.isLevellingUp).toBeFalsy();
   });
 
   it("calls cancelAnimationFrame when the level up count reaches 350", () => {

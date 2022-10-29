@@ -36,6 +36,7 @@ export default function runDeathAnimation(
   if (pacman.radians < Math.PI) {
     pacman.shrink(ctx);
   } else {
+    pacman.isShrinking = false;
     cancelAnimationFrame(variables.animationId);
     pacmanDeathAudio.unload();
     callbackThree(

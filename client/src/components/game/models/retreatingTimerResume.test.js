@@ -14,7 +14,9 @@ describe("RetreatingTimer", () => {
       retreatingTimer.isRunning = true;
       jest.spyOn(global, "setTimeout");
       jest.spyOn(mockGhost, "changeRetreatingState");
-      retreatingTimer.resume();
+      const mockDateNow = 13940;
+      retreatingTimer.resume(mockDateNow);
+      expect(retreatingTimer.startTime).toBe(13940);
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 1930);
       expect(retreatingTimer.timeout).not.toBeNull();

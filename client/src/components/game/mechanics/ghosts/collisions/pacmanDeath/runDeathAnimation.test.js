@@ -33,6 +33,7 @@ describe("runDeathAnimation", () => {
     };
     mockShrunkPacman = {
       radians: Math.PI,
+      isShrinking: true,
       shrink: () => undefined,
     };
     mockGhosts = "ghosts";
@@ -130,6 +131,26 @@ describe("runDeathAnimation", () => {
     );
     expect(mockPacman.shrink).toHaveBeenCalledTimes(1);
     expect(mockPacman.shrink).toHaveBeenCalledWith(mockCtx);
+  });
+
+  it("changes isShrinking in Pac-Man to false when the death animation has finished", () => {
+    runDeathAnimation(
+      mockVariables,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockShrunkPacman,
+      mockGhosts,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockGhostAudioObjects,
+      mockPacmanDeathAudio,
+      mockRunDeathAnimation,
+      mockDrawBoard,
+      mockCheckPacmanLives
+    );
+    expect(mockShrunkPacman.isShrinking).toBeFalsy();
   });
 
   it("calls cancelAnimationFrame when Pac-Man's death animation has finished", () => {
