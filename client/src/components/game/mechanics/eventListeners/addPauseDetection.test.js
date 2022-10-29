@@ -61,6 +61,7 @@ describe("addPauseDetection", () => {
     };
     mockPauseTimers = jest.fn();
     mockResumeTimers = jest.fn();
+    escKeyEvent = new KeyboardEvent("keydown", { key: "Escape" });
   });
 
   it("sets pauseEventListener in the variables object to the arrow function that defines the event listener", () => {
@@ -76,5 +77,23 @@ describe("addPauseDetection", () => {
       mockResumeTimers
     );
     expect(mockVariables.pauseEventListener).toEqual(expect.any(Function));
+  });
+
+  describe("adds an event listener", () => {
+    it("to change isGamePaused to true if it is initially false", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers
+      );
+      window.dispatchEvent(escKeyEvent);
+      expect(mockVariables.isGamePaused).toBeTruthy();
+    });
   });
 });

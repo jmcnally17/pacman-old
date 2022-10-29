@@ -1,6 +1,10 @@
 export default function addPauseDetection(variables) {
-  document.addEventListener(
+  window.addEventListener(
     "keydown",
-    (variables.pauseEventListener = ({ key }) => {})
+    (variables.pauseEventListener = ({ key }) => {
+      if (key === "Escape") {
+        variables.isGamePaused = true;
+      }
+    })
   );
 }
