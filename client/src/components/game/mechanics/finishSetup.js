@@ -12,6 +12,12 @@ export default function finishSetup(
   ghostAudioObjects,
   pacmanDeathAudio,
   levelUpAudio,
+  pacman,
+  ctx,
+  boundaries,
+  pellets,
+  powerUps,
+  ghosts,
   callbackOne = addDirectionDetection,
   callbackTwo = addVisibilityDetection,
   callbackThree = addPauseDetection
@@ -36,7 +42,13 @@ export default function finishSetup(
     retreatingTimers,
     ghostAudioObjects,
     pacmanDeathAudio,
-    levelUpAudio
+    levelUpAudio,
+    pacman,
+    ctx,
+    boundaries,
+    pellets,
+    powerUps,
+    ghosts
   );
   variables.start = false;
   ghostAudioObjects.forEach((audio) => audio.load());

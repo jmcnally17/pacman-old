@@ -12,6 +12,12 @@ let mockRetreatingAudio;
 let mockGhostAudioObjects;
 let mockPacmanDeathAudio;
 let mockLevelUpAudio;
+let mockPacman;
+let mockCtx;
+let mockBoundaries;
+let mockPellets;
+let mockPowerUps;
+let mockGhosts;
 let mockAddDirectionDetection;
 let mockAddVisibilityDetection;
 let mockAddPauseDetection;
@@ -54,6 +60,12 @@ describe("finishSetup", () => {
     mockLevelUpAudio = {
       unload: () => undefined,
     };
+    mockPacman = "pacman";
+    mockCtx = "ctx";
+    mockBoundaries = "boundaries";
+    mockPellets = "pellets";
+    mockPowerUps = "powerUps";
+    mockGhosts = "ghosts";
     mockAddDirectionDetection = jest.fn();
     mockAddVisibilityDetection = jest.fn();
     mockAddPauseDetection = jest.fn();
@@ -70,6 +82,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -89,6 +107,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -107,6 +131,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -126,6 +156,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -153,6 +189,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -165,7 +207,13 @@ describe("finishSetup", () => {
       mockRetreatingTimers,
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
-      mockLevelUpAudio
+      mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts
     );
   });
 
@@ -180,6 +228,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -200,6 +254,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -220,6 +280,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -239,6 +305,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -258,6 +330,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -277,6 +355,12 @@ describe("finishSetup", () => {
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
       mockLevelUpAudio,
+      mockPacman,
+      mockCtx,
+      mockBoundaries,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
