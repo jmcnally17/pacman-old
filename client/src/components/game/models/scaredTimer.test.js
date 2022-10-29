@@ -42,6 +42,7 @@ describe("ScaredTimer", () => {
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 7000);
       expect(scaredTimer.timeout).not.toBeNull();
       expect(scaredTimer.startTime).toBe(mockDateNow);
+      expect(scaredTimer.timeRemaining).toBe(7000);
       expect(scaredTimer.isRunning).toBeTruthy();
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(4);
@@ -54,6 +55,7 @@ describe("ScaredTimer", () => {
     it("calls clearTimeout and saves the time remaining in this.timeRemaining", () => {
       jest.spyOn(global, "clearTimeout");
       scaredTimer.startTime = 4860;
+      scaredTimer.timeRemaining = 7000;
       const mockDateNow = 7180;
       scaredTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);

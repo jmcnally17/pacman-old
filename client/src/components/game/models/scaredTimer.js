@@ -17,16 +17,18 @@ export default class ScaredTimer {
       cycleTimer.resume();
       this.isRunning = false;
     }, this.duration);
+    this.timeRemaining = this.duration;
     this.isRunning = true;
   }
 
   pause(dateNow = Date.now()) {
     clearTimeout(this.timeout);
     const timeElapsed = dateNow - this.startTime;
-    this.timeRemaining = this.duration - timeElapsed;
+    this.timeRemaining = this.timeRemaining - timeElapsed;
   }
 
-  resume(cycleTimer) {
+  resume(cycleTimer, dateNow = Date.now()) {
+    this.startTime = dateNow;
     this.timeout = setTimeout(() => {
       this.ghosts.forEach((ghost) => {
         if (ghost.isScared) ghost.changeScaredState();

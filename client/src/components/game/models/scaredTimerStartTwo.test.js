@@ -23,6 +23,7 @@ describe("ScaredTimer", () => {
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 7000);
       expect(scaredTimer.timeout).not.toBeNull();
       expect(scaredTimer.startTime).toBe(mockDateNow);
+      expect(scaredTimer.timeRemaining).toBe(7000);
       expect(scaredTimer.isRunning).toBeTruthy();
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeScaredState).toHaveBeenCalledTimes(0);

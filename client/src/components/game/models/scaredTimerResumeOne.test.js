@@ -19,7 +19,9 @@ describe("ScaredTimer", () => {
       jest.spyOn(mockCycleTimer, "resume");
       scaredTimer.timeRemaining = 4160;
       scaredTimer.isRunning = true;
-      scaredTimer.resume(mockCycleTimer);
+      const mockDateNow = 14290;
+      scaredTimer.resume(mockCycleTimer, mockDateNow);
+      expect(scaredTimer.startTime).toBe(14290);
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 4160);
       expect(scaredTimer.timeout).not.toBeNull();
