@@ -21,6 +21,7 @@ export default function dealWithCollision(
     ghostAudioObjects.forEach((audio) => audio.unload());
     pacmanDeathAudio.load();
     pacmanDeathAudio.play();
+    pacman.isShrinking = true;
     callback(
       variables,
       ctx,
