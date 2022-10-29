@@ -21,7 +21,6 @@ export default class RetreatingTimer {
     clearTimeout(this.timeout);
     const timeElapsed = dateNow - this.startTime;
     this.timeRemaining = this.timeRemaining - timeElapsed;
-    console.log(this.timeRemaining);
   }
 
   resume(dateNow = Date.now()) {
@@ -30,7 +29,6 @@ export default class RetreatingTimer {
       this.ghost.changeRetreatingState();
       this.isRunning = false;
     }, this.timeRemaining);
-    console.log(this.timeRemaining);
   }
 
   reset() {
