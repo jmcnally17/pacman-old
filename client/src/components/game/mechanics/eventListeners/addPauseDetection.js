@@ -4,7 +4,8 @@ export default function addPauseDetection(
   scaredTimer,
   retreatingTimers,
   ghostAudioObjects,
-  pacmanDeathAudio
+  pacmanDeathAudio,
+  levelUpAudio
 ) {
   window.addEventListener(
     "keydown",
@@ -16,6 +17,7 @@ export default function addPauseDetection(
           ghostAudioObjects[1].pause();
           ghostAudioObjects[2].pause();
           if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.pause();
+          if (levelUpAudio._state === "loaded") levelUpAudio.pause();
         } else {
           variables.isGamePaused = false;
           if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.play();
