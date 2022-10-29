@@ -92,7 +92,7 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockVariables.windowIsVisible).toBeFalsy();
     });
 
@@ -109,7 +109,7 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       mockVariables.windowIsVisible = false;
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockVariables.windowIsVisible).toBeTruthy();
     });
 
@@ -126,7 +126,7 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       jest.spyOn(mockSirenAudio, "pause");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
     });
 
@@ -143,7 +143,7 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       jest.spyOn(mockScaredAudio, "pause");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
     });
 
@@ -160,7 +160,7 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       jest.spyOn(mockRetreatingAudio, "pause");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockRetreatingAudio.pause).toHaveBeenCalledTimes(1);
     });
 
@@ -177,7 +177,7 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       jest.spyOn(mockPacmanDeathAudio, "pause");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockPacmanDeathAudio.pause).toHaveBeenCalledTimes(1);
     });
 
@@ -194,7 +194,7 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       jest.spyOn(mockUnloadedPacmanDeathAudio, "pause");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockUnloadedPacmanDeathAudio.pause).toHaveBeenCalledTimes(0);
     });
 
@@ -212,7 +212,7 @@ describe("addVisibilityDetection", () => {
       );
       mockVariables.windowIsVisible = false;
       jest.spyOn(mockPacmanDeathAudio, "play");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockPacmanDeathAudio.play).toHaveBeenCalledTimes(1);
     });
 
@@ -230,7 +230,7 @@ describe("addVisibilityDetection", () => {
       );
       mockVariables.windowIsVisible = false;
       jest.spyOn(mockUnloadedPacmanDeathAudio, "play");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockUnloadedPacmanDeathAudio.play).toHaveBeenCalledTimes(0);
     });
 
@@ -247,7 +247,7 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       jest.spyOn(mockLevelUpAudio, "pause");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockLevelUpAudio.pause).toHaveBeenCalledTimes(1);
     });
 
@@ -264,7 +264,7 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       jest.spyOn(mockUnloadedLevelUpAudio, "pause");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockUnloadedLevelUpAudio.pause).toHaveBeenCalledTimes(0);
     });
 
@@ -282,7 +282,7 @@ describe("addVisibilityDetection", () => {
       );
       mockVariables.windowIsVisible = false;
       jest.spyOn(mockLevelUpAudio, "play");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockLevelUpAudio.play).toHaveBeenCalledTimes(1);
     });
 
@@ -300,7 +300,7 @@ describe("addVisibilityDetection", () => {
       );
       mockVariables.windowIsVisible = false;
       jest.spyOn(mockUnloadedLevelUpAudio, "play");
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockUnloadedLevelUpAudio.play).toHaveBeenCalledTimes(0);
     });
 
@@ -316,7 +316,7 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockPauseTimers).toHaveBeenCalledTimes(1);
       expect(mockPauseTimers).toHaveBeenCalledWith(
         mockCycleTimer,
@@ -338,7 +338,7 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       mockVariables.windowIsVisible = false;
-      document.dispatchEvent(visibilityChange);
+      window.dispatchEvent(visibilityChange);
       expect(mockResumeTimers).toHaveBeenCalledTimes(1);
       expect(mockResumeTimers).toHaveBeenCalledWith(
         mockCycleTimer,

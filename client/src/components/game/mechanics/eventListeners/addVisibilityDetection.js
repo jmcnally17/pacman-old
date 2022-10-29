@@ -12,7 +12,7 @@ export default function addVisibilityDetection(
   callbackOne = pauseTimers,
   callbackTwo = resumeTimers
 ) {
-  document.addEventListener(
+  window.addEventListener(
     "visibilitychange",
     (variables.visibilityEventListener = () => {
       if (variables.windowIsVisible) {
