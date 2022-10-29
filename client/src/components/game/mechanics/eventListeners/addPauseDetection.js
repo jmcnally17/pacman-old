@@ -18,6 +18,7 @@ export default function addPauseDetection(
           if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.pause();
         } else {
           variables.isGamePaused = false;
+          if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.play();
         }
       }
     })
