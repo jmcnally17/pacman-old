@@ -95,5 +95,22 @@ describe("addPauseDetection", () => {
       window.dispatchEvent(escKeyEvent);
       expect(mockVariables.isGamePaused).toBeTruthy();
     });
+
+    it("to change isGamePaused to false if it is initially true", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers
+      );
+      mockVariables.isGamePaused = true;
+      window.dispatchEvent(escKeyEvent);
+      expect(mockVariables.isGamePaused).toBeFalsy();
+    });
   });
 });
