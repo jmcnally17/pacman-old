@@ -92,7 +92,6 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
-      mockVariables.windowIsVisible = true;
       document.dispatchEvent(visibilityChange);
       expect(mockVariables.windowIsVisible).toBeFalsy();
     });
@@ -109,8 +108,9 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
+      mockVariables.windowIsVisible = false;
       document.dispatchEvent(visibilityChange);
-      expect(mockVariables.windowIsVisible).toBeFalsy();
+      expect(mockVariables.windowIsVisible).toBeTruthy();
     });
 
     it("calls pause on the ghosts siren audio object if windowIsVisibly is initially true", () => {
