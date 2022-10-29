@@ -268,5 +268,41 @@ describe("addPauseDetection", () => {
       window.dispatchEvent(escKeyEvent);
       expect(mockUnloadedLevelUpAudio.pause).toHaveBeenCalledTimes(0);
     });
+
+    it("calls play on the level up audio if it is loaded and isGamePaused is initially true", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers
+      );
+      mockVariables.isGamePaused = true;
+      jest.spyOn(mockLevelUpAudio, "play");
+      window.dispatchEvent(escKeyEvent);
+      expect(mockLevelUpAudio.play).toHaveBeenCalledTimes(1);
+    });
+
+    it("does not call play on the level up audio if it is unloaded and isGamePaused is initially true", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockUnloadedLevelUpAudio,
+        mockPauseTimers,
+        mockResumeTimers
+      );
+      mockVariables.isGamePaused = true;
+      jest.spyOn(mockUnloadedLevelUpAudio, "play");
+      window.dispatchEvent(escKeyEvent);
+      expect(mockUnloadedLevelUpAudio.play).toHaveBeenCalledTimes(0);
+    });
   });
 });
