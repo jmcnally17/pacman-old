@@ -2,6 +2,7 @@ import pauseTimers from "../timers/pauseTimers";
 import resumeTimers from "../timers/resumeTimers";
 import playGame from "../playGame";
 import runDeathAnimation from "../ghosts/collisions/pacmanDeath/runDeathAnimation";
+import runLevelUpAnimation from "../pellets/levelUpAnimation/runLevelUpAnimation";
 
 export default function addPauseDetection(
   variables,
@@ -20,7 +21,8 @@ export default function addPauseDetection(
   callbackOne = pauseTimers,
   callbackTwo = resumeTimers,
   callbackThree = playGame,
-  callbackFour = runDeathAnimation
+  callbackFour = runDeathAnimation,
+  callbackFive = runLevelUpAnimation
 ) {
   window.addEventListener(
     "keydown",
@@ -50,6 +52,20 @@ export default function addPauseDetection(
               scaredTimer,
               ghostAudioObjects,
               pacmanDeathAudio
+            );
+          } else if (pacman.isLevellingUp) {
+            callbackFive(
+              variables,
+              pacman,
+              ghosts,
+              pellets,
+              powerUps,
+              cycleTimer,
+              scaredTimer,
+              ctx,
+              ghostAudioObjects,
+              levelUpAudio,
+              boundaries
             );
           } else {
             callbackThree(variables.playerName, variables.reactRoot);
