@@ -32,6 +32,7 @@ describe("RetreatingTimer", () => {
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 3000);
       expect(retreatingTimer.timeout).not.toBeNull();
+      expect(retreatingTimer.timeRemaining).toBe(3000);
       expect(retreatingTimer.isRunning).toBeTruthy();
       jest.runOnlyPendingTimers();
       expect(mockGhost.changeRetreatingState).toHaveBeenCalledTimes(1);
@@ -49,6 +50,7 @@ describe("RetreatingTimer", () => {
     it("calls clearTimeout and saves the time remaining in this.timeRemaining", () => {
       jest.spyOn(global, "clearTimeout");
       retreatingTimer.startTime = 3960;
+      retreatingTimer.timeRemaining = 3000;
       const mockDateNow = 5620;
       retreatingTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
