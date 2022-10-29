@@ -13,8 +13,10 @@ describe("CycleTimer", () => {
       const cycleTimer = new CycleTimer(mockGhosts);
       jest.spyOn(global, "setTimeout");
       cycleTimer.timeRemaining = 4820;
-      cycleTimer.resume();
+      const mockDateNow = 12390;
+      cycleTimer.resume(mockDateNow);
 
+      expect(cycleTimer.startTime).toBe(12390);
       expect(setTimeout).toHaveBeenCalledTimes(1);
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 4820);
       expect(cycleTimer.timeout).not.toBeNull();

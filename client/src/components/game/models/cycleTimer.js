@@ -16,20 +16,25 @@ export default class CycleTimer {
       },
       this.count === 0 ? 7000 : 20000
     );
-    this.count === 0 ? this.count++ : this.count--;
+    if (this.count === 0) {
+      this.count++;
+      this.timeRemaining = 7000;
+    } else {
+      this.count--;
+      this.timeRemaining = 20000;
+    }
     this.isRunning = true;
   }
 
   pause(dateNow = Date.now()) {
     clearTimeout(this.timeout);
     const timeElapsed = dateNow - this.startTime;
-    this.count === 0
-      ? (this.timeRemaining = 20000 - timeElapsed)
-      : (this.timeRemaining = 7000 - timeElapsed);
+    this.timeRemaining = this.timeRemaining - timeElapsed;
     this.isRunning = false;
   }
 
-  resume() {
+  resume(dateNow = Date.now()) {
+    this.startTime = dateNow;
     this.timeout = setTimeout(() => {
       this.#switchChaseScatterState();
     }, this.timeRemaining);

@@ -19,6 +19,7 @@ describe("CycleTimer", () => {
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 20000);
       expect(cycleTimer.timeout).not.toBeNull();
       expect(cycleTimer.count).toBe(0);
+      expect(cycleTimer.timeRemaining).toBe(20000);
       expect(cycleTimer.isRunning).toBeTruthy();
 
       jest.runOnlyPendingTimers();

@@ -38,6 +38,7 @@ describe("CycleTimer", () => {
       expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 7000);
       expect(cycleTimer.timeout).not.toBeNull();
       expect(cycleTimer.count).toBe(1);
+      expect(cycleTimer.timeRemaining).toBe(7000);
       expect(cycleTimer.isRunning).toBeTruthy();
 
       jest.runOnlyPendingTimers();
@@ -48,28 +49,16 @@ describe("CycleTimer", () => {
   });
 
   describe("pause", () => {
-    it("calls clearTimeout and saves the time remaining in this.timeRemaining for the seven second delay", () => {
+    it("calls clearTimeout and saves the time remaining in this.timeRemaining", () => {
       jest.spyOn(global, "clearTimeout");
-      cycleTimer.count = 1;
       cycleTimer.startTime = 2460;
+      cycleTimer.timeRemaining = 7000;
       cycleTimer.isRunning = true;
       const mockDateNow = 5780;
       cycleTimer.pause(mockDateNow);
       expect(clearTimeout).toHaveBeenCalledTimes(1);
       expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);
       expect(cycleTimer.timeRemaining).toBe(3680);
-      expect(cycleTimer.isRunning).toBeFalsy();
-    });
-
-    it("calls clearTimeout and saves the time remaining in this.timeRemaining for the twenty second delay", () => {
-      jest.spyOn(global, "clearTimeout");
-      cycleTimer.startTime = 2460;
-      cycleTimer.isRunning = true;
-      const mockDateNow = 5780;
-      cycleTimer.pause(mockDateNow);
-      expect(clearTimeout).toHaveBeenCalledTimes(1);
-      expect(clearTimeout).toHaveBeenCalledWith(cycleTimer.timeout);
-      expect(cycleTimer.timeRemaining).toBe(16680);
       expect(cycleTimer.isRunning).toBeFalsy();
     });
   });
