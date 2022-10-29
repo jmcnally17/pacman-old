@@ -26,6 +26,8 @@ export default class PacMan {
     this.rotation = 0;
     this.lives = 2;
     this.isEating = false;
+    this.isShrinking = false;
+    this.isLevellingUp = false;
     this.munchOne = munchOne;
     this.munchTwo = munchTwo;
   }

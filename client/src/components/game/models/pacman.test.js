@@ -75,6 +75,8 @@ describe("PacMan", () => {
       expect(pacman.rotation).toBe(0);
       expect(pacman.lives).toBe(2);
       expect(pacman.isEating).toBeFalsy();
+      expect(pacman.isShrinking).toBeFalsy();
+      expect(pacman.isLevellingUp).toBeFalsy();
       expect(pacman.munchOne).toBe(mockMunchOne);
       expect(pacman.munchTwo).toBe(mockMunchTwo);
       expect(pacman.munchOne.src).toBe("./audio/munchOne.wav");
