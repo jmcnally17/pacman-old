@@ -19,7 +19,7 @@ let visibilityChange;
 describe("addVisibilityDetection", () => {
   beforeEach(() => {
     mockVariables = {
-      windowIsVisible: true,
+      isWindowVisible: true,
       visibilityEventListener: null,
     };
     mockCycleTimer = "cycleTimer";
@@ -80,7 +80,7 @@ describe("addVisibilityDetection", () => {
   });
 
   describe("adds an event listener to", () => {
-    it("change windowIsVisible to false if it is initially true", () => {
+    it("change isWindowVisible to false if it is initially true", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -93,10 +93,10 @@ describe("addVisibilityDetection", () => {
         mockResumeTimers
       );
       window.dispatchEvent(visibilityChange);
-      expect(mockVariables.windowIsVisible).toBeFalsy();
+      expect(mockVariables.isWindowVisible).toBeFalsy();
     });
 
-    it("change windowIsVisible to true if it is intially false", () => {
+    it("change isWindowVisible to true if it is intially false", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -108,9 +108,9 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
-      mockVariables.windowIsVisible = false;
+      mockVariables.isWindowVisible = false;
       window.dispatchEvent(visibilityChange);
-      expect(mockVariables.windowIsVisible).toBeTruthy();
+      expect(mockVariables.isWindowVisible).toBeTruthy();
     });
 
     it("call pause on the ghosts siren audio object if windowIsVisibly is initially true", () => {
@@ -130,7 +130,7 @@ describe("addVisibilityDetection", () => {
       expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("call pause on the ghosts scared audio object if windowIsVisible is initially true", () => {
+    it("call pause on the ghosts scared audio object if isWindowVisible is initially true", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -147,7 +147,7 @@ describe("addVisibilityDetection", () => {
       expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("call pause on the ghosts retreating audio object if windowIsVisible is initially true", () => {
+    it("call pause on the ghosts retreating audio object if isWindowVisible is initially true", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -164,7 +164,7 @@ describe("addVisibilityDetection", () => {
       expect(mockRetreatingAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("call pause on the pacman death audio if it is loaded and windowIsVisible is initially true", () => {
+    it("call pause on the pacman death audio if it is loaded and isWindowVisible is initially true", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -181,7 +181,7 @@ describe("addVisibilityDetection", () => {
       expect(mockPacmanDeathAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("not call pause on the pacman death audio if it is unloaded and windowIsVisible is initially true", () => {
+    it("not call pause on the pacman death audio if it is unloaded and isWindowVisible is initially true", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -198,7 +198,7 @@ describe("addVisibilityDetection", () => {
       expect(mockUnloadedPacmanDeathAudio.pause).toHaveBeenCalledTimes(0);
     });
 
-    it("call play on the pacman death audio if it is loaded and windowIsVisible is initially false", () => {
+    it("call play on the pacman death audio if it is loaded and isWindowVisible is initially false", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -210,13 +210,13 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
-      mockVariables.windowIsVisible = false;
+      mockVariables.isWindowVisible = false;
       jest.spyOn(mockPacmanDeathAudio, "play");
       window.dispatchEvent(visibilityChange);
       expect(mockPacmanDeathAudio.play).toHaveBeenCalledTimes(1);
     });
 
-    it("not call play on the pacman death audio if it is unloaded and windowIsVisible is initially false", () => {
+    it("not call play on the pacman death audio if it is unloaded and isWindowVisible is initially false", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -228,13 +228,13 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
-      mockVariables.windowIsVisible = false;
+      mockVariables.isWindowVisible = false;
       jest.spyOn(mockUnloadedPacmanDeathAudio, "play");
       window.dispatchEvent(visibilityChange);
       expect(mockUnloadedPacmanDeathAudio.play).toHaveBeenCalledTimes(0);
     });
 
-    it("call pause on the level up audio if it is loaded and windowIsVisible is initially true", () => {
+    it("call pause on the level up audio if it is loaded and isWindowVisible is initially true", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -251,7 +251,7 @@ describe("addVisibilityDetection", () => {
       expect(mockLevelUpAudio.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("not call pause on the level up audio if it is unloaded and windowIsVisible is initially true", () => {
+    it("not call pause on the level up audio if it is unloaded and isWindowVisible is initially true", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -268,7 +268,7 @@ describe("addVisibilityDetection", () => {
       expect(mockUnloadedLevelUpAudio.pause).toHaveBeenCalledTimes(0);
     });
 
-    it("call play on the level up audio if it is loaded and windowIsVisible is initially false", () => {
+    it("call play on the level up audio if it is loaded and isWindowVisible is initially false", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -280,13 +280,13 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
-      mockVariables.windowIsVisible = false;
+      mockVariables.isWindowVisible = false;
       jest.spyOn(mockLevelUpAudio, "play");
       window.dispatchEvent(visibilityChange);
       expect(mockLevelUpAudio.play).toHaveBeenCalledTimes(1);
     });
 
-    it("not call play on the level up audio if it is unloaded and windowIsVisible is initially false", () => {
+    it("not call play on the level up audio if it is unloaded and isWindowVisible is initially false", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -298,13 +298,13 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
-      mockVariables.windowIsVisible = false;
+      mockVariables.isWindowVisible = false;
       jest.spyOn(mockUnloadedLevelUpAudio, "play");
       window.dispatchEvent(visibilityChange);
       expect(mockUnloadedLevelUpAudio.play).toHaveBeenCalledTimes(0);
     });
 
-    it("to call pauseTimers if windowIsVisible is intially true", () => {
+    it("to call pauseTimers if isWindowVisible is intially true", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -325,7 +325,7 @@ describe("addVisibilityDetection", () => {
       );
     });
 
-    it("to call resumeTimers if windowIsVisible is intially false", () => {
+    it("to call resumeTimers if isWindowVisible is intially false", () => {
       addVisibilityDetection(
         mockVariables,
         mockCycleTimer,
@@ -337,7 +337,7 @@ describe("addVisibilityDetection", () => {
         mockPauseTimers,
         mockResumeTimers
       );
-      mockVariables.windowIsVisible = false;
+      mockVariables.isWindowVisible = false;
       window.dispatchEvent(visibilityChange);
       expect(mockResumeTimers).toHaveBeenCalledTimes(1);
       expect(mockResumeTimers).toHaveBeenCalledWith(

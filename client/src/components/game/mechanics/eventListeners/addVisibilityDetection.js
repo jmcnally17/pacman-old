@@ -15,8 +15,8 @@ export default function addVisibilityDetection(
   window.addEventListener(
     "visibilitychange",
     (variables.visibilityEventListener = () => {
-      if (variables.windowIsVisible) {
-        variables.windowIsVisible = false;
+      if (variables.isWindowVisible) {
+        variables.isWindowVisible = false;
         ghostAudioObjects[0].pause();
         ghostAudioObjects[1].pause();
         ghostAudioObjects[2].pause();
@@ -24,7 +24,7 @@ export default function addVisibilityDetection(
         if (levelUpAudio._state === "loaded") levelUpAudio.pause();
         callbackOne(cycleTimer, scaredTimer, retreatingTimers);
       } else {
-        variables.windowIsVisible = true;
+        variables.isWindowVisible = true;
         if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.play();
         if (levelUpAudio._state === "loaded") levelUpAudio.play();
         callbackTwo(cycleTimer, scaredTimer, retreatingTimers);

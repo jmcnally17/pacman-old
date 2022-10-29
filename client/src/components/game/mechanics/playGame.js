@@ -50,7 +50,7 @@ const map = [
 
 const variables = {
   tileLength: 32,
-  windowIsVisible: true,
+  isWindowVisible: true,
   isGamePaused: false,
   score: 0,
   lastKeyPressed: "",
