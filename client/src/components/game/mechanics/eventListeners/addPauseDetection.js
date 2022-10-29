@@ -18,6 +18,7 @@ export default function addPauseDetection(
       if (key === "Escape") {
         if (!variables.isGamePaused) {
           variables.isGamePaused = true;
+          cancelAnimationFrame(variables.animationId);
           ghostAudioObjects[0].pause();
           ghostAudioObjects[1].pause();
           ghostAudioObjects[2].pause();

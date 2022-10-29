@@ -65,6 +65,26 @@ describe("addPauseDetection", () => {
     escKeyEvent = new KeyboardEvent("keydown", { key: "Escape" });
   });
 
+  it("calls cancelAnimationFrame when isGamePaused is initially false", () => {
+    addPauseDetection(
+      mockVariables,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockRetreatingTimers,
+      mockGhostAudioObjects,
+      mockPacmanDeathAudio,
+      mockLevelUpAudio,
+      mockPauseTimers,
+      mockResumeTimers
+    );
+    jest.spyOn(global, "cancelAnimationFrame");
+    window.dispatchEvent(escKeyEvent);
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(cancelAnimationFrame).toHaveBeenCalledWith(
+      mockVariables.animationId
+    );
+  });
+
   it("sets pauseEventListener in the variables object to the arrow function that defines the event listener", () => {
     addPauseDetection(
       mockVariables,
