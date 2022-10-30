@@ -1,8 +1,6 @@
 import pauseTimers from "../timers/pauseTimers";
 import resumeTimers from "../timers/resumeTimers";
-import playGame from "../playGame";
-import runDeathAnimation from "../ghosts/collisions/pacmanDeath/runDeathAnimation";
-import runLevelUpAnimation from "../pellets/levelUpAnimation/runLevelUpAnimation";
+import resumeAnimation from "./resumeAnimation";
 
 export default function addPauseDetection(
   variables,
@@ -20,9 +18,7 @@ export default function addPauseDetection(
   ghosts,
   callbackOne = pauseTimers,
   callbackTwo = resumeTimers,
-  callbackThree = playGame,
-  callbackFour = runDeathAnimation,
-  callbackFive = runLevelUpAnimation
+  callbackThree = resumeAnimation
 ) {
   window.addEventListener(
     "keydown",
@@ -39,37 +35,20 @@ export default function addPauseDetection(
           callbackOne(cycleTimer, scaredTimer, retreatingTimers);
         } else {
           variables.isGamePaused = false;
-          if (pacman.isShrinking) {
-            callbackFour(
-              variables,
-              ctx,
-              boundaries,
-              pellets,
-              powerUps,
-              pacman,
-              ghosts,
-              cycleTimer,
-              scaredTimer,
-              ghostAudioObjects,
-              pacmanDeathAudio
-            );
-          } else if (pacman.isLevellingUp) {
-            callbackFive(
-              variables,
-              pacman,
-              ghosts,
-              pellets,
-              powerUps,
-              cycleTimer,
-              scaredTimer,
-              ctx,
-              ghostAudioObjects,
-              levelUpAudio,
-              boundaries
-            );
-          } else {
-            callbackThree(variables.playerName, variables.reactRoot);
-          }
+          callbackThree(
+            variables,
+            ctx,
+            boundaries,
+            pellets,
+            powerUps,
+            pacman,
+            ghosts,
+            cycleTimer,
+            scaredTimer,
+            ghostAudioObjects,
+            pacmanDeathAudio,
+            levelUpAudio
+          );
           if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.play();
           if (levelUpAudio._state === "loaded") levelUpAudio.play();
           callbackTwo(cycleTimer, scaredTimer, retreatingTimers);

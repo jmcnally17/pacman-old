@@ -13,8 +13,6 @@ let mockUnloadedPacmanDeathAudio;
 let mockLevelUpAudio;
 let mockUnloadedLevelUpAudio;
 let mockPacman;
-let mockShrinkingPacman;
-let mockLevellingUpPacman;
 let mockCtx;
 let mockBoundaries;
 let mockPellets;
@@ -22,9 +20,7 @@ let mockPowerUps;
 let mockGhosts;
 let mockPauseTimers;
 let mockResumeTimers;
-let mockPlayGame;
-let mockRunDeathAnimation;
-let mockRunLevelUpAnimation;
+let mockResumeAnimation;
 let escKeyEvent;
 
 describe("addPauseDetection", () => {
@@ -73,18 +69,7 @@ describe("addPauseDetection", () => {
       pause: () => undefined,
       play: () => undefined,
     };
-    mockPacman = {
-      isShrinking: false,
-      isLevellingUp: false,
-    };
-    mockShrinkingPacman = {
-      isShrinking: true,
-      isLevellingUp: false,
-    };
-    mockLevellingUpPacman = {
-      isShrinking: false,
-      isLevellingUp: true,
-    };
+    mockPacman = "pacman";
     mockCtx = "ctx";
     mockBoundaries = "boundaries";
     mockPellets = "pellets";
@@ -92,9 +77,7 @@ describe("addPauseDetection", () => {
     mockGhosts = "ghosts";
     mockPauseTimers = jest.fn();
     mockResumeTimers = jest.fn();
-    mockPlayGame = jest.fn();
-    mockRunDeathAnimation = jest.fn();
-    mockRunLevelUpAnimation = jest.fn();
+    mockResumeAnimation = jest.fn();
     escKeyEvent = new KeyboardEvent("keydown", { key: "Escape" });
   });
 
@@ -115,9 +98,7 @@ describe("addPauseDetection", () => {
       mockGhosts,
       mockPauseTimers,
       mockResumeTimers,
-      mockPlayGame,
-      mockRunDeathAnimation,
-      mockRunLevelUpAnimation
+      mockResumeAnimation
     );
     jest.spyOn(global, "cancelAnimationFrame");
     window.dispatchEvent(escKeyEvent);
@@ -144,9 +125,7 @@ describe("addPauseDetection", () => {
       mockGhosts,
       mockPauseTimers,
       mockResumeTimers,
-      mockPlayGame,
-      mockRunDeathAnimation,
-      mockRunLevelUpAnimation
+      mockResumeAnimation
     );
     expect(mockVariables.pauseEventListener).toEqual(expect.any(Function));
   });
@@ -169,9 +148,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       window.dispatchEvent(escKeyEvent);
       expect(mockVariables.isGamePaused).toBeTruthy();
@@ -194,16 +171,14 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       mockVariables.isGamePaused = true;
       window.dispatchEvent(escKeyEvent);
       expect(mockVariables.isGamePaused).toBeFalsy();
     });
 
-    it("call playGame if isGamePaused is initially true and Pac-Man is not shrinking or levelling up", () => {
+    it("call resumeAnimation if isGamePaused is initially true", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -220,94 +195,24 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       mockVariables.isGamePaused = true;
       window.dispatchEvent(escKeyEvent);
-      expect(mockPlayGame).toHaveBeenCalledTimes(1);
-      expect(mockPlayGame).toHaveBeenCalledWith(
-        mockVariables.playerName,
-        mockVariables.reactRoot
-      );
-    });
-
-    it("call runDeathAnimation if isGamePaused is initially true and Pac-Man is shrinking", () => {
-      addPauseDetection(
+      expect(mockResumeAnimation).toHaveBeenCalledTimes(1);
+      expect(mockResumeAnimation).toHaveBeenCalledWith(
         mockVariables,
+        mockCtx,
+        mockBoundaries,
+        mockPellets,
+        mockPowerUps,
+        mockPacman,
+        mockGhosts,
         mockCycleTimer,
         mockScaredTimer,
-        mockRetreatingTimers,
         mockGhostAudioObjects,
         mockPacmanDeathAudio,
-        mockLevelUpAudio,
-        mockShrinkingPacman,
-        mockCtx,
-        mockBoundaries,
-        mockPellets,
-        mockPowerUps,
-        mockGhosts,
-        mockPauseTimers,
-        mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
-      );
-      mockVariables.isGamePaused = true;
-      window.dispatchEvent(escKeyEvent);
-      expect(mockRunDeathAnimation).toHaveBeenCalledTimes(1);
-      expect(mockRunDeathAnimation).toHaveBeenCalledWith(
-        mockVariables,
-        mockCtx,
-        mockBoundaries,
-        mockPellets,
-        mockPowerUps,
-        mockShrinkingPacman,
-        mockGhosts,
-        mockCycleTimer,
-        mockScaredTimer,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio
-      );
-    });
-
-    it("call runLevelUpAnimation if isGamePaused is initially true and Pac-Man is levelling up", () => {
-      addPauseDetection(
-        mockVariables,
-        mockCycleTimer,
-        mockScaredTimer,
-        mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
-        mockLevellingUpPacman,
-        mockCtx,
-        mockBoundaries,
-        mockPellets,
-        mockPowerUps,
-        mockGhosts,
-        mockPauseTimers,
-        mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
-      );
-      mockVariables.isGamePaused = true;
-      window.dispatchEvent(escKeyEvent);
-      expect(mockRunLevelUpAnimation).toHaveBeenCalledTimes(1);
-      expect(mockRunLevelUpAnimation).toHaveBeenCalledWith(
-        mockVariables,
-        mockLevellingUpPacman,
-        mockGhosts,
-        mockPellets,
-        mockPowerUps,
-        mockCycleTimer,
-        mockScaredTimer,
-        mockCtx,
-        mockGhostAudioObjects,
-        mockLevelUpAudio,
-        mockBoundaries
+        mockLevelUpAudio
       );
     });
 
@@ -328,9 +233,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       jest.spyOn(mockSirenAudio, "pause");
       window.dispatchEvent(escKeyEvent);
@@ -354,9 +257,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       jest.spyOn(mockScaredAudio, "pause");
       window.dispatchEvent(escKeyEvent);
@@ -380,9 +281,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       jest.spyOn(mockRetreatingAudio, "pause");
       window.dispatchEvent(escKeyEvent);
@@ -406,9 +305,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       jest.spyOn(mockPacmanDeathAudio, "pause");
       window.dispatchEvent(escKeyEvent);
@@ -432,9 +329,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       jest.spyOn(mockUnloadedPacmanDeathAudio, "pause");
       window.dispatchEvent(escKeyEvent);
@@ -458,9 +353,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       mockVariables.isGamePaused = true;
       jest.spyOn(mockPacmanDeathAudio, "play");
@@ -485,9 +378,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       mockVariables.isGamePaused = true;
       jest.spyOn(mockUnloadedPacmanDeathAudio, "play");
@@ -512,9 +403,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       jest.spyOn(mockLevelUpAudio, "pause");
       window.dispatchEvent(escKeyEvent);
@@ -538,9 +427,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       jest.spyOn(mockUnloadedLevelUpAudio, "pause");
       window.dispatchEvent(escKeyEvent);
@@ -564,9 +451,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       mockVariables.isGamePaused = true;
       jest.spyOn(mockLevelUpAudio, "play");
@@ -591,9 +476,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       mockVariables.isGamePaused = true;
       jest.spyOn(mockUnloadedLevelUpAudio, "play");
@@ -618,9 +501,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       window.dispatchEvent(escKeyEvent);
       expect(mockPauseTimers).toHaveBeenCalledTimes(1);
@@ -648,9 +529,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockPauseTimers,
         mockResumeTimers,
-        mockPlayGame,
-        mockRunDeathAnimation,
-        mockRunLevelUpAnimation
+        mockResumeAnimation
       );
       mockVariables.isGamePaused = true;
       window.dispatchEvent(escKeyEvent);
