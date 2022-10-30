@@ -1,5 +1,5 @@
-import resumeTimers from "../timers/resumeTimers";
 import pauseAudioAndTimers from "./pauseAudioAndTimers";
+import resumeAudioAndTimers from "./resumeAudioAndTimers";
 import resumeAnimation from "./resumeAnimation";
 
 export default function addPauseDetection(
@@ -17,7 +17,7 @@ export default function addPauseDetection(
   powerUps,
   ghosts,
   callbackOne = pauseAudioAndTimers,
-  callbackTwo = resumeTimers,
+  callbackTwo = resumeAudioAndTimers,
   callbackThree = resumeAnimation
 ) {
   window.addEventListener(
@@ -51,9 +51,13 @@ export default function addPauseDetection(
             pacmanDeathAudio,
             levelUpAudio
           );
-          if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.play();
-          if (levelUpAudio._state === "loaded") levelUpAudio.play();
-          callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
+          callbackTwo(
+            pacmanDeathAudio,
+            levelUpAudio,
+            cycleTimer,
+            scaredTimer,
+            retreatingTimers
+          );
         }
       }
     })
