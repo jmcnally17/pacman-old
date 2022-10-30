@@ -13,6 +13,7 @@ import implementObjects from "./implementObjects";
 import updateDisplay from "./display/updateDisplay";
 import manageGhostAudio from "./ghosts/manageGhostAudio";
 import makeLevelUpAudio from "./pellets/makeLevelUpAudio";
+import makePauseTextImage from "./display/makePauseTextImage";
 
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
@@ -77,7 +78,7 @@ const retreatingTimers = makeRetreatingTimers(ghosts);
 const ghostAudioObjects = makeGhostAudioObjects();
 const pacmanDeathAudio = makePacmanDeathAudio();
 const levelUpAudio = makeLevelUpAudio();
-const pauseTextImage = new Image();
+const pauseTextImage = makePauseTextImage();
 
 export default function playGame(name, reactRoot, callbackOne = finishSetup, callbackTwo = implementObjects, callbackThree = updateDisplay, callbackFour = manageGhostAudio) {
   variables.animationId = requestAnimationFrame(playGame);
