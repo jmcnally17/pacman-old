@@ -24,8 +24,9 @@ export default function resetAfterGameOver(
   variables.lastKeyPressed = "";
   variables.level = 1;
   window.removeEventListener("keydown", variables.directionEventListener);
-  document.removeEventListener(
+  window.removeEventListener(
     "visibilitychange",
     variables.visibilityEventListener
   );
+  window.removeEventListener("keydown", variables.pauseEventListener);
 }
