@@ -77,6 +77,7 @@ const retreatingTimers = makeRetreatingTimers(ghosts);
 const ghostAudioObjects = makeGhostAudioObjects();
 const pacmanDeathAudio = makePacmanDeathAudio();
 const levelUpAudio = makeLevelUpAudio();
+const pauseTextImage = new Image();
 
 export default function playGame(name, reactRoot, callbackOne = finishSetup, callbackTwo = implementObjects, callbackThree = updateDisplay, callbackFour = manageGhostAudio) {
   variables.animationId = requestAnimationFrame(playGame);
@@ -84,7 +85,7 @@ export default function playGame(name, reactRoot, callbackOne = finishSetup, cal
   const ctx = board.getContext("2d");
   ctx.clearRect(0, 0, 896, 992);
   if (variables.start === true) {
-    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, ghostAudioObjects, pacmanDeathAudio, levelUpAudio, pacman, ctx, boundaries, pellets, powerUps, ghosts);
+    callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, ghostAudioObjects, pacmanDeathAudio, levelUpAudio, pacman, ctx, boundaries, pellets, powerUps, ghosts, pauseTextImage);
   }
   callbackTwo(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables, ghostAudioObjects, pacmanDeathAudio, levelUpAudio);
   callbackThree(pacman, variables);

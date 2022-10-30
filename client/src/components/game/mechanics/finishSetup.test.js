@@ -18,6 +18,7 @@ let mockBoundaries;
 let mockPellets;
 let mockPowerUps;
 let mockGhosts;
+let mockPauseTextImage;
 let mockAddDirectionDetection;
 let mockAddVisibilityDetection;
 let mockAddPauseDetection;
@@ -66,6 +67,7 @@ describe("finishSetup", () => {
     mockPellets = "pellets";
     mockPowerUps = "powerUps";
     mockGhosts = "ghosts";
+    mockPauseTextImage = "pauseTextImage";
     mockAddDirectionDetection = jest.fn();
     mockAddVisibilityDetection = jest.fn();
     mockAddPauseDetection = jest.fn();
@@ -88,6 +90,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -113,6 +116,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -137,6 +141,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -162,6 +167,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -195,6 +201,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -213,7 +220,8 @@ describe("finishSetup", () => {
       mockBoundaries,
       mockPellets,
       mockPowerUps,
-      mockGhosts
+      mockGhosts,
+      mockPauseTextImage
     );
   });
 
@@ -234,6 +242,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -260,6 +269,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -286,6 +296,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -311,6 +322,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -336,6 +348,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection
@@ -361,6 +374,7 @@ describe("finishSetup", () => {
       mockPellets,
       mockPowerUps,
       mockGhosts,
+      mockPauseTextImage,
       mockAddDirectionDetection,
       mockAddVisibilityDetection,
       mockAddPauseDetection

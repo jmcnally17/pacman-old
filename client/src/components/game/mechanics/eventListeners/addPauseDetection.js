@@ -17,6 +17,7 @@ export default function addPauseDetection(
   pellets,
   powerUps,
   ghosts,
+  pauseTextImage,
   callbackOne = pauseAudioAndTimers,
   callbackTwo = loadPauseOverlay,
   callbackThree = resumeAudioAndTimers,
@@ -37,7 +38,7 @@ export default function addPauseDetection(
             scaredTimer,
             retreatingTimers
           );
-          callbackTwo(ctx);
+          callbackTwo(ctx, pauseTextImage);
         } else {
           variables.isGamePaused = false;
           callbackThree(
