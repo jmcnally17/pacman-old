@@ -13,8 +13,10 @@ describe("loadPauseText", () => {
     expect(mockCtx.drawImage).toHaveBeenCalledTimes(1);
     expect(mockCtx.drawImage).toHaveBeenCalledWith(
       mockPauseTextImage,
-      448,
-      496
+      98,
+      394,
+      700,
+      140
     );
   });
 });

@@ -1,5 +1,5 @@
 export default function makePauseTextImage() {
   const image = new Image();
-  image.src = "./images/pauseImageText.png";
+  image.src = "./images/pauseText.png";
   return image;
 }
