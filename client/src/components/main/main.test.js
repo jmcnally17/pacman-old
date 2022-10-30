@@ -36,8 +36,9 @@ describe("Main", () => {
     const instructionsEl = screen.getByText(
       "Use the directional keys to move Pac-Man around the board while avoiding the ghosts as best you can. " +
         "Pick up a power up and then attack the ghosts! " +
-        "Eat all the pellets on the board to level up. " +
-        "(For mobile and tablet users, a D-pad will appear below the board for you to move Pac-Man around)"
+        "Eat all the pellets on the board to level up " +
+        "(For mobile and tablet users, a D-pad will appear below the board for you to move Pac-Man around). " +
+        "Press esc to pause and unpause the game at any time."
     );
     expect(instructionsEl).toBeInTheDocument();
   });
