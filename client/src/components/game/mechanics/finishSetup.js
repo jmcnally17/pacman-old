@@ -18,6 +18,7 @@ export default function finishSetup(
   pellets,
   powerUps,
   ghosts,
+  pauseTextImage,
   callbackOne = addDirectionDetection,
   callbackTwo = addVisibilityDetection,
   callbackThree = addPauseDetection
@@ -48,7 +49,8 @@ export default function finishSetup(
     boundaries,
     pellets,
     powerUps,
-    ghosts
+    ghosts,
+    pauseTextImage
   );
   variables.start = false;
   ghostAudioObjects.forEach((audio) => audio.load());

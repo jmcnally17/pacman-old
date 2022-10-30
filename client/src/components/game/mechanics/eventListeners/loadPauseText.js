@@ -1,7 +1,4 @@
-export default function loadPauseText(ctx) {
+export default function loadPauseText(ctx, pauseTextImage) {
   ctx.globalAlpha = 1;
-  ctx.font = "100px Arial";
-  ctx.fillStyle = "white";
-  ctx.textAlign = "center";
-  ctx.fillText("Paused", 448, 500);
+  ctx.drawImage(pauseTextImage, 98, 394, 700, 140);
 }

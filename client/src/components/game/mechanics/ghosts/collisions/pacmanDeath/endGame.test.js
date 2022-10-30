@@ -17,7 +17,7 @@ describe("endGame", () => {
   beforeEach(() => {
     Leaderboard.mockClear();
     mockVariables = {
-      animationId: undefined,
+      animationId: "animationId",
       reactRoot: {
         render: () => undefined,
       },

@@ -1,21 +1,22 @@
 import loadPauseText from "./loadPauseText";
 
 describe("loadPauseText", () => {
-  it("adds the pause text onto the screen", () => {
+  it("adds the pause text image onto the screen", () => {
     const mockCtx = {
       globalAlpha: undefined,
-      font: undefined,
-      fillStyle: undefined,
-      textAlign: undefined,
-      fillText: () => undefined,
+      drawImage: () => undefined,
     };
-    jest.spyOn(mockCtx, "fillText");
-    loadPauseText(mockCtx);
+    const mockPauseTextImage = "pauseTextImage";
+    jest.spyOn(mockCtx, "drawImage");
+    loadPauseText(mockCtx, mockPauseTextImage);
     expect(mockCtx.globalAlpha).toBe(1);
-    expect(mockCtx.font).toBe("100px Arial");
-    expect(mockCtx.fillStyle).toBe("white");
-    expect(mockCtx.textAlign).toBe("center");
-    expect(mockCtx.fillText).toHaveBeenCalledTimes(1);
-    expect(mockCtx.fillText).toHaveBeenCalledWith("Paused", 448, 500);
+    expect(mockCtx.drawImage).toHaveBeenCalledTimes(1);
+    expect(mockCtx.drawImage).toHaveBeenCalledWith(
+      mockPauseTextImage,
+      98,
+      394,
+      700,
+      140
+    );
   });
 });
