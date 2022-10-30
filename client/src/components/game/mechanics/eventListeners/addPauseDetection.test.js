@@ -14,6 +14,7 @@ let mockPellets;
 let mockPowerUps;
 let mockGhosts;
 let mockPauseAudioAndTimers;
+let mockLoadPauseOverlay;
 let mockResumeAudioAndTimers;
 let mockResumeAnimation;
 let escKeyEvent;
@@ -40,6 +41,7 @@ describe("addPauseDetection", () => {
     mockPowerUps = "powerUps";
     mockGhosts = "ghosts";
     mockPauseAudioAndTimers = jest.fn();
+    mockLoadPauseOverlay = jest.fn();
     mockResumeAudioAndTimers = jest.fn();
     mockResumeAnimation = jest.fn();
     escKeyEvent = new KeyboardEvent("keydown", { key: "Escape" });
@@ -61,6 +63,7 @@ describe("addPauseDetection", () => {
       mockPowerUps,
       mockGhosts,
       mockPauseAudioAndTimers,
+      mockLoadPauseOverlay,
       mockResumeAudioAndTimers,
       mockResumeAnimation
     );
@@ -88,6 +91,7 @@ describe("addPauseDetection", () => {
       mockPowerUps,
       mockGhosts,
       mockPauseAudioAndTimers,
+      mockLoadPauseOverlay,
       mockResumeAudioAndTimers,
       mockResumeAnimation
     );
@@ -111,6 +115,7 @@ describe("addPauseDetection", () => {
         mockPowerUps,
         mockGhosts,
         mockPauseAudioAndTimers,
+        mockLoadPauseOverlay,
         mockResumeAudioAndTimers,
         mockResumeAnimation
       );
@@ -134,6 +139,7 @@ describe("addPauseDetection", () => {
         mockPowerUps,
         mockGhosts,
         mockPauseAudioAndTimers,
+        mockLoadPauseOverlay,
         mockResumeAudioAndTimers,
         mockResumeAnimation
       );
@@ -158,6 +164,7 @@ describe("addPauseDetection", () => {
         mockPowerUps,
         mockGhosts,
         mockPauseAudioAndTimers,
+        mockLoadPauseOverlay,
         mockResumeAudioAndTimers,
         mockResumeAnimation
       );
@@ -171,6 +178,31 @@ describe("addPauseDetection", () => {
         mockScaredTimer,
         mockRetreatingTimers
       );
+    });
+
+    it("call loadPauseOverlay if isGamePaused is initially false", () => {
+      addPauseDetection(
+        mockVariables,
+        mockCycleTimer,
+        mockScaredTimer,
+        mockRetreatingTimers,
+        mockGhostAudioObjects,
+        mockPacmanDeathAudio,
+        mockLevelUpAudio,
+        mockPacman,
+        mockCtx,
+        mockBoundaries,
+        mockPellets,
+        mockPowerUps,
+        mockGhosts,
+        mockPauseAudioAndTimers,
+        mockLoadPauseOverlay,
+        mockResumeAudioAndTimers,
+        mockResumeAnimation
+      );
+      window.dispatchEvent(escKeyEvent);
+      expect(mockLoadPauseOverlay).toHaveBeenCalledTimes(1);
+      expect(mockLoadPauseOverlay).toHaveBeenCalledWith(mockCtx);
     });
 
     it("call ResumeAudioAndTimers if isGamePaused is intially true", () => {
@@ -189,6 +221,7 @@ describe("addPauseDetection", () => {
         mockPowerUps,
         mockGhosts,
         mockPauseAudioAndTimers,
+        mockLoadPauseOverlay,
         mockResumeAudioAndTimers,
         mockResumeAnimation
       );
@@ -220,6 +253,7 @@ describe("addPauseDetection", () => {
         mockPowerUps,
         mockGhosts,
         mockPauseAudioAndTimers,
+        mockLoadPauseOverlay,
         mockResumeAudioAndTimers,
         mockResumeAnimation
       );

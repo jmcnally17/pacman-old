@@ -1,4 +1,5 @@
 import pauseAudioAndTimers from "./pauseAudioAndTimers";
+import loadPauseOverlay from "./loadPauseOverlay";
 import resumeAudioAndTimers from "./resumeAudioAndTimers";
 import resumeAnimation from "./resumeAnimation";
 
@@ -17,8 +18,9 @@ export default function addPauseDetection(
   powerUps,
   ghosts,
   callbackOne = pauseAudioAndTimers,
-  callbackTwo = resumeAudioAndTimers,
-  callbackThree = resumeAnimation
+  callbackTwo = loadPauseOverlay,
+  callbackThree = resumeAudioAndTimers,
+  callbackFour = resumeAnimation
 ) {
   window.addEventListener(
     "keydown",
@@ -35,9 +37,17 @@ export default function addPauseDetection(
             scaredTimer,
             retreatingTimers
           );
+          callbackTwo(ctx);
         } else {
           variables.isGamePaused = false;
           callbackThree(
+            pacmanDeathAudio,
+            levelUpAudio,
+            cycleTimer,
+            scaredTimer,
+            retreatingTimers
+          );
+          callbackFour(
             variables,
             ctx,
             boundaries,
@@ -50,13 +60,6 @@ export default function addPauseDetection(
             ghostAudioObjects,
             pacmanDeathAudio,
             levelUpAudio
-          );
-          callbackTwo(
-            pacmanDeathAudio,
-            levelUpAudio,
-            cycleTimer,
-            scaredTimer,
-            retreatingTimers
           );
         }
       }
