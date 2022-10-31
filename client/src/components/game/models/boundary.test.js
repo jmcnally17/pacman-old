@@ -1,12 +1,16 @@
 import Boundary from "./boundary";
 
 let boundary;
-let mockImage;
+let mockRegularImage;
+let mockWhiteImage;
 
 describe("Boundary", () => {
   beforeEach(() => {
-    mockImage = {
+    mockRegularImage = {
       src: "./randomSource.png",
+    };
+    mockWhiteImage = {
+      src: "./randomSourceWhite.png",
     };
     boundary = new Boundary(
       {
@@ -14,7 +18,8 @@ describe("Boundary", () => {
           x: 40,
           y: 100,
         },
-        image: mockImage,
+        regularImage: mockRegularImage,
+        whiteImage: mockWhiteImage,
       },
       20
     );
@@ -33,7 +38,19 @@ describe("Boundary", () => {
       });
     });
 
-    it("has an image that is passed in", () => {
+    it("has a regular image that is passed in", () => {
+      expect(boundary.regularImage).toEqual({
+        src: "./randomSource.png",
+      });
+    });
+
+    it("has a white image that is passed in", () => {
+      expect(boundary.whiteImage).toEqual({
+        src: "./randomSourceWhite.png",
+      });
+    });
+
+    it("has an image variable that is initially set to the regular image", () => {
       expect(boundary.image).toEqual({
         src: "./randomSource.png",
       });
@@ -48,20 +65,17 @@ describe("Boundary", () => {
       jest.spyOn(mockCtx, "drawImage");
       boundary.draw(mockCtx);
       expect(mockCtx.drawImage).toHaveBeenCalledTimes(1);
-      expect(mockCtx.drawImage).toHaveBeenCalledWith(mockImage, 40, 100);
+      expect(mockCtx.drawImage).toHaveBeenCalledWith(boundary.image, 40, 100);
     });
   });
 
   describe("flash", () => {
-    it("changes the image source from the regular to the white", () => {
+    it("switches the image source between regular and white", () => {
       boundary.flash();
-      expect(boundary.image.src).toBe("./randomSourceWhite.png");
-    });
+      expect(boundary.image).toEqual(boundary.whiteImage);
 
-    it("changes the image source from the white to the regular", () => {
-      mockImage.src = "./randomSourceWhite.png";
       boundary.flash();
-      expect(boundary.image.src).toBe("./randomSource.png");
+      expect(boundary.image).toEqual(boundary.regularImage);
     });
   });
 });

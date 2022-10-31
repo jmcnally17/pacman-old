@@ -1,9 +1,11 @@
 export default class Boundary {
-  constructor({ position, image }, tileLength) {
+  constructor({ position, regularImage, whiteImage }, tileLength) {
     this.position = position;
     this.width = tileLength;
     this.height = tileLength;
-    this.image = image;
+    this.regularImage = regularImage;
+    this.whiteImage = whiteImage;
+    this.image = regularImage;
   }
 
   draw(ctx) {
@@ -12,8 +14,8 @@ export default class Boundary {
 
   flash() {
     let imageSource = this.image.src;
-    this.image.src = imageSource.includes("White")
-      ? imageSource.replace("White", "")
-      : imageSource.replace(".png", "White.png");
+    this.image = imageSource.includes("White")
+      ? this.regularImage
+      : this.whiteImage;
   }
 }

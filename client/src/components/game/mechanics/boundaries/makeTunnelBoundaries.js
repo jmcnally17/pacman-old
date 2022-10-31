@@ -1,7 +1,9 @@
 import Boundary from "../../models/boundary";
 
-const image = new Image();
-image.src = "./images/pipeHorizontal.png";
+const regularImage = new Image();
+regularImage.src = "./images/pipeHorizontal.png";
+const whiteImage = new Image();
+whiteImage.src = "./images/pipeHorizontalWhite.png";
 
 export default function makeTunnelBoundaries(boundaries, variables) {
   const tunnelBoundaryOne = new Boundary(
@@ -10,7 +12,8 @@ export default function makeTunnelBoundaries(boundaries, variables) {
         x: -variables.tileLength,
         y: variables.tileLength * 13,
       },
-      image: image,
+      regularImage: regularImage,
+      whiteImage: whiteImage,
     },
     variables.tileLength
   );
@@ -20,7 +23,8 @@ export default function makeTunnelBoundaries(boundaries, variables) {
         x: -variables.tileLength,
         y: variables.tileLength * 15,
       },
-      image: image,
+      regularImage: regularImage,
+      whiteImage: whiteImage,
     },
     variables.tileLength
   );
@@ -30,7 +34,8 @@ export default function makeTunnelBoundaries(boundaries, variables) {
         x: variables.tileLength * 28,
         y: variables.tileLength * 13,
       },
-      image: image,
+      regularImage: regularImage,
+      whiteImage: whiteImage,
     },
     variables.tileLength
   );
@@ -40,7 +45,8 @@ export default function makeTunnelBoundaries(boundaries, variables) {
         x: variables.tileLength * 28,
         y: variables.tileLength * 15,
       },
-      image: image,
+      regularImage: regularImage,
+      whiteImage: whiteImage,
     },
     variables.tileLength
   );
