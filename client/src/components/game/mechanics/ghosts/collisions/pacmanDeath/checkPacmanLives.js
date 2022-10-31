@@ -9,7 +9,7 @@ export default function checkPacmanLives(
   ghosts,
   cycleTimer,
   scaredTimer,
-  ghostAudioObjects,
+  audioPlayer,
   callbackOne = endGame,
   callbackTwo = resetAfterDeath
 ) {
@@ -31,7 +31,7 @@ export default function checkPacmanLives(
       ghosts,
       cycleTimer,
       scaredTimer,
-      ghostAudioObjects
+      audioPlayer
     );
   }
 }

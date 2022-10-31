@@ -9,8 +9,7 @@ export default function checkLevelUpCondition(
   cycleTimer,
   scaredTimer,
   ctx,
-  ghostAudioObjects,
-  levelUpAudio,
+  audioPlayer,
   boundaries,
   callback = runLevelUpAnimation
 ) {
@@ -21,9 +20,8 @@ export default function checkLevelUpCondition(
     }
     if (eatenPellets === pellets.length) {
       cancelAnimationFrame(variables.animationId);
-      ghostAudioObjects.forEach((audio) => audio.unload());
-      levelUpAudio.load();
-      levelUpAudio.play();
+      audioPlayer.unloadGhost();
+      audioPlayer.loadAndPlayLevelUp();
       pacman.isLevellingUp = true;
       callback(
         variables,
@@ -34,8 +32,7 @@ export default function checkLevelUpCondition(
         cycleTimer,
         scaredTimer,
         ctx,
-        ghostAudioObjects,
-        levelUpAudio,
+        audioPlayer,
         boundaries
       );
     }

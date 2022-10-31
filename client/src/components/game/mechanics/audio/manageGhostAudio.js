@@ -1,5 +1,5 @@
 export default function manageGhostAudio(
-  ghostAudioObjects,
+  audioPlayer,
   scaredTimer,
   retreatingTimers
 ) {
@@ -8,18 +8,12 @@ export default function manageGhostAudio(
     if (timer.isRunning) count++;
   });
   if (count > 0) {
-    if (!ghostAudioObjects[2].playing()) {
-      ghostAudioObjects[0].pause();
-      ghostAudioObjects[1].pause();
-      ghostAudioObjects[2].play();
+    if (!audioPlayer.ghostRetreating.playing()) {
+      audioPlayer.playGhostRetreating();
     }
-  } else if (scaredTimer.isRunning && !ghostAudioObjects[1].playing()) {
-    ghostAudioObjects[0].pause();
-    ghostAudioObjects[2].pause();
-    ghostAudioObjects[1].play();
-  } else if (!scaredTimer.isRunning && !ghostAudioObjects[0].playing()) {
-    ghostAudioObjects[1].pause();
-    ghostAudioObjects[2].pause();
-    ghostAudioObjects[0].play();
+  } else if (scaredTimer.isRunning && !audioPlayer.ghostScared.playing()) {
+    audioPlayer.playGhostScared();
+  } else if (!scaredTimer.isRunning && !audioPlayer.ghostSiren.playing()) {
+    audioPlayer.playGhostSiren();
   }
 }

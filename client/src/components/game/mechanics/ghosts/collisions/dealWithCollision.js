@@ -9,18 +9,16 @@ export default function dealWithCollision(
   powerUps,
   cycleTimer,
   scaredTimer,
-  ghostAudioObjects,
+  audioPlayer,
   ctx,
   boundaries,
-  pacmanDeathAudio,
   callback = runDeathAnimation
 ) {
   if (!ghost.isScared && !ghost.isRetreating) {
     pacman.radians = Math.PI / 4;
     cancelAnimationFrame(variables.animationId);
-    ghostAudioObjects.forEach((audio) => audio.unload());
-    pacmanDeathAudio.load();
-    pacmanDeathAudio.play();
+    audioPlayer.unloadGhost();
+    audioPlayer.loadAndPlayPacmanDeath();
     pacman.isShrinking = true;
     callback(
       variables,
@@ -32,8 +30,7 @@ export default function dealWithCollision(
       ghosts,
       cycleTimer,
       scaredTimer,
-      ghostAudioObjects,
-      pacmanDeathAudio
+      audioPlayer
     );
   } else if (ghost.isScared) {
     variables.score += 200 * Math.pow(2, variables.killCount);

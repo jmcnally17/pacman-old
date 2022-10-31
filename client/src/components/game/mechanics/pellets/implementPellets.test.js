@@ -11,8 +11,7 @@ let mockGhosts;
 let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockGhostAudioObjects;
-let mockLevelUpAudio;
+let mockAudioPlayer;
 let mockBoundaries;
 let mockEatPellet;
 let mockCheckLevelUpCondition;
@@ -42,8 +41,7 @@ describe("implementPellets", () => {
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockGhostAudioObjects = "ghostAudioObjects";
-    mockLevelUpAudio = "levelUpAudio";
+    mockAudioPlayer = "audioPlayer";
     mockBoundaries = "boundaries";
     mockEatPellet = jest.fn();
     mockCheckLevelUpCondition = jest.fn();
@@ -59,8 +57,7 @@ describe("implementPellets", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
@@ -81,8 +78,7 @@ describe("implementPellets", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
@@ -100,8 +96,7 @@ describe("implementPellets", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
@@ -137,8 +132,7 @@ describe("implementPellets", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
@@ -156,8 +150,7 @@ describe("implementPellets", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockBoundaries,
       mockEatPellet,
       mockCheckLevelUpCondition
@@ -172,8 +165,7 @@ describe("implementPellets", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockGhostAudioObjects,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockBoundaries
     );
   });

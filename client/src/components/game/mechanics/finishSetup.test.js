@@ -6,12 +6,7 @@ let mockReactRoot;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
-let mockSirenAudio;
-let mockScaredAudio;
-let mockRetreatingAudio;
-let mockGhostAudioObjects;
-let mockPacmanDeathAudio;
-let mockLevelUpAudio;
+let mockAudioPlayer;
 let mockPacman;
 let mockCtx;
 let mockBoundaries;
@@ -40,26 +35,11 @@ describe("finishSetup", () => {
     jest.spyOn(mockCycleTimer, "start");
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
-    mockSirenAudio = {
-      play: () => undefined,
-      load: () => undefined,
-    };
-    mockScaredAudio = {
-      load: () => undefined,
-    };
-    mockRetreatingAudio = {
-      load: () => undefined,
-    };
-    mockGhostAudioObjects = [
-      mockSirenAudio,
-      mockScaredAudio,
-      mockRetreatingAudio,
-    ];
-    mockPacmanDeathAudio = {
-      unload: () => undefined,
-    };
-    mockLevelUpAudio = {
-      unload: () => undefined,
+    mockAudioPlayer = {
+      loadGhost: () => undefined,
+      playGhostSiren: () => undefined,
+      unloadPacmanDeath: () => undefined,
+      unloadLevelUp: () => undefined,
     };
     mockPacman = "pacman";
     mockCtx = "ctx";
@@ -81,9 +61,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -107,9 +85,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -132,9 +108,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -158,9 +132,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -178,9 +150,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio
+      mockAudioPlayer
     );
   });
 
@@ -192,9 +162,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -212,9 +180,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -233,9 +199,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -250,9 +214,8 @@ describe("finishSetup", () => {
     expect(mockVariables.start).toBeFalsy();
   });
 
-  it("loads and plays the ghost siren", () => {
-    jest.spyOn(mockSirenAudio, "load");
-    jest.spyOn(mockSirenAudio, "play");
+  it("calls loadGhost on the audioPlayer", () => {
+    jest.spyOn(mockAudioPlayer, "loadGhost");
     finishSetup(
       mockVariables,
       mockName,
@@ -260,9 +223,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -274,12 +235,11 @@ describe("finishSetup", () => {
       mockAddVisibilityDetection,
       mockAddPauseDetection
     );
-    expect(mockSirenAudio.load).toHaveBeenCalledTimes(1);
-    expect(mockSirenAudio.play).toHaveBeenCalledTimes(1);
+    expect(mockAudioPlayer.loadGhost).toHaveBeenCalledTimes(1);
   });
 
-  it("loads the ghosts scared audio", () => {
-    jest.spyOn(mockScaredAudio, "load");
+  it("calls playGhostSiren on the audioPlayer", () => {
+    jest.spyOn(mockAudioPlayer, "playGhostSiren");
     finishSetup(
       mockVariables,
       mockName,
@@ -287,9 +247,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -301,11 +259,11 @@ describe("finishSetup", () => {
       mockAddVisibilityDetection,
       mockAddPauseDetection
     );
-    expect(mockScaredAudio.load).toHaveBeenCalledTimes(1);
+    expect(mockAudioPlayer.playGhostSiren).toHaveBeenCalledTimes(1);
   });
 
-  it("loads the ghosts retreating audio", () => {
-    jest.spyOn(mockRetreatingAudio, "load");
+  it("calls unloadPacmanDeath on the audioPlayer", () => {
+    jest.spyOn(mockAudioPlayer, "unloadPacmanDeath");
     finishSetup(
       mockVariables,
       mockName,
@@ -313,9 +271,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -327,11 +283,11 @@ describe("finishSetup", () => {
       mockAddVisibilityDetection,
       mockAddPauseDetection
     );
-    expect(mockRetreatingAudio.load).toHaveBeenCalledTimes(1);
+    expect(mockAudioPlayer.unloadPacmanDeath).toHaveBeenCalledTimes(1);
   });
 
-  it("unloads the Pac-Man death audio", () => {
-    jest.spyOn(mockPacmanDeathAudio, "unload");
+  it("calls unloadLevelUp on the audioPlayer", () => {
+    jest.spyOn(mockAudioPlayer, "unloadLevelUp");
     finishSetup(
       mockVariables,
       mockName,
@@ -339,9 +295,7 @@ describe("finishSetup", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -353,32 +307,6 @@ describe("finishSetup", () => {
       mockAddVisibilityDetection,
       mockAddPauseDetection
     );
-    expect(mockPacmanDeathAudio.unload).toHaveBeenCalledTimes(1);
-  });
-
-  it("unloads the level up audio", () => {
-    jest.spyOn(mockLevelUpAudio, "unload");
-    finishSetup(
-      mockVariables,
-      mockName,
-      mockReactRoot,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
-      mockPacman,
-      mockCtx,
-      mockBoundaries,
-      mockPellets,
-      mockPowerUps,
-      mockGhosts,
-      mockPauseTextImage,
-      mockAddDirectionDetection,
-      mockAddVisibilityDetection,
-      mockAddPauseDetection
-    );
-    expect(mockLevelUpAudio.unload).toHaveBeenCalledTimes(1);
+    expect(mockAudioPlayer.unloadLevelUp).toHaveBeenCalledTimes(1);
   });
 });

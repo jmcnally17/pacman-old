@@ -12,9 +12,7 @@ export default function resumeAnimation(
   ghosts,
   cycleTimer,
   scaredTimer,
-  ghostAudioObjects,
-  pacmanDeathAudio,
-  levelUpAudio,
+  audioPlayer,
   callbackOne = runDeathAnimation,
   callbackTwo = runLevelUpAnimation,
   callbackThree = playGame
@@ -30,8 +28,7 @@ export default function resumeAnimation(
       ghosts,
       cycleTimer,
       scaredTimer,
-      ghostAudioObjects,
-      pacmanDeathAudio
+      audioPlayer
     );
   } else if (pacman.isLevellingUp) {
     callbackTwo(
@@ -43,8 +40,7 @@ export default function resumeAnimation(
       cycleTimer,
       scaredTimer,
       ctx,
-      ghostAudioObjects,
-      levelUpAudio,
+      audioPlayer,
       boundaries
     );
   } else {

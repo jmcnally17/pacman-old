@@ -1,7 +1,6 @@
 import resumeAudioAndTimers from "./resumeAudioAndTimers";
 
-let mockPacmanDeathAudio;
-let mockLevelUpAudio;
+let mockAudioPlayer;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
@@ -10,8 +9,7 @@ let mockResumeTimers;
 
 describe("resumeAudioAndTimers", () => {
   beforeEach(() => {
-    mockPacmanDeathAudio = "pacmanDeathAudio";
-    mockLevelUpAudio = "levelUpAudio";
+    mockAudioPlayer = "audioPlayer";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
@@ -21,8 +19,7 @@ describe("resumeAudioAndTimers", () => {
 
   it("calls resumeAudio", () => {
     resumeAudioAndTimers(
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
@@ -30,16 +27,12 @@ describe("resumeAudioAndTimers", () => {
       mockResumeTimers
     );
     expect(mockResumeAudio).toHaveBeenCalledTimes(1);
-    expect(mockResumeAudio).toHaveBeenCalledWith(
-      mockPacmanDeathAudio,
-      mockLevelUpAudio
-    );
+    expect(mockResumeAudio).toHaveBeenCalledWith(mockAudioPlayer);
   });
 
   it("calls resumeTimers", () => {
     resumeAudioAndTimers(
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,

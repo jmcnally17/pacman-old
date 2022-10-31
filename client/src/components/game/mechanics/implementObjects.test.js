@@ -9,9 +9,7 @@ let mockCycleTimer;
 let mockScaredTimer;
 let mockCtx;
 let mockVariables;
-let mockGhostAudioObjects;
-let mockPacmanDeathAudio;
-let mockLevelUpAudio;
+let mockAudioPlayer;
 let mockImplementBoundaries;
 let mockImplementPellets;
 let mockImplementPowerUps;
@@ -29,9 +27,7 @@ describe("implementObjects", () => {
     mockScaredTimer = "scaredTimer";
     mockCtx = "ctx";
     mockVariables = "variables";
-    mockGhostAudioObjects = "mockGhostAudioObjects";
-    mockPacmanDeathAudio = "pacmanDeathAudio";
-    mockLevelUpAudio = "levelUpAudio";
+    mockAudioPlayer = "audioPlayer";
     mockImplementBoundaries = jest.fn();
     mockImplementPellets = jest.fn();
     mockImplementPowerUps = jest.fn();
@@ -50,9 +46,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -78,9 +72,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -98,8 +90,7 @@ describe("implementObjects", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockBoundaries
     );
   });
@@ -115,9 +106,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -147,9 +136,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,
@@ -167,8 +154,7 @@ describe("implementObjects", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio
+      mockAudioPlayer
     );
   });
 
@@ -183,9 +169,7 @@ describe("implementObjects", () => {
       mockScaredTimer,
       mockCtx,
       mockVariables,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockImplementBoundaries,
       mockImplementPellets,
       mockImplementPowerUps,

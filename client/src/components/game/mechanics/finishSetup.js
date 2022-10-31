@@ -9,9 +9,7 @@ export default function finishSetup(
   cycleTimer,
   scaredTimer,
   retreatingTimers,
-  ghostAudioObjects,
-  pacmanDeathAudio,
-  levelUpAudio,
+  audioPlayer,
   pacman,
   ctx,
   boundaries,
@@ -32,18 +30,14 @@ export default function finishSetup(
     cycleTimer,
     scaredTimer,
     retreatingTimers,
-    ghostAudioObjects,
-    pacmanDeathAudio,
-    levelUpAudio
+    audioPlayer
   );
   callbackThree(
     variables,
     cycleTimer,
     scaredTimer,
     retreatingTimers,
-    ghostAudioObjects,
-    pacmanDeathAudio,
-    levelUpAudio,
+    audioPlayer,
     pacman,
     ctx,
     boundaries,
@@ -53,8 +47,8 @@ export default function finishSetup(
     pauseTextImage
   );
   variables.start = false;
-  ghostAudioObjects.forEach((audio) => audio.load());
-  ghostAudioObjects[0].play();
-  pacmanDeathAudio.unload();
-  levelUpAudio.unload();
+  audioPlayer.loadGhost();
+  audioPlayer.playGhostSiren();
+  audioPlayer.unloadPacmanDeath();
+  audioPlayer.unloadLevelUp();
 }
