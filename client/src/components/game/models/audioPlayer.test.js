@@ -32,9 +32,11 @@ describe("AudioPlayer", () => {
     };
     mockPacmanDeath = {
       name: "pacmanDeath",
+      pause: () => undefined,
     };
     mockLevelUp = {
       name: "levelUp",
+      pause: () => undefined,
     };
     audioPlayer = new AudioPlayer(
       mockGhostSiren,
@@ -150,6 +152,38 @@ describe("AudioPlayer", () => {
       jest.spyOn(audioPlayer.ghostRetreating, "play");
       audioPlayer.playGhostRetreating();
       expect(audioPlayer.ghostRetreating.play).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("pauseAll", () => {
+    it("calls pause on the ghostSiren", () => {
+      jest.spyOn(audioPlayer.ghostSiren, "pause");
+      audioPlayer.pauseAll();
+      expect(audioPlayer.ghostSiren.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on the ghostScared", () => {
+      jest.spyOn(audioPlayer.ghostScared, "pause");
+      audioPlayer.pauseAll();
+      expect(audioPlayer.ghostScared.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on the ghostRetreating", () => {
+      jest.spyOn(audioPlayer.ghostRetreating, "pause");
+      audioPlayer.pauseAll();
+      expect(audioPlayer.ghostRetreating.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on the pacmanDeath", () => {
+      jest.spyOn(audioPlayer.pacmanDeath, "pause");
+      audioPlayer.pauseAll();
+      expect(audioPlayer.pacmanDeath.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on the levelUp", () => {
+      jest.spyOn(audioPlayer.levelUp, "pause");
+      audioPlayer.pauseAll();
+      expect(audioPlayer.levelUp.pause).toHaveBeenCalledTimes(1);
     });
   });
 });

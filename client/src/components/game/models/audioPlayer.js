@@ -36,4 +36,12 @@ export default class AudioPlayer {
     this.ghostScared.pause();
     this.ghostRetreating.play();
   }
+
+  pauseAll() {
+    this.ghostSiren.pause();
+    this.ghostScared.pause();
+    this.ghostRetreating.pause();
+    this.pacmanDeath.pause();
+    this.levelUp.pause();
+  }
 }
