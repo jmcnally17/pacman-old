@@ -39,7 +39,7 @@ export default class AudioPlayer {
 
   loadAndPlayPacmanDeath() {
     this.pacmanDeath.load();
-    this.pacmanDeath.play();
+    this.#playPacmanDeath();
   }
 
   unloadPacmanDeath() {
@@ -48,11 +48,16 @@ export default class AudioPlayer {
 
   loadAndPlayLevelUp() {
     this.levelUp.load();
-    this.levelUp.play();
+    this.#playLevelUp();
   }
 
   unloadLevelUp() {
     this.levelUp.unload();
+  }
+
+  playPacmanDeathAndLevelUpIfLoaded() {
+    if (this.pacmanDeath._state === "loaded") this.#playPacmanDeath();
+    if (this.levelUp._state === "loaded") this.#playLevelUp();
   }
 
   pauseAll() {
@@ -61,5 +66,15 @@ export default class AudioPlayer {
     this.ghostRetreating.pause();
     this.pacmanDeath.pause();
     this.levelUp.pause();
+  }
+
+  // private
+
+  #playPacmanDeath() {
+    this.pacmanDeath.play();
+  }
+
+  #playLevelUp() {
+    this.levelUp.play();
   }
 }
