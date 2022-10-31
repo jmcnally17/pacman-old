@@ -5,9 +5,7 @@ let mockScaredAudio;
 let mockRetreatingAudio;
 let mockGhostAudioObjects;
 let mockPacmanDeathAudio;
-let mockUnloadedPacmanDeathAudio;
 let mockLevelUpAudio;
-let mockUnloadedLevelUpAudio;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
@@ -33,16 +31,8 @@ describe("pauseAudioAndTimers", () => {
       _state: "loaded",
       pause: () => undefined,
     };
-    mockUnloadedPacmanDeathAudio = {
-      _state: "unloaded",
-      pause: () => undefined,
-    };
     mockLevelUpAudio = {
       _state: "loaded",
-      pause: () => undefined,
-    };
-    mockUnloadedLevelUpAudio = {
-      _state: "unloaded",
       pause: () => undefined,
     };
     mockCycleTimer = "cycleTimer";
@@ -93,7 +83,7 @@ describe("pauseAudioAndTimers", () => {
     expect(mockRetreatingAudio.pause).toHaveBeenCalledTimes(1);
   });
 
-  it("calls pause on the pacman death audio if it is loaded", () => {
+  it("calls pause on the pacman death audio", () => {
     jest.spyOn(mockPacmanDeathAudio, "pause");
     pauseAudioAndTimers(
       mockGhostAudioObjects,
@@ -107,21 +97,7 @@ describe("pauseAudioAndTimers", () => {
     expect(mockPacmanDeathAudio.pause).toHaveBeenCalledTimes(1);
   });
 
-  it("does not call pause on the pacman death audio if it is unloaded", () => {
-    jest.spyOn(mockUnloadedPacmanDeathAudio, "pause");
-    pauseAudioAndTimers(
-      mockGhostAudioObjects,
-      mockUnloadedPacmanDeathAudio,
-      mockLevelUpAudio,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockPauseTimers
-    );
-    expect(mockUnloadedPacmanDeathAudio.pause).toHaveBeenCalledTimes(0);
-  });
-
-  it("calls pause on the level up audio if it is loaded", () => {
+  it("calls pause on the level up audio", () => {
     jest.spyOn(mockLevelUpAudio, "pause");
     pauseAudioAndTimers(
       mockGhostAudioObjects,
@@ -133,20 +109,6 @@ describe("pauseAudioAndTimers", () => {
       mockPauseTimers
     );
     expect(mockLevelUpAudio.pause).toHaveBeenCalledTimes(1);
-  });
-
-  it("does not call pause on the level up audio if it is unloaded", () => {
-    jest.spyOn(mockUnloadedLevelUpAudio, "pause");
-    pauseAudioAndTimers(
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockUnloadedLevelUpAudio,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockPauseTimers
-    );
-    expect(mockUnloadedLevelUpAudio.pause).toHaveBeenCalledTimes(0);
   });
 
   it("calls pauseTimers", () => {

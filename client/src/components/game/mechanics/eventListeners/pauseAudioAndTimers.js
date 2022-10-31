@@ -12,7 +12,7 @@ export default function pauseAudioAndTimers(
   ghostAudioObjects[0].pause();
   ghostAudioObjects[1].pause();
   ghostAudioObjects[2].pause();
-  if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.pause();
-  if (levelUpAudio._state === "loaded") levelUpAudio.pause();
+  pacmanDeathAudio.pause();
+  levelUpAudio.pause();
   callback(cycleTimer, scaredTimer, retreatingTimers);
 }
