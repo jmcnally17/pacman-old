@@ -6,4 +6,10 @@ export default class AudioPlayer {
     this.pacmanDeath = pacmanDeath;
     this.levelUp = levelUp;
   }
+
+  playSiren() {
+    this.ghostScared.pause();
+    this.ghostRetreating.pause();
+    this.ghostSiren.play();
+  }
 }
