@@ -38,7 +38,9 @@ describe("AudioPlayer", () => {
     };
     mockLevelUp = {
       name: "levelUp",
+      load: () => undefined,
       pause: () => undefined,
+      play: () => undefined,
     };
     audioPlayer = new AudioPlayer(
       mockGhostSiren,
@@ -165,6 +167,20 @@ describe("AudioPlayer", () => {
       jest.spyOn(audioPlayer.pacmanDeath, "play");
       audioPlayer.loadAndPlayPacmanDeath();
       expect(audioPlayer.pacmanDeath.play).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("loadAndPlayLevelUp", () => {
+    it("calls load on levelUp", () => {
+      jest.spyOn(audioPlayer.levelUp, "load");
+      audioPlayer.loadAndPlayLevelUp();
+      expect(audioPlayer.levelUp.load).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls play on levelUp", () => {
+      jest.spyOn(audioPlayer.levelUp, "play");
+      audioPlayer.loadAndPlayLevelUp();
+      expect(audioPlayer.levelUp.play).toHaveBeenCalledTimes(1);
     });
   });
 
