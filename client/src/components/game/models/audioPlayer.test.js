@@ -12,18 +12,21 @@ describe("AudioPlayer", () => {
     mockGhostSiren = {
       name: "siren",
       load: () => undefined,
+      unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
     };
     mockGhostScared = {
       name: "scared",
       load: () => undefined,
+      unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
     };
     mockGhostRetreating = {
       name: "retreating",
       load: () => undefined,
+      unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
     };
@@ -67,6 +70,26 @@ describe("AudioPlayer", () => {
       jest.spyOn(audioPlayer.ghostRetreating, "load");
       audioPlayer.loadGhost();
       expect(audioPlayer.ghostRetreating.load).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("unloadGhost", () => {
+    it("calls unload on the ghostSiren", () => {
+      jest.spyOn(audioPlayer.ghostSiren, "unload");
+      audioPlayer.unloadGhost();
+      expect(audioPlayer.ghostSiren.unload).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls unload on the ghostScared", () => {
+      jest.spyOn(audioPlayer.ghostScared, "unload");
+      audioPlayer.unloadGhost();
+      expect(audioPlayer.ghostScared.unload).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls unload on the ghostRetreating", () => {
+      jest.spyOn(audioPlayer.ghostRetreating, "unload");
+      audioPlayer.unloadGhost();
+      expect(audioPlayer.ghostRetreating.unload).toHaveBeenCalledTimes(1);
     });
   });
 

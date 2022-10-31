@@ -13,6 +13,12 @@ export default class AudioPlayer {
     this.ghostRetreating.load();
   }
 
+  unloadGhost() {
+    this.ghostSiren.unload();
+    this.ghostScared.unload();
+    this.ghostRetreating.unload();
+  }
+
   playGhostSiren() {
     this.ghostScared.pause();
     this.ghostRetreating.pause();
