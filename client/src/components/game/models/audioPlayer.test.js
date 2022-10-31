@@ -11,16 +11,19 @@ describe("AudioPlayer", () => {
   beforeEach(() => {
     mockGhostSiren = {
       name: "siren",
+      load: () => undefined,
       pause: () => undefined,
       play: () => undefined,
     };
     mockGhostScared = {
       name: "scared",
+      load: () => undefined,
       pause: () => undefined,
       play: () => undefined,
     };
     mockGhostRetreating = {
       name: "retreating",
+      load: () => undefined,
       pause: () => undefined,
       play: () => undefined,
     };
@@ -45,6 +48,26 @@ describe("AudioPlayer", () => {
     expect(audioPlayer.ghostRetreating).toEqual(mockGhostRetreating);
     expect(audioPlayer.pacmanDeath).toEqual(mockPacmanDeath);
     expect(audioPlayer.levelUp).toEqual(mockLevelUp);
+  });
+
+  describe("loadGhost", () => {
+    it("calls load on the ghostSiren", () => {
+      jest.spyOn(audioPlayer.ghostSiren, "load");
+      audioPlayer.loadGhost();
+      expect(audioPlayer.ghostSiren.load).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls load on the ghostScared", () => {
+      jest.spyOn(audioPlayer.ghostScared, "load");
+      audioPlayer.loadGhost();
+      expect(audioPlayer.ghostScared.load).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls load on the ghostRetreating", () => {
+      jest.spyOn(audioPlayer.ghostRetreating, "load");
+      audioPlayer.loadGhost();
+      expect(audioPlayer.ghostRetreating.load).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe("playGhostSiren", () => {

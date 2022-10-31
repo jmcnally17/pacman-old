@@ -7,6 +7,12 @@ export default class AudioPlayer {
     this.levelUp = levelUp;
   }
 
+  loadGhost() {
+    this.ghostSiren.load();
+    this.ghostScared.load();
+    this.ghostRetreating.load();
+  }
+
   playGhostSiren() {
     this.ghostScared.pause();
     this.ghostRetreating.pause();
