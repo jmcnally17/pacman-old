@@ -32,7 +32,9 @@ describe("AudioPlayer", () => {
     };
     mockPacmanDeath = {
       name: "pacmanDeath",
+      load: () => undefined,
       pause: () => undefined,
+      play: () => undefined,
     };
     mockLevelUp = {
       name: "levelUp",
@@ -149,6 +151,20 @@ describe("AudioPlayer", () => {
       jest.spyOn(audioPlayer.ghostRetreating, "play");
       audioPlayer.playGhostRetreating();
       expect(audioPlayer.ghostRetreating.play).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("loadAndPlayPacmanDeath", () => {
+    it("calls load on pacmanDeath", () => {
+      jest.spyOn(audioPlayer.pacmanDeath, "load");
+      audioPlayer.loadAndPlayPacmanDeath();
+      expect(audioPlayer.pacmanDeath.load).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls play on pacmanDeath", () => {
+      jest.spyOn(audioPlayer.pacmanDeath, "play");
+      audioPlayer.loadAndPlayPacmanDeath();
+      expect(audioPlayer.pacmanDeath.play).toHaveBeenCalledTimes(1);
     });
   });
 
