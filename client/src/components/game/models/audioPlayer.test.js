@@ -78,7 +78,7 @@ describe("AudioPlayer", () => {
     jest.spyOn(mockLevelUp, "play");
   });
 
-  it("has each Howl object as a constructor variable passed in", () => {
+  it("has each audio object as a constructor variable", () => {
     expect(audioPlayer.ghostSiren).toEqual(mockGhostSiren);
     expect(audioPlayer.ghostScared).toEqual(mockGhostScared);
     expect(audioPlayer.ghostRetreating).toEqual(mockGhostRetreating);
