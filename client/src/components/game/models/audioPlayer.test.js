@@ -45,6 +45,9 @@ describe("AudioPlayer", () => {
       mockPacmanDeath,
       mockLevelUp
     );
+    jest.spyOn(audioPlayer.ghostSiren, "pause");
+    jest.spyOn(audioPlayer.ghostScared, "pause");
+    jest.spyOn(audioPlayer.ghostRetreating, "pause");
   });
 
   it("has each Howl object as a constructor variable passed in", () => {
@@ -97,13 +100,11 @@ describe("AudioPlayer", () => {
 
   describe("playGhostSiren", () => {
     it("calls pause on the ghostScared", () => {
-      jest.spyOn(audioPlayer.ghostScared, "pause");
       audioPlayer.playGhostSiren();
       expect(audioPlayer.ghostScared.pause).toHaveBeenCalledTimes(1);
     });
 
     it("calls pause on the ghostRetreating", () => {
-      jest.spyOn(audioPlayer.ghostRetreating, "pause");
       audioPlayer.playGhostSiren();
       expect(audioPlayer.ghostRetreating.pause).toHaveBeenCalledTimes(1);
     });
@@ -117,13 +118,11 @@ describe("AudioPlayer", () => {
 
   describe("playGhostScared", () => {
     it("calls pause on the ghostSiren", () => {
-      jest.spyOn(audioPlayer.ghostSiren, "pause");
       audioPlayer.playGhostScared();
       expect(audioPlayer.ghostSiren.pause).toHaveBeenCalledTimes(1);
     });
 
     it("calls pause on the ghostRetreating", () => {
-      jest.spyOn(audioPlayer.ghostRetreating, "pause");
       audioPlayer.playGhostScared();
       expect(audioPlayer.ghostRetreating.pause).toHaveBeenCalledTimes(1);
     });
@@ -137,13 +136,11 @@ describe("AudioPlayer", () => {
 
   describe("playGhostRetreating", () => {
     it("calls pause on the ghostSiren", () => {
-      jest.spyOn(audioPlayer.ghostSiren, "pause");
       audioPlayer.playGhostRetreating();
       expect(audioPlayer.ghostSiren.pause).toHaveBeenCalledTimes(1);
     });
 
     it("calls pause on the ghostScared", () => {
-      jest.spyOn(audioPlayer.ghostScared, "pause");
       audioPlayer.playGhostRetreating();
       expect(audioPlayer.ghostScared.pause).toHaveBeenCalledTimes(1);
     });
@@ -157,19 +154,16 @@ describe("AudioPlayer", () => {
 
   describe("pauseAll", () => {
     it("calls pause on the ghostSiren", () => {
-      jest.spyOn(audioPlayer.ghostSiren, "pause");
       audioPlayer.pauseAll();
       expect(audioPlayer.ghostSiren.pause).toHaveBeenCalledTimes(1);
     });
 
     it("calls pause on the ghostScared", () => {
-      jest.spyOn(audioPlayer.ghostScared, "pause");
       audioPlayer.pauseAll();
       expect(audioPlayer.ghostScared.pause).toHaveBeenCalledTimes(1);
     });
 
     it("calls pause on the ghostRetreating", () => {
-      jest.spyOn(audioPlayer.ghostRetreating, "pause");
       audioPlayer.pauseAll();
       expect(audioPlayer.ghostRetreating.pause).toHaveBeenCalledTimes(1);
     });
