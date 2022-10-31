@@ -18,4 +18,10 @@ export default class AudioPlayer {
     this.ghostRetreating.pause();
     this.ghostScared.play();
   }
+
+  playGhostRetreating() {
+    this.ghostSiren.pause();
+    this.ghostScared.pause();
+    this.ghostRetreating.play();
+  }
 }

@@ -86,4 +86,24 @@ describe("AudioPlayer", () => {
       expect(audioPlayer.ghostScared.play).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe("playGhostRetreating", () => {
+    it("calls pause on the ghostSiren", () => {
+      jest.spyOn(audioPlayer.ghostSiren, "pause");
+      audioPlayer.playGhostRetreating();
+      expect(audioPlayer.ghostSiren.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on the ghostScared", () => {
+      jest.spyOn(audioPlayer.ghostScared, "pause");
+      audioPlayer.playGhostRetreating();
+      expect(audioPlayer.ghostScared.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls play on the ghostRetreating", () => {
+      jest.spyOn(audioPlayer.ghostRetreating, "play");
+      audioPlayer.playGhostRetreating();
+      expect(audioPlayer.ghostRetreating.play).toHaveBeenCalledTimes(1);
+    });
+  });
 });
