@@ -6,13 +6,13 @@ import makePacman from "./pacman/makePacman";
 import makeCycleTimer from "./timers/makeCycleTimer";
 import makeScaredTimer from "./timers/makeScaredTimer";
 import makeRetreatingTimers from "./timers/makeRetreatingTimers";
-import makeGhostAudioObjects from "./ghosts/makeGhostAudioObjects";
-import makePacmanDeathAudio from "./pacman/makePacmanDeathAudio";
+import makeGhostAudioObjects from "./audio/makeGhostAudioObjects";
+import makePacmanDeathAudio from "./audio/makePacmanDeathAudio";
 import finishSetup from "./finishSetup";
 import implementObjects from "./implementObjects";
 import updateDisplay from "./display/updateDisplay";
-import manageGhostAudio from "./ghosts/manageGhostAudio";
-import makeLevelUpAudio from "./pellets/makeLevelUpAudio";
+import manageGhostAudio from "./audio/manageGhostAudio";
+import makeLevelUpAudio from "./audio/makeLevelUpAudio";
 import makePauseTextImage from "./display/makePauseTextImage";
 
 const map = [
