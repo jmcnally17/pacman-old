@@ -1,7 +1,7 @@
 import PacMan from "../../models/pacman";
 
 export default function makePacman(variables) {
-  const pacman = new PacMan(
+  return new PacMan(
     {
       position: {
         x: (variables.tileLength * 29) / 2,
@@ -14,5 +14,4 @@ export default function makePacman(variables) {
     },
     variables.tileLength
   );
-  return pacman;
 }

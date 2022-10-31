@@ -1,5 +1,31 @@
+import { Howl } from "howler";
+
 export default class AudioPlayer {
-  constructor(ghostSiren, ghostScared, ghostRetreating, pacmanDeath, levelUp) {
+  constructor(
+    ghostSiren = new Howl({
+      src: "./audio/siren.wav",
+      loop: true,
+      volume: 0.1,
+    }),
+    ghostScared = new Howl({
+      src: "./audio/scared.wav",
+      loop: true,
+      volume: 0.08,
+    }),
+    ghostRetreating = new Howl({
+      src: "./audio/retreating.wav",
+      loop: true,
+      volume: 0.1,
+    }),
+    pacmanDeath = new Howl({
+      src: "./audio/pacmanDeath.wav",
+      volume: 0.3,
+    }),
+    levelUp = new Howl({
+      src: "./audio/levelUp.wav",
+      volume: 0.2,
+    })
+  ) {
     this.ghostSiren = ghostSiren;
     this.ghostScared = ghostScared;
     this.ghostRetreating = ghostRetreating;
