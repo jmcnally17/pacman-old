@@ -42,9 +42,17 @@ export default class AudioPlayer {
     this.pacmanDeath.play();
   }
 
+  unloadPacmanDeath() {
+    this.pacmanDeath.unload();
+  }
+
   loadAndPlayLevelUp() {
     this.levelUp.load();
     this.levelUp.play();
+  }
+
+  unloadLevelUp() {
+    this.levelUp.unload();
   }
 
   pauseAll() {
