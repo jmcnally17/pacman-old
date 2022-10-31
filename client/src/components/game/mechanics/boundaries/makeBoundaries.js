@@ -10,85 +10,103 @@ export default function makeBoundaries(
   map.forEach((row, i) => {
     row.forEach((element, j) => {
       if (element === "-") {
-        const image = new Image();
-        image.src = "./images/pipeHorizontal.png";
+        const regularImage = new Image();
+        regularImage.src = "./images/pipeHorizontal.png";
+        const whiteImage = new Image();
+        whiteImage.src = "./images/pipeHorizontalWhite.png";
         const boundary = new Boundary(
           {
             position: {
               x: variables.tileLength * j,
               y: variables.tileLength * i,
             },
-            image: image,
+            regularImage: regularImage,
+            whiteImage: whiteImage,
           },
           variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "|") {
-        const image = new Image();
-        image.src = "./images/pipeVertical.png";
+        const regularImage = new Image();
+        regularImage.src = "./images/pipeVertical.png";
+        const whiteImage = new Image();
+        whiteImage.src = "./images/pipeVerticalWhite.png";
         const boundary = new Boundary(
           {
             position: {
               x: variables.tileLength * j,
               y: variables.tileLength * i,
             },
-            image: image,
+            regularImage: regularImage,
+            whiteImage: whiteImage,
           },
           variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "1") {
-        const image = new Image();
-        image.src = "./images/pipeCornerOne.png";
+        const regularImage = new Image();
+        regularImage.src = "./images/pipeCornerOne.png";
+        const whiteImage = new Image();
+        whiteImage.src = "./images/pipeCornerOneWhite.png";
         const boundary = new Boundary(
           {
             position: {
               x: variables.tileLength * j,
               y: variables.tileLength * i,
             },
-            image: image,
+            regularImage: regularImage,
+            whiteImage: whiteImage,
           },
           variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "2") {
-        const image = new Image();
-        image.src = "./images/pipeCornerTwo.png";
+        const regularImage = new Image();
+        regularImage.src = "./images/pipeCornerTwo.png";
+        const whiteImage = new Image();
+        whiteImage.src = "./images/pipeCornerTwoWhite.png";
         const boundary = new Boundary(
           {
             position: {
               x: variables.tileLength * j,
               y: variables.tileLength * i,
             },
-            image: image,
+            regularImage: regularImage,
+            whiteImage: whiteImage,
           },
           variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "3") {
-        const image = new Image();
-        image.src = "./images/pipeCornerThree.png";
+        const regularImage = new Image();
+        regularImage.src = "./images/pipeCornerThree.png";
+        const whiteImage = new Image();
+        whiteImage.src = "./images/pipeCornerThreeWhite.png";
         const boundary = new Boundary(
           {
             position: {
               x: variables.tileLength * j,
               y: variables.tileLength * i,
             },
-            image: image,
+            regularImage: regularImage,
+            whiteImage: whiteImage,
           },
           variables.tileLength
         );
         boundaries.push(boundary);
       } else if (element === "4") {
-        const image = new Image();
-        image.src = "./images/pipeCornerFour.png";
+        const regularImage = new Image();
+        regularImage.src = "./images/pipeCornerFour.png";
+        const whiteImage = new Image();
+        whiteImage.src = "./images/pipeCornerFourWhite.png";
         const boundary = new Boundary(
           {
             position: {
               x: variables.tileLength * j,
               y: variables.tileLength * i,
             },
-            image: image,
+            regularImage: regularImage,
+            whiteImage: whiteImage,
           },
           variables.tileLength
         );
