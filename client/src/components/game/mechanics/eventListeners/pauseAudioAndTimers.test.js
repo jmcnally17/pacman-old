@@ -9,40 +9,29 @@ let mockLevelUpAudio;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
+let mockPauseAudio;
 let mockPauseTimers;
 
 describe("pauseAudioAndTimers", () => {
   beforeEach(() => {
-    mockSirenAudio = {
-      pause: () => undefined,
-    };
-    mockScaredAudio = {
-      pause: () => undefined,
-    };
-    mockRetreatingAudio = {
-      pause: () => undefined,
-    };
+    mockSirenAudio = "sirenAudio";
+    mockScaredAudio = "scaredAudio";
+    mockRetreatingAudio = "retreatingAudio";
     mockGhostAudioObjects = [
       mockSirenAudio,
       mockScaredAudio,
       mockRetreatingAudio,
     ];
-    mockPacmanDeathAudio = {
-      _state: "loaded",
-      pause: () => undefined,
-    };
-    mockLevelUpAudio = {
-      _state: "loaded",
-      pause: () => undefined,
-    };
+    mockPacmanDeathAudio = "pacmanDeathAudio";
+    mockLevelUpAudio = "levelUpAudio";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
+    mockPauseAudio = jest.fn();
     mockPauseTimers = jest.fn();
   });
 
-  it("calls pause on the ghosts siren audio object", () => {
-    jest.spyOn(mockSirenAudio, "pause");
+  it("calls pauseAudio", () => {
     pauseAudioAndTimers(
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
@@ -50,65 +39,15 @@ describe("pauseAudioAndTimers", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockPauseAudio,
       mockPauseTimers
     );
-    expect(mockSirenAudio.pause).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls pause on the ghosts scared audio object", () => {
-    jest.spyOn(mockScaredAudio, "pause");
-    pauseAudioAndTimers(
+    expect(mockPauseAudio).toHaveBeenCalledTimes(1);
+    expect(mockPauseAudio).toHaveBeenCalledWith(
       mockGhostAudioObjects,
       mockPacmanDeathAudio,
-      mockLevelUpAudio,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockPauseTimers
+      mockLevelUpAudio
     );
-    expect(mockScaredAudio.pause).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls pause on the ghosts retreating audio object", () => {
-    jest.spyOn(mockRetreatingAudio, "pause");
-    pauseAudioAndTimers(
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockPauseTimers
-    );
-    expect(mockRetreatingAudio.pause).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls pause on the pacman death audio", () => {
-    jest.spyOn(mockPacmanDeathAudio, "pause");
-    pauseAudioAndTimers(
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockPauseTimers
-    );
-    expect(mockPacmanDeathAudio.pause).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls pause on the level up audio", () => {
-    jest.spyOn(mockLevelUpAudio, "pause");
-    pauseAudioAndTimers(
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockPauseTimers
-    );
-    expect(mockLevelUpAudio.pause).toHaveBeenCalledTimes(1);
   });
 
   it("calls pauseTimers", () => {
@@ -119,6 +58,7 @@ describe("pauseAudioAndTimers", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockPauseAudio,
       mockPauseTimers
     );
     expect(mockPauseTimers).toHaveBeenCalledTimes(1);

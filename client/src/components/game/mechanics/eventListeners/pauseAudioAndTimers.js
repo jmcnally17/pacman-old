@@ -1,3 +1,4 @@
+import pauseAudio from "../audio/pauseAudio";
 import pauseTimers from "../timers/pauseTimers";
 
 export default function pauseAudioAndTimers(
@@ -7,12 +8,9 @@ export default function pauseAudioAndTimers(
   cycleTimer,
   scaredTimer,
   retreatingTimers,
-  callback = pauseTimers
+  callbackOne = pauseAudio,
+  callbackTwo = pauseTimers
 ) {
-  ghostAudioObjects[0].pause();
-  ghostAudioObjects[1].pause();
-  ghostAudioObjects[2].pause();
-  pacmanDeathAudio.pause();
-  levelUpAudio.pause();
-  callback(cycleTimer, scaredTimer, retreatingTimers);
+  callbackOne(ghostAudioObjects, pacmanDeathAudio, levelUpAudio);
+  callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
 }

@@ -1,88 +1,39 @@
 import resumeAudioAndTimers from "./resumeAudioAndTimers";
 
 let mockPacmanDeathAudio;
-let mockUnloadedPacmanDeathAudio;
 let mockLevelUpAudio;
-let mockUnloadedLevelUpAudio;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
+let mockResumeAudio;
 let mockResumeTimers;
 
 describe("resumeAudioAndTimers", () => {
   beforeEach(() => {
-    mockPacmanDeathAudio = {
-      _state: "loaded",
-      play: () => undefined,
-    };
-    mockUnloadedPacmanDeathAudio = {
-      _state: "unloaded",
-      play: () => undefined,
-    };
-    mockLevelUpAudio = {
-      _state: "loaded",
-      play: () => undefined,
-    };
-    mockUnloadedLevelUpAudio = {
-      _state: "unloaded",
-      play: () => undefined,
-    };
+    mockPacmanDeathAudio = "pacmanDeathAudio";
+    mockLevelUpAudio = "levelUpAudio";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
+    mockResumeAudio = jest.fn();
     mockResumeTimers = jest.fn();
   });
 
-  it("calls play on the pacman death audio if it is loaded", () => {
-    jest.spyOn(mockPacmanDeathAudio, "play");
+  it("calls resumeAudio", () => {
     resumeAudioAndTimers(
       mockPacmanDeathAudio,
       mockLevelUpAudio,
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockResumeAudio,
       mockResumeTimers
     );
-    expect(mockPacmanDeathAudio.play).toHaveBeenCalledTimes(1);
-  });
-
-  it("does not call play on the pacman death audio if it is unloaded", () => {
-    jest.spyOn(mockUnloadedPacmanDeathAudio, "play");
-    resumeAudioAndTimers(
-      mockUnloadedPacmanDeathAudio,
-      mockLevelUpAudio,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockResumeTimers
-    );
-    expect(mockUnloadedPacmanDeathAudio.play).toHaveBeenCalledTimes(0);
-  });
-
-  it("calls play on the level up audio if it is loaded", () => {
-    jest.spyOn(mockLevelUpAudio, "play");
-    resumeAudioAndTimers(
+    expect(mockResumeAudio).toHaveBeenCalledTimes(1);
+    expect(mockResumeAudio).toHaveBeenCalledWith(
       mockPacmanDeathAudio,
-      mockLevelUpAudio,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockResumeTimers
+      mockLevelUpAudio
     );
-    expect(mockLevelUpAudio.play).toHaveBeenCalledTimes(1);
-  });
-
-  it("does not call play on the level up audio if it is unloaded", () => {
-    jest.spyOn(mockUnloadedLevelUpAudio, "play");
-    resumeAudioAndTimers(
-      mockPacmanDeathAudio,
-      mockUnloadedLevelUpAudio,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockResumeTimers
-    );
-    expect(mockUnloadedLevelUpAudio.play).toHaveBeenCalledTimes(0);
   });
 
   it("calls resumeTimers", () => {
@@ -92,6 +43,7 @@ describe("resumeAudioAndTimers", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
+      mockResumeAudio,
       mockResumeTimers
     );
     expect(mockResumeTimers).toHaveBeenCalledTimes(1);
