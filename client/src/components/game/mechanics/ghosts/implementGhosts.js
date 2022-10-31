@@ -14,8 +14,7 @@ export default function implementGhosts(
   powerUps,
   cycleTimer,
   scaredTimer,
-  ghostAudioObjects,
-  pacmanDeathAudio,
+  audioPlayer,
   callbackOne = checkSpeedMatchesState,
   callbackTwo = implementTunnel,
   callbackThree = updateCollisions,
@@ -40,10 +39,9 @@ export default function implementGhosts(
       powerUps,
       cycleTimer,
       scaredTimer,
-      ghostAudioObjects,
+      audioPlayer,
       ctx,
-      boundaries,
-      pacmanDeathAudio
+      boundaries
     );
   });
 }

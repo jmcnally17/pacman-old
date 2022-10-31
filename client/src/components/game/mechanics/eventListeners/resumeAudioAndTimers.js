@@ -1,14 +1,14 @@
+import resumeAudio from "../audio/resumeAudio";
 import resumeTimers from "../timers/resumeTimers";
 
 export default function resumeAudioAndTimers(
-  pacmanDeathAudio,
-  levelUpAudio,
+  audioPlayer,
   cycleTimer,
   scaredTimer,
   retreatingTimers,
-  callback = resumeTimers
+  callbackOne = resumeAudio,
+  callbackTwo = resumeTimers
 ) {
-  if (pacmanDeathAudio._state === "loaded") pacmanDeathAudio.play();
-  if (levelUpAudio._state === "loaded") levelUpAudio.play();
-  callback(cycleTimer, scaredTimer, retreatingTimers);
+  callbackOne(audioPlayer);
+  callbackTwo(cycleTimer, scaredTimer, retreatingTimers);
 }

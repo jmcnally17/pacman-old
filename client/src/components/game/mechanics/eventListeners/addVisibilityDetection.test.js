@@ -4,9 +4,7 @@ let mockVariables;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
-let mockGhostAudioObjects;
-let mockPacmanDeathAudio;
-let mockLevelUpAudio;
+let mockAudioPlayer;
 let mockPauseAudioAndTimers;
 let mockResumeAudioAndTimers;
 let visibilityChange;
@@ -21,9 +19,7 @@ describe("addVisibilityDetection", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
-    mockGhostAudioObjects = "ghostAudioObjects";
-    mockPacmanDeathAudio = "pacmanDeathAudio";
-    mockLevelUpAudio = "levelUpAudio";
+    mockAudioPlayer = "audioPlayer";
     mockPauseAudioAndTimers = jest.fn();
     mockResumeAudioAndTimers = jest.fn();
     visibilityChange = new Event("visibilitychange");
@@ -35,9 +31,7 @@ describe("addVisibilityDetection", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPauseAudioAndTimers,
       mockResumeAudioAndTimers
     );
@@ -51,9 +45,7 @@ describe("addVisibilityDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPauseAudioAndTimers,
         mockResumeAudioAndTimers
       );
@@ -67,9 +59,7 @@ describe("addVisibilityDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPauseAudioAndTimers,
         mockResumeAudioAndTimers
       );
@@ -84,18 +74,14 @@ describe("addVisibilityDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPauseAudioAndTimers,
         mockResumeAudioAndTimers
       );
       window.dispatchEvent(visibilityChange);
       expect(mockPauseAudioAndTimers).toHaveBeenCalledTimes(1);
       expect(mockPauseAudioAndTimers).toHaveBeenCalledWith(
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers
@@ -108,9 +94,7 @@ describe("addVisibilityDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPauseAudioAndTimers,
         mockResumeAudioAndTimers
       );
@@ -118,8 +102,7 @@ describe("addVisibilityDetection", () => {
       window.dispatchEvent(visibilityChange);
       expect(mockResumeAudioAndTimers).toHaveBeenCalledTimes(1);
       expect(mockResumeAudioAndTimers).toHaveBeenCalledWith(
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers

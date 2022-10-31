@@ -14,9 +14,7 @@ export default function implementObjects(
   scaredTimer,
   ctx,
   variables,
-  ghostAudioObjects,
-  pacmanDeathAudio,
-  levelUpAudio,
+  audioPlayer,
   callbackOne = implementBoundaries,
   callbackTwo = implementPellets,
   callbackThree = implementPowerUps,
@@ -33,8 +31,7 @@ export default function implementObjects(
     powerUps,
     cycleTimer,
     scaredTimer,
-    ghostAudioObjects,
-    levelUpAudio,
+    audioPlayer,
     boundaries
   );
   callbackThree(
@@ -56,8 +53,7 @@ export default function implementObjects(
     powerUps,
     cycleTimer,
     scaredTimer,
-    ghostAudioObjects,
-    pacmanDeathAudio
+    audioPlayer
   );
   callbackFive(variables, pacman, boundaries, ctx, pellets);
 }

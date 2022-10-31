@@ -8,9 +8,7 @@ export default function addPauseDetection(
   cycleTimer,
   scaredTimer,
   retreatingTimers,
-  ghostAudioObjects,
-  pacmanDeathAudio,
-  levelUpAudio,
+  audioPlayer,
   pacman,
   ctx,
   boundaries,
@@ -30,24 +28,11 @@ export default function addPauseDetection(
         if (!variables.isGamePaused) {
           variables.isGamePaused = true;
           cancelAnimationFrame(variables.animationId);
-          callbackOne(
-            ghostAudioObjects,
-            pacmanDeathAudio,
-            levelUpAudio,
-            cycleTimer,
-            scaredTimer,
-            retreatingTimers
-          );
+          callbackOne(audioPlayer, cycleTimer, scaredTimer, retreatingTimers);
           callbackTwo(ctx, pauseTextImage);
         } else {
           variables.isGamePaused = false;
-          callbackThree(
-            pacmanDeathAudio,
-            levelUpAudio,
-            cycleTimer,
-            scaredTimer,
-            retreatingTimers
-          );
+          callbackThree(audioPlayer, cycleTimer, scaredTimer, retreatingTimers);
           callbackFour(
             variables,
             ctx,
@@ -58,9 +43,7 @@ export default function addPauseDetection(
             ghosts,
             cycleTimer,
             scaredTimer,
-            ghostAudioObjects,
-            pacmanDeathAudio,
-            levelUpAudio
+            audioPlayer
           );
         }
       }

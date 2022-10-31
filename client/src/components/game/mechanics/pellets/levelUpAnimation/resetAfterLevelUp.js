@@ -8,7 +8,7 @@ export default function resetAfterLevelUp(
   powerUps,
   cycleTimer,
   scaredTimer,
-  ghostAudioObjects,
+  audioPlayer,
   callback = playGame
 ) {
   pacman.reset();
@@ -26,7 +26,7 @@ export default function resetAfterLevelUp(
   powerUps.forEach((powerUp) => {
     if (powerUp.hasBeenEaten) powerUp.changeEatenState();
   });
-  ghostAudioObjects.forEach((audio) => audio.load());
+  audioPlayer.loadGhost();
   cycleTimer.start();
   callback();
 }

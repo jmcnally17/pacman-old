@@ -12,8 +12,7 @@ let mockPellets;
 let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockGhostAudioObjects;
-let mockPacmanDeathAudio;
+let mockAudioPlayer;
 let mockcheckSpeedMatchesState;
 let mockImplementTunnel;
 let mockUpdateCollisions;
@@ -40,8 +39,7 @@ describe("implementGhosts", () => {
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockGhostAudioObjects = "mockGhostAudioObjects";
-    mockPacmanDeathAudio = "pacmanDeathAudio";
+    mockAudioPlayer = "audioPlayer";
     mockcheckSpeedMatchesState = jest.fn();
     mockImplementTunnel = jest.fn();
     mockUpdateCollisions = jest.fn();
@@ -60,8 +58,7 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -87,8 +84,7 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -110,8 +106,7 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -136,8 +131,7 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -163,8 +157,7 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -192,8 +185,7 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -214,8 +206,7 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockcheckSpeedMatchesState,
       mockImplementTunnel,
       mockUpdateCollisions,
@@ -232,10 +223,9 @@ describe("implementGhosts", () => {
       mockPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
+      mockAudioPlayer,
       mockCtx,
-      mockBoundaries,
-      mockPacmanDeathAudio
+      mockBoundaries
     );
   });
 });

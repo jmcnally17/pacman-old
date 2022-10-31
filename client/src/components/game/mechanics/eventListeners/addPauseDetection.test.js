@@ -4,9 +4,7 @@ let mockVariables;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockRetreatingTimers;
-let mockGhostAudioObjects;
-let mockPacmanDeathAudio;
-let mockLevelUpAudio;
+let mockAudioPlayer;
 let mockPacman;
 let mockCtx;
 let mockBoundaries;
@@ -30,9 +28,7 @@ describe("addPauseDetection", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
-    mockGhostAudioObjects = "ghostAudioObjects";
-    mockPacmanDeathAudio = "pacmanDeathAudio";
-    mockLevelUpAudio = "levelUpAudio";
+    mockAudioPlayer = "audioPlayer";
     mockPacman = "pacman";
     mockCtx = "ctx";
     mockBoundaries = "boundaries";
@@ -53,9 +49,7 @@ describe("addPauseDetection", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -82,9 +76,7 @@ describe("addPauseDetection", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockRetreatingTimers,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockPacman,
       mockCtx,
       mockBoundaries,
@@ -107,9 +99,7 @@ describe("addPauseDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPacman,
         mockCtx,
         mockBoundaries,
@@ -132,9 +122,7 @@ describe("addPauseDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPacman,
         mockCtx,
         mockBoundaries,
@@ -158,9 +146,7 @@ describe("addPauseDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPacman,
         mockCtx,
         mockBoundaries,
@@ -176,9 +162,7 @@ describe("addPauseDetection", () => {
       window.dispatchEvent(escKeyEvent);
       expect(mockPauseAudioAndTimers).toHaveBeenCalledTimes(1);
       expect(mockPauseAudioAndTimers).toHaveBeenCalledWith(
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers
@@ -191,9 +175,7 @@ describe("addPauseDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPacman,
         mockCtx,
         mockBoundaries,
@@ -220,9 +202,7 @@ describe("addPauseDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPacman,
         mockCtx,
         mockBoundaries,
@@ -239,8 +219,7 @@ describe("addPauseDetection", () => {
       window.dispatchEvent(escKeyEvent);
       expect(mockResumeAudioAndTimers).toHaveBeenCalledTimes(1);
       expect(mockResumeAudioAndTimers).toHaveBeenCalledWith(
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers
@@ -253,9 +232,7 @@ describe("addPauseDetection", () => {
         mockCycleTimer,
         mockScaredTimer,
         mockRetreatingTimers,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio,
+        mockAudioPlayer,
         mockPacman,
         mockCtx,
         mockBoundaries,
@@ -281,9 +258,7 @@ describe("addPauseDetection", () => {
         mockGhosts,
         mockCycleTimer,
         mockScaredTimer,
-        mockGhostAudioObjects,
-        mockPacmanDeathAudio,
-        mockLevelUpAudio
+        mockAudioPlayer
       );
     });
   });

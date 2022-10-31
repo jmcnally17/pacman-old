@@ -6,9 +6,7 @@ export default function addVisibilityDetection(
   cycleTimer,
   scaredTimer,
   retreatingTimers,
-  ghostAudioObjects,
-  pacmanDeathAudio,
-  levelUpAudio,
+  audioPlayer,
   callbackOne = pauseAudioAndTimers,
   callbackTwo = resumeAudioAndTimers
 ) {
@@ -17,23 +15,10 @@ export default function addVisibilityDetection(
     (variables.visibilityEventListener = () => {
       if (!variables.isGamePaused && variables.isWindowVisible) {
         variables.isWindowVisible = false;
-        callbackOne(
-          ghostAudioObjects,
-          pacmanDeathAudio,
-          levelUpAudio,
-          cycleTimer,
-          scaredTimer,
-          retreatingTimers
-        );
+        callbackOne(audioPlayer, cycleTimer, scaredTimer, retreatingTimers);
       } else if (!variables.isGamePaused && !variables.isWindowVisible) {
         variables.isWindowVisible = true;
-        callbackTwo(
-          pacmanDeathAudio,
-          levelUpAudio,
-          cycleTimer,
-          scaredTimer,
-          retreatingTimers
-        );
+        callbackTwo(audioPlayer, cycleTimer, scaredTimer, retreatingTimers);
       }
     })
   );

@@ -12,8 +12,7 @@ let mockShrunkPacman;
 let mockGhosts;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockGhostAudioObjects;
-let mockPacmanDeathAudio;
+let mockAudioPlayer;
 let mockRunDeathAnimation;
 let mockDrawBoard;
 let mockCheckPacmanLives;
@@ -39,9 +38,8 @@ describe("runDeathAnimation", () => {
     mockGhosts = "ghosts";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockGhostAudioObjects = "ghostAudioObjects";
-    mockPacmanDeathAudio = {
-      unload: () => undefined,
+    mockAudioPlayer = {
+      unloadPacmanDeath: () => undefined,
     };
     mockRunDeathAnimation = jest.fn();
     mockDrawBoard = jest.fn();
@@ -60,8 +58,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -80,8 +77,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio
+      mockAudioPlayer
     );
   });
 
@@ -96,8 +92,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -123,8 +118,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -144,8 +138,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -165,8 +158,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -177,8 +169,8 @@ describe("runDeathAnimation", () => {
     );
   });
 
-  it("calls unload on the death audio when Pac-Man's death animation has finished", () => {
-    jest.spyOn(mockPacmanDeathAudio, "unload");
+  it("calls unloadPacmanDeath on the audioPlayer when Pac-Man's death animation has finished", () => {
+    jest.spyOn(mockAudioPlayer, "unloadPacmanDeath");
     runDeathAnimation(
       mockVariables,
       mockCtx,
@@ -189,13 +181,12 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
     );
-    expect(mockPacmanDeathAudio.unload).toHaveBeenCalledTimes(1);
+    expect(mockAudioPlayer.unloadPacmanDeath).toHaveBeenCalledTimes(1);
   });
 
   it("calls checkPacmanLives when Pac-Man's death animation has finished", () => {
@@ -209,8 +200,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -224,7 +214,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects
+      mockAudioPlayer
     );
   });
 });

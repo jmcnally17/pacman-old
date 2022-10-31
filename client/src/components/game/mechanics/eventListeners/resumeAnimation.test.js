@@ -11,9 +11,7 @@ let mockPowerUps;
 let mockGhosts;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockGhostAudioObjects;
-let mockPacmanDeathAudio;
-let mockLevelUpAudio;
+let mockAudioPlayer;
 let mockRunDeathAnimation;
 let mockRunLevelUpAnimation;
 let mockPlayGame;
@@ -43,9 +41,7 @@ describe("resumeAnimation", () => {
     mockGhosts = "ghosts";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockGhostAudioObjects = "ghostAudioObjects";
-    mockPacmanDeathAudio = "pacmanDeathAudio";
-    mockLevelUpAudio = "levelUpAudio";
+    mockAudioPlayer = "audioPlayer";
     mockRunDeathAnimation = jest.fn();
     mockRunLevelUpAnimation = jest.fn();
     mockPlayGame = jest.fn();
@@ -62,9 +58,7 @@ describe("resumeAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockRunLevelUpAnimation,
       mockPlayGame
@@ -80,8 +74,7 @@ describe("resumeAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio
+      mockAudioPlayer
     );
   });
 
@@ -96,9 +89,7 @@ describe("resumeAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockRunLevelUpAnimation,
       mockPlayGame
@@ -113,8 +104,7 @@ describe("resumeAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockGhostAudioObjects,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockBoundaries
     );
   });
@@ -130,9 +120,7 @@ describe("resumeAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockGhostAudioObjects,
-      mockPacmanDeathAudio,
-      mockLevelUpAudio,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockRunLevelUpAnimation,
       mockPlayGame

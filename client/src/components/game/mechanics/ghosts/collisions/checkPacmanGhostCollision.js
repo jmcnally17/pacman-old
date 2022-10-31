@@ -10,10 +10,9 @@ export default function checkPacmanGhostCollision(
   powerUps,
   cycleTimer,
   scaredTimer,
-  ghostAudioObjects,
+  audioPlayer,
   ctx,
   boundaries,
-  pacmanDeathAudio,
   callbackOne = collisionConditional,
   callbackTwo = dealWithCollision
 ) {
@@ -27,10 +26,9 @@ export default function checkPacmanGhostCollision(
       powerUps,
       cycleTimer,
       scaredTimer,
-      ghostAudioObjects,
+      audioPlayer,
       ctx,
-      boundaries,
-      pacmanDeathAudio
+      boundaries
     );
   }
 }
