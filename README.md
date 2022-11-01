@@ -125,7 +125,7 @@ Then, start PostgreSQL by using:
 brew services start postgresql
 ```
 
-Check that it has installed correctly by running `psql postgres` and you should enter the psql interface.
+Check that it has installed correctly by entering `psql` into your terminal and you should enter the psql interface.
 
 ### How To Use
 
