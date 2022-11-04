@@ -13,6 +13,6 @@ describe("displayLevel", () => {
     displayLevel(mockVariables);
     expect(document.querySelector).toHaveBeenCalledTimes(1);
     expect(document.querySelector).toHaveBeenCalledWith("#level");
-    expect(mockLevelEl.innerText).toBe("Level: 4");
+    expect(mockLevelEl.innerText).toBe("Level 4");
   });
 });
