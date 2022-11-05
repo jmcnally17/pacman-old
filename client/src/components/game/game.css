@@ -33,6 +33,10 @@
   text-align: right;
 }
 
+.life-one {
+  margin-right: 10px;
+}
+
 .dpad {
   display: none;
 }
