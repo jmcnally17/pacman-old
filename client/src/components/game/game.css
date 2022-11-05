@@ -28,7 +28,6 @@
 }
 
 .lives {
-  color: white;
   display: table-cell;
   width: 30%;
   text-align: right;

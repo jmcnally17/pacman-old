@@ -32,9 +32,25 @@ describe("Game", () => {
     expect(canvasEl).toHaveAttribute("height", "992");
   });
 
+  it("displays the first life image", () => {
+    render(<Game callback={mockPlayGame} />);
+    const lifeOneEl = screen.getByTestId("life-one");
+    expect(lifeOneEl).toHaveAttribute("src", "./pacman.png");
+    expect(lifeOneEl).toHaveAttribute("alt", "pacman life");
+    expect(lifeOneEl).toHaveAttribute("height", "20");
+  });
+
+  it("displays the second life image", () => {
+    render(<Game callback={mockPlayGame} />);
+    const lifeTwoEl = screen.getByTestId("life-two");
+    expect(lifeTwoEl).toHaveAttribute("src", "./pacman.png");
+    expect(lifeTwoEl).toHaveAttribute("alt", "pacman life");
+    expect(lifeTwoEl).toHaveAttribute("height", "20");
+  });
+
   it("contains the d-pad png image for mobile users", () => {
     render(<Game callback={mockPlayGame} />);
-    const dpadEl = screen.getByRole("img");
+    const dpadEl = screen.getByTestId("dpad");
     expect(dpadEl).toHaveAttribute("src", "./images/dpad.png");
     expect(dpadEl).toHaveAttribute("alt", "dpad");
     expect(dpadEl).toHaveAttribute("useMap", "#dpad");
