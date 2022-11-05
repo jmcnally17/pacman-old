@@ -1,3 +1,4 @@
+import removeLife from "../../../display/removeLife";
 import playGame from "../../../playGame";
 
 export default function resetAfterDeath(
@@ -7,7 +8,8 @@ export default function resetAfterDeath(
   cycleTimer,
   scaredTimer,
   audioPlayer,
-  callback = playGame
+  callbackOne = removeLife,
+  callbackTwo = playGame
 ) {
   pacman.reset();
   variables.lastKeyPressed = "";
@@ -18,5 +20,6 @@ export default function resetAfterDeath(
   });
   cycleTimer.start();
   audioPlayer.loadGhost();
-  callback(variables.playerName, variables.reactRoot);
+  callbackOne(pacman);
+  callbackTwo(variables.playerName, variables.reactRoot);
 }

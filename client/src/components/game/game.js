@@ -19,7 +19,24 @@ export default function Game({ name, reactRoot, callback = playGame }) {
         <div className="game-info">
           <div className="score" id="score"></div>
           <div className="level" id="level"></div>
-          <div className="lives" id="lives"></div>
+          <div className="lives" id="lives">
+            <img
+              src="./pacman.png"
+              alt="pacman life"
+              height="20"
+              className="life-one"
+              id="life-one"
+              data-testid="life-one"
+            ></img>
+            <img
+              src="./pacman.png"
+              alt="pacman life"
+              height="20"
+              className="life-two"
+              id="life-two"
+              data-testid="life-two"
+            ></img>
+          </div>
         </div>
       </div>
       <canvas
@@ -37,6 +54,7 @@ export default function Game({ name, reactRoot, callback = playGame }) {
           useMap="#dpad"
           height="200px"
           width="200px"
+          data-testid="dpad"
         ></img>
         <map name="dpad" data-testid="dpad-map">
           <area

@@ -28,10 +28,13 @@
 }
 
 .lives {
-  color: white;
   display: table-cell;
   width: 30%;
   text-align: right;
+}
+
+.life-one {
+  margin-right: 10px;
 }
 
 .dpad {
