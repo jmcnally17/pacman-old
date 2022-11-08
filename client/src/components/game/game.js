@@ -23,7 +23,6 @@ export default function Game({ name, reactRoot, callback = playGame }) {
             <img
               src="./pacman.png"
               alt="pacman life"
-              height="20"
               className="life-one"
               id="life-one"
               data-testid="life-one"
@@ -31,7 +30,6 @@ export default function Game({ name, reactRoot, callback = playGame }) {
             <img
               src="./pacman.png"
               alt="pacman life"
-              height="20"
               className="life-two"
               id="life-two"
               data-testid="life-two"

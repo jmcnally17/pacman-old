@@ -1,11 +1,11 @@
 .board {
   margin: auto;
-  width: 560px;
+  width: 100%;
 }
 
 .table {
   display: table;
-  width: 440px;
+  width: 80%;
   margin: auto;
 }
 
@@ -33,8 +33,13 @@
   text-align: right;
 }
 
+.life-one,
+.life-two {
+  width: 5vmin;
+}
+
 .life-one {
-  margin-right: 10px;
+  margin-right: 2vmin;
 }
 
 .dpad {
@@ -42,14 +47,6 @@
 }
 
 @media only screen and (max-device-width: 1024px) {
-  .board {
-    width: 100%;
-  }
-
-  .table {
-    width: 95%;
-  }
-
   .dpad {
     display: inline;
   }
