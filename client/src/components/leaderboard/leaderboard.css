@@ -64,14 +64,6 @@ tr:nth-child(odd) {
   float: right;
 }
 
-button {
-  font-size: 16pt;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  padding: 4px;
-  cursor: pointer;
-}
-
 @media only screen and (max-device-width: 1024px) {
   .buttons {
     width: 90%;
