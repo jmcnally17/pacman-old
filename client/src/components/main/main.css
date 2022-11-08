@@ -1,25 +1,28 @@
 .title-gif {
   margin: auto;
-  width: 50%;
+  width: 100%;
+  max-width: 100vmin;
 }
 
-.register {
-  font-size: 20pt;
+.register,
+input,
+button {
+  font-size: 3vmin;
 }
 
-.input-name {
-  font-size: 14pt;
-  border: 2px solid grey;
-  border-radius: 4px;
-  margin: 20px;
-  padding: 4px;
+input,
+button {
+  border-radius: 0.5vmin;
+  padding: 0.3vmin;
 }
 
-.submit-button {
-  font-size: 14pt;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  padding: 4px;
+input {
+  border: 0.3vmin solid grey;
+  margin: 1vmin;
+}
+
+button {
+  border: 0.3vmin solid #ccc;
   cursor: pointer;
 }
 
@@ -30,5 +33,5 @@
 .instructions {
   color: white;
   margin: auto;
-  padding: 20px;
+  padding: 2vmin;
 }

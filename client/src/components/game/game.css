@@ -1,11 +1,10 @@
-.board {
+.game {
   margin: auto;
-  width: 560px;
 }
 
 .table {
   display: table;
-  width: 440px;
+  width: 90%;
   margin: auto;
 }
 
@@ -13,43 +12,57 @@
   display: table-row;
 }
 
-.score {
+.score,
+.level,
+.lives {
   color: white;
   display: table-cell;
-  width: 30%;
+}
+
+.score,
+.lives {
+  width: 35%;
+}
+
+.score {
   text-align: left;
 }
 
 .level {
-  color: white;
-  display: table-cell;
-  width: 40%;
+  width: 30%;
   text-align: center;
 }
 
 .lives {
-  display: table-cell;
-  width: 30%;
   text-align: right;
 }
 
+.life-one,
+.life-two {
+  width: 3vmin;
+}
+
 .life-one {
-  margin-right: 10px;
+  margin-right: 2vmin;
+}
+
+.board {
+  margin: auto;
+  width: 100%;
 }
 
 .dpad {
   display: none;
 }
 
+@media only screen and (min-device-width: 1024px) {
+  .game {
+    height: 90vh;
+    aspect-ratio: 900 / 1050;
+  }
+}
+
 @media only screen and (max-device-width: 1024px) {
-  .board {
-    width: 100%;
-  }
-
-  .table {
-    width: 95%;
-  }
-
   .dpad {
     display: inline;
   }
