@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "microN56", sans-serif;
-  font-size: 10pt;
+  font-size: 2vmin;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
