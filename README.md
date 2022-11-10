@@ -2,7 +2,7 @@
 
 This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a PostgreSQL database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did.
 
-[<img src="./images/pacmanPlayButton.png">](https://projectpacman.herokuapp.com/)
+[<img src="./images/pacman-play-button.png">](https://projectpacman.herokuapp.com/)
 
 ### Technologies Used
 
@@ -53,7 +53,7 @@ They also move in their random pattern when in retreating mode which occurs when
 Each ghost has their own target tile during their scatter movement pattern. These four target tiles are each of the four corners of the board: the red ghost targets the top right corner; the pink ghost targets the top left corner; the cyan ghost targets the bottom right corner; and the orange ghost targets the bottom left corner. Due to the position of these targets, once the ghosts reach them, they will constantly pick the direction which is closest to the corner and will therefore circle around the wall in their respective corner.
 
 <p align="center">
-  <img src="./images/scatterPath.png" width="55%">
+  <img src="./images/scatter-path.png" width="55%">
 </p>
 
 <p align="center">
@@ -81,7 +81,7 @@ Orange:
 &nbsp;
 
 <p align="center">
-  <img src="./images/chasingPath.png" width="100%">
+  <img src="./images/chasing-path.png" width="100%">
 </p>
 
 <p align="center">
