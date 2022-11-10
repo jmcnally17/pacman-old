@@ -22,7 +22,9 @@ describe("Ghost", () => {
         y: -2.5,
       };
       ghost.assignSprite();
-      expect(ghost.image.src).toBe("http://localhost/images/orangeGhostUp.png");
+      expect(ghost.image.src).toBe(
+        "http://localhost/images/orange-ghost-up.png"
+      );
     });
 
     it("assigns the leftwards looking sprite when moving to the left and not scared or retreating", () => {
@@ -31,7 +33,7 @@ describe("Ghost", () => {
       };
       ghost.assignSprite();
       expect(ghost.image.src).toBe(
-        "http://localhost/images/orangeGhostLeft.png"
+        "http://localhost/images/orange-ghost-left.png"
       );
     });
 
@@ -41,7 +43,7 @@ describe("Ghost", () => {
       };
       ghost.assignSprite();
       expect(ghost.image.src).toBe(
-        "http://localhost/images/orangeGhostRight.png"
+        "http://localhost/images/orange-ghost-right.png"
       );
     });
 
@@ -51,7 +53,7 @@ describe("Ghost", () => {
       };
       ghost.assignSprite();
       expect(ghost.image.src).toBe(
-        "http://localhost/images/orangeGhostDown.png"
+        "http://localhost/images/orange-ghost-down.png"
       );
     });
 
@@ -59,7 +61,7 @@ describe("Ghost", () => {
       ghost.changeScaredState();
       ghost.assignSprite();
       expect(ghost.image.src).toBe(
-        "http://localhost/images/scaredGhostBlue.png"
+        "http://localhost/images/scared-ghost-blue.png"
       );
     });
 
@@ -69,7 +71,7 @@ describe("Ghost", () => {
         y: -2.5,
       };
       ghost.assignSprite();
-      expect(ghost.image.src).toBe("http://localhost/images/eyesUp.png");
+      expect(ghost.image.src).toBe("http://localhost/images/eyes-up.png");
     });
 
     it("assigns the leftwards looking eyes sprite when moving to the left and retreating", () => {
@@ -78,7 +80,7 @@ describe("Ghost", () => {
         x: -2.5,
       };
       ghost.assignSprite();
-      expect(ghost.image.src).toBe("http://localhost/images/eyesLeft.png");
+      expect(ghost.image.src).toBe("http://localhost/images/eyes-left.png");
     });
 
     it("assigns the rightwards looking eyes sprite when moving to the right and retreating", () => {
@@ -87,7 +89,7 @@ describe("Ghost", () => {
         x: 2.5,
       };
       ghost.assignSprite();
-      expect(ghost.image.src).toBe("http://localhost/images/eyesRight.png");
+      expect(ghost.image.src).toBe("http://localhost/images/eyes-right.png");
     });
 
     it("assigns the downwards looking eyes sprite when moving down and retreating", () => {
@@ -96,7 +98,7 @@ describe("Ghost", () => {
         y: 2.5,
       };
       ghost.assignSprite();
-      expect(ghost.image.src).toBe("http://localhost/images/eyesDown.png");
+      expect(ghost.image.src).toBe("http://localhost/images/eyes-down.png");
     });
   });
 });

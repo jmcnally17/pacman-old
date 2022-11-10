@@ -11,9 +11,9 @@ export default function makeBoundaries(
     row.forEach((element, j) => {
       if (element === "-") {
         const regularImage = new Image();
-        regularImage.src = "./images/pipeHorizontal.png";
+        regularImage.src = "./images/pipe-horizontal.png";
         const whiteImage = new Image();
-        whiteImage.src = "./images/pipeHorizontalWhite.png";
+        whiteImage.src = "./images/pipe-horizontal-white.png";
         const boundary = new Boundary(
           {
             position: {
@@ -28,9 +28,9 @@ export default function makeBoundaries(
         boundaries.push(boundary);
       } else if (element === "|") {
         const regularImage = new Image();
-        regularImage.src = "./images/pipeVertical.png";
+        regularImage.src = "./images/pipe-vertical.png";
         const whiteImage = new Image();
-        whiteImage.src = "./images/pipeVerticalWhite.png";
+        whiteImage.src = "./images/pipe-vertical-white.png";
         const boundary = new Boundary(
           {
             position: {
@@ -45,9 +45,9 @@ export default function makeBoundaries(
         boundaries.push(boundary);
       } else if (element === "1") {
         const regularImage = new Image();
-        regularImage.src = "./images/pipeCornerOne.png";
+        regularImage.src = "./images/pipe-corner-one.png";
         const whiteImage = new Image();
-        whiteImage.src = "./images/pipeCornerOneWhite.png";
+        whiteImage.src = "./images/pipe-corner-one-white.png";
         const boundary = new Boundary(
           {
             position: {
@@ -62,9 +62,9 @@ export default function makeBoundaries(
         boundaries.push(boundary);
       } else if (element === "2") {
         const regularImage = new Image();
-        regularImage.src = "./images/pipeCornerTwo.png";
+        regularImage.src = "./images/pipe-corner-two.png";
         const whiteImage = new Image();
-        whiteImage.src = "./images/pipeCornerTwoWhite.png";
+        whiteImage.src = "./images/pipe-corner-two-white.png";
         const boundary = new Boundary(
           {
             position: {
@@ -79,9 +79,9 @@ export default function makeBoundaries(
         boundaries.push(boundary);
       } else if (element === "3") {
         const regularImage = new Image();
-        regularImage.src = "./images/pipeCornerThree.png";
+        regularImage.src = "./images/pipe-corner-three.png";
         const whiteImage = new Image();
-        whiteImage.src = "./images/pipeCornerThreeWhite.png";
+        whiteImage.src = "./images/pipe-corner-three-white.png";
         const boundary = new Boundary(
           {
             position: {
@@ -96,9 +96,9 @@ export default function makeBoundaries(
         boundaries.push(boundary);
       } else if (element === "4") {
         const regularImage = new Image();
-        regularImage.src = "./images/pipeCornerFour.png";
+        regularImage.src = "./images/pipe-corner-four.png";
         const whiteImage = new Image();
-        whiteImage.src = "./images/pipeCornerFourWhite.png";
+        whiteImage.src = "./images/pipe-corner-four-white.png";
         const boundary = new Boundary(
           {
             position: {

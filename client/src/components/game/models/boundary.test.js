@@ -7,10 +7,10 @@ let mockWhiteImage;
 describe("Boundary", () => {
   beforeEach(() => {
     mockRegularImage = {
-      src: "./randomSource.png",
+      src: "./random-source.png",
     };
     mockWhiteImage = {
-      src: "./randomSourceWhite.png",
+      src: "./random-source-white.png",
     };
     boundary = new Boundary(
       {
@@ -40,19 +40,19 @@ describe("Boundary", () => {
 
     it("has a regular image that is passed in", () => {
       expect(boundary.regularImage).toEqual({
-        src: "./randomSource.png",
+        src: "./random-source.png",
       });
     });
 
     it("has a white image that is passed in", () => {
       expect(boundary.whiteImage).toEqual({
-        src: "./randomSourceWhite.png",
+        src: "./random-source-white.png",
       });
     });
 
     it("has an image variable that is initially set to the regular image", () => {
       expect(boundary.image).toEqual({
-        src: "./randomSource.png",
+        src: "./random-source.png",
       });
     });
   });

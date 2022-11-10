@@ -1,9 +1,9 @@
 import Boundary from "../../models/boundary";
 
 const regularImage = new Image();
-regularImage.src = "./images/pipeHorizontal.png";
+regularImage.src = "./images/pipe-horizontal.png";
 const whiteImage = new Image();
-whiteImage.src = "./images/pipeHorizontalWhite.png";
+whiteImage.src = "./images/pipe-horizontal-white.png";
 
 export default function makeTunnelBoundaries(boundaries, variables) {
   const tunnelBoundaryOne = new Boundary(
