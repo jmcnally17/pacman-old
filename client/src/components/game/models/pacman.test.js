@@ -8,12 +8,12 @@ let mockMunchTwo;
 describe("PacMan", () => {
   beforeEach(() => {
     mockMunchOne = {
-      src: "./audio/munchOne.wav",
+      src: "./audio/munch_one.wav",
       volume: 0.1,
       play: () => undefined,
     };
     mockMunchTwo = {
-      src: "./audio/munchTwo.wav",
+      src: "./audio/munch_two.wav",
       volume: 0.1,
       play: () => undefined,
     };
@@ -79,8 +79,8 @@ describe("PacMan", () => {
       expect(pacman.isLevellingUp).toBeFalsy();
       expect(pacman.munchOne).toBe(mockMunchOne);
       expect(pacman.munchTwo).toBe(mockMunchTwo);
-      expect(pacman.munchOne.src).toBe("./audio/munchOne.wav");
-      expect(pacman.munchTwo.src).toBe("./audio/munchTwo.wav");
+      expect(pacman.munchOne.src).toBe("./audio/munch_one.wav");
+      expect(pacman.munchTwo.src).toBe("./audio/munch_two.wav");
       expect(pacman.munchOne.volume).toBe(0.1);
       expect(pacman.munchTwo.volume).toBe(0.1);
     });

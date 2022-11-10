@@ -5,11 +5,11 @@ export default class PacMan {
     { position, velocity },
     tileLength,
     munchOne = new Howl({
-      src: "./audio/munchOne.wav",
+      src: "./audio/munch_one.wav",
       volume: 0.1,
     }),
     munchTwo = new Howl({
-      src: "./audio/munchTwo.wav",
+      src: "./audio/munch_two.wav",
       volume: 0.1,
     })
   ) {

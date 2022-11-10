@@ -18,11 +18,11 @@ export default class AudioPlayer {
       volume: 0.1,
     }),
     pacmanDeath = new Howl({
-      src: "./audio/pacmanDeath.wav",
+      src: "./audio/pacman_death.wav",
       volume: 0.3,
     }),
     levelUp = new Howl({
-      src: "./audio/levelUp.wav",
+      src: "./audio/level_up.wav",
       volume: 0.2,
     })
   ) {

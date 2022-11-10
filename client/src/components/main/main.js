@@ -13,7 +13,7 @@ export default function Main() {
   const [name, setName] = useState("");
   const [theme] = useState(
     new Howl({
-      src: ["./audio/titleTheme.wav"],
+      src: ["./audio/title_theme.wav"],
       loop: true,
       volume: 0.3,
     })
