@@ -9,6 +9,7 @@ export default function updateDisplay(
   const info = document.querySelector("#info");
   const ctx = info.getContext("2d");
   ctx.clearRect(0, 0, info.width, info.height);
+  ctx.font = "microN56";
   callbackOne(ctx, variables);
   callbackTwo(ctx, variables);
 }

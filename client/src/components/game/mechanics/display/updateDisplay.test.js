@@ -13,6 +13,7 @@ describe("updateDisplay", () => {
     mockDisplayScore = jest.fn();
     mockCtx = {
       clearRect: () => undefined,
+      font: null,
     };
     mockInfo = {
       getContext: () => mockCtx,
@@ -47,6 +48,11 @@ describe("updateDisplay", () => {
       mockInfo.width,
       mockInfo.height
     );
+  });
+
+  it("changes the ctx font to microN56", () => {
+    updateDisplay(mockvariables, mockDisplayLevel, mockDisplayScore);
+    expect(mockCtx.font).toBe("microN56");
   });
 
   it("calls displayLevel to show the player's current level", () => {
