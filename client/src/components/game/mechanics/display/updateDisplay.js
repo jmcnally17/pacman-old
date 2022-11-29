@@ -1,10 +1,12 @@
-import displayLevel from "./displayLevel";
 import displayScore from "./displayScore";
+import displayLevel from "./displayLevel";
+import displayLives from "./displayLives";
 
 export default function updateDisplay(
   variables,
   callbackOne = displayScore,
-  callbackTwo = displayLevel
+  callbackTwo = displayLevel,
+  callbackThree = displayLives
 ) {
   const info = document.querySelector("#info");
   const ctx = info.getContext("2d");
@@ -17,4 +19,5 @@ export default function updateDisplay(
 
   callbackOne(ctx, variables);
   callbackTwo(ctx, variables);
+  callbackThree(ctx, variables);
 }
