@@ -7,4 +7,5 @@ export default function displayLives(ctx, variables) {
   ctx.lineTo(x - tileLength / 4, y);
   ctx.fillStyle = "yellow";
   ctx.fill();
+  ctx.closePath();
 }

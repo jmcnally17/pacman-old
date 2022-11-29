@@ -53,4 +53,9 @@ describe("displayLives", () => {
     displayLives(mockCtx, mockVariables);
     expect(mockCtx.fill).toHaveBeenCalledTimes(1);
   });
+
+  it("calls closePath on ctx to finish the drawing", () => {
+    displayLives(mockCtx, mockVariables);
+    expect(mockCtx.closePath).toHaveBeenCalledTimes(1);
+  });
 });
