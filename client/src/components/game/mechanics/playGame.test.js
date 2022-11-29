@@ -18,15 +18,17 @@ describe("playGame", () => {
     mockUpdateDisplay = jest.fn();
     mockManageGhostAudio = jest.fn();
     jest.spyOn(global, "requestAnimationFrame");
-    jest.spyOn(document, "querySelector");
     mockCtx = {
       clearRect: () => undefined,
     };
     jest.spyOn(mockCtx, "clearRect");
     mockBoard = {
       getContext: () => undefined,
+      width: 896,
+      height: 992,
     };
     jest.spyOn(mockBoard, "getContext");
+    jest.spyOn(document, "querySelector");
     document.querySelector.mockReturnValue(mockBoard);
     mockBoard.getContext.mockReturnValue(mockCtx);
   });
@@ -70,7 +72,12 @@ describe("playGame", () => {
     expect(mockBoard.getContext).toHaveBeenCalledTimes(1);
     expect(mockBoard.getContext).toHaveBeenCalledWith("2d");
     expect(mockCtx.clearRect).toHaveBeenCalledTimes(1);
-    expect(mockCtx.clearRect).toHaveBeenCalledWith(0, 0, 896, 992);
+    expect(mockCtx.clearRect).toHaveBeenCalledWith(
+      0,
+      0,
+      mockBoard.width,
+      mockBoard.height
+    );
   });
 
   it("calls implementObjects", () => {

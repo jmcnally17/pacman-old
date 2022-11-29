@@ -1,1 +1,1 @@
-export default function displayLevel(variables) {}
+export default function displayLevel(ctx, variables) {}

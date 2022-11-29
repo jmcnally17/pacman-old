@@ -6,6 +6,9 @@ export default function updateDisplay(
   callbackOne = displayLevel,
   callbackTwo = displayScore
 ) {
-  callbackOne(variables);
-  callbackTwo(variables);
+  const info = document.querySelector("#info");
+  const ctx = info.getContext("2d");
+  ctx.clearRect(0, 0, info.width, info.height);
+  callbackOne(ctx, variables);
+  callbackTwo(ctx, variables);
 }

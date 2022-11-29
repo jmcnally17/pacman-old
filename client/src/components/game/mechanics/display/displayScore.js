@@ -1,1 +1,1 @@
-export default function displayScore(variables) {}
+export default function displayScore(ctx, variables) {}
