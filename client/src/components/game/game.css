@@ -2,48 +2,9 @@
   margin: auto;
 }
 
-.table {
-  display: table;
-  width: 90%;
+.info {
   margin: auto;
-}
-
-.game-info {
-  display: table-row;
-}
-
-.score,
-.level,
-.lives {
-  color: white;
-  display: table-cell;
-}
-
-.score,
-.lives {
-  width: 35%;
-}
-
-.score {
-  text-align: left;
-}
-
-.level {
-  width: 30%;
-  text-align: center;
-}
-
-.lives {
-  text-align: right;
-}
-
-.life-one,
-.life-two {
-  width: 3vmin;
-}
-
-.life-one {
-  margin-right: 2vmin;
+  width: 100%;
 }
 
 .board {

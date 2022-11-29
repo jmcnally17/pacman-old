@@ -16,28 +16,13 @@ export default function Game({ name, reactRoot, callback = playGame }) {
     <div>
       <h1>Let&apos;s play {name}!</h1>
       <div className="game">
-        <div className="table">
-          <div className="game-info">
-            <div className="score" id="score"></div>
-            <div className="level" id="level"></div>
-            <div className="lives" id="lives">
-              <img
-                src="./pacman.png"
-                alt="pacman life"
-                className="life-one"
-                id="life-one"
-                data-testid="life-one"
-              ></img>
-              <img
-                src="./pacman.png"
-                alt="pacman life"
-                className="life-two"
-                id="life-two"
-                data-testid="life-two"
-              ></img>
-            </div>
-          </div>
-        </div>
+        <canvas
+          id="info"
+          className="info"
+          data-testid="info"
+          width="500"
+          height="25"
+        ></canvas>
         <canvas
           id="board"
           className="board"

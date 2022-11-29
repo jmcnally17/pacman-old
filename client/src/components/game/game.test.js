@@ -25,25 +25,18 @@ describe("Game", () => {
     expect(screen.getByRole("heading")).toHaveTextContent("Let's play John!");
   });
 
+  it("contains the canvas element for the game info", () => {
+    render(<Game callback={mockPlayGame} />);
+    const canvasEl = screen.getByTestId("info");
+    expect(canvasEl).toHaveAttribute("width", "500");
+    expect(canvasEl).toHaveAttribute("height", "25");
+  });
+
   it("contains the canvas element for the board", () => {
     render(<Game callback={mockPlayGame} />);
     const canvasEl = screen.getByTestId("board");
     expect(canvasEl).toHaveAttribute("width", "896");
     expect(canvasEl).toHaveAttribute("height", "992");
-  });
-
-  it("displays the first life image", () => {
-    render(<Game callback={mockPlayGame} />);
-    const lifeOneEl = screen.getByTestId("life-one");
-    expect(lifeOneEl).toHaveAttribute("src", "./pacman.png");
-    expect(lifeOneEl).toHaveAttribute("alt", "pacman life");
-  });
-
-  it("displays the second life image", () => {
-    render(<Game callback={mockPlayGame} />);
-    const lifeTwoEl = screen.getByTestId("life-two");
-    expect(lifeTwoEl).toHaveAttribute("src", "./pacman.png");
-    expect(lifeTwoEl).toHaveAttribute("alt", "pacman life");
   });
 
   it("contains the d-pad png image for mobile users", () => {
