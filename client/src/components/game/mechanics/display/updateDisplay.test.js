@@ -14,6 +14,8 @@ describe("updateDisplay", () => {
     mockCtx = {
       clearRect: () => undefined,
       font: null,
+      textBaseline: null,
+      fillRect: () => undefined, // DELETE!!!!!!
     };
     mockInfo = {
       getContext: () => mockCtx,
@@ -50,20 +52,25 @@ describe("updateDisplay", () => {
     );
   });
 
-  it("changes the ctx font to microN56", () => {
+  it("changes the ctx font to 20px microN56", () => {
     updateDisplay(mockvariables, mockDisplayLevel, mockDisplayScore);
-    expect(mockCtx.font).toBe("microN56");
+    expect(mockCtx.font).toBe("20px microN56");
   });
 
-  it("calls displayLevel to show the player's current level", () => {
+  it("changes the ctx textBaseline to middle", () => {
     updateDisplay(mockvariables, mockDisplayLevel, mockDisplayScore);
-    expect(mockDisplayLevel).toHaveBeenCalledTimes(1);
-    expect(mockDisplayLevel).toHaveBeenCalledWith(mockCtx, mockvariables);
+    expect(mockCtx.textBaseline).toBe("middle");
   });
 
   it("calls displayScore to show the player's score", () => {
-    updateDisplay(mockvariables, mockDisplayLevel, mockDisplayScore);
+    updateDisplay(mockvariables, mockDisplayScore, mockDisplayLevel);
     expect(mockDisplayScore).toHaveBeenCalledTimes(1);
     expect(mockDisplayScore).toHaveBeenCalledWith(mockCtx, mockvariables);
+  });
+
+  it("calls displayLevel to show the player's current level", () => {
+    updateDisplay(mockvariables, mockDisplayScore, mockDisplayLevel);
+    expect(mockDisplayLevel).toHaveBeenCalledTimes(1);
+    expect(mockDisplayLevel).toHaveBeenCalledWith(mockCtx, mockvariables);
   });
 });

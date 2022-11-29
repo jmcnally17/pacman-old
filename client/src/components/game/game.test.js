@@ -28,8 +28,8 @@ describe("Game", () => {
   it("contains the canvas element for the game info", () => {
     render(<Game callback={mockPlayGame} />);
     const canvasEl = screen.getByTestId("info");
-    expect(canvasEl).toHaveAttribute("width", "500");
-    expect(canvasEl).toHaveAttribute("height", "25");
+    expect(canvasEl).toHaveAttribute("width", "600");
+    expect(canvasEl).toHaveAttribute("height", "30");
   });
 
   it("contains the canvas element for the board", () => {

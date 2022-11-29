@@ -20,8 +20,8 @@ export default function Game({ name, reactRoot, callback = playGame }) {
           id="info"
           className="info"
           data-testid="info"
-          width="500"
-          height="25"
+          width="600"
+          height="30"
         ></canvas>
         <canvas
           id="board"
