@@ -10,7 +10,7 @@ export default function makeGhosts(variables) {
         },
         velocity: {
           x: 0,
-          y: -variables.tileLength / 8,
+          y: 0,
         },
         colour: "red",
       },
@@ -24,7 +24,7 @@ export default function makeGhosts(variables) {
         },
         velocity: {
           x: 0,
-          y: -variables.tileLength / 8,
+          y: 0,
         },
         colour: "pink",
       },
@@ -37,7 +37,7 @@ export default function makeGhosts(variables) {
           y: (variables.tileLength * 29) / 2,
         },
         velocity: {
-          x: variables.tileLength / 8,
+          x: 0,
           y: 0,
         },
         colour: "cyan",
@@ -51,7 +51,7 @@ export default function makeGhosts(variables) {
           y: (variables.tileLength * 29) / 2,
         },
         velocity: {
-          x: -variables.tileLength / 8,
+          x: 0,
           y: 0,
         },
         colour: "orange",
