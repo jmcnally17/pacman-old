@@ -1,6 +1,7 @@
 import updateDisplay from "./updateDisplay";
 
 let mockvariables;
+let mockPacman;
 let mockDisplayLevel;
 let mockDisplayScore;
 let mockDisplayLives;
@@ -10,6 +11,7 @@ let mockCtx;
 describe("updateDisplay", () => {
   beforeEach(() => {
     mockvariables = "variables";
+    mockPacman = "pacman";
     mockDisplayLevel = jest.fn();
     mockDisplayScore = jest.fn();
     mockDisplayLives = jest.fn();
@@ -17,7 +19,6 @@ describe("updateDisplay", () => {
       clearRect: () => undefined,
       font: null,
       textBaseline: null,
-      fillRect: () => undefined, // DELETE!!!!!!
     };
     mockInfo = {
       getContext: () => mockCtx,
@@ -33,6 +34,7 @@ describe("updateDisplay", () => {
   it("calls querySelector on the document to find the game info canvas element", () => {
     updateDisplay(
       mockvariables,
+      mockPacman,
       mockDisplayLevel,
       mockDisplayScore,
       mockDisplayLives
@@ -44,6 +46,7 @@ describe("updateDisplay", () => {
   it("calls getContext of the game info object to get ctx", () => {
     updateDisplay(
       mockvariables,
+      mockPacman,
       mockDisplayLevel,
       mockDisplayScore,
       mockDisplayLives
@@ -56,6 +59,7 @@ describe("updateDisplay", () => {
     jest.spyOn(mockCtx, "clearRect");
     updateDisplay(
       mockvariables,
+      mockPacman,
       mockDisplayLevel,
       mockDisplayScore,
       mockDisplayLives
@@ -72,6 +76,7 @@ describe("updateDisplay", () => {
   it("changes the ctx font to 20px microN56", () => {
     updateDisplay(
       mockvariables,
+      mockPacman,
       mockDisplayLevel,
       mockDisplayScore,
       mockDisplayLives
@@ -82,6 +87,7 @@ describe("updateDisplay", () => {
   it("changes the ctx textBaseline to middle", () => {
     updateDisplay(
       mockvariables,
+      mockPacman,
       mockDisplayLevel,
       mockDisplayScore,
       mockDisplayLives
@@ -92,6 +98,7 @@ describe("updateDisplay", () => {
   it("calls displayScore to show the player's score", () => {
     updateDisplay(
       mockvariables,
+      mockPacman,
       mockDisplayScore,
       mockDisplayLevel,
       mockDisplayLives
@@ -103,6 +110,7 @@ describe("updateDisplay", () => {
   it("calls displayLevel to show the player's current level", () => {
     updateDisplay(
       mockvariables,
+      mockPacman,
       mockDisplayScore,
       mockDisplayLevel,
       mockDisplayLives
@@ -114,11 +122,12 @@ describe("updateDisplay", () => {
   it("calls displayLives to show the number of lives left", () => {
     updateDisplay(
       mockvariables,
+      mockPacman,
       mockDisplayScore,
       mockDisplayLevel,
       mockDisplayLives
     );
     expect(mockDisplayLives).toHaveBeenCalledTimes(1);
-    expect(mockDisplayLives).toHaveBeenCalledWith(mockCtx, mockvariables);
+    expect(mockDisplayLives).toHaveBeenCalledWith(mockCtx, mockPacman);
   });
 });

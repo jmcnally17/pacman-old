@@ -4,6 +4,7 @@ import displayLives from "./displayLives";
 
 export default function updateDisplay(
   variables,
+  pacman,
   callbackOne = displayScore,
   callbackTwo = displayLevel,
   callbackThree = displayLives
@@ -15,5 +16,5 @@ export default function updateDisplay(
   ctx.textBaseline = "middle";
   callbackOne(ctx, variables);
   callbackTwo(ctx, variables);
-  callbackThree(ctx, variables);
+  callbackThree(ctx, pacman);
 }
