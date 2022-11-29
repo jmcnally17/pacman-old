@@ -5,5 +5,12 @@ export default function displayLives(
   variables,
   callback = drawPacmanIcon
 ) {
-  callback(ctx);
+  callback(ctx, {
+    x: 580,
+    y: 15,
+  });
+  callback(ctx, {
+    x: 540,
+    y: 15,
+  });
 }
