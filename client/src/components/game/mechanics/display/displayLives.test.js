@@ -13,9 +13,7 @@ describe("displayLives", () => {
       fill: () => undefined,
       closePath: () => undefined,
     };
-    mockVariables = {
-      tileLength: 32,
-    };
+    mockVariables = "variables";
     jest.spyOn(mockCtx, "beginPath");
     jest.spyOn(mockCtx, "arc");
     jest.spyOn(mockCtx, "lineTo");
@@ -32,22 +30,27 @@ describe("displayLives", () => {
     displayLives(mockCtx, mockVariables);
     expect(mockCtx.arc).toHaveBeenCalledTimes(1);
     expect(mockCtx.arc).toHaveBeenCalledWith(
-      574,
+      580,
       15,
-      12,
+      15,
       Math.PI / 4,
-      (Math.PI * 3) / 2
+      (Math.PI * 7) / 4
     );
   });
 
   it("calls lineTo on ctx to draw Pac-Man's mouth", () => {
     displayLives(mockCtx, mockVariables);
     expect(mockCtx.lineTo).toHaveBeenCalledTimes(1);
-    expect(mockCtx.lineTo).toHaveBeenCalledWith(566, 15);
+    expect(mockCtx.lineTo).toHaveBeenCalledWith(575, 15);
   });
 
   it("sets ctx fillStyle to yellow", () => {
     displayLives(mockCtx, mockVariables);
     expect(mockCtx.fillStyle).toBe("yellow");
+  });
+
+  it("calls fill in order to colour the icon in", () => {
+    displayLives(mockCtx, mockVariables);
+    expect(mockCtx.fill).toHaveBeenCalledTimes(1);
   });
 });
