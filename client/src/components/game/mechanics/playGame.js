@@ -81,11 +81,11 @@ export default function playGame(name, reactRoot, callbackOne = finishSetup, cal
   variables.animationId = requestAnimationFrame(playGame);
   const board = document.querySelector("#board");
   const ctx = board.getContext("2d");
-  ctx.clearRect(0, 0, 896, 992);
+  ctx.clearRect(0, 0, board.width, board.height);
   if (variables.start === true) {
     callbackOne(variables, name, reactRoot, cycleTimer, scaredTimer, retreatingTimers, audioPlayer, pacman, ctx, boundaries, pellets, powerUps, ghosts, pauseTextImage);
   }
   callbackTwo(boundaries, ghosts, pacman, pellets, powerUps, cycleTimer, scaredTimer, ctx, variables, audioPlayer);
-  callbackThree(variables);
+  callbackThree(variables, pacman);
   callbackFour(audioPlayer, scaredTimer, retreatingTimers);
 };

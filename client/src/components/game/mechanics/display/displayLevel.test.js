@@ -1,18 +1,38 @@
 import displayLevel from "./displayLevel";
 
+let mockCtx;
+let mockVariables;
+
 describe("displayLevel", () => {
-  it("calls document.querySelector to find the level element and sets its inner text", () => {
-    const mockVariables = {
-      level: 4,
+  beforeEach(() => {
+    mockCtx = {
+      fillStyle: null,
+      textAlign: null,
+      fillText: () => undefined,
     };
-    const mockLevelEl = {
-      innerText: "",
+    mockVariables = {
+      level: 7,
     };
-    jest.spyOn(document, "querySelector");
-    document.querySelector.mockReturnValue(mockLevelEl);
-    displayLevel(mockVariables);
-    expect(document.querySelector).toHaveBeenCalledTimes(1);
-    expect(document.querySelector).toHaveBeenCalledWith("#level");
-    expect(mockLevelEl.innerText).toBe("Level 4");
+  });
+
+  it("changes the ctx fillStyle to white", () => {
+    displayLevel(mockCtx, mockVariables);
+    expect(mockCtx.fillStyle).toBe("white");
+  });
+
+  it("changes the ctx textAlign to center", () => {
+    displayLevel(mockCtx, mockVariables);
+    expect(mockCtx.textAlign).toBe("center");
+  });
+
+  it("calls fillText on ctx to render the score text", () => {
+    jest.spyOn(mockCtx, "fillText");
+    displayLevel(mockCtx, mockVariables);
+    expect(mockCtx.fillText).toHaveBeenCalledTimes(1);
+    expect(mockCtx.fillText).toHaveBeenCalledWith(
+      `Level: ${mockVariables.level}`,
+      300,
+      15
+    );
   });
 });

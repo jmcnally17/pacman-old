@@ -1,18 +1,38 @@
 import displayScore from "./displayScore";
 
+let mockCtx;
+let mockVariables;
+
 describe("displayScore", () => {
-  it("calls document.querySelector to find the score element and sets its inner text", () => {
-    const mockVariables = {
-      score: 4820,
+  beforeEach(() => {
+    mockCtx = {
+      fillStyle: null,
+      textAlign: null,
+      fillText: () => undefined,
     };
-    const mockScoreEl = {
-      innerText: "",
+    mockVariables = {
+      score: 3590,
     };
-    jest.spyOn(document, "querySelector");
-    document.querySelector.mockReturnValue(mockScoreEl);
-    displayScore(mockVariables);
-    expect(document.querySelector).toHaveBeenCalledTimes(1);
-    expect(document.querySelector).toHaveBeenCalledWith("#score");
-    expect(mockScoreEl.innerText).toBe("Score: 4820");
+  });
+
+  it("changes the ctx fillStyle to white", () => {
+    displayScore(mockCtx, mockVariables);
+    expect(mockCtx.fillStyle).toBe("white");
+  });
+
+  it("changes the ctx textAlign to left", () => {
+    displayScore(mockCtx, mockVariables);
+    expect(mockCtx.textAlign).toBe("left");
+  });
+
+  it("calls fillText on ctx to render the score text", () => {
+    jest.spyOn(mockCtx, "fillText");
+    displayScore(mockCtx, mockVariables);
+    expect(mockCtx.fillText).toHaveBeenCalledTimes(1);
+    expect(mockCtx.fillText).toHaveBeenCalledWith(
+      `Score: ${mockVariables.score}`,
+      10,
+      15
+    );
   });
 });
