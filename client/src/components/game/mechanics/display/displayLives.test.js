@@ -40,6 +40,12 @@ describe("displayLives", () => {
     );
   });
 
+  it("calls lineTo on ctx to draw Pac-Man's mouth", () => {
+    displayLives(mockCtx, mockVariables);
+    expect(mockCtx.lineTo).toHaveBeenCalledTimes(1);
+    expect(mockCtx.lineTo).toHaveBeenCalledWith(566, 15);
+  });
+
   it("sets ctx fillStyle to yellow", () => {
     displayLives(mockCtx, mockVariables);
     expect(mockCtx.fillStyle).toBe("yellow");
