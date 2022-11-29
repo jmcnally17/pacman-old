@@ -23,13 +23,25 @@ describe("displayLives", () => {
     jest.spyOn(mockCtx, "closePath");
   });
 
-  it("sets ctx fillStyle to yellow", () => {
-    displayLives(mockCtx, mockVariables);
-    expect(mockCtx.fillStyle).toBe("yellow");
-  });
-
   it("calls beginPath on ctx to begin drawing Pac-Man", () => {
     displayLives(mockCtx, mockVariables);
     expect(mockCtx.beginPath).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls arc on ctx to begin drawing Pac-Man", () => {
+    displayLives(mockCtx, mockVariables);
+    expect(mockCtx.arc).toHaveBeenCalledTimes(1);
+    expect(mockCtx.arc).toHaveBeenCalledWith(
+      574,
+      15,
+      12,
+      Math.PI / 4,
+      (Math.PI * 3) / 2
+    );
+  });
+
+  it("sets ctx fillStyle to yellow", () => {
+    displayLives(mockCtx, mockVariables);
+    expect(mockCtx.fillStyle).toBe("yellow");
   });
 });
