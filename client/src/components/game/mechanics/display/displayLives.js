@@ -1,3 +1,3 @@
-export default function displayLives(ctx) {
+export default function displayLives(ctx, variables) {
   ctx.fillStyle = "yellow";
 }
