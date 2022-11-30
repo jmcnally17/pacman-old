@@ -30,7 +30,7 @@ describe("displayLevel", () => {
     displayLevel(mockCtx, mockVariables);
     expect(mockCtx.fillText).toHaveBeenCalledTimes(1);
     expect(mockCtx.fillText).toHaveBeenCalledWith(
-      `Level: ${mockVariables.level}`,
+      `Level ${mockVariables.level}`,
       300,
       15
     );
