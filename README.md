@@ -1,10 +1,8 @@
 # Pac-Man <img src="./client/public/images/red-ghost-right.png" height="30"> <img src="./client/public/images/pink-ghost-right.png" height="30"> <img src="./client/public/images/cyan-ghost-right.png" height="30"> <img src="./client/public/images/orange-ghost-right.png" height="30"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./client/public/images/scared-ghost-blue.png" height="30">
 
-*****Important!!! - Due to free Heroku services no longer being available, I am currently working on sorting a new hosting site for this app.***
-
 This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a PostgreSQL database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did.
 
-<!--- [<img src="./images/pacman-play-button.png">](https://projectpacman.herokuapp.com/) --->
+[<img src="./images/pacman-play-button.png">](https://pacman-i26t.onrender.com/)
 
 ### Technologies Used
 
@@ -14,9 +12,8 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 - [Express](https://expressjs.com/) for setting up a backend server
 - [React](https://reactjs.org/) for frontend development
 - [Node.js](https://nodejs.org/en/) for the server runtime environment
-<!--- - [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql) to store the database --->
+- [Render](https://render.com/) for deployment and hosting the PostgreSQL database
 - [Jest](https://jestjs.io/), [Supertest](https://www.npmjs.com/package/supertest) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing
-<!--- - [Heroku](https://www.heroku.com/) for deployment --->
 - [Pexels Draw](https://apps.apple.com/us/app/pexels-draw/id1320744895?mt=12) for creating the boundary images and ghost sprites
 - [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp) as a container for the graphics
 - [GitHub](https://github.com/) for version control
