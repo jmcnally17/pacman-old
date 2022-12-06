@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "db:create": "npx sequelize-cli db:create",
     "migrate": "npx sequelize-cli db:migrate",
     "db:create:test": "npx sequelize-cli db:create --env test",
