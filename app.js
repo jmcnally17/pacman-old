@@ -10,6 +10,7 @@ const scoresRouter = require("./routes/scores");
 const app = express();
 
 const url = process.env.FRONTEND_URL || "http://localhost:3000";
+console.log(url);
 
 app.use(logger("dev"));
 app.use(express.json());
