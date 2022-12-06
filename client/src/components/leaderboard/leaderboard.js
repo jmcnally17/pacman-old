@@ -4,7 +4,6 @@ import Game from "../game/game";
 import { useEffect, useState } from "react";
 
 let url;
-console.log(process.env.REACT_APP_BACKEND_URL);
 if (process.env.REACT_APP_BACKEND_URL) {
   url = `${process.env.REACT_APP_BACKEND_URL}/scores`;
 } else {
