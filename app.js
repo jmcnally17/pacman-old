@@ -9,7 +9,7 @@ const scoresRouter = require("./routes/scores");
 
 const app = express();
 
-const url = process.env.FRONTEND_URL;
+// const url = process.env.FRONTEND_URL;
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -19,7 +19,7 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.use(
   cors({
-    origin: "https://pacman-i26t.onrender.com",
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
