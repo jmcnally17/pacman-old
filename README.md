@@ -4,7 +4,7 @@
 
 This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a PostgreSQL database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did.
 
-[<img src="./images/pacman-play-button.png">](https://projectpacman.herokuapp.com/)
+<!--- [<img src="./images/pacman-play-button.png">](https://projectpacman.herokuapp.com/) --->
 
 ### Technologies Used
 
@@ -14,9 +14,9 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 - [Express](https://expressjs.com/) for setting up a backend server
 - [React](https://reactjs.org/) for frontend development
 - [Node.js](https://nodejs.org/en/) for the server runtime environment
-- [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql) to store the database
+<!--- - [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql) to store the database --->
 - [Jest](https://jestjs.io/), [Supertest](https://www.npmjs.com/package/supertest) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing
-- [Heroku](https://www.heroku.com/) for deployment
+<!--- - [Heroku](https://www.heroku.com/) for deployment --->
 - [Pexels Draw](https://apps.apple.com/us/app/pexels-draw/id1320744895?mt=12) for creating the boundary images and ghost sprites
 - [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp) as a container for the graphics
 - [GitHub](https://github.com/) for version control
