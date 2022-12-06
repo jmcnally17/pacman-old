@@ -4,8 +4,8 @@ import Game from "../game/game";
 import { useEffect, useState } from "react";
 
 let url;
-if (process.env.REACT_APP_URL) {
-  url = `${process.env.REACT_APP_URL}/scores`;
+if (process.env.BACKEND_URL) {
+  url = `${process.env.BACKEND_URL}/scores`;
 } else {
   url = "http://localhost:9000/scores";
 }
