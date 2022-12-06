@@ -19,7 +19,7 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: "https://pacman-i26t.onrender.com/",
     credentials: true,
   })
 );
