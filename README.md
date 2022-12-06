@@ -12,7 +12,7 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 - [Express](https://expressjs.com/) for setting up a backend server
 - [React](https://reactjs.org/) for frontend development
 - [Node.js](https://nodejs.org/en/) for the server runtime environment
-- [Render](https://render.com/) for deployment and hosting the PostgreSQL database
+- [Render](https://render.com/) for deployment and hosting the database
 - [Jest](https://jestjs.io/), [Supertest](https://www.npmjs.com/package/supertest) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing
 - [Pexels Draw](https://apps.apple.com/us/app/pexels-draw/id1320744895?mt=12) for creating the boundary images and ghost sprites
 - [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp) as a container for the graphics
