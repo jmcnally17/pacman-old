@@ -42,8 +42,7 @@ export default function addPauseDetection(
             pacman,
             ghosts,
             cycleTimer,
-            scaredTimer,
-            audioPlayer
+            scaredTimer
           );
         }
       }

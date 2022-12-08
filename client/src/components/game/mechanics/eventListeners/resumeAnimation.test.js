@@ -11,7 +11,6 @@ let mockPowerUps;
 let mockGhosts;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockAudioPlayer;
 let mockRunDeathAnimation;
 let mockRunLevelUpAnimation;
 let mockPlayGame;
@@ -41,7 +40,6 @@ describe("resumeAnimation", () => {
     mockGhosts = "ghosts";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockAudioPlayer = "audioPlayer";
     mockRunDeathAnimation = jest.fn();
     mockRunLevelUpAnimation = jest.fn();
     mockPlayGame = jest.fn();
@@ -58,7 +56,6 @@ describe("resumeAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockRunDeathAnimation,
       mockRunLevelUpAnimation,
       mockPlayGame
@@ -73,8 +70,7 @@ describe("resumeAnimation", () => {
       mockShrinkingPacman,
       mockGhosts,
       mockCycleTimer,
-      mockScaredTimer,
-      mockAudioPlayer
+      mockScaredTimer
     );
   });
 
@@ -89,7 +85,6 @@ describe("resumeAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockRunDeathAnimation,
       mockRunLevelUpAnimation,
       mockPlayGame
@@ -104,7 +99,6 @@ describe("resumeAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries
     );
   });
@@ -120,7 +114,6 @@ describe("resumeAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockRunDeathAnimation,
       mockRunLevelUpAnimation,
       mockPlayGame
