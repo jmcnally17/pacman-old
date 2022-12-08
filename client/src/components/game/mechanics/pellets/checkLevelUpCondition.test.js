@@ -38,6 +38,7 @@ describe("checkLevelUpCondition", () => {
     mockScaredTimer = "scaredTimer";
     mockCtx = "ctx";
     mockAudioPlayer = {
+      stopGhostAudio: () => undefined,
       playLevelUp: () => undefined,
     };
     mockBoundaries = "boundaries";
@@ -63,6 +64,24 @@ describe("checkLevelUpCondition", () => {
     expect(cancelAnimationFrame).toHaveBeenCalledWith(
       mockVariables.animationId
     );
+  });
+
+  it("calls stopGhostAudio on the audioPlayer if all pellets have been eaten", () => {
+    jest.spyOn(mockAudioPlayer, "stopGhostAudio");
+    checkLevelUpCondition(
+      mockEatenPellets,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockAudioPlayer,
+      mockBoundaries,
+      mockRunLevelUpAnimation
+    );
+    expect(mockAudioPlayer.stopGhostAudio).toHaveBeenCalledTimes(1);
   });
 
   it("calls playLevelUp on the audioPlayer if all pellets have been eaten", () => {
