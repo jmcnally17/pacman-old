@@ -27,6 +27,9 @@ export default class AudioPlayer {
     levelUp = new Howl({
       src: "./audio/level_up.wav",
       volume: 0.2,
+      onend: () => {
+        levelUp.wantsToPlay = false;
+      },
     })
   ) {
     this.ghostSiren = ghostSiren;
