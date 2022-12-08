@@ -27,10 +27,15 @@ export default class AudioPlayer {
     })
   ) {
     this.ghostSiren = ghostSiren;
+    this.ghostSiren.wantsToPlay = false;
     this.ghostScared = ghostScared;
+    this.ghostScared.wantsToPlay = false;
     this.ghostRetreating = ghostRetreating;
+    this.ghostRetreating.wantsToPlay = false;
     this.pacmanDeath = pacmanDeath;
+    this.pacmanDeath.wantsToPlay = false;
     this.levelUp = levelUp;
+    this.levelUp.wantsToPlay = false;
   }
 
   loadGhost() {

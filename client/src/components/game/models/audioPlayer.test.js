@@ -17,6 +17,7 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockGhostScared = {
       name: "scared",
@@ -24,6 +25,7 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockGhostRetreating = {
       name: "retreating",
@@ -31,6 +33,7 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockPacmanDeath = {
       name: "pacmanDeath",
@@ -39,6 +42,7 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockUnloadedPacmanDeath = {
       name: "unloadedPacmanDeath",
@@ -47,6 +51,7 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockLevelUp = {
       name: "levelUp",
@@ -55,6 +60,7 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockUnloadedLevelUp = {
       name: "unloadedLevelUp",
@@ -63,6 +69,7 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     audioPlayer = new AudioPlayer(
       mockGhostSiren,
@@ -84,6 +91,14 @@ describe("AudioPlayer", () => {
     expect(audioPlayer.ghostRetreating).toEqual(mockGhostRetreating);
     expect(audioPlayer.pacmanDeath).toEqual(mockPacmanDeath);
     expect(audioPlayer.levelUp).toEqual(mockLevelUp);
+  });
+
+  it("sets wantsToPlay on each audio object to false", () => {
+    expect(audioPlayer.ghostSiren.wantsToPlay).toBe(false);
+    expect(audioPlayer.ghostScared.wantsToPlay).toBe(false);
+    expect(audioPlayer.ghostRetreating.wantsToPlay).toBe(false);
+    expect(audioPlayer.pacmanDeath.wantsToPlay).toBe(false);
+    expect(audioPlayer.levelUp.wantsToPlay).toBe(false);
   });
 
   describe("loadGhost", () => {
