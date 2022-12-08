@@ -10,8 +10,8 @@ export default function runLevelUpAnimation(
   cycleTimer,
   scaredTimer,
   ctx,
-  audioPlayer,
   boundaries,
+  audioPlayer,
   callbackOne = runLevelUpAnimation,
   callbackTwo = drawLevelUpBoard,
   callbackThree = resetAfterLevelUp
@@ -26,8 +26,8 @@ export default function runLevelUpAnimation(
       cycleTimer,
       scaredTimer,
       ctx,
-      audioPlayer,
-      boundaries
+      boundaries,
+      audioPlayer
     )
   );
   callbackTwo(ctx, boundaries);
@@ -37,7 +37,6 @@ export default function runLevelUpAnimation(
   if (variables.levelUpCount >= 350) {
     pacman.isLevellingUp = false;
     cancelAnimationFrame(variables.animationId);
-    audioPlayer.unloadLevelUp();
     variables.level++;
     callbackThree(
       pacman,

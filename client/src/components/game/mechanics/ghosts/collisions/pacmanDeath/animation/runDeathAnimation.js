@@ -36,7 +36,6 @@ export default function runDeathAnimation(
   } else {
     pacman.isShrinking = false;
     cancelAnimationFrame(variables.animationId);
-    audioPlayer.unloadPacmanDeath();
     callbackThree(
       pacman,
       variables,
@@ -45,8 +44,8 @@ export default function runDeathAnimation(
       ghosts,
       cycleTimer,
       scaredTimer,
-      audioPlayer,
-      ctx
+      ctx,
+      audioPlayer
     );
   }
 }

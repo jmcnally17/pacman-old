@@ -1,14 +1,14 @@
 import resumeAudio from "./resumeAudio";
 
 describe("resumeAudio", () => {
-  it("calls playPacmanDeathAndLevelUpIfLoaded on the audioPlayer", () => {
+  it("calls playPacmanDeathAndLevelUpIfWantTo on the audioPlayer", () => {
     const mockAudioPlayer = {
-      playPacmanDeathAndLevelUpIfLoaded: () => undefined,
+      playPacmanDeathAndLevelUpIfWantTo: () => undefined,
     };
-    jest.spyOn(mockAudioPlayer, "playPacmanDeathAndLevelUpIfLoaded");
+    jest.spyOn(mockAudioPlayer, "playPacmanDeathAndLevelUpIfWantTo");
     resumeAudio(mockAudioPlayer);
     expect(
-      mockAudioPlayer.playPacmanDeathAndLevelUpIfLoaded
+      mockAudioPlayer.playPacmanDeathAndLevelUpIfWantTo
     ).toHaveBeenCalledTimes(1);
   });
 });

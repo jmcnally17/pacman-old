@@ -38,9 +38,7 @@ describe("runDeathAnimation", () => {
     mockGhosts = "ghosts";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockAudioPlayer = {
-      unloadPacmanDeath: () => undefined,
-    };
+    mockAudioPlayer = "audioPlayer";
     mockRunDeathAnimation = jest.fn();
     mockDrawBoard = jest.fn();
     mockCheckPacmanLives = jest.fn();
@@ -169,26 +167,6 @@ describe("runDeathAnimation", () => {
     );
   });
 
-  it("calls unloadPacmanDeath on the audioPlayer when Pac-Man's death animation has finished", () => {
-    jest.spyOn(mockAudioPlayer, "unloadPacmanDeath");
-    runDeathAnimation(
-      mockVariables,
-      mockCtx,
-      mockBoundaries,
-      mockPellets,
-      mockPowerUps,
-      mockShrunkPacman,
-      mockGhosts,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockAudioPlayer,
-      mockRunDeathAnimation,
-      mockDrawBoard,
-      mockCheckPacmanLives
-    );
-    expect(mockAudioPlayer.unloadPacmanDeath).toHaveBeenCalledTimes(1);
-  });
-
   it("calls checkPacmanLives when Pac-Man's death animation has finished", () => {
     runDeathAnimation(
       mockVariables,
@@ -214,8 +192,8 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
-      mockCtx
+      mockCtx,
+      mockAudioPlayer
     );
   });
 });

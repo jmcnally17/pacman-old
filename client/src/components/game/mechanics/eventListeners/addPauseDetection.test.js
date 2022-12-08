@@ -140,7 +140,7 @@ describe("addPauseDetection", () => {
       expect(mockVariables.isGamePaused).toBeFalsy();
     });
 
-    it("call PauseAudioAndTimers if isGamePaused is intially false", () => {
+    it("calls PauseAudioAndTimers if isGamePaused is intially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -169,7 +169,7 @@ describe("addPauseDetection", () => {
       );
     });
 
-    it("call loadPauseOverlay if isGamePaused is initially false", () => {
+    it("calls loadPauseOverlay if isGamePaused is initially false", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -196,7 +196,7 @@ describe("addPauseDetection", () => {
       );
     });
 
-    it("call ResumeAudioAndTimers if isGamePaused is intially true", () => {
+    it("calls ResumeAudioAndTimers if isGamePaused is intially true", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,
@@ -226,7 +226,7 @@ describe("addPauseDetection", () => {
       );
     });
 
-    it("call resumeAnimation if isGamePaused is initially true", () => {
+    it("calls resumeAnimation if isGamePaused is initially true", () => {
       addPauseDetection(
         mockVariables,
         mockCycleTimer,

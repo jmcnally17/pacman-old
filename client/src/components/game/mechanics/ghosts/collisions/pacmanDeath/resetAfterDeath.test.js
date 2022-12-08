@@ -31,7 +31,7 @@ describe("resetAfterDeath", () => {
     };
     mockGhosts = [mockGhost, mockGhost, mockGhost];
     mockAudioPlayer = {
-      loadGhost: () => undefined,
+      ghostAudioWantsToPlay: false,
     };
     mockPlayGame = jest.fn();
   });
@@ -119,8 +119,7 @@ describe("resetAfterDeath", () => {
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
   });
 
-  it("calls loadGhost on the audioPlayer", () => {
-    jest.spyOn(mockAudioPlayer, "loadGhost");
+  it("sets ghostAudioWantsToPlay in the audioPlayer to true", () => {
     resetAfterDeath(
       mockPacman,
       mockVariables,
@@ -130,7 +129,7 @@ describe("resetAfterDeath", () => {
       mockAudioPlayer,
       mockPlayGame
     );
-    expect(mockAudioPlayer.loadGhost).toHaveBeenCalledTimes(1);
+    expect(mockAudioPlayer.ghostAudioWantsToPlay).toBe(true);
   });
 
   it("calls playGame", () => {

@@ -26,7 +26,7 @@ export default function resetAfterLevelUp(
   powerUps.forEach((powerUp) => {
     if (powerUp.hasBeenEaten) powerUp.changeEatenState();
   });
-  audioPlayer.loadGhost();
+  audioPlayer.ghostAudioWantsToPlay = true;
   cycleTimer.start();
   callback();
 }

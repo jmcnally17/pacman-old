@@ -4,9 +4,7 @@ let mockGhostSiren;
 let mockGhostScared;
 let mockGhostRetreating;
 let mockPacmanDeath;
-let mockUnloadedPacmanDeath;
 let mockLevelUp;
-let mockUnloadedLevelUp;
 let audioPlayer;
 
 describe("AudioPlayer", () => {
@@ -17,6 +15,7 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockGhostScared = {
       name: "scared",
@@ -24,6 +23,7 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockGhostRetreating = {
       name: "retreating",
@@ -31,38 +31,23 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockPacmanDeath = {
       name: "pacmanDeath",
-      _state: "loaded",
       load: () => undefined,
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
-    };
-    mockUnloadedPacmanDeath = {
-      name: "unloadedPacmanDeath",
-      _state: "unloaded",
-      load: () => undefined,
-      unload: () => undefined,
-      pause: () => undefined,
-      play: () => undefined,
+      wantsToPlay: undefined,
     };
     mockLevelUp = {
       name: "levelUp",
-      _state: "loaded",
       load: () => undefined,
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
-    };
-    mockUnloadedLevelUp = {
-      name: "unloadedLevelUp",
-      _state: "unloaded",
-      load: () => undefined,
-      unload: () => undefined,
-      pause: () => undefined,
-      play: () => undefined,
+      wantsToPlay: undefined,
     };
     audioPlayer = new AudioPlayer(
       mockGhostSiren,
@@ -86,44 +71,16 @@ describe("AudioPlayer", () => {
     expect(audioPlayer.levelUp).toEqual(mockLevelUp);
   });
 
-  describe("loadGhost", () => {
-    it("calls load on the ghostSiren", () => {
-      jest.spyOn(mockGhostSiren, "load");
-      audioPlayer.loadGhost();
-      expect(mockGhostSiren.load).toHaveBeenCalledTimes(1);
-    });
-
-    it("calls load on the ghostScared", () => {
-      jest.spyOn(mockGhostScared, "load");
-      audioPlayer.loadGhost();
-      expect(mockGhostScared.load).toHaveBeenCalledTimes(1);
-    });
-
-    it("calls load on the ghostRetreating", () => {
-      jest.spyOn(mockGhostRetreating, "load");
-      audioPlayer.loadGhost();
-      expect(mockGhostRetreating.load).toHaveBeenCalledTimes(1);
-    });
+  it("sets ghostAudioWantsToPlay to false", () => {
+    expect(audioPlayer.ghostAudioWantsToPlay).toBe(false);
   });
 
-  describe("unloadGhost", () => {
-    it("calls unload on the ghostSiren", () => {
-      jest.spyOn(mockGhostSiren, "unload");
-      audioPlayer.unloadGhost();
-      expect(mockGhostSiren.unload).toHaveBeenCalledTimes(1);
-    });
+  it("sets wantsToPlay on pacmanDeath to false", () => {
+    expect(mockPacmanDeath.wantsToPlay).toBe(false);
+  });
 
-    it("calls unload on the ghostScared", () => {
-      jest.spyOn(mockGhostScared, "unload");
-      audioPlayer.unloadGhost();
-      expect(mockGhostScared.unload).toHaveBeenCalledTimes(1);
-    });
-
-    it("calls unload on the ghostRetreating", () => {
-      jest.spyOn(mockGhostRetreating, "unload");
-      audioPlayer.unloadGhost();
-      expect(mockGhostRetreating.unload).toHaveBeenCalledTimes(1);
-    });
+  it("sets wantsToPlay on levelUp to false", () => {
+    expect(mockLevelUp.wantsToPlay).toBe(false);
   });
 
   describe("playGhostSiren", () => {
@@ -180,86 +137,89 @@ describe("AudioPlayer", () => {
     });
   });
 
-  describe("loadAndPlayPacmanDeath", () => {
-    it("calls load on pacmanDeath", () => {
-      jest.spyOn(mockPacmanDeath, "load");
-      audioPlayer.loadAndPlayPacmanDeath();
-      expect(mockPacmanDeath.load).toHaveBeenCalledTimes(1);
+  describe("stopGhostAudio", () => {
+    it("calls pause on ghostSiren", () => {
+      audioPlayer.stopGhostAudio();
+      expect(mockGhostSiren.pause).toHaveBeenCalledTimes(1);
     });
 
+    it("calls pause on ghostScared", () => {
+      audioPlayer.stopGhostAudio();
+      expect(mockGhostScared.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on ghostRetreating", () => {
+      audioPlayer.stopGhostAudio();
+      expect(mockGhostRetreating.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("sets ghostAudioWantsToPlay to false", () => {
+      audioPlayer.ghostAudioWantsToPlay = true;
+      audioPlayer.stopGhostAudio();
+      expect(audioPlayer.ghostAudioWantsToPlay).toBe(false);
+    });
+  });
+
+  describe("playPacmanDeath", () => {
     it("calls play on pacmanDeath", () => {
-      audioPlayer.loadAndPlayPacmanDeath();
+      audioPlayer.playPacmanDeath();
       expect(mockPacmanDeath.play).toHaveBeenCalledTimes(1);
     });
-  });
 
-  describe("unloadPacmanDeath", () => {
-    it("calls unload on pacmanDeath", () => {
-      jest.spyOn(mockPacmanDeath, "unload");
-      audioPlayer.unloadPacmanDeath();
-      expect(mockPacmanDeath.unload).toHaveBeenCalledTimes(1);
+    it("sets wantsToPlay on pacmanDeath to true", () => {
+      audioPlayer.playPacmanDeath();
+      expect(mockPacmanDeath.wantsToPlay).toBe(true);
     });
   });
 
-  describe("loadAndPlayLevelUp", () => {
-    it("calls load on levelUp", () => {
-      jest.spyOn(mockLevelUp, "load");
-      audioPlayer.loadAndPlayLevelUp();
-      expect(mockLevelUp.load).toHaveBeenCalledTimes(1);
-    });
-
+  describe("playLevelUp", () => {
     it("calls play on levelUp", () => {
-      audioPlayer.loadAndPlayLevelUp();
+      audioPlayer.playLevelUp();
       expect(mockLevelUp.play).toHaveBeenCalledTimes(1);
     });
-  });
 
-  describe("unloadLevelUp", () => {
-    it("calls unload on levelUp", () => {
-      jest.spyOn(mockLevelUp, "unload");
-      audioPlayer.unloadLevelUp();
-      expect(mockLevelUp.unload).toHaveBeenCalledTimes(1);
+    it("sets wantsToPlay on levelUp to true", () => {
+      audioPlayer.playLevelUp();
+      expect(mockLevelUp.wantsToPlay).toBe(true);
     });
   });
 
-  describe("playPacmanDeathAndLevelUpIfLoaded", () => {
-    it("calls play on pacmanDeath if its state is loaded", () => {
-      audioPlayer.playPacmanDeathAndLevelUpIfLoaded();
+  describe("playPacmanDeathAndLevelUpIfWantTo", () => {
+    it("calls play on pacmanDeath if wantsToPlay is true", () => {
+      mockPacmanDeath.wantsToPlay = true;
+      audioPlayer.playPacmanDeathAndLevelUpIfWantTo();
       expect(mockPacmanDeath.play).toHaveBeenCalledTimes(1);
     });
 
-    it("does not call play on pacmanDeath if its state is unloaded", () => {
-      audioPlayer.pacmanDeath = mockUnloadedPacmanDeath;
-      jest.spyOn(mockUnloadedPacmanDeath, "play");
-      audioPlayer.playPacmanDeathAndLevelUpIfLoaded();
-      expect(mockUnloadedPacmanDeath.play).toHaveBeenCalledTimes(0);
+    it("does not call play on pacmanDeath if wantsToPlay is false", () => {
+      audioPlayer.playPacmanDeathAndLevelUpIfWantTo();
+      expect(mockPacmanDeath.play).toHaveBeenCalledTimes(0);
     });
 
-    it("calls play on levelUp if its state is unloaded", () => {
-      audioPlayer.playPacmanDeathAndLevelUpIfLoaded();
+    it("calls play on levelUp if wantsToPlay is true", () => {
+      mockLevelUp.wantsToPlay = true;
+      audioPlayer.playPacmanDeathAndLevelUpIfWantTo();
       expect(mockLevelUp.play).toHaveBeenCalledTimes(1);
     });
 
-    it("does not call play on levelUp if its state is unloaded", () => {
-      audioPlayer.levelUp = mockUnloadedLevelUp;
-      jest.spyOn(mockUnloadedLevelUp, "play");
-      audioPlayer.playPacmanDeathAndLevelUpIfLoaded();
-      expect(mockUnloadedLevelUp.play).toHaveBeenCalledTimes(0);
+    it("does not call play on levelUp if wantsToPlay is false", () => {
+      audioPlayer.playPacmanDeathAndLevelUpIfWantTo();
+      expect(mockLevelUp.play).toHaveBeenCalledTimes(0);
     });
   });
 
   describe("pauseAll", () => {
-    it("calls pause on the ghostSiren", () => {
+    it("calls pause on ghostSiren", () => {
       audioPlayer.pauseAll();
       expect(mockGhostSiren.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls pause on the ghostScared", () => {
+    it("calls pause on ghostScared", () => {
       audioPlayer.pauseAll();
       expect(mockGhostScared.pause).toHaveBeenCalledTimes(1);
     });
 
-    it("calls pause on the ghostRetreating", () => {
+    it("calls pause on ghostRetreating", () => {
       audioPlayer.pauseAll();
       expect(mockGhostRetreating.pause).toHaveBeenCalledTimes(1);
     });

@@ -51,7 +51,7 @@ describe("resetAfterLevelUp", () => {
       duration: 5000,
     };
     mockAudioPlayer = {
-      loadGhost: () => undefined,
+      ghostAudioWantsToPlay: false,
     };
     mockPlayGame = jest.fn();
   });
@@ -232,8 +232,7 @@ describe("resetAfterLevelUp", () => {
     expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
   });
 
-  it("calls loadGhost on the audioPlayer", () => {
-    jest.spyOn(mockAudioPlayer, "loadGhost");
+  it("sets ghostAudioWantsToPlay to true", () => {
     resetAfterLevelUp(
       mockPacman,
       mockVariables,
@@ -245,7 +244,7 @@ describe("resetAfterLevelUp", () => {
       mockAudioPlayer,
       mockPlayGame
     );
-    expect(mockAudioPlayer.loadGhost).toHaveBeenCalledTimes(1);
+    expect(mockAudioPlayer.ghostAudioWantsToPlay).toBe(true);
   });
 
   it("calls start on the cycle timer to restart it", () => {

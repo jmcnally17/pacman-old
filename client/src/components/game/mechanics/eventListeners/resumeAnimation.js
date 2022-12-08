@@ -40,8 +40,8 @@ export default function resumeAnimation(
       cycleTimer,
       scaredTimer,
       ctx,
-      audioPlayer,
-      boundaries
+      boundaries,
+      audioPlayer
     );
   } else {
     callbackThree(variables.playerName, variables.reactRoot);

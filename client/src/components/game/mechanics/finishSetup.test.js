@@ -36,10 +36,7 @@ describe("finishSetup", () => {
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
     mockAudioPlayer = {
-      loadGhost: () => undefined,
-      playGhostSiren: () => undefined,
-      unloadPacmanDeath: () => undefined,
-      unloadLevelUp: () => undefined,
+      ghostAudioWantsToPlay: false,
     };
     mockPacman = "pacman";
     mockCtx = "ctx";
@@ -214,8 +211,7 @@ describe("finishSetup", () => {
     expect(mockVariables.start).toBeFalsy();
   });
 
-  it("calls loadGhost on the audioPlayer", () => {
-    jest.spyOn(mockAudioPlayer, "loadGhost");
+  it("sets ghostAudioWantsToPlay in the audioPlayer to true", () => {
     finishSetup(
       mockVariables,
       mockName,
@@ -235,78 +231,6 @@ describe("finishSetup", () => {
       mockAddVisibilityDetection,
       mockAddPauseDetection
     );
-    expect(mockAudioPlayer.loadGhost).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls playGhostSiren on the audioPlayer", () => {
-    jest.spyOn(mockAudioPlayer, "playGhostSiren");
-    finishSetup(
-      mockVariables,
-      mockName,
-      mockReactRoot,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockAudioPlayer,
-      mockPacman,
-      mockCtx,
-      mockBoundaries,
-      mockPellets,
-      mockPowerUps,
-      mockGhosts,
-      mockPauseTextImage,
-      mockAddDirectionDetection,
-      mockAddVisibilityDetection,
-      mockAddPauseDetection
-    );
-    expect(mockAudioPlayer.playGhostSiren).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls unloadPacmanDeath on the audioPlayer", () => {
-    jest.spyOn(mockAudioPlayer, "unloadPacmanDeath");
-    finishSetup(
-      mockVariables,
-      mockName,
-      mockReactRoot,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockAudioPlayer,
-      mockPacman,
-      mockCtx,
-      mockBoundaries,
-      mockPellets,
-      mockPowerUps,
-      mockGhosts,
-      mockPauseTextImage,
-      mockAddDirectionDetection,
-      mockAddVisibilityDetection,
-      mockAddPauseDetection
-    );
-    expect(mockAudioPlayer.unloadPacmanDeath).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls unloadLevelUp on the audioPlayer", () => {
-    jest.spyOn(mockAudioPlayer, "unloadLevelUp");
-    finishSetup(
-      mockVariables,
-      mockName,
-      mockReactRoot,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockRetreatingTimers,
-      mockAudioPlayer,
-      mockPacman,
-      mockCtx,
-      mockBoundaries,
-      mockPellets,
-      mockPowerUps,
-      mockGhosts,
-      mockPauseTextImage,
-      mockAddDirectionDetection,
-      mockAddVisibilityDetection,
-      mockAddPauseDetection
-    );
-    expect(mockAudioPlayer.unloadLevelUp).toHaveBeenCalledTimes(1);
+    expect(mockAudioPlayer.ghostAudioWantsToPlay).toBe(true);
   });
 });

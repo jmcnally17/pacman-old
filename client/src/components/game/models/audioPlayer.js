@@ -20,29 +20,26 @@ export default class AudioPlayer {
     pacmanDeath = new Howl({
       src: "./audio/pacman_death.wav",
       volume: 0.3,
+      onend: () => {
+        pacmanDeath.wantsToPlay = false;
+      },
     }),
     levelUp = new Howl({
       src: "./audio/level_up.wav",
       volume: 0.2,
+      onend: () => {
+        levelUp.wantsToPlay = false;
+      },
     })
   ) {
     this.ghostSiren = ghostSiren;
     this.ghostScared = ghostScared;
     this.ghostRetreating = ghostRetreating;
+    this.ghostAudioWantsToPlay = false;
     this.pacmanDeath = pacmanDeath;
+    this.pacmanDeath.wantsToPlay = false;
     this.levelUp = levelUp;
-  }
-
-  loadGhost() {
-    this.ghostSiren.load();
-    this.ghostScared.load();
-    this.ghostRetreating.load();
-  }
-
-  unloadGhost() {
-    this.ghostSiren.unload();
-    this.ghostScared.unload();
-    this.ghostRetreating.unload();
+    this.levelUp.wantsToPlay = false;
   }
 
   playGhostSiren() {
@@ -63,44 +60,37 @@ export default class AudioPlayer {
     this.ghostRetreating.play();
   }
 
-  loadAndPlayPacmanDeath() {
-    this.pacmanDeath.load();
-    this.#playPacmanDeath();
+  stopGhostAudio() {
+    this.#pauseGhostAudio();
+    this.ghostAudioWantsToPlay = false;
   }
 
-  unloadPacmanDeath() {
-    this.pacmanDeath.unload();
+  playPacmanDeath() {
+    this.pacmanDeath.play();
+    this.pacmanDeath.wantsToPlay = true;
   }
 
-  loadAndPlayLevelUp() {
-    this.levelUp.load();
-    this.#playLevelUp();
+  playLevelUp() {
+    this.levelUp.play();
+    this.levelUp.wantsToPlay = true;
   }
 
-  unloadLevelUp() {
-    this.levelUp.unload();
-  }
-
-  playPacmanDeathAndLevelUpIfLoaded() {
-    if (this.pacmanDeath._state === "loaded") this.#playPacmanDeath();
-    if (this.levelUp._state === "loaded") this.#playLevelUp();
+  playPacmanDeathAndLevelUpIfWantTo() {
+    if (this.pacmanDeath.wantsToPlay === true) this.pacmanDeath.play();
+    if (this.levelUp.wantsToPlay === true) this.levelUp.play();
   }
 
   pauseAll() {
-    this.ghostSiren.pause();
-    this.ghostScared.pause();
-    this.ghostRetreating.pause();
+    this.#pauseGhostAudio();
     this.pacmanDeath.pause();
     this.levelUp.pause();
   }
 
   // private
 
-  #playPacmanDeath() {
-    this.pacmanDeath.play();
-  }
-
-  #playLevelUp() {
-    this.levelUp.play();
+  #pauseGhostAudio() {
+    this.ghostSiren.pause();
+    this.ghostScared.pause();
+    this.ghostRetreating.pause();
   }
 }

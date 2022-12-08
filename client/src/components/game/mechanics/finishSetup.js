@@ -47,8 +47,5 @@ export default function finishSetup(
     pauseTextImage
   );
   variables.start = false;
-  audioPlayer.loadGhost();
-  audioPlayer.playGhostSiren();
-  audioPlayer.unloadPacmanDeath();
-  audioPlayer.unloadLevelUp();
+  audioPlayer.ghostAudioWantsToPlay = true;
 }

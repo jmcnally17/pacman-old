@@ -9,8 +9,8 @@ export default function checkPacmanLives(
   ghosts,
   cycleTimer,
   scaredTimer,
-  audioPlayer,
   ctx,
+  audioPlayer,
   callbackOne = endGame,
   callbackTwo = resetAfterDeath
 ) {

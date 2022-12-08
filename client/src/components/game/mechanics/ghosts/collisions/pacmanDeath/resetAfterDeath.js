@@ -17,6 +17,6 @@ export default function resetAfterDeath(
     ghost.reset();
   });
   cycleTimer.start();
-  audioPlayer.loadGhost();
+  audioPlayer.ghostAudioWantsToPlay = true;
   callbackOne(variables.playerName, variables.reactRoot);
 }

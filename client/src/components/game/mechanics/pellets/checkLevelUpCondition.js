@@ -20,8 +20,8 @@ export default function checkLevelUpCondition(
     }
     if (eatenPellets === pellets.length) {
       cancelAnimationFrame(variables.animationId);
-      audioPlayer.unloadGhost();
-      audioPlayer.loadAndPlayLevelUp();
+      audioPlayer.stopGhostAudio();
+      audioPlayer.playLevelUp();
       pacman.isLevellingUp = true;
       callback(
         variables,
@@ -32,8 +32,8 @@ export default function checkLevelUpCondition(
         cycleTimer,
         scaredTimer,
         ctx,
-        audioPlayer,
-        boundaries
+        boundaries,
+        audioPlayer
       );
     }
   });
