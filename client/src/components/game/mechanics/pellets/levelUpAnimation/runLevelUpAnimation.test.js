@@ -10,7 +10,6 @@ let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
 let mockCtx;
-let mockAudioPlayer;
 let mockBoundary;
 let mockBoundaries;
 let mockRunLevelUpAnimation;
@@ -38,9 +37,6 @@ describe("runLevelUpAnimation", () => {
       textAlign: undefined,
       fillText: () => undefined,
     };
-    mockAudioPlayer = {
-      unloadLevelUp: () => undefined,
-    };
     mockBoundary = {
       flash: () => undefined,
     };
@@ -61,7 +57,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries,
       mockRunLevelUpAnimation,
       mockDrawLevelUpBoard,
@@ -80,7 +75,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries
     );
   });
@@ -95,7 +89,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries,
       mockRunLevelUpAnimation,
       mockDrawLevelUpBoard,
@@ -117,7 +110,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries,
       mockRunLevelUpAnimation,
       mockDrawLevelUpBoard,
@@ -138,7 +130,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries,
       mockRunLevelUpAnimation,
       mockDrawLevelUpBoard,
@@ -157,7 +148,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries,
       mockRunLevelUpAnimation,
       mockDrawLevelUpBoard,
@@ -177,7 +167,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries,
       mockRunLevelUpAnimation,
       mockDrawLevelUpBoard,
@@ -198,7 +187,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries,
       mockRunLevelUpAnimation,
       mockDrawLevelUpBoard,
@@ -208,27 +196,6 @@ describe("runLevelUpAnimation", () => {
     expect(cancelAnimationFrame).toHaveBeenCalledWith(
       mockVariables.animationId
     );
-  });
-
-  it("calls unloadLevelUp on the audioPlayer when the level up count reaches 350", () => {
-    mockVariables.levelUpCount = 350;
-    jest.spyOn(mockAudioPlayer, "unloadLevelUp");
-    runLevelUpAnimation(
-      mockVariables,
-      mockPacman,
-      mockGhosts,
-      mockPellets,
-      mockPowerUps,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockCtx,
-      mockAudioPlayer,
-      mockBoundaries,
-      mockRunLevelUpAnimation,
-      mockDrawLevelUpBoard,
-      mockResetAfterLevelUp
-    );
-    expect(mockAudioPlayer.unloadLevelUp).toHaveBeenCalledTimes(1);
   });
 
   it("increases the level by 1 when the level up count reaches 350", () => {
@@ -242,7 +209,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries,
       mockRunLevelUpAnimation,
       mockDrawLevelUpBoard,
@@ -262,7 +228,6 @@ describe("runLevelUpAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries,
       mockRunLevelUpAnimation,
       mockDrawLevelUpBoard,
@@ -276,8 +241,7 @@ describe("runLevelUpAnimation", () => {
       mockPellets,
       mockPowerUps,
       mockCycleTimer,
-      mockScaredTimer,
-      mockAudioPlayer
+      mockScaredTimer
     );
   });
 });

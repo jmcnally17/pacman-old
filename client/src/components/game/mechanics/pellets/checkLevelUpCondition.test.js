@@ -124,7 +124,6 @@ describe("checkLevelUpCondition", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockAudioPlayer,
       mockBoundaries
     );
   });

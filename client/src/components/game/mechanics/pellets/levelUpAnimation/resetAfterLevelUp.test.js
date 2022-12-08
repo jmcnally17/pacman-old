@@ -12,7 +12,6 @@ let mockUneatenPowerUp;
 let mockUneatenPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockAudioPlayer;
 let mockPlayGame;
 
 describe("resetAfterLevelUp", () => {
@@ -50,9 +49,6 @@ describe("resetAfterLevelUp", () => {
       reset: () => undefined,
       duration: 5000,
     };
-    mockAudioPlayer = {
-      loadGhost: () => undefined,
-    };
     mockPlayGame = jest.fn();
   });
 
@@ -66,7 +62,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockPacman.reset).toHaveBeenCalledTimes(1);
@@ -81,7 +76,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockVariables.lastKeyPressed).toBe("");
@@ -96,7 +90,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockVariables.levelUpCount).toBe(0);
@@ -112,7 +105,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
@@ -128,7 +120,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
@@ -143,7 +134,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockScaredTimer.duration).toBe(4500);
@@ -162,7 +152,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimerZero,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockScaredTimerZero.duration).toBe(0);
@@ -178,7 +167,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockGhost.reset).toHaveBeenCalledTimes(3);
@@ -194,7 +182,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockPellet.changeEatenState).toHaveBeenCalledTimes(2);
@@ -210,7 +197,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockEatenPowerUp.changeEatenState).toHaveBeenCalledTimes(1);
@@ -226,26 +212,9 @@ describe("resetAfterLevelUp", () => {
       mockUneatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockUneatenPowerUp.changeEatenState).toHaveBeenCalledTimes(0);
-  });
-
-  it("calls loadGhost on the audioPlayer", () => {
-    jest.spyOn(mockAudioPlayer, "loadGhost");
-    resetAfterLevelUp(
-      mockPacman,
-      mockVariables,
-      mockGhosts,
-      mockPellets,
-      mockEatenPowerUps,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockAudioPlayer,
-      mockPlayGame
-    );
-    expect(mockAudioPlayer.loadGhost).toHaveBeenCalledTimes(1);
   });
 
   it("calls start on the cycle timer to restart it", () => {
@@ -258,7 +227,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
@@ -273,7 +241,6 @@ describe("resetAfterLevelUp", () => {
       mockEatenPowerUps,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockPlayGame).toHaveBeenCalledTimes(1);

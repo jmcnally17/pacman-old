@@ -31,7 +31,6 @@ export default function checkLevelUpCondition(
         cycleTimer,
         scaredTimer,
         ctx,
-        audioPlayer,
         boundaries
       );
     }
