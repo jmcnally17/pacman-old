@@ -20,8 +20,7 @@ export default function checkLevelUpCondition(
     }
     if (eatenPellets === pellets.length) {
       cancelAnimationFrame(variables.animationId);
-      audioPlayer.unloadGhost();
-      audioPlayer.loadAndPlayLevelUp();
+      audioPlayer.playLevelUp();
       pacman.isLevellingUp = true;
       callback(
         variables,
