@@ -1,4 +1,4 @@
-import loadTint from "../../../eventListeners/loadTint";
+import loadTint from "../../../../eventListeners/loadTint";
 import displayPleaseWaitText from "./displayPleaseWaitText";
 
 export default function displayPleaseWait(

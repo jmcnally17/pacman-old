@@ -1,4 +1,4 @@
-import runDeathAnimation from "./pacmanDeath/runDeathAnimation";
+import runDeathAnimation from "./pacmanDeath/animation/runDeathAnimation";
 
 export default function dealWithCollision(
   ghost,

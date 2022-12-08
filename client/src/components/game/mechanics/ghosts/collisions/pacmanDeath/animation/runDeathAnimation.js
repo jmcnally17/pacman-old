@@ -1,4 +1,4 @@
-import checkPacmanLives from "./checkPacmanLives";
+import checkPacmanLives from "../checkPacmanLives";
 import drawBoard from "./drawBoard";
 
 export default function runDeathAnimation(

@@ -1,4 +1,4 @@
-import endGame from "./endGame";
+import endGame from "./gameOver/endGame";
 import resetAfterDeath from "./resetAfterDeath";
 
 export default function checkPacmanLives(

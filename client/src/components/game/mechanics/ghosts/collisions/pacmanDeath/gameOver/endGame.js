@@ -1,5 +1,5 @@
-import Leaderboard from "../../../../../leaderboard/leaderboard";
-import displayPleaseWait from "./displayPleaseWait";
+import Leaderboard from "../../../../../../leaderboard/leaderboard";
+import displayPleaseWait from "../animation/displayPleaseWait";
 import resetAfterGameOver from "./resetAfterGameOver";
 import saveScore from "./saveScore";
 

@@ -1,4 +1,4 @@
-import runDeathAnimation from "../ghosts/collisions/pacmanDeath/runDeathAnimation";
+import runDeathAnimation from "../ghosts/collisions/pacmanDeath/animation/runDeathAnimation";
 import runLevelUpAnimation from "../pellets/levelUpAnimation/runLevelUpAnimation";
 import playGame from "../playGame";
 
