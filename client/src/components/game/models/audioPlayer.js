@@ -52,8 +52,11 @@ export default class AudioPlayer {
 
   playGhostSiren() {
     this.ghostScared.pause();
+    this.ghostScared.wantsToPlay = false;
     this.ghostRetreating.pause();
+    this.ghostRetreating.wantsToPlay = false;
     this.ghostSiren.play();
+    this.ghostSiren.wantsToPlay = true;
   }
 
   playGhostScared() {
