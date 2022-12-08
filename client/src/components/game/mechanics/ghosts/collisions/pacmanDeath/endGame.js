@@ -1,4 +1,5 @@
 import Leaderboard from "../../../../../leaderboard/leaderboard";
+import displayPleaseWait from "./displayPleaseWait";
 import resetAfterGameOver from "./resetAfterGameOver";
 import saveScore from "./saveScore";
 
@@ -10,12 +11,15 @@ export default async function endGame(
   pacman,
   cycleTimer,
   scaredTimer,
-  callbackOne = saveScore,
-  callbackTwo = resetAfterGameOver
+  ctx,
+  callbackOne = displayPleaseWait,
+  callbackTwo = saveScore,
+  callbackThree = resetAfterGameOver
 ) {
   cancelAnimationFrame(variables.animationId);
-  await callbackOne(variables);
-  callbackTwo(
+  callbackOne(ctx);
+  await callbackTwo(variables);
+  callbackThree(
     pellets,
     powerUps,
     ghosts,

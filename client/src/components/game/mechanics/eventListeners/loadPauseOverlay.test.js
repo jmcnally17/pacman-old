@@ -2,14 +2,14 @@ import loadPauseOverlay from "./loadPauseOverlay";
 
 let mockCtx;
 let mockPauseTextImage;
-let mockLoadPauseTint;
+let mockLoadTint;
 let mockLoadPauseText;
 
 describe("loadPauseOverlay", () => {
   beforeEach(() => {
     mockCtx = "ctx";
     mockPauseTextImage = "pauseTextImage";
-    mockLoadPauseTint = jest.fn();
+    mockLoadTint = jest.fn();
     mockLoadPauseText = jest.fn();
   });
 
@@ -17,18 +17,18 @@ describe("loadPauseOverlay", () => {
     loadPauseOverlay(
       mockCtx,
       mockPauseTextImage,
-      mockLoadPauseTint,
+      mockLoadTint,
       mockLoadPauseText
     );
-    expect(mockLoadPauseTint).toHaveBeenCalledTimes(1);
-    expect(mockLoadPauseTint).toHaveBeenCalledWith(mockCtx);
+    expect(mockLoadTint).toHaveBeenCalledTimes(1);
+    expect(mockLoadTint).toHaveBeenCalledWith(mockCtx);
   });
 
   it("calls loadPauseText to add the pause text onto the screen", () => {
     loadPauseOverlay(
       mockCtx,
       mockPauseTextImage,
-      mockLoadPauseTint,
+      mockLoadTint,
       mockLoadPauseText
     );
     expect(mockLoadPauseText).toHaveBeenCalledTimes(1);

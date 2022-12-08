@@ -214,7 +214,8 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer
+      mockAudioPlayer,
+      mockCtx
     );
   });
 });

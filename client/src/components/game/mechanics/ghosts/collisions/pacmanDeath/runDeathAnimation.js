@@ -45,7 +45,8 @@ export default function runDeathAnimation(
       ghosts,
       cycleTimer,
       scaredTimer,
-      audioPlayer
+      audioPlayer,
+      ctx
     );
   }
 }

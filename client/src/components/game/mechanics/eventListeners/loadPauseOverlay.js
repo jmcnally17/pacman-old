@@ -1,10 +1,10 @@
 import loadPauseText from "./loadPauseText";
-import loadPauseTint from "./loadPauseTint";
+import loadTint from "./loadTint";
 
 export default function loadPauseOverlay(
   ctx,
   pauseTextImage,
-  callbackOne = loadPauseTint,
+  callbackOne = loadTint,
   callbackTwo = loadPauseText
 ) {
   callbackOne(ctx);
