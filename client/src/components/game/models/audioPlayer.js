@@ -27,77 +27,45 @@ export default class AudioPlayer {
     })
   ) {
     this.ghostSiren = ghostSiren;
-    this.ghostSiren.wantsToPlay = false;
     this.ghostScared = ghostScared;
-    this.ghostScared.wantsToPlay = false;
     this.ghostRetreating = ghostRetreating;
-    this.ghostRetreating.wantsToPlay = false;
     this.pacmanDeath = pacmanDeath;
     this.pacmanDeath.wantsToPlay = false;
     this.levelUp = levelUp;
     this.levelUp.wantsToPlay = false;
   }
 
-  loadGhost() {
-    this.ghostSiren.load();
-    this.ghostScared.load();
-    this.ghostRetreating.load();
-  }
-
-  unloadGhost() {
-    this.ghostSiren.unload();
-    this.ghostScared.unload();
-    this.ghostRetreating.unload();
-  }
-
   playGhostSiren() {
     this.ghostScared.pause();
-    this.ghostScared.wantsToPlay = false;
     this.ghostRetreating.pause();
-    this.ghostRetreating.wantsToPlay = false;
     this.ghostSiren.play();
-    this.ghostSiren.wantsToPlay = true;
   }
 
   playGhostScared() {
     this.ghostSiren.pause();
-    this.ghostSiren.wantsToPlay = false;
     this.ghostRetreating.pause();
-    this.ghostRetreating.wantsToPlay = false;
     this.ghostScared.play();
-    this.ghostScared.wantsToPlay = true;
   }
 
   playGhostRetreating() {
     this.ghostSiren.pause();
-    this.ghostSiren.wantsToPlay = false;
     this.ghostScared.pause();
-    this.ghostScared.wantsToPlay = false;
     this.ghostRetreating.play();
-    this.ghostRetreating.wantsToPlay = true;
   }
 
-  loadAndPlayPacmanDeath() {
-    this.pacmanDeath.load();
-    this.#playPacmanDeath();
+  playPacmanDeath() {
+    this.pacmanDeath.play();
+    this.pacmanDeath.wantsToPlay = true;
   }
 
-  unloadPacmanDeath() {
-    this.pacmanDeath.unload();
+  playLevelUp() {
+    this.levelUp.play();
+    this.levelUp.wantsToPlay = true;
   }
 
-  loadAndPlayLevelUp() {
-    this.levelUp.load();
-    this.#playLevelUp();
-  }
-
-  unloadLevelUp() {
-    this.levelUp.unload();
-  }
-
-  playPacmanDeathAndLevelUpIfLoaded() {
-    if (this.pacmanDeath._state === "loaded") this.#playPacmanDeath();
-    if (this.levelUp._state === "loaded") this.#playLevelUp();
+  playPacmanDeathAndLevelUpIfWantTo() {
+    if (this.pacmanDeath.wantsToPlay === true) this.pacmanDeath.play();
+    if (this.levelUp.wantsToPlay === true) this.levelUp.play();
   }
 
   pauseAll() {
@@ -106,15 +74,5 @@ export default class AudioPlayer {
     this.ghostRetreating.pause();
     this.pacmanDeath.pause();
     this.levelUp.pause();
-  }
-
-  // private
-
-  #playPacmanDeath() {
-    this.pacmanDeath.play();
-  }
-
-  #playLevelUp() {
-    this.levelUp.play();
   }
 }
