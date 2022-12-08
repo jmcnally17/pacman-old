@@ -71,6 +71,10 @@ describe("AudioPlayer", () => {
     expect(audioPlayer.levelUp).toEqual(mockLevelUp);
   });
 
+  it("sets ghostAudioWantsToPlay to false", () => {
+    expect(audioPlayer.ghostAudioWantsToPlay).toBe(false);
+  });
+
   it("sets wantsToPlay on pacmanDeath to false", () => {
     expect(mockPacmanDeath.wantsToPlay).toBe(false);
   });
@@ -133,20 +137,26 @@ describe("AudioPlayer", () => {
     });
   });
 
-  describe("pauseGhostAudio", () => {
+  describe("stopGhostAudio", () => {
     it("calls pause on ghostSiren", () => {
-      audioPlayer.pauseGhostAudio();
+      audioPlayer.stopGhostAudio();
       expect(mockGhostSiren.pause).toHaveBeenCalledTimes(1);
     });
 
     it("calls pause on ghostScared", () => {
-      audioPlayer.pauseGhostAudio();
+      audioPlayer.stopGhostAudio();
       expect(mockGhostScared.pause).toHaveBeenCalledTimes(1);
     });
 
     it("calls pause on ghostRetreating", () => {
-      audioPlayer.pauseGhostAudio();
+      audioPlayer.stopGhostAudio();
       expect(mockGhostRetreating.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("sets ghostAudioWantsToPlay to false", () => {
+      audioPlayer.ghostAudioWantsToPlay = true;
+      audioPlayer.stopGhostAudio();
+      expect(audioPlayer.ghostAudioWantsToPlay).toBe(false);
     });
   });
 
@@ -199,10 +209,19 @@ describe("AudioPlayer", () => {
   });
 
   describe("pauseAll", () => {
-    it("calls pauseGhostAudio", () => {
-      jest.spyOn(audioPlayer, "pauseGhostAudio");
+    it("calls pause on ghostSiren", () => {
       audioPlayer.pauseAll();
-      expect(audioPlayer.pauseGhostAudio).toHaveBeenCalledTimes(1);
+      expect(mockGhostSiren.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on ghostScared", () => {
+      audioPlayer.pauseAll();
+      expect(mockGhostScared.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on ghostRetreating", () => {
+      audioPlayer.pauseAll();
+      expect(mockGhostRetreating.pause).toHaveBeenCalledTimes(1);
     });
 
     it("calls pause on the pacmanDeath", () => {

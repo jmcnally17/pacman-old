@@ -45,6 +45,7 @@ describe("dealWithCollision", () => {
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
     mockAudioPlayer = {
+      stopGhostAudio: () => undefined,
       playPacmanDeath: () => undefined,
     };
     mockCtx = "ctx";
@@ -93,6 +94,25 @@ describe("dealWithCollision", () => {
     expect(cancelAnimationFrame).toHaveBeenCalledWith(
       mockVariables.animationId
     );
+  });
+
+  it("calls stopGhostAudio on the audioPlayer if the ghost is not scared or retreating", () => {
+    jest.spyOn(mockAudioPlayer, "stopGhostAudio");
+    dealWithCollision(
+      mockGhost,
+      mockPacman,
+      mockVariables,
+      mockGhosts,
+      mockPellets,
+      mockPowerUps,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockAudioPlayer,
+      mockCtx,
+      mockBoundaries,
+      mockRunDeathAnimation
+    );
+    expect(mockAudioPlayer.stopGhostAudio).toHaveBeenCalledTimes(1);
   });
 
   it("calls playPacmanDeath on the audioPlayer if the ghost is not scared or retreating", () => {

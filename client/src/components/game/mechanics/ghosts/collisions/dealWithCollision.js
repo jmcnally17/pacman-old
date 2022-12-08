@@ -17,6 +17,7 @@ export default function dealWithCollision(
   if (!ghost.isScared && !ghost.isRetreating) {
     pacman.radians = Math.PI / 4;
     cancelAnimationFrame(variables.animationId);
+    audioPlayer.stopGhostAudio();
     audioPlayer.playPacmanDeath();
     pacman.isShrinking = true;
     callback(
