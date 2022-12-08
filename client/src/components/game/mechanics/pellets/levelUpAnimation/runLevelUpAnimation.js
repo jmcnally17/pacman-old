@@ -11,6 +11,7 @@ export default function runLevelUpAnimation(
   scaredTimer,
   ctx,
   boundaries,
+  audioPlayer,
   callbackOne = runLevelUpAnimation,
   callbackTwo = drawLevelUpBoard,
   callbackThree = resetAfterLevelUp
@@ -25,7 +26,8 @@ export default function runLevelUpAnimation(
       cycleTimer,
       scaredTimer,
       ctx,
-      boundaries
+      boundaries,
+      audioPlayer
     )
   );
   callbackTwo(ctx, boundaries);
@@ -43,7 +45,8 @@ export default function runLevelUpAnimation(
       pellets,
       powerUps,
       cycleTimer,
-      scaredTimer
+      scaredTimer,
+      audioPlayer
     );
   }
 }

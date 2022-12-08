@@ -32,7 +32,8 @@ export default function checkLevelUpCondition(
         cycleTimer,
         scaredTimer,
         ctx,
-        boundaries
+        boundaries,
+        audioPlayer
       );
     }
   });

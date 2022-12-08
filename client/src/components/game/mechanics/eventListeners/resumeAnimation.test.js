@@ -104,7 +104,8 @@ describe("resumeAnimation", () => {
       mockCycleTimer,
       mockScaredTimer,
       mockCtx,
-      mockBoundaries
+      mockBoundaries,
+      mockAudioPlayer
     );
   });
 
