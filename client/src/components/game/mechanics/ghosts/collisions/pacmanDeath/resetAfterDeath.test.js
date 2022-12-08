@@ -6,7 +6,6 @@ let mockCycleTimer;
 let mockScaredTimer;
 let mockGhost;
 let mockGhosts;
-let mockAudioPlayer;
 let mockPlayGame;
 
 describe("resetAfterDeath", () => {
@@ -30,9 +29,6 @@ describe("resetAfterDeath", () => {
       reset: () => undefined,
     };
     mockGhosts = [mockGhost, mockGhost, mockGhost];
-    mockAudioPlayer = {
-      loadGhost: () => undefined,
-    };
     mockPlayGame = jest.fn();
   });
 
@@ -44,7 +40,6 @@ describe("resetAfterDeath", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockPacman.reset).toHaveBeenCalledTimes(1);
@@ -57,7 +52,6 @@ describe("resetAfterDeath", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockVariables.lastKeyPressed).toBe("");
@@ -71,7 +65,6 @@ describe("resetAfterDeath", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockCycleTimer.reset).toHaveBeenCalledTimes(1);
@@ -85,7 +78,6 @@ describe("resetAfterDeath", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockScaredTimer.reset).toHaveBeenCalledTimes(1);
@@ -99,7 +91,6 @@ describe("resetAfterDeath", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockGhost.reset).toHaveBeenCalledTimes(3);
@@ -113,24 +104,9 @@ describe("resetAfterDeath", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockCycleTimer.start).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls loadGhost on the audioPlayer", () => {
-    jest.spyOn(mockAudioPlayer, "loadGhost");
-    resetAfterDeath(
-      mockPacman,
-      mockVariables,
-      mockGhosts,
-      mockCycleTimer,
-      mockScaredTimer,
-      mockAudioPlayer,
-      mockPlayGame
-    );
-    expect(mockAudioPlayer.loadGhost).toHaveBeenCalledTimes(1);
   });
 
   it("calls playGame", () => {
@@ -140,7 +116,6 @@ describe("resetAfterDeath", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockPlayGame
     );
     expect(mockPlayGame).toHaveBeenCalledTimes(1);

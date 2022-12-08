@@ -11,7 +11,6 @@ export default function runDeathAnimation(
   ghosts,
   cycleTimer,
   scaredTimer,
-  audioPlayer,
   callbackOne = runDeathAnimation,
   callbackTwo = drawBoard,
   callbackThree = checkPacmanLives
@@ -26,8 +25,7 @@ export default function runDeathAnimation(
       pacman,
       ghosts,
       cycleTimer,
-      scaredTimer,
-      audioPlayer
+      scaredTimer
     )
   );
   callbackTwo(ctx, boundaries, pellets, powerUps);
@@ -36,7 +34,6 @@ export default function runDeathAnimation(
   } else {
     pacman.isShrinking = false;
     cancelAnimationFrame(variables.animationId);
-    audioPlayer.unloadPacmanDeath();
     callbackThree(
       pacman,
       variables,
@@ -45,7 +42,6 @@ export default function runDeathAnimation(
       ghosts,
       cycleTimer,
       scaredTimer,
-      audioPlayer,
       ctx
     );
   }

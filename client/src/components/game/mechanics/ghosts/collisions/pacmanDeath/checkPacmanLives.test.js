@@ -8,7 +8,6 @@ let mockPellets;
 let mockPowerUps;
 let mockCycleTimer;
 let mockScaredTimer;
-let mockAudioPlayer;
 let mockCtx;
 let mockEndGame;
 let mockResetAfterDeath;
@@ -27,7 +26,6 @@ describe("checkPacmanLives", () => {
     mockPowerUps = "powerUps";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
-    mockAudioPlayer = "audioPlayer";
     mockCtx = "ctx";
     mockEndGame = jest.fn();
     mockResetAfterDeath = jest.fn();
@@ -42,7 +40,6 @@ describe("checkPacmanLives", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockCtx,
       mockEndGame,
       mockResetAfterDeath
@@ -69,7 +66,6 @@ describe("checkPacmanLives", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockCtx,
       mockEndGame,
       mockResetAfterDeath
@@ -86,7 +82,6 @@ describe("checkPacmanLives", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockAudioPlayer,
       mockCtx,
       mockEndGame,
       mockResetAfterDeath
@@ -97,8 +92,7 @@ describe("checkPacmanLives", () => {
       mockVariables,
       mockGhosts,
       mockCycleTimer,
-      mockScaredTimer,
-      mockAudioPlayer
+      mockScaredTimer
     );
   });
 });
