@@ -70,8 +70,11 @@ export default class AudioPlayer {
 
   playGhostRetreating() {
     this.ghostSiren.pause();
+    this.ghostSiren.wantsToPlay = false;
     this.ghostScared.pause();
+    this.ghostScared.wantsToPlay = false;
     this.ghostRetreating.play();
+    this.ghostRetreating.wantsToPlay = true;
   }
 
   loadAndPlayPacmanDeath() {

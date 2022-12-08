@@ -220,9 +220,20 @@ describe("AudioPlayer", () => {
   });
 
   describe("playGhostRetreating", () => {
+    beforeEach(() => {
+      mockGhostSiren.wantsToPlay = true;
+      mockGhostScared.wantsToPlay = true;
+      mockGhostRetreating.wantsToPlay = false;
+    });
+
     it("calls pause on the ghostSiren", () => {
       audioPlayer.playGhostRetreating();
       expect(mockGhostSiren.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("sets wantsToPlay on ghostSiren to false", () => {
+      audioPlayer.playGhostRetreating();
+      expect(mockGhostSiren.wantsToPlay).toBe(false);
     });
 
     it("calls pause on the ghostScared", () => {
@@ -230,10 +241,20 @@ describe("AudioPlayer", () => {
       expect(mockGhostScared.pause).toHaveBeenCalledTimes(1);
     });
 
+    it("sets wantsToPlay on ghostScared to false", () => {
+      audioPlayer.playGhostRetreating();
+      expect(mockGhostScared.wantsToPlay).toBe(false);
+    });
+
     it("calls play on the ghostRetreating", () => {
       jest.spyOn(mockGhostRetreating, "play");
       audioPlayer.playGhostRetreating();
       expect(mockGhostRetreating.play).toHaveBeenCalledTimes(1);
+    });
+
+    it("sets wantsToPlay on ghostRetreating to true", () => {
+      audioPlayer.playGhostRetreating();
+      expect(mockGhostRetreating.wantsToPlay).toBe(true);
     });
   });
 
