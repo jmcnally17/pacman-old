@@ -1,6 +1,6 @@
-import loadPauseTint from "./loadPauseTint";
+import loadTint from "./loadTint";
 
-describe("loadPauseOverlay", () => {
+describe("loadTint", () => {
   it("adds a dark black tint onto the screen", () => {
     const mockCtx = {
       globalAlpha: undefined,
@@ -8,7 +8,7 @@ describe("loadPauseOverlay", () => {
       fillRect: () => undefined,
     };
     jest.spyOn(mockCtx, "fillRect");
-    loadPauseTint(mockCtx);
+    loadTint(mockCtx);
     expect(mockCtx.globalAlpha).toBe(0.7);
     expect(mockCtx.fillStyle).toBe("black");
     expect(mockCtx.fillRect).toHaveBeenCalledTimes(1);
