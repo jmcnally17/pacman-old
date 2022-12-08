@@ -1,4 +1,5 @@
 export default function displayPleaseWaitText(ctx) {
+  ctx.globalAlpha = 1;
   ctx.font = "100px Arial";
   ctx.fillStyle = "white";
   ctx.textAlign = "center";

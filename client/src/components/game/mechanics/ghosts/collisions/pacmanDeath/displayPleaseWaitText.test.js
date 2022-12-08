@@ -3,6 +3,7 @@ import displayPleaseWaitText from "./displayPleaseWaitText";
 describe("displayPleaseWaitText", () => {
   it("renders 'Please wait...' text on the screen", () => {
     const mockCtx = {
+      globalAlpha: 0.7,
       font: null,
       fillStyle: null,
       textAlign: null,
@@ -11,6 +12,7 @@ describe("displayPleaseWaitText", () => {
     };
     jest.spyOn(mockCtx, "fillText");
     displayPleaseWaitText(mockCtx);
+    expect(mockCtx.globalAlpha).toBe(1);
     expect(mockCtx.font).toBe("100px Arial");
     expect(mockCtx.fillStyle).toBe("white");
     expect(mockCtx.textAlign).toBe("center");
