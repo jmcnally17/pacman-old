@@ -10,6 +10,7 @@ export default function checkPacmanLives(
   cycleTimer,
   scaredTimer,
   ctx,
+  audioPlayer,
   callbackOne = endGame,
   callbackTwo = resetAfterDeath
 ) {
@@ -26,6 +27,13 @@ export default function checkPacmanLives(
     );
   } else {
     pacman.lives--;
-    callbackTwo(pacman, variables, ghosts, cycleTimer, scaredTimer);
+    callbackTwo(
+      pacman,
+      variables,
+      ghosts,
+      cycleTimer,
+      scaredTimer,
+      audioPlayer
+    );
   }
 }

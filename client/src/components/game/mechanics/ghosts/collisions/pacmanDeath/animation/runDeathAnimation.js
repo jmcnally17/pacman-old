@@ -11,6 +11,7 @@ export default function runDeathAnimation(
   ghosts,
   cycleTimer,
   scaredTimer,
+  audioPlayer,
   callbackOne = runDeathAnimation,
   callbackTwo = drawBoard,
   callbackThree = checkPacmanLives
@@ -25,7 +26,8 @@ export default function runDeathAnimation(
       pacman,
       ghosts,
       cycleTimer,
-      scaredTimer
+      scaredTimer,
+      audioPlayer
     )
   );
   callbackTwo(ctx, boundaries, pellets, powerUps);
@@ -42,7 +44,8 @@ export default function runDeathAnimation(
       ghosts,
       cycleTimer,
       scaredTimer,
-      ctx
+      ctx,
+      audioPlayer
     );
   }
 }

@@ -12,6 +12,7 @@ let mockShrunkPacman;
 let mockGhosts;
 let mockCycleTimer;
 let mockScaredTimer;
+let mockAudioPlayer;
 let mockRunDeathAnimation;
 let mockDrawBoard;
 let mockCheckPacmanLives;
@@ -37,6 +38,7 @@ describe("runDeathAnimation", () => {
     mockGhosts = "ghosts";
     mockCycleTimer = "cycleTimer";
     mockScaredTimer = "scaredTimer";
+    mockAudioPlayer = "audioPlayer";
     mockRunDeathAnimation = jest.fn();
     mockDrawBoard = jest.fn();
     mockCheckPacmanLives = jest.fn();
@@ -54,6 +56,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -71,7 +74,8 @@ describe("runDeathAnimation", () => {
       mockPacman,
       mockGhosts,
       mockCycleTimer,
-      mockScaredTimer
+      mockScaredTimer,
+      mockAudioPlayer
     );
   });
 
@@ -86,6 +90,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -111,6 +116,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -130,6 +136,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -149,6 +156,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -170,6 +178,7 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
+      mockAudioPlayer,
       mockRunDeathAnimation,
       mockDrawBoard,
       mockCheckPacmanLives
@@ -183,7 +192,8 @@ describe("runDeathAnimation", () => {
       mockGhosts,
       mockCycleTimer,
       mockScaredTimer,
-      mockCtx
+      mockCtx,
+      mockAudioPlayer
     );
   });
 });

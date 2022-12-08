@@ -29,7 +29,8 @@ export default function dealWithCollision(
       pacman,
       ghosts,
       cycleTimer,
-      scaredTimer
+      scaredTimer,
+      audioPlayer
     );
   } else if (ghost.isScared) {
     variables.score += 200 * Math.pow(2, variables.killCount);
