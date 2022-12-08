@@ -4,5 +4,6 @@ export default function drawLevelUpBoard(ctx, boundaries) {
   ctx.font = "40px Arial";
   ctx.fillStyle = "yellow";
   ctx.textAlign = "center";
-  ctx.fillText("Level Up!", 448, 576);
+  ctx.textBaseline = "middle";
+  ctx.fillText("Level Up!", 448, 560);
 }

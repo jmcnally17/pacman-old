@@ -11,6 +11,7 @@ describe("drawLevelUpBoard", () => {
       font: undefined,
       fillStyle: undefined,
       textAlign: undefined,
+      textBaseline: undefined,
       fillText: () => undefined,
     };
     mockBoundary = {
@@ -41,7 +42,8 @@ describe("drawLevelUpBoard", () => {
     expect(mockCtx.font).toBe("40px Arial");
     expect(mockCtx.fillStyle).toBe("yellow");
     expect(mockCtx.textAlign).toBe("center");
+    expect(mockCtx.textBaseline).toBe("middle");
     expect(mockCtx.fillText).toHaveBeenCalledTimes(1);
-    expect(mockCtx.fillText).toHaveBeenCalledWith("Level Up!", 448, 576);
+    expect(mockCtx.fillText).toHaveBeenCalledWith("Level Up!", 448, 560);
   });
 });
