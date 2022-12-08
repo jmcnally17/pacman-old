@@ -133,7 +133,24 @@ describe("AudioPlayer", () => {
     });
   });
 
-  describe("PlayPacmanDeath", () => {
+  describe("pauseGhostAudio", () => {
+    it("calls pause on ghostSiren", () => {
+      audioPlayer.pauseGhostAudio();
+      expect(mockGhostSiren.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on ghostScared", () => {
+      audioPlayer.pauseGhostAudio();
+      expect(mockGhostScared.pause).toHaveBeenCalledTimes(1);
+    });
+
+    it("calls pause on ghostRetreating", () => {
+      audioPlayer.pauseGhostAudio();
+      expect(mockGhostRetreating.pause).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("playPacmanDeath", () => {
     it("calls play on pacmanDeath", () => {
       audioPlayer.playPacmanDeath();
       expect(mockPacmanDeath.play).toHaveBeenCalledTimes(1);
@@ -182,19 +199,10 @@ describe("AudioPlayer", () => {
   });
 
   describe("pauseAll", () => {
-    it("calls pause on the ghostSiren", () => {
+    it("calls pauseGhostAudio", () => {
+      jest.spyOn(audioPlayer, "pauseGhostAudio");
       audioPlayer.pauseAll();
-      expect(mockGhostSiren.pause).toHaveBeenCalledTimes(1);
-    });
-
-    it("calls pause on the ghostScared", () => {
-      audioPlayer.pauseAll();
-      expect(mockGhostScared.pause).toHaveBeenCalledTimes(1);
-    });
-
-    it("calls pause on the ghostRetreating", () => {
-      audioPlayer.pauseAll();
-      expect(mockGhostRetreating.pause).toHaveBeenCalledTimes(1);
+      expect(audioPlayer.pauseGhostAudio).toHaveBeenCalledTimes(1);
     });
 
     it("calls pause on the pacmanDeath", () => {

@@ -53,6 +53,12 @@ export default class AudioPlayer {
     this.ghostRetreating.play();
   }
 
+  pauseGhostAudio() {
+    this.ghostSiren.pause();
+    this.ghostScared.pause();
+    this.ghostRetreating.pause();
+  }
+
   playPacmanDeath() {
     this.pacmanDeath.play();
     this.pacmanDeath.wantsToPlay = true;
@@ -69,9 +75,7 @@ export default class AudioPlayer {
   }
 
   pauseAll() {
-    this.ghostSiren.pause();
-    this.ghostScared.pause();
-    this.ghostRetreating.pause();
+    this.pauseGhostAudio();
     this.pacmanDeath.pause();
     this.levelUp.pause();
   }
