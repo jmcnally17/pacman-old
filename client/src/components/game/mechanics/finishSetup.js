@@ -47,5 +47,5 @@ export default function finishSetup(
     pauseTextImage
   );
   variables.start = false;
-  audioPlayer.playGhostSiren();
+  audioPlayer.ghostAudioWantsToPlay = true;
 }

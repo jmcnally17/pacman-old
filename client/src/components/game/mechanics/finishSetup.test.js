@@ -36,7 +36,7 @@ describe("finishSetup", () => {
     mockScaredTimer = "scaredTimer";
     mockRetreatingTimers = "retreatingTimers";
     mockAudioPlayer = {
-      playGhostSiren: () => undefined,
+      ghostAudioWantsToPlay: false,
     };
     mockPacman = "pacman";
     mockCtx = "ctx";
@@ -211,8 +211,7 @@ describe("finishSetup", () => {
     expect(mockVariables.start).toBeFalsy();
   });
 
-  it("calls playGhostSiren on the audioPlayer", () => {
-    jest.spyOn(mockAudioPlayer, "playGhostSiren");
+  it("sets ghostAudioWantsToPlay in the audioPlayer to true", () => {
     finishSetup(
       mockVariables,
       mockName,
@@ -232,6 +231,6 @@ describe("finishSetup", () => {
       mockAddVisibilityDetection,
       mockAddPauseDetection
     );
-    expect(mockAudioPlayer.playGhostSiren).toHaveBeenCalledTimes(1);
+    expect(mockAudioPlayer.ghostAudioWantsToPlay).toBe(true);
   });
 });
