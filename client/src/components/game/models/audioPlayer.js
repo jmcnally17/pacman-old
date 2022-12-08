@@ -20,6 +20,9 @@ export default class AudioPlayer {
     pacmanDeath = new Howl({
       src: "./audio/pacman_death.wav",
       volume: 0.3,
+      onend: () => {
+        pacmanDeath.wantsToPlay = false;
+      },
     }),
     levelUp = new Howl({
       src: "./audio/level_up.wav",

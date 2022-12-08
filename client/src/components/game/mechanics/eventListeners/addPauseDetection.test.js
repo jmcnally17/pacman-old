@@ -257,7 +257,8 @@ describe("addPauseDetection", () => {
         mockPacman,
         mockGhosts,
         mockCycleTimer,
-        mockScaredTimer
+        mockScaredTimer,
+        mockAudioPlayer
       );
     });
   });
