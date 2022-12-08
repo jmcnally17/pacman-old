@@ -20,6 +20,7 @@ export default class AudioPlayer {
     pacmanDeath = new Howl({
       src: "./audio/pacman_death.wav",
       volume: 0.3,
+      wantsToPlay: false,
       onend: () => {
         pacmanDeath.wantsToPlay = false;
       },
@@ -27,6 +28,7 @@ export default class AudioPlayer {
     levelUp = new Howl({
       src: "./audio/level_up.wav",
       volume: 0.2,
+      wantsToPlay: false,
       onend: () => {
         levelUp.wantsToPlay = false;
       },
@@ -37,9 +39,7 @@ export default class AudioPlayer {
     this.ghostRetreating = ghostRetreating;
     this.ghostAudioWantsToPlay = false;
     this.pacmanDeath = pacmanDeath;
-    this.pacmanDeath.wantsToPlay = false;
     this.levelUp = levelUp;
-    this.levelUp.wantsToPlay = false;
   }
 
   playGhostSiren() {

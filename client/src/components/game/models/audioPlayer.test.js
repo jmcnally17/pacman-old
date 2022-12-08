@@ -15,7 +15,6 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
-      wantsToPlay: undefined,
     };
     mockGhostScared = {
       name: "scared",
@@ -23,7 +22,6 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
-      wantsToPlay: undefined,
     };
     mockGhostRetreating = {
       name: "retreating",
@@ -31,7 +29,6 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
-      wantsToPlay: undefined,
     };
     mockPacmanDeath = {
       name: "pacmanDeath",
@@ -39,7 +36,10 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
-      wantsToPlay: undefined,
+      wantsToPlay: false,
+      onend: () => {
+        mockPacmanDeath.wantsToPlay = false;
+      },
     };
     mockLevelUp = {
       name: "levelUp",
@@ -47,7 +47,10 @@ describe("AudioPlayer", () => {
       unload: () => undefined,
       pause: () => undefined,
       play: () => undefined,
-      wantsToPlay: undefined,
+      wantsToPlay: false,
+      onend: () => {
+        mockLevelUp.wantsToPlay = false;
+      },
     };
     audioPlayer = new AudioPlayer(
       mockGhostSiren,
@@ -71,15 +74,19 @@ describe("AudioPlayer", () => {
     expect(audioPlayer.levelUp).toEqual(mockLevelUp);
   });
 
-  it("sets ghostAudioWantsToPlay to false", () => {
+  it("sets ghostAudioWantsToPlay constructor variable to false", () => {
     expect(audioPlayer.ghostAudioWantsToPlay).toBe(false);
   });
 
-  it("sets wantsToPlay on pacmanDeath to false", () => {
+  it("onend on pacmanDeath sets wantsToPlay to false", () => {
+    mockPacmanDeath.wantsToPlay = true;
+    audioPlayer.pacmanDeath.onend();
     expect(mockPacmanDeath.wantsToPlay).toBe(false);
   });
 
-  it("sets wantsToPlay on levelUp to false", () => {
+  it("onend on levelUp sets wantsToPlay to false", () => {
+    mockLevelUp.wantsToPlay = true;
+    audioPlayer.levelUp.onend();
     expect(mockLevelUp.wantsToPlay).toBe(false);
   });
 
