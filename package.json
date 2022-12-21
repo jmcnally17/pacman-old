@@ -14,7 +14,7 @@
     "test:client:coverage": "cd client && CI=true npm test -- --coverage",
     "test": "npm run test:unit && npm run test:client",
     "test:coverage": "npm run test:unit:coverage && npm run test:client:coverage",
-    "build": "npm install && cd client && npm install && npm run build && npm install -g serve && serve -s build -l 9000"
+    "build": "npm install && cd client && npm install && npm run build"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
