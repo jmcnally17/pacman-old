@@ -2,7 +2,7 @@
 
 This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a PostgreSQL database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did.
 
-[<img src="./images/pacman-play-button.png">](https://pacman-i26t.onrender.com/)
+[<img src="./images/pacman-play-button.png">](https://pacman-7e4e.onrender.com)
 
 ### Technologies Used
 
