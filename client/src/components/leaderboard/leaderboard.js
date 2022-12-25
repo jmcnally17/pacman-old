@@ -31,17 +31,20 @@ export default function Leaderboard({ variables }) {
       .catch(() => setError(true));
   }, []);
 
-  const handlePlayAgain = () => {
+  const resetVariables = () => {
     variables.score = 0;
     variables.start = true;
+  };
+
+  const handlePlayAgain = () => {
+    resetVariables();
     variables.reactRoot.render(
       <Game name={variables.playerName} reactRoot={variables.reactRoot} />
     );
   };
 
   const handleChangePlayer = () => {
-    variables.score = 0;
-    variables.start = true;
+    resetVariables();
     variables.reactRoot.render(<Main reactRoot={variables.reactRoot} />);
   };
 
