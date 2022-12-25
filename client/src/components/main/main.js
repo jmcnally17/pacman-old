@@ -9,7 +9,7 @@ const options = new ProfanityOptions();
 options.wholeWord = false;
 const profanity = new Profanity(options);
 
-export default function Main() {
+export default function Main({ reactRoot }) {
   const [name, setName] = useState("");
   const [theme] = useState(
     new Howl({
@@ -49,8 +49,12 @@ export default function Main() {
       nameError.innerText = "No profanity!";
     } else {
       theme.pause();
-      const reactRoot = ReactDOM.createRoot(document.getElementById("main"));
-      reactRoot.render(<Game name={name} reactRoot={reactRoot} />);
+      if (reactRoot) {
+        reactRoot.render(<Game name={name} reactRoot={reactRoot} />);
+      } else {
+        const root = ReactDOM.createRoot(document.getElementById("subRoot"));
+        root.render(<Game name={name} reactRoot={root} />);
+      }
     }
   };
 

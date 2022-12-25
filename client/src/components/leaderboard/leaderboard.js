@@ -1,6 +1,7 @@
 import "./leaderboard.css";
 import React from "react";
 import Game from "../game/game";
+import Main from "../main/main";
 import { useEffect, useState } from "react";
 
 let url;
@@ -39,7 +40,9 @@ export default function Leaderboard({ variables }) {
   };
 
   const handleChangePlayer = () => {
-    window.location.reload();
+    variables.score = 0;
+    variables.start = true;
+    variables.reactRoot.render(<Main reactRoot={variables.reactRoot} />);
   };
 
   return (
