@@ -1,23 +1,22 @@
-name: CI frontend
 
-# Controls when the workflow will run
+name: CI
+
 on:
-  # Triggers the workflow on push or pull request
   push:
   pull_request:
     branches: [ "main" ]
 
-  workflow_dispatch:  
+  workflow_dispatch:
 
 jobs:
-  test-frontend:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [18.x]
+        mongodb-version: ['5.0.7']
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
       - name: Use Node.js ${{ matrix.node-version }}
@@ -25,11 +24,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.7.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+      
       - name: Install backend dependencies
         run: npm install
         
       - name: Install frontend dependencies
         run: npm install --prefix ./client
 
+      # Runs a single command using the runners shell
       - name: Testing
-        run: npm run test:client
+        run: npm run test
