@@ -3,6 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./main.css";
 import Game from "../game/game";
 import { Howl } from "howler";
+import { Profanity, ProfanityOptions } from "@2toad/profanity";
+
+const options = new ProfanityOptions();
+options.wholeWord = false;
+const profanity = new Profanity(options);
 
 export default function Main({ reactRoot }) {
   const [name, setName] = useState("");
@@ -40,6 +45,8 @@ export default function Main({ reactRoot }) {
       nameError.innerText = "Name cannot contain any spaces";
     } else if (name.length < 3 || name.length > 15) {
       nameError.innerText = "Name must be 3-15 characters long";
+    } else if (profanity.exists(name)) {
+      nameError.innerText = "No profanity!";
     } else {
       theme.pause();
       if (reactRoot) {
