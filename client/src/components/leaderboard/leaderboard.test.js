@@ -4,9 +4,9 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 
 const mockScores = [
-  { name: "Molly", points: 11390 },
-  { name: "Bob", points: 9830 },
-  { name: "Andrew", points: 4620 },
+  { value: "Molly", score: 11390 },
+  { value: "Bob", score: 9830 },
+  { value: "Andrew", score: 4620 },
 ];
 
 const server = setupServer(
