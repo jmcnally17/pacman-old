@@ -1,6 +1,6 @@
 # Pac-Man <img src="./client/public/images/red-ghost-right.png" height="30"> <img src="./client/public/images/pink-ghost-right.png" height="30"> <img src="./client/public/images/cyan-ghost-right.png" height="30"> <img src="./client/public/images/orange-ghost-right.png" height="30"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./client/public/images/scared-ghost-blue.png" height="30">
 
-This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a MongoDB Atlas database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did.
+This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a Redis database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did.
 
 [<img src="./images/pacman-play-button.png">](https://pacman-7e4e.onrender.com)
 
@@ -8,12 +8,11 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 
 - [Miro](https://miro.com/index/) for planning the layout (Board can be found [here](https://miro.com/app/board/uXjVOo0XLMk=/?share_link_id=344912241548))
 - [Trello](https://trello.com/) for monitoring feature progress
-- [Mongoose](https://mongoosejs.com/docs/) for Object Data Modelling (ODM)
 - [Express](https://expressjs.com/) for setting up a backend server
 - [React](https://reactjs.org/) for frontend development
 - [Node.js](https://nodejs.org/en/) for the server runtime environment
 - [Render](https://render.com/) for deployment
-- [MongoDB Atlas](https://www.mongodb.com/atlas/database) for hosting the database
+- [Redis Labs](https://redis.com/) for hosting the database
 - [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing
 - [Pexels Draw](https://apps.apple.com/us/app/pexels-draw/id1320744895?mt=12) for creating the boundary images and ghost sprites
 - [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp) as a container for the graphics
@@ -113,17 +112,10 @@ nvm install node
 nvm use node
 ```
 
-`nvm use node` will use the latest stable version. MongoDB will need to be installed as it is the database that stores all the scores. You can do so by using Homebrew (which can be installed using the instructions [here](https://brew.sh/)):
+`nvm use node` will use the latest stable version. Redis will need to be installed as it is the database that stores all the scores. You can do so by using Homebrew (which can be installed using the instructions [here](https://brew.sh/)):
 
 ```
-brew tap mongodb/brew
-brew install mongodb-community@5.0
-```
-
-Then, start MongoDB by using:
-
-```
-brew services start mongodb-community@5.0
+brew install redis
 ```
 
 ### How To Use
@@ -135,6 +127,14 @@ git clone https://github.com/jmcnally17/pacman
 ```
 
 Both the backend and frontend dependencies must be installed by running `npm install` in both the [main](https://github.com/jmcnally17/pacman) and [client](https://github.com/jmcnally17/pacman/tree/main/client) directories respectively.
+
+Your local Redis server will need to be running for the backend to connect to it. Enter
+
+```
+redis-server
+```
+
+into a separate terminal to do this.
 
 Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit [http://localhost:3000](http://localhost:3000) in your browser to play the game.
 

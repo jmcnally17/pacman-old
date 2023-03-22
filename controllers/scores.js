@@ -1,28 +1,53 @@
-const Score = require("../models/score");
+const redis = require("redis");
+
+let client;
+if (process.env.REDIS_HOST) {
+  client = redis.createClient({
+    password: process.env.REDIS_PASSWORD,
+    socket: {
+      host: process.env.REDIS_HOST,
+      port: process.env.REDIS_PORT,
+    },
+  });
+} else {
+  client = redis.createClient();
+}
+client.connect();
+
+process.on("exit", () => {
+  client.quit();
+});
 
 const ScoresController = {
-  Index: (req, res) => {
-    Score.find()
-      .populate()
-      .exec((err, scores) => {
-        if (err) {
-          throw err;
-        }
-        const sorted = scores.sort((a, b) => b.points - a.points);
-        const topTen = sorted.slice(0, 10);
-        res.json({
-          scores: topTen,
-        });
+  Index: async (req, res) => {
+    try {
+      const scoresData = await client.zRangeWithScores("scores", 0, 9, {
+        REV: true,
       });
+      res.json({
+        scores: scoresData,
+      });
+    } catch {
+      res.status(500).send({ message: "scores could not be retrieved" });
+    }
   },
-  Create: (req, res) => {
-    const score = new Score(req.body);
-    score.save((err) => {
-      if (err) {
-        throw err;
+  Create: async (req, res) => {
+    try {
+      const currentScore = await client.zScore("scores", req.body.name);
+      if (req.body.points > currentScore || currentScore === null) {
+        await client.zAdd("scores", {
+          score: req.body.points,
+          value: req.body.name,
+        });
+        res.status(201).send({ message: "your score has been saved" });
+      } else {
+        res
+          .status(201)
+          .send({ message: "you have not beaten your high score" });
       }
-      res.status(201).send({ message: "your score has been saved" });
-    });
+    } catch {
+      res.status(500).send({ message: "your score was not saved" });
+    }
   },
 };
 
