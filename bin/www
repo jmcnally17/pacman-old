@@ -16,6 +16,19 @@ var port = normalizePort(process.env.PORT || "9000");
 app.set("port", port);
 
 /**
+ * Connect to MongoDB.
+ */
+
+var mongoDbUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1/pacman";
+mongoose.connect(mongoDbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+/**
  * Create HTTP server.
  */
 
