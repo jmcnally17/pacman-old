@@ -24,6 +24,7 @@ describe(User, () => {
       username: "bob123",
       password: "thisisapassword",
     });
+
     bob.save((err) => {
       expect(err).toBeNull();
 
@@ -36,6 +37,30 @@ describe(User, () => {
         });
         done();
       });
+    });
+  });
+
+  it("cannot save a user with no username", (done) => {
+    const noName = new User({
+      username: undefined,
+      password: "thisisapassword",
+    });
+
+    noName.save((err) => {
+      expect(err).not.toBeNull();
+      done();
+    });
+  });
+
+  it("cannot save a user with no password", (done) => {
+    const noPassword = new User({
+      username: "bob123",
+      password: undefined,
+    });
+
+    noPassword.save((err) => {
+      expect(err).not.toBeNull();
+      done();
     });
   });
 });
