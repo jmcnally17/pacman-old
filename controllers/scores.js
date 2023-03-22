@@ -17,11 +17,16 @@ const ScoresController = {
     });
   },
   Create: async (req, res) => {
-    await client.zAdd("scores", {
-      score: req.body.points,
-      value: req.body.name,
-    });
-    res.status(201).send({ message: "your score has been saved" });
+    const currentScore = await client.zScore("scores", req.body.name);
+    if (req.body.points > currentScore || currentScore === null) {
+      await client.zAdd("scores", {
+        score: req.body.points,
+        value: req.body.name,
+      });
+      res.status(201).send({ message: "your score has been saved" });
+    } else {
+      res.status(201).send({ message: "you have not beaten your high score" });
+    }
   },
 };
 
