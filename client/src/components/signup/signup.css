@@ -17,7 +17,7 @@
 }
 
 .error-message {
-  color: red;
+  color: rgb(251, 72, 72);
   font-size: 2vmin;
   padding-top: 2%;
 }

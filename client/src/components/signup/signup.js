@@ -8,6 +8,13 @@ if (process.env.REACT_APP_URL) {
   url = "http://localhost:9000/users";
 }
 
+let redirectUrl;
+if (process.env.REACT_APP_URL) {
+  redirectUrl = process.env.REACT_APP_URL;
+} else {
+  redirectUrl = "http://localhost:3000";
+}
+
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -30,19 +37,25 @@ export default function Signup() {
         password: password,
       }),
     })
-      .catch((err) => err.json())
-      .then((err) => setError(err.statusText));
+      .then((response) => {
+        if (response.ok) {
+          window.location.href = redirectUrl;
+        } else {
+          throw response;
+        }
+      })
+      .catch((err) => setError(err.statusText));
   };
 
   return (
     <div className="register">
       <h1>Register</h1>
       <div className="border">
-        <input placeholder="username" onChange={handleUsername}></input>
+        <input placeholder="Username" onChange={handleUsername}></input>
         <br></br>
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           onChange={handlePassword}
         ></input>
         <br></br>

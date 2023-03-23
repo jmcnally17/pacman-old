@@ -15,6 +15,11 @@ describe("Main", () => {
     );
   });
 
+  it("contains the sign up button", () => {
+    render(<Main />);
+    expect(screen.getByRole("button", { name: "Sign up" })).toBeInTheDocument();
+  });
+
   it("contains the gif", () => {
     render(<Main />);
     const gifEl = screen.getByRole("img");
@@ -28,7 +33,7 @@ describe("Main", () => {
   it("contains the input field and submit button", () => {
     render(<Main />);
     expect(screen.getByRole("textbox")).toHaveAttribute("placeholder", "Name");
-    expect(screen.getByRole("button")).toHaveTextContent("Submit");
+    expect(screen.getByRole("button", { name: "Submit" })).toBeInTheDocument();
   });
 
   it("contains the instructions text", () => {

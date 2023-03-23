@@ -61,6 +61,10 @@ export default function Main({ reactRoot }) {
   return (
     <div className="main" id="main">
       <h1>Welcome to Pac-Man!</h1>
+      <a href="/registration">
+        <button className="register-button">Sign up</button>
+      </a>
+      <br></br>
       <img
         className="title-gif"
         src="https://media4.giphy.com/media/42rO49pxzaMnK/giphy.gif?cid=790b76116dc1bedf27887938cbe8df55b210b12f842af0e9&rid=giphy.gif&ct=g"
