@@ -36,13 +36,19 @@ export default function Signup() {
 
   return (
     <div className="register">
-      <input placeholder="username" onChange={handleUsername}></input>
-      <input
-        type="password"
-        placeholder="password"
-        onChange={handlePassword}
-      ></input>
-      <button onClick={handleSubmit}>Register</button>
+      <h1>Register</h1>
+      <div className="border">
+        <input placeholder="username" onChange={handleUsername}></input>
+        <br></br>
+        <input
+          type="password"
+          placeholder="password"
+          onChange={handlePassword}
+        ></input>
+        <br></br>
+        <button onClick={handleSubmit}>Register</button>
+        <p className="error-message">{error}</p>
+      </div>
     </div>
   );
 }
