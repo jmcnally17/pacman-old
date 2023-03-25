@@ -1,14 +1,23 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import Signup from "./signup";
 
 describe("Signup", () => {
   it("contains the header", () => {
-    render(<Signup />);
+    render(
+      <BrowserRouter>
+        <Signup />
+      </BrowserRouter>
+    );
     expect(screen.getByRole("heading")).toHaveTextContent("Register");
   });
 
   it("contains the username and password input fields", () => {
-    render(<Signup />);
+    render(
+      <BrowserRouter>
+        <Signup />
+      </BrowserRouter>
+    );
     expect(
       screen.getByRole("textbox", { placeholder: "Username" })
     ).toBeInTheDocument();
@@ -18,7 +27,11 @@ describe("Signup", () => {
   });
 
   it("contains the button to register", () => {
-    render(<Signup />);
+    render(
+      <BrowserRouter>
+        <Signup />
+      </BrowserRouter>
+    );
     expect(screen.getByRole("button")).toHaveTextContent("Register");
   });
 });
