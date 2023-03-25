@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./signup.css";
 
 let url;
@@ -8,17 +9,12 @@ if (process.env.REACT_APP_URL) {
   url = "http://localhost:9000/users";
 }
 
-let redirectUrl;
-if (process.env.REACT_APP_URL) {
-  redirectUrl = process.env.REACT_APP_URL;
-} else {
-  redirectUrl = "http://localhost:3000";
-}
-
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleUsername = ({ target }) => {
     setUsername(target.value);
@@ -39,7 +35,7 @@ export default function Signup() {
     })
       .then((response) => {
         if (response.ok) {
-          window.location.href = redirectUrl;
+          navigate("/");
         } else {
           throw response;
         }
