@@ -29,13 +29,17 @@ export default function Signup() {
   const handleSubmit = () => {
     let nameError = document.getElementById("error-message");
     if (username === "") {
-      nameError.innerText = "You must enter a name";
+      nameError.innerText = "You must enter a username";
     } else if (username.includes(" ")) {
-      nameError.innerText = "Name cannot contain any spaces";
+      nameError.innerText = "Username cannot contain any spaces";
     } else if (username.length < 3 || username.length > 15) {
-      nameError.innerText = "Name must be 3-15 characters long";
+      nameError.innerText = "Username must be 3-15 characters long";
     } else if (profanity.exists(username)) {
       nameError.innerText = "No profanity!";
+    } else if (password === "") {
+      nameError.innerText = "You must enter a password";
+    } else if (password.length < 8) {
+      nameError.innerText = "Password must be at least 8 characters long";
     } else {
       fetch(url, {
         method: "POST",
