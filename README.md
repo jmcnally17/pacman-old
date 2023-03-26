@@ -113,10 +113,18 @@ nvm install node
 nvm use node
 ```
 
-`nvm use node` will use the latest stable version. Redis will need to be installed as it is the database that stores all the scores. You can do so by using Homebrew (which can be installed using the instructions [here](https://brew.sh/)):
+`nvm use node` will use the latest stable version. MongoDB and Redis will need to be installed as they are the databases that store user data and scores. You can do so by using Homebrew (which can be installed using the instructions [here](https://brew.sh/)):
 
 ```
+brew tap mongodb/brew
+brew install mongodb-community@5.0
 brew install redis
+```
+
+Then, start MongoDB by using:
+
+```
+brew services start mongodb-community@5.0
 ```
 
 ### How To Use
