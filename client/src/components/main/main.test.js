@@ -15,6 +15,11 @@ describe("Main", () => {
     );
   });
 
+  it("contains the log in button", () => {
+    render(<Main />);
+    expect(screen.getByRole("button", { name: "Log in" })).toBeInTheDocument();
+  });
+
   it("contains the sign up button", () => {
     render(<Main />);
     expect(screen.getByRole("button", { name: "Sign up" })).toBeInTheDocument();
@@ -30,10 +35,9 @@ describe("Main", () => {
     expect(gifEl).toHaveAttribute("alt", "Pac-Man gif");
   });
 
-  it("contains the input field and submit button", () => {
+  it("contains the play button", () => {
     render(<Main />);
-    expect(screen.getByRole("textbox")).toHaveAttribute("placeholder", "Name");
-    expect(screen.getByRole("button", { name: "Submit" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Play" })).toBeInTheDocument();
   });
 
   it("contains the instructions text", () => {

@@ -1,34 +1,29 @@
-.register-button {
-  float: right;
-  margin-right: 1%;
+button {
+  font-size: 3vmin;
+  border-radius: 0.5vmin;
+  padding: 0.3vmin;
+  border: 0.3vmin solid #ccc;
+  cursor: pointer;
+}
+
+.login-button,
+.signup-button {
+  background-color: black;
+  color: yellow;
+}
+
+.login-button {
+  margin-right: 5px;
+}
+
+.signup-button {
+  margin-left: 5px;
 }
 
 .title-gif {
   margin: auto;
   width: 100%;
   max-width: 100vmin;
-}
-
-.register,
-input,
-button {
-  font-size: 3vmin;
-}
-
-input,
-button {
-  border-radius: 0.5vmin;
-  padding: 0.3vmin;
-}
-
-input {
-  border: 0.3vmin solid grey;
-  margin: 1vmin;
-}
-
-button {
-  border: 0.3vmin solid #ccc;
-  cursor: pointer;
 }
 
 .name-error {

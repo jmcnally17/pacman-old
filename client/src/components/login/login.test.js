@@ -1,21 +1,21 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Signup from "./signup";
+import Login from "./login";
 
-describe("Signup", () => {
+describe("Login", () => {
   it("contains the header", () => {
     render(
       <BrowserRouter>
-        <Signup />
+        <Login />
       </BrowserRouter>
     );
-    expect(screen.getByRole("heading")).toHaveTextContent("Sign Up");
+    expect(screen.getByRole("heading")).toHaveTextContent("Log In");
   });
 
   it("contains the username and password input fields", () => {
     render(
       <BrowserRouter>
-        <Signup />
+        <Login />
       </BrowserRouter>
     );
     expect(
@@ -26,12 +26,12 @@ describe("Signup", () => {
     ).toBeInTheDocument();
   });
 
-  it("contains the button to register", () => {
+  it("contains the button to log in", () => {
     render(
       <BrowserRouter>
-        <Signup />
+        <Login />
       </BrowserRouter>
     );
-    expect(screen.getByRole("button")).toHaveTextContent("Sign up");
+    expect(screen.getByRole("button")).toHaveTextContent("Log in");
   });
 });

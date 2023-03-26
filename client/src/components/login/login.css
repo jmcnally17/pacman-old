@@ -16,14 +16,6 @@
   margin: auto;
 }
 
-input {
-  font-size: 3vmin;
-  border-radius: 0.5vmin;
-  padding: 0.3vmin;
-  border: 0.3vmin solid grey;
-  margin: 1vmin;
-}
-
 .error-message {
   color: rgb(251, 72, 72);
   padding-top: 2%;

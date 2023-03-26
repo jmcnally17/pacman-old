@@ -4,12 +4,9 @@ import Game from "../game/game";
 import Main from "../main/main";
 import { useEffect, useState } from "react";
 
-let url;
-if (process.env.REACT_APP_URL) {
-  url = `${process.env.REACT_APP_URL}/scores`;
-} else {
-  url = "http://localhost:9000/scores";
-}
+const url = process.env.REACT_APP_URL
+  ? `${process.env.REACT_APP_URL}/scores`
+  : "http://localhost:9000/scores";
 
 export default function Leaderboard({ variables }) {
   const [scores, setScores] = useState([]);

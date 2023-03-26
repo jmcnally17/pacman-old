@@ -33,7 +33,7 @@ export default function Main({ reactRoot }) {
   };
 
   const handleEnter = (event) => {
-    const buttonEl = document.querySelector("#submit-button");
+    const buttonEl = document.querySelector("#play-button");
     if (event.key === "Enter") buttonEl.click();
   };
 
@@ -61,9 +61,13 @@ export default function Main({ reactRoot }) {
   return (
     <div className="main" id="main">
       <h1>Welcome to Pac-Man!</h1>
-      <a href="/registration">
-        <button className="register-button">Sign up</button>
+      <a href="/login">
+        <button className="login-button">Log in</button>
       </a>
+      <a href="/signup">
+        <button className="signup-button">Sign up</button>
+      </a>
+      <br></br>
       <br></br>
       <img
         className="title-gif"
@@ -82,12 +86,8 @@ export default function Main({ reactRoot }) {
           onChange={handleName}
           onKeyDown={handleEnter}
         ></input>
-        <button
-          className="submit-button"
-          id="submit-button"
-          onClick={handleSubmit}
-        >
-          Submit
+        <button className="play-button" id="play-button" onClick={handleSubmit}>
+          Play
         </button>
       </div>
       <p className="name-error" id="name-error"></p>
