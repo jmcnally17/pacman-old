@@ -1,6 +1,6 @@
 # Pac-Man <img src="./client/public/images/red-ghost-right.png" height="30"> <img src="./client/public/images/pink-ghost-right.png" height="30"> <img src="./client/public/images/cyan-ghost-right.png" height="30"> <img src="./client/public/images/orange-ghost-right.png" height="30"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./client/public/images/scared-ghost-blue.png" height="30">
 
-This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and enter their name. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a Redis database which saves the player's score when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did.
+This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and click play. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a Redis database which contains high scores made by other players when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did. The player can sign up and make an account themselves for their score to also be saved in the database. The player accounts are stored in a MongoDB database.
 
 [<img src="./images/pacman-play-button.png">](https://pacman-7e4e.onrender.com)
 
@@ -8,11 +8,12 @@ This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Playe
 
 - [Miro](https://miro.com/index/) for planning the layout (Board can be found [here](https://miro.com/app/board/uXjVOo0XLMk=/?share_link_id=344912241548))
 - [Trello](https://trello.com/) for monitoring feature progress
+- [Mongoose](https://mongoosejs.com/docs/) for Object Data Modelling (ODM)
 - [Express](https://expressjs.com/) for setting up a backend server
 - [React](https://reactjs.org/) for frontend development
 - [Node.js](https://nodejs.org/en/) for the server runtime environment
 - [Render](https://render.com/) for deployment
-- [Redis Labs](https://redis.com/) for hosting the database
+- [MongoDB Atlas](https://www.mongodb.com/atlas/database) and [Redis Labs](https://redis.com/) for hosting the databases
 - [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing
 - [Pexels Draw](https://apps.apple.com/us/app/pexels-draw/id1320744895?mt=12) for creating the boundary images and ghost sprites
 - [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp) as a container for the graphics
