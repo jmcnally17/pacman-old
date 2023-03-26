@@ -31,7 +31,9 @@ describe("resumeAnimation", () => {
       isLevellingUp: false,
     };
     mockVariables = {
-      playerName: "John",
+      player: {
+        username: "John",
+      },
       reactRoot: "reactRoot",
     };
     mockCtx = "ctx";
@@ -127,7 +129,7 @@ describe("resumeAnimation", () => {
     );
     expect(mockPlayGame).toHaveBeenCalledTimes(1);
     expect(mockPlayGame).toHaveBeenCalledWith(
-      mockVariables.playerName,
+      mockVariables.player,
       mockVariables.reactRoot
     );
   });

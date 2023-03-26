@@ -1,6 +1,6 @@
 import playGame from "./playGame";
 
-let mockName;
+let mockPlayer;
 let mockReactRoot;
 let mockFinishSetup;
 let mockImplementObjects;
@@ -11,7 +11,9 @@ let mockBoard;
 
 describe("playGame", () => {
   beforeEach(() => {
-    mockName = "John";
+    mockPlayer = {
+      username: "John",
+    };
     mockReactRoot = "reactRoot";
     mockFinishSetup = jest.fn();
     mockImplementObjects = jest.fn();
@@ -35,7 +37,7 @@ describe("playGame", () => {
 
   it("calls finishSetup", () => {
     playGame(
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
@@ -47,7 +49,7 @@ describe("playGame", () => {
 
   it("calls requestAnimationFrame", () => {
     playGame(
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
@@ -60,7 +62,7 @@ describe("playGame", () => {
 
   it("finds the board element and calls getContext and clearRect on it", () => {
     playGame(
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
@@ -82,7 +84,7 @@ describe("playGame", () => {
 
   it("calls implementObjects", () => {
     playGame(
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
@@ -94,7 +96,7 @@ describe("playGame", () => {
 
   it("calls updateDisplay", () => {
     playGame(
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,
@@ -106,7 +108,7 @@ describe("playGame", () => {
 
   it("calls manageGhostAudio", () => {
     playGame(
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockFinishSetup,
       mockImplementObjects,

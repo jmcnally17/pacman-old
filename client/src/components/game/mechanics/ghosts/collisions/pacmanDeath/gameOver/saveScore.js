@@ -2,7 +2,7 @@ import getBackendUrl from "./getBackendUrl";
 
 export default async function saveScore(variables, callback = getBackendUrl) {
   const data = {
-    name: variables.playerName,
+    name: variables.player.username,
     points: variables.score,
   };
   let response;

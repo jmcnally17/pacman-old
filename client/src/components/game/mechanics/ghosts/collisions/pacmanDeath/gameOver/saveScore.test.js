@@ -9,7 +9,9 @@ describe("saveScore", () => {
   beforeEach(() => {
     fetch.resetMocks();
     mockVariables = {
-      name: "",
+      player: {
+        username: "person",
+      },
       score: 0,
     };
     mockGetBackendUrl = jest

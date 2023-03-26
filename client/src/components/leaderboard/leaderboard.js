@@ -36,13 +36,15 @@ export default function Leaderboard({ variables }) {
   const handlePlayAgain = () => {
     resetVariables();
     variables.reactRoot.render(
-      <Game name={variables.playerName} reactRoot={variables.reactRoot} />
+      <Game player={variables.player} reactRoot={variables.reactRoot} />
     );
   };
 
   const handleChangePlayer = () => {
     resetVariables();
-    variables.reactRoot.render(<Main reactRoot={variables.reactRoot} />);
+    variables.reactRoot.render(
+      <Main user={variables.player} reactRoot={variables.reactRoot} />
+    );
   };
 
   return (

@@ -25,13 +25,13 @@ export default function Main({ reactRoot, user }) {
   const logout = () => {};
 
   const handleSubmit = () => {
-    const name = user ? user.username : undefined;
+    const player = user ? user : undefined;
     theme.pause();
     if (reactRoot) {
-      reactRoot.render(<Game name={name} reactRoot={reactRoot} />);
+      reactRoot.render(<Game player={player} reactRoot={reactRoot} />);
     } else {
       const root = ReactDOM.createRoot(document.getElementById("subRoot"));
-      root.render(<Game name={name} reactRoot={root} />);
+      root.render(<Game player={player} reactRoot={root} />);
     }
   };
 

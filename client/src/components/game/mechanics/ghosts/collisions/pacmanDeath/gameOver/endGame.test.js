@@ -19,6 +19,9 @@ describe("endGame", () => {
   beforeEach(() => {
     Leaderboard.mockClear();
     mockVariables = {
+      player: {
+        username: "person",
+      },
       animationId: "animationId",
       reactRoot: {
         render: () => undefined,
@@ -76,7 +79,7 @@ describe("endGame", () => {
     expect(mockDisplayPleaseWait).toHaveBeenCalledWith(mockCtx);
   });
 
-  it("calls saveScore", () => {
+  it("calls saveScore when the player is not undefined", () => {
     endGame(
       mockVariables,
       mockPellets,
@@ -92,6 +95,24 @@ describe("endGame", () => {
     );
     expect(mockSaveScore).toHaveBeenCalledTimes(1);
     expect(mockSaveScore).toHaveBeenCalledWith(mockVariables);
+  });
+
+  it("does not call saveScore when the player is undefined", () => {
+    mockVariables.player = undefined;
+    endGame(
+      mockVariables,
+      mockPellets,
+      mockPowerUps,
+      mockGhosts,
+      mockPacman,
+      mockCycleTimer,
+      mockScaredTimer,
+      mockCtx,
+      mockDisplayPleaseWait,
+      mockSaveScore,
+      mockResetAfterGameOver
+    );
+    expect(mockSaveScore).toHaveBeenCalledTimes(0);
   });
 
   it("calls resetAfterGameOver", async () => {

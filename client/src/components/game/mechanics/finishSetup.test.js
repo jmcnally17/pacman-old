@@ -1,7 +1,7 @@
 import finishSetup from "./finishSetup";
 
 let mockVariables;
-let mockName;
+let mockPlayer;
 let mockReactRoot;
 let mockCycleTimer;
 let mockScaredTimer;
@@ -21,13 +21,15 @@ let mockAddPauseDetection;
 describe("finishSetup", () => {
   beforeEach(() => {
     mockVariables = {
-      playerName: "",
+      player: undefined,
       reactRoot: "",
       start: true,
       directionEventListener: null,
       visibilityEventListener: null,
     };
-    mockName = "John";
+    mockPlayer = {
+      username: "John",
+    };
     mockReactRoot = "reactRoot";
     mockCycleTimer = {
       start: () => undefined,
@@ -50,10 +52,10 @@ describe("finishSetup", () => {
     mockAddPauseDetection = jest.fn();
   });
 
-  it("sets the playerName and reactRoot", () => {
+  it("sets the player and reactRoot", () => {
     finishSetup(
       mockVariables,
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockCycleTimer,
       mockScaredTimer,
@@ -70,14 +72,14 @@ describe("finishSetup", () => {
       mockAddVisibilityDetection,
       mockAddPauseDetection
     );
-    expect(mockVariables.playerName).toBe(mockName);
+    expect(mockVariables.player).toBe(mockPlayer);
     expect(mockVariables.reactRoot).toBe(mockReactRoot);
   });
 
   it("starts the cycle timer", () => {
     finishSetup(
       mockVariables,
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockCycleTimer,
       mockScaredTimer,
@@ -100,7 +102,7 @@ describe("finishSetup", () => {
   it("calls addDirectionDetection to add the event listener", () => {
     finishSetup(
       mockVariables,
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockCycleTimer,
       mockScaredTimer,
@@ -124,7 +126,7 @@ describe("finishSetup", () => {
   it("calls addVisibilityDetection to add the event listener", () => {
     finishSetup(
       mockVariables,
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockCycleTimer,
       mockScaredTimer,
@@ -154,7 +156,7 @@ describe("finishSetup", () => {
   it("calls addPauseDetection to add the event listener", () => {
     finishSetup(
       mockVariables,
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockCycleTimer,
       mockScaredTimer,
@@ -191,7 +193,7 @@ describe("finishSetup", () => {
   it("sets the start variable to false", () => {
     finishSetup(
       mockVariables,
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockCycleTimer,
       mockScaredTimer,
@@ -214,7 +216,7 @@ describe("finishSetup", () => {
   it("sets ghostAudioWantsToPlay in the audioPlayer to true", () => {
     finishSetup(
       mockVariables,
-      mockName,
+      mockPlayer,
       mockReactRoot,
       mockCycleTimer,
       mockScaredTimer,
