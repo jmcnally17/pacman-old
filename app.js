@@ -4,7 +4,10 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
+const session = require("express-session");
 
+const usersRouter = require("./routes/users");
+const sessionsRouter = require("./routes/sessions");
 const scoresRouter = require("./routes/scores");
 
 const app = express();
@@ -24,6 +27,20 @@ app.use(
   })
 );
 
+app.use(
+  session({
+    key: "user_sid",
+    secret: "super_secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 600000,
+    },
+  })
+);
+
+app.use("/users", usersRouter);
+app.use("/sessions", sessionsRouter);
 app.use("/scores", scoresRouter);
 
 app.get("*", (req, res) => {

@@ -4,19 +4,16 @@ import Game from "../game/game";
 import Main from "../main/main";
 import { useEffect, useState } from "react";
 
-let url;
-if (process.env.REACT_APP_URL) {
-  url = `${process.env.REACT_APP_URL}/scores`;
-} else {
-  url = "http://localhost:9000/scores";
-}
+const scoresUrl = process.env.REACT_APP_URL
+  ? `${process.env.REACT_APP_URL}/scores`
+  : "http://localhost:9000/scores";
 
 export default function Leaderboard({ variables }) {
   const [scores, setScores] = useState([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(url)
+    fetch(scoresUrl)
       .then((response) => response.json())
       .then((data) => {
         while (data.scores.length < 10) {
@@ -39,13 +36,15 @@ export default function Leaderboard({ variables }) {
   const handlePlayAgain = () => {
     resetVariables();
     variables.reactRoot.render(
-      <Game name={variables.playerName} reactRoot={variables.reactRoot} />
+      <Game player={variables.player} reactRoot={variables.reactRoot} />
     );
   };
 
   const handleChangePlayer = () => {
     resetVariables();
-    variables.reactRoot.render(<Main reactRoot={variables.reactRoot} />);
+    variables.reactRoot.render(
+      <Main user={variables.player} reactRoot={variables.reactRoot} />
+    );
   };
 
   return (
@@ -90,8 +89,8 @@ export default function Leaderboard({ variables }) {
         <button className="play-again" onClick={handlePlayAgain}>
           Play Again
         </button>
-        <button className="change-player" onClick={handleChangePlayer}>
-          Change Player
+        <button className="home" onClick={handleChangePlayer}>
+          Home
         </button>
       </div>
     </div>

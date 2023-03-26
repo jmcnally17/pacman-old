@@ -4,7 +4,7 @@ import addPauseDetection from "./eventListeners/addPauseDetection";
 
 export default function finishSetup(
   variables,
-  name,
+  player,
   reactRoot,
   cycleTimer,
   scaredTimer,
@@ -21,7 +21,7 @@ export default function finishSetup(
   callbackTwo = addVisibilityDetection,
   callbackThree = addPauseDetection
 ) {
-  variables.playerName = name;
+  variables.player = player;
   variables.reactRoot = reactRoot;
   cycleTimer.start();
   callbackOne(variables);

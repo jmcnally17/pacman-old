@@ -2,27 +2,38 @@ import { render, screen } from "@testing-library/react";
 import Game from "./game";
 
 let mockPlayGame;
-let mockName;
+let mockPlayer;
 let mockReactRoot;
 
 describe("Game", () => {
   beforeEach(() => {
     mockPlayGame = jest.fn();
-    mockName = "John";
+    mockPlayer = {
+      username: "John",
+    };
     mockReactRoot = "reactRoot";
   });
 
   it("calls playGame as soon as the component renders", () => {
     render(
-      <Game name={mockName} reactRoot={mockReactRoot} callback={mockPlayGame} />
+      <Game
+        player={mockPlayer}
+        reactRoot={mockReactRoot}
+        callback={mockPlayGame}
+      />
     );
     expect(mockPlayGame).toHaveBeenCalledTimes(1);
-    expect(mockPlayGame).toHaveBeenCalledWith(mockName, mockReactRoot);
+    expect(mockPlayGame).toHaveBeenCalledWith(mockPlayer, mockReactRoot);
   });
 
   it("contains the heading with the player's name", () => {
-    render(<Game name={"John"} callback={mockPlayGame} />);
+    render(<Game player={mockPlayer} callback={mockPlayGame} />);
     expect(screen.getByRole("heading")).toHaveTextContent("Let's play John!");
+  });
+
+  it("contains the heading when no one is logged in", () => {
+    render(<Game callback={mockPlayGame} />);
+    expect(screen.getByRole("heading")).toHaveTextContent("Let's play!");
   });
 
   it("contains the canvas element for the game info", () => {

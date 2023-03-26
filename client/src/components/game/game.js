@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import "./game.css";
 import playGame from "./mechanics/playGame";
 
-export default function Game({ name, reactRoot, callback = playGame }) {
+export default function Game({ player, reactRoot, callback = playGame }) {
   useEffect(() => {
-    callback(name, reactRoot);
-  }, [callback, name, reactRoot]);
+    callback(player, reactRoot);
+  }, [callback, player, reactRoot]);
 
   const handleDirection = (direction) => {
     const arrow = new KeyboardEvent("keydown", { key: direction });
@@ -14,7 +14,7 @@ export default function Game({ name, reactRoot, callback = playGame }) {
 
   return (
     <div>
-      <h1>Let&apos;s play {name}!</h1>
+      <h1>Let&apos;s play{player ? " " + player.username : null}!</h1>
       <div className="game">
         <canvas
           id="info"

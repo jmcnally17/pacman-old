@@ -18,7 +18,8 @@ export default async function endGame(
 ) {
   cancelAnimationFrame(variables.animationId);
   callbackOne(ctx);
-  await callbackTwo(variables);
+  if (variables.player) await callbackTwo(variables);
+
   callbackThree(
     pellets,
     powerUps,

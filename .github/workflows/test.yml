@@ -1,5 +1,4 @@
-
-name: CI-client
+name: CI
 
 on:
   push:
@@ -14,6 +13,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
+        mongodb-version: ['5.0.7']
 
     steps:
       - uses: actions/checkout@v3
@@ -23,6 +23,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.7.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+      
       - name: Install backend dependencies
         run: npm install
         
@@ -30,4 +35,4 @@ jobs:
         run: npm install --prefix ./client
 
       - name: Testing
-        run: npm run test:client
+        run: npm run test

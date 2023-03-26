@@ -44,6 +44,6 @@ export default function resumeAnimation(
       audioPlayer
     );
   } else {
-    callbackThree(variables.playerName, variables.reactRoot);
+    callbackThree(variables.player, variables.reactRoot);
   }
 }

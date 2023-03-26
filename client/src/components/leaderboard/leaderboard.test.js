@@ -120,14 +120,14 @@ describe("Leaderboard", () => {
     expect(screen.queryByRole("table")).toBeNull();
   });
 
-  it("contains the buttons to play again and change player", () => {
+  it("contains the buttons to play again and go home", () => {
     render(<Leaderboard variables={mockVariables} />);
     expect(
       screen.getByRole("button", { name: "Play Again" })
     ).toBeInTheDocument();
     expect(
       screen.getByRole("button", {
-        name: "Change Player",
+        name: "Home",
       })
     ).toBeInTheDocument();
   });
