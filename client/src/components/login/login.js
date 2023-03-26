@@ -22,6 +22,11 @@ export default function Login() {
     setPassword(target.value);
   };
 
+  const handleEnter = (event) => {
+    const buttonEl = document.querySelector("#login-button");
+    if (event.key === "Enter") buttonEl.click();
+  };
+
   const handleSubmit = () => {
     fetch(sessionsUrl, {
       method: "POST",
@@ -48,15 +53,22 @@ export default function Login() {
     <div className="login">
       <h1>Log In</h1>
       <div className="border">
-        <input placeholder="Username" onChange={handleUsername}></input>
+        <input
+          placeholder="Username"
+          onChange={handleUsername}
+          onKeyDown={handleEnter}
+        ></input>
         <br></br>
         <input
           type="password"
           placeholder="Password"
           onChange={handlePassword}
+          onKeyDown={handleEnter}
         ></input>
         <br></br>
-        <button onClick={handleSubmit}>Log in</button>
+        <button id="login-button" onClick={handleSubmit}>
+          Log in
+        </button>
         <p className="error-message">{error}</p>
       </div>
     </div>

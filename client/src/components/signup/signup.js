@@ -31,6 +31,11 @@ export default function Signup() {
     setPassword(target.value);
   };
 
+  const handleEnter = (event) => {
+    const buttonEl = document.querySelector("#signup-button");
+    if (event.key === "Enter") buttonEl.click();
+  };
+
   const handleSubmit = () => {
     let nameError = document.getElementById("error-message");
     if (username === "") {
@@ -91,15 +96,22 @@ export default function Signup() {
     <div className="signup">
       <h1>Sign Up</h1>
       <div className="border">
-        <input placeholder="Username" onChange={handleUsername}></input>
+        <input
+          placeholder="Username"
+          onChange={handleUsername}
+          onKeyDown={handleEnter}
+        ></input>
         <br></br>
         <input
           type="password"
           placeholder="Password"
           onChange={handlePassword}
+          onKeyDown={handleEnter}
         ></input>
         <br></br>
-        <button onClick={handleSubmit}>Sign up</button>
+        <button id="signup-button" onClick={handleSubmit}>
+          Sign up
+        </button>
         <p className="error-message" id="error-message">
           {error}
         </p>
