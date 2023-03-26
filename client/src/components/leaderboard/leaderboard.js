@@ -89,8 +89,8 @@ export default function Leaderboard({ variables }) {
         <button className="play-again" onClick={handlePlayAgain}>
           Play Again
         </button>
-        <button className="change-player" onClick={handleChangePlayer}>
-          Change Player
+        <button className="home" onClick={handleChangePlayer}>
+          Home
         </button>
       </div>
     </div>
