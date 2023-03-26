@@ -25,40 +25,53 @@ export default function Main({ reactRoot, user }) {
   const logout = () => {};
 
   const handleSubmit = () => {
+    const name = user ? user.username : undefined;
     theme.pause();
     if (reactRoot) {
-      reactRoot.render(
-        <Game name={user ? user.username : undefined} reactRoot={reactRoot} />
-      );
+      reactRoot.render(<Game name={name} reactRoot={reactRoot} />);
     } else {
       const root = ReactDOM.createRoot(document.getElementById("subRoot"));
-      root.render(
-        <Game name={user ? user.username : undefined} reactRoot={root} />
-      );
+      root.render(<Game name={name} reactRoot={root} />);
     }
+  };
+
+  const header = () => {
+    return user ? (
+      <h1>Welcome back {user.username}!</h1>
+    ) : (
+      <h1>Welcome to Pac-Man!</h1>
+    );
+  };
+
+  const buttons = () => {
+    return user ? (
+      <button className="logout-button" onClick={logout}>
+        Log out
+      </button>
+    ) : (
+      <div>
+        <a href="/login">
+          <button className="login-button">Log in</button>
+        </a>
+        <a href="/signup">
+          <button className="signup-button">Sign up</button>
+        </a>
+      </div>
+    );
+  };
+
+  const signupInstructions = () => {
+    return user ? null : (
+      <p className="signup-instructions">
+        Make an account to submit your score onto the leaderboard!
+      </p>
+    );
   };
 
   return (
     <div className="main" id="main">
-      {user ? (
-        <h1>Welcome back {user.username}!</h1>
-      ) : (
-        <h1>Welcome to Pac-Man!</h1>
-      )}
-      {user ? (
-        <button className="logout-button" onClick={logout}>
-          Log out
-        </button>
-      ) : (
-        <div>
-          <a href="/login">
-            <button className="login-button">Log in</button>
-          </a>
-          <a href="/signup">
-            <button className="signup-button">Sign up</button>
-          </a>
-        </div>
-      )}
+      {header()}
+      {buttons()}
       <br></br>
       <br></br>
       <img
@@ -66,12 +79,7 @@ export default function Main({ reactRoot, user }) {
         src="https://media4.giphy.com/media/42rO49pxzaMnK/giphy.gif?cid=790b76116dc1bedf27887938cbe8df55b210b12f842af0e9&rid=giphy.gif&ct=g"
         alt="Pac-Man gif"
       />
-      {user ? null : (
-        <p className="signup-instructions">
-          Make an account to submit your score onto the leaderboard!
-        </p>
-      )}
-
+      {signupInstructions()}
       <div className="register">
         <button className="play-button" id="play-button" onClick={handleSubmit}>
           Play
