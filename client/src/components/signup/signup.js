@@ -32,7 +32,7 @@ export default function Signup() {
     })
       .then((response) => {
         if (response.ok) {
-          navigate("/");
+          navigate("/login");
         } else {
           throw response;
         }

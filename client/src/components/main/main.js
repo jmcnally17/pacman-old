@@ -9,7 +9,7 @@ const options = new ProfanityOptions();
 options.wholeWord = false;
 const profanity = new Profanity(options);
 
-export default function Main({ reactRoot }) {
+export default function Main({ reactRoot, user }) {
   const [name, setName] = useState("");
   const [theme] = useState(
     new Howl({
@@ -60,7 +60,11 @@ export default function Main({ reactRoot }) {
 
   return (
     <div className="main" id="main">
-      <h1>Welcome to Pac-Man!</h1>
+      {user ? (
+        <h1>Welcome back {user.username}!</h1>
+      ) : (
+        <h1>Welcome to Pac-Man!</h1>
+      )}
       <a href="/login">
         <button className="login-button">Log in</button>
       </a>

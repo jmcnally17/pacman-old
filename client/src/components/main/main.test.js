@@ -8,10 +8,20 @@ describe("Main", () => {
     window.HTMLMediaElement.prototype.pause = () => undefined;
   });
 
-  it("contains the header", () => {
+  it("contains the header when no user is logged in", () => {
     render(<Main />);
     expect(screen.getByRole("heading")).toHaveTextContent(
       "Welcome to Pac-Man!"
+    );
+  });
+
+  it("contains the header when a user is logged in", () => {
+    const user = {
+      username: "Person",
+    };
+    render(<Main user={user} />);
+    expect(screen.getByRole("heading")).toHaveTextContent(
+      "Welcome back Person!"
     );
   });
 

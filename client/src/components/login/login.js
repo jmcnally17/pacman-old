@@ -1,17 +1,18 @@
 import { React, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./login.css";
 
 const url = process.env.REACT_APP_URL
   ? `${process.env.REACT_APP_URL}/sessions`
   : "http://localhost:9000/sessions";
 
+const redirectUrl = process.env.REACT_APP_URL
+  ? process.env.REACT_APP_URL
+  : "http://localhost:3000";
+
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const navigate = useNavigate();
 
   const handleUsername = ({ target }) => {
     setUsername(target.value);
@@ -24,6 +25,7 @@ export default function Login() {
   const handleSubmit = () => {
     fetch(url, {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         username: username,
@@ -32,7 +34,7 @@ export default function Login() {
     })
       .then((response) => {
         if (response.ok) {
-          navigate("/");
+          window.location.href = redirectUrl;
         } else {
           throw response;
         }
