@@ -23,6 +23,9 @@ const SessionsController = {
       }
     });
   },
+  Destroy: (req, res) => {
+    req.session.destroy();
+  },
 };
 
 module.exports = SessionsController;

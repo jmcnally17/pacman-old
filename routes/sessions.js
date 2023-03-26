@@ -5,5 +5,6 @@ const SessionsController = require("../controllers/sessions");
 
 router.get("/", SessionsController.Index);
 router.post("/", SessionsController.Create);
+router.delete("/", SessionsController.Destroy);
 
 module.exports = router;

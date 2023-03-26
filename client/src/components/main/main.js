@@ -4,6 +4,10 @@ import "./main.css";
 import Game from "../game/game";
 import { Howl } from "howler";
 
+const logoutUrl = process.env.REACT_APP_URL
+  ? `${process.env.REACT_APP_URL}/sessions`
+  : "http://localhost:9000/sessions";
+
 export default function Main({ reactRoot, user }) {
   const [theme] = useState(
     new Howl({
@@ -22,7 +26,13 @@ export default function Main({ reactRoot, user }) {
     });
   }, [theme]);
 
-  const logout = () => {};
+  const handleLogout = () => {
+    fetch(logoutUrl, {
+      method: "DELETE",
+      credentials: "include",
+    });
+    window.location.reload();
+  };
 
   const handleSubmit = () => {
     const player = user ? user : undefined;
@@ -45,7 +55,7 @@ export default function Main({ reactRoot, user }) {
 
   const buttons = () => {
     return user ? (
-      <button className="logout-button" onClick={logout}>
+      <button className="logout-button" onClick={handleLogout}>
         Log out
       </button>
     ) : (
