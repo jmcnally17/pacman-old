@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
+import { Profanity, ProfanityOptions } from "@2toad/profanity";
+
+const options = new ProfanityOptions();
+options.wholeWord = false;
+const profanity = new Profanity(options);
 
 const url = process.env.REACT_APP_URL
   ? `${process.env.REACT_APP_URL}/users`
@@ -22,22 +27,33 @@ export default function Signup() {
   };
 
   const handleSubmit = () => {
-    fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          navigate("/login");
-        } else {
-          throw response;
-        }
+    let nameError = document.getElementById("error-message");
+    if (username === "") {
+      nameError.innerText = "You must enter a name";
+    } else if (username.includes(" ")) {
+      nameError.innerText = "Name cannot contain any spaces";
+    } else if (username.length < 3 || username.length > 15) {
+      nameError.innerText = "Name must be 3-15 characters long";
+    } else if (profanity.exists(username)) {
+      nameError.innerText = "No profanity!";
+    } else {
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
       })
-      .catch((err) => setError(err.statusText));
+        .then((response) => {
+          if (response.ok) {
+            navigate("/login");
+          } else {
+            throw response;
+          }
+        })
+        .catch((err) => setError(err.statusText));
+    }
   };
 
   return (
@@ -53,7 +69,9 @@ export default function Signup() {
         ></input>
         <br></br>
         <button onClick={handleSubmit}>Sign up</button>
-        <p className="error-message">{error}</p>
+        <p className="error-message" id="error-message">
+          {error}
+        </p>
       </div>
     </div>
   );

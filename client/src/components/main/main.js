@@ -3,14 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./main.css";
 import Game from "../game/game";
 import { Howl } from "howler";
-import { Profanity, ProfanityOptions } from "@2toad/profanity";
-
-const options = new ProfanityOptions();
-options.wholeWord = false;
-const profanity = new Profanity(options);
 
 export default function Main({ reactRoot, user }) {
-  const [name, setName] = useState("");
   const [theme] = useState(
     new Howl({
       src: ["./audio/title_theme.wav"],
@@ -28,33 +22,19 @@ export default function Main({ reactRoot, user }) {
     });
   }, [theme]);
 
-  const handleName = ({ target }) => {
-    setName(target.value);
-  };
-
-  const handleEnter = (event) => {
-    const buttonEl = document.querySelector("#play-button");
-    if (event.key === "Enter") buttonEl.click();
-  };
+  const logout = () => {};
 
   const handleSubmit = () => {
-    let nameError = document.getElementById("name-error");
-    if (name === "") {
-      nameError.innerText = "You must enter a name";
-    } else if (name.includes(" ")) {
-      nameError.innerText = "Name cannot contain any spaces";
-    } else if (name.length < 3 || name.length > 15) {
-      nameError.innerText = "Name must be 3-15 characters long";
-    } else if (profanity.exists(name)) {
-      nameError.innerText = "No profanity!";
+    theme.pause();
+    if (reactRoot) {
+      reactRoot.render(
+        <Game name={user ? user.username : undefined} reactRoot={reactRoot} />
+      );
     } else {
-      theme.pause();
-      if (reactRoot) {
-        reactRoot.render(<Game name={name} reactRoot={reactRoot} />);
-      } else {
-        const root = ReactDOM.createRoot(document.getElementById("subRoot"));
-        root.render(<Game name={name} reactRoot={root} />);
-      }
+      const root = ReactDOM.createRoot(document.getElementById("subRoot"));
+      root.render(
+        <Game name={user ? user.username : undefined} reactRoot={root} />
+      );
     }
   };
 
@@ -65,12 +45,20 @@ export default function Main({ reactRoot, user }) {
       ) : (
         <h1>Welcome to Pac-Man!</h1>
       )}
-      <a href="/login">
-        <button className="login-button">Log in</button>
-      </a>
-      <a href="/signup">
-        <button className="signup-button">Sign up</button>
-      </a>
+      {user ? (
+        <button className="logout-button" onClick={logout}>
+          Log out
+        </button>
+      ) : (
+        <div>
+          <a href="/login">
+            <button className="login-button">Log in</button>
+          </a>
+          <a href="/signup">
+            <button className="signup-button">Sign up</button>
+          </a>
+        </div>
+      )}
       <br></br>
       <br></br>
       <img
@@ -78,18 +66,13 @@ export default function Main({ reactRoot, user }) {
         src="https://media4.giphy.com/media/42rO49pxzaMnK/giphy.gif?cid=790b76116dc1bedf27887938cbe8df55b210b12f842af0e9&rid=giphy.gif&ct=g"
         alt="Pac-Man gif"
       />
+      {user ? null : (
+        <p className="signup-instructions">
+          Make an account to submit your score onto the leaderboard!
+        </p>
+      )}
+
       <div className="register">
-        <label className="label" htmlFor="name-input">
-          Enter your name:
-        </label>
-        <input
-          className="input-name"
-          id="name-input"
-          type="text"
-          placeholder="Name"
-          onChange={handleName}
-          onKeyDown={handleEnter}
-        ></input>
         <button className="play-button" id="play-button" onClick={handleSubmit}>
           Play
         </button>

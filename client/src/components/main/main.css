@@ -6,6 +6,7 @@ button {
   cursor: pointer;
 }
 
+.logout-button,
 .login-button,
 .signup-button {
   background-color: black;
@@ -30,6 +31,7 @@ button {
   color: rgb(251, 72, 72);
 }
 
+.signup-instructions,
 .instructions {
   color: white;
   margin: auto;
