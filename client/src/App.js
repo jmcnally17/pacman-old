@@ -6,7 +6,7 @@ import Signup from "./components/signup/signup";
 import Footer from "./components/footer/footer";
 import Login from "./components/login/login";
 
-const url = process.env.REACT_APP_URL
+const sessionsUrl = process.env.REACT_APP_URL
   ? `${process.env.REACT_APP_URL}/sessions`
   : "http://localhost:9000/sessions";
 
@@ -14,7 +14,7 @@ export default function App() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    fetch(url, {
+    fetch(sessionsUrl, {
       credentials: "include",
     })
       .then((response) => response.json())

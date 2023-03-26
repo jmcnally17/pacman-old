@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./signup.css";
 import { Profanity, ProfanityOptions } from "@2toad/profanity";
 
@@ -7,16 +6,22 @@ const options = new ProfanityOptions();
 options.wholeWord = false;
 const profanity = new Profanity(options);
 
-const url = process.env.REACT_APP_URL
+const usersUrl = process.env.REACT_APP_URL
   ? `${process.env.REACT_APP_URL}/users`
   : "http://localhost:9000/users";
+
+const sessionsUrl = process.env.REACT_APP_URL
+  ? `${process.env.REACT_APP_URL}/sessions`
+  : "http://localhost:9000/sessions";
+
+const redirectUrl = process.env.REACT_APP_URL
+  ? process.env.REACT_APP_URL
+  : "http://localhost:3000";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const navigate = useNavigate();
 
   const handleUsername = ({ target }) => {
     setUsername(target.value);
@@ -41,7 +46,7 @@ export default function Signup() {
     } else if (password.length < 8) {
       nameError.innerText = "Password must be at least 8 characters long";
     } else {
-      fetch(url, {
+      fetch(usersUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -51,13 +56,35 @@ export default function Signup() {
       })
         .then((response) => {
           if (response.ok) {
-            navigate("/login");
+            login();
           } else {
             throw response;
           }
         })
         .catch((err) => setError(err.statusText));
     }
+  };
+
+  const login = () => {
+    fetch(sessionsUrl, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          window.location.href = redirectUrl;
+        } else {
+          throw response;
+        }
+      })
+      .catch((err) => {
+        setError(err.statusText);
+      });
   };
 
   return (

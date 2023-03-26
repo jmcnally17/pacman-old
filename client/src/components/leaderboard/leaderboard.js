@@ -4,7 +4,7 @@ import Game from "../game/game";
 import Main from "../main/main";
 import { useEffect, useState } from "react";
 
-const url = process.env.REACT_APP_URL
+const scoresUrl = process.env.REACT_APP_URL
   ? `${process.env.REACT_APP_URL}/scores`
   : "http://localhost:9000/scores";
 
@@ -13,7 +13,7 @@ export default function Leaderboard({ variables }) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(url)
+    fetch(scoresUrl)
       .then((response) => response.json())
       .then((data) => {
         while (data.scores.length < 10) {

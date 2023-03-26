@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "./login.css";
 
-const url = process.env.REACT_APP_URL
+const sessionsUrl = process.env.REACT_APP_URL
   ? `${process.env.REACT_APP_URL}/sessions`
   : "http://localhost:9000/sessions";
 
@@ -23,7 +23,7 @@ export default function Login() {
   };
 
   const handleSubmit = () => {
-    fetch(url, {
+    fetch(sessionsUrl, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
