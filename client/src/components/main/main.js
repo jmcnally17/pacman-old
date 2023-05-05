@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import axios from "axios";
 import "./main.css";
 import Game from "../game/game";
 import { Howl } from "howler";
@@ -27,9 +28,8 @@ export default function Main({ reactRoot, user }) {
   }, [theme]);
 
   const handleLogout = () => {
-    fetch(logoutUrl, {
-      method: "DELETE",
-      credentials: "include",
+    axios.delete(logoutUrl, {
+      withCredentials: true,
     });
     window.location.reload();
   };

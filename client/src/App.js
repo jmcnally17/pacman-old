@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
+import axios from "axios";
+import "./App.css";
 import Main from "./components/main/main";
 import Signup from "./components/signup/signup";
 import Footer from "./components/footer/footer";
@@ -14,12 +15,12 @@ export default function App() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    fetch(sessionsUrl, {
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setUser(data.user);
+    axios
+      .get(sessionsUrl, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setUser(res.data.user);
       });
   }, []);
 

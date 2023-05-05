@@ -1,3 +1,4 @@
+import axios from "axios";
 import "./leaderboard.css";
 import React from "react";
 import Game from "../game/game";
@@ -13,19 +14,21 @@ export default function Leaderboard({ variables }) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(scoresUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        while (data.scores.length < 10) {
-          data.scores.push({
+    (async function () {
+      try {
+        const res = await axios.get(scoresUrl);
+        const scores = res.data.scores;
+        while (scores.length < 10) {
+          scores.push({
             value: "--",
             score: "--",
           });
         }
-        return data.scores;
-      })
-      .then((scores) => setScores(scores))
-      .catch(() => setError(true));
+        setScores(scores);
+      } catch (err) {
+        setError(true);
+      }
+    })();
   }, []);
 
   const resetVariables = () => {

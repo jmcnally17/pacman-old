@@ -1,3 +1,4 @@
+import axios from "axios";
 import getBackendUrl from "./getBackendUrl";
 
 export default async function saveScore(variables, callback = getBackendUrl) {
@@ -5,16 +6,10 @@ export default async function saveScore(variables, callback = getBackendUrl) {
     name: variables.player.username,
     points: variables.score,
   };
-  let response;
-  await fetch(callback(process.env.REACT_APP_URL), {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => (response = `Success: ${data.message}`))
-    .catch((error) => (response = `Error: ${error}`));
-  return response;
+  try {
+    const res = await axios.post(callback(process.env.REACT_APP_URL), data);
+    return `Success: ${res.data.message}`;
+  } catch (err) {
+    return `Error: ${err.response.statusText}`;
+  }
 }
