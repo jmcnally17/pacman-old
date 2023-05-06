@@ -58,7 +58,7 @@ export default function Signup() {
           password: password,
         })
         .then((res) => {
-          if (res.statusText === "OK") {
+          if (res.status === 200) {
             login();
           } else {
             throw res;
