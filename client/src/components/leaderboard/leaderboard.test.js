@@ -1,63 +1,55 @@
 import { render, screen, within } from "@testing-library/react";
+import mockAxios from "jest-mock-axios";
 import Leaderboard from "./leaderboard";
-import { rest } from "msw";
-import { setupServer } from "msw/node";
-
-const mockScores = [
-  { value: "Molly", score: 11390 },
-  { value: "Bob", score: 9830 },
-  { value: "Andrew", score: 4620 },
-];
-
-const server = setupServer(
-  rest.get("http://localhost:9000/scores", (req, res, ctx) => {
-    return res(
-      ctx.json({
-        scores: mockScores,
-      })
-    );
-  })
-);
 
 let mockVariables;
+let mockScores;
 
 describe("Leaderboard", () => {
-  beforeAll(() => server.listen());
-
   beforeEach(() => {
     mockVariables = {
       score: 2000,
     };
+    mockScores = [
+      { value: "Molly", score: 11390 },
+      { value: "Bob", score: 9830 },
+      { value: "Andrew", score: 4620 },
+    ];
   });
 
-  afterEach(() => server.resetHandlers());
+  afterAll(() => {
+    mockAxios.reset();
+  });
 
-  afterAll(() => server.close());
-
-  it("contains the headings for Game over and the number of points scored", () => {
+  it("contains the headings for Game over and the number of points scored", async () => {
     render(<Leaderboard variables={mockVariables} />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+    expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(
       "Game Over"
     );
-    expect(screen.getByRole("heading", { level: 4 })).toHaveTextContent(
+    expect(await screen.findByRole("heading", { level: 4 })).toHaveTextContent(
       "You scored 2000 points"
     );
   });
 
-  it("contains the leaderboard table", () => {
+  it("contains the leaderboard table", async () => {
     render(<Leaderboard variables={mockVariables} />);
-    expect(screen.getByRole("table")).toHaveAttribute("class", "list");
+    expect(await screen.findByRole("table")).toHaveAttribute("class", "list");
   });
 
-  it("prints a message telling the user to wait a moment before the table data has been fetched", () => {
+  it("prints a message telling the user to wait a moment before the table data has been fetched", async () => {
     render(<Leaderboard variables={mockVariables} />);
-    const tableEl = screen.getByRole("table");
+    const tableEl = await screen.findByRole("table");
     expect(within(tableEl).getByTestId("wait-message")).toHaveTextContent(
       "Please wait a moment..."
     );
   });
 
   it("contains the table headings after the data has been fetched", async () => {
+    mockAxios.get.mockResolvedValueOnce({
+      data: {
+        scores: mockScores,
+      },
+    });
     render(<Leaderboard variables={mockVariables} />);
     expect(
       await screen.findByRole("columnheader", { name: "Rank" })
@@ -71,6 +63,11 @@ describe("Leaderboard", () => {
   });
 
   it("fetches the scores from the database and displays them in the table", async () => {
+    mockAxios.get.mockResolvedValueOnce({
+      data: {
+        scores: mockScores,
+      },
+    });
     render(<Leaderboard variables={mockVariables} />);
 
     const entryOneEl = await screen.findByRole("row", { name: 0 });
@@ -108,11 +105,7 @@ describe("Leaderboard", () => {
   });
 
   it("displays an error on the page when the fetch fails", async () => {
-    server.use(
-      rest.get("http://localhost:9000/scores", (req, res, ctx) => {
-        return res(ctx.status(500));
-      })
-    );
+    mockAxios.get.mockRejectedValueOnce();
     render(<Leaderboard variables={mockVariables} />);
     expect(await screen.findByTestId("error")).toHaveTextContent(
       "Oops, something went wrong!"
@@ -120,13 +113,13 @@ describe("Leaderboard", () => {
     expect(screen.queryByRole("table")).toBeNull();
   });
 
-  it("contains the buttons to play again and go home", () => {
+  it("contains the buttons to play again and go home", async () => {
     render(<Leaderboard variables={mockVariables} />);
     expect(
-      screen.getByRole("button", { name: "Play Again" })
+      await screen.findByRole("button", { name: "Play Again" })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", {
+      await screen.findByRole("button", {
         name: "Home",
       })
     ).toBeInTheDocument();

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./signup.css";
 import { Profanity, ProfanityOptions } from "@2toad/profanity";
 
@@ -51,44 +52,43 @@ export default function Signup() {
     } else if (password.length < 8) {
       nameError.innerText = "Password must be at least 8 characters long";
     } else {
-      fetch(usersUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      axios
+        .post(usersUrl, {
           username: username,
           password: password,
-        }),
-      })
-        .then((response) => {
-          if (response.ok) {
+        })
+        .then((res) => {
+          if (res.statusText === "OK") {
             login();
           } else {
-            throw response;
+            throw res;
           }
         })
-        .catch((err) => setError(err.statusText));
+        .catch((err) => setError(err.response.statusText));
     }
   };
 
   const login = () => {
-    fetch(sessionsUrl, {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
+    axios
+      .post(
+        sessionsUrl,
+        {
+          username: username,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        if (res.statusText === "OK") {
           window.location.href = redirectUrl;
         } else {
-          throw response;
+          throw res;
         }
       })
       .catch((err) => {
-        setError(err.statusText);
+        setError(err.response.statusText);
       });
   };
 

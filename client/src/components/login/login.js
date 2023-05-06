@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import axios from "axios";
 import "./login.css";
 
 const sessionsUrl = process.env.REACT_APP_URL
@@ -28,24 +29,26 @@ export default function Login() {
   };
 
   const handleSubmit = () => {
-    fetch(sessionsUrl, {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
+    axios
+      .post(
+        sessionsUrl,
+        {
+          username: username,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        if (res.statusText === "OK") {
           window.location.href = redirectUrl;
         } else {
-          throw response;
+          throw res;
         }
       })
       .catch((err) => {
-        setError(err.statusText);
+        setError(err.response.statusText);
       });
   };
 
