@@ -13,22 +13,24 @@ export default function Leaderboard({ variables }) {
   const [scores, setScores] = useState([]);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    (async function () {
-      try {
-        const res = await axios.get(scoresUrl);
-        const scores = res.data.scores;
-        while (scores.length < 10) {
-          scores.push({
-            value: "--",
-            score: "--",
-          });
-        }
-        setScores(scores);
-      } catch (err) {
-        setError(true);
+  const fetchScores = async () => {
+    try {
+      const res = await axios.get(scoresUrl);
+      const scores = res.data.scores;
+      while (scores.length < 10) {
+        scores.push({
+          value: "--",
+          score: "--",
+        });
       }
-    })();
+      setScores(scores);
+    } catch (err) {
+      setError(true);
+    }
+  };
+
+  useEffect(() => {
+    fetchScores();
   }, []);
 
   const resetVariables = () => {
