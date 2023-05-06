@@ -41,7 +41,7 @@ export default function Login() {
         }
       )
       .then((res) => {
-        if (res.statusText === "OK") {
+        if (res.status === 200) {
           window.location.href = redirectUrl;
         } else {
           throw res;
