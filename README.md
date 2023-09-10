@@ -1,8 +1,9 @@
 # Pac-Man <img src="./client/public/images/red-ghost-right.png" height="30"> <img src="./client/public/images/pink-ghost-right.png" height="30"> <img src="./client/public/images/cyan-ghost-right.png" height="30"> <img src="./client/public/images/orange-ghost-right.png" height="30"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./client/public/images/scared-ghost-blue.png" height="30">
 
-**_\*\*Note\*\* - This is the old repo for this project. The API and client have now been separated into 2 repos._**<br>
-API - [https://github.com/jmcnally17/pacman-API](https://github.com/jmcnally17/pacman-API)<br>
-Client - [https://github.com/jmcnally17/pacman-client](https://github.com/jmcnally17/pacman-client)
+**_\*\*Note\*\* - This is the old repo for this project. The API and client have now been separated into 2 repos, with multiple versions of the API being built_**<br>
+Client (in use on the deployed version) - https://github.com/jmcnally17/pacman-client <br>
+JS API (in use on the deployed version) - https://github.com/jmcnally17/pacman-api-js <br>
+Java API (in progress) - https://github.com/jmcnally17/pacman-api-java
 
 This solo project is an imitation of the classic 1980 Namco game, Pac-Man. Players can visit the live site and click play. Upon which the game will load with similar rules to the original Pac-Man where the player has to score as many points as they can while avoiding the ghosts that roam the board. This webapp connects to a Redis database which contains high scores made by other players when all their lives run out and the game is over. After which, the leaderboard of the top ten scores are pulled from the database and displayed on the page where the player can compare to see how well they did. The player can sign up and make an account themselves for their score to also be saved in the database. The player accounts are stored in a MongoDB database.
 
@@ -149,7 +150,7 @@ redis-server
 
 into a separate terminal to do this.
 
-Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit [http://localhost:3000](http://localhost:3000) in your browser to play the game.
+Both backend and frontend servers must be running simultaneously so open two separate terminals and navigate into the main directory in one and the client directory in the other. Then run `npm start` in both and visit http://localhost:3000 in your browser to play the game.
 
 ## Testing
 
