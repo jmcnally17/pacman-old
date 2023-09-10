@@ -1,6 +1,6 @@
 # Pac-Man <img src="./client/public/images/red-ghost-right.png" height="30"> <img src="./client/public/images/pink-ghost-right.png" height="30"> <img src="./client/public/images/cyan-ghost-right.png" height="30"> <img src="./client/public/images/orange-ghost-right.png" height="30"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./client/public/images/scared-ghost-blue.png" height="30">
 
-**_\*\*Note\*\* - This is the old repo for this project. The API and client have now been separated into 2 repos, with multiple versions of the API being built_**<br>
+**_\*\*Note\*\* - This is the old repo for this project. The API and client have now been separated into 2 repos, with multiple versions of the API_**<br>
 Client (in use on the deployed version) - https://github.com/jmcnally17/pacman-client <br>
 JS API (in use on the deployed version) - https://github.com/jmcnally17/pacman-api-js <br>
 Java API (in progress) - https://github.com/jmcnally17/pacman-api-java
